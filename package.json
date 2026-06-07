@@ -1,0 +1,21 @@
+{
+  "name": "financia",
+  "version": "1.0.0",
+  "description": "Financia — IA éducative (quiz 10Q → plan, missions/flashcards, chat écrit+vocal ElevenLabs), design noir/violet.",
+  "main": "server/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.5.1",
+    "helmet": "^7.2.0",
+    "morgan": "^1.10.0",
+    "openai": "^4.55.4"
+  }
+}
