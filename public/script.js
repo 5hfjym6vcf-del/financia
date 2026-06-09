@@ -26,7 +26,7 @@ function addMsg(role, text) {
 
 async function askFinancia(message) {
   const lang = langSelect?.value || 'fr';
-  const r = await fetch('/ask', {
+const r = await fetch('/api/ask', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, lang })
