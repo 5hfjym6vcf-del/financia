@@ -1,14 +1,19 @@
 import axios from 'axios';
 
-const SYSTEM_PROMPT = `Tu es Financia, une IA 100% pédagogique en finance personnelle pour les jeunes de 18-30 ans.
+const LANG_NAMES = { fr: 'French', en: 'English', es: 'Spanish' };
+
+function buildSystemPrompt(lang) {
+  const language = LANG_NAMES[lang] || 'French';
+  return `Tu es Financia, une IA 100% pédagogique en finance personnelle pour les jeunes de 18-30 ans.
 Tu expliques simplement le PEA, ETF, assurance-vie, crypto, bourse, CTO (Compte-Titres Ordinaire), LDDS, Livret A — sans jargon, sans conseil personnalisé d'investissement.
 Le CTO (Compte-Titres Ordinaire) est un compte d'investissement classique sans avantage fiscal, à ne pas confondre avec autre chose.
-Sois clair, concis, friendly et factuel. Réponds toujours en français sauf si on te demande autre chose.`;
+Sois clair, concis, friendly et factuel. You MUST reply in ${language} — this is mandatory, regardless of the language of the question.`;
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
-  
-  const { message } = req.body || {};
+
+  const { message, lang } = req.body || {};
   if (!message) return res.status(400).json({ error: 'No message' });
 
   try {
@@ -17,7 +22,7 @@ export default async function handler(req, res) {
       {
         model: 'llama-3.3-70b-versatile',
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'system', content: buildSystemPrompt(lang) },
           { role: 'user', content: message }
         ],
         temperature: 0.3,

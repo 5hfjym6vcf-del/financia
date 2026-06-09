@@ -11,13 +11,32 @@ const chatForm = $('#chat-form');
 const chatInput = $('#chat-input');
 const chatWin = $('#chat-window');
 
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function renderMarkdown(text) {
+  return escapeHtml(text)
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n/g, '<br>');
+}
+
 function addMsg(role, text) {
   const div = document.createElement('div');
   div.className = `msg ${role}`;
   if (role === 'bot') {
     div.innerHTML = `<div class="bot-avatar">F</div><div class="bubble">${text}</div>`;
   } else {
-    div.innerHTML = `<div class="bubble">${text}</div>`;
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.textContent = text;
+    div.appendChild(bubble);
   }
   chatWin?.appendChild(div);
   if (chatWin) chatWin.scrollTop = chatWin.scrollHeight;
@@ -46,11 +65,7 @@ if (chatForm) {
     const bubble = botDiv.querySelector('.bubble');
     try {
       const { text } = await askFinancia(msg);
-      bubble.innerHTML = text
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/\n\n/g, '<br><br>')
-        .replace(/\n/g, '<br>');
+      bubble.innerHTML = renderMarkdown(text);
     } catch {
       bubble.textContent = 'Désolé, une erreur est survenue.';
     }
@@ -92,11 +107,7 @@ $$('.ask-btn').forEach(btn => {
     overlayContent.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
     try {
       const { text } = await askFinancia(btn.dataset.q);
-      overlayContent.innerHTML = text
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/\n\n/g, '<br><br>')
-        .replace(/\n/g, '<br>');
+      overlayContent.innerHTML = renderMarkdown(text);
     } catch {
       overlayContent.textContent = 'Erreur lors du chargement.';
     }
