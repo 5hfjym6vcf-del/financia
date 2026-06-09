@@ -317,5 +317,9 @@ function showQuizResult() {
   updateQuizBackBtn();
 }
 
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#quiz') resetQuiz();
+});
+
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
