@@ -1,5 +1,31 @@
 import axios from 'axios';
 
+// In-memory rate limiter — per Vercel instance, resets on cold start.
+// Good enough to limit casual abuse; use Upstash/Redis for cross-instance enforcement.
+const rateLimitMap = new Map();
+const RATE_LIMIT = 20;   // requests
+const WINDOW_MS  = 60_000; // per minute
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT) return true;
+  entry.count++;
+  return false;
+}
+
+// Purge expired entries every 5 minutes to avoid unbounded growth.
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitMap) {
+    if (now > entry.resetAt) rateLimitMap.delete(ip);
+  }
+}, 5 * 60_000);
+
 const LANG_NAMES = { fr: 'French', en: 'English', es: 'Spanish' };
 
 function buildSystemPrompt(lang) {
@@ -12,6 +38,14 @@ Sois clair, concis, friendly et factuel. You MUST reply in ${language} — this 
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
+
+  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim()
+    || req.socket?.remoteAddress
+    || 'unknown';
+  if (isRateLimited(ip)) {
+    res.setHeader('Retry-After', '60');
+    return res.status(429).json({ error: 'Trop de requêtes. Réessaie dans une minute.' });
+  }
 
   const { message, lang } = req.body || {};
   if (!message) return res.status(400).json({ error: 'No message' });
