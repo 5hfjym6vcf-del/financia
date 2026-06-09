@@ -26,7 +26,7 @@ function addMsg(role, text) {
 
 async function askFinancia(message) {
   const lang = langSelect?.value || 'fr';
-const r = await fetch('/api/ask', {
+  const r = await fetch('/api/ask', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, lang })
@@ -46,7 +46,11 @@ if (chatForm) {
     const bubble = botDiv.querySelector('.bubble');
     try {
       const { text } = await askFinancia(msg);
-      bubble.innerHTML = text.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+      bubble.innerHTML = text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/\n\n/g, '<br><br>')
+        .replace(/\n/g, '<br>');
     } catch {
       bubble.textContent = 'Désolé, une erreur est survenue.';
     }
@@ -90,6 +94,7 @@ $$('.ask-btn').forEach(btn => {
       const { text } = await askFinancia(btn.dataset.q);
       overlayContent.innerHTML = text
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/\n\n/g, '<br><br>')
         .replace(/\n/g, '<br>');
     } catch {
