@@ -135,7 +135,7 @@ function calcSimulator() {
   const totalInvested = capital + monthly * months;
   const gains = value - totalInvested;
   if ($('#simCapitalVal')) $('#simCapitalVal').textContent = fmt(capital);
-  if ($('#simMonthlyVal')) $('#simMonthlyVal').textContent = monthly + ' €/mois';
+  if ($('#simMonthlyVal')) $('#simMonthlyVal').textContent = Math.round(monthly).toLocaleString('fr-FR') + ' €/mois';
   if ($('#simYearsVal')) $('#simYearsVal').textContent = years + ' ans';
   if ($('#simRateVal')) $('#simRateVal').textContent = ($('#simRate')?.value || 8) + '%';
   if ($('#simTotalInvested')) $('#simTotalInvested').textContent = fmt(totalInvested);
