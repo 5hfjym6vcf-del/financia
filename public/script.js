@@ -207,6 +207,44 @@ let quizStep = 1;
 const totalSteps = 5;
 const quizAnswers = {};
 
+function updateQuizBackBtn() {
+  const btn = $('#quizBack');
+  if (!btn) return;
+  const resultVisible = !$('#quiz-result')?.classList.contains('hidden');
+  btn.style.display = (quizStep > 1 && !resultVisible) ? '' : 'none';
+}
+
+function resetQuiz() {
+  quizStep = 1;
+  Object.keys(quizAnswers).forEach(k => delete quizAnswers[k]);
+  $$('.quiz-opt').forEach(b => b.classList.remove('selected'));
+  $$('.quiz-step').forEach(s => s.classList.remove('active'));
+  $('#step-1')?.classList.add('active');
+  $('#quiz-result')?.classList.add('hidden');
+  const progress = $('#quizProgress');
+  if (progress) progress.style.width = '0%';
+  updateQuizBackBtn();
+}
+
+const quizBody = $('#quiz-body');
+if (quizBody) {
+  const backBtn = document.createElement('button');
+  backBtn.id = 'quizBack';
+  backBtn.className = 'quiz-back-btn';
+  backBtn.textContent = '← Retour';
+  backBtn.style.display = 'none';
+  backBtn.addEventListener('click', () => {
+    if (quizStep <= 1) return;
+    $(`#step-${quizStep}`)?.classList.remove('active');
+    quizStep--;
+    $(`#step-${quizStep}`)?.classList.add('active');
+    const progress = $('#quizProgress');
+    if (progress) progress.style.width = `${(quizStep - 1) / totalSteps * 100}%`;
+    updateQuizBackBtn();
+  });
+  quizBody.insertBefore(backBtn, quizBody.firstChild);
+}
+
 $$('.quiz-opt').forEach(btn => {
   btn.addEventListener('click', () => {
     const name = btn.dataset.name;
@@ -221,6 +259,7 @@ $$('.quiz-opt').forEach(btn => {
       if (progress) progress.style.width = `${(quizStep - 1) / totalSteps * 100}%`;
       if (quizStep <= totalSteps) {
         $(`#step-${quizStep}`)?.classList.add('active');
+        updateQuizBackBtn();
       } else {
         showQuizResult();
       }
@@ -265,11 +304,17 @@ function showQuizResult() {
     <div class="quiz-result-tips">
       ${tips.map(t => `<div class="quiz-tip"><span class="quiz-tip-icon">${t.icon}</span><span>${t.text}</span></div>`).join('')}
     </div>
-    <button class="btn-primary full" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">💬 Parler à Financia sur mon niveau →</button>
+    <button class="btn-primary full" id="quizChatBtn">💬 Parler à Financia sur mon niveau →</button>
+    <button class="btn-ghost full" id="quizRestartBtn">↩ Recommencer le quiz</button>
   `;
   resultEl.classList.remove('hidden');
   const progress = $('#quizProgress');
   if (progress) progress.style.width = '100%';
+  $('#quizChatBtn')?.addEventListener('click', () => {
+    document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
+  });
+  $('#quizRestartBtn')?.addEventListener('click', resetQuiz);
+  updateQuizBackBtn();
 }
 
 const yearEl = $('#year');
