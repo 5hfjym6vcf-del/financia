@@ -536,6 +536,32 @@ a { text-decoration: none; color: inherit; }
 }
 .quiz-back-btn:hover { color: var(--green); }
 
+/* ACTUS */
+.actus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.actu-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+}
+.actu-card:hover { border-color: var(--border-2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,77,255,0.08); }
+.actu-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 12px; }
+.actu-source { font-size: 11px; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.actu-date { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+.actu-title { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.45; margin-bottom: auto; padding-bottom: 16px; }
+.actu-link { font-size: 13px; color: var(--green); font-weight: 500; margin-top: 4px; }
+.actus-loading { grid-column: 1 / -1; display: flex; justify-content: center; padding: 48px; }
+.actus-error { grid-column: 1 / -1; text-align: center; color: var(--text-2); font-size: 15px; padding: 48px 0; }
+
 /* À PROPOS */
 .apropos-bio {
   max-width: 680px;
@@ -606,4 +632,5 @@ a { text-decoration: none; color: inherit; }
   .hero-stats { flex-wrap: wrap; gap: 12px; }
   .hstat-div { display: none; }
   .valeurs-grid { grid-template-columns: 1fr; }
+  .actus-grid { grid-template-columns: 1fr; }
 }

@@ -323,3 +323,38 @@ window.addEventListener('hashchange', () => {
 
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+async function loadActus() {
+  const grid = $('#actus-grid');
+  if (!grid) return;
+  try {
+    const res = await fetch(
+      'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=financial_markets,economy_fiscal&sort=LATEST&limit=6&apikey=N2V6TQUYHXMM4OM0'
+    );
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (data.Information || data.Note) throw new Error();
+    const items = data.feed?.slice(0, 6);
+    if (!items?.length) throw new Error();
+    grid.innerHTML = items.map(item => {
+      const raw = item.time_published || '';
+      let date = '';
+      if (raw.length >= 8) {
+        const d = new Date(`${raw.slice(0,4)}-${raw.slice(4,6)}-${raw.slice(6,8)}T${raw.slice(9,11)}:${raw.slice(11,13)}:00`);
+        if (!isNaN(d)) date = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+      return `<a class="actu-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
+        <div class="actu-meta">
+          <span class="actu-source">${escapeHtml(item.source || '')}</span>
+          <span class="actu-date">${date}</span>
+        </div>
+        <p class="actu-title">${escapeHtml(item.title || '')}</p>
+        <span class="actu-link">Lire l'article →</span>
+      </a>`;
+    }).join('');
+  } catch {
+    grid.innerHTML = '<p class="actus-error">Actus temporairement indisponibles.</p>';
+  }
+}
+
+loadActus();
