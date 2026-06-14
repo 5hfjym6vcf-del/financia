@@ -563,6 +563,25 @@ a { text-decoration: none; color: inherit; }
 .valeur-card h3 { margin-bottom: 8px; color: var(--text); }
 .valeur-card p { font-size: 14px; color: var(--text-2); line-height: 1.6; }
 
+/* MENTIONS LÉGALES */
+.mentions-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 860px;
+}
+.mention-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.mention-block h3 { font-size: 1rem; margin-bottom: 10px; color: var(--text); }
+.mention-block p { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+.mention-block strong { color: var(--text); }
+
+@media (max-width: 600px) { .mentions-content { grid-template-columns: 1fr; } }
+
 /* FOOTER */
 .site-footer { border-top: 1px solid var(--border); padding: 48px 0 32px; background: var(--bg); }
 .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
