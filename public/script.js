@@ -205,7 +205,7 @@ $('#simAskBtn')?.addEventListener('click', () => {
 
 let quizStep = 1;
 const totalSteps = 5;
-const quizAnswers = {};
+const quizAnswerTexts = {};
 
 function updateQuizBackBtn() {
   const btn = $('#quizBack');
@@ -214,13 +214,30 @@ function updateQuizBackBtn() {
   btn.style.display = (quizStep > 1 && !resultVisible) ? '' : 'none';
 }
 
+function advanceQuiz() {
+  $(`#step-${quizStep}`)?.classList.remove('active');
+  quizStep++;
+  const progress = $('#quizProgress');
+  if (progress) progress.style.width = `${(quizStep - 1) / totalSteps * 100}%`;
+  if (quizStep <= totalSteps) {
+    $(`#step-${quizStep}`)?.classList.add('active');
+    updateQuizBackBtn();
+  } else {
+    showQuizResult();
+  }
+}
+
 function resetQuiz() {
   quizStep = 1;
-  Object.keys(quizAnswers).forEach(k => delete quizAnswers[k]);
+  Object.keys(quizAnswerTexts).forEach(k => delete quizAnswerTexts[k]);
   $$('.quiz-opt').forEach(b => b.classList.remove('selected'));
   $$('.quiz-step').forEach(s => s.classList.remove('active'));
   $('#step-1')?.classList.add('active');
   $('#quiz-result')?.classList.add('hidden');
+  const ageInput = $('#quiz-age');
+  if (ageInput) ageInput.value = '';
+  const amountInput = $('#quiz-amount');
+  if (amountInput) amountInput.value = '';
   const progress = $('#quizProgress');
   if (progress) progress.style.width = '0%';
   updateQuizBackBtn();
@@ -245,53 +262,67 @@ if (quizBody) {
   quizBody.insertBefore(backBtn, quizBody.firstChild);
 }
 
-const quizAnswerTexts = {};
+function shakeInput(input) {
+  input?.classList.add('quiz-input-error');
+  input?.focus();
+  setTimeout(() => input?.classList.remove('quiz-input-error'), 400);
+}
+
+$$('.quiz-next').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const step = Number(btn.dataset.step);
+    if (step === 1) {
+      const input = $('#quiz-age');
+      const v = input?.value?.trim();
+      if (!v || isNaN(v) || Number(v) < 1 || Number(v) > 120) { shakeInput(input); return; }
+      quizAnswerTexts.q1 = v;
+    } else if (step === 3) {
+      const input = $('#quiz-amount');
+      const v = input?.value?.trim();
+      if (v === '' || isNaN(v) || Number(v) < 0) { shakeInput(input); return; }
+      quizAnswerTexts.q3 = v;
+    }
+    advanceQuiz();
+  });
+});
+
+['#quiz-age', '#quiz-amount'].forEach(sel => {
+  $(sel)?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') $(`[data-step="${sel === '#quiz-age' ? 1 : 3}"]`)?.click();
+  });
+});
 
 $$('.quiz-opt').forEach(btn => {
   btn.addEventListener('click', () => {
     const name = btn.dataset.name;
-    const val = Number(btn.dataset.val);
     $$(`[data-name="${name}"]`).forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
-    quizAnswers[name] = val;
     quizAnswerTexts[name] = btn.dataset.text || btn.textContent.trim();
-    setTimeout(() => {
-      $(`#step-${quizStep}`)?.classList.remove('active');
-      quizStep++;
-      const progress = $('#quizProgress');
-      if (progress) progress.style.width = `${(quizStep - 1) / totalSteps * 100}%`;
-      if (quizStep <= totalSteps) {
-        $(`#step-${quizStep}`)?.classList.add('active');
-        updateQuizBackBtn();
-      } else {
-        showQuizResult();
-      }
-    }, 250);
+    setTimeout(advanceQuiz, 250);
   });
 });
 
 function showQuizResult() {
-  const exp = quizAnswers.q4 ?? 0;
-  const objectif = quizAnswers.q5 ?? 0;
+  const expText = quizAnswerTexts.q4 ?? '';
   let niveau, desc, tips;
 
-  if (exp >= 3) {
-    niveau = '🎯 Profil Investisseur Actif';
+  if (expText.includes('régulièrement')) {
+    niveau = '🎯 Investisseur Actif';
     desc = 'Tu investis déjà régulièrement — passons à l\'optimisation !';
     tips = [
       { icon: '📊', text: 'Explore les ETF sectoriels et les marchés émergents' },
       { icon: '🔄', text: 'Automatise ton DCA pour lisser les points d\'entrée' },
       { icon: '💎', text: 'Optimise ta fiscalité PEA + assurance-vie' },
     ];
-  } else if (exp >= 2) {
+  } else if (expText.includes('PEA') || expText.includes('assurance')) {
     niveau = '📚 Profil Intermédiaire';
     desc = 'Tu as déjà une enveloppe — il faut maintenant l\'alimenter efficacement.';
     tips = [
       { icon: '🌍', text: 'Diversifie avec un ETF World en DCA mensuel' },
       { icon: '⚖️', text: 'Équilibre fonds euros et unités de compte' },
-      { icon: '📅', text: 'Vise un horizon d\'au moins 5 ans pour profiter des intérêts composés' },
+      { icon: '📅', text: 'Vise un horizon d\'au moins 5 ans pour les intérêts composés' },
     ];
-  } else if (exp >= 1) {
+  } else if (expText.includes('livret') || expText.includes('Livret') || expText.includes('LDDS')) {
     niveau = '🌱 Profil Épargnant';
     desc = 'Tu épargnes déjà, super ! L\'étape suivante : faire travailler cet argent.';
     tips = [
@@ -303,51 +334,36 @@ function showQuizResult() {
     niveau = '🚀 Profil Débutant';
     desc = 'Parfait point de départ — tout le monde commence quelque part !';
     tips = [
-      { icon: '💰', text: 'Commence par constituer une épargne de sécurité sur Livret A' },
+      { icon: '💰', text: 'Commence par 3 mois de dépenses sur Livret A' },
       { icon: '📖', text: 'Apprends ce qu\'est un ETF World avant tout' },
       { icon: '💬', text: 'Pose tes questions à Financia, sans jugement !' },
     ];
   }
 
-  const objectifTips = {
-    0: { icon: '🛡️', text: 'Priorité : 3–6 mois de dépenses sur Livret A ou LDDS avant d\'investir' },
-    1: { icon: '🏖️', text: 'Pour la retraite, l\'assurance-vie et le PEA sont tes meilleurs alliés fiscaux' },
-    2: { icon: '⚡', text: 'Pour maximiser, mise sur les ETF actions long terme et le DCA régulier' },
-    3: { icon: '🏠', text: 'Pour l\'immobilier, définis ton horizon et calibre ton épargne mensuelle' },
-  };
-  if (objectifTips[objectif]) tips.push(objectifTips[objectif]);
   const resultEl = $('#quiz-result');
   if (!resultEl) return;
   resultEl.innerHTML = `
     <div class="quiz-result-level">${niveau}</div>
     <p class="quiz-result-sub">${desc}</p>
+    <div class="quiz-profile-summary">
+      <div class="quiz-profile-line">👤 <strong>${quizAnswerTexts.q1 ?? '?'} ans</strong> · ${quizAnswerTexts.q2 ?? '?'}</div>
+      <div class="quiz-profile-line">💶 Épargne mensuelle : <strong>${quizAnswerTexts.q3 ?? '?'} €/mois</strong></div>
+      <div class="quiz-profile-line">🎯 Objectif : <strong>${quizAnswerTexts.q5 ?? '?'}</strong></div>
+    </div>
     <div class="quiz-result-tips">
       ${tips.map(t => `<div class="quiz-tip"><span class="quiz-tip-icon">${t.icon}</span><span>${t.text}</span></div>`).join('')}
     </div>
-    <button class="btn-primary full" id="quizBilanBtn">📋 Obtenir mon bilan personnalisé →</button>
-    <button class="btn-ghost full" id="quizChatBtn">💬 Parler à Financia sur mon niveau →</button>
+    <button class="btn-primary full" id="quizPlanBtn">📋 Obtenir mon plan personnalisé →</button>
     <button class="btn-ghost full" id="quizRestartBtn">↩ Recommencer le quiz</button>
   `;
   resultEl.classList.remove('hidden');
   const progress = $('#quizProgress');
   if (progress) progress.style.width = '100%';
-  $('#quizBilanBtn')?.addEventListener('click', () => {
-    const niveauClean = niveau.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').trim();
-    const msg = `Voici mon profil complet issu du quiz Financia :
-- Âge : ${quizAnswerTexts.q1 ?? '?'}
-- Situation professionnelle : ${quizAnswerTexts.q2 ?? '?'}
-- Capacité d'épargne mensuelle : ${quizAnswerTexts.q3 ?? '?'}
-- Expérience en investissement : ${quizAnswerTexts.q4 ?? '?'}
-- Objectif principal : ${quizAnswerTexts.q5 ?? '?'}
-- Profil obtenu : ${niveauClean}
-
-Sur la base de ce profil, fais-moi un bilan personnalisé complet et un plan d'action concret étape par étape adapté à ma situation.`;
+  $('#quizPlanBtn')?.addEventListener('click', () => {
+    const msg = `Voici mon profil : j'ai ${quizAnswerTexts.q1 ?? '?'} ans, je suis ${quizAnswerTexts.q2 ?? '?'}, je peux épargner ${quizAnswerTexts.q3 ?? '?'}€/mois, ${quizAnswerTexts.q4 ?? '?'}, mon objectif est ${quizAnswerTexts.q5 ?? '?'}. Fais-moi un plan d'investissement personnalisé et concret.`;
     if (chatInput) chatInput.value = msg;
     document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => chatForm?.dispatchEvent(new Event('submit')), 600);
-  });
-  $('#quizChatBtn')?.addEventListener('click', () => {
-    document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
   });
   $('#quizRestartBtn')?.addEventListener('click', resetQuiz);
   updateQuizBackBtn();

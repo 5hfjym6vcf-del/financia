@@ -68,6 +68,65 @@
       color: #7C4DFF;
       font-weight: 500;
     }
+    .quiz-input-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-top: 1.25rem;
+    }
+    .quiz-input-row-free {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 280px;
+    }
+    .quiz-free-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-size: 1.1rem;
+      font-family: inherit;
+      border: 2px solid #ede8ff;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fff;
+      color: #1a1a2e;
+      width: 100%;
+    }
+    .quiz-free-input:focus { border-color: #7C4DFF; }
+    .quiz-free-input.quiz-input-error {
+      border-color: #ef4444;
+      animation: shake 0.3s ease;
+    }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+    .quiz-currency-symbol {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #6b7280;
+    }
+    .quiz-next {
+      margin-top: 0.25rem;
+    }
+    .quiz-profile-summary {
+      background: rgba(124,77,255,0.06);
+      border: 1.5px solid #ede8ff;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .quiz-profile-line {
+      font-size: 0.95rem;
+      color: #374151;
+    }
   </style>
   <meta name="description" content="Financia — L'IA qui rend la finance accessible aux jeunes." />
   <!-- Google Analytics -->
@@ -357,45 +416,48 @@
       <div id="quiz-body">
         <div class="quiz-step active" id="step-1">
           <div class="quiz-q">Quel âge as-tu ?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-name="q1" data-val="0" data-text="Moins de 25 ans">🧑 Moins de 25 ans</button>
-            <button class="quiz-opt" data-name="q1" data-val="1" data-text="25-35 ans">👤 25–35 ans</button>
-            <button class="quiz-opt" data-name="q1" data-val="2" data-text="Plus de 35 ans">🧑‍💼 Plus de 35 ans</button>
+          <div class="quiz-input-wrap">
+            <div class="quiz-input-row-free">
+              <input type="number" id="quiz-age" class="quiz-free-input" placeholder="Ex : 22" min="15" max="99" />
+            </div>
+            <button class="btn-primary quiz-next" data-step="1">Suivant →</button>
           </div>
         </div>
         <div class="quiz-step" id="step-2">
           <div class="quiz-q">Quelle est ta situation professionnelle ?</div>
           <div class="quiz-options">
-            <button class="quiz-opt" data-name="q2" data-val="0" data-text="Étudiant(e)">🎓 Étudiant(e)</button>
-            <button class="quiz-opt" data-name="q2" data-val="1" data-text="Salarié(e)">💼 Salarié(e)</button>
-            <button class="quiz-opt" data-name="q2" data-val="2" data-text="Indépendant(e)">🧑‍💻 Indépendant(e)</button>
-            <button class="quiz-opt" data-name="q2" data-val="3" data-text="Sans emploi">🔍 Sans emploi</button>
+            <button class="quiz-opt" data-name="q2" data-text="Étudiant(e)">🎓 Étudiant(e)</button>
+            <button class="quiz-opt" data-name="q2" data-text="Salarié(e)">💼 Salarié(e)</button>
+            <button class="quiz-opt" data-name="q2" data-text="Indépendant(e)">🧑‍💻 Indépendant(e)</button>
+            <button class="quiz-opt" data-name="q2" data-text="Sans emploi">🔍 Sans emploi</button>
           </div>
         </div>
         <div class="quiz-step" id="step-3">
           <div class="quiz-q">Combien peux-tu mettre de côté chaque mois ?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-name="q3" data-val="0" data-text="Moins de 100€">💶 Moins de 100 €</button>
-            <button class="quiz-opt" data-name="q3" data-val="1" data-text="Entre 100€ et 500€">💰 Entre 100 € et 500 €</button>
-            <button class="quiz-opt" data-name="q3" data-val="2" data-text="Plus de 500€">🏦 Plus de 500 €</button>
+          <div class="quiz-input-wrap">
+            <div class="quiz-input-row-free">
+              <input type="number" id="quiz-amount" class="quiz-free-input" placeholder="Ex : 150" min="0" />
+              <span class="quiz-currency-symbol">€</span>
+            </div>
+            <button class="btn-primary quiz-next" data-step="3">Suivant →</button>
           </div>
         </div>
         <div class="quiz-step" id="step-4">
           <div class="quiz-q">Tu as déjà investi ?</div>
           <div class="quiz-options">
-            <button class="quiz-opt" data-name="q4" data-val="0" data-text="Jamais, je pars de zéro">🌱 Jamais, je pars de zéro</button>
-            <button class="quiz-opt" data-name="q4" data-val="1" data-text="J'ai un Livret A ou LDDS">📋 J'ai un Livret A ou LDDS</button>
-            <button class="quiz-opt" data-name="q4" data-val="2" data-text="J'ai un PEA ou une assurance-vie">📈 J'ai un PEA ou une assurance-vie</button>
-            <button class="quiz-opt" data-name="q4" data-val="3" data-text="J'investis régulièrement">🚀 J'investis régulièrement</button>
+            <button class="quiz-opt" data-name="q4" data-text="Jamais, je pars de zéro">🌱 Jamais, je pars de zéro</button>
+            <button class="quiz-opt" data-name="q4" data-text="J'ai un livret A ou LDDS">📋 J'ai un livret A ou LDDS</button>
+            <button class="quiz-opt" data-name="q4" data-text="J'ai un PEA ou une assurance-vie">📈 J'ai un PEA ou une assurance-vie</button>
+            <button class="quiz-opt" data-name="q4" data-text="J'investis régulièrement">🚀 J'investis régulièrement</button>
           </div>
         </div>
         <div class="quiz-step" id="step-5">
           <div class="quiz-q">Quel est ton objectif principal ?</div>
           <div class="quiz-options">
-            <button class="quiz-opt" data-name="q5" data-val="0" data-text="Constituer une épargne de sécurité">🛡️ Constituer une épargne de sécurité</button>
-            <button class="quiz-opt" data-name="q5" data-val="1" data-text="Préparer ma retraite">🏖️ Préparer ma retraite</button>
-            <button class="quiz-opt" data-name="q5" data-val="2" data-text="Faire fructifier mon argent rapidement">⚡ Faire fructifier mon argent rapidement</button>
-            <button class="quiz-opt" data-name="q5" data-val="3" data-text="Acheter un bien immobilier">🏠 Acheter un bien immobilier</button>
+            <button class="quiz-opt" data-name="q5" data-text="Constituer une épargne de sécurité">🛡️ Constituer une épargne de sécurité</button>
+            <button class="quiz-opt" data-name="q5" data-text="Préparer ma retraite">🏖️ Préparer ma retraite</button>
+            <button class="quiz-opt" data-name="q5" data-text="Faire fructifier mon argent">⚡ Faire fructifier mon argent</button>
+            <button class="quiz-opt" data-name="q5" data-text="Acheter un bien immobilier">🏠 Acheter un bien immobilier</button>
           </div>
         </div>
         <div id="quiz-result" class="quiz-result hidden"></div>
