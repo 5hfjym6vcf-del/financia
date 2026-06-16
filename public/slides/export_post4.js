@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { mkdirSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const htmlPath  = resolve(__dirname, 'post5.html');
+const htmlPath  = resolve(__dirname, 'post4.html');
 const outDir    = resolve(__dirname, 'png');
 
 mkdirSync(outDir, { recursive: true });
@@ -33,13 +33,13 @@ for (let i = 1; i <= 5; i++) {
 
   await new Promise(r => setTimeout(r, 150));
 
-  const outPath = `${outDir}/post5_slide${i}.png`;
+  const outPath = `${outDir}/post4_slide${i}.png`;
   await page.screenshot({
     path: outPath,
     type: 'png',
     clip: { x: 0, y: 0, width: 1080, height: 1080 },
   });
-  console.log(`✓ post5_slide${i}.png`);
+  console.log(`✓ post4_slide${i}.png`);
 }
 
 await browser.close();
