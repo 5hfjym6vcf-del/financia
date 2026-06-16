@@ -267,6 +267,14 @@ $$('.quiz-opt').forEach(btn => {
   });
 });
 
+const quizAnswerLabels = {
+  q1: ['Débutant complet', 'Quelques notions', 'À l\'aise'],
+  q2: ['Pas du tout', 'Vaguement', 'Oui clairement'],
+  q3: ['Aucun placement', 'J\'en ai un', 'PEA + assurance-vie'],
+  q4: ['Moins de 2 ans', '2 à 5 ans', 'Plus de 5 ans'],
+  q5: ['Faible', 'Modérée', 'Élevée'],
+};
+
 function showQuizResult() {
   const score = Object.values(quizAnswers).reduce((a, b) => a + b, 0);
   const pct = score / (totalSteps * 2);
@@ -304,12 +312,27 @@ function showQuizResult() {
     <div class="quiz-result-tips">
       ${tips.map(t => `<div class="quiz-tip"><span class="quiz-tip-icon">${t.icon}</span><span>${t.text}</span></div>`).join('')}
     </div>
-    <button class="btn-primary full" id="quizChatBtn">💬 Parler à Financia sur mon niveau →</button>
+    <button class="btn-primary full" id="quizBilanBtn">📋 Obtenir mon bilan personnalisé →</button>
+    <button class="btn-ghost full" id="quizChatBtn">💬 Parler à Financia sur mon niveau →</button>
     <button class="btn-ghost full" id="quizRestartBtn">↩ Recommencer le quiz</button>
   `;
   resultEl.classList.remove('hidden');
   const progress = $('#quizProgress');
   if (progress) progress.style.width = '100%';
+  $('#quizBilanBtn')?.addEventListener('click', () => {
+    const questions = [
+      `expérience : ${quizAnswerLabels.q1[quizAnswers.q1] ?? '?'}`,
+      `connaissance ETF : ${quizAnswerLabels.q2[quizAnswers.q2] ?? '?'}`,
+      `placements actuels : ${quizAnswerLabels.q3[quizAnswers.q3] ?? '?'}`,
+      `horizon d'investissement : ${quizAnswerLabels.q4[quizAnswers.q4] ?? '?'}`,
+      `tolérance au risque : ${quizAnswerLabels.q5[quizAnswers.q5] ?? '?'}`,
+    ];
+    const niveauClean = niveau.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').trim();
+    const msg = `J'ai répondu [${questions.join(', ')}] au quiz et j'ai obtenu le niveau ${niveauClean}. Fais-moi un bilan personnalisé et un plan d'action concret adapté à mon profil.`;
+    if (chatInput) chatInput.value = msg;
+    document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => chatForm?.dispatchEvent(new Event('submit')), 600);
+  });
   $('#quizChatBtn')?.addEventListener('click', () => {
     document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
   });
