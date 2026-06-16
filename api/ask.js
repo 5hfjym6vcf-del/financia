@@ -60,7 +60,7 @@ export default async function handler(req, res) {
           { role: 'user', content: message }
         ],
         temperature: 0.3,
-        max_tokens: 1024,
+        max_tokens: 2048,
       },
       {
         headers: {

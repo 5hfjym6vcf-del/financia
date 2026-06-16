@@ -7,6 +7,25 @@ window.addEventListener('scroll', () => {
   navbar?.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
+const menuBtn = $('#menuBtn');
+const mobileMenu = $('#mobileMenu');
+const menuIconOpen = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+const menuIconClose = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+
+function closeMobileMenu() {
+  mobileMenu?.classList.remove('open');
+  if (menuBtn) { menuBtn.innerHTML = menuIconOpen; menuBtn.setAttribute('aria-expanded', 'false'); }
+}
+
+menuBtn?.addEventListener('click', () => {
+  const isOpen = mobileMenu?.classList.toggle('open');
+  menuBtn.innerHTML = isOpen ? menuIconClose : menuIconOpen;
+  menuBtn.setAttribute('aria-expanded', String(isOpen));
+});
+
+$$('#mobileMenu a').forEach(a => a.addEventListener('click', closeMobileMenu));
+window.addEventListener('scroll', closeMobileMenu, { passive: true });
+
 const chatForm = $('#chat-form');
 const chatInput = $('#chat-input');
 const chatWin = $('#chat-window');
@@ -50,7 +69,10 @@ async function askFinancia(message) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, lang })
   });
-  if (!r.ok) throw new Error('Server error');
+  if (!r.ok) {
+    const data = await r.json().catch(() => ({}));
+    throw new Error(data.error || 'Désolé, une erreur est survenue.');
+  }
   return r.json();
 }
 
@@ -66,8 +88,8 @@ if (chatForm) {
     try {
       const { text } = await askFinancia(msg);
       bubble.innerHTML = renderMarkdown(text);
-    } catch {
-      bubble.textContent = 'Désolé, une erreur est survenue.';
+    } catch (e) {
+      bubble.textContent = e.message || 'Désolé, une erreur est survenue.';
     }
   });
 }
