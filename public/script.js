@@ -245,6 +245,8 @@ if (quizBody) {
   quizBody.insertBefore(backBtn, quizBody.firstChild);
 }
 
+const quizAnswerTexts = {};
+
 $$('.quiz-opt').forEach(btn => {
   btn.addEventListener('click', () => {
     const name = btn.dataset.name;
@@ -252,6 +254,7 @@ $$('.quiz-opt').forEach(btn => {
     $$(`[data-name="${name}"]`).forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
     quizAnswers[name] = val;
+    quizAnswerTexts[name] = btn.dataset.text || btn.textContent.trim();
     setTimeout(() => {
       $(`#step-${quizStep}`)?.classList.remove('active');
       quizStep++;
@@ -267,43 +270,52 @@ $$('.quiz-opt').forEach(btn => {
   });
 });
 
-const quizAnswerLabels = {
-  q1: ['Débutant complet', 'Quelques notions', 'À l\'aise'],
-  q2: ['Pas du tout', 'Vaguement', 'Oui clairement'],
-  q3: ['Aucun placement', 'J\'en ai un', 'PEA + assurance-vie'],
-  q4: ['Moins de 2 ans', '2 à 5 ans', 'Plus de 5 ans'],
-  q5: ['Faible', 'Modérée', 'Élevée'],
-};
-
 function showQuizResult() {
-  const score = Object.values(quizAnswers).reduce((a, b) => a + b, 0);
-  const pct = score / (totalSteps * 2);
+  const exp = quizAnswers.q4 ?? 0;
+  const objectif = quizAnswers.q5 ?? 0;
   let niveau, desc, tips;
-  if (pct >= 0.7) {
-    niveau = '🎯 Niveau Avancé';
-    desc = 'Tu maîtrises les bases, passe à la pratique !';
+
+  if (exp >= 3) {
+    niveau = '🎯 Profil Investisseur Actif';
+    desc = 'Tu investis déjà régulièrement — passons à l\'optimisation !';
     tips = [
       { icon: '📊', text: 'Explore les ETF sectoriels et les marchés émergents' },
-      { icon: '🔄', text: 'Mets en place un DCA automatique mensuel' },
+      { icon: '🔄', text: 'Automatise ton DCA pour lisser les points d\'entrée' },
       { icon: '💎', text: 'Optimise ta fiscalité PEA + assurance-vie' },
     ];
-  } else if (pct >= 0.4) {
-    niveau = '📚 Niveau Intermédiaire';
-    desc = 'Bonnes bases, continue à apprendre !';
+  } else if (exp >= 2) {
+    niveau = '📚 Profil Intermédiaire';
+    desc = 'Tu as déjà une enveloppe — il faut maintenant l\'alimenter efficacement.';
     tips = [
-      { icon: '🌍', text: 'Commence par un ETF World pour te diversifier' },
-      { icon: '🏦', text: 'Ouvre un PEA si ce n\'est pas encore fait' },
-      { icon: '📅', text: 'Vise un horizon d\'au moins 5 ans' },
+      { icon: '🌍', text: 'Diversifie avec un ETF World en DCA mensuel' },
+      { icon: '⚖️', text: 'Équilibre fonds euros et unités de compte' },
+      { icon: '📅', text: 'Vise un horizon d\'au moins 5 ans pour profiter des intérêts composés' },
+    ];
+  } else if (exp >= 1) {
+    niveau = '🌱 Profil Épargnant';
+    desc = 'Tu épargnes déjà, super ! L\'étape suivante : faire travailler cet argent.';
+    tips = [
+      { icon: '🏦', text: 'Ouvre un PEA pour investir avec avantages fiscaux' },
+      { icon: '📖', text: 'Commence avec un ETF World : simple et diversifié' },
+      { icon: '💶', text: 'Garde 3 mois de dépenses sur Livret A, investis le reste' },
     ];
   } else {
-    niveau = '🌱 Niveau Débutant';
-    desc = 'Parfait, tout le monde commence quelque part !';
+    niveau = '🚀 Profil Débutant';
+    desc = 'Parfait point de départ — tout le monde commence quelque part !';
     tips = [
-      { icon: '📖', text: 'Commence par comprendre ce qu\'est un ETF World' },
-      { icon: '💰', text: 'Épargne d\'abord 3 mois de dépenses sur un Livret A' },
+      { icon: '💰', text: 'Commence par constituer une épargne de sécurité sur Livret A' },
+      { icon: '📖', text: 'Apprends ce qu\'est un ETF World avant tout' },
       { icon: '💬', text: 'Pose tes questions à Financia, sans jugement !' },
     ];
   }
+
+  const objectifTips = {
+    0: { icon: '🛡️', text: 'Priorité : 3–6 mois de dépenses sur Livret A ou LDDS avant d\'investir' },
+    1: { icon: '🏖️', text: 'Pour la retraite, l\'assurance-vie et le PEA sont tes meilleurs alliés fiscaux' },
+    2: { icon: '⚡', text: 'Pour maximiser, mise sur les ETF actions long terme et le DCA régulier' },
+    3: { icon: '🏠', text: 'Pour l\'immobilier, définis ton horizon et calibre ton épargne mensuelle' },
+  };
+  if (objectifTips[objectif]) tips.push(objectifTips[objectif]);
   const resultEl = $('#quiz-result');
   if (!resultEl) return;
   resultEl.innerHTML = `
@@ -320,15 +332,16 @@ function showQuizResult() {
   const progress = $('#quizProgress');
   if (progress) progress.style.width = '100%';
   $('#quizBilanBtn')?.addEventListener('click', () => {
-    const questions = [
-      `expérience : ${quizAnswerLabels.q1[quizAnswers.q1] ?? '?'}`,
-      `connaissance ETF : ${quizAnswerLabels.q2[quizAnswers.q2] ?? '?'}`,
-      `placements actuels : ${quizAnswerLabels.q3[quizAnswers.q3] ?? '?'}`,
-      `horizon d'investissement : ${quizAnswerLabels.q4[quizAnswers.q4] ?? '?'}`,
-      `tolérance au risque : ${quizAnswerLabels.q5[quizAnswers.q5] ?? '?'}`,
-    ];
     const niveauClean = niveau.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').trim();
-    const msg = `J'ai répondu [${questions.join(', ')}] au quiz et j'ai obtenu le niveau ${niveauClean}. Fais-moi un bilan personnalisé et un plan d'action concret adapté à mon profil.`;
+    const msg = `Voici mon profil complet issu du quiz Financia :
+- Âge : ${quizAnswerTexts.q1 ?? '?'}
+- Situation professionnelle : ${quizAnswerTexts.q2 ?? '?'}
+- Capacité d'épargne mensuelle : ${quizAnswerTexts.q3 ?? '?'}
+- Expérience en investissement : ${quizAnswerTexts.q4 ?? '?'}
+- Objectif principal : ${quizAnswerTexts.q5 ?? '?'}
+- Profil obtenu : ${niveauClean}
+
+Sur la base de ce profil, fais-moi un bilan personnalisé complet et un plan d'action concret étape par étape adapté à ma situation.`;
     if (chatInput) chatInput.value = msg;
     document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => chatForm?.dispatchEvent(new Event('submit')), 600);
