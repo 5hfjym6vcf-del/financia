@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Financia — Post Instagram #5 — Livret A vs ETF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 24px;
+    }
+
+    .slide-label {
+      color: #555;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-left: calc(50% - 540px);
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1080px;
+      background: #0A0A0A;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .logo-mark span { color: #7C3AED; }
+
+    .slide-counter {
+      position: absolute;
+      top: 52px;
+      right: 56px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .badge-violet {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #7C3AED;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      padding: 18px 32px;
+      border-radius: 14px;
+      letter-spacing: -0.2px;
+    }
+
+    /* ═══════════════════════
+       SLIDE 1 — Accroche
+    ═══════════════════════ */
+    #slide1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #slide1 .glow {
+      position: absolute;
+      width: 860px;
+      height: 860px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.13) 0%, transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #slide1 .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      color: #a78bfa;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 100px;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide1 .versus-wrap {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide1 .vs-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      font-size: 28px;
+      font-weight: 900;
+      flex-shrink: 0;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    #slide1 .vs-badge.livret {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+    }
+
+    #slide1 .vs-badge.etf {
+      background: linear-gradient(135deg, #7C3AED, #5B21B6);
+      color: #fff;
+    }
+
+    #slide1 .vs-sep {
+      font-size: 52px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.18);
+    }
+
+    #slide1 h1 {
+      font-size: 74px;
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide1 h1 em { font-style: normal; color: #7C3AED; }
+
+    #slide1 .subtitle {
+      font-size: 24px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.36);
+      letter-spacing: -0.2px;
+      position: relative;
+      z-index: 1;
+      line-height: 1.5;
+    }
+
+    #slide1 .bar {
+      width: 100px;
+      height: 4px;
+      background: #7C3AED;
+      border-radius: 2px;
+      margin: 40px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ═══════════════════════
+       SLIDES 2 & 3 — Solo
+    ═══════════════════════ */
+    .slide-product {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 88px 96px;
+    }
+
+    .prod-header {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+
+    .prod-icon {
+      width: 104px;
+      height: 104px;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+      flex-shrink: 0;
+    }
+
+    .prod-icon.livret { background: linear-gradient(135deg, #10b981, #059669); }
+    .prod-icon.etf    { background: linear-gradient(135deg, #7C3AED, #5B21B6); }
+
+    .prod-name {
+      font-size: 68px;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .prod-name small {
+      display: block;
+      font-size: 20px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0;
+      margin-top: 10px;
+    }
+
+    .prod-points {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 56px;
+    }
+
+    .pp {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pp:last-child { border-bottom: none; }
+
+    .pp-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #7C3AED;
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+
+    .pp-text {
+      font-size: 31px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.35;
+      letter-spacing: -0.3px;
+    }
+
+    .pp-text em { font-style: normal; color: #a78bfa; }
+
+    /* ═══════════════════════
+       SLIDE 4 — Comparatif
+    ═══════════════════════ */
+    #slide4 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 88px;
+      text-align: center;
+    }
+
+    #slide4 .s4-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 40px;
+    }
+
+    #slide4 h2 {
+      font-size: 62px;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      color: #fff;
+      margin-bottom: 64px;
+      line-height: 1.05;
+    }
+
+    #slide4 h2 em { font-style: normal; color: #7C3AED; }
+
+    #slide4 .bars-wrap {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 64px;
+      margin-bottom: 52px;
+      width: 100%;
+    }
+
+    #slide4 .bar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #slide4 .bar-amount {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    #slide4 .bar-amount.green { color: #34d399; }
+    #slide4 .bar-amount.violet { color: #a78bfa; }
+
+    #slide4 .bar-rect {
+      width: 220px;
+      border-radius: 16px 16px 0 0;
+    }
+
+    #slide4 .bar-rect.green  { height: 220px; background: linear-gradient(180deg, #10b981, #059669); }
+    #slide4 .bar-rect.violet { height: 380px; background: linear-gradient(180deg, #7C3AED, #5B21B6); }
+
+    #slide4 .bar-label {
+      font-size: 22px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: -0.2px;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    #slide4 .bar-label small {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.3);
+      margin-top: 4px;
+    }
+
+    #slide4 .punchline {
+      font-size: 36px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: -0.5px;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 14px;
+      padding: 20px 40px;
+    }
+
+    #slide4 .punchline em { font-style: normal; color: #a78bfa; }
+
+    /* ═══════════════════════
+       SLIDE 5 — CTA
+    ═══════════════════════ */
+    #slide5 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 90px;
+    }
+
+    #slide5 .glow {
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #slide5 .conseil-icon {
+      font-size: 72px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 h2 {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 h2 em { font-style: normal; color: #7C3AED; }
+
+    #slide5 .conseil-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 860px;
+    }
+
+    #slide5 .crow {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 22px 28px;
+      text-align: left;
+    }
+
+    #slide5 .crow-icon {
+      font-size: 34px;
+      flex-shrink: 0;
+    }
+
+    #slide5 .crow-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+      letter-spacing: -0.2px;
+    }
+
+    #slide5 .crow-text em { font-style: normal; color: #a78bfa; }
+
+    #slide5 .cta-sub {
+      font-size: 22px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .cta-sub strong { color: #a78bfa; font-weight: 700; }
+
+    #slide5 .cta-box {
+      background: #7C3AED;
+      border-radius: 18px;
+      padding: 22px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .cta-url {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    #slide5 .cta-hint {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — Accroche
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 1 / 5</p>
+<div class="slide" id="slide1">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="slide-counter">1 / 5</div>
+
+  <div class="top-pill">💰 Épargne 2025</div>
+
+  <div class="versus-wrap">
+    <div class="vs-badge livret">Livret<br>A</div>
+    <div class="vs-sep">vs</div>
+    <div class="vs-badge etf">ETF<br>World</div>
+  </div>
+
+  <h1>où placer<br>ton <em>épargne</em> ?</h1>
+
+  <p class="subtitle">Ce que personne ne t'a expliqué à l'école</p>
+  <div class="bar"></div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — Le Livret A
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 2 / 5</p>
+<div class="slide slide-product" id="slide2">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">2 / 5</div>
+
+  <div class="prod-header">
+    <div class="prod-icon livret">🟢</div>
+    <div class="prod-name">
+      Le Livret A
+      <small>L'épargne sécurisée de base</small>
+    </div>
+  </div>
+
+  <div class="prod-points">
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Taux actuel : <em>2,4 %/an</em> (février 2025)</div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Plafond : <em>22 950 €</em></div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text"><em>Disponible</em> à tout moment</div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text"><em>Garanti par l'État</em>, zéro risque</div>
+    </div>
+  </div>
+
+  <div class="badge-violet">🛡️ Idéal pour l'épargne de précaution</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — L'ETF World
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 3 / 5</p>
+<div class="slide slide-product" id="slide3">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">3 / 5</div>
+
+  <div class="prod-header">
+    <div class="prod-icon etf">📈</div>
+    <div class="prod-name">
+      L'ETF World
+      <small>La croissance mondiale, automatique</small>
+    </div>
+  </div>
+
+  <div class="prod-points">
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Rendement historique moyen : <em>~7 %/an</em></div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text"><em>Aucun plafond</em></div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Risque de perte en capital <em>(court terme)</em></div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Idéal sur <em>5 ans minimum</em></div>
+    </div>
+  </div>
+
+  <div class="badge-violet">🚀 Idéal pour faire fructifier</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — Comparatif chiffré
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 4 / 5</p>
+<div class="slide" id="slide4">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">4 / 5</div>
+
+  <div class="s4-tag">📊 Simulation sur 20 ans</div>
+
+  <h2><em>1 000 €</em> placés<br>pendant <em>20 ans</em></h2>
+
+  <div class="bars-wrap">
+    <div class="bar-col">
+      <div class="bar-amount green">1 600 €</div>
+      <div class="bar-rect green"></div>
+      <div class="bar-label">
+        Livret A
+        <small>2,4 %/an</small>
+      </div>
+    </div>
+    <div class="bar-col">
+      <div class="bar-amount violet">3 870 €</div>
+      <div class="bar-rect violet"></div>
+      <div class="bar-label">
+        ETF World
+        <small>7 %/an</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="punchline">Même somme. Résultat <em>×2,4</em>.</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — CTA
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 5 / 5</p>
+<div class="slide" id="slide5">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="slide-counter">5 / 5</div>
+
+  <div class="conseil-icon">⚖️</div>
+
+  <h2>Alors,<br>lequel <em>choisir</em> ?</h2>
+
+  <div class="conseil-rows">
+    <div class="crow">
+      <div class="crow-icon">🛡️</div>
+      <div class="crow-text"><em>Livret A</em> pour ta sécurité — 3 à 6 mois de dépenses</div>
+    </div>
+    <div class="crow">
+      <div class="crow-icon">📈</div>
+      <div class="crow-text"><em>ETF World</em> pour ta croissance — le reste, sur le long terme</div>
+    </div>
+  </div>
+
+  <p class="cta-sub">Simule ton scénario sur <strong>financia.cloud</strong></p>
+
+  <div class="cta-box">
+    <div class="cta-url">financia.cloud</div>
+    <div class="cta-hint">Lien dans la bio 👇</div>
+  </div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+</body>
+</html>
