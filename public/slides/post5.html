@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Financia — Post Instagram #5 — PEA vs CTO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 24px;
+    }
+
+    .slide-label {
+      color: #555;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-left: calc(50% - 540px);
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1080px;
+      background: #0A0A0A;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .logo-mark span { color: #7C3AED; }
+
+    .slide-counter {
+      position: absolute;
+      top: 52px;
+      right: 56px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .badge-violet {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #7C3AED;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      padding: 18px 32px;
+      border-radius: 14px;
+      letter-spacing: -0.2px;
+    }
+
+    /* ════════════════════════════
+       SLIDE 1 — Accroche
+    ════════════════════════════ */
+    #slide1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #slide1 .glow {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #slide1 .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      color: #a78bfa;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 100px;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide1 .versus-wrap {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide1 .vs-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      flex-shrink: 0;
+    }
+
+    #slide1 .vs-badge.pea {
+      background: linear-gradient(135deg, #7C3AED, #5B21B6);
+      color: #fff;
+    }
+
+    #slide1 .vs-badge.cto {
+      background: rgba(255,255,255,0.07);
+      border: 2px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    #slide1 .vs-sep {
+      font-size: 52px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.2);
+    }
+
+    #slide1 h1 {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide1 h1 em { font-style: normal; color: #7C3AED; }
+
+    #slide1 .subtitle {
+      font-size: 26px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: -0.2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide1 .bar {
+      width: 100px;
+      height: 4px;
+      background: #7C3AED;
+      border-radius: 2px;
+      margin: 44px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ════════════════════════════
+       SLIDES 2 & 3 — Solo produit
+    ════════════════════════════ */
+    .slide-product {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 88px 96px;
+    }
+
+    .prod-header {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+
+    .prod-icon {
+      width: 104px;
+      height: 104px;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+      flex-shrink: 0;
+    }
+
+    .prod-icon.pea { background: linear-gradient(135deg, #7C3AED, #5B21B6); }
+    .prod-icon.cto { background: linear-gradient(135deg, #374151, #1f2937); border: 1px solid rgba(255,255,255,0.1); }
+
+    .prod-name {
+      font-size: 72px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .prod-name small {
+      display: block;
+      font-size: 20px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0;
+      margin-top: 10px;
+    }
+
+    .prod-points {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 56px;
+    }
+
+    .pp {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pp:last-child { border-bottom: none; }
+
+    .pp-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #7C3AED;
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+
+    .pp-text {
+      font-size: 31px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.35;
+      letter-spacing: -0.3px;
+    }
+
+    .pp-text em {
+      font-style: normal;
+      color: #a78bfa;
+    }
+
+    /* ════════════════════════════
+       SLIDE 4 — Comparatif
+    ════════════════════════════ */
+    #slide4 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 88px;
+    }
+
+    #slide4 .s4-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 44px;
+      width: fit-content;
+    }
+
+    #slide4 h2 {
+      font-size: 76px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 52px;
+      line-height: 1;
+    }
+
+    #slide4 h2 em { font-style: normal; color: #7C3AED; }
+
+    .cmp-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cmp-table thead tr {
+      border-bottom: 2px solid rgba(124,58,237,0.4);
+    }
+
+    .cmp-table th {
+      padding: 0 0 22px;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: left;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+    }
+
+    .cmp-table th.col-pea { color: #a78bfa; }
+    .cmp-table th.col-cto { color: rgba(255,255,255,0.55); }
+
+    .cmp-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cmp-table tbody tr:last-child { border-bottom: none; }
+
+    .cmp-table td {
+      padding: 26px 0;
+      font-size: 28px;
+      font-weight: 600;
+      vertical-align: middle;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: -0.2px;
+    }
+
+    .cmp-table td.col-label {
+      color: rgba(255,255,255,0.35);
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      width: 200px;
+    }
+
+    .cmp-table td.col-pea {
+      color: #c4b5fd;
+      font-weight: 700;
+    }
+
+    .cmp-table td.col-cto {
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ════════════════════════════
+       SLIDE 5 — CTA
+    ════════════════════════════ */
+    #slide5 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 90px;
+    }
+
+    #slide5 .glow {
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #slide5 .conseil-icon {
+      font-size: 72px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 h2 {
+      font-size: 88px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -3.5px;
+      color: #fff;
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 h2 em { font-style: normal; color: #7C3AED; }
+
+    #slide5 .conseil-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 22px;
+      padding: 40px 48px;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+    }
+
+    #slide5 .conseil-text {
+      font-size: 28px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.55;
+      letter-spacing: -0.3px;
+    }
+
+    #slide5 .conseil-text em {
+      font-style: normal;
+      color: #a78bfa;
+    }
+
+    #slide5 .sub-text {
+      font-size: 22px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .cta-box {
+      background: #7C3AED;
+      border-radius: 18px;
+      padding: 22px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .cta-url {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    #slide5 .cta-hint {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — Accroche
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 1 / 5</p>
+<div class="slide" id="slide1">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="slide-counter">1 / 5</div>
+
+  <div class="top-pill">
+    ⚖️ Comparatif 2025
+  </div>
+
+  <div class="versus-wrap">
+    <div class="vs-badge pea">PEA</div>
+    <div class="vs-sep">vs</div>
+    <div class="vs-badge cto">CTO</div>
+  </div>
+
+  <h1>lequel<br>choisir <em>?</em></h1>
+
+  <p class="subtitle">Les différences expliquées simplement</p>
+  <div class="bar"></div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — Le PEA
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 2 / 5</p>
+<div class="slide slide-product" id="slide2">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">2 / 5</div>
+
+  <div class="prod-header">
+    <div class="prod-icon pea">📘</div>
+    <div class="prod-name">
+      Le PEA
+      <small>Plan d'Épargne en Actions</small>
+    </div>
+  </div>
+
+  <div class="prod-points">
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Fiscalité avantageuse après 5 ans — <em>17,2% vs 30%</em></div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Plafonné à <em>150 000 €</em> de versements</div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Limité aux <em>actions européennes</em> + ETF éligibles</div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text"><em>1 seul PEA</em> par personne</div>
+    </div>
+  </div>
+
+  <div class="badge-violet">🏅 Idéal pour le long terme</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — Le CTO
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 3 / 5</p>
+<div class="slide slide-product" id="slide3">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">3 / 5</div>
+
+  <div class="prod-header">
+    <div class="prod-icon cto">📂</div>
+    <div class="prod-name">
+      Le CTO
+      <small>Compte-Titres Ordinaire</small>
+    </div>
+  </div>
+
+  <div class="prod-points">
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text"><em>Aucun plafond</em> de versement</div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Accès à <em>tous les marchés mondiaux</em> (US, Asie…)</div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text">Fiscalité classique : <em>30% flat tax</em></div>
+    </div>
+    <div class="pp">
+      <div class="pp-dot"></div>
+      <div class="pp-text"><em>Illimité</em> en nombre de comptes</div>
+    </div>
+  </div>
+
+  <div class="badge-violet">🌍 Idéal pour la liberté d'investissement</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — Comparatif tableau
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 4 / 5</p>
+<div class="slide" id="slide4">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">4 / 5</div>
+
+  <div class="s4-tag">⚖️ Comparatif rapide</div>
+
+  <h2><em>PEA</em> ou <em>CTO</em> ?</h2>
+
+  <table class="cmp-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="col-pea">PEA</th>
+        <th class="col-cto">CTO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-label">Plafond</td>
+        <td class="col-pea">150 000 €</td>
+        <td class="col-cto">Illimité</td>
+      </tr>
+      <tr>
+        <td class="col-label">Fiscalité</td>
+        <td class="col-pea">17,2% après 5 ans</td>
+        <td class="col-cto">30%</td>
+      </tr>
+      <tr>
+        <td class="col-label">Marchés</td>
+        <td class="col-pea">Europe + ETF</td>
+        <td class="col-cto">Monde entier</td>
+      </tr>
+      <tr>
+        <td class="col-label">Nombre</td>
+        <td class="col-pea">1 par personne</td>
+        <td class="col-cto">Illimité</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — CTA / Verdict
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 5 / 5</p>
+<div class="slide" id="slide5">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="slide-counter">5 / 5</div>
+
+  <div class="conseil-icon">💡</div>
+
+  <h2>Notre <em>conseil</em></h2>
+
+  <div class="conseil-box">
+    <p class="conseil-text">
+      Commence par le <em>PEA</em> pour l'avantage fiscal.<br>
+      Ajoute un <em>CTO</em> quand tu veux accéder<br>
+      aux marchés US.
+    </p>
+  </div>
+
+  <p class="sub-text">Explore les modules sur <strong style="color:#a78bfa;font-weight:700;">financia.cloud</strong></p>
+
+  <div class="cta-box">
+    <div class="cta-url">financia.cloud</div>
+    <div class="cta-hint">Lien dans la bio 👇</div>
+  </div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+</body>
+</html>
