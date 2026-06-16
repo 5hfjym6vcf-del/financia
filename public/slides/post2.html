@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Financia — Post Instagram #2 — C'est quoi un ETF ?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 24px;
+    }
+
+    .slide-label {
+      color: #555;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-left: calc(50% - 540px);
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1080px;
+      background: #0A0A0A;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── Shared decorative ── */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .logo-mark span { color: #7C3AED; }
+
+    .slide-counter {
+      position: absolute;
+      top: 52px;
+      right: 56px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+
+    /* ════════════════════════════
+       SLIDE 1 — Accroche
+    ════════════════════════════ */
+    #slide1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #slide1 .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      color: #a78bfa;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 100px;
+      margin-bottom: 52px;
+    }
+
+    #slide1 h1 {
+      font-size: 108px;
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -4px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    #slide1 h1 em {
+      font-style: normal;
+      color: #7C3AED;
+    }
+
+    #slide1 .emoji-big {
+      font-size: 90px;
+      margin-bottom: 32px;
+      display: block;
+      line-height: 1;
+    }
+
+    #slide1 .subtitle {
+      font-size: 36px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: -0.5px;
+      margin-top: 36px;
+    }
+
+    #slide1 .bar {
+      width: 100px;
+      height: 4px;
+      background: #7C3AED;
+      border-radius: 2px;
+      margin: 40px auto 0;
+    }
+
+    /* ════════════════════════════
+       SLIDE 2 — Définition
+    ════════════════════════════ */
+    #slide2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 96px 96px 96px 96px;
+    }
+
+    #slide2 .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #7C3AED;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 48px;
+      width: fit-content;
+    }
+
+    #slide2 h2 {
+      font-size: 86px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+
+    #slide2 h2 em {
+      font-style: normal;
+      color: #7C3AED;
+    }
+
+    #slide2 .definition {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+      max-width: 820px;
+      margin-bottom: 56px;
+    }
+
+    #slide2 .definition strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* Basket visual */
+    #slide2 .basket-visual {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #slide2 .action-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 220px;
+    }
+
+    #slide2 .dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(124,58,237,0.25);
+      border: 1.5px solid rgba(124,58,237,0.4);
+    }
+
+    #slide2 .dot:nth-child(1) { background: rgba(124,58,237,0.5); }
+    #slide2 .dot:nth-child(3) { background: rgba(124,58,237,0.35); }
+    #slide2 .dot:nth-child(5) { background: rgba(124,58,237,0.45); }
+
+    #slide2 .arrow-merge {
+      font-size: 40px;
+      color: rgba(124,58,237,0.6);
+      font-weight: 900;
+    }
+
+    #slide2 .etf-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7C3AED 0%, #a78bfa 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+      box-shadow: 0 0 60px rgba(124,58,237,0.4);
+    }
+
+    /* ════════════════════════════
+       SLIDE 3 — Avantages
+    ════════════════════════════ */
+    #slide3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 96px;
+    }
+
+    #slide3 .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 48px;
+      width: fit-content;
+    }
+
+    #slide3 h2 {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 64px;
+    }
+
+    #slide3 h2 em {
+      font-style: normal;
+      color: #7C3AED;
+    }
+
+    #slide3 .points {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    #slide3 .point {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    #slide3 .point:last-child { border-bottom: none; }
+
+    #slide3 .point-icon {
+      font-size: 44px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    #slide3 .point-body {}
+
+    #slide3 .point-title {
+      font-size: 38px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    #slide3 .point-sub {
+      font-size: 22px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ════════════════════════════
+       SLIDE 4 — Exemple MSCI World
+    ════════════════════════════ */
+    #slide4 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 96px;
+    }
+
+    #slide4 .eyebrow {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7C3AED;
+      margin-bottom: 32px;
+    }
+
+    #slide4 h2 {
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -2.5px;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+
+    #slide4 h2 em {
+      font-style: normal;
+      color: #7C3AED;
+    }
+
+    #slide4 .desc {
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 60px;
+      max-width: 860px;
+    }
+
+    #slide4 .desc strong {
+      color: rgba(255,255,255,0.9);
+      font-weight: 700;
+    }
+
+    #slide4 .countries {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    #slide4 .country-tag {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 12px 22px;
+      font-size: 22px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: -0.3px;
+    }
+
+    #slide4 .country-tag .flag { font-size: 28px; }
+
+    #slide4 .stat-row {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 52px;
+    }
+
+    #slide4 .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #slide4 .stat-n {
+      font-size: 56px;
+      font-weight: 900;
+      color: #7C3AED;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    #slide4 .stat-l {
+      font-size: 18px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+    }
+
+    #slide4 .stat-div {
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+      align-self: stretch;
+    }
+
+    /* ════════════════════════════
+       SLIDE 5 — CTA
+    ════════════════════════════ */
+    #slide5 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #slide5 .glow {
+      position: absolute;
+      width: 750px;
+      height: 750px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.16) 0%, transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #slide5 .icon-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #7C3AED 0%, #a78bfa 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      margin: 0 auto 52px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 80px rgba(124,58,237,0.35);
+    }
+
+    #slide5 h2 {
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -2.5px;
+      color: #fff;
+      margin-bottom: 36px;
+      max-width: 880px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 h2 em {
+      font-style: normal;
+      color: #7C3AED;
+    }
+
+    #slide5 .body-text {
+      font-size: 32px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .body-text strong {
+      color: #a78bfa;
+      font-weight: 700;
+    }
+
+    #slide5 .cta-box {
+      background: #7C3AED;
+      border-radius: 20px;
+      padding: 28px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .cta-box .cta-url {
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    #slide5 .cta-box .cta-sub {
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — Accroche
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 1 / 5</p>
+<div class="slide" id="slide1">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">1 / 5</div>
+
+  <div class="top-pill">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    Finance pour les 18–30 ans
+  </div>
+
+  <span class="emoji-big">🧩</span>
+
+  <h1>C'est quoi<br>un <em>ETF</em> ?</h1>
+
+  <p class="subtitle">Expliqué en 60 secondes</p>
+  <div class="bar"></div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — Définition
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 2 / 5</p>
+<div class="slide" id="slide2">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">2 / 5</div>
+
+  <div class="tag">📖 Définition</div>
+
+  <h2><em>ETF</em> = panier<br>d'actions</h2>
+
+  <p class="definition">
+    Un ETF <strong>(Exchange Traded Fund)</strong> regroupe des dizaines ou centaines d'actions en un seul produit.
+    Tu achètes <strong>1 part</strong> → tu investis dans <strong>tout le panier</strong>.
+  </p>
+
+  <div class="basket-visual">
+    <div class="action-dots">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="arrow-merge">→</div>
+    <div class="etf-circle">ETF</div>
+  </div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — Avantages
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 3 / 5</p>
+<div class="slide" id="slide3">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">3 / 5</div>
+
+  <div class="tag">⚡ Les avantages</div>
+
+  <h2>Pourquoi c'est<br><em>puissant</em> ?</h2>
+
+  <div class="points">
+    <div class="point">
+      <div class="point-icon">✅</div>
+      <div class="point-body">
+        <div class="point-title">Diversification instantanée</div>
+        <div class="point-sub">Des centaines d'entreprises en un seul achat</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="point-icon">✅</div>
+      <div class="point-body">
+        <div class="point-title">Frais très bas</div>
+        <div class="point-sub">Souvent moins de 0,30 % par an</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="point-icon">✅</div>
+      <div class="point-body">
+        <div class="point-title">Accessible dès 1 €</div>
+        <div class="point-sub">Sur certaines plateformes (Trade Republic, Scalable…)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — Exemple MSCI World
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 4 / 5</p>
+<div class="slide" id="slide4">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">4 / 5</div>
+
+  <div class="eyebrow">Exemple concret</div>
+
+  <h2>Le <em>MSCI World</em><br>en chiffres</h2>
+
+  <div class="stat-row">
+    <div class="stat">
+      <span class="stat-n">~1 500</span>
+      <span class="stat-l">entreprises</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat">
+      <span class="stat-n">23</span>
+      <span class="stat-l">pays développés</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat">
+      <span class="stat-n">1</span>
+      <span class="stat-l">seule ligne</span>
+    </div>
+  </div>
+
+  <p class="desc">
+    <strong>Apple, LVMH, Toyota, Microsoft…</strong> tout en une seule ligne dans ton portefeuille.
+  </p>
+
+  <div class="countries">
+    <div class="country-tag"><span class="flag">🇺🇸</span> États-Unis</div>
+    <div class="country-tag"><span class="flag">🇯🇵</span> Japon</div>
+    <div class="country-tag"><span class="flag">🇬🇧</span> Royaume-Uni</div>
+    <div class="country-tag"><span class="flag">🇫🇷</span> France</div>
+    <div class="country-tag"><span class="flag">🇩🇪</span> Allemagne</div>
+    <div class="country-tag">+18 autres</div>
+  </div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — CTA
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 5 / 5</p>
+<div class="slide" id="slide5">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="slide-counter">5 / 5</div>
+
+  <div class="icon-wrap">📈</div>
+
+  <h2>Prêt à investir<br>dans un <em>ETF</em> ?</h2>
+
+  <p class="body-text">Simule ta stratégie sur <strong>financia.cloud</strong></p>
+
+  <div class="cta-box">
+    <div class="cta-url">financia.cloud</div>
+    <div class="cta-sub">Lien dans la bio 👇</div>
+  </div>
+
+  <div class="logo-mark" style="bottom:52px;">Financi<span>a</span></div>
+</div>
+
+</body>
+</html>
