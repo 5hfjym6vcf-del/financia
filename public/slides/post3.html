@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Financia — Post Instagram #3 — Ouvrir un PEA : quelle banque choisir ?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 24px;
+    }
+
+    .slide-label {
+      color: #555;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-left: calc(50% - 540px);
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1080px;
+      background: #0A0A0A;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .logo-mark span { color: #7C3AED; }
+
+    .slide-counter {
+      position: absolute;
+      top: 52px;
+      right: 56px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ════════════════════════════
+       SLIDE 1 — Accroche
+    ════════════════════════════ */
+    #slide1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #slide1 .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      color: #a78bfa;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 100px;
+      margin-bottom: 44px;
+    }
+
+    #slide1 .emoji-big {
+      font-size: 86px;
+      line-height: 1;
+      margin-bottom: 36px;
+    }
+
+    #slide1 h1 {
+      font-size: 88px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -3.5px;
+      color: #fff;
+      margin-bottom: 36px;
+    }
+
+    #slide1 h1 em {
+      font-style: normal;
+      color: #7C3AED;
+    }
+
+    #slide1 .subtitle {
+      font-size: 26px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+      max-width: 780px;
+    }
+
+    #slide1 .bar {
+      width: 100px;
+      height: 4px;
+      background: #7C3AED;
+      border-radius: 2px;
+      margin: 40px auto 0;
+    }
+
+    /* ════════════════════════════
+       SLIDE 2 — Boursorama
+    ════════════════════════════ */
+    #slide2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 88px 96px;
+    }
+
+    #slide2 .bank-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 52px;
+    }
+
+    #slide2 .bank-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      flex-shrink: 0;
+    }
+
+    #slide2 .bank-name {
+      font-size: 58px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    #slide2 .bank-name small {
+      display: block;
+      font-size: 22px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0;
+      margin-top: 6px;
+    }
+
+    #slide2 .points {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 52px;
+    }
+
+    #slide2 .point {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    #slide2 .point:last-child { border-bottom: none; }
+
+    #slide2 .point-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #7C3AED;
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+
+    #slide2 .point-text {
+      font-size: 32px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.35;
+      letter-spacing: -0.3px;
+    }
+
+    #slide2 .point-text span {
+      color: #a78bfa;
+    }
+
+    #slide2 .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #7C3AED;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      padding: 16px 28px;
+      border-radius: 14px;
+      letter-spacing: -0.3px;
+    }
+
+    /* ════════════════════════════
+       SLIDE 3 — Fortuneo & Trade Republic
+    ════════════════════════════ */
+    #slide3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 96px;
+    }
+
+    #slide3 .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 48px;
+      width: fit-content;
+    }
+
+    #slide3 .banks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 44px;
+    }
+
+    #slide3 .bank-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+
+    #slide3 .bank-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    #slide3 .bc-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    #slide3 .bc-icon.fortuneo { background: linear-gradient(135deg, #FF6B35 0%, #F7C948 100%); }
+    #slide3 .bc-icon.tr       { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255,255,255,0.15); }
+
+    #slide3 .bc-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    #slide3 .bc-pts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    #slide3 .bc-pt {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.35;
+    }
+
+    #slide3 .bc-pt::before {
+      content: "→";
+      color: #7C3AED;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    #slide3 .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #7C3AED;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      padding: 16px 28px;
+      border-radius: 14px;
+    }
+
+    /* ════════════════════════════
+       SLIDE 4 — Société Générale
+    ════════════════════════════ */
+    #slide4 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 88px 96px;
+    }
+
+    #slide4 .bank-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 52px;
+    }
+
+    #slide4 .bank-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #e2001a 0%, #c0001a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      flex-shrink: 0;
+    }
+
+    #slide4 .bank-name {
+      font-size: 58px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    #slide4 .bank-name small {
+      display: block;
+      font-size: 22px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0;
+      margin-top: 6px;
+    }
+
+    #slide4 .points {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 52px;
+    }
+
+    #slide4 .point {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    #slide4 .point:last-child { border-bottom: none; }
+
+    #slide4 .point-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    #slide4 .point-text {
+      font-size: 30px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.35;
+      letter-spacing: -0.3px;
+    }
+
+    #slide4 .point-text.warn { color: rgba(255,255,255,0.45); }
+
+    #slide4 .badge-gray {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.6);
+      font-size: 22px;
+      font-weight: 700;
+      padding: 16px 28px;
+      border-radius: 14px;
+    }
+
+    /* ════════════════════════════
+       SLIDE 5 — CTA / Verdict
+    ════════════════════════════ */
+    #slide5 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #slide5 .glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 68%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    #slide5 .verdict-icon {
+      font-size: 72px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 h2 {
+      font-size: 88px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 h2 em {
+      font-style: normal;
+      color: #7C3AED;
+    }
+
+    #slide5 .verdict-cards {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .verdict-card {
+      background: rgba(124,58,237,0.12);
+      border: 1.5px solid rgba(124,58,237,0.35);
+      border-radius: 16px;
+      padding: 24px 32px;
+      text-align: center;
+    }
+
+    #slide5 .vc-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #a78bfa;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    #slide5 .vc-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    #slide5 .cta-line {
+      font-size: 26px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .cta-line strong {
+      color: #a78bfa;
+      font-weight: 700;
+    }
+
+    #slide5 .cta-box {
+      background: #7C3AED;
+      border-radius: 18px;
+      padding: 24px 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #slide5 .cta-url {
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    #slide5 .cta-sub {
+      font-size: 17px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — Accroche
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 1 / 5</p>
+<div class="slide" id="slide1">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">1 / 5</div>
+
+  <div class="top-pill">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+    Comparatif PEA 2024
+  </div>
+
+  <div class="emoji-big">🏦</div>
+
+  <h1>Ouvrir un <em>PEA</em> :<br>quelle banque<br>choisir ?</h1>
+
+  <p class="subtitle">Boursorama · Fortuneo · Trade Republic · Société Générale</p>
+  <div class="bar"></div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — Boursorama
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 2 / 5</p>
+<div class="slide" id="slide2">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">2 / 5</div>
+
+  <div class="bank-header">
+    <div class="bank-icon">🔵</div>
+    <div class="bank-name">
+      Boursorama
+      <small>Banque en ligne #1 en France</small>
+    </div>
+  </div>
+
+  <div class="points">
+    <div class="point">
+      <div class="point-dot"></div>
+      <div class="point-text">Frais de courtage : <span>0 € sur ETF éligibles</span></div>
+    </div>
+    <div class="point">
+      <div class="point-dot"></div>
+      <div class="point-text">Interface claire, <span>app mobile solide</span></div>
+    </div>
+    <div class="point">
+      <div class="point-dot"></div>
+      <div class="point-text">Large catalogue d'ETF Lyxor / Amundi</div>
+    </div>
+    <div class="point">
+      <div class="point-dot"></div>
+      <div class="point-text"><span>Idéal pour débutants</span> — parcours d'ouverture simplifié</div>
+    </div>
+  </div>
+
+  <div class="badge">🏆 Meilleur pour débuter</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — Fortuneo & Trade Republic
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 3 / 5</p>
+<div class="slide" id="slide3">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">3 / 5</div>
+
+  <div class="slide-tag">⚡ Meilleur rapport qualité / prix</div>
+
+  <div class="banks-grid">
+    <div class="bank-card">
+      <div class="bank-card-header">
+        <div class="bc-icon fortuneo">🟠</div>
+        <div class="bc-name">Fortuneo</div>
+      </div>
+      <div class="bc-pts">
+        <div class="bc-pt">Frais faibles sur tous les ordres</div>
+        <div class="bc-pt">Bonne gamme d'ETF</div>
+        <div class="bc-pt">Service client français</div>
+        <div class="bc-pt">Interface web complète</div>
+      </div>
+    </div>
+    <div class="bank-card">
+      <div class="bank-card-header">
+        <div class="bc-icon tr">🟣</div>
+        <div class="bc-name">Trade<br>Republic</div>
+      </div>
+      <div class="bc-pts">
+        <div class="bc-pt">1 € par ordre seulement</div>
+        <div class="bc-pt">App minimaliste & rapide</div>
+        <div class="bc-pt">Très populaire chez les jeunes</div>
+        <div class="bc-pt">DCA automatique intégré</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="badge">⚡ Meilleur rapport qualité / prix</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — Société Générale
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 4 / 5</p>
+<div class="slide" id="slide4">
+  <div class="grid-bg"></div>
+  <div class="slide-counter">4 / 5</div>
+
+  <div class="bank-header">
+    <div class="bank-icon">🔴</div>
+    <div class="bank-name">
+      Société Générale
+      <small>Banque traditionnelle</small>
+    </div>
+  </div>
+
+  <div class="points">
+    <div class="point">
+      <div class="point-icon">🏛️</div>
+      <div class="point-text">PEA classique banque traditionnelle</div>
+    </div>
+    <div class="point">
+      <div class="point-icon">⚠️</div>
+      <div class="point-text warn">Frais plus élevés (~0,50 % par ordre)</div>
+    </div>
+    <div class="point">
+      <div class="point-icon">✅</div>
+      <div class="point-text">Utile si tu es <strong style="color:#fff">déjà client SG</strong></div>
+    </div>
+    <div class="point">
+      <div class="point-icon">❌</div>
+      <div class="point-text warn">Moins compétitif face aux néobanques</div>
+    </div>
+  </div>
+
+  <div class="badge-gray">🏛️ Option banque classique</div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — Verdict / CTA
+══════════════════════════════════════ -->
+<p class="slide-label">Slide 5 / 5</p>
+<div class="slide" id="slide5">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="slide-counter">5 / 5</div>
+
+  <div class="verdict-icon">🏆</div>
+
+  <h2>Notre <em>verdict</em> ?</h2>
+
+  <div class="verdict-cards">
+    <div class="verdict-card">
+      <div class="vc-label">Pour commencer</div>
+      <div class="vc-name">Boursorama</div>
+    </div>
+    <div class="verdict-card">
+      <div class="vc-label">Pour les jeunes</div>
+      <div class="vc-name">Trade Republic</div>
+    </div>
+  </div>
+
+  <p class="cta-line">Pour aller plus loin, simule ta stratégie sur <strong>financia.cloud</strong></p>
+
+  <div class="cta-box">
+    <div class="cta-url">financia.cloud</div>
+    <div class="cta-sub">Lien dans la bio 👇</div>
+  </div>
+
+  <div class="logo-mark">Financi<span>a</span></div>
+</div>
+
+</body>
+</html>
