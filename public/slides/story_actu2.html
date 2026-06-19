@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Financia — Story actu #2 — Inflation 3%</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 24px;
+    }
+
+    .slide-label {
+      color: #555;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-left: calc(50% - 540px);
+    }
+
+    /* ─── Base story 1080×1920 ─── */
+    .slide {
+      width: 1080px;
+      height: 1920px;
+      background: #0A0A0A;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 96px;
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .glow {
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.13) 0%, transparent 65%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .logo-top {
+      position: absolute;
+      top: 88px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      white-space: nowrap;
+      color: #fff;
+      z-index: 3;
+    }
+    .logo-top span { color: #7C3AED; }
+
+    .logo-bottom {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      white-space: nowrap;
+      color: #fff;
+      z-index: 3;
+    }
+    .logo-bottom span { color: #7C3AED; }
+
+    .slide-counter {
+      position: absolute;
+      top: 96px;
+      right: 60px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+      z-index: 3;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .badge-violet {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #7C3AED;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 800;
+      padding: 20px 40px;
+      border-radius: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    /* ════════════════════════════
+       STORY 1 — Accroche
+    ════════════════════════════ */
+    #slide1 .top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      color: #a78bfa;
+      font-size: 26px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 100px;
+      margin-bottom: 56px;
+    }
+
+    #slide1 .big-emoji {
+      font-size: 180px;
+      line-height: 1;
+      margin-bottom: 52px;
+    }
+
+    #slide1 h1 {
+      font-size: 96px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -4px;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+
+    #slide1 h1 em { font-style: normal; color: #7C3AED; }
+
+    #slide1 .subtitle {
+      font-size: 38px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.42);
+      letter-spacing: -0.3px;
+      line-height: 1.45;
+      max-width: 800px;
+    }
+
+    #slide1 .bar {
+      width: 90px;
+      height: 5px;
+      background: #7C3AED;
+      border-radius: 3px;
+      margin: 60px auto 0;
+    }
+
+    /* ════════════════════════════
+       STORY 2 — Chiffres
+    ════════════════════════════ */
+    #slide2 .content { text-align: left; }
+
+    #slide2 h2 {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 72px;
+      text-align: center;
+      width: 100%;
+    }
+
+    #slide2 h2 em { font-style: normal; color: #7C3AED; }
+
+    #slide2 .chiffres {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 72px;
+    }
+
+    #slide2 .chiffre-row {
+      display: flex;
+      flex-direction: column;
+      padding: 38px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    #slide2 .chiffre-row:last-child { border-bottom: none; }
+
+    #slide2 .chiffre-label {
+      font-size: 20px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    #slide2 .chiffre-val {
+      font-size: 40px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+    }
+
+    #slide2 .chiffre-val em { font-style: normal; color: #a78bfa; }
+
+    /* ════════════════════════════
+       STORY 3 — C'est quoi l'inflation
+    ════════════════════════════ */
+    #slide3 h2 {
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 64px;
+      text-align: center;
+    }
+
+    #slide3 h2 em { font-style: normal; color: #7C3AED; }
+
+    #slide3 .definition {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 52px 56px;
+      margin-bottom: 56px;
+      width: 100%;
+      max-width: 880px;
+    }
+
+    #slide3 .def-text {
+      font-size: 38px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.55;
+      letter-spacing: -0.3px;
+      text-align: center;
+    }
+
+    #slide3 .def-text em { font-style: normal; color: #a78bfa; }
+
+    #slide3 .example-box {
+      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(124,58,237,0.06));
+      border: 1.5px solid rgba(124,58,237,0.4);
+      border-radius: 24px;
+      padding: 52px 56px;
+      width: 100%;
+      max-width: 880px;
+    }
+
+    #slide3 .example-label {
+      font-size: 22px;
+      font-weight: 700;
+      color: #a78bfa;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    #slide3 .example-eq {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    #slide3 .eq-part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #slide3 .eq-amount {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    #slide3 .eq-amount.now { color: #fff; }
+    #slide3 .eq-amount.later { color: #a78bfa; }
+
+    #slide3 .eq-sub {
+      font-size: 22px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.38);
+    }
+
+    #slide3 .eq-arrow {
+      font-size: 48px;
+      color: rgba(255,255,255,0.2);
+      align-self: center;
+    }
+
+    /* ════════════════════════════
+       STORY 4 — Pourquoi ça te concerne
+    ════════════════════════════ */
+    #slide4 .content { text-align: left; }
+
+    #slide4 h2 {
+      font-size: 76px;
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -3px;
+      color: #fff;
+      margin-bottom: 64px;
+      text-align: center;
+      width: 100%;
+    }
+
+    #slide4 h2 em { font-style: normal; color: #7C3AED; }
+
+    #slide4 .points {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+      margin-bottom: 56px;
+    }
+
+    #slide4 .pp {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 36px 40px;
+    }
+
+    #slide4 .pp-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #7C3AED;
+      margin-top: 14px;
+      flex-shrink: 0;
+    }
+
+    #slide4 .pp-text {
+      font-size: 32px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.4;
+      letter-spacing: -0.3px;
+    }
+
+    #slide4 .pp-text em { font-style: normal; color: #a78bfa; }
+
+    #slide4 .warning-box {
+      background: rgba(239,68,68,0.1);
+      border: 1.5px solid rgba(239,68,68,0.3);
+      border-radius: 18px;
+      padding: 36px 44px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #slide4 .warning-icon { font-size: 44px; flex-shrink: 0; }
+
+    #slide4 .warning-text {
+      font-size: 30px;
+      font-weight: 700;
+      color: #fca5a5;
+      letter-spacing: -0.3px;
+      line-height: 1.35;
+    }
+
+    /* ════════════════════════════
+       STORY 5 — CTA
+    ════════════════════════════ */
+    #slide5 .top-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.35);
+      color: #a78bfa;
+      font-size: 24px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 100px;
+      margin-bottom: 52px;
+    }
+
+    #slide5 .shield-emoji {
+      font-size: 140px;
+      line-height: 1;
+      margin-bottom: 44px;
+    }
+
+    #slide5 h2 {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 0.97;
+      letter-spacing: -3.5px;
+      color: #fff;
+      margin-bottom: 44px;
+    }
+
+    #slide5 h2 em { font-style: normal; color: #7C3AED; }
+
+    #slide5 .conseil-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 24px;
+      padding: 48px 52px;
+      margin-bottom: 44px;
+      width: 100%;
+      max-width: 880px;
+    }
+
+    #slide5 .conseil-text {
+      font-size: 36px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.55;
+      letter-spacing: -0.3px;
+    }
+
+    #slide5 .conseil-text em { font-style: normal; color: #a78bfa; }
+
+    #slide5 .bio-link {
+      font-size: 32px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 44px;
+    }
+
+    #slide5 .cta-btn {
+      background: #7C3AED;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 800;
+      padding: 36px 88px;
+      border-radius: 100px;
+      letter-spacing: -0.5px;
+      margin-bottom: 32px;
+    }
+
+    #slide5 .date-tag {
+      font-size: 22px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     STORY 1 — Accroche
+══════════════════════════════════════ -->
+<p class="slide-label">Story 1 / 5</p>
+<div class="slide" id="slide1">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="logo-top">Financi<span>a</span></div>
+  <div class="slide-counter">1 / 5</div>
+
+  <div class="content">
+    <div class="top-badge">📊 Actu bourse · Juin 2026</div>
+    <div class="big-emoji">📈</div>
+    <h1>L'inflation<br>repasse à <em>3%</em></h1>
+    <p class="subtitle">Ce que ça change<br>pour ton argent</p>
+    <div class="bar"></div>
+  </div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STORY 2 — Chiffres
+══════════════════════════════════════ -->
+<p class="slide-label">Story 2 / 5</p>
+<div class="slide" id="slide2">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="logo-top">Financi<span>a</span></div>
+  <div class="slide-counter">2 / 5</div>
+
+  <div class="content">
+    <h2>Les chiffres<br>du <em>moment</em></h2>
+
+    <div class="chiffres">
+      <div class="chiffre-row">
+        <div class="chiffre-label">Inflation zone euro</div>
+        <div class="chiffre-val"><em>3,2 %</em> en mai 2026</div>
+      </div>
+      <div class="chiffre-row">
+        <div class="chiffre-label">Moyenne 12 derniers mois</div>
+        <div class="chiffre-val"><em>2,2 %</em> sur 12 mois</div>
+      </div>
+      <div class="chiffre-row">
+        <div class="chiffre-label">Cause principale</div>
+        <div class="chiffre-val">Rebond du <em>prix du pétrole</em></div>
+      </div>
+      <div class="chiffre-row">
+        <div class="chiffre-label">Conséquence</div>
+        <div class="chiffre-val">Banques centrales <em>sous pression</em></div>
+      </div>
+    </div>
+
+    <div class="badge-violet">🔍 Tendance à surveiller</div>
+  </div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STORY 3 — C'est quoi l'inflation
+══════════════════════════════════════ -->
+<p class="slide-label">Story 3 / 5</p>
+<div class="slide" id="slide3">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="logo-top">Financi<span>a</span></div>
+  <div class="slide-counter">3 / 5</div>
+
+  <div class="content">
+    <h2>L'inflation<br>c'est quoi <em>exactement ?</em></h2>
+
+    <div class="definition">
+      <p class="def-text">
+        C'est la <em>hausse générale des prix</em>.<br><br>
+        Concrètement : avec la même somme,<br>
+        tu achètes <em>moins qu'avant</em>.
+      </p>
+    </div>
+
+    <div style="height:40px;"></div>
+
+    <div class="example-box">
+      <div class="example-label">📊 Exemple concret</div>
+      <div class="example-eq">
+        <div class="eq-part">
+          <div class="eq-amount now">100 €</div>
+          <div class="eq-sub">aujourd'hui</div>
+        </div>
+        <div class="eq-arrow">→</div>
+        <div class="eq-part">
+          <div class="eq-amount later">~97 €</div>
+          <div class="eq-sub">de pouvoir d'achat<br>dans 1 an</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STORY 4 — Pourquoi ça te concerne
+══════════════════════════════════════ -->
+<p class="slide-label">Story 4 / 5</p>
+<div class="slide" id="slide4">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="logo-top">Financi<span>a</span></div>
+  <div class="slide-counter">4 / 5</div>
+
+  <div class="content">
+    <h2>Pourquoi ça te<br>concerne <em>direct</em></h2>
+
+    <div class="points">
+      <div class="pp">
+        <div class="pp-dot"></div>
+        <div class="pp-text">Livret A à <em>2,4 %</em> &lt; Inflation à <em>3,2 %</em> → tu perds du pouvoir d'achat</div>
+      </div>
+      <div class="pp">
+        <div class="pp-dot"></div>
+        <div class="pp-text">L'argent qui <em>dort</em> perd de la valeur chaque année</div>
+      </div>
+      <div class="pp">
+        <div class="pp-dot"></div>
+        <div class="pp-text">Les <em>ETF actions</em> battent l'inflation sur le long terme</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <div class="warning-icon">⚠️</div>
+      <div class="warning-text">Épargne non investie = perte de valeur réelle</div>
+    </div>
+  </div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     STORY 5 — CTA
+══════════════════════════════════════ -->
+<p class="slide-label">Story 5 / 5</p>
+<div class="slide" id="slide5">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="logo-top">Financi<span>a</span></div>
+  <div class="slide-counter">5 / 5</div>
+
+  <div class="content">
+    <div class="top-pill">💡 La solution</div>
+    <div class="shield-emoji">🛡️</div>
+
+    <h2>Comment se<br>protéger de<br>l'<em>inflation ?</em></h2>
+
+    <div class="conseil-box">
+      <p class="conseil-text">
+        Découvre comment faire fructifier<br>
+        ton épargne sur <em>financia.cloud</em>
+      </p>
+    </div>
+
+    <div class="bio-link">🔗 Lien dans la bio</div>
+
+    <div class="cta-btn">financia.cloud</div>
+
+    <div class="date-tag">Juin 2026</div>
+  </div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+</body>
+</html>
