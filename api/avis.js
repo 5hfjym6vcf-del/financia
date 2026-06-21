@@ -1,47 +1,51 @@
-// In-memory store — persists while the function stays warm on Vercel.
-const store = [];
-let nextId = 1;
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY,
+);
 
 const URL_RE = /https?:\/\/|www\./i;
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
   if (req.method === 'GET') {
-    const recent = [...store].sort((a, b) => b.id - a.id).slice(0, 6);
-    return res.status(200).json(recent);
+    const { data, error } = await supabase
+      .from('avis')
+      .select('id, prenom, note, texte, date')
+      .order('created_at', { ascending: false })
+      .limit(6);
+
+    if (error) return res.status(500).json({ error: error.message });
+    return res.status(200).json(data);
   }
 
   if (req.method === 'POST') {
     const { prenom, note, texte } = req.body || {};
 
-    if (!prenom || !note || !texte) {
+    if (!prenom || !note || !texte)
       return res.status(400).json({ error: 'Prénom, note et avis sont obligatoires.' });
-    }
-    if (typeof texte !== 'string' || texte.length > 200) {
+    if (typeof texte !== 'string' || texte.length > 200)
       return res.status(400).json({ error: 'Avis limité à 200 caractères.' });
-    }
-    if (URL_RE.test(texte)) {
+    if (URL_RE.test(texte))
       return res.status(400).json({ error: 'Les liens ne sont pas autorisés dans les avis.' });
-    }
+
     const n = parseInt(note, 10);
-    if (isNaN(n) || n < 1 || n > 5) {
+    if (isNaN(n) || n < 1 || n > 5)
       return res.status(400).json({ error: 'Note invalide.' });
-    }
 
-    // Anonymise: garde prénom + initiale nom si présent
     const parts = String(prenom).trim().split(' ');
-    const prenomAnon = parts[0] + (parts[1] ? ' ' + parts[1][0] + '.' : '');
+    const prenomAnon = (parts[0] + (parts[1] ? ' ' + parts[1][0] + '.' : '')).slice(0, 30);
 
-    const avis = {
-      id: nextId++,
-      prenom: prenomAnon.slice(0, 30),
-      note: n,
-      texte: texte.trim(),
-      date: new Date().toISOString().slice(0, 10),
-    };
-    store.push(avis);
-    return res.status(201).json(avis);
+    const { data, error } = await supabase
+      .from('avis')
+      .insert({ prenom: prenomAnon, note: n, texte: texte.trim() })
+      .select()
+      .single();
+
+    if (error) return res.status(500).json({ error: error.message });
+    return res.status(201).json(data);
   }
 
   return res.status(405).json({ error: 'Method not allowed' });
