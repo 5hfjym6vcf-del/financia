@@ -129,28 +129,49 @@
     }
     /* ── Logo banner ── */
     .logo-banner {
-      background: #0A0A0A;
+      background: linear-gradient(90deg, #0A0A0A 0%, #1a0533 50%, #0A0A0A 100%);
+      border-top: 1px solid rgba(124,58,237,0.2);
+      border-bottom: 1px solid rgba(124,58,237,0.2);
       width: 100%;
-      padding: 48px 24px;
+      padding: 60px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
+    }
+    .logo-banner-line {
+      width: 60px;
+      height: 2px;
+      background: #7C3AED;
+      border-radius: 1px;
     }
     .logo-banner img {
-      height: 80px;
+      height: 120px;
       width: auto;
       display: block;
     }
     .logo-banner-text {
-      font-size: 0.95rem;
+      font-size: 18px;
       font-weight: 500;
-      color: rgba(255,255,255,0.55);
-      letter-spacing: 0.02em;
+      color: #ffffff;
+      letter-spacing: 0.1em;
+      font-family: 'Inter', sans-serif;
+    }
+    .logo-banner-dots {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .logo-banner-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #7C3AED;
+      display: block;
     }
     @media (max-width: 600px) {
-      .logo-banner img { height: 56px; }
-      .logo-banner-text { font-size: 0.85rem; }
+      .logo-banner img { height: 80px; }
+      .logo-banner-text { font-size: 15px; }
     }
   </style>
   <meta name="description" content="Financia — L'IA qui rend la finance accessible aux jeunes." />
@@ -259,8 +280,12 @@
 </section>
 
 <div class="logo-banner">
+  <div class="logo-banner-line"></div>
   <img src="./images/financia-logo.png" alt="Financia" />
   <p class="logo-banner-text">La finance, enfin accessible.</p>
+  <div class="logo-banner-dots">
+    <span></span><span></span><span></span>
+  </div>
 </div>
 
 <section id="hub" class="section">
