@@ -1,19 +1,28 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY,
-);
-
 const URL_RE = /https?:\/\/|www\./i;
+
+function getClient() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
+  if (!url || !key) throw new Error('SUPABASE_URL ou SUPABASE_ANON_KEY manquant');
+  return createClient(url, key);
+}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
+  let supabase;
+  try {
+    supabase = getClient();
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+
   if (req.method === 'GET') {
     const { data, error } = await supabase
       .from('avis')
-      .select('id, prenom, note, texte, date')
+      .select('id, prenom, note, texte, created_at')
       .order('created_at', { ascending: false })
       .limit(6);
 
