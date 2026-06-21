@@ -193,6 +193,158 @@
       transition: opacity 0.2s;
     }
     .footer-insta:hover { opacity: 0.8; }
+
+    /* ── News carousel ── */
+    .news-widget {
+      background: #0A0A0A;
+      border-top: 1px solid rgba(124,58,237,0.15);
+      border-bottom: 1px solid rgba(124,58,237,0.15);
+      padding: 40px 0;
+      width: 100%;
+      overflow: hidden;
+    }
+    .news-widget-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .news-widget-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .news-widget-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+    .news-all-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: #7C3AED;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+    .news-all-link:hover { opacity: 0.75; }
+    .news-carousel-wrap { position: relative; }
+    .news-track-outer { overflow: hidden; }
+    .news-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    .news-card {
+      flex: 0 0 calc(100% - 0px);
+      max-width: 720px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px 32px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+    .news-card:hover {
+      border-color: rgba(124,58,237,0.4);
+      background: rgba(124,58,237,0.06);
+    }
+    .news-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .news-source {
+      font-size: 12px;
+      font-weight: 700;
+      color: #7C3AED;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .news-date {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+    }
+    .news-sentiment {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+    .news-sentiment.pos { background: rgba(16,185,129,0.18); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+    .news-sentiment.neg { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .news-sentiment.neu { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.12); }
+    .news-headline {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.45;
+      letter-spacing: -0.2px;
+    }
+    .news-card-footer {
+      font-size: 13px;
+      color: #7C3AED;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .news-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .news-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(124,58,237,0.4);
+      background: rgba(124,58,237,0.1);
+      color: #7C3AED;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .news-arrow:hover { background: rgba(124,58,237,0.25); border-color: #7C3AED; }
+    .news-dots { display: flex; gap: 8px; align-items: center; }
+    .news-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .news-dot.active { background: #7C3AED; transform: scale(1.3); }
+    .news-loading {
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 14px;
+      padding: 32px 0;
+    }
+    @media (max-width: 700px) {
+      .news-card { padding: 22px 20px; }
+      .news-headline { font-size: 15px; }
+    }
     @media (max-width: 600px) {
       .logo-banner img { height: 80px; }
       .logo-banner-text { font-size: 15px; }
@@ -309,6 +461,27 @@
   <p class="logo-banner-text">La finance, enfin accessible.</p>
   <div class="logo-banner-dots">
     <span></span><span></span><span></span>
+  </div>
+</div>
+
+<div class="news-widget">
+  <div class="news-widget-inner">
+    <div class="news-widget-header">
+      <div class="news-widget-title">📊 Actus bourse en direct</div>
+      <a href="#actus" class="news-all-link">Voir toutes les actus →</a>
+    </div>
+    <div class="news-carousel-wrap">
+      <div class="news-track-outer">
+        <div class="news-track" id="newsTrack">
+          <div class="news-loading">Chargement des actus…</div>
+        </div>
+      </div>
+      <div class="news-controls">
+        <button class="news-arrow" id="newsPrev" aria-label="Précédent">‹</button>
+        <div class="news-dots" id="newsDots"></div>
+        <button class="news-arrow" id="newsNext" aria-label="Suivant">›</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -708,5 +881,106 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="./script.js"></script>
+<script>
+(function () {
+  const AV_KEY = 'N2V6TQUYHXMM4OM0';
+  const track = document.getElementById('newsTrack');
+  const dotsEl = document.getElementById('newsDots');
+  const prevBtn = document.getElementById('newsPrev');
+  const nextBtn = document.getElementById('newsNext');
+  let cards = [];
+  let current = 0;
+  let autoTimer = null;
+
+  function sentimentClass(score) {
+    if (score >= 0.15) return 'pos';
+    if (score <= -0.15) return 'neg';
+    return 'neu';
+  }
+  function sentimentLabel(score) {
+    if (score >= 0.15) return 'Positif';
+    if (score <= -0.15) return 'Négatif';
+    return 'Neutre';
+  }
+  function truncate(str, n) {
+    return str.length > n ? str.slice(0, n) + '…' : str;
+  }
+  function formatDate(raw) {
+    // raw = "20240612T130000"
+    try {
+      const y = raw.slice(0,4), mo = raw.slice(4,6), d = raw.slice(6,8);
+      return `${d}/${mo}/${y}`;
+    } catch { return ''; }
+  }
+
+  function render(items) {
+    cards = items.slice(0, 5);
+    track.innerHTML = '';
+    dotsEl.innerHTML = '';
+
+    cards.forEach((item, i) => {
+      const score = item.overall_sentiment_score ?? 0;
+      const sc = sentimentClass(score);
+      const sl = sentimentLabel(score);
+      const source = item.source ?? '';
+      const date = formatDate(item.time_published ?? '');
+      const headline = truncate(item.title ?? '', 100);
+      const url = item.url ?? '#';
+
+      const card = document.createElement('a');
+      card.className = 'news-card';
+      card.href = url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.innerHTML = `
+        <div class="news-card-meta">
+          <span class="news-source">${source}</span>
+          <span class="news-date">${date}</span>
+          <span class="news-sentiment ${sc}">${sl}</span>
+        </div>
+        <div class="news-headline">${headline}</div>
+        <div class="news-card-footer">Lire l'article →</div>
+      `;
+      track.appendChild(card);
+
+      const dot = document.createElement('div');
+      dot.className = 'news-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    goTo(0);
+    startAuto();
+  }
+
+  function goTo(idx) {
+    current = (idx + cards.length) % cards.length;
+    track.style.transform = `translateX(calc(-${current * 100}% - ${current * 20}px))`;
+    document.querySelectorAll('.news-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+
+  // Fetch news
+  fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=financial_markets&limit=5&apikey=${AV_KEY}`)
+    .then(r => r.json())
+    .then(data => {
+      const items = data.feed;
+      if (!items || !items.length) throw new Error('no feed');
+      render(items);
+    })
+    .catch(() => {
+      track.innerHTML = '<div class="news-loading">Actus temporairement indisponibles.</div>';
+    });
+})();
+</script>
 </body>
 </html>
