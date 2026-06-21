@@ -883,49 +883,35 @@
 <script src="./script.js"></script>
 <script>
 (function () {
-  const AV_KEY = 'N2V6TQUYHXMM4OM0';
-  const track = document.getElementById('newsTrack');
-  const dotsEl = document.getElementById('newsDots');
+  const track   = document.getElementById('newsTrack');
+  const dotsEl  = document.getElementById('newsDots');
   const prevBtn = document.getElementById('newsPrev');
   const nextBtn = document.getElementById('newsNext');
   let cards = [];
   let current = 0;
   let autoTimer = null;
 
-  function sentimentClass(score) {
-    if (score >= 0.15) return 'pos';
-    if (score <= -0.15) return 'neg';
-    return 'neu';
-  }
-  function sentimentLabel(score) {
-    if (score >= 0.15) return 'Positif';
-    if (score <= -0.15) return 'Négatif';
-    return 'Neutre';
-  }
   function truncate(str, n) {
-    return str.length > n ? str.slice(0, n) + '…' : str;
+    return str && str.length > n ? str.slice(0, n) + '…' : (str || '');
   }
-  function formatDate(raw) {
-    // raw = "20240612T130000"
+
+  function formatDate(iso) {
     try {
-      const y = raw.slice(0,4), mo = raw.slice(4,6), d = raw.slice(6,8);
-      return `${d}/${mo}/${y}`;
+      const d = new Date(iso);
+      return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
     } catch { return ''; }
   }
 
-  function render(items) {
-    cards = items.slice(0, 5);
+  function render(articles) {
+    cards = articles.slice(0, 5);
     track.innerHTML = '';
     dotsEl.innerHTML = '';
 
-    cards.forEach((item, i) => {
-      const score = item.overall_sentiment_score ?? 0;
-      const sc = sentimentClass(score);
-      const sl = sentimentLabel(score);
-      const source = item.source ?? '';
-      const date = formatDate(item.time_published ?? '');
-      const headline = truncate(item.title ?? '', 100);
-      const url = item.url ?? '#';
+    cards.forEach((article, i) => {
+      const source   = article.source?.name ?? '';
+      const date     = formatDate(article.publishedAt ?? '');
+      const headline = truncate(article.title ?? '', 80);
+      const url      = article.url ?? '#';
 
       const card = document.createElement('a');
       card.className = 'news-card';
@@ -936,7 +922,7 @@
         <div class="news-card-meta">
           <span class="news-source">${source}</span>
           <span class="news-date">${date}</span>
-          <span class="news-sentiment ${sc}">${sl}</span>
+          <span class="news-sentiment neu">Finance</span>
         </div>
         <div class="news-headline">${headline}</div>
         <div class="news-card-footer">Lire l'article →</div>
@@ -969,16 +955,15 @@
   prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
   nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
 
-  // Fetch news
-  fetch(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=financial_markets&limit=5&apikey=${AV_KEY}`)
+  fetch('/api/news')
     .then(r => r.json())
     .then(data => {
-      const items = data.feed;
-      if (!items || !items.length) throw new Error('no feed');
-      render(items);
+      const articles = data.articles;
+      if (!articles || !articles.length) throw new Error('empty');
+      render(articles);
     })
     .catch(() => {
-      track.innerHTML = '<div class="news-loading">Actus temporairement indisponibles.</div>';
+      track.innerHTML = '<div class="news-loading">Actus momentanément indisponibles.</div>';
     });
 })();
 </script>
