@@ -411,7 +411,18 @@
     .avis-stars { color: #7C3AED; font-size: 14px; letter-spacing: 1px; }
     .avis-texte { font-size: 14px; color: #444; line-height: 1.6; flex: 1; }
     .avis-date { font-size: 12px; color: #bbb; font-weight: 500; }
-    .avis-empty { grid-column: 1/-1; text-align: center; color: #bbb; font-size: 15px; padding: 32px; }
+    .avis-empty {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 48px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .avis-empty-emoji { font-size: 48px; line-height: 1; }
+    .avis-empty-title { font-size: 18px; font-weight: 700; color: #1a1a1a; }
+    .avis-empty-sub { font-size: 14px; color: #999; }
 
     /* Form */
     .avis-form-wrap {
@@ -674,10 +685,6 @@
       <div>
         <div class="section-label">Communauté</div>
         <h2 class="section-title">Avis de la communauté</h2>
-      </div>
-      <div class="avis-avg">
-        <div class="avis-avg-stars" id="avisAvgStars">★★★★★</div>
-        <div class="avis-avg-label" id="avisAvgLabel">Chargement…</div>
       </div>
     </div>
 
@@ -1057,8 +1064,6 @@
 // ── Avis communauté ──
 (function () {
   const grid      = document.getElementById('avisGrid');
-  const avgStars  = document.getElementById('avisAvgStars');
-  const avgLabel  = document.getElementById('avisAvgLabel');
   const form      = document.getElementById('avisForm');
   const prenomEl  = document.getElementById('avisPrenom');
   const texteEl   = document.getElementById('avisTexte');
@@ -1082,14 +1087,14 @@
 
   function renderGrid(avis) {
     if (!avis.length) {
-      grid.innerHTML = '<div class="avis-empty">Soyez le premier à laisser un avis !</div>';
-      avgStars.textContent = '☆☆☆☆☆';
-      avgLabel.textContent = 'Aucun avis';
+      grid.innerHTML = `
+        <div class="avis-empty">
+          <div class="avis-empty-emoji">💬</div>
+          <div class="avis-empty-title">Sois le premier à laisser un avis !</div>
+          <div class="avis-empty-sub">Dis-nous ce que tu penses de Financia.</div>
+        </div>`;
       return;
     }
-    const avg = (avis.reduce((s, a) => s + a.note, 0) / avis.length).toFixed(1);
-    avgStars.textContent = starsHtml(Math.round(avg));
-    avgLabel.textContent = `${avg}/5 · ${avis.length} avis`;
 
     grid.innerHTML = avis.map(a => `
       <div class="avis-card">
