@@ -237,9 +237,9 @@
       transition: transform 0.4s cubic-bezier(.4,0,.2,1);
     }
     .news-card {
-      flex: 0 0 calc(100% - 0px);
-      max-width: 720px;
-      margin: 0 auto;
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 16px;
@@ -941,7 +941,8 @@
 
   function goTo(idx) {
     current = (idx + cards.length) % cards.length;
-    track.style.transform = `translateX(calc(-${current * 100}% - ${current * 20}px))`;
+    const cardWidth = track.parentElement.offsetWidth;
+    track.style.transform = `translateX(-${current * (cardWidth + 20)}px)`;
     document.querySelectorAll('.news-dot').forEach((d, i) => {
       d.classList.toggle('active', i === current);
     });
