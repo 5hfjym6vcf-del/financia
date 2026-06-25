@@ -5,7 +5,12 @@ const URL_RE = /https?:\/\/|www\./i;
 function getClient() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error('SUPABASE_URL ou SUPABASE_ANON_KEY manquant');
+  console.log('[avis] SUPABASE_URL présent :', !!url);
+  console.log('[avis] SUPABASE_ANON_KEY présent :', !!key);
+  if (!url || !key) {
+    console.error('[avis] Variables manquantes. Clés dispo dans process.env :', Object.keys(process.env).filter(k => k.startsWith('SUPA')));
+    throw new Error('SUPABASE_URL ou SUPABASE_ANON_KEY manquant');
+  }
   return createClient(url, key);
 }
 
