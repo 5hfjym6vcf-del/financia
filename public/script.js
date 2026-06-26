@@ -398,6 +398,49 @@ window.addEventListener('hashchange', () => {
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// ── Hero: SVG chart draw — set correct dasharray from actual path length ──
+(function () {
+  const path = document.getElementById('heroChartPath');
+  if (!path) return;
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  // force reflow then let CSS animation run
+  path.getBoundingClientRect();
+})();
+
+// ── Hero: stats count-up on scroll ──
+(function () {
+  const statsEl = document.querySelector('.hero-stats');
+  if (!statsEl) return;
+  let done = false;
+
+  function animateCount(el, target, suffix, duration) {
+    let start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !done) {
+      done = true;
+      document.querySelectorAll('.hstat-n[data-count]').forEach(el => {
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        animateCount(el, target, suffix, 1500);
+      });
+    }
+  }, { threshold: 0.6 });
+
+  obs.observe(statsEl);
+})();
+
 async function loadActus() {
   const grid = $('#actus-grid');
   if (!grid) return;
