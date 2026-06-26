@@ -1464,15 +1464,21 @@
     } catch { return ''; }
   }
 
+  function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
   function render(articles) {
     cards = articles.slice(0, 5);
     track.innerHTML = '';
     dotsEl.innerHTML = '';
 
     cards.forEach((article, i) => {
-      const source   = article.source?.name ?? '';
-      const date     = formatDate(article.publishedAt ?? '');
-      const headline = truncate(article.title ?? '', 80);
+      const source   = esc(article.source?.name ?? '');
+      const date     = esc(formatDate(article.publishedAt ?? ''));
+      const headline = esc(truncate(article.title ?? '', 80));
       const url      = article.url ?? '#';
 
       const card = document.createElement('a');
@@ -1505,7 +1511,7 @@
     current = (idx + cards.length) % cards.length;
     const cardWidth = track.parentElement.offsetWidth;
     track.style.transform = `translateX(-${current * (cardWidth + 20)}px)`;
-    document.querySelectorAll('.news-dot').forEach((d, i) => {
+    dotsEl.querySelectorAll('.news-dot').forEach((d, i) => {
       d.classList.toggle('active', i === current);
     });
   }
@@ -1525,8 +1531,9 @@
       if (!articles || !articles.length) throw new Error('empty');
       render(articles);
     })
-    .catch(() => {
-      track.innerHTML = '<div class="news-loading">Actus momentanément indisponibles.</div>';
+    .catch((err) => {
+      console.error('[news widget]', err);
+      track.innerHTML = '<div class="news-loading">📊 Actus bientôt disponibles — reviens dans quelques minutes</div>';
     });
 })();
 </script>
