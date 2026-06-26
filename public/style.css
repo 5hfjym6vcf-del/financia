@@ -254,6 +254,38 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: center;
 }
+.hero-logo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.hero-logo-text {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 8vw, 96px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: var(--text);
+  line-height: 1;
+}
+.hero-logo-text span { color: var(--green); }
+.hero-logo-wrap .pc-badge {
+  position: absolute;
+  top: -16px;
+  right: -20px;
+  z-index: 3;
+  /* override the hero animation — badge is always visible here */
+  opacity: 1;
+  animation: none;
+  background: rgba(124,77,255,0.2);
+  color: var(--green-light);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(124,77,255,0.3);
+}
 .portfolio-card {
   background: var(--text);
   border: 1px solid rgba(255,255,255,0.1);

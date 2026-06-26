@@ -398,16 +398,6 @@ window.addEventListener('hashchange', () => {
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ── Hero: SVG chart draw — set correct dasharray from actual path length ──
-(function () {
-  const path = document.getElementById('heroChartPath');
-  if (!path) return;
-  const len = path.getTotalLength();
-  path.style.strokeDasharray = len;
-  path.style.strokeDashoffset = len;
-  // force reflow then let CSS animation run
-  path.getBoundingClientRect();
-})();
 
 // ── Hero: stats count-up on scroll ──
 (function () {
