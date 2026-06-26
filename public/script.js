@@ -399,6 +399,16 @@ const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
+// ── Hero: SVG chart draw animation ──
+(function () {
+  const path = document.getElementById('heroChartPath');
+  if (!path) return;
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  path.getBoundingClientRect();
+})();
+
 // ── Hero: stats count-up on scroll ──
 (function () {
   const statsEl = document.querySelector('.hero-stats');
