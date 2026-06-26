@@ -485,6 +485,155 @@
     .avis-msg { font-size: 14px; font-weight: 600; padding: 10px 0; }
     .avis-msg.ok { color: #059669; }
     .avis-msg.err { color: #dc2626; }
+
+    /* ── FAQ section ── */
+    .faq-section {
+      background: #0A0A0A;
+      padding: 72px 0;
+      width: 100%;
+    }
+    .faq-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .faq-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 36px;
+      letter-spacing: -0.4px;
+    }
+
+    /* Carousel */
+    .faq-carousel-wrap { position: relative; overflow: hidden; }
+    .faq-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+    }
+    .faq-card {
+      flex: 0 0 100%;
+      background: #1a1a1a;
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 12px;
+      padding: 32px 36px;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-q {
+      font-size: 18px;
+      font-weight: 700;
+      color: #7C3AED;
+      line-height: 1.35;
+    }
+    .faq-a {
+      font-size: 15px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.65;
+    }
+    .faq-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .faq-arrow {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(124,58,237,0.4);
+      background: rgba(124,58,237,0.1);
+      color: #7C3AED;
+      font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .faq-arrow:hover { background: rgba(124,58,237,0.25); }
+    .faq-dots { display: flex; gap: 8px; align-items: center; }
+    .faq-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .faq-dot.active { background: #7C3AED; transform: scale(1.3); }
+
+    /* Divider */
+    .faq-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #7C3AED, transparent);
+      margin: 52px 0;
+    }
+
+    /* Free question */
+    .faq-ask-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .faq-ask-row {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .faq-ask-input {
+      flex: 1;
+      background: #1a1a1a;
+      border: 1px solid rgba(124,58,237,0.35);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .faq-ask-input::placeholder { color: rgba(255,255,255,0.3); }
+    .faq-ask-input:focus { border-color: #7C3AED; }
+    .faq-ask-btn {
+      background: #7C3AED;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .faq-ask-btn:hover { opacity: 0.85; }
+    .faq-ask-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .faq-answer-card {
+      margin-top: 20px;
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.35);
+      border-radius: 12px;
+      padding: 24px 28px;
+      color: rgba(255,255,255,0.88);
+      font-size: 15px;
+      line-height: 1.65;
+      animation: fadeInUp 0.35s ease;
+      display: none;
+    }
+    .faq-answer-card.visible { display: block; }
+    .faq-powered {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .faq-ask-row { flex-direction: column; }
+      .faq-card { padding: 24px 20px; }
+    }
   </style>
   <meta name="description" content="Financia — L'IA qui rend la finance accessible aux jeunes." />
   <!-- Google Analytics -->
@@ -718,6 +867,35 @@
         <button type="submit" class="avis-submit" id="avisSubmit">Publier mon avis</button>
       </form>
     </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq-section">
+  <div class="faq-inner">
+
+    <!-- Partie 1 : carrousel -->
+    <div class="faq-title">Questions fréquentes 💬</div>
+    <div class="faq-carousel-wrap">
+      <div class="faq-track" id="faqTrack"></div>
+    </div>
+    <div class="faq-nav">
+      <button class="faq-arrow" id="faqPrev">‹</button>
+      <div class="faq-dots" id="faqDots"></div>
+      <button class="faq-arrow" id="faqNext">›</button>
+    </div>
+
+    <div class="faq-divider"></div>
+
+    <!-- Partie 2 : question libre -->
+    <div class="faq-ask-title">Tu as une autre question ?</div>
+    <div class="faq-ask-row">
+      <input class="faq-ask-input" id="faqInput" type="text" placeholder="Dis-moi ce que tu te demandes..." maxlength="300" />
+      <button class="faq-ask-btn" id="faqAskBtn">Poser ma question</button>
+    </div>
+    <div class="faq-answer-card" id="faqAnswerCard"></div>
+    <div class="faq-powered" id="faqPowered" style="display:none;">Propulsé par l'IA Financia 🤖</div>
+
   </div>
 </section>
 
@@ -1060,6 +1238,91 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="./script.js"></script>
+<script>
+// ── FAQ carousel ──
+(function () {
+  const FAQ = [
+    { q: "Financia est-il vraiment gratuit ?", a: "Oui, 100% gratuit. Pas de frais cachés, pas de pub, pas d'abonnement." },
+    { q: "C'est quoi un ETF ?", a: "Un ETF est un panier d'actions que tu achètes en une seule fois. Il te permet d'investir dans des centaines d'entreprises avec un seul produit." },
+    { q: "À partir de quel âge peut-on investir ?", a: "Dès 18 ans tu peux ouvrir un PEA ou un CTO seul. Avant 18 ans, avec l'accord de tes parents." },
+    { q: "Combien faut-il pour commencer ?", a: "Certaines plateformes permettent d'investir dès 1€. L'important c'est la régularité, pas le montant." },
+    { q: "Est-ce que Financia gère mon argent ?", a: "Non. Financia est un site éducatif. Nous t'expliquons comment investir, mais nous ne gérons aucun fonds." },
+    { q: "C'est quoi un PEA ?", a: "Le Plan d'Épargne en Actions est un compte qui te permet d'investir en bourse avec une fiscalité avantageuse après 5 ans." },
+    { q: "Le chatbot IA est-il fiable ?", a: "Notre IA est conçue pour l'éducation financière. Elle te donne des informations pédagogiques, pas des conseils d'investissement personnalisés." },
+    { q: "Quelle différence entre PEA et CTO ?", a: "Le PEA est plafonné à 150 000€ mais moins taxé après 5 ans. Le CTO est illimité mais taxé à 30% (flat tax)." },
+  ];
+
+  const track  = document.getElementById('faqTrack');
+  const dotsEl = document.getElementById('faqDots');
+  const prev   = document.getElementById('faqPrev');
+  const next   = document.getElementById('faqNext');
+  let cur = 0, timer = null;
+
+  FAQ.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'faq-card';
+    card.innerHTML = `<div class="faq-q">${item.q}</div><div class="faq-a">${item.a}</div>`;
+    track.appendChild(card);
+
+    const dot = document.createElement('div');
+    dot.className = 'faq-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+
+  function goTo(idx) {
+    cur = (idx + FAQ.length) % FAQ.length;
+    track.style.transform = `translateX(-${cur * (track.parentElement.offsetWidth + 20)}px)`;
+    dotsEl.querySelectorAll('.faq-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(cur + 1), 4000);
+  }
+
+  prev.addEventListener('click', () => { goTo(cur - 1); startAuto(); });
+  next.addEventListener('click', () => { goTo(cur + 1); startAuto(); });
+  startAuto();
+})();
+
+// ── FAQ free question ──
+(function () {
+  const input   = document.getElementById('faqInput');
+  const btn     = document.getElementById('faqAskBtn');
+  const card    = document.getElementById('faqAnswerCard');
+  const powered = document.getElementById('faqPowered');
+
+  async function ask() {
+    const q = input.value.trim();
+    if (!q) return;
+    btn.disabled = true;
+    btn.textContent = 'Chargement…';
+    card.classList.remove('visible');
+    powered.style.display = 'none';
+
+    try {
+      const r = await fetch('/api/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: q + ' (réponds en maximum 3 phrases simples)', lang: 'fr' }),
+      });
+      const data = await r.json();
+      card.textContent = data.reply || data.error || 'Désolé, une erreur est survenue.';
+    } catch {
+      card.textContent = 'Désolé, une erreur est survenue. Réessaie dans un instant.';
+    }
+
+    card.classList.add('visible');
+    powered.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Poser ma question';
+  }
+
+  btn.addEventListener('click', ask);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') ask(); });
+})();
+</script>
 <script>
 // ── Avis communauté ──
 (function () {
