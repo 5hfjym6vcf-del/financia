@@ -1308,7 +1308,7 @@
         body: JSON.stringify({ message: q + ' (réponds en maximum 3 phrases simples)', lang: 'fr' }),
       });
       const data = await r.json();
-      card.textContent = data.reply || data.error || 'Désolé, une erreur est survenue.';
+      card.textContent = data.text || data.error || 'Désolé, une erreur est survenue.';
     } catch {
       card.textContent = 'Désolé, une erreur est survenue. Réessaie dans un instant.';
     }
