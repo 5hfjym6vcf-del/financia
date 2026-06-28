@@ -453,7 +453,24 @@ async function loadActus() {
     if (data.Information || data.Note) throw new Error();
     const items = data.feed?.slice(0, 6);
     if (!items?.length) throw new Error();
-    grid.innerHTML = items.map(item => {
+
+    // Translate titles via Groq (best-effort — fallback to originals on error)
+    let titles = items.map(item => item.title || '');
+    try {
+      const tr = await fetch('/api/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ titles }),
+      });
+      if (tr.ok) {
+        const trData = await tr.json();
+        if (Array.isArray(trData.titles) && trData.titles.length === titles.length) {
+          titles = trData.titles;
+        }
+      }
+    } catch { /* keep originals */ }
+
+    grid.innerHTML = items.map((item, i) => {
       const raw = item.time_published || '';
       let date = '';
       if (raw.length >= 8) {
@@ -465,7 +482,7 @@ async function loadActus() {
           <span class="actu-source">${escapeHtml(item.source || '')}</span>
           <span class="actu-date">${date}</span>
         </div>
-        <p class="actu-title">${escapeHtml(item.title || '')}</p>
+        <p class="actu-title">${escapeHtml(titles[i] || item.title || '')}</p>
         <span class="actu-link">Lire l'article →</span>
       </a>`;
     }).join('');
@@ -513,6 +530,7 @@ loadActus();
           showMsg('✅ Tu es inscrit ! Rendez-vous vendredi dans ta boîte mail.', 'success');
         }
         btn.textContent = 'Inscrit ✓';
+        btn.classList.add('confirmed');
       } else {
         showMsg(data.error || 'Une erreur est survenue.', 'error');
         btn.disabled = false;

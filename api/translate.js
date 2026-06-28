@@ -1,0 +1,45 @@
+import Groq from 'groq-sdk';
+
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') return res.status(405).end();
+
+  const { titles } = req.body || {};
+  if (!Array.isArray(titles) || titles.length === 0) {
+    return res.status(400).json({ error: 'titles[] requis' });
+  }
+
+  const numbered = titles.map((t, i) => `${i + 1}. ${t}`).join('\n');
+
+  try {
+    const completion = await groq.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
+      max_tokens: 512,
+      messages: [
+        {
+          role: 'system',
+          content:
+            'Traduis chaque titre d\'article financier en français en maximum 80 caractères. Garde les noms propres, sigles et acronymes en anglais (NYSE, ETF, Fed, GDP, S&P, etc.). Réponds uniquement avec la liste numérotée traduite, même format que l\'entrée, rien d\'autre.',
+        },
+        { role: 'user', content: numbered },
+      ],
+    });
+
+    const raw = completion.choices[0]?.message?.content?.trim() || '';
+    const translated = raw
+      .split('\n')
+      .filter(l => /^\d+\./.test(l.trim()))
+      .map(l => l.replace(/^\d+\.\s*/, '').trim());
+
+    // Fallback: if parse fails, return originals
+    if (translated.length !== titles.length) {
+      return res.status(200).json({ titles });
+    }
+
+    return res.status(200).json({ titles: translated });
+  } catch (e) {
+    console.error('[translate] Groq error:', e.message);
+    return res.status(200).json({ titles }); // graceful fallback
+  }
+}
