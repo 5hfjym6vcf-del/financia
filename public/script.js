@@ -475,3 +475,49 @@ async function loadActus() {
 }
 
 loadActus();
+
+// ── Newsletter ──
+(function () {
+  const form  = document.getElementById('newsletterForm');
+  const input = document.getElementById('newsletterEmail');
+  const msg   = document.getElementById('newsletterMsg');
+  const btn   = form?.querySelector('.newsletter-btn');
+  if (!form) return;
+
+  function showMsg(text, type) {
+    msg.textContent = text;
+    msg.className = 'newsletter-msg ' + type;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!email) { showMsg('Merci de renseigner ton email.', 'error'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Inscription…';
+    msg.className = 'newsletter-msg hidden';
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        input.value = '';
+        showMsg('✅ Tu es inscrit ! Rendez-vous vendredi dans ta boîte mail.', 'success');
+        btn.textContent = 'Inscrit ✓';
+      } else {
+        showMsg(data.error || 'Une erreur est survenue.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Je m\'inscris';
+      }
+    } catch {
+      showMsg('Erreur réseau. Réessaie dans un instant.', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Je m\'inscris';
+    }
+  });
+})();
