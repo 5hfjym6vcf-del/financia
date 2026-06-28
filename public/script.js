@@ -507,7 +507,11 @@ loadActus();
       const data = await res.json();
       if (res.ok) {
         input.value = '';
-        showMsg('✅ Tu es inscrit ! Rendez-vous vendredi dans ta boîte mail.', 'success');
+        if (data.already) {
+          showMsg('Tu es déjà inscrit à la newsletter !', 'success');
+        } else {
+          showMsg('✅ Tu es inscrit ! Rendez-vous vendredi dans ta boîte mail.', 'success');
+        }
         btn.textContent = 'Inscrit ✓';
       } else {
         showMsg(data.error || 'Une erreur est survenue.', 'error');
