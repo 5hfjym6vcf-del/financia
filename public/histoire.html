@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Histoire des marchés — Financia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./histoire.css" />
+
+  <meta name="description" content="L'histoire des marchés financiers : les grandes dates, les krachs et bulles célèbres, les légendes (Apple, Amazon, Bitcoin...) — les leçons des cycles passés, par Financia." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://financia.cloud/histoire" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="./images/financia-logo-transparent.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./images/financia-logo-transparent.png" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://financia.cloud/histoire" />
+  <meta property="og:title" content="Histoire des marchés — Financia" />
+  <meta property="og:description" content="Les grandes dates des marchés, les légendes (Apple, Amazon, Bitcoin...) et les krachs célèbres — apprends des cycles passés." />
+  <meta property="og:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Histoire des marchés — Financia" />
+  <meta name="twitter:description" content="Les grandes dates des marchés, les légendes (Apple, Amazon, Bitcoin...) et les krachs célèbres." />
+  <meta name="twitter:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBV40V2G1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GHBV40V2G1');
+  </script>
+</head>
+<body class="hist-page">
+
+<header class="nav-bar" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="/">Financi<span>a</span></a>
+    <nav class="nav-links">
+      <a href="/#apprendre">Apprendre</a>
+      <a href="/#simulateur">Simulateur</a>
+      <a href="/#chat">Chat IA</a>
+      <a href="/#quiz">Quiz</a>
+      <a href="/#actus">Actus</a>
+      <a href="/histoire" aria-current="page">Histoire</a>
+      <a href="/#apropos">À propos</a>
+      <a href="/#mentions">Mentions légales</a>
+    </nav>
+    <div class="nav-right">
+      <select id="langSelect" aria-label="Langue" class="lang-select">
+        <option value="fr" selected>🇫🇷 FR</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+      </select>
+      <a href="/#hub" class="btn-cta">Commencer</a>
+      <button id="menuBtn" class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobileMenu" class="mobile-menu" role="navigation" aria-label="Menu mobile">
+  <a href="/#hub">🏠 Accueil</a>
+  <a href="/#apprendre">📚 Apprendre</a>
+  <a href="/#simulateur">📈 Simulateur</a>
+  <a href="/#chat">💬 Chat IA</a>
+  <a href="/#quiz">🧠 Quiz</a>
+  <a href="/#actus">📰 Actus</a>
+  <a href="/histoire">📜 Histoire</a>
+  <a href="/#apropos">👤 À propos</a>
+  <a href="/#mentions">⚖️ Mentions légales</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hist-hero">
+  <div class="hist-hero-bg-grid"></div>
+  <div class="hist-glow hist-glow-1"></div>
+  <div class="hist-glow hist-glow-2"></div>
+  <div class="wrap hist-hero-inner">
+    <div class="hero-badge hist-badge">📜 Histoire des marchés</div>
+    <h1 class="hist-h1">Ce que <em>400 ans</em> de marchés<br>peuvent t'apprendre</h1>
+    <p class="hist-hero-lead">Des krachs les plus violents aux plus belles réussites — les cycles se répètent. Les comprendre, c'est déjà mieux investir.</p>
+    <div class="hist-hero-actions">
+      <a href="#timeline" class="btn-primary">🕐 Voir la chronologie</a>
+      <a href="#legendes" class="btn-ghost">📈 Voir les légendes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BLOC 1 : FRISE CHRONOLOGIQUE ═══ -->
+<section class="hist-section" id="timeline">
+  <div class="wrap">
+    <div class="section-label hist-label">Chronologie</div>
+    <h2 class="hist-h2">Les grandes dates des marchés</h2>
+    <p class="hist-section-sub">Dix moments qui ont façonné la finance moderne — du premier krach au moteur IA d'aujourd'hui.</p>
+
+    <div class="hist-timeline" id="histTimeline">
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">1602</div>
+          <h3>La première bourse moderne</h3>
+          <p>À Amsterdam, la Compagnie néerlandaise des Indes orientales (VOC) émet les premières actions négociables de l'histoire — la bourse moderne est née.</p>
+          <span class="hist-tl-stat">1ère action cotée au monde</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">1929</div>
+          <h3>Le krach de 1929</h3>
+          <p>Le "Jeudi noir" puis le "Mardi noir" d'octobre 1929 déclenchent la Grande Dépression. Le Dow Jones met 25 ans à retrouver son niveau d'avant-crise.</p>
+          <span class="hist-tl-stat">-89% sur le Dow Jones (1929–1932)</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">1971</div>
+          <h3>La fin de Bretton Woods</h3>
+          <p>Richard Nixon met fin à la convertibilité du dollar en or. Les monnaies se mettent à flotter librement les unes par rapport aux autres.</p>
+          <span class="hist-tl-stat">Fin de l'étalon-or</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">1987</div>
+          <h3>Le lundi noir</h3>
+          <p>Le 19 octobre 1987, les marchés mondiaux s'effondrent en une seule séance, sans déclencheur macroéconomique clairement identifié.</p>
+          <span class="hist-tl-stat">-22,6% en une journée (Dow Jones)</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">2000</div>
+          <h3>La bulle Internet éclate</h3>
+          <p>Après une euphorie spéculative sur les valeurs technologiques, le Nasdaq s'effondre entre 2000 et 2002, emportant des centaines de start-up.</p>
+          <span class="hist-tl-stat">-78% pour le Nasdaq (2000–2002)</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">2008</div>
+          <h3>Les subprimes et Lehman Brothers</h3>
+          <p>Le 15 septembre 2008, la banque Lehman Brothers fait faillite — la plus grande faillite de l'histoire américaine — et embrase la crise financière mondiale.</p>
+          <span class="hist-tl-stat">~600 milliards $ d'actifs en faillite</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">2009</div>
+          <h3>La naissance du Bitcoin</h3>
+          <p>Le 3 janvier 2009, Satoshi Nakamoto mine le premier bloc de la blockchain Bitcoin, posant la première pierre d'une nouvelle classe d'actifs.</p>
+          <span class="hist-tl-stat">Bloc n°0 — 3 janvier 2009</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">2020</div>
+          <h3>Le krach Covid</h3>
+          <p>En 33 jours, les marchés mondiaux perdent plus d'un tiers de leur valeur — puis rebondissent vers de nouveaux records en quelques mois, un record de vitesse.</p>
+          <span class="hist-tl-stat">-34% en 33 jours (S&amp;P 500)</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">2021</div>
+          <h3>GameStop et les "meme stocks"</h3>
+          <p>Une armée de particuliers coordonnés sur Reddit fait s'envoler l'action GameStop, prenant à revers plusieurs fonds spéculatifs vendeurs à découvert.</p>
+          <span class="hist-tl-stat">+1 600% en quelques semaines</span>
+        </div>
+      </article>
+
+      <article class="hist-tl-item hist-reveal">
+        <div class="hist-tl-dot"></div>
+        <div class="hist-tl-card">
+          <div class="hist-tl-year">2022–2026</div>
+          <h3>L'IA, nouveau moteur des marchés</h3>
+          <p>Portée par la demande en puces pour l'intelligence artificielle, Nvidia dépasse les 3 000 milliards de dollars de valorisation et redessine la hiérarchie boursière mondiale.</p>
+          <span class="hist-tl-stat">Nvidia : plus de 3 000 milliards $</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BLOC 2 : LÉGENDES DES MARCHÉS ═══ -->
+<section class="hist-section hist-section-alt" id="legendes">
+  <div class="wrap">
+    <div class="section-label hist-label">Cas d'école</div>
+    <h2 class="hist-h2">Légendes des marchés</h2>
+    <p class="hist-section-sub">Cinq trajectoires réelles qui résument, à elles seules, toutes les leçons de la bourse. Touche un point du graphique pour en savoir plus.</p>
+
+    <div class="hist-legend-grid" id="histLegendGrid">
+      <button class="hist-legend-card hist-reveal" data-target="apple" aria-expanded="false">
+        <div class="hist-legend-top">
+          <div class="hist-legend-icon">🍎</div>
+          <span class="hist-legend-tag">Résilience</span>
+        </div>
+        <h3>Apple</h3>
+        <p>De la quasi-faillite en 1997 à l'entreprise la plus valorisée au monde.</p>
+        <span class="hist-legend-cta">Voir le graphique →</span>
+      </button>
+
+      <button class="hist-legend-card hist-reveal" data-target="amazon" aria-expanded="false">
+        <div class="hist-legend-top">
+          <div class="hist-legend-icon">📦</div>
+          <span class="hist-legend-tag">Patience</span>
+        </div>
+        <h3>Amazon</h3>
+        <p>-90% pendant la bulle Internet, puis l'une des plus grandes réussites boursières.</p>
+        <span class="hist-legend-cta">Voir le graphique →</span>
+      </button>
+
+      <button class="hist-legend-card hist-reveal" data-target="bitcoin" aria-expanded="false">
+        <div class="hist-legend-top">
+          <div class="hist-legend-icon">🪙</div>
+          <span class="hist-legend-tag">Volatilité</span>
+        </div>
+        <h3>Bitcoin</h3>
+        <p>De quasiment 0$ à des sommets records, avec des chutes de -80% très régulières.</p>
+        <span class="hist-legend-cta">Voir le graphique →</span>
+      </button>
+
+      <button class="hist-legend-card hist-reveal" data-target="sp500" aria-expanded="false">
+        <div class="hist-legend-top">
+          <div class="hist-legend-icon">📊</div>
+          <span class="hist-legend-tag">Long terme</span>
+        </div>
+        <h3>Le S&amp;P 500</h3>
+        <p>Sur 100 ans, malgré les crises, la leçon la plus simple : le temps fait le travail.</p>
+        <span class="hist-legend-cta">Voir le graphique →</span>
+      </button>
+
+      <button class="hist-legend-card hist-reveal" data-target="nokia" aria-expanded="false">
+        <div class="hist-legend-top">
+          <div class="hist-legend-icon">📉</div>
+          <span class="hist-legend-tag">L'échec</span>
+        </div>
+        <h3>Nokia</h3>
+        <p>Numéro un mondial du mobile en 2000, dépassée par l'iPhone : rien n'est jamais acquis.</p>
+        <span class="hist-legend-cta">Voir le graphique →</span>
+      </button>
+    </div>
+
+    <!-- Panneau de détail partagé, rempli/affiché par histoire.js -->
+    <div class="hist-detail" id="histDetail" hidden>
+      <button class="hist-detail-close" id="histDetailClose" aria-label="Fermer">✕</button>
+      <div class="hist-detail-head">
+        <div class="hist-detail-icon" id="histDetailIcon"></div>
+        <div>
+          <h3 id="histDetailTitle"></h3>
+          <p class="hist-detail-period" id="histDetailPeriod"></p>
+        </div>
+      </div>
+
+      <div class="hist-chart-wrap">
+        <svg id="histChartSvg" class="hist-chart" viewBox="0 0 800 320" preserveAspectRatio="none" role="img" aria-label="Graphique d'évolution">
+          <path class="hist-chart-grid-line" d="M0,80 L800,80" />
+          <path class="hist-chart-grid-line" d="M0,160 L800,160" />
+          <path class="hist-chart-grid-line" d="M0,240 L800,240" />
+          <path class="hist-chart-fill" id="histChartFill" d="" />
+          <path class="hist-chart-path" id="histChartPath" d="" />
+          <g id="histChartPoints"></g>
+        </svg>
+        <div class="hist-chart-tooltip" id="histChartTooltip" hidden></div>
+      </div>
+      <p class="hist-chart-caption">Courbe illustrative — évolution simplifiée à but pédagogique. Touche ou survole un point pour le détail.</p>
+
+      <div class="hist-detail-stats" id="histDetailStats"></div>
+      <p class="hist-lesson" id="histDetailLesson"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BLOC 3 : LA LEÇON DE L'HISTOIRE ═══ -->
+<section class="hist-section hist-lesson-section">
+  <div class="wrap">
+    <div class="section-label hist-label">Conclusion</div>
+    <h2 class="hist-h2">La leçon de l'histoire</h2>
+
+    <div class="hist-lesson-grid">
+      <div class="hist-lesson-card hist-reveal">
+        <div class="hist-lesson-icon">🔁</div>
+        <h3>Les bulles se répètent</h3>
+        <p>Tulipes, Internet, crypto... l'actif change, le schéma humain — euphorie puis panique — reste identique depuis 400 ans.</p>
+      </div>
+      <div class="hist-lesson-card hist-reveal">
+        <div class="hist-lesson-icon">🛡️</div>
+        <h3>Les krachs sont temporaires</h3>
+        <p>Pour un indice large et diversifié comme le S&amp;P 500, chaque krach de l'histoire a fini par être suivi d'un nouveau plus haut.</p>
+      </div>
+      <div class="hist-lesson-card hist-reveal">
+        <div class="hist-lesson-icon">⏳</div>
+        <h3>Le temps est ton allié</h3>
+        <p>Plus l'horizon d'investissement est long, plus le poids d'un krach ponctuel s'efface face aux intérêts composés.</p>
+      </div>
+    </div>
+
+    <p class="hist-disclaimer">⚠️ Les performances passées ne préjugent pas des performances futures. Ce contenu est éducatif et ne constitue en aucun cas un conseil en investissement.</p>
+
+    <div class="hist-cta-row">
+      <a href="/#apprendre" class="btn-primary">📚 Explorer les modules pédagogiques</a>
+      <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="btn-ghost">📷 Suivre @financia_cloud</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer hist-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="logo">Financi<span>a</span></span>
+      <p>L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.</p>
+      <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="footer-insta">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @financia_cloud
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="/#apprendre">Apprendre</a>
+      <a href="/#simulateur">Simulateur</a>
+      <a href="/#chat">Chat IA</a>
+      <a href="/#quiz">Quiz</a>
+      <a href="/#actus">Actus</a>
+      <a href="/histoire">Histoire</a>
+      <a href="/#apropos">À propos</a>
+      <a href="/#mentions">Mentions légales</a>
+    </div>
+    <div class="footer-legal">
+      <p>© <span id="year"></span> Financia · Projet éducatif · Pas de conseil en investissement</p>
+    </div>
+  </div>
+</footer>
+
+<script src="./histoire.js"></script>
+</body>
+</html>

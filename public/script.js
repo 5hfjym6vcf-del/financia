@@ -445,9 +445,7 @@ async function loadActus() {
   const grid = $('#actus-grid');
   if (!grid) return;
   try {
-    const res = await fetch(
-      'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=financial_markets,economy_fiscal&sort=LATEST&limit=6&apikey=N2V6TQUYHXMM4OM0'
-    );
+    const res = await fetch('/api/actus');
     if (!res.ok) throw new Error();
     const data = await res.json();
     if (data.Information || data.Note) throw new Error();
@@ -542,4 +540,303 @@ loadActus();
       btn.textContent = 'Je m\'inscris';
     }
   });
+})();
+
+// ── FAQ carousel + free question (moved from inline <script> in index.html) ──
+// ── FAQ carousel ──
+(function () {
+  const FAQ = [
+    { q: "Financia est-il vraiment gratuit ?", a: "Oui, 100% gratuit. Pas de frais cachés, pas de pub, pas d'abonnement." },
+    { q: "C'est quoi un ETF ?", a: "Un ETF est un panier d'actions que tu achètes en une seule fois. Il te permet d'investir dans des centaines d'entreprises avec un seul produit." },
+    { q: "À partir de quel âge peut-on investir ?", a: "Dès 18 ans tu peux ouvrir un PEA ou un CTO seul. Avant 18 ans, avec l'accord de tes parents." },
+    { q: "Combien faut-il pour commencer ?", a: "Certaines plateformes permettent d'investir dès 1€. L'important c'est la régularité, pas le montant." },
+    { q: "Est-ce que Financia gère mon argent ?", a: "Non. Financia est un site éducatif. Nous t'expliquons comment investir, mais nous ne gérons aucun fonds." },
+    { q: "C'est quoi un PEA ?", a: "Le Plan d'Épargne en Actions est un compte qui te permet d'investir en bourse avec une fiscalité avantageuse après 5 ans." },
+    { q: "Le chatbot IA est-il fiable ?", a: "Notre IA est conçue pour l'éducation financière. Elle te donne des informations pédagogiques, pas des conseils d'investissement personnalisés." },
+    { q: "Quelle différence entre PEA et CTO ?", a: "Le PEA est plafonné à 150 000€ mais moins taxé après 5 ans. Le CTO est illimité mais taxé à 30% (flat tax)." },
+  ];
+
+  const track  = document.getElementById('faqTrack');
+  const dotsEl = document.getElementById('faqDots');
+  const prev   = document.getElementById('faqPrev');
+  const next   = document.getElementById('faqNext');
+  let cur = 0, timer = null;
+
+  FAQ.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'faq-card';
+    card.innerHTML = `<div class="faq-q">${item.q}</div><div class="faq-a">${item.a}</div>`;
+    track.appendChild(card);
+
+    const dot = document.createElement('div');
+    dot.className = 'faq-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+
+  function goTo(idx) {
+    cur = (idx + FAQ.length) % FAQ.length;
+    track.style.transform = `translateX(-${cur * (track.parentElement.offsetWidth + 20)}px)`;
+    dotsEl.querySelectorAll('.faq-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(cur + 1), 4000);
+  }
+
+  prev.addEventListener('click', () => { goTo(cur - 1); startAuto(); });
+  next.addEventListener('click', () => { goTo(cur + 1); startAuto(); });
+  startAuto();
+})();
+
+// ── FAQ free question ──
+(function () {
+  const input   = document.getElementById('faqInput');
+  const btn     = document.getElementById('faqAskBtn');
+  const card    = document.getElementById('faqAnswerCard');
+  const powered = document.getElementById('faqPowered');
+
+  async function ask() {
+    const q = input.value.trim();
+    if (!q) return;
+    btn.disabled = true;
+    btn.textContent = 'Chargement…';
+    card.classList.remove('visible');
+    powered.style.display = 'none';
+
+    try {
+      const r = await fetch('/api/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: q + ' (réponds en maximum 3 phrases simples)', lang: 'fr' }),
+      });
+      const data = await r.json();
+      card.textContent = data.text || data.error || 'Désolé, une erreur est survenue.';
+    } catch {
+      card.textContent = 'Désolé, une erreur est survenue. Réessaie dans un instant.';
+    }
+
+    card.classList.add('visible');
+    powered.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Poser ma question';
+  }
+
+  btn.addEventListener('click', ask);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') ask(); });
+})();
+
+// ── Avis communauté (moved from inline <script> in index.html) ──
+// ── Avis communauté ──
+(function () {
+  const grid      = document.getElementById('avisGrid');
+  const form      = document.getElementById('avisForm');
+  const prenomEl  = document.getElementById('avisPrenom');
+  const texteEl   = document.getElementById('avisTexte');
+  const charCount = document.getElementById('avisCharCount');
+  const msgEl     = document.getElementById('avisMsg');
+  const submitBtn = document.getElementById('avisSubmit');
+  const starPick  = document.getElementById('avisStarPick');
+  const starLabel = document.getElementById('avisStarLabel');
+  const stars     = starPick.querySelectorAll('span');
+  let selectedNote = 0;
+
+  function starsHtml(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+    } catch { return iso; }
+  }
+
+  function renderGrid(avis) {
+    if (!avis.length) {
+      grid.innerHTML = `
+        <div class="avis-empty">
+          <div class="avis-empty-emoji">💬</div>
+          <div class="avis-empty-title">Sois le premier à laisser un avis !</div>
+          <div class="avis-empty-sub">Dis-nous ce que tu penses de Financia.</div>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = avis.map(a => `
+      <div class="avis-card">
+        <div class="avis-card-top">
+          <span class="avis-prenom">${a.prenom}</span>
+          <span class="avis-stars">${starsHtml(a.note)}</span>
+        </div>
+        <p class="avis-texte">${a.texte}</p>
+        <span class="avis-date">${fmtDate(a.created_at)}</span>
+      </div>
+    `).join('');
+  }
+
+  function showMsg(text, type) {
+    msgEl.textContent = text;
+    msgEl.className = 'avis-msg ' + type;
+    msgEl.style.display = 'block';
+  }
+
+  // Star picker
+  stars.forEach(s => {
+    s.addEventListener('mouseenter', () => {
+      stars.forEach(x => x.classList.toggle('on', parseInt(x.dataset.v) <= parseInt(s.dataset.v)));
+    });
+    s.addEventListener('mouseleave', () => {
+      stars.forEach(x => x.classList.toggle('on', parseInt(x.dataset.v) <= selectedNote));
+    });
+    s.addEventListener('click', () => {
+      selectedNote = parseInt(s.dataset.v);
+      const labels = ['', 'Mauvais', 'Passable', 'Bien', 'Très bien', 'Excellent'];
+      starLabel.textContent = labels[selectedNote];
+      stars.forEach(x => x.classList.toggle('on', parseInt(x.dataset.v) <= selectedNote));
+    });
+  });
+
+  // Char counter
+  texteEl.addEventListener('input', () => { charCount.textContent = texteEl.value.length; });
+
+  // Load avis
+  fetch('/api/avis')
+    .then(r => r.json())
+    .then(renderGrid)
+    .catch(() => { grid.innerHTML = '<div class="avis-empty">Impossible de charger les avis.</div>'; });
+
+  // Submit
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    msgEl.style.display = 'none';
+    const prenom = prenomEl.value.trim();
+    const texte  = texteEl.value.trim();
+
+    if (!prenom) return showMsg('Veuillez entrer votre prénom.', 'err');
+    if (!selectedNote) return showMsg('Veuillez sélectionner une note.', 'err');
+    if (!texte) return showMsg('Veuillez écrire un avis.', 'err');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Publication…';
+
+    try {
+      const r = await fetch('/api/avis', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prenom, note: selectedNote, texte }),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || 'Erreur serveur');
+
+      showMsg('✅ Merci pour votre avis !', 'ok');
+      form.reset();
+      selectedNote = 0;
+      charCount.textContent = '0';
+      starLabel.textContent = 'Cliquez pour noter';
+      stars.forEach(x => x.classList.remove('on'));
+
+      // Refresh grid
+      fetch('/api/avis').then(r => r.json()).then(renderGrid).catch(() => {});
+    } catch (err) {
+      showMsg(err.message, 'err');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Publier mon avis';
+    }
+  });
+})();
+
+// ── News widget carousel (moved from inline <script> in index.html) ──
+(function () {
+  const track   = document.getElementById('newsTrack');
+  const dotsEl  = document.getElementById('newsDots');
+  const prevBtn = document.getElementById('newsPrev');
+  const nextBtn = document.getElementById('newsNext');
+  let cards = [];
+  let current = 0;
+  let autoTimer = null;
+
+  function truncate(str, n) {
+    return str && str.length > n ? str.slice(0, n) + '…' : (str || '');
+  }
+
+  function formatDate(iso) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+    } catch { return ''; }
+  }
+
+  function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function render(articles) {
+    cards = articles.slice(0, 5);
+    track.innerHTML = '';
+    dotsEl.innerHTML = '';
+
+    cards.forEach((article, i) => {
+      const source   = esc(article.source?.name ?? '');
+      const date     = esc(formatDate(article.publishedAt ?? ''));
+      const headline = esc(truncate(article.title ?? '', 80));
+      const url      = article.url ?? '#';
+
+      const card = document.createElement('a');
+      card.className = 'news-card';
+      card.href = url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.innerHTML = `
+        <div class="news-card-meta">
+          <span class="news-source">${source}</span>
+          <span class="news-date">${date}</span>
+          <span class="news-sentiment neu">Finance</span>
+        </div>
+        <div class="news-headline">${headline}</div>
+        <div class="news-card-footer">Lire l'article →</div>
+      `;
+      track.appendChild(card);
+
+      const dot = document.createElement('div');
+      dot.className = 'news-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+
+    goTo(0);
+    startAuto();
+  }
+
+  function goTo(idx) {
+    current = (idx + cards.length) % cards.length;
+    const cardWidth = track.parentElement.offsetWidth;
+    track.style.transform = `translateX(-${current * (cardWidth + 20)}px)`;
+    dotsEl.querySelectorAll('.news-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+
+  fetch('/api/news')
+    .then(r => r.json())
+    .then(data => {
+      const articles = data.articles;
+      if (!articles || !articles.length) throw new Error('empty');
+      render(articles);
+    })
+    .catch((err) => {
+      console.error('[news widget]', err);
+      track.innerHTML = '<div class="news-loading">📊 Actus bientôt disponibles — reviens dans quelques minutes</div>';
+    });
 })();
