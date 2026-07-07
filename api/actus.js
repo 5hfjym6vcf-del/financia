@@ -17,10 +17,11 @@ export default async function handler(req, res) {
 
   const key = process.env.ALPHAVANTAGE_API_KEY;
   if (!key) {
-    console.error('[actus] ALPHAVANTAGE_API_KEY manquant');
+    console.error('[actus] ALPHAVANTAGE_API_KEY manquant (variable non lue par ce déploiement)');
     if (cache) return res.status(200).json({ ...cache, stale: true });
     return res.status(500).json({ error: 'ALPHAVANTAGE_API_KEY not configured' });
   }
+  console.log(`[actus] Clé chargée (longueur ${key.length}, préfixe ${key.slice(0, 3)}***)`);
 
   try {
     const url = new URL('https://www.alphavantage.co/query');
@@ -31,19 +32,44 @@ export default async function handler(req, res) {
     url.searchParams.set('apikey', key);
 
     const r = await fetch(url.toString());
-    const data = await r.json();
 
-    if (data.Information || data.Note) {
-      const errMsg = data.Information || data.Note;
-      console.error('[actus] Alpha Vantage limite/erreur :', errMsg);
+    // Alpha Vantage renvoie parfois un corps non-JSON (texte brut, HTML) sur
+    // certaines erreurs — on l'isole pour ne pas retomber sur un message vague.
+    const raw = await r.text();
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      console.error(`[actus] Réponse non-JSON d'Alpha Vantage (HTTP ${r.status}) :`, raw.slice(0, 200));
+      if (cache) return res.status(200).json({ ...cache, stale: true });
+      return res.status(502).json({ error: `Réponse invalide d'Alpha Vantage (HTTP ${r.status})` });
+    }
+
+    if (!r.ok) {
+      console.error(`[actus] Alpha Vantage HTTP ${r.status} :`, JSON.stringify(data).slice(0, 300));
+      if (cache) return res.status(200).json({ ...cache, stale: true });
+      return res.status(502).json({ error: `Alpha Vantage HTTP ${r.status}` });
+    }
+
+    // Cas fréquent : Alpha Vantage répond 200 avec un message d'erreur dans le
+    // corps (clé invalide, quota atteint) au lieu d'un vrai flux d'articles.
+    if (data.Information || data.Note || data['Error Message']) {
+      const errMsg = data.Information || data.Note || data['Error Message'];
+      console.error('[actus] Alpha Vantage a renvoyé une erreur (clé invalide ou quota) :', errMsg);
       if (cache) return res.status(200).json({ ...cache, stale: true });
       return res.status(502).json({ error: errMsg });
+    }
+
+    if (!Array.isArray(data.feed)) {
+      console.error('[actus] Réponse Alpha Vantage inattendue (pas de champ "feed") :', JSON.stringify(data).slice(0, 300));
+      if (cache) return res.status(200).json({ ...cache, stale: true });
+      return res.status(502).json({ error: 'Réponse Alpha Vantage inattendue' });
     }
 
     // Update cache
     cache = data;
     cacheAt = now;
-    console.log('[actus] Cache mis à jour :', data.feed?.length, 'articles');
+    console.log('[actus] Cache mis à jour :', data.feed.length, 'articles');
 
     res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
     res.setHeader('X-Cache', 'MISS');
