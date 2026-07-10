@@ -3,11 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Financia — Apprends à investir</title>
+  <title data-i18n="meta.titleHome">Financia — Apprends à investir</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
+
+  <!-- i18n : chargé de façon bloquante pour éviter tout flash de contenu FR -->
+  <style>html:not(.i18n-ready) body { visibility: hidden; }</style>
+  <script src="./i18n.js"></script>
+  <script src="./i18n-core.js"></script>
 
   <meta name="description" content="Financia — L'IA qui rend la finance accessible aux jeunes. Bourse, PEA, ETF, assurance-vie expliqués simplement, 100% gratuit." />
   <meta name="robots" content="index, follow" />
@@ -45,21 +50,21 @@
   <div class="nav-inner">
     <a class="logo" href="#">Financi<span>a</span></a>
     <nav class="nav-links">
-      <a href="#apprendre">Apprendre</a>
-      <a href="#simulateur">Simulateur</a>
-      <a href="#chat">Chat IA</a>
-      <a href="#quiz">Quiz</a>
-      <a href="#actus">Actus</a>
-      <a href="/histoire">Histoire</a>
-      <a href="#apropos">À propos</a>
+      <a href="#apprendre" data-i18n="nav.apprendre">Apprendre</a>
+      <a href="#simulateur" data-i18n="nav.simulateur">Simulateur</a>
+      <a href="#chat" data-i18n="nav.chat">Chat IA</a>
+      <a href="#quiz" data-i18n="nav.quiz">Quiz</a>
+      <a href="#actus" data-i18n="nav.actus">Actus</a>
+      <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
+      <a href="#apropos" data-i18n="nav.apropos">À propos</a>
     </nav>
     <div class="nav-right">
-      <select id="langSelect" aria-label="Langue" class="lang-select">
+      <select id="langSelect" aria-label="Langue" class="lang-select" data-i18n-aria="nav.langAria">
         <option value="fr" selected>🇫🇷 FR</option>
         <option value="en">🇬🇧 EN</option>
         <option value="es">🇪🇸 ES</option>
       </select>
-      <a href="#hub" class="btn-cta">Commencer</a>
+      <a href="#hub" class="btn-cta" data-i18n="nav.commencer">Commencer</a>
       <button id="menuBtn" class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -68,14 +73,14 @@
 </header>
 
 <div id="mobileMenu" class="mobile-menu" role="navigation" aria-label="Menu mobile">
-  <a href="#hub">🏠 Accueil</a>
-  <a href="#apprendre">📚 Apprendre</a>
-  <a href="#simulateur">📈 Simulateur</a>
-  <a href="#chat">💬 Chat IA</a>
-  <a href="#quiz">🧠 Quiz</a>
-  <a href="#actus">📰 Actus</a>
-  <a href="/histoire">📜 Histoire</a>
-  <a href="#apropos">👤 À propos</a>
+  <a href="#hub" data-i18n="mobileMenu.accueil">🏠 Accueil</a>
+  <a href="#apprendre" data-i18n="mobileMenu.apprendre">📚 Apprendre</a>
+  <a href="#simulateur" data-i18n="mobileMenu.simulateur">📈 Simulateur</a>
+  <a href="#chat" data-i18n="mobileMenu.chat">💬 Chat IA</a>
+  <a href="#quiz" data-i18n="mobileMenu.quiz">🧠 Quiz</a>
+  <a href="#actus" data-i18n="mobileMenu.actus">📰 Actus</a>
+  <a href="/histoire" data-i18n="mobileMenu.histoire">📜 Histoire</a>
+  <a href="#apropos" data-i18n="mobileMenu.apropos">👤 À propos</a>
 </div>
 
 <div class="hero-section">
@@ -85,27 +90,27 @@
   <section class="hero">
     <div class="hero-bg-grid"></div>
     <div class="hero-inner">
-      <div class="hero-badge">🚀 Pour les 18–30 ans · 100% pédagogique</div>
-      <h1>Investis <em>intelligemment</em><br>dès aujourd'hui</h1>
-      <p class="hero-lead">Financia t'explique la bourse, le PEA, l'assurance-vie — sans jargon, sans bullshit, avec une IA qui s'adapte à toi.</p>
+      <div class="hero-badge" data-i18n="hero.badge">🚀 Pour les 18–30 ans · 100% pédagogique</div>
+      <h1 data-i18n-html="hero.titleHtml">Investis <em>intelligemment</em><br>dès aujourd'hui</h1>
+      <p class="hero-lead" data-i18n="hero.lead">Financia t'explique la bourse, le PEA, l'assurance-vie — sans jargon, sans bullshit, avec une IA qui s'adapte à toi.</p>
       <div class="hero-actions">
-        <a href="#chat" class="btn-primary">💬 Parler à Financia</a>
-        <a href="#quiz" class="btn-ghost">🧠 Tester mon niveau</a>
+        <a href="#chat" class="btn-primary" data-i18n="hero.cta1">💬 Parler à Financia</a>
+        <a href="#quiz" class="btn-ghost" data-i18n="hero.cta2">🧠 Tester mon niveau</a>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><span class="hstat-n" data-count="0" data-suffix="%">0%</span><span class="hstat-l">Conseils perso</span></div>
+        <div class="hstat"><span class="hstat-n" data-count="0" data-suffix="%">0%</span><span class="hstat-l" data-i18n="hero.statConseils">Conseils perso</span></div>
         <div class="hstat-div"></div>
-        <div class="hstat"><span class="hstat-n" data-count="100" data-suffix="%">100%</span><span class="hstat-l">Pédagogie</span></div>
+        <div class="hstat"><span class="hstat-n" data-count="100" data-suffix="%">100%</span><span class="hstat-l" data-i18n="hero.statPedagogie">Pédagogie</span></div>
         <div class="hstat-div"></div>
-        <div class="hstat"><span class="hstat-n" data-count="3">3</span><span class="hstat-l">Langues</span></div>
+        <div class="hstat"><span class="hstat-n" data-count="3">3</span><span class="hstat-l" data-i18n="hero.statLangues">Langues</span></div>
         <div class="hstat-div"></div>
-        <div class="hstat"><span class="hstat-n">Gratuit</span><span class="hstat-l">Pour toujours</span></div>
+        <div class="hstat"><span class="hstat-n" data-i18n="hero.statGratuitN">Gratuit</span><span class="hstat-l" data-i18n="hero.statGratuitL">Pour toujours</span></div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="portfolio-card">
         <div class="pc-header">
-          <span class="pc-label">Mon portefeuille simulé</span>
+          <span class="pc-label" data-i18n="hero.pcLabel">Mon portefeuille simulé</span>
           <span class="pc-badge">+13,5%</span>
         </div>
         <div class="pc-value">6 917 €</div>
@@ -123,18 +128,18 @@
           <div class="pc-chart-glow"></div>
         </div>
         <div class="pc-assets">
-          <div class="pc-asset"><span class="pc-dot green"></span>PEA ETF<span class="pc-pct">70%</span></div>
-          <div class="pc-asset"><span class="pc-dot teal"></span>Assurance vie<span class="pc-pct">20%</span></div>
-          <div class="pc-asset"><span class="pc-dot amber"></span>Crypto<span class="pc-pct">10%</span></div>
+          <div class="pc-asset"><span class="pc-dot green"></span><span data-i18n="hero.pcAssetPea">PEA ETF</span><span class="pc-pct">70%</span></div>
+          <div class="pc-asset"><span class="pc-dot teal"></span><span data-i18n="hero.pcAssetAv">Assurance vie</span><span class="pc-pct">20%</span></div>
+          <div class="pc-asset"><span class="pc-dot amber"></span><span data-i18n="hero.pcAssetCrypto">Crypto</span><span class="pc-pct">10%</span></div>
         </div>
       </div>
       <div class="mini-card mc-left">
         <div class="mc-icon">📈</div>
-        <div class="mc-text"><strong>+824 €</strong><br><small>Plus-value</small></div>
+        <div class="mc-text"><strong>+824 €</strong><br><small data-i18n="hero.mcPlusValue">Plus-value</small></div>
       </div>
       <div class="mini-card mc-right">
         <div class="mc-icon">🎯</div>
-        <div class="mc-text"><strong>10 000 €</strong><br><small>Objectif</small></div>
+        <div class="mc-text"><strong>10 000 €</strong><br><small data-i18n="hero.mcObjectif">Objectif</small></div>
       </div>
     </div>
   </section>
@@ -143,7 +148,7 @@
 <div class="logo-banner">
   <div class="logo-banner-line"></div>
   <img src="./images/financia-logo-transparent.png" alt="Financia" />
-  <p class="logo-banner-text">La finance, enfin accessible.</p>
+  <p class="logo-banner-text" data-i18n="logoBanner.text1">La finance, enfin accessible.</p>
   <div class="logo-banner-dots">
     <span></span><span></span><span></span>
   </div>
@@ -152,19 +157,19 @@
 <div class="news-widget">
   <div class="news-widget-inner">
     <div class="news-widget-header">
-      <div class="news-widget-title">📊 Actus bourse en direct</div>
-      <a href="#actus" class="news-all-link">Voir toutes les actus →</a>
+      <div class="news-widget-title" data-i18n="newsWidget.title">📊 Actus bourse en direct</div>
+      <a href="#actus" class="news-all-link" data-i18n="newsWidget.seeAll">Voir toutes les actus →</a>
     </div>
     <div class="news-carousel-wrap">
       <div class="news-track-outer">
         <div class="news-track" id="newsTrack">
-          <div class="news-loading">Chargement des actus…</div>
+          <div class="news-loading" data-i18n="newsWidget.loading">Chargement des actus…</div>
         </div>
       </div>
       <div class="news-controls">
-        <button class="news-arrow" id="newsPrev" aria-label="Précédent">‹</button>
+        <button class="news-arrow" id="newsPrev" aria-label="Précédent" data-i18n-aria="newsWidget.prevAria">‹</button>
         <div class="news-dots" id="newsDots"></div>
-        <button class="news-arrow" id="newsNext" aria-label="Suivant">›</button>
+        <button class="news-arrow" id="newsNext" aria-label="Suivant" data-i18n-aria="newsWidget.nextAria">›</button>
       </div>
     </div>
   </div>
@@ -172,56 +177,56 @@
 
 <section id="hub" class="section">
   <div class="wrap">
-    <div class="section-label">Accueil</div>
-    <h2 class="section-title">Par où veux-tu commencer ?</h2>
+    <div class="section-label" data-i18n="hub.label">Accueil</div>
+    <h2 class="section-title" data-i18n="hub.title">Par où veux-tu commencer ?</h2>
     <div class="hub-grid">
       <a href="#apprendre" class="hub-card">
         <div class="hub-card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </div>
-        <h3>Apprendre</h3>
-        <p>PEA, ETF, assurance-vie, crypto — maîtrise les fondamentaux de l'investissement.</p>
-        <span class="hub-card-arrow">Explorer →</span>
+        <h3 data-i18n="hub.apprendre.title">Apprendre</h3>
+        <p data-i18n="hub.apprendre.desc">PEA, ETF, assurance-vie, crypto — maîtrise les fondamentaux de l'investissement.</p>
+        <span class="hub-card-arrow" data-i18n="hub.apprendre.cta">Explorer →</span>
       </a>
       <a href="#simulateur" class="hub-card">
         <div class="hub-card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
-        <h3>Simulateur</h3>
-        <p>Projette ton patrimoine dans 20 ans selon ton capital et tes versements mensuels.</p>
-        <span class="hub-card-arrow">Simuler →</span>
+        <h3 data-i18n="hub.simulateur.title">Simulateur</h3>
+        <p data-i18n="hub.simulateur.desc">Projette ton patrimoine dans 20 ans selon ton capital et tes versements mensuels.</p>
+        <span class="hub-card-arrow" data-i18n="hub.simulateur.cta">Simuler →</span>
       </a>
       <a href="#chat" class="hub-card">
         <div class="hub-card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <h3>Chat IA</h3>
-        <p>Pose toutes tes questions à Financia — une IA pédagogique disponible 24h/24.</p>
-        <span class="hub-card-arrow">Discuter →</span>
+        <h3 data-i18n="hub.chat.title">Chat IA</h3>
+        <p data-i18n="hub.chat.desc">Pose toutes tes questions à Financia — une IA pédagogique disponible 24h/24.</p>
+        <span class="hub-card-arrow" data-i18n="hub.chat.cta">Discuter →</span>
       </a>
       <a href="#quiz" class="hub-card">
         <div class="hub-card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
-        <h3>Quiz</h3>
-        <p>Évalue ton niveau en 5 questions et reçois un plan d'action personnalisé.</p>
-        <span class="hub-card-arrow">Tester →</span>
+        <h3 data-i18n="hub.quiz.title">Quiz</h3>
+        <p data-i18n="hub.quiz.desc">Évalue ton niveau en 5 questions et reçois un plan d'action personnalisé.</p>
+        <span class="hub-card-arrow" data-i18n="hub.quiz.cta">Tester →</span>
       </a>
       <a href="#actus" class="hub-card">
         <div class="hub-card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"/><path d="M4 6H2v16h16v-2"/><line x1="12" y1="8" x2="17" y2="8"/><line x1="12" y1="12" x2="17" y2="12"/><line x1="12" y1="16" x2="17" y2="16"/></svg>
         </div>
-        <h3>Actus</h3>
-        <p>Les dernières nouvelles des marchés financiers pour rester informé.</p>
-        <span class="hub-card-arrow">Lire →</span>
+        <h3 data-i18n="hub.actus.title">Actus</h3>
+        <p data-i18n="hub.actus.desc">Les dernières nouvelles des marchés financiers pour rester informé.</p>
+        <span class="hub-card-arrow" data-i18n="hub.actus.cta">Lire →</span>
       </a>
       <a href="#apropos" class="hub-card">
         <div class="hub-card-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <h3>À propos</h3>
-        <p>L'histoire de Financia et les valeurs qui guident le projet.</p>
-        <span class="hub-card-arrow">Découvrir →</span>
+        <h3 data-i18n="hub.apropos.title">À propos</h3>
+        <p data-i18n="hub.apropos.desc">L'histoire de Financia et les valeurs qui guident le projet.</p>
+        <span class="hub-card-arrow" data-i18n="hub.apropos.cta">Découvrir →</span>
       </a>
     </div>
   </div>
@@ -232,20 +237,20 @@
   <div class="wrap">
     <div class="avis-header">
       <div>
-        <div class="section-label">Communauté</div>
-        <h2 class="section-title">Avis de la communauté</h2>
+        <div class="section-label" data-i18n="avis.label">Communauté</div>
+        <h2 class="section-title" data-i18n="avis.title">Avis de la communauté</h2>
       </div>
     </div>
 
     <div class="avis-grid" id="avisGrid">
-      <div class="avis-empty">Chargement des avis…</div>
+      <div class="avis-empty" data-i18n="avis.loading">Chargement des avis…</div>
     </div>
 
     <div class="avis-form-wrap">
-      <div class="avis-form-title">✍️ Laisser un avis</div>
+      <div class="avis-form-title" data-i18n="avis.formTitle">✍️ Laisser un avis</div>
       <form class="avis-form" id="avisForm" novalidate>
         <div class="avis-form-row">
-          <input type="text" id="avisPrenom" placeholder="Votre prénom (et initiale nom)" maxlength="40" required style="flex:1;min-width:200px;" />
+          <input type="text" id="avisPrenom" placeholder="Votre prénom (et initiale nom)" data-i18n-placeholder="avis.placeholderPrenom" maxlength="40" required style="flex:1;min-width:200px;" />
         </div>
         <div>
           <div style="display:flex;align-items:center;gap:0;">
@@ -256,15 +261,15 @@
               <span data-v="4">★</span>
               <span data-v="5">★</span>
             </div>
-            <span class="avis-star-label" id="avisStarLabel">Cliquez pour noter</span>
+            <span class="avis-star-label" id="avisStarLabel" data-i18n="avis.clickToRate">Cliquez pour noter</span>
           </div>
         </div>
         <div>
-          <textarea id="avisTexte" placeholder="Partagez votre expérience avec Financia…" maxlength="200" required></textarea>
+          <textarea id="avisTexte" placeholder="Partagez votre expérience avec Financia…" data-i18n-placeholder="avis.placeholderTexte" maxlength="200" required></textarea>
           <div class="avis-char-count"><span id="avisCharCount">0</span>/200</div>
         </div>
         <div id="avisMsg" class="avis-msg" style="display:none;"></div>
-        <button type="submit" class="avis-submit" id="avisSubmit">Publier mon avis</button>
+        <button type="submit" class="avis-submit" id="avisSubmit" data-i18n="avis.submitBtn">Publier mon avis</button>
       </form>
     </div>
   </div>
@@ -275,7 +280,7 @@
   <div class="faq-inner">
 
     <!-- Partie 1 : carrousel -->
-    <div class="faq-title">Questions fréquentes 💬</div>
+    <div class="faq-title" data-i18n="faq.title">Questions fréquentes 💬</div>
     <div class="faq-carousel-wrap">
       <div class="faq-track" id="faqTrack"></div>
     </div>
@@ -288,13 +293,13 @@
     <div class="faq-divider"></div>
 
     <!-- Partie 2 : question libre -->
-    <div class="faq-ask-title">Tu as une autre question ?</div>
+    <div class="faq-ask-title" data-i18n="faq.askTitle">Tu as une autre question ?</div>
     <div class="faq-ask-row">
-      <input class="faq-ask-input" id="faqInput" type="text" placeholder="Dis-moi ce que tu te demandes..." maxlength="300" />
-      <button class="faq-ask-btn" id="faqAskBtn">Poser ma question</button>
+      <input class="faq-ask-input" id="faqInput" type="text" placeholder="Dis-moi ce que tu te demandes..." data-i18n-placeholder="faq.inputPlaceholder" maxlength="300" />
+      <button class="faq-ask-btn" id="faqAskBtn" data-i18n="faq.askBtn">Poser ma question</button>
     </div>
     <div class="faq-answer-card" id="faqAnswerCard"></div>
-    <div class="faq-powered" id="faqPowered" style="display:none;">Propulsé par l'IA Financia 🤖</div>
+    <div class="faq-powered" id="faqPowered" style="display:none;" data-i18n="faq.poweredBy">Propulsé par l'IA Financia 🤖</div>
 
   </div>
 </section>
@@ -302,7 +307,7 @@
 <div class="logo-banner">
   <div class="logo-banner-line"></div>
   <img src="./images/financia-logo-transparent.png" alt="Financia" />
-  <p class="logo-banner-text">Comprends la finance, à ton rythme.</p>
+  <p class="logo-banner-text" data-i18n="logoBanner.text2">Comprends la finance, à ton rythme.</p>
   <div class="logo-banner-dots"><span></span><span></span><span></span></div>
   <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="logo-banner-insta">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -312,55 +317,55 @@
 
 <section id="apprendre" class="section">
   <div class="wrap">
-    <div class="section-label">Modules pédagogiques</div>
-    <h2 class="section-title">Tout ce que tu dois savoir<br>pour commencer</h2>
+    <div class="section-label" data-i18n="modules.label">Modules pédagogiques</div>
+    <h2 class="section-title" data-i18n-html="modules.titleHtml">Tout ce que tu dois savoir<br>pour commencer</h2>
     <div class="modules-grid">
       <article class="module-card" data-color="green">
-        <div class="mc-top"><div class="mc-icon-big">💼</div><div class="mc-tag">Essentiel</div></div>
-        <h3>Le PEA</h3>
-        <p>Plan d'Épargne en Actions — l'enveloppe fiscale la plus avantageuse pour investir en Europe.</p>
+        <div class="mc-top"><div class="mc-icon-big">💼</div><div class="mc-tag" data-i18n="modules.pea.tag">Essentiel</div></div>
+        <h3 data-i18n="modules.pea.title">Le PEA</h3>
+        <p data-i18n="modules.pea.desc">Plan d'Épargne en Actions — l'enveloppe fiscale la plus avantageuse pour investir en Europe.</p>
         <div class="mc-actions">
-          <button class="btn-learn ask-btn" data-q="Explique-moi le PEA en détail : avantages, comment l'ouvrir, plafond et fiscalité.">En savoir plus →</button>
+          <button class="btn-learn ask-btn" data-q="Explique-moi le PEA en détail : avantages, comment l'ouvrir, plafond et fiscalité." data-i18n="modules.cta">En savoir plus →</button>
         </div>
       </article>
       <article class="module-card" data-color="blue">
-        <div class="mc-top"><div class="mc-icon-big">🌍</div><div class="mc-tag">Populaire</div></div>
-        <h3>Les ETF</h3>
-        <p>Fonds indiciels cotés — investis dans des centaines d'entreprises en une seule transaction.</p>
+        <div class="mc-top"><div class="mc-icon-big">🌍</div><div class="mc-tag" data-i18n="modules.etf.tag">Populaire</div></div>
+        <h3 data-i18n="modules.etf.title">Les ETF</h3>
+        <p data-i18n="modules.etf.desc">Fonds indiciels cotés — investis dans des centaines d'entreprises en une seule transaction.</p>
         <div class="mc-actions">
-          <button class="btn-learn ask-btn" data-q="Explique-moi ce qu'est un ETF, comment ça marche, les différents types et comment choisir.">En savoir plus →</button>
+          <button class="btn-learn ask-btn" data-q="Explique-moi ce qu'est un ETF, comment ça marche, les différents types et comment choisir." data-i18n="modules.cta">En savoir plus →</button>
         </div>
       </article>
       <article class="module-card" data-color="teal">
-        <div class="mc-top"><div class="mc-icon-big">🛡️</div><div class="mc-tag">Long terme</div></div>
-        <h3>Assurance-vie</h3>
-        <p>Enveloppe flexible et fiscalement optimisée pour préparer l'avenir.</p>
+        <div class="mc-top"><div class="mc-icon-big">🛡️</div><div class="mc-tag" data-i18n="modules.av.tag">Long terme</div></div>
+        <h3 data-i18n="modules.av.title">Assurance-vie</h3>
+        <p data-i18n="modules.av.desc">Enveloppe flexible et fiscalement optimisée pour préparer l'avenir.</p>
         <div class="mc-actions">
-          <button class="btn-learn ask-btn" data-q="Explique-moi l'assurance-vie : différence fonds euros et unités de compte, avantages fiscaux, et comment choisir.">En savoir plus →</button>
+          <button class="btn-learn ask-btn" data-q="Explique-moi l'assurance-vie : différence fonds euros et unités de compte, avantages fiscaux, et comment choisir." data-i18n="modules.cta">En savoir plus →</button>
         </div>
       </article>
       <article class="module-card" data-color="amber">
-        <div class="mc-top"><div class="mc-icon-big">₿</div><div class="mc-tag">Risqué</div></div>
-        <h3>Crypto</h3>
-        <p>Bitcoin, Ethereum — comprendre sans se brûler les ailes.</p>
+        <div class="mc-top"><div class="mc-icon-big">₿</div><div class="mc-tag" data-i18n="modules.crypto.tag">Risqué</div></div>
+        <h3 data-i18n="modules.crypto.title">Crypto</h3>
+        <p data-i18n="modules.crypto.desc">Bitcoin, Ethereum — comprendre sans se brûler les ailes.</p>
         <div class="mc-actions">
-          <button class="btn-learn ask-btn" data-q="Explique-moi les cryptomonnaies pour un débutant : Bitcoin, risques, comment investir intelligemment.">En savoir plus →</button>
+          <button class="btn-learn ask-btn" data-q="Explique-moi les cryptomonnaies pour un débutant : Bitcoin, risques, comment investir intelligemment." data-i18n="modules.cta">En savoir plus →</button>
         </div>
       </article>
       <article class="module-card" data-color="coral">
-        <div class="mc-top"><div class="mc-icon-big">📊</div><div class="mc-tag">Stratégie</div></div>
-        <h3>Diversification</h3>
-        <p>Ne pas mettre tous ses œufs dans le même panier — la règle d'or de l'investissement.</p>
+        <div class="mc-top"><div class="mc-icon-big">📊</div><div class="mc-tag" data-i18n="modules.diversif.tag">Stratégie</div></div>
+        <h3 data-i18n="modules.diversif.title">Diversification</h3>
+        <p data-i18n="modules.diversif.desc">Ne pas mettre tous ses œufs dans le même panier — la règle d'or de l'investissement.</p>
         <div class="mc-actions">
-          <button class="btn-learn ask-btn" data-q="Explique-moi la diversification d'un portefeuille : pourquoi c'est important et comment répartir ses investissements.">En savoir plus →</button>
+          <button class="btn-learn ask-btn" data-q="Explique-moi la diversification d'un portefeuille : pourquoi c'est important et comment répartir ses investissements." data-i18n="modules.cta">En savoir plus →</button>
         </div>
       </article>
       <article class="module-card" data-color="purple">
-        <div class="mc-top"><div class="mc-icon-big">⏰</div><div class="mc-tag">Fondamental</div></div>
-        <h3>Intérêts composés</h3>
-        <p>La 8ème merveille du monde selon Einstein — comprendre pourquoi commencer tôt change tout.</p>
+        <div class="mc-top"><div class="mc-icon-big">⏰</div><div class="mc-tag" data-i18n="modules.interets.tag">Fondamental</div></div>
+        <h3 data-i18n="modules.interets.title">Intérêts composés</h3>
+        <p data-i18n="modules.interets.desc">La 8ème merveille du monde selon Einstein — comprendre pourquoi commencer tôt change tout.</p>
         <div class="mc-actions">
-          <button class="btn-learn ask-btn" data-q="Explique-moi les intérêts composés avec des exemples concrets et pourquoi c'est crucial de commencer à investir jeune.">En savoir plus →</button>
+          <button class="btn-learn ask-btn" data-q="Explique-moi les intérêts composés avec des exemples concrets et pourquoi c'est crucial de commencer à investir jeune." data-i18n="modules.cta">En savoir plus →</button>
         </div>
       </article>
     </div>
@@ -379,7 +384,7 @@
 <div class="logo-banner">
   <div class="logo-banner-line"></div>
   <img src="./images/financia-logo-transparent.png" alt="Financia" />
-  <p class="logo-banner-text">Projette ton avenir financier.</p>
+  <p class="logo-banner-text" data-i18n="logoBanner.text3">Projette ton avenir financier.</p>
   <div class="logo-banner-dots"><span></span><span></span><span></span></div>
   <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="logo-banner-insta">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -389,32 +394,32 @@
 
 <section id="simulateur" class="section section-dark">
   <div class="wrap">
-    <div class="section-label">Outil interactif</div>
-    <h2 class="section-title">Simule ton portefeuille<br>dans 20 ans</h2>
+    <div class="section-label" data-i18n="simulator.label">Outil interactif</div>
+    <h2 class="section-title" data-i18n-html="simulator.titleHtml">Simule ton portefeuille<br>dans 20 ans</h2>
     <div class="simulator-grid">
       <div class="simulator-controls">
         <div class="sim-field">
-          <label>Capital de départ</label>
+          <label data-i18n="simulator.capitalLabel">Capital de départ</label>
           <div class="sim-input-row"><input type="range" id="simCapital" min="0" max="20000" step="100" value="6000" /><span id="simCapitalVal" class="sim-val">6 000 €</span></div>
         </div>
         <div class="sim-field">
-          <label>Versement mensuel</label>
+          <label data-i18n="simulator.monthlyLabel">Versement mensuel</label>
           <div class="sim-input-row"><input type="range" id="simMonthly" min="0" max="1000" step="10" value="100" /><span id="simMonthlyVal" class="sim-val">100 €/mois</span></div>
         </div>
         <div class="sim-field">
-          <label>Durée (années)</label>
+          <label data-i18n="simulator.yearsLabel">Durée (années)</label>
           <div class="sim-input-row"><input type="range" id="simYears" min="5" max="40" step="1" value="20" /><span id="simYearsVal" class="sim-val">20 ans</span></div>
         </div>
         <div class="sim-field">
-          <label>Rendement annuel estimé</label>
+          <label data-i18n="simulator.rateLabel">Rendement annuel estimé</label>
           <div class="sim-input-row"><input type="range" id="simRate" min="2" max="12" step="0.5" value="8" /><span id="simRateVal" class="sim-val">8%</span></div>
         </div>
         <div class="sim-results">
-          <div class="sim-result-item"><span class="sim-result-label">Total investi</span><span class="sim-result-val" id="simTotalInvested">—</span></div>
-          <div class="sim-result-item"><span class="sim-result-label">Gains générés</span><span class="sim-result-val green" id="simGains">—</span></div>
-          <div class="sim-result-item sim-result-big"><span class="sim-result-label">Patrimoine final</span><span class="sim-result-val" id="simFinal">—</span></div>
+          <div class="sim-result-item"><span class="sim-result-label" data-i18n="simulator.totalInvestedLabel">Total investi</span><span class="sim-result-val" id="simTotalInvested">—</span></div>
+          <div class="sim-result-item"><span class="sim-result-label" data-i18n="simulator.gainsLabel">Gains générés</span><span class="sim-result-val green" id="simGains">—</span></div>
+          <div class="sim-result-item sim-result-big"><span class="sim-result-label" data-i18n="simulator.finalLabel">Patrimoine final</span><span class="sim-result-val" id="simFinal">—</span></div>
         </div>
-        <button class="btn-primary full" id="simAskBtn">💬 Analyser avec Financia →</button>
+        <button class="btn-primary full" id="simAskBtn" data-i18n="simulator.analyzeBtn">💬 Analyser avec Financia →</button>
       </div>
       <div class="simulator-chart-area">
         <canvas id="simChart" width="400" height="300"></canvas>
@@ -425,26 +430,26 @@
 
 <section id="chat" class="section">
   <div class="wrap">
-    <div class="section-label">Intelligence artificielle</div>
-    <h2 class="section-title">Pose toutes tes questions<br>à Financia</h2>
+    <div class="section-label" data-i18n="chat.label">Intelligence artificielle</div>
+    <h2 class="section-title" data-i18n-html="chat.titleHtml">Pose toutes tes questions<br>à Financia</h2>
     <div class="chat-container">
       <div class="chat-tags">
-        <button class="chat-tag" data-q="Explique-moi ce qu'est un PEA et comment l'ouvrir.">#PEA</button>
-        <button class="chat-tag" data-q="Quelle est la différence entre un ETF World et un ETF S&P 500 ?">#ETF</button>
-        <button class="chat-tag" data-q="Comment investir 500€ quand on est étudiant ?">#Débutant</button>
-        <button class="chat-tag" data-q="Explique-moi les intérêts composés avec un exemple.">#Intérêts composés</button>
-        <button class="chat-tag" data-q="Quelle est la différence entre le PEA et le CTO ?">#PEA vs CTO</button>
+        <button class="chat-tag" data-q="Explique-moi ce qu'est un PEA et comment l'ouvrir." data-i18n="chat.tagPea">#PEA</button>
+        <button class="chat-tag" data-q="Quelle est la différence entre un ETF World et un ETF S&P 500 ?" data-i18n="chat.tagEtf">#ETF</button>
+        <button class="chat-tag" data-q="Comment investir 500€ quand on est étudiant ?" data-i18n="chat.tagDebutant">#Débutant</button>
+        <button class="chat-tag" data-q="Explique-moi les intérêts composés avec un exemple." data-i18n="chat.tagInterets">#Intérêts composés</button>
+        <button class="chat-tag" data-q="Quelle est la différence entre le PEA et le CTO ?" data-i18n="chat.tagPeaCto">#PEA vs CTO</button>
       </div>
       <div id="chat-window" class="chat-window">
         <div class="msg bot">
           <div class="bot-avatar">F</div>
-          <div class="bubble">Salut ! Je suis Financia 👋 Je t'explique tout sur l'investissement — PEA, ETF, assurance-vie, bourse... Pose-moi n'importe quelle question !</div>
+          <div class="bubble" data-i18n="chat.welcomeMsg">Salut ! Je suis Financia 👋 Je t'explique tout sur l'investissement — PEA, ETF, assurance-vie, bourse... Pose-moi n'importe quelle question !</div>
         </div>
       </div>
       <form id="chat-form" class="chat-form" autocomplete="off">
-        <button type="button" id="micBtn" class="mic-btn" title="Dicter" aria-label="Dicter">🎙️</button>
-        <input id="chat-input" type="text" placeholder="Pose ta question sur l'investissement..." aria-label="Message" />
-        <button type="submit" class="send-btn" aria-label="Envoyer">
+        <button type="button" id="micBtn" class="mic-btn" title="Dicter" aria-label="Dicter" data-i18n-title="chat.micTitle" data-i18n-aria="chat.micTitle">🎙️</button>
+        <input id="chat-input" type="text" placeholder="Pose ta question sur l'investissement..." aria-label="Message" data-i18n-placeholder="chat.inputPlaceholder" />
+        <button type="submit" class="send-btn" aria-label="Envoyer" data-i18n-aria="chat.sendAria">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
       </form>
@@ -465,55 +470,55 @@
 
 <section id="quiz" class="section section-dark">
   <div class="wrap">
-    <div class="section-label">Évaluation</div>
-    <h2 class="section-title">Ton profil investisseur<br>en 5 questions</h2>
+    <div class="section-label" data-i18n="quiz.label">Évaluation</div>
+    <h2 class="section-title" data-i18n-html="quiz.titleHtml">Ton profil investisseur<br>en 5 questions</h2>
     <div class="quiz-container">
       <div class="quiz-progress-bar"><div id="quizProgress" class="quiz-progress-fill" style="width:0%"></div></div>
       <div id="quiz-body">
         <div class="quiz-step active" id="step-1">
-          <div class="quiz-q">Quel âge as-tu ?</div>
+          <div class="quiz-q" data-i18n="quiz.step1Q">Quel âge as-tu ?</div>
           <div class="quiz-input-wrap">
             <div class="quiz-input-row-free">
-              <input type="number" id="quiz-age" class="quiz-free-input" placeholder="Ex : 22" min="15" max="99" />
+              <input type="number" id="quiz-age" class="quiz-free-input" placeholder="Ex : 22" data-i18n-placeholder="quiz.agePlaceholder" min="15" max="99" />
             </div>
-            <button class="btn-primary quiz-next" data-step="1">Suivant →</button>
+            <button class="btn-primary quiz-next" data-step="1" data-i18n="quiz.nextBtn">Suivant →</button>
           </div>
         </div>
         <div class="quiz-step" id="step-2">
-          <div class="quiz-q">Quelle est ta situation professionnelle ?</div>
+          <div class="quiz-q" data-i18n="quiz.step2Q">Quelle est ta situation professionnelle ?</div>
           <div class="quiz-options">
-            <button class="quiz-opt" data-name="q2" data-text="Étudiant(e)">🎓 Étudiant(e)</button>
-            <button class="quiz-opt" data-name="q2" data-text="Salarié(e)">💼 Salarié(e)</button>
-            <button class="quiz-opt" data-name="q2" data-text="Indépendant(e)">🧑‍💻 Indépendant(e)</button>
-            <button class="quiz-opt" data-name="q2" data-text="Sans emploi">🔍 Sans emploi</button>
+            <button class="quiz-opt" data-name="q2" data-key="etudiant" data-i18n="quiz.q2.etudiant">🎓 Étudiant(e)</button>
+            <button class="quiz-opt" data-name="q2" data-key="salarie" data-i18n="quiz.q2.salarie">💼 Salarié(e)</button>
+            <button class="quiz-opt" data-name="q2" data-key="independant" data-i18n="quiz.q2.independant">🧑‍💻 Indépendant(e)</button>
+            <button class="quiz-opt" data-name="q2" data-key="sansEmploi" data-i18n="quiz.q2.sansEmploi">🔍 Sans emploi</button>
           </div>
         </div>
         <div class="quiz-step" id="step-3">
-          <div class="quiz-q">Combien peux-tu mettre de côté chaque mois ?</div>
+          <div class="quiz-q" data-i18n="quiz.step3Q">Combien peux-tu mettre de côté chaque mois ?</div>
           <div class="quiz-input-wrap">
             <div class="quiz-input-row-free">
-              <input type="number" id="quiz-amount" class="quiz-free-input" placeholder="Ex : 150" min="0" />
+              <input type="number" id="quiz-amount" class="quiz-free-input" placeholder="Ex : 150" data-i18n-placeholder="quiz.amountPlaceholder" min="0" />
               <span class="quiz-currency-symbol">€</span>
             </div>
-            <button class="btn-primary quiz-next" data-step="3">Suivant →</button>
+            <button class="btn-primary quiz-next" data-step="3" data-i18n="quiz.nextBtn">Suivant →</button>
           </div>
         </div>
         <div class="quiz-step" id="step-4">
-          <div class="quiz-q">Tu as déjà investi ?</div>
+          <div class="quiz-q" data-i18n="quiz.step4Q">Tu as déjà investi ?</div>
           <div class="quiz-options">
-            <button class="quiz-opt" data-name="q4" data-text="Jamais, je pars de zéro">🌱 Jamais, je pars de zéro</button>
-            <button class="quiz-opt" data-name="q4" data-text="J'ai un livret A ou LDDS">📋 J'ai un livret A ou LDDS</button>
-            <button class="quiz-opt" data-name="q4" data-text="J'ai un PEA ou une assurance-vie">📈 J'ai un PEA ou une assurance-vie</button>
-            <button class="quiz-opt" data-name="q4" data-text="J'investis régulièrement">🚀 J'investis régulièrement</button>
+            <button class="quiz-opt" data-name="q4" data-key="jamais" data-i18n="quiz.q4.jamais">🌱 Jamais, je pars de zéro</button>
+            <button class="quiz-opt" data-name="q4" data-key="livret" data-i18n="quiz.q4.livret">📋 J'ai un livret A ou LDDS</button>
+            <button class="quiz-opt" data-name="q4" data-key="peaAv" data-i18n="quiz.q4.peaAv">📈 J'ai un PEA ou une assurance-vie</button>
+            <button class="quiz-opt" data-name="q4" data-key="regulier" data-i18n="quiz.q4.regulier">🚀 J'investis régulièrement</button>
           </div>
         </div>
         <div class="quiz-step" id="step-5">
-          <div class="quiz-q">Quel est ton objectif principal ?</div>
+          <div class="quiz-q" data-i18n="quiz.step5Q">Quel est ton objectif principal ?</div>
           <div class="quiz-options">
-            <button class="quiz-opt" data-name="q5" data-text="Constituer une épargne de sécurité">🛡️ Constituer une épargne de sécurité</button>
-            <button class="quiz-opt" data-name="q5" data-text="Préparer ma retraite">🏖️ Préparer ma retraite</button>
-            <button class="quiz-opt" data-name="q5" data-text="Faire fructifier mon argent">⚡ Faire fructifier mon argent</button>
-            <button class="quiz-opt" data-name="q5" data-text="Acheter un bien immobilier">🏠 Acheter un bien immobilier</button>
+            <button class="quiz-opt" data-name="q5" data-key="securite" data-i18n="quiz.q5.securite">🛡️ Constituer une épargne de sécurité</button>
+            <button class="quiz-opt" data-name="q5" data-key="retraite" data-i18n="quiz.q5.retraite">🏖️ Préparer ma retraite</button>
+            <button class="quiz-opt" data-name="q5" data-key="fructifier" data-i18n="quiz.q5.fructifier">⚡ Faire fructifier mon argent</button>
+            <button class="quiz-opt" data-name="q5" data-key="immobilier" data-i18n="quiz.q5.immobilier">🏠 Acheter un bien immobilier</button>
           </div>
         </div>
         <div id="quiz-result" class="quiz-result hidden"></div>
@@ -524,8 +529,8 @@
 
 <section id="actus" class="section">
   <div class="wrap">
-    <div class="section-label">Marchés & Finance</div>
-    <h2 class="section-title">Dernières actualités</h2>
+    <div class="section-label" data-i18n="actus.label">Marchés & Finance</div>
+    <h2 class="section-title" data-i18n="actus.title">Dernières actualités</h2>
     <div id="actus-grid" class="actus-grid">
       <div class="actus-loading">
         <div class="loading-dots"><span></span><span></span><span></span></div>
@@ -536,32 +541,32 @@
 
 <section id="apropos" class="section section-dark">
   <div class="wrap">
-    <div class="section-label">Notre histoire</div>
-    <h2 class="section-title">Notre identité</h2>
+    <div class="section-label" data-i18n="apropos.label">Notre histoire</div>
+    <h2 class="section-title" data-i18n="apropos.title">Notre identité</h2>
     <div class="apropos-bio">
-      <p>Je m'appelle <strong>Paolo</strong>, j'ai <strong>20 ans</strong> et je vis sur la <strong>Côte d'Azur</strong>. À 19 ans, j'ai ouvert mon premier PEA et j'ai vite réalisé que personne ne prenait le temps d'expliquer la finance aux jeunes — sans jargon, sans bullshit.</p>
-      <p>J'ai alors créé <strong>Financia</strong> pour combler ce vide : une plateforme 100&nbsp;% gratuite et pédagogique, pensée pour les <strong>18–30 ans</strong> qui veulent apprendre à investir à leur propre rythme, guidés par une IA qui s'adapte à leur niveau.</p>
+      <p data-i18n-html="apropos.bioP1Html">Je m'appelle <strong>Paolo</strong>, j'ai <strong>20 ans</strong> et je vis sur la <strong>Côte d'Azur</strong>. À 19 ans, j'ai ouvert mon premier PEA et j'ai vite réalisé que personne ne prenait le temps d'expliquer la finance aux jeunes — sans jargon, sans bullshit.</p>
+      <p data-i18n-html="apropos.bioP2Html">J'ai alors créé <strong>Financia</strong> pour combler ce vide : une plateforme 100&nbsp;% gratuite et pédagogique, pensée pour les <strong>18–30 ans</strong> qui veulent apprendre à investir à leur propre rythme, guidés par une IA qui s'adapte à leur niveau.</p>
     </div>
     <div class="valeurs-grid">
       <div class="valeur-card">
         <div class="valeur-icon">📚</div>
-        <h3>Pédagogie</h3>
-        <p>Chaque concept expliqué avec des mots simples et des exemples concrets du quotidien.</p>
+        <h3 data-i18n="apropos.pedagogie.title">Pédagogie</h3>
+        <p data-i18n="apropos.pedagogie.desc">Chaque concept expliqué avec des mots simples et des exemples concrets du quotidien.</p>
       </div>
       <div class="valeur-card">
         <div class="valeur-icon">🆓</div>
-        <h3>Gratuité</h3>
-        <p>Financia est et restera entièrement gratuit. La connaissance financière doit être accessible à tous.</p>
+        <h3 data-i18n="apropos.gratuite.title">Gratuité</h3>
+        <p data-i18n="apropos.gratuite.desc">Financia est et restera entièrement gratuit. La connaissance financière doit être accessible à tous.</p>
       </div>
       <div class="valeur-card">
         <div class="valeur-icon">🤝</div>
-        <h3>Authenticité</h3>
-        <p>Un fondateur qui partage son vrai parcours, ses erreurs et ses apprentissages sans filtres.</p>
+        <h3 data-i18n="apropos.authenticite.title">Authenticité</h3>
+        <p data-i18n="apropos.authenticite.desc">Un fondateur qui partage son vrai parcours, ses erreurs et ses apprentissages sans filtres.</p>
       </div>
       <div class="valeur-card">
         <div class="valeur-icon">💡</div>
-        <h3>Clarté</h3>
-        <p>Zéro jargon inutile. Des réponses directes, précises et immédiatement actionnables.</p>
+        <h3 data-i18n="apropos.clarte.title">Clarté</h3>
+        <p data-i18n="apropos.clarte.desc">Zéro jargon inutile. Des réponses directes, précises et immédiatement actionnables.</p>
       </div>
     </div>
   </div>
@@ -569,32 +574,32 @@
 
 <section id="mentions" class="section section-dark">
   <div class="wrap">
-    <div class="section-label">Légal</div>
-    <h2 class="section-title">Mentions légales</h2>
+    <div class="section-label" data-i18n="mentions.label">Légal</div>
+    <h2 class="section-title" data-i18n="mentions.title">Mentions légales</h2>
     <div class="mentions-content">
       <div class="mention-block">
-        <h3>Éditeur</h3>
-        <p>Financia est un projet personnel édité par <strong>Paolo</strong>, résidant sur la Côte d'Azur, France.</p>
+        <h3 data-i18n="mentions.editeur.title">Éditeur</h3>
+        <p data-i18n-html="mentions.editeur.textHtml">Financia est un projet personnel édité par <strong>Paolo</strong>, résidant sur la Côte d'Azur, France.</p>
       </div>
       <div class="mention-block">
-        <h3>Objet du site</h3>
-        <p>Financia est une plateforme éducative et pédagogique. Les contenus proposés ont une vocation strictement informative et ne constituent en aucun cas un conseil en investissement financier personnalisé.</p>
+        <h3 data-i18n="mentions.objet.title">Objet du site</h3>
+        <p data-i18n="mentions.objet.text">Financia est une plateforme éducative et pédagogique. Les contenus proposés ont une vocation strictement informative et ne constituent en aucun cas un conseil en investissement financier personnalisé.</p>
       </div>
       <div class="mention-block">
-        <h3>Absence de conseil financier</h3>
-        <p>Toutes les informations diffusées sur Financia (textes, simulations, réponses de l'IA) sont fournies à titre purement éducatif. Elles ne remplacent pas l'avis d'un conseiller financier agréé. Investir comporte des risques de perte en capital.</p>
+        <h3 data-i18n="mentions.absence.title">Absence de conseil financier</h3>
+        <p data-i18n="mentions.absence.text">Toutes les informations diffusées sur Financia (textes, simulations, réponses de l'IA) sont fournies à titre purement éducatif. Elles ne remplacent pas l'avis d'un conseiller financier agréé. Investir comporte des risques de perte en capital.</p>
       </div>
       <div class="mention-block">
-        <h3>Hébergement</h3>
-        <p>Ce site est hébergé par <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis.</p>
+        <h3 data-i18n="mentions.hebergement.title">Hébergement</h3>
+        <p data-i18n-html="mentions.hebergement.textHtml">Ce site est hébergé par <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis.</p>
       </div>
       <div class="mention-block">
-        <h3>Propriété intellectuelle</h3>
-        <p>L'ensemble des contenus présents sur Financia (textes, visuels, code) sont la propriété exclusive de leur auteur. Toute reproduction sans autorisation est interdite.</p>
+        <h3 data-i18n="mentions.propriete.title">Propriété intellectuelle</h3>
+        <p data-i18n="mentions.propriete.text">L'ensemble des contenus présents sur Financia (textes, visuels, code) sont la propriété exclusive de leur auteur. Toute reproduction sans autorisation est interdite.</p>
       </div>
       <div class="mention-block">
-        <h3>Contact</h3>
-        <p>Pour toute question : <strong>financiacloud@gmail.com</strong></p>
+        <h3 data-i18n="mentions.contact.title">Contact</h3>
+        <p data-i18n-html="mentions.contact.textHtml">Pour toute question : <strong>financiacloud@gmail.com</strong></p>
       </div>
     </div>
   </div>
@@ -603,7 +608,7 @@
 <div class="logo-banner">
   <div class="logo-banner-line"></div>
   <img src="./images/financia-logo-transparent.png" alt="Financia" />
-  <p class="logo-banner-text">La finance, enfin accessible.</p>
+  <p class="logo-banner-text" data-i18n="logoBanner.text1">La finance, enfin accessible.</p>
   <div class="logo-banner-dots"><span></span><span></span><span></span></div>
   <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="logo-banner-insta">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -614,8 +619,8 @@
 <section class="newsletter-section">
   <div class="wrap newsletter-inner">
     <div class="newsletter-text">
-      <h2 class="newsletter-title"><span class="newsletter-envelope">📬</span> Reçois les actus bourse chaque vendredi</h2>
-      <p class="newsletter-sub">Gratuit. Sans spam. Désabonnement en 1 clic.</p>
+      <h2 class="newsletter-title" data-i18n-html="newsletter.titleHtml"><span class="newsletter-envelope">📬</span> Reçois les actus bourse chaque vendredi</h2>
+      <p class="newsletter-sub" data-i18n="newsletter.sub">Gratuit. Sans spam. Désabonnement en 1 clic.</p>
     </div>
     <form class="newsletter-form" id="newsletterForm" novalidate>
       <input
@@ -623,10 +628,11 @@
         id="newsletterEmail"
         class="newsletter-input"
         placeholder="ton@email.com"
+        data-i18n-placeholder="newsletter.placeholder"
         autocomplete="email"
         required
       />
-      <button type="submit" class="newsletter-btn">Je m'inscris</button>
+      <button type="submit" class="newsletter-btn" data-i18n="newsletter.btn">Je m'inscris</button>
     </form>
     <p class="newsletter-msg hidden" id="newsletterMsg"></p>
   </div>
@@ -634,8 +640,8 @@
 
 <section class="ressources-section">
   <div class="wrap">
-    <h2 class="ressources-title">Ressources utiles 🔗</h2>
-    <p class="ressources-sub">Sélectionnées par Financia pour aller plus loin</p>
+    <h2 class="ressources-title" data-i18n="ressources.title">Ressources utiles 🔗</h2>
+    <p class="ressources-sub" data-i18n="ressources.sub">Sélectionnées par Financia pour aller plus loin</p>
     <div class="ressources-grid">
       <a href="https://www.boursobank.com" target="_blank" rel="noopener" class="ressource-pill" style="--delay:0s">🏦 BoursoBank</a>
       <a href="https://www.traderepublic.com/fr-fr" target="_blank" rel="noopener" class="ressource-pill" style="--delay:0.2s">📈 Trade Republic</a>
@@ -653,24 +659,24 @@
   <div class="wrap footer-inner">
     <div class="footer-brand">
       <span class="logo">Financi<span>a</span></span>
-      <p>L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.</p>
+      <p data-i18n="footer.brandDesc">L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.</p>
       <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="footer-insta">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         @financia_cloud
       </a>
     </div>
     <div class="footer-links">
-      <a href="#apprendre">Apprendre</a>
-      <a href="#simulateur">Simulateur</a>
-      <a href="#chat">Chat IA</a>
-      <a href="#quiz">Quiz</a>
-      <a href="#actus">Actus</a>
-      <a href="/histoire">Histoire</a>
-      <a href="#apropos">À propos</a>
-      <a href="#mentions">Mentions légales</a>
+      <a href="#apprendre" data-i18n="nav.apprendre">Apprendre</a>
+      <a href="#simulateur" data-i18n="nav.simulateur">Simulateur</a>
+      <a href="#chat" data-i18n="nav.chat">Chat IA</a>
+      <a href="#quiz" data-i18n="nav.quiz">Quiz</a>
+      <a href="#actus" data-i18n="nav.actus">Actus</a>
+      <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
+      <a href="#apropos" data-i18n="nav.apropos">À propos</a>
+      <a href="#mentions" data-i18n="nav.mentions">Mentions légales</a>
     </div>
     <div class="footer-legal">
-      <p>© <span id="year"></span> Financia · Projet éducatif · Pas de conseil en investissement</p>
+      <p>© <span id="year"></span> <span data-i18n="footer.legal">Financia · Projet éducatif · Pas de conseil en investissement</span></p>
     </div>
   </div>
 </footer>

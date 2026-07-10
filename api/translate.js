@@ -5,12 +5,18 @@ const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { titles } = req.body || {};
+  const { titles, lang } = req.body || {};
   if (!Array.isArray(titles) || titles.length === 0) {
     return res.status(400).json({ error: 'titles[] requis' });
   }
 
+  // Les titres Alpha Vantage arrivent déjà en anglais : rien à faire dans ce cas.
+  if (lang === 'en') {
+    return res.status(200).json({ titles });
+  }
+
   const numbered = titles.map((t, i) => `${i + 1}. ${t}`).join('\n');
+  const targetLang = lang === 'es' ? 'espagnol' : 'français';
 
   try {
     const completion = await groq.chat.completions.create({
@@ -20,7 +26,7 @@ export default async function handler(req, res) {
         {
           role: 'system',
           content:
-            'Traduis chaque titre d\'article financier en français en maximum 80 caractères. Garde les noms propres, sigles et acronymes en anglais (NYSE, ETF, Fed, GDP, S&P, etc.). Réponds uniquement avec la liste numérotée traduite, même format que l\'entrée, rien d\'autre.',
+            `Traduis chaque titre d'article financier en ${targetLang} en maximum 80 caractères. Garde les noms propres, sigles et acronymes en anglais (NYSE, ETF, Fed, GDP, S&P, etc.). Réponds uniquement avec la liste numérotée traduite, même format que l'entrée, rien d'autre.`,
         },
         { role: 'user', content: numbered },
       ],

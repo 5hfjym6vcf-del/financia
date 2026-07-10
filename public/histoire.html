@@ -3,12 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Histoire des marchés — Financia</title>
+  <title data-i18n="meta.titleHistoire">Histoire des marchés — Financia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./histoire.css" />
+
+  <!-- i18n : chargé de façon bloquante pour éviter tout flash de contenu FR -->
+  <style>html:not(.i18n-ready) body { visibility: hidden; }</style>
+  <script src="./i18n.js"></script>
+  <script src="./i18n-core.js"></script>
 
   <meta name="description" content="L'histoire des marchés financiers : les grandes dates, les krachs et bulles célèbres, les légendes (Apple, Amazon, Bitcoin...) — les leçons des cycles passés, par Financia." />
   <meta name="robots" content="index, follow" />
@@ -46,21 +51,21 @@
   <div class="nav-inner">
     <a class="logo" href="/">Financi<span>a</span></a>
     <nav class="nav-links">
-      <a href="/#apprendre">Apprendre</a>
-      <a href="/#simulateur">Simulateur</a>
-      <a href="/#chat">Chat IA</a>
-      <a href="/#quiz">Quiz</a>
-      <a href="/#actus">Actus</a>
-      <a href="/histoire" aria-current="page">Histoire</a>
-      <a href="/#apropos">À propos</a>
+      <a href="/#apprendre" data-i18n="nav.apprendre">Apprendre</a>
+      <a href="/#simulateur" data-i18n="nav.simulateur">Simulateur</a>
+      <a href="/#chat" data-i18n="nav.chat">Chat IA</a>
+      <a href="/#quiz" data-i18n="nav.quiz">Quiz</a>
+      <a href="/#actus" data-i18n="nav.actus">Actus</a>
+      <a href="/histoire" aria-current="page" data-i18n="nav.histoire">Histoire</a>
+      <a href="/#apropos" data-i18n="nav.apropos">À propos</a>
     </nav>
     <div class="nav-right">
-      <select id="langSelect" aria-label="Langue" class="lang-select">
+      <select id="langSelect" aria-label="Langue" class="lang-select" data-i18n-aria="nav.langAria">
         <option value="fr" selected>🇫🇷 FR</option>
         <option value="en">🇬🇧 EN</option>
         <option value="es">🇪🇸 ES</option>
       </select>
-      <a href="/#hub" class="btn-cta">Commencer</a>
+      <a href="/#hub" class="btn-cta" data-i18n="nav.commencer">Commencer</a>
       <button id="menuBtn" class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -69,14 +74,14 @@
 </header>
 
 <div id="mobileMenu" class="mobile-menu" role="navigation" aria-label="Menu mobile">
-  <a href="/#hub">🏠 Accueil</a>
-  <a href="/#apprendre">📚 Apprendre</a>
-  <a href="/#simulateur">📈 Simulateur</a>
-  <a href="/#chat">💬 Chat IA</a>
-  <a href="/#quiz">🧠 Quiz</a>
-  <a href="/#actus">📰 Actus</a>
-  <a href="/histoire">📜 Histoire</a>
-  <a href="/#apropos">👤 À propos</a>
+  <a href="/#hub" data-i18n="mobileMenu.accueil">🏠 Accueil</a>
+  <a href="/#apprendre" data-i18n="mobileMenu.apprendre">📚 Apprendre</a>
+  <a href="/#simulateur" data-i18n="mobileMenu.simulateur">📈 Simulateur</a>
+  <a href="/#chat" data-i18n="mobileMenu.chat">💬 Chat IA</a>
+  <a href="/#quiz" data-i18n="mobileMenu.quiz">🧠 Quiz</a>
+  <a href="/#actus" data-i18n="mobileMenu.actus">📰 Actus</a>
+  <a href="/histoire" data-i18n="mobileMenu.histoire">📜 Histoire</a>
+  <a href="/#apropos" data-i18n="mobileMenu.apropos">👤 À propos</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -85,12 +90,12 @@
   <div class="hist-glow hist-glow-1"></div>
   <div class="hist-glow hist-glow-2"></div>
   <div class="wrap hist-hero-inner">
-    <div class="hero-badge hist-badge">📜 Histoire des marchés</div>
-    <h1 class="hist-h1">Ce que <em>400 ans</em> de marchés<br>peuvent t'apprendre</h1>
-    <p class="hist-hero-lead">Des krachs les plus violents aux plus belles réussites — les cycles se répètent. Les comprendre, c'est déjà mieux investir.</p>
+    <div class="hero-badge hist-badge" data-i18n="histoire.hero.badge">📜 Histoire des marchés</div>
+    <h1 class="hist-h1" data-i18n-html="histoire.hero.titleHtml">Ce que <em>400 ans</em> de marchés<br>peuvent t'apprendre</h1>
+    <p class="hist-hero-lead" data-i18n="histoire.hero.lead">Des krachs les plus violents aux plus belles réussites — les cycles se répètent. Les comprendre, c'est déjà mieux investir.</p>
     <div class="hist-hero-actions">
-      <a href="#timeline" class="btn-primary">🕐 Voir la chronologie</a>
-      <a href="#legendes" class="btn-ghost">📈 Voir les légendes</a>
+      <a href="#timeline" class="btn-primary" data-i18n="histoire.hero.cta1">🕐 Voir la chronologie</a>
+      <a href="#legendes" class="btn-ghost" data-i18n="histoire.hero.cta2">📈 Voir les légendes</a>
     </div>
   </div>
 </section>
@@ -98,9 +103,9 @@
 <!-- ═══ BLOC 1 : FRISE CHRONOLOGIQUE ═══ -->
 <section class="hist-section" id="timeline">
   <div class="wrap">
-    <div class="section-label hist-label">Chronologie</div>
-    <h2 class="hist-h2">Les grandes dates des marchés</h2>
-    <p class="hist-section-sub">Dix moments qui ont façonné la finance moderne — du premier krach au moteur IA d'aujourd'hui.</p>
+    <div class="section-label hist-label" data-i18n="histoire.timelineLabel">Chronologie</div>
+    <h2 class="hist-h2" data-i18n="histoire.timelineTitle">Les grandes dates des marchés</h2>
+    <p class="hist-section-sub" data-i18n="histoire.timelineSub">Dix moments qui ont façonné la finance moderne — du premier krach au moteur IA d'aujourd'hui.</p>
 
     <div class="hist-timeline" id="histTimeline">
 
@@ -108,9 +113,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">1602</div>
-          <h3>La première bourse moderne</h3>
-          <p>À Amsterdam, la Compagnie néerlandaise des Indes orientales (VOC) émet les premières actions négociables de l'histoire — la bourse moderne est née.</p>
-          <span class="hist-tl-stat">1ère action cotée au monde</span>
+          <h3 data-i18n="histoire.timeline.y1602.title">La première bourse moderne</h3>
+          <p data-i18n="histoire.timeline.y1602.desc">À Amsterdam, la Compagnie néerlandaise des Indes orientales (VOC) émet les premières actions négociables de l'histoire — la bourse moderne est née.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y1602.stat">1ère action cotée au monde</span>
         </div>
       </article>
 
@@ -118,9 +123,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">1929</div>
-          <h3>Le krach de 1929</h3>
-          <p>Le "Jeudi noir" puis le "Mardi noir" d'octobre 1929 déclenchent la Grande Dépression. Le Dow Jones met 25 ans à retrouver son niveau d'avant-crise.</p>
-          <span class="hist-tl-stat">-89% sur le Dow Jones (1929–1932)</span>
+          <h3 data-i18n="histoire.timeline.y1929.title">Le krach de 1929</h3>
+          <p data-i18n="histoire.timeline.y1929.desc">Le "Jeudi noir" puis le "Mardi noir" d'octobre 1929 déclenchent la Grande Dépression. Le Dow Jones met 25 ans à retrouver son niveau d'avant-crise.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y1929.stat">-89% sur le Dow Jones (1929–1932)</span>
         </div>
       </article>
 
@@ -128,9 +133,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">1971</div>
-          <h3>La fin de Bretton Woods</h3>
-          <p>Richard Nixon met fin à la convertibilité du dollar en or. Les monnaies se mettent à flotter librement les unes par rapport aux autres.</p>
-          <span class="hist-tl-stat">Fin de l'étalon-or</span>
+          <h3 data-i18n="histoire.timeline.y1971.title">La fin de Bretton Woods</h3>
+          <p data-i18n="histoire.timeline.y1971.desc">Richard Nixon met fin à la convertibilité du dollar en or. Les monnaies se mettent à flotter librement les unes par rapport aux autres.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y1971.stat">Fin de l'étalon-or</span>
         </div>
       </article>
 
@@ -138,9 +143,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">1987</div>
-          <h3>Le lundi noir</h3>
-          <p>Le 19 octobre 1987, les marchés mondiaux s'effondrent en une seule séance, sans déclencheur macroéconomique clairement identifié.</p>
-          <span class="hist-tl-stat">-22,6% en une journée (Dow Jones)</span>
+          <h3 data-i18n="histoire.timeline.y1987.title">Le lundi noir</h3>
+          <p data-i18n="histoire.timeline.y1987.desc">Le 19 octobre 1987, les marchés mondiaux s'effondrent en une seule séance, sans déclencheur macroéconomique clairement identifié.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y1987.stat">-22,6% en une journée (Dow Jones)</span>
         </div>
       </article>
 
@@ -148,9 +153,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">2000</div>
-          <h3>La bulle Internet éclate</h3>
-          <p>Après une euphorie spéculative sur les valeurs technologiques, le Nasdaq s'effondre entre 2000 et 2002, emportant des centaines de start-up.</p>
-          <span class="hist-tl-stat">-78% pour le Nasdaq (2000–2002)</span>
+          <h3 data-i18n="histoire.timeline.y2000.title">La bulle Internet éclate</h3>
+          <p data-i18n="histoire.timeline.y2000.desc">Après une euphorie spéculative sur les valeurs technologiques, le Nasdaq s'effondre entre 2000 et 2002, emportant des centaines de start-up.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y2000.stat">-78% pour le Nasdaq (2000–2002)</span>
         </div>
       </article>
 
@@ -158,9 +163,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">2008</div>
-          <h3>Les subprimes et Lehman Brothers</h3>
-          <p>Le 15 septembre 2008, la banque Lehman Brothers fait faillite — la plus grande faillite de l'histoire américaine — et embrase la crise financière mondiale.</p>
-          <span class="hist-tl-stat">~600 milliards $ d'actifs en faillite</span>
+          <h3 data-i18n="histoire.timeline.y2008.title">Les subprimes et Lehman Brothers</h3>
+          <p data-i18n="histoire.timeline.y2008.desc">Le 15 septembre 2008, la banque Lehman Brothers fait faillite — la plus grande faillite de l'histoire américaine — et embrase la crise financière mondiale.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y2008.stat">~600 milliards $ d'actifs en faillite</span>
         </div>
       </article>
 
@@ -168,9 +173,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">2009</div>
-          <h3>La naissance du Bitcoin</h3>
-          <p>Le 3 janvier 2009, Satoshi Nakamoto mine le premier bloc de la blockchain Bitcoin, posant la première pierre d'une nouvelle classe d'actifs.</p>
-          <span class="hist-tl-stat">Bloc n°0 — 3 janvier 2009</span>
+          <h3 data-i18n="histoire.timeline.y2009.title">La naissance du Bitcoin</h3>
+          <p data-i18n="histoire.timeline.y2009.desc">Le 3 janvier 2009, Satoshi Nakamoto mine le premier bloc de la blockchain Bitcoin, posant la première pierre d'une nouvelle classe d'actifs.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y2009.stat">Bloc n°0 — 3 janvier 2009</span>
         </div>
       </article>
 
@@ -178,9 +183,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">2020</div>
-          <h3>Le krach Covid</h3>
-          <p>En 33 jours, les marchés mondiaux perdent plus d'un tiers de leur valeur — puis rebondissent vers de nouveaux records en quelques mois, un record de vitesse.</p>
-          <span class="hist-tl-stat">-34% en 33 jours (S&amp;P 500)</span>
+          <h3 data-i18n="histoire.timeline.y2020.title">Le krach Covid</h3>
+          <p data-i18n="histoire.timeline.y2020.desc">En 33 jours, les marchés mondiaux perdent plus d'un tiers de leur valeur — puis rebondissent vers de nouveaux records en quelques mois, un record de vitesse.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y2020.stat">-34% en 33 jours (S&amp;P 500)</span>
         </div>
       </article>
 
@@ -188,9 +193,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">2021</div>
-          <h3>GameStop et les "meme stocks"</h3>
-          <p>Une armée de particuliers coordonnés sur Reddit fait s'envoler l'action GameStop, prenant à revers plusieurs fonds spéculatifs vendeurs à découvert.</p>
-          <span class="hist-tl-stat">+1 600% en quelques semaines</span>
+          <h3 data-i18n="histoire.timeline.y2021.title">GameStop et les "meme stocks"</h3>
+          <p data-i18n="histoire.timeline.y2021.desc">Une armée de particuliers coordonnés sur Reddit fait s'envoler l'action GameStop, prenant à revers plusieurs fonds spéculatifs vendeurs à découvert.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y2021.stat">+1 600% en quelques semaines</span>
         </div>
       </article>
 
@@ -198,9 +203,9 @@
         <div class="hist-tl-dot"></div>
         <div class="hist-tl-card">
           <div class="hist-tl-year">2022–2026</div>
-          <h3>L'IA, nouveau moteur des marchés</h3>
-          <p>Portée par la demande en puces pour l'intelligence artificielle, Nvidia dépasse les 3 000 milliards de dollars de valorisation et redessine la hiérarchie boursière mondiale.</p>
-          <span class="hist-tl-stat">Nvidia : plus de 3 000 milliards $</span>
+          <h3 data-i18n="histoire.timeline.y2022.title">L'IA, nouveau moteur des marchés</h3>
+          <p data-i18n="histoire.timeline.y2022.desc">Portée par la demande en puces pour l'intelligence artificielle, Nvidia dépasse les 3 000 milliards de dollars de valorisation et redessine la hiérarchie boursière mondiale.</p>
+          <span class="hist-tl-stat" data-i18n="histoire.timeline.y2022.stat">Nvidia : plus de 3 000 milliards $</span>
         </div>
       </article>
 
@@ -211,59 +216,59 @@
 <!-- ═══ BLOC 2 : LÉGENDES DES MARCHÉS ═══ -->
 <section class="hist-section hist-section-alt" id="legendes">
   <div class="wrap">
-    <div class="section-label hist-label">Cas d'école</div>
-    <h2 class="hist-h2">Légendes des marchés</h2>
-    <p class="hist-section-sub">Cinq trajectoires réelles qui résument, à elles seules, toutes les leçons de la bourse. Touche un point du graphique pour en savoir plus.</p>
+    <div class="section-label hist-label" data-i18n="histoire.legendesLabel">Cas d'école</div>
+    <h2 class="hist-h2" data-i18n="histoire.legendesTitle">Légendes des marchés</h2>
+    <p class="hist-section-sub" data-i18n="histoire.legendesSub">Cinq trajectoires réelles qui résument, à elles seules, toutes les leçons de la bourse. Touche un point du graphique pour en savoir plus.</p>
 
     <div class="hist-legend-grid" id="histLegendGrid">
       <button class="hist-legend-card hist-reveal" data-target="apple" aria-expanded="false">
         <div class="hist-legend-top">
           <div class="hist-legend-icon">🍎</div>
-          <span class="hist-legend-tag">Résilience</span>
+          <span class="hist-legend-tag" data-i18n="histoire.legendCards.apple.tag">Résilience</span>
         </div>
-        <h3>Apple</h3>
-        <p>De la quasi-faillite en 1997 à l'entreprise la plus valorisée au monde.</p>
-        <span class="hist-legend-cta">Voir le graphique →</span>
+        <h3 data-i18n="histoire.legendCards.apple.title">Apple</h3>
+        <p data-i18n="histoire.legendCards.apple.desc">De la quasi-faillite en 1997 à l'entreprise la plus valorisée au monde.</p>
+        <span class="hist-legend-cta" data-i18n="histoire.legendCta">Voir le graphique →</span>
       </button>
 
       <button class="hist-legend-card hist-reveal" data-target="amazon" aria-expanded="false">
         <div class="hist-legend-top">
           <div class="hist-legend-icon">📦</div>
-          <span class="hist-legend-tag">Patience</span>
+          <span class="hist-legend-tag" data-i18n="histoire.legendCards.amazon.tag">Patience</span>
         </div>
-        <h3>Amazon</h3>
-        <p>-90% pendant la bulle Internet, puis l'une des plus grandes réussites boursières.</p>
-        <span class="hist-legend-cta">Voir le graphique →</span>
+        <h3 data-i18n="histoire.legendCards.amazon.title">Amazon</h3>
+        <p data-i18n="histoire.legendCards.amazon.desc">-90% pendant la bulle Internet, puis l'une des plus grandes réussites boursières.</p>
+        <span class="hist-legend-cta" data-i18n="histoire.legendCta">Voir le graphique →</span>
       </button>
 
       <button class="hist-legend-card hist-reveal" data-target="bitcoin" aria-expanded="false">
         <div class="hist-legend-top">
           <div class="hist-legend-icon">🪙</div>
-          <span class="hist-legend-tag">Volatilité</span>
+          <span class="hist-legend-tag" data-i18n="histoire.legendCards.bitcoin.tag">Volatilité</span>
         </div>
-        <h3>Bitcoin</h3>
-        <p>De quasiment 0$ à des sommets records, avec des chutes de -80% très régulières.</p>
-        <span class="hist-legend-cta">Voir le graphique →</span>
+        <h3 data-i18n="histoire.legendCards.bitcoin.title">Bitcoin</h3>
+        <p data-i18n="histoire.legendCards.bitcoin.desc">De quasiment 0$ à des sommets records, avec des chutes de -80% très régulières.</p>
+        <span class="hist-legend-cta" data-i18n="histoire.legendCta">Voir le graphique →</span>
       </button>
 
       <button class="hist-legend-card hist-reveal" data-target="sp500" aria-expanded="false">
         <div class="hist-legend-top">
           <div class="hist-legend-icon">📊</div>
-          <span class="hist-legend-tag">Long terme</span>
+          <span class="hist-legend-tag" data-i18n="histoire.legendCards.sp500.tag">Long terme</span>
         </div>
-        <h3>Le S&amp;P 500</h3>
-        <p>Sur 100 ans, malgré les crises, la leçon la plus simple : le temps fait le travail.</p>
-        <span class="hist-legend-cta">Voir le graphique →</span>
+        <h3 data-i18n="histoire.legendCards.sp500.title">Le S&amp;P 500</h3>
+        <p data-i18n="histoire.legendCards.sp500.desc">Sur 100 ans, malgré les crises, la leçon la plus simple : le temps fait le travail.</p>
+        <span class="hist-legend-cta" data-i18n="histoire.legendCta">Voir le graphique →</span>
       </button>
 
       <button class="hist-legend-card hist-reveal" data-target="nokia" aria-expanded="false">
         <div class="hist-legend-top">
           <div class="hist-legend-icon">📉</div>
-          <span class="hist-legend-tag">L'échec</span>
+          <span class="hist-legend-tag" data-i18n="histoire.legendCards.nokia.tag">L'échec</span>
         </div>
-        <h3>Nokia</h3>
-        <p>Numéro un mondial du mobile en 2000, dépassée par l'iPhone : rien n'est jamais acquis.</p>
-        <span class="hist-legend-cta">Voir le graphique →</span>
+        <h3 data-i18n="histoire.legendCards.nokia.title">Nokia</h3>
+        <p data-i18n="histoire.legendCards.nokia.desc">Numéro un mondial du mobile en 2000, dépassée par l'iPhone : rien n'est jamais acquis.</p>
+        <span class="hist-legend-cta" data-i18n="histoire.legendCta">Voir le graphique →</span>
       </button>
     </div>
 
@@ -289,7 +294,7 @@
         </svg>
         <div class="hist-chart-tooltip" id="histChartTooltip" hidden></div>
       </div>
-      <p class="hist-chart-caption">Courbe illustrative — évolution simplifiée à but pédagogique. Touche ou survole un point pour le détail.</p>
+      <p class="hist-chart-caption" data-i18n="histoire.chartCaption">Courbe illustrative — évolution simplifiée à but pédagogique. Touche ou survole un point pour le détail.</p>
 
       <div class="hist-detail-stats" id="histDetailStats"></div>
       <p class="hist-lesson" id="histDetailLesson"></p>
@@ -300,32 +305,32 @@
 <!-- ═══ BLOC 3 : LA LEÇON DE L'HISTOIRE ═══ -->
 <section class="hist-section hist-lesson-section">
   <div class="wrap">
-    <div class="section-label hist-label">Conclusion</div>
-    <h2 class="hist-h2">La leçon de l'histoire</h2>
+    <div class="section-label hist-label" data-i18n="histoire.lessonLabel">Conclusion</div>
+    <h2 class="hist-h2" data-i18n="histoire.lessonTitle">La leçon de l'histoire</h2>
 
     <div class="hist-lesson-grid">
       <div class="hist-lesson-card hist-reveal">
         <div class="hist-lesson-icon">🔁</div>
-        <h3>Les bulles se répètent</h3>
-        <p>Tulipes, Internet, crypto... l'actif change, le schéma humain — euphorie puis panique — reste identique depuis 400 ans.</p>
+        <h3 data-i18n="histoire.lesson1.title">Les bulles se répètent</h3>
+        <p data-i18n="histoire.lesson1.desc">Tulipes, Internet, crypto... l'actif change, le schéma humain — euphorie puis panique — reste identique depuis 400 ans.</p>
       </div>
       <div class="hist-lesson-card hist-reveal">
         <div class="hist-lesson-icon">🛡️</div>
-        <h3>Les krachs sont temporaires</h3>
-        <p>Pour un indice large et diversifié comme le S&amp;P 500, chaque krach de l'histoire a fini par être suivi d'un nouveau plus haut.</p>
+        <h3 data-i18n="histoire.lesson2.title">Les krachs sont temporaires</h3>
+        <p data-i18n="histoire.lesson2.desc">Pour un indice large et diversifié comme le S&amp;P 500, chaque krach de l'histoire a fini par être suivi d'un nouveau plus haut.</p>
       </div>
       <div class="hist-lesson-card hist-reveal">
         <div class="hist-lesson-icon">⏳</div>
-        <h3>Le temps est ton allié</h3>
-        <p>Plus l'horizon d'investissement est long, plus le poids d'un krach ponctuel s'efface face aux intérêts composés.</p>
+        <h3 data-i18n="histoire.lesson3.title">Le temps est ton allié</h3>
+        <p data-i18n="histoire.lesson3.desc">Plus l'horizon d'investissement est long, plus le poids d'un krach ponctuel s'efface face aux intérêts composés.</p>
       </div>
     </div>
 
-    <p class="hist-disclaimer">⚠️ Les performances passées ne préjugent pas des performances futures. Ce contenu est éducatif et ne constitue en aucun cas un conseil en investissement.</p>
+    <p class="hist-disclaimer" data-i18n="histoire.disclaimer">⚠️ Les performances passées ne préjugent pas des performances futures. Ce contenu est éducatif et ne constitue en aucun cas un conseil en investissement.</p>
 
     <div class="hist-cta-row">
-      <a href="/#apprendre" class="btn-primary">📚 Explorer les modules pédagogiques</a>
-      <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="btn-ghost">📷 Suivre @financia_cloud</a>
+      <a href="/#apprendre" class="btn-primary" data-i18n="histoire.ctaModules">📚 Explorer les modules pédagogiques</a>
+      <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="btn-ghost" data-i18n="histoire.ctaInstagram">📷 Suivre @financia_cloud</a>
     </div>
   </div>
 </section>
@@ -334,24 +339,24 @@
   <div class="wrap footer-inner">
     <div class="footer-brand">
       <span class="logo">Financi<span>a</span></span>
-      <p>L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.</p>
+      <p data-i18n="footer.brandDesc">L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.</p>
       <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="footer-insta">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         @financia_cloud
       </a>
     </div>
     <div class="footer-links">
-      <a href="/#apprendre">Apprendre</a>
-      <a href="/#simulateur">Simulateur</a>
-      <a href="/#chat">Chat IA</a>
-      <a href="/#quiz">Quiz</a>
-      <a href="/#actus">Actus</a>
-      <a href="/histoire">Histoire</a>
-      <a href="/#apropos">À propos</a>
-      <a href="/#mentions">Mentions légales</a>
+      <a href="/#apprendre" data-i18n="nav.apprendre">Apprendre</a>
+      <a href="/#simulateur" data-i18n="nav.simulateur">Simulateur</a>
+      <a href="/#chat" data-i18n="nav.chat">Chat IA</a>
+      <a href="/#quiz" data-i18n="nav.quiz">Quiz</a>
+      <a href="/#actus" data-i18n="nav.actus">Actus</a>
+      <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
+      <a href="/#apropos" data-i18n="nav.apropos">À propos</a>
+      <a href="/#mentions" data-i18n="nav.mentions">Mentions légales</a>
     </div>
     <div class="footer-legal">
-      <p>© <span id="year"></span> Financia · Projet éducatif · Pas de conseil en investissement</p>
+      <p>© <span id="year"></span> <span data-i18n="footer.legal">Financia · Projet éducatif · Pas de conseil en investissement</span></p>
     </div>
   </div>
 </footer>

@@ -1,6 +1,14 @@
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+// Traduit tout le HTML statique déjà présent, révèle la page (anti-FOUC),
+// et branche le sélecteur de langue — doit s'exécuter avant tout le reste.
+FinanciaI18N.initLang();
 const langSelect = $('#langSelect');
+function currentLocale() {
+  const lang = FinanciaI18N.getLang();
+  return lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'fr-FR';
+}
 
 const navbar = $('#navbar');
 window.addEventListener('scroll', () => {
@@ -71,7 +79,7 @@ async function askFinancia(message) {
   });
   if (!r.ok) {
     const data = await r.json().catch(() => ({}));
-    throw new Error(data.error || 'Désolé, une erreur est survenue.');
+    throw new Error(data.error || FinanciaI18N.t('chat.genericError'));
   }
   return r.json();
 }
@@ -89,7 +97,7 @@ if (chatForm) {
       const { text } = await askFinancia(msg);
       bubble.innerHTML = renderMarkdown(text);
     } catch (e) {
-      bubble.textContent = e.message || 'Désolé, une erreur est survenue.';
+      bubble.textContent = e.message || FinanciaI18N.t('chat.genericError');
     }
   });
 }
@@ -131,7 +139,7 @@ $$('.ask-btn').forEach(btn => {
       const { text } = await askFinancia(btn.dataset.q);
       overlayContent.innerHTML = renderMarkdown(text);
     } catch {
-      overlayContent.textContent = 'Erreur lors du chargement.';
+      overlayContent.textContent = FinanciaI18N.t('modules.overlayError');
     }
   });
 });
@@ -139,7 +147,7 @@ $$('.ask-btn').forEach(btn => {
 closeOverlay?.addEventListener('click', () => overlay?.classList.add('hidden'));
 overlay?.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.add('hidden'); });
 
-function fmt(n) { return Math.round(n).toLocaleString('fr-FR') + ' €'; }
+function fmt(n) { return Math.round(n).toLocaleString(currentLocale()) + ' €'; }
 
 function calcSimulator() {
   const capital = Number($('#simCapital')?.value || 0);
@@ -157,8 +165,8 @@ function calcSimulator() {
   const totalInvested = capital + monthly * months;
   const gains = value - totalInvested;
   if ($('#simCapitalVal')) $('#simCapitalVal').textContent = fmt(capital);
-  if ($('#simMonthlyVal')) $('#simMonthlyVal').textContent = Math.round(monthly).toLocaleString('fr-FR') + ' €/mois';
-  if ($('#simYearsVal')) $('#simYearsVal').textContent = years + ' ans';
+  if ($('#simMonthlyVal')) $('#simMonthlyVal').textContent = Math.round(monthly).toLocaleString(currentLocale()) + FinanciaI18N.t('simulator.perMonthSuffix');
+  if ($('#simYearsVal')) $('#simYearsVal').textContent = years + FinanciaI18N.t('simulator.yearsSuffix');
   if ($('#simRateVal')) $('#simRateVal').textContent = ($('#simRate')?.value || 8) + '%';
   if ($('#simTotalInvested')) $('#simTotalInvested').textContent = fmt(totalInvested);
   if ($('#simGains')) $('#simGains').textContent = fmt(gains);
@@ -212,6 +220,7 @@ function renderSimChart({ data }) {
 });
 
 window.addEventListener('DOMContentLoaded', () => { const res = calcSimulator(); renderSimChart(res); });
+FinanciaI18N.onLangChange(() => calcSimulator());
 
 $('#simAskBtn')?.addEventListener('click', () => {
   const capital = $('#simCapital')?.value || 6000;
@@ -219,7 +228,7 @@ $('#simAskBtn')?.addEventListener('click', () => {
   const years = $('#simYears')?.value || 20;
   const rate = $('#simRate')?.value || 8;
   const final = $('#simFinal')?.textContent || '';
-  const q = `J'ai ${capital}€ de capital, je verse ${monthly}€/mois sur ${years} ans à ${rate}% de rendement. Mon simulateur donne ${final}. Est-ce réaliste et comment optimiser ?`;
+  const q = FinanciaI18N.t('simulator.chatPrompt', { capital, monthly, years, rate, final });
   if (chatInput) chatInput.value = q;
   document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
   setTimeout(() => chatForm?.dispatchEvent(new Event('submit')), 600);
@@ -228,6 +237,7 @@ $('#simAskBtn')?.addEventListener('click', () => {
 let quizStep = 1;
 const totalSteps = 5;
 const quizAnswerTexts = {};
+const quizAnswerKeys = {};
 
 function updateQuizBackBtn() {
   const btn = $('#quizBack');
@@ -252,6 +262,7 @@ function advanceQuiz() {
 function resetQuiz() {
   quizStep = 1;
   Object.keys(quizAnswerTexts).forEach(k => delete quizAnswerTexts[k]);
+  Object.keys(quizAnswerKeys).forEach(k => delete quizAnswerKeys[k]);
   $$('.quiz-opt').forEach(b => b.classList.remove('selected'));
   $$('.quiz-step').forEach(s => s.classList.remove('active'));
   $('#step-1')?.classList.add('active');
@@ -270,7 +281,7 @@ if (quizBody) {
   const backBtn = document.createElement('button');
   backBtn.id = 'quizBack';
   backBtn.className = 'quiz-back-btn';
-  backBtn.textContent = '← Retour';
+  backBtn.textContent = FinanciaI18N.t('quiz.backBtn');
   backBtn.style.display = 'none';
   backBtn.addEventListener('click', () => {
     if (quizStep <= 1) return;
@@ -319,48 +330,23 @@ $$('.quiz-opt').forEach(btn => {
     const name = btn.dataset.name;
     $$(`[data-name="${name}"]`).forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
-    quizAnswerTexts[name] = btn.dataset.text || btn.textContent.trim();
+    quizAnswerTexts[name] = btn.textContent.trim();
+    quizAnswerKeys[name] = btn.dataset.key;
     setTimeout(advanceQuiz, 250);
   });
 });
 
-function showQuizResult() {
-  const expText = quizAnswerTexts.q4 ?? '';
-  let niveau, desc, tips;
+function profileKeyForQuiz() {
+  const key = quizAnswerKeys.q4;
+  if (key === 'regulier') return 'active';
+  if (key === 'peaAv') return 'intermediate';
+  if (key === 'livret') return 'saver';
+  return 'beginner';
+}
 
-  if (expText.includes('régulièrement')) {
-    niveau = '🎯 Investisseur Actif';
-    desc = 'Tu investis déjà régulièrement — passons à l\'optimisation !';
-    tips = [
-      { icon: '📊', text: 'Explore les ETF sectoriels et les marchés émergents' },
-      { icon: '🔄', text: 'Automatise ton DCA pour lisser les points d\'entrée' },
-      { icon: '💎', text: 'Optimise ta fiscalité PEA + assurance-vie' },
-    ];
-  } else if (expText.includes('PEA') || expText.includes('assurance')) {
-    niveau = '📚 Profil Intermédiaire';
-    desc = 'Tu as déjà une enveloppe — il faut maintenant l\'alimenter efficacement.';
-    tips = [
-      { icon: '🌍', text: 'Diversifie avec un ETF World en DCA mensuel' },
-      { icon: '⚖️', text: 'Équilibre fonds euros et unités de compte' },
-      { icon: '📅', text: 'Vise un horizon d\'au moins 5 ans pour les intérêts composés' },
-    ];
-  } else if (expText.includes('livret') || expText.includes('Livret') || expText.includes('LDDS')) {
-    niveau = '🌱 Profil Épargnant';
-    desc = 'Tu épargnes déjà, super ! L\'étape suivante : faire travailler cet argent.';
-    tips = [
-      { icon: '🏦', text: 'Ouvre un PEA pour investir avec avantages fiscaux' },
-      { icon: '📖', text: 'Commence avec un ETF World : simple et diversifié' },
-      { icon: '💶', text: 'Garde 3 mois de dépenses sur Livret A, investis le reste' },
-    ];
-  } else {
-    niveau = '🚀 Profil Débutant';
-    desc = 'Parfait point de départ — tout le monde commence quelque part !';
-    tips = [
-      { icon: '💰', text: 'Commence par 3 mois de dépenses sur Livret A' },
-      { icon: '📖', text: 'Apprends ce qu\'est un ETF World avant tout' },
-      { icon: '💬', text: 'Pose tes questions à Financia, sans jugement !' },
-    ];
-  }
+function showQuizResult() {
+  const profile = FinanciaI18N.get('quiz.profiles.' + profileKeyForQuiz());
+  const { niveau, desc, tips } = profile;
 
   const resultEl = $('#quiz-result');
   if (!resultEl) return;
@@ -368,21 +354,27 @@ function showQuizResult() {
     <div class="quiz-result-level">${niveau}</div>
     <p class="quiz-result-sub">${desc}</p>
     <div class="quiz-profile-summary">
-      <div class="quiz-profile-line">👤 <strong>${quizAnswerTexts.q1 ?? '?'} ans</strong> · ${quizAnswerTexts.q2 ?? '?'}</div>
-      <div class="quiz-profile-line">💶 Épargne mensuelle : <strong>${quizAnswerTexts.q3 ?? '?'} €/mois</strong></div>
-      <div class="quiz-profile-line">🎯 Objectif : <strong>${quizAnswerTexts.q5 ?? '?'}</strong></div>
+      <div class="quiz-profile-line">👤 <strong>${quizAnswerTexts.q1 ?? '?'}${FinanciaI18N.t('quiz.profileAgeUnit')}</strong> · ${quizAnswerTexts.q2 ?? '?'}</div>
+      <div class="quiz-profile-line">💶 ${FinanciaI18N.t('quiz.profileEpargneLabel')}<strong>${quizAnswerTexts.q3 ?? '?'}${FinanciaI18N.t('simulator.perMonthSuffix')}</strong></div>
+      <div class="quiz-profile-line">🎯 ${FinanciaI18N.t('quiz.profileObjectifLabel')}<strong>${quizAnswerTexts.q5 ?? '?'}</strong></div>
     </div>
     <div class="quiz-result-tips">
       ${tips.map(t => `<div class="quiz-tip"><span class="quiz-tip-icon">${t.icon}</span><span>${t.text}</span></div>`).join('')}
     </div>
-    <button class="btn-primary full" id="quizPlanBtn">📋 Obtenir mon plan personnalisé →</button>
-    <button class="btn-ghost full" id="quizRestartBtn">↩ Recommencer le quiz</button>
+    <button class="btn-primary full" id="quizPlanBtn">${FinanciaI18N.t('quiz.planBtn')}</button>
+    <button class="btn-ghost full" id="quizRestartBtn">${FinanciaI18N.t('quiz.restartBtn')}</button>
   `;
   resultEl.classList.remove('hidden');
   const progress = $('#quizProgress');
   if (progress) progress.style.width = '100%';
   $('#quizPlanBtn')?.addEventListener('click', () => {
-    const msg = `Voici mon profil : j'ai ${quizAnswerTexts.q1 ?? '?'} ans, je suis ${quizAnswerTexts.q2 ?? '?'}, je peux épargner ${quizAnswerTexts.q3 ?? '?'}€/mois, ${quizAnswerTexts.q4 ?? '?'}, mon objectif est ${quizAnswerTexts.q5 ?? '?'}. Fais-moi un plan d'investissement personnalisé et concret.`;
+    const msg = FinanciaI18N.t('quiz.chatPlanPrompt', {
+      age: quizAnswerTexts.q1 ?? '?',
+      situation: quizAnswerTexts.q2 ?? '?',
+      amount: quizAnswerTexts.q3 ?? '?',
+      experience: quizAnswerTexts.q4 ?? '?',
+      objectif: quizAnswerTexts.q5 ?? '?',
+    });
     if (chatInput) chatInput.value = msg;
     document.getElementById('chat')?.scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => chatForm?.dispatchEvent(new Event('submit')), 600);
@@ -390,6 +382,13 @@ function showQuizResult() {
   $('#quizRestartBtn')?.addEventListener('click', resetQuiz);
   updateQuizBackBtn();
 }
+
+FinanciaI18N.onLangChange(() => {
+  updateQuizBackBtn();
+  const backBtn = $('#quizBack');
+  if (backBtn) backBtn.textContent = FinanciaI18N.t('quiz.backBtn');
+  if (!$('#quiz-result')?.classList.contains('hidden')) showQuizResult();
+});
 
 window.addEventListener('hashchange', () => {
   if (window.location.hash === '#quiz') resetQuiz();
@@ -441,6 +440,11 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   obs.observe(statsEl);
 })();
 
+let lastActusItems = null;
+let lastActusTitles = null;
+let lastActusLang = null;
+let actusFailed = false;
+
 async function loadActus() {
   const grid = $('#actus-grid');
   if (!grid) return;
@@ -451,45 +455,71 @@ async function loadActus() {
     if (data.Information || data.Note) throw new Error();
     const items = data.feed?.slice(0, 6);
     if (!items?.length) throw new Error();
-
-    // Translate titles via Groq (best-effort — fallback to originals on error)
-    let titles = items.map(item => item.title || '');
-    try {
-      const tr = await fetch('/api/translate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ titles }),
-      });
-      if (tr.ok) {
-        const trData = await tr.json();
-        if (Array.isArray(trData.titles) && trData.titles.length === titles.length) {
-          titles = trData.titles;
-        }
-      }
-    } catch { /* keep originals */ }
-
-    grid.innerHTML = items.map((item, i) => {
-      const raw = item.time_published || '';
-      let date = '';
-      if (raw.length >= 8) {
-        const d = new Date(`${raw.slice(0,4)}-${raw.slice(4,6)}-${raw.slice(6,8)}T${raw.slice(9,11)}:${raw.slice(11,13)}:00`);
-        if (!isNaN(d)) date = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-      }
-      return `<a class="actu-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
-        <div class="actu-meta">
-          <span class="actu-source">${escapeHtml(item.source || '')}</span>
-          <span class="actu-date">${date}</span>
-        </div>
-        <p class="actu-title">${escapeHtml(titles[i] || item.title || '')}</p>
-        <span class="actu-link">Lire l'article →</span>
-      </a>`;
-    }).join('');
+    lastActusItems = items;
+    await translateActusTitles();
+    renderActus();
   } catch {
-    grid.innerHTML = '<p class="actus-error">Actus temporairement indisponibles.</p>';
+    actusFailed = true;
+    grid.innerHTML = `<p class="actus-error">${FinanciaI18N.t('actus.errorMsg')}</p>`;
   }
 }
 
+// Traduit les titres (issus d'Alpha Vantage, en anglais) via Groq — best-effort,
+// retombe sur les titres originaux en cas d'erreur.
+async function translateActusTitles() {
+  if (!lastActusItems) return;
+  const lang = FinanciaI18N.getLang();
+  const titles = lastActusItems.map(item => item.title || '');
+  lastActusTitles = titles;
+  lastActusLang = lang;
+  try {
+    const tr = await fetch('/api/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ titles, lang }),
+    });
+    if (tr.ok) {
+      const trData = await tr.json();
+      if (Array.isArray(trData.titles) && trData.titles.length === titles.length) {
+        lastActusTitles = trData.titles;
+      }
+    }
+  } catch { /* keep originals */ }
+}
+
+function renderActus() {
+  const grid = $('#actus-grid');
+  if (!grid || !lastActusItems) return;
+  grid.innerHTML = lastActusItems.map((item, i) => {
+    const raw = item.time_published || '';
+    let date = '';
+    if (raw.length >= 8) {
+      const d = new Date(`${raw.slice(0,4)}-${raw.slice(4,6)}-${raw.slice(6,8)}T${raw.slice(9,11)}:${raw.slice(11,13)}:00`);
+      if (!isNaN(d)) date = d.toLocaleDateString(currentLocale(), { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    return `<a class="actu-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
+      <div class="actu-meta">
+        <span class="actu-source">${escapeHtml(item.source || '')}</span>
+        <span class="actu-date">${date}</span>
+      </div>
+      <p class="actu-title">${escapeHtml(lastActusTitles[i] || item.title || '')}</p>
+      <span class="actu-link">${FinanciaI18N.t('actus.readArticle')}</span>
+    </a>`;
+  }).join('');
+}
+
 loadActus();
+FinanciaI18N.onLangChange(async () => {
+  if (lastActusItems && lastActusLang !== FinanciaI18N.getLang()) {
+    await translateActusTitles();
+  }
+  if (lastActusItems) {
+    renderActus();
+  } else if (actusFailed) {
+    const grid = $('#actus-grid');
+    if (grid) grid.innerHTML = `<p class="actus-error">${FinanciaI18N.t('actus.errorMsg')}</p>`;
+  }
+});
 
 // ── Newsletter ──
 (function () {
@@ -507,10 +537,10 @@ loadActus();
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = input.value.trim();
-    if (!email) { showMsg('Merci de renseigner ton email.', 'error'); return; }
+    if (!email) { showMsg(FinanciaI18N.t('newsletter.errEmail'), 'error'); return; }
 
     btn.disabled = true;
-    btn.textContent = 'Inscription…';
+    btn.textContent = FinanciaI18N.t('newsletter.btnLoading');
     msg.className = 'newsletter-msg hidden';
 
     try {
@@ -522,22 +552,18 @@ loadActus();
       const data = await res.json();
       if (res.ok) {
         input.value = '';
-        if (data.already) {
-          showMsg('Tu es déjà inscrit à la newsletter !', 'success');
-        } else {
-          showMsg('✅ Tu es inscrit ! Rendez-vous vendredi dans ta boîte mail.', 'success');
-        }
-        btn.textContent = 'Inscrit ✓';
+        showMsg(FinanciaI18N.t(data.already ? 'newsletter.alreadySub' : 'newsletter.successSub'), 'success');
+        btn.textContent = FinanciaI18N.t('newsletter.btnConfirmed');
         btn.classList.add('confirmed');
       } else {
-        showMsg(data.error || 'Une erreur est survenue.', 'error');
+        showMsg(data.error || FinanciaI18N.t('newsletter.genericErr'), 'error');
         btn.disabled = false;
-        btn.textContent = 'Je m\'inscris';
+        btn.textContent = FinanciaI18N.t('newsletter.btn');
       }
     } catch {
-      showMsg('Erreur réseau. Réessaie dans un instant.', 'error');
+      showMsg(FinanciaI18N.t('newsletter.networkErr'), 'error');
       btn.disabled = false;
-      btn.textContent = 'Je m\'inscris';
+      btn.textContent = FinanciaI18N.t('newsletter.btn');
     }
   });
 })();
@@ -545,37 +571,34 @@ loadActus();
 // ── FAQ carousel + free question (moved from inline <script> in index.html) ──
 // ── FAQ carousel ──
 (function () {
-  const FAQ = [
-    { q: "Financia est-il vraiment gratuit ?", a: "Oui, 100% gratuit. Pas de frais cachés, pas de pub, pas d'abonnement." },
-    { q: "C'est quoi un ETF ?", a: "Un ETF est un panier d'actions que tu achètes en une seule fois. Il te permet d'investir dans des centaines d'entreprises avec un seul produit." },
-    { q: "À partir de quel âge peut-on investir ?", a: "Dès 18 ans tu peux ouvrir un PEA ou un CTO seul. Avant 18 ans, avec l'accord de tes parents." },
-    { q: "Combien faut-il pour commencer ?", a: "Certaines plateformes permettent d'investir dès 1€. L'important c'est la régularité, pas le montant." },
-    { q: "Est-ce que Financia gère mon argent ?", a: "Non. Financia est un site éducatif. Nous t'expliquons comment investir, mais nous ne gérons aucun fonds." },
-    { q: "C'est quoi un PEA ?", a: "Le Plan d'Épargne en Actions est un compte qui te permet d'investir en bourse avec une fiscalité avantageuse après 5 ans." },
-    { q: "Le chatbot IA est-il fiable ?", a: "Notre IA est conçue pour l'éducation financière. Elle te donne des informations pédagogiques, pas des conseils d'investissement personnalisés." },
-    { q: "Quelle différence entre PEA et CTO ?", a: "Le PEA est plafonné à 150 000€ mais moins taxé après 5 ans. Le CTO est illimité mais taxé à 30% (flat tax)." },
-  ];
-
   const track  = document.getElementById('faqTrack');
   const dotsEl = document.getElementById('faqDots');
   const prev   = document.getElementById('faqPrev');
   const next   = document.getElementById('faqNext');
-  let cur = 0, timer = null;
+  let cur = 0, timer = null, faqLen = 0;
 
-  FAQ.forEach((item, i) => {
-    const card = document.createElement('div');
-    card.className = 'faq-card';
-    card.innerHTML = `<div class="faq-q">${item.q}</div><div class="faq-a">${item.a}</div>`;
-    track.appendChild(card);
+  function buildCards() {
+    const FAQ = FinanciaI18N.get('faq.items') || [];
+    faqLen = FAQ.length;
+    track.innerHTML = '';
+    dotsEl.innerHTML = '';
+    FAQ.forEach((item, i) => {
+      const card = document.createElement('div');
+      card.className = 'faq-card';
+      card.innerHTML = `<div class="faq-q">${item.q}</div><div class="faq-a">${item.a}</div>`;
+      track.appendChild(card);
 
-    const dot = document.createElement('div');
-    dot.className = 'faq-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(dot);
-  });
+      const dot = document.createElement('div');
+      dot.className = 'faq-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    });
+    cur = 0;
+    goTo(0);
+  }
 
   function goTo(idx) {
-    cur = (idx + FAQ.length) % FAQ.length;
+    cur = (idx + faqLen) % faqLen;
     track.style.transform = `translateX(-${cur * (track.parentElement.offsetWidth + 20)}px)`;
     dotsEl.querySelectorAll('.faq-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
   }
@@ -587,7 +610,9 @@ loadActus();
 
   prev.addEventListener('click', () => { goTo(cur - 1); startAuto(); });
   next.addEventListener('click', () => { goTo(cur + 1); startAuto(); });
+  buildCards();
   startAuto();
+  FinanciaI18N.onLangChange(buildCards);
 })();
 
 // ── FAQ free question ──
@@ -601,7 +626,7 @@ loadActus();
     const q = input.value.trim();
     if (!q) return;
     btn.disabled = true;
-    btn.textContent = 'Chargement…';
+    btn.textContent = FinanciaI18N.t('faq.askBtnLoading');
     card.classList.remove('visible');
     powered.style.display = 'none';
 
@@ -609,18 +634,18 @@ loadActus();
       const r = await fetch('/api/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: q + ' (réponds en maximum 3 phrases simples)', lang: 'fr' }),
+        body: JSON.stringify({ message: q + ' (réponds en maximum 3 phrases simples)', lang: FinanciaI18N.getLang() }),
       });
       const data = await r.json();
-      card.textContent = data.text || data.error || 'Désolé, une erreur est survenue.';
+      card.textContent = data.text || data.error || FinanciaI18N.t('faq.errAnswer');
     } catch {
-      card.textContent = 'Désolé, une erreur est survenue. Réessaie dans un instant.';
+      card.textContent = FinanciaI18N.t('faq.errAnswerRetry');
     }
 
     card.classList.add('visible');
     powered.style.display = 'block';
     btn.disabled = false;
-    btn.textContent = 'Poser ma question';
+    btn.textContent = FinanciaI18N.t('faq.askBtn');
   }
 
   btn.addEventListener('click', ask);
@@ -648,17 +673,20 @@ loadActus();
 
   function fmtDate(iso) {
     try {
-      return new Date(iso).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+      return new Date(iso).toLocaleDateString(currentLocale(), { day: '2-digit', month: 'short', year: 'numeric' });
     } catch { return iso; }
   }
 
+  let lastAvis = [];
+
   function renderGrid(avis) {
+    lastAvis = avis;
     if (!avis.length) {
       grid.innerHTML = `
         <div class="avis-empty">
           <div class="avis-empty-emoji">💬</div>
-          <div class="avis-empty-title">Sois le premier à laisser un avis !</div>
-          <div class="avis-empty-sub">Dis-nous ce que tu penses de Financia.</div>
+          <div class="avis-empty-title">${FinanciaI18N.t('avis.emptyTitle')}</div>
+          <div class="avis-empty-sub">${FinanciaI18N.t('avis.emptySub')}</div>
         </div>`;
       return;
     }
@@ -691,7 +719,7 @@ loadActus();
     });
     s.addEventListener('click', () => {
       selectedNote = parseInt(s.dataset.v);
-      const labels = ['', 'Mauvais', 'Passable', 'Bien', 'Très bien', 'Excellent'];
+      const labels = FinanciaI18N.get('avis.starLabels');
       starLabel.textContent = labels[selectedNote];
       stars.forEach(x => x.classList.toggle('on', parseInt(x.dataset.v) <= selectedNote));
     });
@@ -704,7 +732,7 @@ loadActus();
   fetch('/api/avis')
     .then(r => r.json())
     .then(renderGrid)
-    .catch(() => { grid.innerHTML = '<div class="avis-empty">Impossible de charger les avis.</div>'; });
+    .catch(() => { grid.innerHTML = `<div class="avis-empty">${FinanciaI18N.t('avis.loadError')}</div>`; });
 
   // Submit
   form.addEventListener('submit', async e => {
@@ -713,12 +741,12 @@ loadActus();
     const prenom = prenomEl.value.trim();
     const texte  = texteEl.value.trim();
 
-    if (!prenom) return showMsg('Veuillez entrer votre prénom.', 'err');
-    if (!selectedNote) return showMsg('Veuillez sélectionner une note.', 'err');
-    if (!texte) return showMsg('Veuillez écrire un avis.', 'err');
+    if (!prenom) return showMsg(FinanciaI18N.t('avis.errPrenom'), 'err');
+    if (!selectedNote) return showMsg(FinanciaI18N.t('avis.errNote'), 'err');
+    if (!texte) return showMsg(FinanciaI18N.t('avis.errTexte'), 'err');
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Publication…';
+    submitBtn.textContent = FinanciaI18N.t('avis.submitting');
 
     try {
       const r = await fetch('/api/avis', {
@@ -727,13 +755,13 @@ loadActus();
         body: JSON.stringify({ prenom, note: selectedNote, texte }),
       });
       const data = await r.json();
-      if (!r.ok) throw new Error(data.error || 'Erreur serveur');
+      if (!r.ok) throw new Error(data.error || FinanciaI18N.t('avis.errGeneric'));
 
-      showMsg('✅ Merci pour votre avis !', 'ok');
+      showMsg(FinanciaI18N.t('avis.successMsg'), 'ok');
       form.reset();
       selectedNote = 0;
       charCount.textContent = '0';
-      starLabel.textContent = 'Cliquez pour noter';
+      starLabel.textContent = FinanciaI18N.t('avis.clickToRate');
       stars.forEach(x => x.classList.remove('on'));
 
       // Refresh grid
@@ -742,9 +770,11 @@ loadActus();
       showMsg(err.message, 'err');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Publier mon avis';
+      submitBtn.textContent = FinanciaI18N.t('avis.submitBtn');
     }
   });
+
+  FinanciaI18N.onLangChange(() => renderGrid(lastAvis));
 })();
 
 // ── News widget carousel (moved from inline <script> in index.html) ──
@@ -764,7 +794,7 @@ loadActus();
   function formatDate(iso) {
     try {
       const d = new Date(iso);
-      return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+      return d.toLocaleDateString(currentLocale(), { day: '2-digit', month: 'short', year: 'numeric' });
     } catch { return ''; }
   }
 
@@ -774,8 +804,11 @@ loadActus();
     return d.innerHTML;
   }
 
+  let lastArticles = null;
+
   function render(articles) {
-    cards = articles.slice(0, 5);
+    if (articles) lastArticles = articles;
+    cards = lastArticles.slice(0, 5);
     track.innerHTML = '';
     dotsEl.innerHTML = '';
 
@@ -794,10 +827,10 @@ loadActus();
         <div class="news-card-meta">
           <span class="news-source">${source}</span>
           <span class="news-date">${date}</span>
-          <span class="news-sentiment neu">Finance</span>
+          <span class="news-sentiment neu">${FinanciaI18N.t('newsWidget.sentimentTag')}</span>
         </div>
         <div class="news-headline">${headline}</div>
-        <div class="news-card-footer">Lire l'article →</div>
+        <div class="news-card-footer">${FinanciaI18N.t('newsWidget.readArticle')}</div>
       `;
       track.appendChild(card);
 
@@ -828,6 +861,8 @@ loadActus();
   prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
   nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
 
+  let newsFailed = false;
+
   fetch('/api/news')
     .then(r => r.json())
     .then(data => {
@@ -837,6 +872,12 @@ loadActus();
     })
     .catch((err) => {
       console.error('[news widget]', err);
-      track.innerHTML = '<div class="news-loading">📊 Actus bientôt disponibles — reviens dans quelques minutes</div>';
+      newsFailed = true;
+      track.innerHTML = `<div class="news-loading">${FinanciaI18N.t('newsWidget.comingSoon')}</div>`;
     });
+
+  FinanciaI18N.onLangChange(() => {
+    if (lastArticles) render();
+    else if (newsFailed) track.innerHTML = `<div class="news-loading">${FinanciaI18N.t('newsWidget.comingSoon')}</div>`;
+  });
 })();

@@ -8,6 +8,10 @@
 const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+// Traduit tout le HTML statique déjà présent, révèle la page (anti-FOUC),
+// et branche le sélecteur de langue — doit s'exécuter avant tout le reste.
+FinanciaI18N.initLang();
+
 // ── Nav bar : ombre au scroll ──
 const navbar = $('#navbar');
 window.addEventListener('scroll', () => {
@@ -61,99 +65,62 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // Faits vérifiables — coordonnées de courbe illustratives
 // (viewBox 800x320), à but strictement pédagogique.
 // ============================================================
+// Coordonnées de courbe illustratives (viewBox 800x320) — les textes
+// (titre, période, labels de points, stats, leçon) viennent de i18n.js
+// (histoire.legendCards.{key} / histoire.legendDetails.{key}).
 const LEGENDS = {
   apple: {
     icon: '🍎',
-    title: 'Apple',
-    period: '1997 → 2026',
     path: 'M20,300 L90,296 L160,284 L230,255 L300,205 L370,175 L430,150 L490,132 L555,95 L600,118 L650,72 L700,42 L740,60 L780,32',
     points: [
-      { x: 20,  y: 300, label: '1997 — Apple frôle la faillite, à quelques semaines de trésorerie.' },
-      { x: 300, y: 205, label: '2001 — Lancement de l’iPod, premier vrai virage.' },
-      { x: 430, y: 150, label: '2007 — Lancement de l’iPhone.' },
-      { x: 555, y: 95,  label: '2018 — Apple devient la 1ère entreprise à 1 000 milliards $.' },
-      { x: 700, y: 42,  label: '2022 — Pic autour de 3 000 milliards $ de valorisation.' },
+      { x: 20,  y: 300 },
+      { x: 300, y: 205 },
+      { x: 430, y: 150 },
+      { x: 555, y: 95  },
+      { x: 700, y: 42  },
     ],
-    stats: [
-      { n: '1997', l: 'Quasi-faillite' },
-      { n: '1 000 Md$', l: 'Valorisation en 2018' },
-      { n: '~3 000 Md$', l: 'Pic en 2022' },
-    ],
-    lesson: 'Leçon : une entreprise en grande difficulté peut se réinventer complètement. Mais miser sur un seul titre reste un pari — c’est pour ça qu’on <strong>diversifie</strong>.',
   },
   amazon: {
     icon: '📦',
-    title: 'Amazon',
-    period: '1997 → 2026',
     path: 'M20,300 L90,250 L150,180 L200,120 L235,270 L280,262 L340,235 L400,215 L470,225 L540,175 L610,115 L670,75 L715,95 L780,50',
     points: [
-      { x: 20,  y: 300, label: '1997 — Introduction en bourse à 18$ l’action.' },
-      { x: 200, y: 120, label: '1999 — Sommet de la bulle Internet.' },
-      { x: 235, y: 270, label: '2001 — Chute de plus de 90% depuis le pic de la bulle Internet.' },
-      { x: 470, y: 225, label: '2008 — Nouvelle chute pendant la crise financière mondiale.' },
-      { x: 670, y: 75,  label: '2020 — Le e-commerce explose avec la pandémie.' },
+      { x: 20,  y: 300 },
+      { x: 200, y: 120 },
+      { x: 235, y: 270 },
+      { x: 470, y: 225 },
+      { x: 670, y: 75  },
     ],
-    stats: [
-      { n: '-90%', l: 'Chute 1999-2001' },
-      { n: '18$', l: 'Prix d’introduction en 1997' },
-      { n: '>1 000 Md$', l: 'Valorisation atteinte depuis' },
-    ],
-    lesson: 'Leçon : même les plus grandes réussites boursières traversent des chutes vertigineuses. Ceux qui ont vendu en panique en 2001 n’ont jamais vu la suite de l’histoire.',
   },
   bitcoin: {
     icon: '🪙',
-    title: 'Bitcoin',
-    period: '2009 → 2026',
     path: 'M20,315 L70,313 L160,296 L210,255 L250,300 L340,270 L400,90 L440,235 L500,225 L580,60 L630,215 L700,145 L750,42 L780,58',
     points: [
-      { x: 20,  y: 315, label: '2009 — Naissance du Bitcoin, valeur quasi nulle.' },
-      { x: 70,  y: 313, label: '2010 — "Bitcoin Pizza Day" : 10 000 BTC échangés contre 2 pizzas.' },
-      { x: 400, y: 90,  label: 'Déc. 2017 — Sommet proche de 20 000$.' },
-      { x: 440, y: 235, label: '2018 — Chute à environ 3 200$.' },
-      { x: 580, y: 60,  label: 'Nov. 2021 — Nouveau sommet, environ 69 000$.' },
-      { x: 630, y: 215, label: '2022 — Chute à environ 16 000$.' },
+      { x: 20,  y: 315 },
+      { x: 70,  y: 313 },
+      { x: 400, y: 90  },
+      { x: 440, y: 235 },
+      { x: 580, y: 60  },
+      { x: 630, y: 215 },
     ],
-    stats: [
-      { n: '2009', l: 'Genèse' },
-      { n: '~69 000$', l: 'Record de nov. 2021' },
-      { n: '-77%', l: 'Chute 2021 → 2022' },
-    ],
-    lesson: 'Leçon : le Bitcoin a déjà perdu 70 à 80% de sa valeur plusieurs fois par cycle. Un actif à très haut risque, à ne détenir qu’avec des sommes qu’on peut se permettre de perdre.',
   },
   sp500: {
     icon: '📊',
-    title: 'Le S&P 500',
-    period: '~1926 → 2026 (100 ans)',
     path: 'M20,300 L100,290 L140,262 L165,292 L230,268 L320,222 L360,236 L420,182 L460,142 L505,192 L565,132 L585,178 L625,112 L645,152 L685,72 L722,92 L780,32',
     points: [
-      { x: 165, y: 292, label: '1929 — Krach de Wall Street.' },
-      { x: 460, y: 142, label: '2000 — Éclatement de la bulle Internet.' },
-      { x: 585, y: 178, label: '2008 — Crise financière mondiale.' },
-      { x: 645, y: 152, label: '2020 — Krach Covid.' },
+      { x: 165, y: 292 },
+      { x: 460, y: 142 },
+      { x: 585, y: 178 },
+      { x: 645, y: 152 },
     ],
-    stats: [
-      { n: '~10%/an', l: 'Rendement nominal moyen*' },
-      { n: '100 ans', l: 'D’historique' },
-      { n: '0', l: 'Krach dont l’indice ne s’est jamais remis' },
-    ],
-    lesson: 'Leçon : sur 100 ans, malgré des dizaines de krachs, l’indice a toujours fini par dépasser ses précédents records. *Dividendes réinvestis, rendement nominal moyen historique.',
   },
   nokia: {
     icon: '📉',
-    title: 'Nokia',
-    period: '1990 → 2014',
     path: 'M20,280 L100,230 L170,150 L220,80 L280,110 L340,145 L400,165 L450,195 L505,230 L560,258 L620,280 L680,292 L730,297 L780,299',
     points: [
-      { x: 220, y: 80,  label: '2000 — Numéro 1 mondial du mobile, pic de valorisation (~250 Md€).' },
-      { x: 450, y: 195, label: '2007 — L’iPhone est lancé, Nokia sous-estime la menace.' },
-      { x: 730, y: 297, label: '2013 — Vente de la division mobile à Microsoft pour 7,2 milliards $.' },
+      { x: 220, y: 80  },
+      { x: 450, y: 195 },
+      { x: 730, y: 297 },
     ],
-    stats: [
-      { n: '2000', l: 'N°1 mondial du mobile' },
-      { n: '~250 Md€', l: 'Valorisation au pic' },
-      { n: '7,2 Md$', l: 'Prix de vente à Microsoft' },
-    ],
-    lesson: 'Leçon : dominer un marché n’immunise pas contre la disruption — Kodak a vécu un sort très similaire face au numérique. <strong>Rien n’est jamais acquis.</strong>',
   },
 };
 
@@ -177,6 +144,7 @@ const LEGENDS = {
   if (!grid || !detail) return;
 
   let activeCard = null;
+  let activeKey = null;
   let hideTimer = null;
 
   function buildFillPath(pathD) {
@@ -207,14 +175,19 @@ const LEGENDS = {
 
   function renderLegend(key) {
     const data = LEGENDS[key];
-    if (!data) return;
+    const card = FinanciaI18N.get('histoire.legendCards.' + key);
+    const detailData = FinanciaI18N.get('histoire.legendDetails.' + key);
+    if (!data || !card || !detailData) return;
+    activeKey = key;
+
+    const points = data.points.map((p, i) => ({ ...p, label: detailData.points[i] }));
 
     iconEl.textContent = data.icon;
-    titleEl.textContent = data.title;
-    periodEl.textContent = data.period;
-    lessonEl.innerHTML = data.lesson;
+    titleEl.textContent = card.title;
+    periodEl.textContent = detailData.period;
+    lessonEl.innerHTML = detailData.lesson;
 
-    statsEl.innerHTML = data.stats.map(s => `
+    statsEl.innerHTML = detailData.stats.map(s => `
       <div class="hist-stat-chip">
         <span class="n">${s.n}</span>
         <span class="l">${s.l}</span>
@@ -227,7 +200,7 @@ const LEGENDS = {
     pathEl.style.strokeDasharray = 'none';
     pathEl.style.strokeDashoffset = '0';
 
-    pointsG.innerHTML = data.points.map((p, i) => `
+    pointsG.innerHTML = points.map((p, i) => `
       <circle class="hist-chart-point-hit" data-i="${i}" cx="${p.x}" cy="${p.y}" r="22"></circle>
       <circle class="hist-chart-point" data-i="${i}" cx="${p.x}" cy="${p.y}" r="6"></circle>
     `).join('');
@@ -246,7 +219,7 @@ const LEGENDS = {
     const svgEl = $('#histChartSvg');
     $$('.hist-chart-point-hit', pointsG).concat($$('.hist-chart-point', pointsG)).forEach(circle => {
       const i = Number(circle.dataset.i);
-      const point = data.points[i];
+      const point = points[i];
       const twin = () => $$('.hist-chart-point', pointsG)[i];
 
       circle.addEventListener('mouseenter', () => {
@@ -283,6 +256,7 @@ const LEGENDS = {
   function closeDetail() {
     if (activeCard) activeCard.setAttribute('aria-expanded', 'false');
     activeCard = null;
+    activeKey = null;
     detail.hidden = true;
     hideTooltip();
   }
@@ -295,4 +269,8 @@ const LEGENDS = {
   });
 
   closeBtn?.addEventListener('click', closeDetail);
+
+  FinanciaI18N.onLangChange(() => {
+    if (activeKey && !detail.hidden) renderLegend(activeKey);
+  });
 })();
