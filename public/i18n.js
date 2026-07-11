@@ -10,7 +10,7 @@ window.I18N = {
 fr: {
   meta: { titleHome: "Financia — Apprends à investir", titleHistoire: "Histoire des marchés — Financia" },
   nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", histoire: "Histoire", apropos: "À propos", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
-  mobileMenu: { accueil: "🏠 Accueil", apprendre: "📚 Apprendre", simulateur: "📈 Simulateur", chat: "💬 Chat IA", quiz: "🧠 Quiz", actus: "📰 Actus", histoire: "📜 Histoire", apropos: "👤 À propos" },
+  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", histoire: "Histoire", apropos: "À propos" },
 
   hero: {
     badge: "🚀 Pour les 18–30 ans · 100% pédagogique",
@@ -364,7 +364,7 @@ fr: {
 en: {
   meta: { titleHome: "Financia — Learn to Invest", titleHistoire: "History of the Markets — Financia" },
   nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", histoire: "History", apropos: "About", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
-  mobileMenu: { accueil: "🏠 Home", apprendre: "📚 Learn", simulateur: "📈 Simulator", chat: "💬 AI Chat", quiz: "🧠 Quiz", actus: "📰 News", histoire: "📜 History", apropos: "👤 About" },
+  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", histoire: "History", apropos: "About" },
 
   hero: {
     badge: "🚀 For 18–30 year-olds · 100% educational",
@@ -718,7 +718,7 @@ en: {
 es: {
   meta: { titleHome: "Financia — Aprende a invertir", titleHistoire: "Historia de los mercados — Financia" },
   nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", histoire: "Historia", apropos: "Sobre nosotros", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
-  mobileMenu: { accueil: "🏠 Inicio", apprendre: "📚 Aprender", simulateur: "📈 Simulador", chat: "💬 Chat IA", quiz: "🧠 Quiz", actus: "📰 Noticias", histoire: "📜 Historia", apropos: "👤 Sobre nosotros" },
+  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", histoire: "Historia", apropos: "Sobre nosotros" },
 
   hero: {
     badge: "🚀 Para jóvenes de 18–30 años · 100% educativo",

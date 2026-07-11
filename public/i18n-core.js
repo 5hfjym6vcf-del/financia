@@ -64,27 +64,35 @@
   const listeners = [];
   function onLangChange(fn) { listeners.push(fn); }
 
+  // Deux sélecteurs partagent l'état langue : celui de la nav desktop
+  // (#langSelect) et celui du panneau mobile (#langSelectMobile).
+  const SELECT_IDS = ['langSelect', 'langSelectMobile'];
+
   function setLang(lang) {
     if (!SUPPORTED.includes(lang)) lang = 'fr';
     try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* storage disabled */ }
     document.documentElement.lang = lang;
     applyTranslations();
-    const sel = document.getElementById('langSelect');
-    if (sel) sel.value = lang;
+    SELECT_IDS.forEach(id => {
+      const sel = document.getElementById(id);
+      if (sel) sel.value = lang;
+    });
     listeners.forEach(fn => { try { fn(lang); } catch (e) { console.error('[i18n] listener error', e); } });
   }
 
   // Appelé au tout début de script.js / histoire.js — traduit tout le
-  // HTML statique déjà présent, branche le sélecteur, révèle la page.
+  // HTML statique déjà présent, branche les sélecteurs, révèle la page.
   function initLang() {
     const lang = getLang();
     document.documentElement.lang = lang;
     applyTranslations();
-    const sel = document.getElementById('langSelect');
-    if (sel) {
-      sel.value = lang;
-      sel.addEventListener('change', () => setLang(sel.value));
-    }
+    SELECT_IDS.forEach(id => {
+      const sel = document.getElementById(id);
+      if (sel) {
+        sel.value = lang;
+        sel.addEventListener('change', () => setLang(sel.value));
+      }
+    });
     document.documentElement.classList.add('i18n-ready');
     return lang;
   }

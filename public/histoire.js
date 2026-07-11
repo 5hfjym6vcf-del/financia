@@ -21,16 +21,15 @@ window.addEventListener('scroll', () => {
 // ── Menu mobile (identique au comportement de script.js) ──
 const menuBtn = $('#menuBtn');
 const mobileMenu = $('#mobileMenu');
-const menuIconOpen = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
-const menuIconClose = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
 
 function closeMobileMenu() {
   mobileMenu?.classList.remove('open');
-  if (menuBtn) { menuBtn.innerHTML = menuIconOpen; menuBtn.setAttribute('aria-expanded', 'false'); }
+  menuBtn?.classList.remove('open');
+  menuBtn?.setAttribute('aria-expanded', 'false');
 }
 menuBtn?.addEventListener('click', () => {
   const isOpen = mobileMenu?.classList.toggle('open');
-  menuBtn.innerHTML = isOpen ? menuIconClose : menuIconOpen;
+  menuBtn.classList.toggle('open', isOpen);
   menuBtn.setAttribute('aria-expanded', String(isOpen));
 });
 $$('#mobileMenu a').forEach(a => a.addEventListener('click', closeMobileMenu));
