@@ -69,7 +69,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // (histoire.legendCards.{key} / histoire.legendDetails.{key}).
 const LEGENDS = {
   apple: {
-    icon: '🍎',
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
     path: 'M20,300 L90,296 L160,284 L230,255 L300,205 L370,175 L430,150 L490,132 L555,95 L600,118 L650,72 L700,42 L740,60 L780,32',
     points: [
       { x: 20,  y: 300 },
@@ -80,7 +80,7 @@ const LEGENDS = {
     ],
   },
   amazon: {
-    icon: '📦',
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M6 2c0 5 3 7.2 6 8 3-.8 6-3 6-8"/><path d="M6 22c0-5 3-7.2 6-8 3 .8 6 3 6 8"/></svg>',
     path: 'M20,300 L90,250 L150,180 L200,120 L235,270 L280,262 L340,235 L400,215 L470,225 L540,175 L610,115 L670,75 L715,95 L780,50',
     points: [
       { x: 20,  y: 300 },
@@ -91,7 +91,7 @@ const LEGENDS = {
     ],
   },
   bitcoin: {
-    icon: '🪙',
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
     path: 'M20,315 L70,313 L160,296 L210,255 L250,300 L340,270 L400,90 L440,235 L500,225 L580,60 L630,215 L700,145 L750,42 L780,58',
     points: [
       { x: 20,  y: 315 },
@@ -103,7 +103,7 @@ const LEGENDS = {
     ],
   },
   sp500: {
-    icon: '📊',
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
     path: 'M20,300 L100,290 L140,262 L165,292 L230,268 L320,222 L360,236 L420,182 L460,142 L505,192 L565,132 L585,178 L625,112 L645,152 L685,72 L722,92 L780,32',
     points: [
       { x: 165, y: 292 },
@@ -113,7 +113,7 @@ const LEGENDS = {
     ],
   },
   nokia: {
-    icon: '📉',
+    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>',
     path: 'M20,280 L100,230 L170,150 L220,80 L280,110 L340,145 L400,165 L450,195 L505,230 L560,258 L620,280 L680,292 L730,297 L780,299',
     points: [
       { x: 220, y: 80  },
@@ -181,7 +181,7 @@ const LEGENDS = {
 
     const points = data.points.map((p, i) => ({ ...p, label: detailData.points[i] }));
 
-    iconEl.textContent = data.icon;
+    iconEl.innerHTML = data.icon;
     titleEl.textContent = card.title;
     periodEl.textContent = detailData.period;
     lessonEl.innerHTML = detailData.lesson;
