@@ -55,6 +55,7 @@
       <a href="#chat" data-i18n="nav.chat">Chat IA</a>
       <a href="#quiz" data-i18n="nav.quiz">Quiz</a>
       <a href="#actus" data-i18n="nav.actus">Actus</a>
+      <a href="#temoignages" data-i18n="nav.temoignages">Témoignages</a>
       <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
       <a href="#apropos" data-i18n="nav.apropos">À propos</a>
     </nav>
@@ -79,6 +80,7 @@
   <a href="#chat"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="mobileMenu.chat">Chat IA</span></a>
   <a href="#quiz"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span data-i18n="mobileMenu.quiz">Quiz</span></a>
   <a href="#actus"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg><span data-i18n="mobileMenu.actus">Actus</span></a>
+  <a href="#temoignages"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="mobileMenu.temoignages">Témoignages</span></a>
   <a href="/histoire"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="mobileMenu.histoire">Histoire</span></a>
   <a href="#apropos"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span data-i18n="mobileMenu.apropos">À propos</span></a>
   <div class="mobile-menu-footer">
@@ -279,6 +281,59 @@
         <div id="avisMsg" class="avis-msg" style="display:none;"></div>
         <button type="submit" class="avis-submit" id="avisSubmit" data-i18n="avis.submitBtn">Publier mon avis</button>
       </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TÉMOIGNAGES ══ -->
+<section id="temoignages" class="section temoignages-section">
+  <div class="wrap">
+    <div class="section-label" data-i18n="temoignages.label">Témoignages</div>
+    <h2 class="section-title" data-i18n="temoignages.title">Ils racontent leur parcours</h2>
+    <p class="temoignages-sub" data-i18n="temoignages.sub">Des jeunes partagent comment ils ont appris à investir — sans filtre, sans conseil miracle.</p>
+
+    <div class="temoignages-grid">
+      <article class="temoignage-card">
+        <div class="temoignage-quote-mark">&ldquo;</div>
+        <p class="temoignage-hook" data-i18n="temoignages.edouard.hook">J'ai débuté avec les conseils de ma banque… puis j'ai compris qu'il fallait que je me forme seul.</p>
+        <div class="temoignage-profile">
+          <span class="temoignage-name">Édouard,</span>
+          <span class="temoignage-status" data-i18n="temoignages.edouard.status">Étudiant en prépa</span>
+        </div>
+        <div class="temoignage-body">
+          <h4 class="temoignage-subtitle" data-i18n="temoignages.parcoursLabel">Son parcours</h4>
+          <p data-i18n="temoignages.edouard.para1">J'ai découvert l'investissement à la fin du lycée, en m'intéressant à l'économie — mais sans aucune base.</p>
+          <p data-i18n="temoignages.edouard.para2">J'ai ouvert un PEA avec les conseils de ma banque, puis j'ai essayé de me former seul en ligne : les ETF, les actions, le S&P 500…</p>
+          <p data-i18n="temoignages.edouard.para3">Les débuts étaient flous : des infos dispersées, pas toujours faciles à comprendre.</p>
+        </div>
+        <div class="temoignage-lesson-box">
+          <h4 class="temoignage-subtitle" data-i18n="temoignages.edouard.lessonTitle">Ce qui lui a manqué</h4>
+          <p data-i18n="temoignages.edouard.lesson">Une approche claire et structurée dès le départ — pour gagner du temps quand on débute sans repères. C'est exactement ce que Financia veut apporter.</p>
+        </div>
+      </article>
+
+      <article class="temoignage-card">
+        <div class="temoignage-quote-mark">&ldquo;</div>
+        <p class="temoignage-hook" data-i18n="temoignages.aisultan.hook">Je me suis formé seul, en dehors des amphis — livres, podcasts, et surtout la pratique.</p>
+        <div class="temoignage-profile">
+          <span class="temoignage-name">Aisultan,</span>
+          <span class="temoignage-status" data-i18n="temoignages.aisultan.status">Étudiant à emlyon</span>
+        </div>
+        <div class="temoignage-body">
+          <h4 class="temoignage-subtitle" data-i18n="temoignages.parcoursLabel">Son parcours</h4>
+          <p data-i18n="temoignages.aisultan.para1">Après une prépa, j'ai développé ma culture financière en autodidacte : livres spécialisés, podcasts, formats YouTube de décryptage.</p>
+          <p data-i18n="temoignages.aisultan.para2">J'ai vite voulu lier la théorie à la pratique : j'ai ouvert un PEA et mis en place une stratégie long terme, basée sur du DCA et des ETF.</p>
+          <p data-i18n="temoignages.aisultan.para3">Une démarche exigeante, mais qui a payé : aujourd'hui l'investissement fait partie de mon quotidien.</p>
+        </div>
+        <div class="temoignage-lesson-box">
+          <h4 class="temoignage-subtitle" data-i18n="temoignages.aisultan.lessonTitle">Ce qui a fait la différence</h4>
+          <p data-i18n="temoignages.aisultan.lesson">La régularité plus que la performance. Le DCA, ça veut juste dire investir un peu, tout le temps, sans essayer de deviner le bon moment.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="temoignages-cta-wrap">
+      <a href="https://www.instagram.com/financia_cloud/" target="_blank" rel="noopener" class="btn-ghost" data-i18n="temoignages.cta">Ton parcours mérite d'être raconté ? Écris-nous en DM →</a>
     </div>
   </div>
 </section>
@@ -679,6 +734,7 @@
       <a href="#chat" data-i18n="nav.chat">Chat IA</a>
       <a href="#quiz" data-i18n="nav.quiz">Quiz</a>
       <a href="#actus" data-i18n="nav.actus">Actus</a>
+      <a href="#temoignages" data-i18n="nav.temoignages">Témoignages</a>
       <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
       <a href="#apropos" data-i18n="nav.apropos">À propos</a>
       <a href="#mentions" data-i18n="nav.mentions">Mentions légales</a>

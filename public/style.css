@@ -1490,6 +1490,70 @@ a { text-decoration: none; color: inherit; }
     .avis-msg.ok { color: #059669; }
     .avis-msg.err { color: #dc2626; }
 
+    /* ── Témoignages section ── */
+    .temoignages-section { background: #fff; padding: 72px 0; }
+    .temoignages-sub {
+      font-size: 15px;
+      color: var(--text-2);
+      max-width: 560px;
+      margin: -32px 0 40px;
+      line-height: 1.6;
+    }
+    .temoignages-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    @media (min-width: 900px) {
+      .temoignages-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    .temoignage-card {
+      background: #fafafa;
+      border: 1px solid #f0f0f0;
+      border-radius: 20px;
+      padding: 36px 32px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .temoignage-card:hover { box-shadow: 0 8px 32px rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.2); }
+    .temoignage-quote-mark {
+      font-size: 64px;
+      font-weight: 900;
+      color: #7C3AED;
+      line-height: 0.5;
+      margin-bottom: 4px;
+    }
+    .temoignage-hook {
+      font-size: 19px;
+      font-weight: 700;
+      color: #16161f;
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+      margin-bottom: 20px;
+    }
+    .temoignage-profile { display: flex; align-items: baseline; gap: 6px; margin-bottom: 28px; }
+    .temoignage-name { font-size: 15px; font-weight: 700; color: #7C3AED; }
+    .temoignage-status { font-size: 14px; color: var(--text-2); }
+    .temoignage-subtitle {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7C3AED;
+      margin-bottom: 12px;
+    }
+    .temoignage-body { margin-bottom: 24px; }
+    .temoignage-body p { font-size: 14px; color: #444; line-height: 1.65; margin-bottom: 14px; }
+    .temoignage-body p:last-child { margin-bottom: 0; }
+    .temoignage-lesson-box {
+      background: var(--green-dim);
+      border: 1px solid var(--border-2);
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+    .temoignage-lesson-box p { font-size: 14px; color: #2a1f4d; line-height: 1.6; font-weight: 500; }
+    .temoignages-cta-wrap { text-align: center; }
+
     /* ── FAQ section ── */
     .faq-section {
       background: #0A0A0A;

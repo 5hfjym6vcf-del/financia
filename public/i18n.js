@@ -9,8 +9,8 @@ window.I18N = {
 
 fr: {
   meta: { titleHome: "Financia — Apprends à investir", titleHistoire: "Histoire des marchés — Financia" },
-  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", histoire: "Histoire", apropos: "À propos", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
-  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", histoire: "Histoire", apropos: "À propos" },
+  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
+  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos" },
 
   hero: {
     badge: "🚀 Pour les 18–30 ans · 100% pédagogique",
@@ -209,6 +209,32 @@ fr: {
     readArticle: "Lire l'article →",
   },
 
+  temoignages: {
+    label: "Témoignages",
+    title: "Ils racontent leur parcours",
+    sub: "Des jeunes partagent comment ils ont appris à investir — sans filtre, sans conseil miracle.",
+    parcoursLabel: "Son parcours",
+    cta: "Ton parcours mérite d'être raconté ? Écris-nous en DM →",
+    edouard: {
+      status: "Étudiant en prépa",
+      hook: "J'ai débuté avec les conseils de ma banque… puis j'ai compris qu'il fallait que je me forme seul.",
+      para1: "J'ai découvert l'investissement à la fin du lycée, en m'intéressant à l'économie — mais sans aucune base.",
+      para2: "J'ai ouvert un PEA avec les conseils de ma banque, puis j'ai essayé de me former seul en ligne : les ETF, les actions, le S&P 500…",
+      para3: "Les débuts étaient flous : des infos dispersées, pas toujours faciles à comprendre.",
+      lessonTitle: "Ce qui lui a manqué",
+      lesson: "Une approche claire et structurée dès le départ — pour gagner du temps quand on débute sans repères. C'est exactement ce que Financia veut apporter.",
+    },
+    aisultan: {
+      status: "Étudiant à emlyon",
+      hook: "Je me suis formé seul, en dehors des amphis — livres, podcasts, et surtout la pratique.",
+      para1: "Après une prépa, j'ai développé ma culture financière en autodidacte : livres spécialisés, podcasts, formats YouTube de décryptage.",
+      para2: "J'ai vite voulu lier la théorie à la pratique : j'ai ouvert un PEA et mis en place une stratégie long terme, basée sur du DCA et des ETF.",
+      para3: "Une démarche exigeante, mais qui a payé : aujourd'hui l'investissement fait partie de mon quotidien.",
+      lessonTitle: "Ce qui a fait la différence",
+      lesson: "La régularité plus que la performance. Le DCA, ça veut juste dire investir un peu, tout le temps, sans essayer de deviner le bon moment.",
+    },
+  },
+
   apropos: {
     label: "Notre histoire",
     title: "Notre identité",
@@ -363,8 +389,8 @@ fr: {
 
 en: {
   meta: { titleHome: "Financia — Learn to Invest", titleHistoire: "History of the Markets — Financia" },
-  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", histoire: "History", apropos: "About", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
-  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", histoire: "History", apropos: "About" },
+  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", temoignages: "Testimonials", histoire: "History", apropos: "About", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
+  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", temoignages: "Testimonials", histoire: "History", apropos: "About" },
 
   hero: {
     badge: "🚀 For 18–30 year-olds · 100% educational",
@@ -563,6 +589,32 @@ en: {
     readArticle: "Read article →",
   },
 
+  temoignages: {
+    label: "Testimonials",
+    title: "They share their journey",
+    sub: "Young people share how they learned to invest — no filter, no miracle advice.",
+    parcoursLabel: "Their journey",
+    cta: "Your story deserves to be told? DM us →",
+    edouard: {
+      status: "Prep school student",
+      hook: "I started out following my bank's advice… then I realized I needed to learn on my own.",
+      para1: "I discovered investing at the end of high school, getting interested in economics — but with no real basis.",
+      para2: "I opened a PEA on my bank's advice, then tried to learn on my own online: ETFs, stocks, the S&P 500…",
+      para3: "The early days were confusing: scattered information, not always easy to understand.",
+      lessonTitle: "What he was missing",
+      lesson: "A clear, structured approach from the start — to save time when you're starting out with no bearings. That's exactly what Financia wants to offer.",
+    },
+    aisultan: {
+      status: "Student at emlyon",
+      hook: "I taught myself, outside of lecture halls — books, podcasts, and above all, practice.",
+      para1: "After a prep school, I built my financial knowledge as a self-taught learner: specialized books, podcasts, YouTube breakdown videos.",
+      para2: "I quickly wanted to connect theory with practice: I opened a PEA and set up a long-term strategy based on DCA and ETFs.",
+      para3: "A demanding approach, but one that paid off: today, investing is part of my daily life.",
+      lessonTitle: "What made the difference",
+      lesson: "Consistency over performance. DCA just means investing a little, all the time, without trying to guess the right moment.",
+    },
+  },
+
   apropos: {
     label: "Our story",
     title: "Our identity",
@@ -717,8 +769,8 @@ en: {
 
 es: {
   meta: { titleHome: "Financia — Aprende a invertir", titleHistoire: "Historia de los mercados — Financia" },
-  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", histoire: "Historia", apropos: "Sobre nosotros", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
-  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", histoire: "Historia", apropos: "Sobre nosotros" },
+  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
+  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros" },
 
   hero: {
     badge: "🚀 Para jóvenes de 18–30 años · 100% educativo",
@@ -915,6 +967,32 @@ es: {
     title: "Últimas noticias",
     errorMsg: "Noticias no disponibles temporalmente.",
     readArticle: "Leer el artículo →",
+  },
+
+  temoignages: {
+    label: "Testimonios",
+    title: "Cuentan su recorrido",
+    sub: "Jóvenes comparten cómo aprendieron a invertir — sin filtros, sin consejos milagrosos.",
+    parcoursLabel: "Su recorrido",
+    cta: "¿Tu historia merece ser contada? Escríbenos por DM →",
+    edouard: {
+      status: "Estudiante de preparatoria",
+      hook: "Empecé siguiendo los consejos de mi banco… luego entendí que tenía que formarme por mi cuenta.",
+      para1: "Descubrí la inversión al final del instituto, interesándome por la economía, pero sin ninguna base.",
+      para2: "Abrí un PEA siguiendo los consejos de mi banco, y luego intenté formarme solo online: los ETF, las acciones, el S&P 500…",
+      para3: "Los inicios fueron confusos: información dispersa, no siempre fácil de entender.",
+      lessonTitle: "Lo que le faltó",
+      lesson: "Un enfoque claro y estructurado desde el principio, para ahorrar tiempo cuando empiezas sin referencias. Es exactamente lo que Financia quiere ofrecer.",
+    },
+    aisultan: {
+      status: "Estudiante en emlyon",
+      hook: "Me formé por mi cuenta, fuera de las aulas — libros, podcasts, y sobre todo la práctica.",
+      para1: "Después de una clase preparatoria, desarrollé mi cultura financiera de forma autodidacta: libros especializados, podcasts, vídeos de YouTube explicativos.",
+      para2: "Rápidamente quise unir la teoría con la práctica: abrí un PEA y puse en marcha una estrategia a largo plazo, basada en DCA y ETF.",
+      para3: "Un proceso exigente, pero que dio sus frutos: hoy la inversión forma parte de mi día a día.",
+      lessonTitle: "Lo que marcó la diferencia",
+      lesson: "La constancia más que el rendimiento. El DCA solo significa invertir un poco, todo el tiempo, sin intentar adivinar el momento perfecto.",
+    },
   },
 
   apropos: {
