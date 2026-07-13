@@ -427,6 +427,79 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-listen:hover { color: var(--text); border-color: rgba(0,0,0,0.15); }
 
+/* JEUNES & INVESTISSEMENT — chiffres clés */
+.jc-section { background: var(--bg); }
+.jc-sub { font-size: 15px; color: var(--text-2); max-width: 640px; margin: -32px 0 40px; line-height: 1.6; }
+.jc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+@media (min-width: 900px) {
+  .jc-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+.jc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  transition: var(--transition);
+  min-width: 0;
+}
+.jc-card:hover { border-color: var(--border-2); box-shadow: 0 12px 40px rgba(124,77,255,0.08); }
+.jc-block-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 18px; }
+.jc-stat { margin-bottom: 22px; }
+.jc-stat:last-child { margin-bottom: 0; }
+.jc-stat-value { font-family: var(--font-display); font-size: 38px; font-weight: 800; color: #7C3AED; line-height: 1.1; letter-spacing: -1px; }
+.jc-stat-text { font-size: 14px; color: var(--text-2); line-height: 1.55; margin-top: 4px; }
+.jc-stat-source { font-size: 11.5px; color: var(--text-3); margin-top: 6px; line-height: 1.5; }
+.jc-block-source { margin-top: 16px; }
+
+.jc-highlight {
+  background: var(--green-dim);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  padding: 24px 22px;
+  text-align: center;
+  margin-top: 4px;
+}
+.jc-highlight-value { font-family: var(--font-display); font-size: 56px; font-weight: 900; color: #7C3AED; line-height: 1; letter-spacing: -1.5px; }
+.jc-highlight-text { font-size: 14px; color: var(--text); font-weight: 500; margin-top: 8px; line-height: 1.5; }
+
+.jc-note {
+  font-size: 12.5px;
+  color: #8a6d00;
+  background: rgba(233,162,59,0.12);
+  border: 1px solid rgba(233,162,59,0.3);
+  border-radius: var(--radius-xs);
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.jc-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.jc-row:last-of-type { border-bottom: none; }
+.jc-row-label { font-size: 14px; color: var(--text-2); min-width: 0; }
+.jc-row-value { font-size: 15px; font-weight: 700; color: #7C3AED; white-space: nowrap; flex-shrink: 0; }
+.jc-row-value small { font-size: 12px; font-weight: 500; color: var(--text-3); }
+
+.jc-card-warning { background: rgba(233,162,59,0.06); border-color: rgba(233,162,59,0.25); }
+.jc-stat-value-warning { color: #b4670f; }
+.jc-warning-text { font-size: 14px; color: var(--text); font-weight: 500; line-height: 1.6; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(233,162,59,0.25); }
+
+.jc-cta-wrap { text-align: center; }
+.jc-cta-wrap .btn-primary {
+  white-space: normal;
+  text-align: center;
+  max-width: 480px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .jc-stat-value { font-size: 32px; }
+  .jc-highlight-value { font-size: 46px; }
+}
+
 /* OVERLAY */
 .module-overlay {
   position: fixed;

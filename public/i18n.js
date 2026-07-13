@@ -111,7 +111,38 @@ fr: {
     crypto: { tag: "Risqué", title: "Crypto", desc: "Bitcoin, Ethereum : comprendre sans se brûler les ailes." },
     diversif: { tag: "Stratégie", title: "Diversification", desc: "Ne pas mettre tous ses œufs dans le même panier, la règle d'or de l'investissement." },
     interets: { tag: "Fondamental", title: "Intérêts composés", desc: "La 8ème merveille du monde selon Einstein : comprendre pourquoi commencer tôt change tout." },
+    jeunes: { tag: "Chiffres clés", title: "Jeunes & investissement", desc: "Ce que disent vraiment les chiffres sur les 18-30 ans et la bourse en France." },
     overlayError: "Erreur lors du chargement.",
+  },
+
+  jeunesStats: {
+    label: "Chiffres clés",
+    title: "Les jeunes et l'investissement en France : ce que disent les chiffres",
+    sub: "D'après le Baromètre AMF 2025 et les priorités 2026 de l'Autorité des marchés financiers",
+    bloc1: {
+      title: "Un intérêt en forte hausse",
+      stat1: { value: "34%", text: "des Français déclarent s'intéresser aux actions en 2025, un record depuis le lancement du Baromètre", source: "Source : Baromètre AMF de l'épargne et de l'investissement 2025, oct. 2025" },
+      stat2: { value: "35%", text: "envisagent d'investir en actions dans les 12 prochains mois", source: "Source : Baromètre AMF de l'épargne et de l'investissement 2025, oct. 2025" },
+    },
+    bloc2: {
+      title: "Les jeunes, moteurs du marché",
+      stat1: { value: "+1,5 million", text: "de nouveaux investisseurs particuliers en France en 5 ans", source: "Source : AMF, Priorités d'action et de supervision 2026" },
+      highlight: { value: "50%", text: "des transactions sur ETF sont réalisées par les moins de 35 ans", source: "Source : AMF, Priorités d'action et de supervision 2026" },
+    },
+    bloc3: {
+      title: "Comment les jeunes s'informent",
+      note: "Donnée plus ancienne que les deux blocs précédents (2025-2026) : étude OCDE pour l'AMF de novembre 2023, toujours la plus récente disponible sur ce sujet précis.",
+      stat1: { label: "Réseaux sociaux", value: "28%", detail: "41% chez les 18-24 ans" },
+      stat2: { label: "Influenceurs", value: "22%", detail: "29% chez les 18-24 ans" },
+      stat3: { label: "Documents officiels sur les produits", value: "41%", detail: "" },
+      source: "Source : OCDE pour l'AMF, novembre 2023, étude « Les nouveaux investisseurs particuliers en France », parmi les nouveaux investisseurs ayant recherché des informations avant d'investir.",
+    },
+    bloc4: {
+      title: "Un point de vigilance",
+      stat: { value: "40%", text: "des 18-24 ans citent gagner beaucoup d'argent rapidement comme une priorité absolue", source: "Source : OCDE pour l'AMF, novembre 2023" },
+      text: "Investir vite et investir bien sont rarement compatibles. La régularité et le temps long restent les meilleurs alliés d'un investisseur, quel que soit son âge.",
+    },
+    cta: "Toi aussi tu débutes ? Découvre nos modules PEA, ETF et intérêts composés →",
   },
 
   simulator: {
@@ -491,7 +522,38 @@ en: {
     crypto: { tag: "Risky", title: "Crypto", desc: "Bitcoin, Ethereum: understand it without getting burned." },
     diversif: { tag: "Strategy", title: "Diversification", desc: "Don't put all your eggs in one basket, the golden rule of investing." },
     interets: { tag: "Fundamental", title: "Compound interest", desc: "Einstein's 8th wonder of the world: understand why starting early changes everything." },
+    jeunes: { tag: "Key figures", title: "Youth & investing", desc: "What the numbers really say about 18-30 year-olds and the stock market in France." },
     overlayError: "Error while loading.",
+  },
+
+  jeunesStats: {
+    label: "Key figures",
+    title: "Young people and investing in France: what the numbers say",
+    sub: "Based on the 2025 AMF Savings Barometer and the AMF's 2026 supervisory priorities",
+    bloc1: {
+      title: "Growing interest",
+      stat1: { value: "34%", text: "of French people say they're interested in stocks in 2025, a record since the Barometer began", source: "Source: AMF Savings and Investment Barometer 2025, Oct. 2025" },
+      stat2: { value: "35%", text: "plan to invest in stocks within the next 12 months", source: "Source: AMF Savings and Investment Barometer 2025, Oct. 2025" },
+    },
+    bloc2: {
+      title: "Young people, driving the market",
+      stat1: { value: "+1.5 million", text: "new retail investors in France over 5 years", source: "Source: AMF, 2026 Action and Supervision Priorities" },
+      highlight: { value: "50%", text: "of ETF trades are made by under-35s", source: "Source: AMF, 2026 Action and Supervision Priorities" },
+    },
+    bloc3: {
+      title: "How young people get informed",
+      note: "Older data than the previous two blocks (2025-2026): OECD study for the AMF from November 2023, still the most recent available on this specific topic.",
+      stat1: { label: "Social media", value: "28%", detail: "41% among 18-24 year-olds" },
+      stat2: { label: "Influencers", value: "22%", detail: "29% among 18-24 year-olds" },
+      stat3: { label: "Official product documents", value: "41%", detail: "" },
+      source: "Source: OECD for the AMF, November 2023, \"New Retail Investors in France\" study, among new investors who researched information before investing.",
+    },
+    bloc4: {
+      title: "A word of caution",
+      stat: { value: "40%", text: "of 18-24 year-olds cite making a lot of money quickly as an absolute priority", source: "Source: OECD for the AMF, November 2023" },
+      text: "Investing fast and investing well are rarely compatible. Consistency and time in the market remain an investor's best allies, whatever their age.",
+    },
+    cta: "Just starting out too? Discover our PEA, ETF, and compound interest modules →",
   },
 
   simulator: {
@@ -871,7 +933,38 @@ es: {
     crypto: { tag: "Arriesgado", title: "Cripto", desc: "Bitcoin, Ethereum: entiéndelo sin quemarte." },
     diversif: { tag: "Estrategia", title: "Diversificación", desc: "No pongas todos los huevos en la misma cesta, la regla de oro de la inversión." },
     interets: { tag: "Fundamental", title: "Interés compuesto", desc: "La 8ª maravilla del mundo según Einstein: entiende por qué empezar pronto lo cambia todo." },
+    jeunes: { tag: "Cifras clave", title: "Jóvenes e inversión", desc: "Lo que dicen realmente las cifras sobre los jóvenes de 18 a 30 años y la bolsa en Francia." },
     overlayError: "Error al cargar.",
+  },
+
+  jeunesStats: {
+    label: "Cifras clave",
+    title: "Los jóvenes y la inversión en Francia: lo que dicen las cifras",
+    sub: "Según el Barómetro AMF 2025 y las prioridades 2026 de la Autoridad de Mercados Financieros",
+    bloc1: {
+      title: "Un interés en fuerte alza",
+      stat1: { value: "34%", text: "de los franceses declara interesarse por las acciones en 2025, un récord desde el inicio del Barómetro", source: "Fuente: Barómetro AMF del ahorro y la inversión 2025, oct. 2025" },
+      stat2: { value: "35%", text: "planea invertir en acciones en los próximos 12 meses", source: "Fuente: Barómetro AMF del ahorro y la inversión 2025, oct. 2025" },
+    },
+    bloc2: {
+      title: "Los jóvenes, motor del mercado",
+      stat1: { value: "+1,5 millones", text: "de nuevos inversores particulares en Francia en 5 años", source: "Fuente: AMF, Prioridades de acción y supervisión 2026" },
+      highlight: { value: "50%", text: "de las operaciones con ETF las realizan los menores de 35 años", source: "Fuente: AMF, Prioridades de acción y supervisión 2026" },
+    },
+    bloc3: {
+      title: "Cómo se informan los jóvenes",
+      note: "Dato más antiguo que los dos bloques anteriores (2025-2026): estudio de la OCDE para la AMF de noviembre de 2023, el más reciente disponible sobre este tema concreto.",
+      stat1: { label: "Redes sociales", value: "28%", detail: "41% entre los 18-24 años" },
+      stat2: { label: "Influencers", value: "22%", detail: "29% entre los 18-24 años" },
+      stat3: { label: "Documentos oficiales sobre los productos", value: "41%", detail: "" },
+      source: "Fuente: OCDE para la AMF, noviembre de 2023, estudio «Los nuevos inversores particulares en Francia», entre los nuevos inversores que buscaron información antes de invertir.",
+    },
+    bloc4: {
+      title: "Un punto de atención",
+      stat: { value: "40%", text: "de los jóvenes de 18-24 años citan ganar mucho dinero rápido como una prioridad absoluta", source: "Fuente: OCDE para la AMF, noviembre de 2023" },
+      text: "Invertir rápido e invertir bien rara vez son compatibles. La constancia y el tiempo siguen siendo los mejores aliados de cualquier inversor, sea cual sea su edad.",
+    },
+    cta: "¿Tú también estás empezando? Descubre nuestros módulos de PEA, ETF e interés compuesto →",
   },
 
   simulator: {
