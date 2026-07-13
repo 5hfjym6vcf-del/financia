@@ -159,8 +159,8 @@ fr: {
     profileAgeUnit: " ans",
     profileEpargneLabel: "Épargne mensuelle : ",
     profileObjectifLabel: "Objectif : ",
-    planBtn: "📋 Obtenir mon plan personnalisé →",
-    restartBtn: "↩ Recommencer le quiz",
+    planBtn: "Obtenir mon plan personnalisé →",
+    restartBtn: "Recommencer le quiz",
     chatPlanPrompt: "Voici mon profil : j'ai {age} ans, je suis {situation}, je peux épargner {amount}€/mois, {experience}, mon objectif est {objectif}. Fais-moi un plan d'investissement personnalisé et concret.",
     profiles: {
       active: {
@@ -539,8 +539,8 @@ en: {
     profileAgeUnit: " years old",
     profileEpargneLabel: "Monthly savings: ",
     profileObjectifLabel: "Goal: ",
-    planBtn: "📋 Get my personalized plan →",
-    restartBtn: "↩ Restart the quiz",
+    planBtn: "Get my personalized plan →",
+    restartBtn: "Restart the quiz",
     chatPlanPrompt: "Here's my profile: I'm {age} years old, I'm {situation}, I can save €{amount}/month, {experience}, my goal is {objectif}. Give me a concrete, personalized investment plan.",
     profiles: {
       active: {
@@ -919,8 +919,8 @@ es: {
     profileAgeUnit: " años",
     profileEpargneLabel: "Ahorro mensual: ",
     profileObjectifLabel: "Objetivo: ",
-    planBtn: "📋 Obtener mi plan personalizado →",
-    restartBtn: "↩ Reiniciar el quiz",
+    planBtn: "Obtener mi plan personalizado →",
+    restartBtn: "Reiniciar el quiz",
     chatPlanPrompt: "Este es mi perfil: tengo {age} años, soy {situation}, puedo ahorrar {amount}€/mes, {experience}, mi objetivo es {objectif}. Dame un plan de inversión concreto y personalizado.",
     profiles: {
       active: {

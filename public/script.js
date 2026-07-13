@@ -335,6 +335,47 @@ $$('.quiz-opt').forEach(btn => {
   });
 });
 
+// Icônes SVG du résultat de quiz — mêmes tracé/style que le menu mobile et /histoire.
+// QUIZ_TIP_ICONS mappe l'emoji stocké dans i18n.js (utilisé comme simple clé) vers son SVG.
+function svg(inner, size = 18) {
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+}
+const QUIZ_ICONS = {
+  user: svg('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'),
+  coin: svg('<circle cx="12" cy="12" r="10"/><path d="M12 6v12M15 9.5c0-1.5-1.5-2.5-3-2.5s-3 1-3 2.5 1.5 2 3 2.5 3 1 3 2.5-1.5 2.5-3 2.5-3-1-3-2.5"/>'),
+  target: svg('<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>'),
+  shield: svg('<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'),
+  book: svg('<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>'),
+  refresh: svg('<path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>'),
+  chat: svg('<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>'),
+  globe: svg('<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>'),
+  pieChart: svg('<path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/>'),
+  award: svg('<circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 22 12 19 17 22 15.79 13.88"/>'),
+  calendar: svg('<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>'),
+  bank: svg('<line x1="3" y1="21" x2="21" y2="21"/><line x1="5" y1="21" x2="5" y2="10"/><line x1="9" y1="21" x2="9" y2="10"/><line x1="15" y1="21" x2="15" y2="10"/><line x1="19" y1="21" x2="19" y2="10"/><polygon points="12 3 21 9 3 9"/>'),
+  barChart: svg('<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>'),
+  clipboard: svg('<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/>'),
+};
+const QUIZ_TIP_ICONS = {
+  '📊': QUIZ_ICONS.barChart,
+  '🔄': QUIZ_ICONS.refresh,
+  '💎': QUIZ_ICONS.award,
+  '🌍': QUIZ_ICONS.globe,
+  '⚖️': QUIZ_ICONS.pieChart,
+  '📅': QUIZ_ICONS.calendar,
+  '🏦': QUIZ_ICONS.bank,
+  '📖': QUIZ_ICONS.book,
+  '💶': QUIZ_ICONS.shield,
+  '💰': QUIZ_ICONS.shield,
+  '💬': QUIZ_ICONS.chat,
+};
+// Les réponses q2/q4/q5 gardent leur emoji éditorial sur les boutons du quiz ;
+// on le retire juste à l'affichage dans le récapitulatif du résultat.
+function stripLeadingEmoji(str) {
+  // Couvre aussi les séquences ZWJ (ex: 🧑‍💻) et le sélecteur de variation emoji (ex: 🛡️).
+  return (str || '').replace(/^(?:\p{Extended_Pictographic}(?:‍\p{Extended_Pictographic})*️?)\s*/u, '');
+}
+
 function profileKeyForQuiz() {
   const key = quizAnswerKeys.q4;
   if (key === 'regulier') return 'active';
@@ -353,15 +394,15 @@ function showQuizResult() {
     <div class="quiz-result-level">${niveau}</div>
     <p class="quiz-result-sub">${desc}</p>
     <div class="quiz-profile-summary">
-      <div class="quiz-profile-line">👤 <strong>${quizAnswerTexts.q1 ?? '?'}${FinanciaI18N.t('quiz.profileAgeUnit')}</strong> · ${quizAnswerTexts.q2 ?? '?'}</div>
-      <div class="quiz-profile-line">💶 ${FinanciaI18N.t('quiz.profileEpargneLabel')}<strong>${quizAnswerTexts.q3 ?? '?'}${FinanciaI18N.t('simulator.perMonthSuffix')}</strong></div>
-      <div class="quiz-profile-line">🎯 ${FinanciaI18N.t('quiz.profileObjectifLabel')}<strong>${quizAnswerTexts.q5 ?? '?'}</strong></div>
+      <div class="quiz-profile-line"><span class="quiz-profile-icon">${QUIZ_ICONS.user}</span><strong>${quizAnswerTexts.q1 ?? '?'}${FinanciaI18N.t('quiz.profileAgeUnit')}</strong> · ${stripLeadingEmoji(quizAnswerTexts.q2) || '?'}</div>
+      <div class="quiz-profile-line"><span class="quiz-profile-icon">${QUIZ_ICONS.coin}</span>${FinanciaI18N.t('quiz.profileEpargneLabel')}<strong>${quizAnswerTexts.q3 ?? '?'}${FinanciaI18N.t('simulator.perMonthSuffix')}</strong></div>
+      <div class="quiz-profile-line"><span class="quiz-profile-icon">${QUIZ_ICONS.target}</span>${FinanciaI18N.t('quiz.profileObjectifLabel')}<strong>${stripLeadingEmoji(quizAnswerTexts.q5) || '?'}</strong></div>
     </div>
     <div class="quiz-result-tips">
-      ${tips.map(t => `<div class="quiz-tip"><span class="quiz-tip-icon">${t.icon}</span><span>${t.text}</span></div>`).join('')}
+      ${tips.map(t => `<div class="quiz-tip"><span class="quiz-tip-icon">${QUIZ_TIP_ICONS[t.icon] || t.icon}</span><span>${t.text}</span></div>`).join('')}
     </div>
-    <button class="btn-primary full" id="quizPlanBtn">${FinanciaI18N.t('quiz.planBtn')}</button>
-    <button class="btn-ghost full" id="quizRestartBtn">${FinanciaI18N.t('quiz.restartBtn')}</button>
+    <button class="btn-primary full" id="quizPlanBtn"><span class="quiz-btn-icon">${QUIZ_ICONS.clipboard}</span>${FinanciaI18N.t('quiz.planBtn')}</button>
+    <button class="btn-ghost full" id="quizRestartBtn"><span class="quiz-btn-icon">${QUIZ_ICONS.refresh}</span>${FinanciaI18N.t('quiz.restartBtn')}</button>
   `;
   resultEl.classList.remove('hidden');
   const progress = $('#quizProgress');
