@@ -735,6 +735,20 @@ a { text-decoration: none; color: inherit; }
 }
 .apropos-bio p { font-size: 16px; color: var(--text-2); line-height: 1.8; }
 .apropos-bio strong { color: var(--text); }
+.apropos-audience { margin-bottom: 48px; }
+.apropos-audience-title { font-size: 20px; font-weight: 700; color: var(--text); font-family: var(--font-body); margin-bottom: 12px; }
+.apropos-audience-intro { max-width: 680px; font-size: 16px; color: var(--text-2); line-height: 1.8; margin-bottom: 24px; }
+.apropos-audience-grid { margin-bottom: 28px; }
+.apropos-quote {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  border-left: 3px solid #7C3AED;
+  background: rgba(124,58,237,0.06);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 28px;
+}
+.apropos-quote p { font-size: 17px; font-weight: 600; font-style: italic; color: #7C3AED; }
 .valeurs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
