@@ -1609,9 +1609,20 @@ a { text-decoration: none; color: inherit; }
       letter-spacing: -0.3px;
       margin-bottom: 20px;
     }
-    .temoignage-profile { display: flex; align-items: baseline; gap: 6px; margin-bottom: 28px; }
+    .temoignage-profile { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
     .temoignage-name { font-size: 15px; font-weight: 700; color: #7C3AED; }
     .temoignage-status { font-size: 14px; color: var(--text-2); }
+    .temoignage-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #7C3AED;
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-left: 4px;
+    }
     .temoignage-subtitle {
       font-size: 11px;
       font-weight: 700;
