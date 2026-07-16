@@ -285,6 +285,7 @@ fr: {
     gratuite: { title: "Gratuité", desc: "Financia est et restera entièrement gratuit. La connaissance financière doit être accessible à tous." },
     authenticite: { title: "Authenticité", desc: "Un fondateur qui partage son vrai parcours, ses erreurs et ses apprentissages sans filtres." },
     clarte: { title: "Clarté", desc: "Zéro jargon inutile. Des réponses directes, précises et immédiatement actionnables." },
+    contactText: "Une question ? Écris-nous à",
   },
 
   mentions: {
@@ -320,6 +321,7 @@ fr: {
   footer: {
     brandDesc: "L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.",
     legal: "Financia · Projet éducatif · Pas de conseil en investissement",
+    contactAria: "Contact",
   },
 
   histoire: {
@@ -706,6 +708,7 @@ en: {
     gratuite: { title: "Free forever", desc: "Financia is and will remain completely free. Financial knowledge should be accessible to everyone." },
     authenticite: { title: "Authenticity", desc: "A founder who shares his real journey, mistakes and lessons, unfiltered." },
     clarte: { title: "Clarity", desc: "Zero unnecessary jargon. Direct, precise, immediately actionable answers." },
+    contactText: "Got a question? Email us at",
   },
 
   mentions: {
@@ -741,6 +744,7 @@ en: {
   footer: {
     brandDesc: "The educational AI to learn how to invest. No personalized advice.",
     legal: "Financia · Educational project · Not investment advice",
+    contactAria: "Contact",
   },
 
   histoire: {
@@ -1127,6 +1131,7 @@ es: {
     gratuite: { title: "Gratuidad", desc: "Financia es y seguirá siendo totalmente gratuita. El conocimiento financiero debe ser accesible para todos." },
     authenticite: { title: "Autenticidad", desc: "Un fundador que comparte su verdadero recorrido, sus errores y sus aprendizajes sin filtros." },
     clarte: { title: "Claridad", desc: "Cero jerga innecesaria. Respuestas directas, precisas e inmediatamente aplicables." },
+    contactText: "¿Alguna pregunta? Escríbenos a",
   },
 
   mentions: {
@@ -1162,6 +1167,7 @@ es: {
   footer: {
     brandDesc: "La IA educativa para aprender a invertir. Ningún consejo personalizado.",
     legal: "Financia · Proyecto educativo · No es asesoramiento de inversión",
+    contactAria: "Contacto",
   },
 
   histoire: {

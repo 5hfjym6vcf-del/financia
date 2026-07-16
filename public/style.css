@@ -758,6 +758,14 @@ a { text-decoration: none; color: inherit; }
 .valeur-icon svg { color: #7C3AED; }
 .valeur-card h3 { margin-bottom: 8px; color: var(--text); font-weight: 600; font-family: var(--font-body); }
 .valeur-card p { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+.apropos-contact {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+.apropos-contact a { color: #7C3AED; font-weight: 500; }
+.apropos-contact a:hover { opacity: 0.8; }
 
 /* MENTIONS LÉGALES */
 .mentions-content {
@@ -1260,6 +1268,14 @@ a { text-decoration: none; color: inherit; }
       transition: color 0.2s;
     }
     .logo-banner-insta:hover { color: #fff; }
+    .footer-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px 20px;
+      margin-top: 10px;
+    }
     .footer-insta {
       display: inline-flex;
       align-items: center;
@@ -1268,7 +1284,6 @@ a { text-decoration: none; color: inherit; }
       font-size: 15px;
       font-weight: 600;
       text-decoration: none;
-      margin-top: 10px;
       transition: opacity 0.2s;
     }
     .footer-insta:hover { opacity: 0.8; }
