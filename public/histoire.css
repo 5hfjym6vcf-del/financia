@@ -1,29 +1,11 @@
 /* ============================================================
    FINANCIA — histoire.css
-   Page dédiée "Histoire des marchés" — charte noir/blanc/violet
+   Page dédiée "Histoire des marchés" — charte noir/blanc/violet.
+   style.css is dark by default site-wide now, so this file only
+   holds this page's own layout (timeline, legend cards, detail
+   panel) — no color overrides needed anymore.
    Chargé uniquement par histoire.html, en complément de style.css
    ============================================================ */
-
-body.hist-page {
-  background: #000000;
-  color: #ffffff;
-}
-
-/* Boutons partagés (style.css) réinterprétés pour un fond noir */
-body.hist-page .btn-primary {
-  background: #7C3AED;
-  color: #fff;
-}
-body.hist-page .btn-primary:hover { background: #6d28d9; }
-body.hist-page .btn-ghost {
-  color: #fff;
-  border-color: rgba(255,255,255,0.25);
-}
-body.hist-page .btn-ghost:hover {
-  border-color: #7C3AED;
-  color: #c4b5fd;
-  box-shadow: 0 4px 16px rgba(124,58,237,0.18);
-}
 
 /* ── Layout de base ── */
 .hist-section { padding: 88px 0; position: relative; }
