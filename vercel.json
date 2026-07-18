@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/histoire", "destination": "/histoire.html" }
+    { "source": "/histoire", "destination": "/histoire.html" },
+    { "source": "/marches", "destination": "/marches.html" }
   ]
 }

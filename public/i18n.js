@@ -8,9 +8,9 @@
 window.I18N = {
 
 fr: {
-  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Histoire des marchés | Financia" },
-  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
-  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos" },
+  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Histoire des marchés | Financia", titleMarches: "Analyse de marché | Financia" },
+  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
+  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos" },
 
   hero: {
     badge: "🚀 Pour les 18–30 ans · 100% pédagogique",
@@ -437,12 +437,35 @@ fr: {
     ctaModules: "📚 Explorer les modules pédagogiques",
     ctaInstagram: "📷 Suivre @financia_cloud",
   },
+
+  marches: {
+    hero: {
+      badge: "📊 Analyse de marché",
+      titleHtml: "Les marchés, <em>en un coup d'œil</em>",
+      lead: "Indices, crypto, or : l'essentiel de l'actualité des marchés, expliqué simplement.",
+    },
+    disclaimer: "Données à but pédagogique, différées de quelques minutes. Ne constitue pas un conseil en investissement.",
+    label: "Marchés",
+    title: "Ce que font les marchés aujourd'hui",
+    updatedJustNow: "Données mises à jour à l'instant",
+    updatedAgo: "Données mises à jour il y a {min} min",
+    errorMsg: "Impossible de charger les données de marché pour le moment.",
+    assets: {
+      cac40: { name: "CAC 40", blurb: "L'indice des 40 plus grandes entreprises cotées à la Bourse de Paris. Le baromètre de référence de l'économie française." },
+      sp500: { name: "S&P 500", blurb: "L'indice des 500 plus grandes entreprises américaines cotées. Le baromètre le plus suivi au monde pour mesurer la santé de l'économie US." },
+      nasdaq: { name: "Nasdaq", blurb: "Indice à forte dominante technologique (Apple, Microsoft, Nvidia…). Reflète la santé du secteur tech américain." },
+      bitcoin: { name: "Bitcoin", blurb: "La première cryptomonnaie, créée en 2009. Un actif très volatil, souvent surnommé « l'or numérique »." },
+      ethereum: { name: "Ethereum", blurb: "Deuxième cryptomonnaie par capitalisation. Sa blockchain sert de base à la plupart des applications DeFi et NFT." },
+      gold: { name: "Or (once)", blurb: "Valeur refuge historique. Les investisseurs s'y réfugient en période d'incertitude économique ou d'inflation." },
+      msciWorld: { name: "ETF MSCI World", blurb: "Un fonds qui réplique l'indice MSCI World : plus de 1 500 entreprises dans 23 pays développés. Une référence pour diversifier mondialement en un clic." },
+    },
+  },
 },
 
 en: {
-  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "History of the Markets | Financia" },
-  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", temoignages: "Testimonials", histoire: "History", apropos: "About", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
-  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", temoignages: "Testimonials", histoire: "History", apropos: "About" },
+  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "History of the Markets | Financia", titleMarches: "Market Analysis | Financia" },
+  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
+  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About" },
 
   hero: {
     badge: "🚀 For 18–30 year-olds · 100% educational",
@@ -869,12 +892,35 @@ en: {
     ctaModules: "📚 Explore the learning modules",
     ctaInstagram: "📷 Follow @financia_cloud",
   },
+
+  marches: {
+    hero: {
+      badge: "📊 Market Analysis",
+      titleHtml: "The markets, <em>at a glance</em>",
+      lead: "Indices, crypto, gold: the essentials of market news, explained simply.",
+    },
+    disclaimer: "Data for educational purposes, delayed by a few minutes. Does not constitute investment advice.",
+    label: "Markets",
+    title: "What the markets are doing today",
+    updatedJustNow: "Data updated just now",
+    updatedAgo: "Data updated {min} min ago",
+    errorMsg: "Unable to load market data right now.",
+    assets: {
+      cac40: { name: "CAC 40", blurb: "The index of the 40 largest companies listed on the Paris Stock Exchange. The benchmark for the French economy." },
+      sp500: { name: "S&P 500", blurb: "The index of the 500 largest publicly traded US companies. The world's most widely followed gauge of the US economy's health." },
+      nasdaq: { name: "Nasdaq", blurb: "A tech-heavy index (Apple, Microsoft, Nvidia…). Reflects the health of the US tech sector." },
+      bitcoin: { name: "Bitcoin", blurb: "The first cryptocurrency, created in 2009. A highly volatile asset, often nicknamed 'digital gold'." },
+      ethereum: { name: "Ethereum", blurb: "The second-largest cryptocurrency by market cap. Its blockchain underpins most DeFi and NFT applications." },
+      gold: { name: "Gold (troy ounce)", blurb: "A historic safe-haven asset. Investors flock to it during economic uncertainty or inflation." },
+      msciWorld: { name: "MSCI World ETF", blurb: "A fund tracking the MSCI World index: over 1,500 companies across 23 developed countries. A go-to for one-click global diversification." },
+    },
+  },
 },
 
 es: {
-  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Historia de los mercados | Financia" },
-  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
-  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros" },
+  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Historia de los mercados | Financia", titleMarches: "Análisis de mercado | Financia" },
+  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
+  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros" },
 
   hero: {
     badge: "🚀 Para jóvenes de 18–30 años · 100% educativo",
@@ -1300,6 +1346,29 @@ es: {
     disclaimer: "⚠️ La rentabilidad pasada no garantiza rentabilidad futura. Este contenido es educativo y no constituye en ningún caso asesoramiento de inversión.",
     ctaModules: "📚 Explorar los módulos educativos",
     ctaInstagram: "📷 Seguir a @financia_cloud",
+  },
+
+  marches: {
+    hero: {
+      badge: "📊 Análisis de mercado",
+      titleHtml: "Los mercados, <em>de un vistazo</em>",
+      lead: "Índices, cripto, oro: lo esencial de la actualidad de los mercados, explicado de forma sencilla.",
+    },
+    disclaimer: "Datos con fines educativos, con unos minutos de retraso. No constituye asesoramiento de inversión.",
+    label: "Mercados",
+    title: "Qué están haciendo hoy los mercados",
+    updatedJustNow: "Datos actualizados justo ahora",
+    updatedAgo: "Datos actualizados hace {min} min",
+    errorMsg: "No se han podido cargar los datos de mercado en este momento.",
+    assets: {
+      cac40: { name: "CAC 40", blurb: "El índice de las 40 mayores empresas cotizadas en la Bolsa de París. El referente de la economía francesa." },
+      sp500: { name: "S&P 500", blurb: "El índice de las 500 mayores empresas cotizadas de EE. UU. El indicador más seguido del mundo para medir la salud de la economía estadounidense." },
+      nasdaq: { name: "Nasdaq", blurb: "Índice con fuerte peso tecnológico (Apple, Microsoft, Nvidia…). Refleja la salud del sector tecnológico estadounidense." },
+      bitcoin: { name: "Bitcoin", blurb: "La primera criptomoneda, creada en 2009. Un activo muy volátil, a menudo apodado « oro digital »." },
+      ethereum: { name: "Ethereum", blurb: "La segunda criptomoneda por capitalización. Su blockchain es la base de la mayoría de las aplicaciones DeFi y NFT." },
+      gold: { name: "Oro (onza)", blurb: "Valor refugio histórico. Los inversores acuden a él en momentos de incertidumbre económica o inflación." },
+      msciWorld: { name: "ETF MSCI World", blurb: "Un fondo que replica el índice MSCI World: más de 1500 empresas en 23 países desarrollados. Una referencia para diversificar globalmente con un solo clic." },
+    },
   },
 },
 

@@ -1,0 +1,206 @@
+/* ============================================================
+   FINANCIA — marches.css
+   Page dédiée "Analyse de marché" — charte noir/blanc/violet
+   Chargé uniquement par marches.html, en complément de style.css
+   ============================================================ */
+
+body.marches-page {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* ── Layout de base ── */
+.mkt-section { padding: 64px 0 96px; position: relative; }
+.mkt-label { color: #a78bfa; }
+.mkt-h2 {
+  font-size: clamp(1.5rem, 3.6vw, 2.1rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+/* ── HERO ── */
+.mkt-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0 64px;
+  text-align: center;
+}
+.mkt-hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+.mkt-glow { position: absolute; border-radius: 50%; pointer-events: none; }
+.mkt-glow-1 { width: 620px; height: 620px; top: -220px; right: -160px; background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%); }
+.mkt-glow-2 { width: 520px; height: 520px; bottom: -220px; left: -160px; background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%); }
+.mkt-hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.mkt-badge {
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.4);
+  color: #c4b5fd;
+}
+.mkt-h1 {
+  font-size: clamp(2rem, 5.4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.14;
+  color: #fff;
+  margin: 20px 0 18px;
+}
+.mkt-h1 em { color: #7C3AED; font-style: normal; }
+.mkt-hero-lead {
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* ── Disclaimer (visible, en haut de page) ── */
+.mkt-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 640px;
+  text-align: left;
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+.mkt-disclaimer-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+.mkt-disclaimer p {
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.55;
+}
+
+/* ── En-tête de section + horodatage ── */
+.mkt-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.mkt-updated {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  padding-bottom: 4px;
+}
+.mkt-updated-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+  flex-shrink: 0;
+}
+
+/* ── Grille de cartes ── */
+.mkt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.mkt-loading, .mkt-error {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}
+.mkt-error { color: rgba(255,255,255,0.5); font-size: 0.95rem; text-align: center; }
+
+.mkt-card {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(124,58,237,0.22);
+  border-radius: 18px;
+  padding: 24px 24px 22px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.mkt-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.5); }
+
+.mkt-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.mkt-card-name { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.mkt-icon {
+  width: 34px; height: 34px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.28) 0%, rgba(124,58,237,0.08) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.mkt-card-name h3 { font-size: 1rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.mkt-change {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.mkt-change.positive { color: #4ade80; background: rgba(34,197,94,0.14); }
+.mkt-change.negative { color: #f87171; background: rgba(239,68,68,0.14); }
+
+.mkt-price {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+.mkt-price small { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.4); margin-left: 4px; }
+
+.mkt-chart { width: 100%; height: 64px; margin-bottom: 16px; }
+
+.mkt-blurb {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.55;
+  margin-top: auto;
+}
+
+/* ── Footer sur fond noir ── */
+.mkt-footer { background: #000; border-top-color: rgba(255,255,255,0.1); }
+.mkt-footer .footer-brand p,
+.mkt-footer .footer-links a,
+.mkt-footer .footer-legal p { color: rgba(255,255,255,0.55); }
+.mkt-footer .footer-links a:hover { color: #c4b5fd; }
+.mkt-footer .logo { color: #fff; }
+
+/* ============================================================
+   Responsive — mobile-first adjustments
+   ============================================================ */
+@media (max-width: 900px) {
+  .mkt-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 680px) {
+  .mkt-hero { padding: 116px 0 48px; }
+  .mkt-section { padding: 44px 0 64px; }
+  .mkt-grid { grid-template-columns: 1fr; }
+  .mkt-section-head { align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mkt-card { transition: none; }
+}
