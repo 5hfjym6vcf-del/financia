@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>story_actu3 — La tech s'effondre en bourse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+      display: block;
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1920px;
+      background: #0A0A0A;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 80px;
+    }
+
+    /* Shared decorative grid overlay */
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .slide > * { position: relative; z-index: 1; }
+
+    /* ── Accent badge (top) ── */
+    .top-badge {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(124,58,237,0.18);
+      border: 1.5px solid rgba(124,58,237,0.5);
+      border-radius: 100px;
+      padding: 14px 36px;
+      font-size: 28px;
+      font-weight: 600;
+      color: #c4b5fd;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Logo bottom ── */
+    .logo-bottom {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .logo-bottom span { color: #7C3AED; }
+
+    /* ── Story 1 ── */
+    #slide1 .s1-emoji {
+      font-size: 180px;
+      margin-bottom: 48px;
+      line-height: 1;
+    }
+    #slide1 h1 {
+      font-size: 80px;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+    #slide1 h1 em {
+      color: #7C3AED;
+      font-style: normal;
+    }
+    #slide1 .subtitle {
+      font-size: 38px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      line-height: 1.4;
+      max-width: 800px;
+    }
+
+    /* ── Story 2 ── */
+    #slide2 { align-items: flex-start; justify-content: center; }
+    #slide2 .s-title {
+      font-size: 72px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 64px;
+    }
+    .stat-rows { width: 100%; display: flex; flex-direction: column; gap: 0; }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-row:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+    .stat-label {
+      font-size: 38px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+    }
+    .stat-val {
+      font-size: 48px;
+      font-weight: 800;
+      color: #ef4444;
+    }
+    .stat-val.neutral {
+      color: rgba(255,255,255,0.5);
+      font-size: 36px;
+      font-weight: 500;
+    }
+    .alert-badge {
+      margin-top: 64px;
+      width: 100%;
+      background: rgba(239,68,68,0.1);
+      border: 1.5px solid rgba(239,68,68,0.4);
+      border-radius: 20px;
+      padding: 32px 40px;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fca5a5;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── Story 3 ── */
+    #slide3 { align-items: flex-start; justify-content: center; }
+    #slide3 .s-title {
+      font-size: 72px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 60px;
+    }
+    .reason-list { width: 100%; display: flex; flex-direction: column; gap: 28px; }
+    .reason-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    .reason-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #7C3AED;
+      flex-shrink: 0;
+      margin-top: 14px;
+    }
+    .reason-text {
+      font-size: 38px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.45;
+    }
+    .quote-box {
+      width: 100%;
+      margin-top: 60px;
+      border-left: 6px solid #7C3AED;
+      padding: 32px 40px;
+      background: rgba(124,58,237,0.08);
+      border-radius: 0 16px 16px 0;
+    }
+    .quote-box p {
+      font-size: 38px;
+      font-weight: 600;
+      color: #c4b5fd;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* ── Story 4 ── */
+    #slide4 { align-items: flex-start; justify-content: center; }
+    #slide4 .s-title {
+      font-size: 72px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 60px;
+    }
+    .tip-list { width: 100%; display: flex; flex-direction: column; gap: 32px; }
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 18px;
+      padding: 32px 36px;
+    }
+    .tip-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: #7C3AED;
+      min-width: 44px;
+      padding-top: 4px;
+    }
+    .tip-text {
+      font-size: 36px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.45;
+    }
+    .cta-badge {
+      margin-top: 56px;
+      width: 100%;
+      background: rgba(124,58,237,0.18);
+      border: 1.5px solid rgba(124,58,237,0.5);
+      border-radius: 20px;
+      padding: 36px 44px;
+      font-size: 38px;
+      font-weight: 700;
+      color: #c4b5fd;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    /* ── Story 5 ── */
+    #slide5 { align-items: center; justify-content: center; }
+    #slide5 .s-title {
+      font-size: 72px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -2px;
+      line-height: 1.15;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    #slide5 .s-body {
+      font-size: 40px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      line-height: 1.55;
+      max-width: 860px;
+      margin-bottom: 56px;
+    }
+    .cta-url {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: #7C3AED;
+      border-radius: 100px;
+      padding: 32px 64px;
+      font-size: 40px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.01em;
+      margin-bottom: 44px;
+    }
+    .bio-link {
+      font-size: 36px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    #slide5 .logo-bottom-row {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-text {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      white-space: nowrap;
+      color: #fff;
+    }
+    .logo-text span { color: #7C3AED; }
+    .logo-url {
+      font-size: 26px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 400;
+    }
+    .logo-date {
+      font-size: 24px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    /* ── Glow orb decoration ── */
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-top-right {
+      width: 600px; height: 600px;
+      top: -200px; right: -200px;
+      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+    }
+    .orb-bottom-left {
+      width: 500px; height: 500px;
+      bottom: -150px; left: -150px;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — Accroche
+══════════════════════════════════════ -->
+<div class="slide" id="slide1">
+  <div class="glow-orb orb-top-right"></div>
+  <div class="glow-orb orb-bottom-left"></div>
+
+  <div class="top-badge">📊 Actu bourse · Juin 2026</div>
+
+  <div class="s1-emoji">📉</div>
+  <h1>La tech <em>s'effondre</em><br>en bourse</h1>
+  <p class="subtitle">Ce que ça veut dire pour ton épargne</p>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — Les chiffres
+══════════════════════════════════════ -->
+<div class="slide" id="slide2">
+  <div class="glow-orb orb-top-right"></div>
+  <div class="glow-orb orb-bottom-left"></div>
+
+  <p class="s-title">Les chiffres<br>de la semaine</p>
+
+  <div class="stat-rows">
+    <div class="stat-row">
+      <span class="stat-label">🇯🇵 Tokyo</span>
+      <span class="stat-val">-3,5%</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">🇰🇷 Séoul</span>
+      <span class="stat-val">-10%</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">🇫🇷 Paris</span>
+      <span class="stat-val">-0,95%</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Nvidia</span>
+      <span class="stat-val">🔴</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Apple</span>
+      <span class="stat-val">🔴</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Meta</span>
+      <span class="stat-val">🔴</span>
+    </div>
+  </div>
+
+  <div class="alert-badge">⚠️ Semaine rouge pour les marchés</div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — Pourquoi ça chute ?
+══════════════════════════════════════ -->
+<div class="slide" id="slide3">
+  <div class="glow-orb orb-top-right"></div>
+  <div class="glow-orb orb-bottom-left"></div>
+
+  <p class="s-title">Pourquoi<br>la tech baisse ?</p>
+
+  <div class="reason-list">
+    <div class="reason-item">
+      <div class="reason-dot"></div>
+      <p class="reason-text">Les valeurs tech ont énormément monté depuis 2 ans</p>
+    </div>
+    <div class="reason-item">
+      <div class="reason-dot"></div>
+      <p class="reason-text">Les investisseurs prennent leurs bénéfices</p>
+    </div>
+    <div class="reason-item">
+      <div class="reason-dot"></div>
+      <p class="reason-text">Les résultats trimestriels très attendus créent de la nervosité</p>
+    </div>
+    <div class="reason-item">
+      <div class="reason-dot"></div>
+      <p class="reason-text">Les valorisations jugées trop élevées</p>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <p>"Ce qui monte fort finit toujours par corriger."</p>
+  </div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — Impact sur ton épargne
+══════════════════════════════════════ -->
+<div class="slide" id="slide4">
+  <div class="glow-orb orb-top-right"></div>
+  <div class="glow-orb orb-bottom-left"></div>
+
+  <p class="s-title">Et toi<br>dans tout ça ?</p>
+
+  <div class="tip-list">
+    <div class="tip-item">
+      <span class="tip-num">01</span>
+      <p class="tip-text">ETF World → la tech représente ~25% du panier</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-num">02</span>
+      <p class="tip-text">Une baisse des tech = légère baisse de ton ETF</p>
+    </div>
+    <div class="tip-item">
+      <span class="tip-num">03</span>
+      <p class="tip-text">Sur 10–20 ans, ces corrections sont normales et temporaires</p>
+    </div>
+  </div>
+
+  <div class="cta-badge">💡 Ne panique pas, reste investi</div>
+
+  <div class="logo-bottom">Financi<span>a</span></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — CTA
+══════════════════════════════════════ -->
+<div class="slide" id="slide5">
+  <div class="glow-orb orb-top-right"></div>
+  <div class="glow-orb orb-bottom-left"></div>
+
+  <p class="s-title">Comment réagir face<br>à une correction ?</p>
+  <p class="s-body">Simule l'impact sur ton portefeuille et découvre nos conseils sur financia.cloud</p>
+
+  <div class="cta-url">🔗 financia.cloud</div>
+  <p class="bio-link">🔗 Lien dans la bio</p>
+
+  <div class="logo-bottom-row">
+    <div class="logo-text">Financi<span>a</span></div>
+    <div class="logo-url">financia.cloud</div>
+    <div class="logo-date">Juin 2026</div>
+  </div>
+</div>
+
+</body>
+</html>
