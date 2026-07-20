@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>story_avis — Le site est terminé, ouverture de la section Avis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body {
+    background: #000000;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Centers and scales the fixed 1080x1920 canvas to fit any real screen */
+  .stage {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1920px;
+    flex-shrink: 0;
+    transform-origin: center center;
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 96px;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-top {
+    width: 700px; height: 500px;
+    top: -160px; left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(124,58,237,0.14) 0%, transparent 70%);
+  }
+  .orb-bottom {
+    width: 620px; height: 620px;
+    bottom: -220px; left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+  }
+
+  /* Logo */
+  .logo {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    z-index: 2;
+  }
+
+  /* Handle bas */
+  .handle {
+    position: absolute;
+    bottom: 78px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.32);
+    letter-spacing: 0.3px;
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  /* Contenu central */
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Badge */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.4);
+    color: #c4b5fd;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 15px 32px;
+    border-radius: 100px;
+    margin-bottom: 56px;
+  }
+
+  /* Titre */
+  .title {
+    font-size: 78px;
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2.5px;
+    color: #fff;
+    margin-bottom: 44px;
+  }
+  .title em { font-style: normal; color: #7C3AED; }
+
+  /* Texte de description */
+  .body-text {
+    font-size: 32px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.55;
+    max-width: 840px;
+    letter-spacing: -0.2px;
+    margin-bottom: 56px;
+  }
+
+  /* Annonce */
+  .announce {
+    font-size: 42px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.8px;
+    margin-bottom: 48px;
+  }
+
+  /* Bloc mis en avant */
+  .highlight-box {
+    width: 100%;
+    max-width: 880px;
+    background: rgba(124,58,237,0.14);
+    border: 1.5px solid rgba(124,58,237,0.5);
+    border-radius: 26px;
+    padding: 40px 44px;
+    font-size: 34px;
+    font-weight: 600;
+    color: #c4b5fd;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    margin-bottom: 64px;
+  }
+  .highlight-box strong { color: #fff; font-weight: 800; }
+
+  /* CTA */
+  .btn {
+    background: #7C3AED;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 800;
+    padding: 32px 64px;
+    border-radius: 100px;
+    letter-spacing: -0.4px;
+    margin-bottom: 24px;
+  }
+
+  .bio-link {
+    font-size: 26px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="slide" id="slide">
+    <div class="glow-orb orb-top"></div>
+    <div class="glow-orb orb-bottom"></div>
+
+    <div class="logo">FINANCIA</div>
+
+    <div class="content">
+      <div class="pill">🔔 Mise à jour — 20/07/2026</div>
+
+      <h1 class="title">Le site est <em>terminé</em> 🎉</h1>
+
+      <p class="body-text">Après plusieurs semaines de travail : modules pédagogiques, simulateur, chatbot IA, actus en temps réel, page Histoire, Marchés en direct, Témoignages... financia.cloud est maintenant complet, dans 3 langues.</p>
+
+      <p class="announce">Et maintenant, à vous de jouer 👇</p>
+
+      <div class="highlight-box">La section <strong>Avis</strong> est ouverte à tous. Teste le site, dis-nous ce que t'en penses — bon ou à améliorer.</div>
+
+      <div class="btn">Donne ton avis sur financia.cloud</div>
+      <div class="bio-link">🔗 Lien en bio</div>
+    </div>
+
+    <div class="handle">@financia_cloud</div>
+  </div>
+</div>
+
+<script>
+  function fitStage() {
+    var scale = Math.min(window.innerWidth / 1080, window.innerHeight / 1920);
+    document.querySelector('.slide').style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', fitStage);
+  window.addEventListener('orientationchange', fitStage);
+  window.addEventListener('load', fitStage);
+  fitStage();
+</script>
+
+</body>
+</html>

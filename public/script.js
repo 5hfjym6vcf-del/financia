@@ -355,19 +355,9 @@ const QUIZ_ICONS = {
   bank: svg('<line x1="3" y1="21" x2="21" y2="21"/><line x1="5" y1="21" x2="5" y2="10"/><line x1="9" y1="21" x2="9" y2="10"/><line x1="15" y1="21" x2="15" y2="10"/><line x1="19" y1="21" x2="19" y2="10"/><polygon points="12 3 21 9 3 9"/>'),
   barChart: svg('<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>'),
   clipboard: svg('<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/>'),
-};
-const QUIZ_TIP_ICONS = {
-  '📊': QUIZ_ICONS.barChart,
-  '🔄': QUIZ_ICONS.refresh,
-  '💎': QUIZ_ICONS.award,
-  '🌍': QUIZ_ICONS.globe,
-  '⚖️': QUIZ_ICONS.pieChart,
-  '📅': QUIZ_ICONS.calendar,
-  '🏦': QUIZ_ICONS.bank,
-  '📖': QUIZ_ICONS.book,
-  '💶': QUIZ_ICONS.shield,
-  '💰': QUIZ_ICONS.shield,
-  '💬': QUIZ_ICONS.chat,
+  home: svg('<path d="M3 9.5 12 3l9 6.5"/><path d="M5 9v11a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9"/>'),
+  hex: svg('<polygon points="12 2 20 7 20 17 12 22 4 17 4 7"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="9" y1="10" x2="15" y2="14"/><line x1="15" y1="10" x2="9" y2="14"/>'),
+  share: svg('<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>'),
 };
 // Les réponses q2/q4/q5 gardent leur emoji éditorial sur les boutons du quiz ;
 // on le retire juste à l'affichage dans le récapitulatif du résultat.
@@ -384,23 +374,99 @@ function profileKeyForQuiz() {
   return 'beginner';
 }
 
+// Niveau de pertinence (1=à limiter, 2=à considérer, 3=à privilégier) par profil × type de
+// placement. Reste qualitatif (pas d'allocation chiffrée), pédagogique, jamais un conseil précis.
+const RECO_LEVELS = {
+  beginner: { epargne: 3, bourse: 2, crypto: 1, immobilier: 1 },
+  saver: { epargne: 2, bourse: 3, crypto: 1, immobilier: 2 },
+  intermediate: { epargne: 2, bourse: 3, crypto: 2, immobilier: 2 },
+  active: { epargne: 2, bourse: 3, crypto: 2, immobilier: 3 },
+};
+// Si l'objectif déclaré (q5) correspond directement à un type, on relève sa pertinence d'un cran.
+const RECO_OBJECTIF_BOOST = { securite: 'epargne', retraite: 'bourse', fructifier: 'bourse', immobilier: 'immobilier' };
+const RECO_LEVEL_KEYS = { 1: 'limiter', 2: 'considerer', 3: 'privilegier' };
+
+function levelDots(n) {
+  return [1, 2, 3].map(i => `<i class="${i <= n ? 'filled' : ''}"></i>`).join('');
+}
+
+function buildRecommendations(profileKey) {
+  const types = ['epargne', 'bourse', 'crypto', 'immobilier'];
+  const icons = { epargne: QUIZ_ICONS.bank, bourse: QUIZ_ICONS.barChart, crypto: QUIZ_ICONS.hex, immobilier: QUIZ_ICONS.home };
+  const typeLabels = FinanciaI18N.get('quiz.recoTypes');
+  const levelLabels = FinanciaI18N.get('quiz.recoLevels');
+  const texts = FinanciaI18N.get('quiz.recoTexts')[profileKey];
+  const boostType = RECO_OBJECTIF_BOOST[quizAnswerKeys.q5];
+  const objectifDisplay = stripLeadingEmoji(quizAnswerTexts.q5) || '?';
+
+  return types.map(type => {
+    let level = RECO_LEVELS[profileKey][type];
+    let boosted = false;
+    if (type === boostType && level < 3) { level += 1; boosted = true; }
+    const levelKey = RECO_LEVEL_KEYS[level];
+    let text = texts[type];
+    if (boosted) text += FinanciaI18N.t('quiz.recoObjectifBoost', { objectif: objectifDisplay });
+    return `
+      <div class="reco-card">
+        <div class="reco-card-top">
+          <span class="reco-icon">${icons[type]}</span>
+          <h4 class="reco-type">${typeLabels[type]}</h4>
+        </div>
+        <div class="reco-level">
+          <span class="reco-dots">${levelDots(level)}</span>
+          <span class="reco-level-label">${levelLabels[levelKey]}</span>
+        </div>
+        <p class="reco-text">${text}</p>
+      </div>`;
+  }).join('');
+}
+
+// Diagramme radial : cercle central = profil obtenu, 4 bulles satellites = les 4 dimensions
+// du quiz (âge+situation, épargne mensuelle, expérience, objectif), en positions % fixes
+// (haut/droite/bas/gauche) pour rester stable quel que soit le texte affiché dans chaque bulle.
+function buildProfileDiagram(niveauLabel) {
+  const dims = FinanciaI18N.get('quiz.dims');
+  const q4ShortMap = FinanciaI18N.get('quiz.q4Short');
+  const q5ShortMap = FinanciaI18N.get('quiz.q5Short');
+  const nodes = [
+    { icon: QUIZ_ICONS.user, label: dims.ageSituation, value: `${quizAnswerTexts.q1 ?? '?'}${FinanciaI18N.t('quiz.profileAgeUnit')} · ${stripLeadingEmoji(quizAnswerTexts.q2) || '?'}` },
+    { icon: QUIZ_ICONS.coin, label: dims.epargne, value: `${quizAnswerTexts.q3 ?? '?'}€` },
+    { icon: QUIZ_ICONS.award, label: dims.experience, value: q4ShortMap[quizAnswerKeys.q4] || stripLeadingEmoji(quizAnswerTexts.q4) || '?' },
+    { icon: QUIZ_ICONS.target, label: dims.objectif, value: q5ShortMap[quizAnswerKeys.q5] || stripLeadingEmoji(quizAnswerTexts.q5) || '?' },
+  ];
+  const coords = [{ x: 50, y: 12 }, { x: 88, y: 50 }, { x: 50, y: 88 }, { x: 12, y: 50 }];
+  const lines = coords.map(c => `<line x1="50" y1="50" x2="${c.x}" y2="${c.y}"/>`).join('');
+  const nodesHtml = nodes.map((n, i) => `
+    <div class="qpd-node" style="left:${coords[i].x}%;top:${coords[i].y}%;animation-delay:${0.15 + i * 0.08}s">
+      <span class="qpd-node-icon">${n.icon}</span>
+      <span class="qpd-node-label">${n.label}</span>
+      <span class="qpd-node-value">${n.value}</span>
+    </div>`).join('');
+
+  return `
+    <div class="qpd-wrap">
+      <div class="qpd">
+        <svg class="qpd-lines" viewBox="0 0 100 100">${lines}</svg>
+        <div class="qpd-center"><span class="qpd-center-label">${niveauLabel}</span></div>
+        ${nodesHtml}
+      </div>
+    </div>`;
+}
+
 function showQuizResult() {
-  const profile = FinanciaI18N.get('quiz.profiles.' + profileKeyForQuiz());
-  const { niveau, desc, tips } = profile;
+  const profileKey = profileKeyForQuiz();
+  const profile = FinanciaI18N.get('quiz.profiles.' + profileKey);
+  const { niveau, desc } = profile;
 
   const resultEl = $('#quiz-result');
   if (!resultEl) return;
   resultEl.innerHTML = `
-    <div class="quiz-result-level">${niveau}</div>
+    ${buildProfileDiagram(niveau)}
     <p class="quiz-result-sub">${desc}</p>
-    <div class="quiz-profile-summary">
-      <div class="quiz-profile-line"><span class="quiz-profile-icon">${QUIZ_ICONS.user}</span><strong>${quizAnswerTexts.q1 ?? '?'}${FinanciaI18N.t('quiz.profileAgeUnit')}</strong> · ${stripLeadingEmoji(quizAnswerTexts.q2) || '?'}</div>
-      <div class="quiz-profile-line"><span class="quiz-profile-icon">${QUIZ_ICONS.coin}</span>${FinanciaI18N.t('quiz.profileEpargneLabel')}<strong>${quizAnswerTexts.q3 ?? '?'}${FinanciaI18N.t('simulator.perMonthSuffix')}</strong></div>
-      <div class="quiz-profile-line"><span class="quiz-profile-icon">${QUIZ_ICONS.target}</span>${FinanciaI18N.t('quiz.profileObjectifLabel')}<strong>${stripLeadingEmoji(quizAnswerTexts.q5) || '?'}</strong></div>
-    </div>
-    <div class="quiz-result-tips">
-      ${tips.map(t => `<div class="quiz-tip"><span class="quiz-tip-icon">${QUIZ_TIP_ICONS[t.icon] || t.icon}</span><span>${t.text}</span></div>`).join('')}
-    </div>
+    <h4 class="reco-title">${FinanciaI18N.t('quiz.recoTitle')}</h4>
+    <div class="reco-grid">${buildRecommendations(profileKey)}</div>
+    <p class="reco-disclaimer">${FinanciaI18N.t('quiz.recoDisclaimer')}</p>
+    <button class="btn-ghost full quiz-share-btn" id="quizShareBtn"><span class="quiz-btn-icon">${QUIZ_ICONS.share}</span><span id="quizShareBtnLabel">${FinanciaI18N.t('quiz.shareBtn')}</span></button>
     <button class="btn-primary full" id="quizPlanBtn"><span class="quiz-btn-icon">${QUIZ_ICONS.clipboard}</span>${FinanciaI18N.t('quiz.planBtn')}</button>
     <button class="btn-ghost full" id="quizRestartBtn"><span class="quiz-btn-icon">${QUIZ_ICONS.refresh}</span>${FinanciaI18N.t('quiz.restartBtn')}</button>
   `;
@@ -420,6 +486,23 @@ function showQuizResult() {
     setTimeout(() => chatForm?.dispatchEvent(new Event('submit')), 600);
   });
   $('#quizRestartBtn')?.addEventListener('click', resetQuiz);
+  $('#quizShareBtn')?.addEventListener('click', async () => {
+    const shareText = FinanciaI18N.t('quiz.shareText', { niveau: stripLeadingEmoji(niveau) });
+    const shareUrl = `${window.location.origin}${window.location.pathname}#quiz`;
+    if (navigator.share) {
+      try { await navigator.share({ title: 'Financia', text: shareText, url: shareUrl }); } catch (e) { /* partage annulé par l'utilisateur */ }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      const label = $('#quizShareBtnLabel');
+      if (label) {
+        const original = label.textContent;
+        label.textContent = FinanciaI18N.t('quiz.shareCopied');
+        setTimeout(() => { label.textContent = original; }, 2000);
+      }
+    } catch (e) { /* clipboard indisponible */ }
+  });
   updateQuizBackBtn();
 }
 
