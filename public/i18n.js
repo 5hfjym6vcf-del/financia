@@ -8,9 +8,9 @@
 window.I18N = {
 
 fr: {
-  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Histoire des marchés | Financia", titleMarches: "Analyse de marché | Financia" },
-  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
-  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos" },
+  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Histoire des marchés | Financia", titleMarches: "Analyse de marché | Financia", titleContact: "Contact | Financia" },
+  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
+  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact" },
 
   hero: {
     badge: "🚀 Pour les 18–30 ans · 100% pédagogique",
@@ -460,12 +460,22 @@ fr: {
       msciWorld: { name: "ETF MSCI World", blurb: "Un fonds qui réplique l'indice MSCI World : plus de 1 500 entreprises dans 23 pays développés. Une référence pour diversifier mondialement en un clic." },
     },
   },
+
+  contact: {
+    label: "Contact",
+    title: "Contact",
+    introP1: "Financia est un projet éducatif en développement actif, porté par un étudiant passionné par la finance et convaincu que l'éducation financière doit être accessible à tous les jeunes, gratuitement et sans jargon. Depuis son lancement, la plateforme s'enrichit régulièrement de nouveaux contenus, outils et fonctionnalités.",
+    introP2: "Financia est ouvert aux collaborations, partenariats et échanges avec toute personne ou structure partageant cette vision.",
+    contactUsTitle: "Nous contacter",
+    email: { title: "Email", cta: "Écris-nous →" },
+    instagram: { title: "Instagram", cta: "Contactez-nous en DM →" },
+  },
 },
 
 en: {
-  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "History of the Markets | Financia", titleMarches: "Market Analysis | Financia" },
-  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
-  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About" },
+  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "History of the Markets | Financia", titleMarches: "Market Analysis | Financia", titleContact: "Contact | Financia" },
+  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
+  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact" },
 
   hero: {
     badge: "🚀 For 18–30 year-olds · 100% educational",
@@ -915,12 +925,22 @@ en: {
       msciWorld: { name: "MSCI World ETF", blurb: "A fund tracking the MSCI World index: over 1,500 companies across 23 developed countries. A go-to for one-click global diversification." },
     },
   },
+
+  contact: {
+    label: "Contact",
+    title: "Contact",
+    introP1: "Financia is an educational project in active development, run by a student passionate about finance who believes financial education should be accessible to every young person, for free and without jargon. Since launch, the platform has been growing steadily with new content, tools and features.",
+    introP2: "Financia is open to collaborations, partnerships and conversations with anyone or any organization who shares this vision.",
+    contactUsTitle: "Get in touch",
+    email: { title: "Email", cta: "Write to us →" },
+    instagram: { title: "Instagram", cta: "DM us →" },
+  },
 },
 
 es: {
-  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Historia de los mercados | Financia", titleMarches: "Análisis de mercado | Financia" },
-  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
-  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros" },
+  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Historia de los mercados | Financia", titleMarches: "Análisis de mercado | Financia", titleContact: "Contacto | Financia" },
+  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
+  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto" },
 
   hero: {
     badge: "🚀 Para jóvenes de 18–30 años · 100% educativo",
@@ -1369,6 +1389,16 @@ es: {
       gold: { name: "Oro (onza)", blurb: "Valor refugio histórico. Los inversores acuden a él en momentos de incertidumbre económica o inflación." },
       msciWorld: { name: "ETF MSCI World", blurb: "Un fondo que replica el índice MSCI World: más de 1500 empresas en 23 países desarrollados. Una referencia para diversificar globalmente con un solo clic." },
     },
+  },
+
+  contact: {
+    label: "Contacto",
+    title: "Contacto",
+    introP1: "Financia es un proyecto educativo en desarrollo activo, impulsado por un estudiante apasionado por las finanzas y convencido de que la educación financiera debe ser accesible para todos los jóvenes, de forma gratuita y sin jerga. Desde su lanzamiento, la plataforma se enriquece regularmente con nuevos contenidos, herramientas y funcionalidades.",
+    introP2: "Financia está abierto a colaboraciones, alianzas e intercambios con cualquier persona o entidad que comparta esta visión.",
+    contactUsTitle: "Contáctanos",
+    email: { title: "Email", cta: "Escríbenos →" },
+    instagram: { title: "Instagram", cta: "Contáctanos por DM →" },
   },
 },
 
