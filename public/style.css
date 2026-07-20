@@ -57,7 +57,7 @@ a { text-decoration: none; color: inherit; }
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--green);
+  color: #7C3AED;
   margin-bottom: 12px;
 }
 .section-title { margin-bottom: 48px; color: var(--text); }
@@ -361,6 +361,55 @@ a { text-decoration: none; color: inherit; }
 .mini-card .mc-text { font-size: 13px; line-height: 1.4; color: var(--text); }
 .mini-card .mc-text strong { font-size: 15px; color: var(--text); }
 .mini-card .mc-text small { color: var(--text-2); }
+
+/* ============================================================
+   PAGE HERO — composant partagé pour l'en-tête des sous-pages
+   (/histoire, /marches, /contact). Padding, taille de H1,
+   badge et letter-spacing identiques sur les trois pour éviter
+   toute rupture de style en naviguant de l'une à l'autre.
+   Utilisé avec .hero-badge (forme/padding déjà partagés plus haut)
+   pour la couleur du badge, et .wrap pour la largeur du contenu.
+   ============================================================ */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0 96px;
+  text-align: center;
+}
+.page-hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+.page-hero-glow { position: absolute; border-radius: 50%; pointer-events: none; }
+.page-hero-glow-1 { width: 620px; height: 620px; top: -220px; right: -160px; background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%); }
+.page-hero-glow-2 { width: 520px; height: 520px; bottom: -220px; left: -160px; background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%); }
+.page-hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.page-hero-badge {
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.4);
+  color: #c4b5fd;
+}
+.page-hero-h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.12;
+  color: #fff;
+  margin: 20px 0 22px;
+}
+.page-hero-h1 em { color: #7C3AED; font-style: normal; }
+.page-hero-lead {
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
 
 /* MODULES */
 .modules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -1839,4 +1888,26 @@ a { text-decoration: none; color: inherit; }
      little payoff — keep the one-shot entrance animations instead. */
   .ressource-pill { animation: none; }
   .newsletter-envelope { animation: none; }
+}
+
+/* ============================================================
+   ACCESSIBILITÉ — focus clavier
+   Anneau violet clair, visible sur fond noir, pour tout élément
+   interactif — le focus par défaut du navigateur n'est ni garanti
+   d'être lisible ni cohérent avec la charte sur un thème sombre.
+   :focus-visible (pas :focus) : n'apparaît qu'à la navigation
+   clavier, pas au clic souris. Spécificité (0,1,1) par élément :
+   passe au-dessus des `outline: none` posés sur les champs de
+   formulaire (une seule classe, spécificité 0,1,0), donc l'anneau
+   s'affiche même sur les inputs qui gèrent déjà un focus par
+   changement de couleur de bordure — les deux se combinent bien.
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
 }

@@ -1,50 +1,31 @@
 /* ============================================================
    FINANCIA — contact.css
    Page "Contact" — sobre, centrée, peu de composants.
-   style.css est noir par défaut sur tout le site : ce fichier ne
-   gère que la mise en page propre à cette page.
+   Le hero (badge/H1/lead/fond) vient du composant partagé
+   .page-hero de style.css, identique à /histoire et /marches.
+   Ce fichier ne gère que ce qui est propre à cette page : les
+   deux paragraphes d'intro et les cartes de contact.
    Chargé uniquement par contact.html, en complément de style.css
    ============================================================ */
 
-.contact-section {
-  position: relative;
-  overflow: hidden;
-  padding: 160px 0 120px;
-  min-height: 70vh;
-}
-.contact-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-}
-.contact-wrap {
-  position: relative;
-  z-index: 1;
-  max-width: 620px;
-  text-align: center;
-}
-.contact-label { text-align: center; }
-.contact-h1 {
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  font-weight: 900;
-  color: var(--text);
-  letter-spacing: -1px;
-  margin: 8px 0 32px;
-}
 .contact-intro {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: 56px;
 }
-.contact-intro p {
-  font-size: 16px;
-  color: var(--text-2);
-  line-height: 1.75;
+/* .page-hero-lead a son propre margin-bottom, pensé pour un seul
+   paragraphe — ici il y en a deux, donc c'est le gap ci-dessus qui
+   gère l'espacement entre eux, et le wrapper qui porte la marge
+   avant "Nous contacter". */
+.contact-intro .page-hero-lead { margin-bottom: 0; }
+.contact-intro { margin-bottom: 36px; }
+
+.contact-section {
+  padding: 0 0 120px;
+}
+.contact-wrap {
+  max-width: 620px;
+  text-align: center;
 }
 .contact-subtitle {
   font-size: 1.25rem;
@@ -107,6 +88,6 @@
 .contact-footer { background: var(--bg); }
 
 @media (max-width: 600px) {
-  .contact-section { padding: 120px 0 72px; }
+  .contact-section { padding: 0 0 72px; }
   .contact-cards { grid-template-columns: 1fr; }
 }

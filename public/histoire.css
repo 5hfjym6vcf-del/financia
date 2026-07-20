@@ -10,7 +10,6 @@
 /* ── Layout de base ── */
 .hist-section { padding: 88px 0; position: relative; }
 .hist-section-alt { background: #0A0A0A; }
-.hist-label { color: #a78bfa; }
 .hist-h2 {
   font-size: clamp(1.7rem, 4vw, 2.4rem);
   font-weight: 800;
@@ -27,50 +26,9 @@
 }
 
 /* ── HERO ── */
-.hist-hero {
-  position: relative;
-  overflow: hidden;
-  padding: 140px 0 96px;
-  text-align: center;
-}
-.hist-hero-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-}
-.hist-glow {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.hist-glow-1 { width: 620px; height: 620px; top: -220px; right: -160px; background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%); }
-.hist-glow-2 { width: 520px; height: 520px; bottom: -220px; left: -160px; background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%); }
-.hist-hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
-.hist-badge {
-  background: rgba(124,58,237,0.15);
-  border: 1px solid rgba(124,58,237,0.4);
-  color: #c4b5fd;
-}
-.hist-h1 {
-  font-size: clamp(2.2rem, 6vw, 3.6rem);
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  line-height: 1.12;
-  color: #fff;
-  margin: 20px 0 22px;
-}
-.hist-h1 em { color: #7C3AED; font-style: normal; }
-.hist-hero-lead {
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
-  color: rgba(255,255,255,0.6);
-  max-width: 560px;
-  line-height: 1.65;
-  margin-bottom: 36px;
-}
+/* Padding/bg-grid/glow/badge/H1/lead viennent du composant partagé
+   .page-hero de style.css — ne reste ici que ce qui est propre à
+   cette page : la ligne de boutons sous le lead. */
 .hist-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
 /* ── Scroll reveal ── */

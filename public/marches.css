@@ -11,7 +11,6 @@ body.marches-page {
 
 /* ── Layout de base ── */
 .mkt-section { padding: 64px 0 96px; position: relative; }
-.mkt-label { color: #a78bfa; }
 .mkt-h2 {
   font-size: clamp(1.5rem, 3.6vw, 2.1rem);
   font-weight: 800;
@@ -21,46 +20,9 @@ body.marches-page {
 }
 
 /* ── HERO ── */
-.mkt-hero {
-  position: relative;
-  overflow: hidden;
-  padding: 140px 0 64px;
-  text-align: center;
-}
-.mkt-hero-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-}
-.mkt-glow { position: absolute; border-radius: 50%; pointer-events: none; }
-.mkt-glow-1 { width: 620px; height: 620px; top: -220px; right: -160px; background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%); }
-.mkt-glow-2 { width: 520px; height: 520px; bottom: -220px; left: -160px; background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%); }
-.mkt-hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
-.mkt-badge {
-  background: rgba(124,58,237,0.15);
-  border: 1px solid rgba(124,58,237,0.4);
-  color: #c4b5fd;
-}
-.mkt-h1 {
-  font-size: clamp(2rem, 5.4vw, 3.2rem);
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  line-height: 1.14;
-  color: #fff;
-  margin: 20px 0 18px;
-}
-.mkt-h1 em { color: #7C3AED; font-style: normal; }
-.mkt-hero-lead {
-  font-size: clamp(1rem, 2.2vw, 1.1rem);
-  color: rgba(255,255,255,0.6);
-  max-width: 560px;
-  line-height: 1.6;
-  margin-bottom: 28px;
-}
+/* Padding/bg-grid/glow/badge/H1/lead viennent du composant partagé
+   .page-hero de style.css — ne reste ici que le disclaimer, propre
+   à cette page. */
 
 /* ── Disclaimer (visible, en haut de page) ── */
 .mkt-disclaimer {
