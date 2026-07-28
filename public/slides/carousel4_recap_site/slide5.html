@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>slide5 — Marchés</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body {
+    background: #000000;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .stage {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    flex-shrink: 0;
+    transform-origin: center center;
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 80px;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-top-right {
+    width: 560px; height: 560px;
+    top: -200px; right: -180px;
+    background: radial-gradient(circle, rgba(124,58,237,0.16) 0%, transparent 70%);
+  }
+  .orb-bottom-left {
+    width: 480px; height: 480px;
+    bottom: -160px; left: -160px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+  }
+
+  .header {
+    position: absolute;
+    top: 52px;
+    left: 72px;
+    right: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+  }
+  .logo {
+    font-size: 32px;
+    font-weight: 800;
+    color: #7C3AED;
+    letter-spacing: 1.5px;
+  }
+  .slide-num {
+    font-size: 25px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 44px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.32);
+    letter-spacing: 0.3px;
+    z-index: 2;
+  }
+
+  h1 {
+    font-size: 60px;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    line-height: 1.14;
+    letter-spacing: -1.4px;
+    margin-bottom: 28px;
+  }
+  h1 em { color: #7C3AED; font-style: normal; }
+  .subtitle {
+    font-size: 34px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    line-height: 1.48;
+    max-width: 830px;
+  }
+
+  .s-title {
+    font-size: 56px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1.4px;
+    line-height: 1.14;
+    margin-bottom: 40px;
+  }
+  .s-title .accent { color: #7C3AED; }
+
+  .lesson-body {
+    font-size: 36px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.48;
+  }
+
+  .s-body {
+    font-size: 36px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.72);
+    text-align: center;
+    line-height: 1.46;
+    max-width: 820px;
+    margin-bottom: 44px;
+  }
+  .s-body strong { color: #fff; font-weight: 700; }
+
+  .cta-badge {
+    width: 100%;
+    background: rgba(124,58,237,0.18);
+    border: 1.5px solid rgba(124,58,237,0.5);
+    border-radius: 22px;
+    padding: 34px 36px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #c4b5fd;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 30px;
+  }
+  .cta-badge span { color: #fff; }
+
+  .cta-sub {
+    font-size: 30px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .cta-sub .accent { color: #7C3AED; font-weight: 800; }
+
+  .disclaimer {
+    font-size: 23px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.32);
+    text-align: center;
+    max-width: 760px;
+  }
+
+  .icon-row { display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 40px; }
+  .icon-badge {
+    width: 128px; height: 128px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(124,58,237,0.12);
+    border: 1.5px solid rgba(124,58,237,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-badge svg { width: 60px; height: 60px; color: #7C3AED; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; width: 100%; }
+  .stat-cell {
+    background: rgba(255,255,255,0.035);
+    border: 1.5px solid rgba(124,58,237,0.3);
+    border-radius: 20px;
+    padding: 34px 24px;
+    text-align: center;
+  }
+  .stat-num { font-size: 62px; font-weight: 900; color: #7C3AED; letter-spacing: -1.5px; margin-bottom: 8px; line-height: 1; }
+  .stat-label { font-size: 24px; font-weight: 600; color: rgba(255,255,255,0.6); }
+
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="slide" id="slide5">
+    <div class="glow-orb orb-top-right"></div>
+    <div class="glow-orb orb-bottom-left"></div>
+
+    <div class="header">
+      <div class="logo">FINANCIA</div>
+      <div class="slide-num">5/10</div>
+    </div>
+
+    <div class="icon-row">
+      <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+    </div>
+    <h1>💹 Marchés</h1>
+    <p class="subtitle">CAC 40, S&amp;P 500, Bitcoin, Or, ETF monde... suis les grands indicateurs en un coup d'œil, avec des explications simples.</p>
+
+    <div class="footer">@financia_cloud</div>
+  </div>
+</div>
+
+<script>
+  function fitStage() {
+    var scale = Math.min(window.innerWidth / 1080, window.innerHeight / 1080);
+    document.querySelector('.slide').style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', fitStage);
+  window.addEventListener('orientationchange', fitStage);
+  window.addEventListener('load', fitStage);
+  fitStage();
+</script>
+
+</body>
+</html>
