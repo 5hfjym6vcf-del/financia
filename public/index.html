@@ -628,8 +628,14 @@
 <section id="quiz" class="section section-dark">
   <div class="wrap">
     <div class="section-label" data-i18n="quiz.label">Évaluation</div>
-    <h2 class="section-title" data-i18n-html="quiz.titleHtml">Ton profil investisseur<br>en 5 questions</h2>
-    <div class="quiz-container">
+    <h2 class="section-title" id="quizSectionTitle" data-i18n-html="quiz.titleHtml">Ton profil investisseur<br>en 5 questions</h2>
+
+    <div class="quiz-mode-toggle" role="tablist">
+      <button class="quiz-mode-btn active" id="modeProfileBtn" role="tab" aria-selected="true" data-i18n="quiz.modeProfile">Profil investisseur</button>
+      <button class="quiz-mode-btn" id="modeKnowledgeBtn" role="tab" aria-selected="false" data-i18n="quiz.modeKnowledge">Test de connaissances</button>
+    </div>
+
+    <div class="quiz-container" id="profileQuizContainer">
       <div class="quiz-progress-bar"><div id="quizProgress" class="quiz-progress-fill" style="width:0%"></div></div>
       <div id="quiz-body">
         <div class="quiz-step active" id="step-1">
@@ -680,6 +686,10 @@
         </div>
         <div id="quiz-result" class="quiz-result hidden"></div>
       </div>
+    </div>
+
+    <div class="quiz-container hidden" id="knowledgeContainer">
+      <div id="knowledge-body"></div>
     </div>
   </div>
 </section>

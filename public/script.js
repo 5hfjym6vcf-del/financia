@@ -517,6 +517,160 @@ window.addEventListener('hashchange', () => {
   if (window.location.hash === '#quiz') resetQuiz();
 });
 
+// ── Test de connaissances — mode alternatif au quiz de profil ci-dessus.
+// Questions tirées au hasard dans public/i18n.js (quiz.knowledge.questions.<niveau>),
+// même index de question réutilisé dans les 3 langues pour rester cohérent si
+// l'utilisateur change de langue en cours de test.
+let quizMode = 'profile';
+let knowledgeLevel = null;
+let knowledgeQuestionIndices = [];
+let knowledgeIndex = 0;
+let knowledgeScore = 0;
+let knowledgeAnswered = false;
+let knowledgeOptionOrder = [];
+const KNOWLEDGE_TEST_LENGTH = 6;
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getKnowledgePool(level) {
+  return FinanciaI18N.get('quiz.knowledge.questions.' + level) || [];
+}
+
+function renderKnowledgeLevels() {
+  knowledgeLevel = null;
+  const body = $('#knowledge-body');
+  if (!body) return;
+  const levels = ['beginner', 'amateur', 'pro'];
+  body.innerHTML = `
+    <p class="knowledge-intro-title">${FinanciaI18N.t('quiz.knowledge.introTitle')}</p>
+    <p class="knowledge-intro-sub">${FinanciaI18N.t('quiz.knowledge.introSub')}</p>
+    <div class="knowledge-level-cards">
+      ${levels.map(l => `
+        <button class="knowledge-level-card" data-level="${l}">
+          <span class="knowledge-level-name">${FinanciaI18N.t('quiz.knowledge.levels.' + l + '.label')}</span>
+          <span class="knowledge-level-desc">${FinanciaI18N.t('quiz.knowledge.levels.' + l + '.desc')}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+  $$('.knowledge-level-card', body).forEach(btn => {
+    btn.addEventListener('click', () => startKnowledgeTest(btn.dataset.level));
+  });
+}
+
+function startKnowledgeTest(level) {
+  knowledgeLevel = level;
+  const pool = getKnowledgePool(level);
+  const allIndices = pool.map((_, i) => i);
+  knowledgeQuestionIndices = shuffleArray(allIndices).slice(0, Math.min(KNOWLEDGE_TEST_LENGTH, pool.length));
+  knowledgeIndex = 0;
+  knowledgeScore = 0;
+  renderKnowledgeQuestion();
+}
+
+function renderKnowledgeQuestion() {
+  knowledgeAnswered = false;
+  const body = $('#knowledge-body');
+  if (!body) return;
+  const pool = getKnowledgePool(knowledgeLevel);
+  const q = pool[knowledgeQuestionIndices[knowledgeIndex]];
+  if (!q) return;
+  knowledgeOptionOrder = shuffleArray(q.options.map((_, i) => i));
+  const total = knowledgeQuestionIndices.length;
+  const pct = (knowledgeIndex / total) * 100;
+  body.innerHTML = `
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
+    <div class="knowledge-q-counter">${FinanciaI18N.t('quiz.knowledge.questionCounter', { current: knowledgeIndex + 1, total })}</div>
+    <div class="quiz-q">${q.q}</div>
+    <div class="quiz-options">
+      ${knowledgeOptionOrder.map(origIdx => `<button class="quiz-opt" data-idx="${origIdx}">${q.options[origIdx]}</button>`).join('')}
+    </div>
+  `;
+  $$('.quiz-opt', body).forEach(btn => {
+    btn.addEventListener('click', () => selectKnowledgeAnswer(btn, Number(btn.dataset.idx), q.correct, body));
+  });
+}
+
+function selectKnowledgeAnswer(btn, chosenIdx, correctIdx, body) {
+  if (knowledgeAnswered) return;
+  knowledgeAnswered = true;
+  $$('.quiz-opt', body).forEach(b => {
+    b.disabled = true;
+    if (Number(b.dataset.idx) === correctIdx) b.classList.add('correct');
+  });
+  if (chosenIdx === correctIdx) {
+    knowledgeScore++;
+  } else {
+    btn.classList.add('wrong');
+  }
+  setTimeout(() => {
+    knowledgeIndex++;
+    if (knowledgeIndex < knowledgeQuestionIndices.length) {
+      renderKnowledgeQuestion();
+    } else {
+      renderKnowledgeResult();
+    }
+  }, 900);
+}
+
+function renderKnowledgeResult() {
+  const body = $('#knowledge-body');
+  if (!body) return;
+  const total = knowledgeQuestionIndices.length;
+  const pct = knowledgeScore / total;
+  let feedbackKey = 'encourage';
+  if (pct === 1) feedbackKey = 'perfect';
+  else if (pct >= 0.7) feedbackKey = 'great';
+  else if (pct >= 0.5) feedbackKey = 'good';
+  body.innerHTML = `
+    <div class="knowledge-result">
+      <div class="knowledge-result-score">${knowledgeScore}/${total}</div>
+      <p class="quiz-result-sub">${FinanciaI18N.t('quiz.knowledge.feedback.' + feedbackKey)}</p>
+      <button class="btn-primary full" id="knowledgeRestartBtn">${FinanciaI18N.t('quiz.knowledge.restartBtn')}</button>
+    </div>
+  `;
+  $('#knowledgeRestartBtn')?.addEventListener('click', renderKnowledgeLevels);
+}
+
+// Ré-affiche l'écran courant (niveaux / question / résultat) après un changement
+// de langue, sans perdre la progression du test en cours.
+function renderKnowledgeCurrent() {
+  const body = $('#knowledge-body');
+  if (body?.querySelector('.knowledge-result')) { renderKnowledgeResult(); return; }
+  if (knowledgeLevel && knowledgeQuestionIndices.length) { renderKnowledgeQuestion(); return; }
+  renderKnowledgeLevels();
+}
+
+function switchQuizMode(mode) {
+  quizMode = mode;
+  $('#modeProfileBtn')?.classList.toggle('active', mode === 'profile');
+  $('#modeProfileBtn')?.setAttribute('aria-selected', String(mode === 'profile'));
+  $('#modeKnowledgeBtn')?.classList.toggle('active', mode === 'knowledge');
+  $('#modeKnowledgeBtn')?.setAttribute('aria-selected', String(mode === 'knowledge'));
+  $('#profileQuizContainer')?.classList.toggle('hidden', mode !== 'profile');
+  $('#knowledgeContainer')?.classList.toggle('hidden', mode !== 'knowledge');
+  const titleEl = $('#quizSectionTitle');
+  if (titleEl) titleEl.innerHTML = FinanciaI18N.t(mode === 'knowledge' ? 'quiz.knowledge.sectionTitleHtml' : 'quiz.titleHtml');
+  if (mode === 'knowledge' && !knowledgeLevel) renderKnowledgeLevels();
+}
+
+$('#modeProfileBtn')?.addEventListener('click', () => switchQuizMode('profile'));
+$('#modeKnowledgeBtn')?.addEventListener('click', () => switchQuizMode('knowledge'));
+
+FinanciaI18N.onLangChange(() => {
+  if (quizMode !== 'knowledge') return;
+  const titleEl = $('#quizSectionTitle');
+  if (titleEl) titleEl.innerHTML = FinanciaI18N.t('quiz.knowledge.sectionTitleHtml');
+  renderKnowledgeCurrent();
+});
+
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
