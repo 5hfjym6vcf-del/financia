@@ -7,7 +7,7 @@
 // Chargé de façon bloquante juste après i18n.js dans <head>.
 // ============================================================
 (function () {
-  const SUPPORTED = ['fr', 'en', 'es'];
+  const SUPPORTED = ['fr', 'en', 'es', 'ru'];
   const STORAGE_KEY = 'financia_lang';
 
   function getLang() {

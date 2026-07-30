@@ -57,7 +57,7 @@ let charts = {};     // key -> { chart, series }, pour le resize et le cleanup
 
 function currentLocale() {
   const lang = FinanciaI18N.getLang();
-  return lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'fr-FR';
+  return lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : lang === 'ru' ? 'ru-RU' : 'fr-FR';
 }
 
 function fmtPrice(value, currency) {

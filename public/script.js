@@ -7,7 +7,7 @@ FinanciaI18N.initLang();
 const langSelect = $('#langSelect');
 function currentLocale() {
   const lang = FinanciaI18N.getLang();
-  return lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'fr-FR';
+  return lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : lang === 'ru' ? 'ru-RU' : 'fr-FR';
 }
 
 const navbar = $('#navbar');
