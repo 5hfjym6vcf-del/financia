@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   const numbered = titles.map((t, i) => `${i + 1}. ${t}`).join('\n');
-  const targetLang = lang === 'es' ? 'espagnol' : lang === 'ru' ? 'russe' : 'français';
+  const targetLang = lang === 'es' ? 'espagnol' : lang === 'ru' ? 'russe' : lang === 'de' ? 'allemand' : 'français';
 
   try {
     const r = await axios.post(

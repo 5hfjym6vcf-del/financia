@@ -26,7 +26,7 @@ setInterval(() => {
   }
 }, 5 * 60_000);
 
-const LANG_NAMES = { fr: 'French', en: 'English', es: 'Spanish', ru: 'Russian' };
+const LANG_NAMES = { fr: 'French', en: 'English', es: 'Spanish', ru: 'Russian', de: 'German' };
 
 function buildSystemPrompt(lang) {
   const language = LANG_NAMES[lang] || 'French';
