@@ -49,6 +49,14 @@ fr: {
     sentimentTag: "Finance",
   },
 
+  videoShowcase: {
+    title: "🎥 Aperçu de nos réseaux",
+    playAria: "Lecture",
+    pauseAria: "Pause",
+    prevAria: "Précédent",
+    nextAria: "Suivant",
+  },
+
   hub: {
     label: "Accueil",
     title: "Tu veux commencer par où ?",
@@ -606,6 +614,14 @@ en: {
     nextAria: "Next",
     readArticle: "Read article →",
     sentimentTag: "Finance",
+  },
+
+  videoShowcase: {
+    title: "🎥 A look at our reels",
+    playAria: "Play",
+    pauseAria: "Pause",
+    prevAria: "Previous",
+    nextAria: "Next",
   },
 
   hub: {
@@ -1167,6 +1183,14 @@ es: {
     sentimentTag: "Finanzas",
   },
 
+  videoShowcase: {
+    title: "🎥 Un vistazo a nuestros reels",
+    playAria: "Reproducir",
+    pauseAria: "Pausa",
+    prevAria: "Anterior",
+    nextAria: "Siguiente",
+  },
+
   hub: {
     label: "Inicio",
     title: "¿Por dónde quieres empezar?",
@@ -1726,6 +1750,14 @@ ru: {
     sentimentTag: "Финансы",
   },
 
+  videoShowcase: {
+    title: "🎥 Загляни в наши соцсети",
+    playAria: "Воспроизвести",
+    pauseAria: "Пауза",
+    prevAria: "Назад",
+    nextAria: "Далее",
+  },
+
   hub: {
     label: "Главная",
     title: "С чего хочешь начать?",
@@ -2283,6 +2315,14 @@ de: {
     nextAria: "Weiter",
     readArticle: "Artikel lesen →",
     sentimentTag: "Finanzen",
+  },
+
+  videoShowcase: {
+    title: "🎥 Ein Blick in unsere Reels",
+    playAria: "Abspielen",
+    pauseAria: "Pause",
+    prevAria: "Zurück",
+    nextAria: "Weiter",
   },
 
   hub: {

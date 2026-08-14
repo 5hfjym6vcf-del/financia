@@ -163,6 +163,48 @@
   </section>
 </div>
 
+<section class="video-showcase-section">
+  <div class="wrap">
+    <h2 class="vs-title" data-i18n="videoShowcase.title">🎥 Aperçu de nos réseaux</h2>
+
+    <div class="vs-player" id="vsPlayer">
+      <div class="vs-progress" id="vsProgress">
+        <span class="vs-bar"><span class="vs-bar-fill"></span></span>
+        <span class="vs-bar"><span class="vs-bar-fill"></span></span>
+        <span class="vs-bar"><span class="vs-bar-fill"></span></span>
+      </div>
+
+      <div class="vs-track" id="vsTrack">
+        <div class="vs-slide">
+          <video class="vs-video" src="./videos/reel1.mp4" poster="./videos/reel1-poster.jpg" preload="metadata" playsinline muted="false"></video>
+          <button class="vs-play-btn" data-i18n-aria="videoShowcase.playAria" aria-label="Lecture">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div class="vs-slide">
+          <video class="vs-video" src="./videos/reel2.mp4" poster="./videos/reel2-poster.jpg" preload="metadata" playsinline muted="false"></video>
+          <button class="vs-play-btn" data-i18n-aria="videoShowcase.playAria" aria-label="Lecture">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div class="vs-slide">
+          <video class="vs-video" src="./videos/reel3.mp4" poster="./videos/reel3-poster.jpg" preload="metadata" playsinline muted="false"></video>
+          <button class="vs-play-btn" data-i18n-aria="videoShowcase.playAria" aria-label="Lecture">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <button class="vs-arrow vs-arrow-prev" id="vsPrev" data-i18n-aria="videoShowcase.prevAria" aria-label="Précédent">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="vs-arrow vs-arrow-next" id="vsNext" data-i18n-aria="videoShowcase.nextAria" aria-label="Suivant">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
 <div class="logo-banner">
   <div class="logo-banner-line"></div>
   <img src="./images/financia-logo-transparent.png" alt="Financia" />
