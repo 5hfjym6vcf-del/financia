@@ -1216,10 +1216,12 @@ FinanciaI18N.onLangChange(async () => {
     nextBtn.disabled = current === total - 1;
   }
 
-  function goTo(idx, { fromEnd = false } = {}) {
+  function goTo(idx) {
     idx = Math.max(0, Math.min(total - 1, idx));
-    pauseAllExcept(-1);
-    current = idx;
+    if (idx !== current) {
+      pauseAllExcept(-1);
+      current = idx;
+    }
     track.style.transform = `translateX(-${current * (100 / total)}%)`;
     updateBars();
     updateArrows();
@@ -1247,36 +1249,65 @@ FinanciaI18N.onLangChange(async () => {
   prevBtn?.addEventListener('click', () => goTo(current - 1));
   nextBtn?.addEventListener('click', () => goTo(current + 1));
 
-  // Swipe / drag unifié (tactile mobile + souris desktop) via Pointer Events
+  // Swipe / drag unifié (tactile mobile + souris desktop) via Pointer Events.
+  // Le geste n'est classé horizontal (swipe carrousel) vs vertical (scroll de
+  // page) qu'après quelques pixels de mouvement, pour ne jamais interrompre
+  // un simple scroll de page démarré sur le lecteur.
   let dragging = false;
+  let gestureDecided = false;
+  let activePointerId = null;
   let dragStartX = 0;
+  let dragStartY = 0;
   let dragDeltaX = 0;
+  const DECIDE_THRESHOLD = 8;
 
   function baseOffsetPercent() { return -(current * (100 / total)); }
 
   player.addEventListener('pointerdown', (e) => {
     if (e.target.closest('.vs-play-btn') || e.target.closest('.vs-arrow')) return;
-    dragging = true;
+    activePointerId = e.pointerId;
     dragStartX = e.clientX;
+    dragStartY = e.clientY;
     dragDeltaX = 0;
+    gestureDecided = false;
+    dragging = false;
     playerWidth = player.offsetWidth;
-    track.classList.add('dragging');
-    player.classList.add('dragging');
-    player.setPointerCapture(e.pointerId);
   });
 
   player.addEventListener('pointermove', (e) => {
+    if (e.pointerId !== activePointerId) return;
+    const dx = e.clientX - dragStartX;
+    const dy = e.clientY - dragStartY;
+
+    if (!gestureDecided) {
+      if (Math.abs(dx) < DECIDE_THRESHOLD && Math.abs(dy) < DECIDE_THRESHOLD) return;
+      gestureDecided = true;
+      if (Math.abs(dy) > Math.abs(dx)) {
+        // Scroll vertical de la page : on laisse le navigateur gérer, on ne touche à rien.
+        return;
+      }
+      dragging = true;
+      track.classList.add('dragging');
+      player.classList.add('dragging');
+      try { player.setPointerCapture(activePointerId); } catch {}
+    }
+
     if (!dragging) return;
-    dragDeltaX = e.clientX - dragStartX;
+    dragDeltaX = dx;
     const deltaPercent = (dragDeltaX / playerWidth) * (100 / total);
     track.style.transform = `translateX(${baseOffsetPercent() + deltaPercent}%)`;
   });
 
-  function endDrag() {
-    if (!dragging) return;
+  function endDrag(e) {
+    if (e && e.pointerId !== activePointerId) return;
+    const wasDragging = dragging;
     dragging = false;
+    gestureDecided = false;
+    activePointerId = null;
     track.classList.remove('dragging');
     player.classList.remove('dragging');
+
+    if (!wasDragging) return; // simple tap ou scroll vertical : aucune navigation, on ne coupe rien
 
     const threshold = playerWidth * 0.18;
     if (Math.abs(dragDeltaX) > threshold) {
