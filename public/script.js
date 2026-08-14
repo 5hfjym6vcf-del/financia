@@ -1168,6 +1168,7 @@ FinanciaI18N.onLangChange(async () => {
   const slides   = $$('.vs-slide', track);
   const videos   = $$('.vs-video', track);
   const playBtns = $$('.vs-play-btn', track);
+  const muteBtns = $$('.vs-mute-btn', track);
   const fills    = $$('.vs-bar-fill', player);
   const bars     = $$('.vs-bar', player);
   const prevBtn  = $('#vsPrev');
@@ -1176,9 +1177,26 @@ FinanciaI18N.onLangChange(async () => {
   const total = slides.length;
   let current = 0;
   let playerWidth = player.offsetWidth;
+  let muted = false;
 
   const playIconSVG  = '<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
   const pauseIconSVG = '<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+  const soundOnIconSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M18.36 5.64a9 9 0 0 1 0 12.73"/></svg>';
+  const soundOffIconSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+
+  function applyMuted() {
+    videos.forEach(v => { v.muted = muted; });
+    muteBtns.forEach(btn => {
+      btn.classList.toggle('muted', muted);
+      btn.innerHTML = muted ? soundOffIconSVG : soundOnIconSVG;
+      btn.setAttribute('aria-label', FinanciaI18N.t(muted ? 'videoShowcase.unmuteAria' : 'videoShowcase.muteAria'));
+    });
+  }
+  applyMuted();
+
+  muteBtns.forEach(btn => {
+    btn.addEventListener('click', () => { muted = !muted; applyMuted(); });
+  });
 
   function pauseVideo(i) {
     videos[i].pause();
@@ -1264,7 +1282,7 @@ FinanciaI18N.onLangChange(async () => {
   function baseOffsetPercent() { return -(current * (100 / total)); }
 
   player.addEventListener('pointerdown', (e) => {
-    if (e.target.closest('.vs-play-btn') || e.target.closest('.vs-arrow')) return;
+    if (e.target.closest('.vs-play-btn') || e.target.closest('.vs-arrow') || e.target.closest('.vs-mute-btn')) return;
     activePointerId = e.pointerId;
     dragStartX = e.clientX;
     dragStartY = e.clientY;

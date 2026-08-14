@@ -56,6 +56,8 @@ fr: {
     prevAria: "Précédent",
     nextAria: "Suivant",
     ctaInstagram: "📷 Suivre @financia_cloud",
+    muteAria: "Couper le son",
+    unmuteAria: "Activer le son",
   },
 
   hub: {
@@ -624,6 +626,8 @@ en: {
     prevAria: "Previous",
     nextAria: "Next",
     ctaInstagram: "📷 Follow @financia_cloud",
+    muteAria: "Mute",
+    unmuteAria: "Unmute",
   },
 
   hub: {
@@ -1192,6 +1196,8 @@ es: {
     prevAria: "Anterior",
     nextAria: "Siguiente",
     ctaInstagram: "📷 Seguir a @financia_cloud",
+    muteAria: "Silenciar",
+    unmuteAria: "Activar sonido",
   },
 
   hub: {
@@ -1760,6 +1766,8 @@ ru: {
     prevAria: "Назад",
     nextAria: "Далее",
     ctaInstagram: "📷 Подписаться на @financia_cloud",
+    muteAria: "Выключить звук",
+    unmuteAria: "Включить звук",
   },
 
   hub: {
@@ -2328,6 +2336,8 @@ de: {
     prevAria: "Zurück",
     nextAria: "Weiter",
     ctaInstagram: "📷 @financia_cloud folgen",
+    muteAria: "Ton aus",
+    unmuteAria: "Ton an",
   },
 
   hub: {
