@@ -55,6 +55,7 @@ fr: {
     pauseAria: "Pause",
     prevAria: "Précédent",
     nextAria: "Suivant",
+    ctaInstagram: "📷 Suivre @financia_cloud",
   },
 
   hub: {
@@ -622,6 +623,7 @@ en: {
     pauseAria: "Pause",
     prevAria: "Previous",
     nextAria: "Next",
+    ctaInstagram: "📷 Follow @financia_cloud",
   },
 
   hub: {
@@ -1189,6 +1191,7 @@ es: {
     pauseAria: "Pausa",
     prevAria: "Anterior",
     nextAria: "Siguiente",
+    ctaInstagram: "📷 Seguir a @financia_cloud",
   },
 
   hub: {
@@ -1756,6 +1759,7 @@ ru: {
     pauseAria: "Пауза",
     prevAria: "Назад",
     nextAria: "Далее",
+    ctaInstagram: "📷 Подписаться на @financia_cloud",
   },
 
   hub: {
@@ -2323,6 +2327,7 @@ de: {
     pauseAria: "Pause",
     prevAria: "Zurück",
     nextAria: "Weiter",
+    ctaInstagram: "📷 @financia_cloud folgen",
   },
 
   hub: {
