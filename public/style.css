@@ -1895,7 +1895,15 @@ a { text-decoration: none; color: inherit; }
       padding: 72px 0;
     }
     .avis-section .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    .avis-header { margin-bottom: 40px; }
+    .avis-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .avis-cta { flex-shrink: 0; }
     .avis-section .section-label {
       font-size: 12px;
       font-weight: 700;

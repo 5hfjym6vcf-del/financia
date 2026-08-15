@@ -79,6 +79,7 @@ fr: {
     emptyTitle: "Aucun avis pour le moment",
     emptySub: "Reviens bientôt pour découvrir les retours de la communauté.",
     loadError: "Impossible de charger les avis pour le moment.",
+    cta: "✍️ Laisser un avis",
   },
 
   faq: {
@@ -641,6 +642,7 @@ en: {
     emptyTitle: "No reviews yet",
     emptySub: "Check back soon to see what the community has to say.",
     loadError: "Couldn't load reviews right now.",
+    cta: "✍️ Leave a review",
   },
 
   faq: {
@@ -1203,6 +1205,7 @@ es: {
     emptyTitle: "Todavía no hay opiniones",
     emptySub: "Vuelve pronto para ver lo que dice la comunidad.",
     loadError: "No se pudieron cargar las opiniones por ahora.",
+    cta: "✍️ Dejar una opinión",
   },
 
   faq: {
@@ -1765,6 +1768,7 @@ ru: {
     emptyTitle: "Пока нет отзывов",
     emptySub: "Загляни позже, чтобы узнать мнение сообщества.",
     loadError: "Не удалось загрузить отзывы.",
+    cta: "✍️ Оставить отзыв",
   },
 
   faq: {
@@ -2327,6 +2331,7 @@ de: {
     emptyTitle: "Noch keine Bewertungen",
     emptySub: "Schau bald wieder vorbei, um zu sehen, was die Community sagt.",
     loadError: "Bewertungen konnten gerade nicht geladen werden.",
+    cta: "✍️ Bewertung abgeben",
   },
 
   faq: {
