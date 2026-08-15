@@ -72,6 +72,15 @@ fr: {
     apropos: { title: "À propos", desc: "L'histoire de Financia et les valeurs qui guident le projet.", cta: "Découvrir →" },
   },
 
+  avis: {
+    label: "Communauté",
+    title: "Avis de la communauté",
+    loading: "Chargement des avis…",
+    emptyTitle: "Aucun avis pour le moment",
+    emptySub: "Reviens bientôt pour découvrir les retours de la communauté.",
+    loadError: "Impossible de charger les avis pour le moment.",
+  },
+
   faq: {
     title: "Questions fréquentes 💬",
     items: [
@@ -623,6 +632,15 @@ en: {
     quiz: { title: "Quiz", desc: "Assess your level in 5 questions and get a personalized action plan.", cta: "Test →" },
     actus: { title: "News", desc: "The latest financial market news to stay informed.", cta: "Read →" },
     apropos: { title: "About", desc: "Financia's story and the values that guide the project.", cta: "Discover →" },
+  },
+
+  avis: {
+    label: "Community",
+    title: "Community reviews",
+    loading: "Loading reviews…",
+    emptyTitle: "No reviews yet",
+    emptySub: "Check back soon to see what the community has to say.",
+    loadError: "Couldn't load reviews right now.",
   },
 
   faq: {
@@ -1178,6 +1196,15 @@ es: {
     apropos: { title: "Sobre nosotros", desc: "La historia de Financia y los valores que guían el proyecto.", cta: "Descubrir →" },
   },
 
+  avis: {
+    label: "Comunidad",
+    title: "Opiniones de la comunidad",
+    loading: "Cargando opiniones…",
+    emptyTitle: "Todavía no hay opiniones",
+    emptySub: "Vuelve pronto para ver lo que dice la comunidad.",
+    loadError: "No se pudieron cargar las opiniones por ahora.",
+  },
+
   faq: {
     title: "Preguntas frecuentes 💬",
     items: [
@@ -1731,6 +1758,15 @@ ru: {
     apropos: { title: "О нас", desc: "История Financia и ценности, которые лежат в основе проекта.", cta: "Узнать →" },
   },
 
+  avis: {
+    label: "Сообщество",
+    title: "Отзывы сообщества",
+    loading: "Загрузка отзывов…",
+    emptyTitle: "Пока нет отзывов",
+    emptySub: "Загляни позже, чтобы узнать мнение сообщества.",
+    loadError: "Не удалось загрузить отзывы.",
+  },
+
   faq: {
     title: "Часто задаваемые вопросы 💬",
     items: [
@@ -2282,6 +2318,15 @@ de: {
     quiz: { title: "Quiz", desc: "Bewerte dein Niveau in 5 Fragen und erhalte einen persönlichen Aktionsplan.", cta: "Testen →" },
     actus: { title: "News", desc: "Die neuesten Nachrichten von den Finanzmärkten, um informiert zu bleiben.", cta: "Lesen →" },
     apropos: { title: "Über uns", desc: "Die Geschichte von Financia und die Werte hinter dem Projekt.", cta: "Entdecken →" },
+  },
+
+  avis: {
+    label: "Community",
+    title: "Bewertungen der Community",
+    loading: "Bewertungen werden geladen…",
+    emptyTitle: "Noch keine Bewertungen",
+    emptySub: "Schau bald wieder vorbei, um zu sehen, was die Community sagt.",
+    loadError: "Bewertungen konnten gerade nicht geladen werden.",
   },
 
   faq: {

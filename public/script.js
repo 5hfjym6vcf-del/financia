@@ -929,6 +929,58 @@ FinanciaI18N.onLangChange(async () => {
   input.addEventListener('keydown', e => { if (e.key === 'Enter') ask(); });
 })();
 
+// ── Avis communauté (lecture seule, alimenté par Google Sheet) ──
+(function () {
+  const grid = document.getElementById('avisGrid');
+  if (!grid) return;
+
+  function starsHtml(n) {
+    if (!n) return '';
+    return `<span class="avis-stars">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</span>`;
+  }
+
+  function fmtDate(iso) {
+    const d = new Date(iso);
+    if (isNaN(d)) return '';
+    try {
+      return d.toLocaleDateString(currentLocale(), { day: '2-digit', month: 'short', year: 'numeric' });
+    } catch { return ''; }
+  }
+
+  let lastAvis = [];
+
+  function renderGrid(avis) {
+    lastAvis = avis;
+    if (!avis.length) {
+      grid.innerHTML = `
+        <div class="avis-empty">
+          <div class="avis-empty-emoji"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div class="avis-empty-title">${FinanciaI18N.t('avis.emptyTitle')}</div>
+          <div class="avis-empty-sub">${FinanciaI18N.t('avis.emptySub')}</div>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = avis.map(a => `
+      <div class="avis-card">
+        <div class="avis-card-top">
+          <span class="avis-prenom">${a.prenom}</span>
+          ${starsHtml(a.note)}
+        </div>
+        <p class="avis-texte">${a.texte}</p>
+        <span class="avis-date">${fmtDate(a.created_at)}</span>
+      </div>
+    `).join('');
+  }
+
+  fetch('/api/avis')
+    .then(r => r.json())
+    .then(data => renderGrid(Array.isArray(data) ? data : []))
+    .catch(() => { grid.innerHTML = `<div class="avis-empty"><div class="avis-empty-sub">${FinanciaI18N.t('avis.loadError')}</div></div>`; });
+
+  FinanciaI18N.onLangChange(() => renderGrid(lastAvis));
+})();
+
 // ── News widget carousel (moved from inline <script> in index.html) ──
 (function () {
   const track   = document.getElementById('newsTrack');

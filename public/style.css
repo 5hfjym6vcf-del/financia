@@ -1532,6 +1532,7 @@ a { text-decoration: none; color: inherit; }
   /* Tighter vertical rhythm — mobile is the primary experience, 80px
      desktop section padding reads as excess dead space on a phone. */
   .section { padding: 56px 0; }
+  .avis-section { padding: 48px 0; }
   .faq-section { padding: 48px 0; }
   .ressources-section { padding: 44px 0; }
   .newsletter-section { padding: 40px 0; }
@@ -1887,6 +1888,64 @@ a { text-decoration: none; color: inherit; }
       .logo-banner img { height: 80px; }
       .logo-banner-text { font-size: 15px; }
     }
+
+    /* ── Avis section (lecture seule, alimentée par Google Sheet) ── */
+    .avis-section {
+      background: var(--bg);
+      padding: 72px 0;
+    }
+    .avis-section .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .avis-header { margin-bottom: 40px; }
+    .avis-section .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7C3AED;
+      margin-bottom: 8px;
+    }
+    .avis-section .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+    .avis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .avis-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .avis-grid { grid-template-columns: 1fr; } }
+    .avis-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: box-shadow 0.2s;
+    }
+    .avis-card:hover { box-shadow: 0 4px 24px rgba(124,58,237,0.18); border-color: rgba(124,58,237,0.3); }
+    .avis-card-top { display: flex; align-items: center; justify-content: space-between; }
+    .avis-prenom { font-size: 15px; font-weight: 700; color: var(--text); }
+    .avis-stars { color: #7C3AED; font-size: 14px; letter-spacing: 1px; }
+    .avis-texte { font-size: 14px; color: var(--text-2); line-height: 1.6; flex: 1; }
+    .avis-date { font-size: 12px; color: var(--text-3); font-weight: 500; }
+    .avis-empty {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 48px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .avis-empty-emoji { color: #7C3AED; }
+    .avis-empty-title { font-size: 18px; font-weight: 700; color: var(--text); }
+    .avis-empty-sub { font-size: 14px; color: var(--text-2); }
 
     /* ── Témoignages section ── */
     .temoignages-section { background: var(--bg); padding: 72px 0; }
