@@ -379,8 +379,11 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 28px;
 }
 
-.vs-insta-cta {
-  display: inline-block;
+.vs-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
   margin-top: 28px;
 }
 
@@ -2099,6 +2102,16 @@ a { text-decoration: none; color: inherit; }
     }
     .temoignage-lesson-box p { font-size: 14px; color: #e9d5ff; line-height: 1.6; font-weight: 500; }
     .temoignages-cta-wrap { text-align: center; }
+    .temoignages-cta-tiktok {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .temoignages-cta-tiktok:hover { color: var(--green); }
 
     /* ── FAQ section ── */
     .faq-section {

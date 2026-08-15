@@ -56,6 +56,7 @@ fr: {
     prevAria: "Précédent",
     nextAria: "Suivant",
     ctaInstagram: "📷 Suivre @financia_cloud",
+    ctaTiktok: "🎵 Suivre sur TikTok",
     muteAria: "Couper le son",
     unmuteAria: "Activer le son",
   },
@@ -351,6 +352,7 @@ fr: {
     sub: "Des jeunes partagent comment ils ont appris à investir, sans filtre, sans conseil miracle.",
     parcoursLabel: "Son parcours",
     cta: "Ton parcours mérite d'être raconté ? Écris-nous en DM →",
+    ctaTiktok: "🎵 Ou sur TikTok →",
     paolo: {
       badge: "Fondateur",
       status: "Fondateur de Financia",
@@ -541,6 +543,7 @@ fr: {
     disclaimer: "⚠️ Les performances passées ne préjugent pas des performances futures. Ce contenu est éducatif et ne constitue en aucun cas un conseil en investissement.",
     ctaModules: "📚 Explorer les modules pédagogiques",
     ctaInstagram: "📷 Suivre @financia_cloud",
+    ctaTiktok: "🎵 Suivre sur TikTok",
   },
 
   marches: {
@@ -574,6 +577,7 @@ fr: {
     contactUsTitle: "Nous contacter",
     email: { title: "Email", cta: "Écris-nous →" },
     instagram: { title: "Instagram", cta: "Contactez-nous en DM →" },
+    tiktok: { title: "TikTok", cta: "Contactez-nous en DM →" },
   },
 },
 
@@ -626,6 +630,7 @@ en: {
     prevAria: "Previous",
     nextAria: "Next",
     ctaInstagram: "📷 Follow @financia_cloud",
+    ctaTiktok: "🎵 Follow on TikTok",
     muteAria: "Mute",
     unmuteAria: "Unmute",
   },
@@ -921,6 +926,7 @@ en: {
     sub: "Young people share how they learned to invest, no filter, no miracle advice.",
     parcoursLabel: "Their journey",
     cta: "Your story deserves to be told? DM us →",
+    ctaTiktok: "🎵 Or on TikTok →",
     paolo: {
       badge: "Founder",
       status: "Founder of Financia",
@@ -1111,6 +1117,7 @@ en: {
     disclaimer: "⚠️ Past performance does not guarantee future results. This content is educational and does not constitute investment advice under any circumstances.",
     ctaModules: "📚 Explore the learning modules",
     ctaInstagram: "📷 Follow @financia_cloud",
+    ctaTiktok: "🎵 Follow on TikTok",
   },
 
   marches: {
@@ -1144,6 +1151,7 @@ en: {
     contactUsTitle: "Get in touch",
     email: { title: "Email", cta: "Write to us →" },
     instagram: { title: "Instagram", cta: "DM us →" },
+    tiktok: { title: "TikTok", cta: "DM us →" },
   },
 },
 
@@ -1196,6 +1204,7 @@ es: {
     prevAria: "Anterior",
     nextAria: "Siguiente",
     ctaInstagram: "📷 Seguir a @financia_cloud",
+    ctaTiktok: "🎵 Seguir en TikTok",
     muteAria: "Silenciar",
     unmuteAria: "Activar sonido",
   },
@@ -1491,6 +1500,7 @@ es: {
     sub: "Jóvenes comparten cómo aprendieron a invertir, sin filtros, sin consejos milagrosos.",
     parcoursLabel: "Su recorrido",
     cta: "¿Tu historia merece ser contada? Escríbenos por DM →",
+    ctaTiktok: "🎵 O en TikTok →",
     paolo: {
       badge: "Fundador",
       status: "Fundador de Financia",
@@ -1681,6 +1691,7 @@ es: {
     disclaimer: "⚠️ La rentabilidad pasada no garantiza rentabilidad futura. Este contenido es educativo y no constituye en ningún caso asesoramiento de inversión.",
     ctaModules: "📚 Explorar los módulos educativos",
     ctaInstagram: "📷 Seguir a @financia_cloud",
+    ctaTiktok: "🎵 Seguir en TikTok",
   },
 
   marches: {
@@ -1714,6 +1725,7 @@ es: {
     contactUsTitle: "Contáctanos",
     email: { title: "Email", cta: "Escríbenos →" },
     instagram: { title: "Instagram", cta: "Contáctanos por DM →" },
+    tiktok: { title: "TikTok", cta: "Contáctanos por DM →" },
   },
 },
 
@@ -1766,6 +1778,7 @@ ru: {
     prevAria: "Назад",
     nextAria: "Далее",
     ctaInstagram: "📷 Подписаться на @financia_cloud",
+    ctaTiktok: "🎵 Подписаться в TikTok",
     muteAria: "Выключить звук",
     unmuteAria: "Включить звук",
   },
@@ -2061,6 +2074,7 @@ ru: {
     sub: "Молодые люди делятся тем, как они научились инвестировать — без прикрас и чудо-советов.",
     parcoursLabel: "Его путь",
     cta: "Твоя история достойна того, чтобы её рассказать? Напиши нам в личные сообщения →",
+    ctaTiktok: "🎵 Или в TikTok →",
     paolo: {
       badge: "Основатель",
       status: "Основатель Financia",
@@ -2251,6 +2265,7 @@ ru: {
     disclaimer: "⚠️ Прошлые результаты не гарантируют будущих. Этот материал носит образовательный характер и ни в коем случае не является инвестиционной консультацией.",
     ctaModules: "📚 Изучить обучающие модули",
     ctaInstagram: "📷 Подписаться на @financia_cloud",
+    ctaTiktok: "🎵 Подписаться в TikTok",
   },
 
   marches: {
@@ -2284,6 +2299,7 @@ ru: {
     contactUsTitle: "Связаться с нами",
     email: { title: "Email", cta: "Написать нам →" },
     instagram: { title: "Instagram", cta: "Написать нам в личные сообщения →" },
+    tiktok: { title: "TikTok", cta: "Написать нам в личные сообщения →" },
   },
 },
 
@@ -2336,6 +2352,7 @@ de: {
     prevAria: "Zurück",
     nextAria: "Weiter",
     ctaInstagram: "📷 @financia_cloud folgen",
+    ctaTiktok: "🎵 Auf TikTok folgen",
     muteAria: "Ton aus",
     unmuteAria: "Ton an",
   },
@@ -2631,6 +2648,7 @@ de: {
     sub: "Junge Leute teilen, wie sie das Investieren gelernt haben — ohne Filter, ohne Wunderrezepte.",
     parcoursLabel: "Sein Werdegang",
     cta: "Verdient auch deine Geschichte, erzählt zu werden? Schreib uns eine DM →",
+    ctaTiktok: "🎵 Oder auf TikTok →",
     paolo: {
       badge: "Gründer",
       status: "Gründer von Financia",
@@ -2821,6 +2839,7 @@ de: {
     disclaimer: "⚠️ Vergangene Wertentwicklungen sind kein Indikator für zukünftige Ergebnisse. Dieser Inhalt dient Bildungszwecken und stellt in keinem Fall eine Anlageberatung dar.",
     ctaModules: "📚 Lernmodule entdecken",
     ctaInstagram: "📷 @financia_cloud folgen",
+    ctaTiktok: "🎵 Auf TikTok folgen",
   },
 
   marches: {
@@ -2854,6 +2873,7 @@ de: {
     contactUsTitle: "Kontaktiere uns",
     email: { title: "E-Mail", cta: "Schreib uns →" },
     instagram: { title: "Instagram", cta: "Schreib uns eine DM →" },
+    tiktok: { title: "TikTok", cta: "Schreib uns eine DM →" },
   },
 },
 
