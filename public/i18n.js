@@ -72,27 +72,6 @@ fr: {
     apropos: { title: "À propos", desc: "L'histoire de Financia et les valeurs qui guident le projet.", cta: "Découvrir →" },
   },
 
-  avis: {
-    label: "Communauté",
-    title: "Avis de la communauté",
-    loading: "Chargement des avis…",
-    formTitle: "✍️ Laisser un avis",
-    placeholderPrenom: "Votre prénom (et initiale nom)",
-    clickToRate: "Cliquez pour noter",
-    starLabels: ["", "Mauvais", "Passable", "Bien", "Très bien", "Excellent"],
-    placeholderTexte: "Partagez votre expérience avec Financia…",
-    submitBtn: "Publier mon avis",
-    submitting: "Publication…",
-    emptyTitle: "Sois le premier à laisser un avis !",
-    emptySub: "Dis-nous ce que tu penses de Financia.",
-    loadError: "Impossible de charger les avis.",
-    successMsg: "✅ Merci pour votre avis !",
-    errPrenom: "Veuillez entrer votre prénom.",
-    errNote: "Veuillez sélectionner une note.",
-    errTexte: "Veuillez écrire un avis.",
-    errGeneric: "Erreur serveur",
-  },
-
   faq: {
     title: "Questions fréquentes 💬",
     items: [
@@ -644,27 +623,6 @@ en: {
     quiz: { title: "Quiz", desc: "Assess your level in 5 questions and get a personalized action plan.", cta: "Test →" },
     actus: { title: "News", desc: "The latest financial market news to stay informed.", cta: "Read →" },
     apropos: { title: "About", desc: "Financia's story and the values that guide the project.", cta: "Discover →" },
-  },
-
-  avis: {
-    label: "Community",
-    title: "Community reviews",
-    loading: "Loading reviews…",
-    formTitle: "✍️ Leave a review",
-    placeholderPrenom: "Your first name (and last initial)",
-    clickToRate: "Click to rate",
-    starLabels: ["", "Poor", "Fair", "Good", "Very good", "Excellent"],
-    placeholderTexte: "Share your experience with Financia…",
-    submitBtn: "Post my review",
-    submitting: "Posting…",
-    emptyTitle: "Be the first to leave a review!",
-    emptySub: "Tell us what you think of Financia.",
-    loadError: "Couldn't load reviews.",
-    successMsg: "✅ Thanks for your review!",
-    errPrenom: "Please enter your first name.",
-    errNote: "Please select a rating.",
-    errTexte: "Please write a review.",
-    errGeneric: "Server error",
   },
 
   faq: {
@@ -1220,27 +1178,6 @@ es: {
     apropos: { title: "Sobre nosotros", desc: "La historia de Financia y los valores que guían el proyecto.", cta: "Descubrir →" },
   },
 
-  avis: {
-    label: "Comunidad",
-    title: "Opiniones de la comunidad",
-    loading: "Cargando opiniones…",
-    formTitle: "✍️ Dejar una opinión",
-    placeholderPrenom: "Tu nombre (e inicial del apellido)",
-    clickToRate: "Haz clic para valorar",
-    starLabels: ["", "Malo", "Regular", "Bien", "Muy bien", "Excelente"],
-    placeholderTexte: "Comparte tu experiencia con Financia…",
-    submitBtn: "Publicar mi opinión",
-    submitting: "Publicando…",
-    emptyTitle: "¡Sé el primero en dejar una opinión!",
-    emptySub: "Cuéntanos qué piensas de Financia.",
-    loadError: "No se pudieron cargar las opiniones.",
-    successMsg: "✅ ¡Gracias por tu opinión!",
-    errPrenom: "Por favor, introduce tu nombre.",
-    errNote: "Por favor, selecciona una valoración.",
-    errTexte: "Por favor, escribe una opinión.",
-    errGeneric: "Error del servidor",
-  },
-
   faq: {
     title: "Preguntas frecuentes 💬",
     items: [
@@ -1794,27 +1731,6 @@ ru: {
     apropos: { title: "О нас", desc: "История Financia и ценности, которые лежат в основе проекта.", cta: "Узнать →" },
   },
 
-  avis: {
-    label: "Сообщество",
-    title: "Отзывы сообщества",
-    loading: "Загрузка отзывов…",
-    formTitle: "✍️ Оставить отзыв",
-    placeholderPrenom: "Ваше имя (и первая буква фамилии)",
-    clickToRate: "Нажмите, чтобы оценить",
-    starLabels: ["", "Плохо", "Так себе", "Хорошо", "Очень хорошо", "Отлично"],
-    placeholderTexte: "Поделитесь своим опытом использования Financia…",
-    submitBtn: "Опубликовать отзыв",
-    submitting: "Публикация…",
-    emptyTitle: "Будьте первым, кто оставит отзыв!",
-    emptySub: "Расскажите, что вы думаете о Financia.",
-    loadError: "Не удалось загрузить отзывы.",
-    successMsg: "✅ Спасибо за ваш отзыв!",
-    errPrenom: "Пожалуйста, укажите своё имя.",
-    errNote: "Пожалуйста, выберите оценку.",
-    errTexte: "Пожалуйста, напишите отзыв.",
-    errGeneric: "Ошибка сервера",
-  },
-
   faq: {
     title: "Часто задаваемые вопросы 💬",
     items: [
@@ -2366,27 +2282,6 @@ de: {
     quiz: { title: "Quiz", desc: "Bewerte dein Niveau in 5 Fragen und erhalte einen persönlichen Aktionsplan.", cta: "Testen →" },
     actus: { title: "News", desc: "Die neuesten Nachrichten von den Finanzmärkten, um informiert zu bleiben.", cta: "Lesen →" },
     apropos: { title: "Über uns", desc: "Die Geschichte von Financia und die Werte hinter dem Projekt.", cta: "Entdecken →" },
-  },
-
-  avis: {
-    label: "Community",
-    title: "Bewertungen der Community",
-    loading: "Bewertungen werden geladen…",
-    formTitle: "✍️ Bewertung abgeben",
-    placeholderPrenom: "Dein Vorname (und Anfangsbuchstabe des Nachnamens)",
-    clickToRate: "Klicke, um zu bewerten",
-    starLabels: ["", "Schlecht", "Naja", "Gut", "Sehr gut", "Ausgezeichnet"],
-    placeholderTexte: "Teile deine Erfahrung mit Financia…",
-    submitBtn: "Bewertung veröffentlichen",
-    submitting: "Wird veröffentlicht…",
-    emptyTitle: "Sei der Erste, der eine Bewertung abgibt!",
-    emptySub: "Sag uns, was du von Financia hältst.",
-    loadError: "Bewertungen konnten nicht geladen werden.",
-    successMsg: "✅ Danke für deine Bewertung!",
-    errPrenom: "Bitte gib deinen Vornamen ein.",
-    errNote: "Bitte wähle eine Bewertung aus.",
-    errTexte: "Bitte schreibe eine Bewertung.",
-    errGeneric: "Serverfehler",
   },
 
   faq: {
