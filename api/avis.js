@@ -7,9 +7,9 @@
 
 // URL issue de Fichier → Partager → Publier sur le Web (le simple partage par
 // lien ne suffit pas pour un accès anonyme fiable côté serveur).
-const PUB_ID = '2PACX-1vQesOyGqS92vp5H3XcHK1lLPmGvqG_IsjYAyEyvK6hxJykVt9ooRdq52mTGT3A-wxiYsBUSic7wy5U2';
-const GID = '2119909922';
-const CSV_URL = `https://docs.google.com/spreadsheets/d/e/${PUB_ID}/pub?gid=${GID}&single=true&output=csv`;
+// Sheet géré depuis le compte financiacloud@gmail.com.
+const PUB_ID = '2PACX-1vTVtvWuOYw1p-aVF0Vjm84cNWLdpAy_cf27ufE1jbvbTSubyAGbaWTGp53cbRuqzz9WncrUER40bOok';
+const CSV_URL = `https://docs.google.com/spreadsheets/d/e/${PUB_ID}/pub?output=csv`;
 
 const CACHE_MS = 10 * 60 * 1000; // 10 min — un Sheet public n'a pas besoin d'être lu à chaque requête
 let cache = { data: null, fetchedAt: 0 };
