@@ -39,9 +39,9 @@ export default async function handler(req, res) {
   try {
     const url = new URL('https://www.alphavantage.co/query');
     url.searchParams.set('function', 'NEWS_SENTIMENT');
-    url.searchParams.set('topics', 'financial_markets,economy_fiscal');
+    url.searchParams.set('topics', 'financial_markets,economy_fiscal,blockchain,energy_transportation');
     url.searchParams.set('sort', 'LATEST');
-    url.searchParams.set('limit', '6');
+    url.searchParams.set('limit', '20');
     url.searchParams.set('apikey', key);
 
     const r = await fetch(url.toString());

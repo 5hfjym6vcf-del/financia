@@ -717,10 +717,55 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   obs.observe(statsEl);
 })();
 
-let lastActusItems = null;
+let lastActusFeed = null;   // flux complet renvoyé par /api/actus (jusqu'à 20 articles)
+let lastActusItems = null;  // sous-ensemble actuellement affiché (thème choisi ou "tout")
 let lastActusTitles = null;
 let lastActusLang = null;
 let actusFailed = false;
+let currentActusTheme = 'all';
+
+// Un seul appel API couvre tous les thèmes : chaque article Alpha Vantage porte
+// un tableau "topics" avec un score de pertinence par sujet. On filtre côté
+// client plutôt que de multiplier les requêtes (le quota gratuit est de 25/jour).
+const ACTUS_THEME_TOPICS = {
+  cryptos: 'blockchain',
+  bourse: 'financial_markets',
+  matieres: 'energy_transportation',
+};
+const ACTUS_RELEVANCE_MIN = 0.1;
+
+function pickActusItems(theme) {
+  if (!lastActusFeed) return [];
+  if (theme === 'all') return lastActusFeed.slice(0, 6);
+  const topic = ACTUS_THEME_TOPICS[theme];
+  return lastActusFeed
+    .map(item => {
+      const match = item.topics?.find(t => t.topic === topic);
+      return match ? { item, relevance: parseFloat(match.relevance_score) || 0 } : null;
+    })
+    .filter(entry => entry && entry.relevance >= ACTUS_RELEVANCE_MIN)
+    .sort((a, b) => b.relevance - a.relevance)
+    .slice(0, 6)
+    .map(entry => entry.item);
+}
+
+async function applyActusTheme(theme) {
+  currentActusTheme = theme;
+  $$('.actus-picker-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
+
+  const grid = $('#actus-grid');
+  lastActusItems = pickActusItems(theme);
+  if (!lastActusItems.length) {
+    if (grid) grid.innerHTML = `<p class="actus-empty">${FinanciaI18N.t('actus.picker.empty')}</p>`;
+    return;
+  }
+  await translateActusTitles();
+  renderActus();
+}
+
+$$('.actus-picker-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyActusTheme(btn.dataset.theme));
+});
 
 async function loadActus() {
   const grid = $('#actus-grid');
@@ -730,11 +775,9 @@ async function loadActus() {
     if (!res.ok) throw new Error();
     const data = await res.json();
     if (data.Information || data.Note) throw new Error();
-    const items = data.feed?.slice(0, 6);
-    if (!items?.length) throw new Error();
-    lastActusItems = items;
-    await translateActusTitles();
-    renderActus();
+    if (!data.feed?.length) throw new Error();
+    lastActusFeed = data.feed;
+    await applyActusTheme(currentActusTheme);
   } catch {
     actusFailed = true;
     grid.innerHTML = `<p class="actus-error">${FinanciaI18N.t('actus.errorMsg')}</p>`;
@@ -787,11 +830,8 @@ function renderActus() {
 
 loadActus();
 FinanciaI18N.onLangChange(async () => {
-  if (lastActusItems && lastActusLang !== FinanciaI18N.getLang()) {
-    await translateActusTitles();
-  }
-  if (lastActusItems) {
-    renderActus();
+  if (lastActusFeed) {
+    await applyActusTheme(currentActusTheme);
   } else if (actusFailed) {
     const grid = $('#actus-grid');
     if (grid) grid.innerHTML = `<p class="actus-error">${FinanciaI18N.t('actus.errorMsg')}</p>`;

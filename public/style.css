@@ -1149,6 +1149,36 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ACTUS */
+.actus-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.actus-picker-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.actus-picker-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.actus-picker-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.actus-picker-btn:hover { border-color: var(--border-2); color: var(--text); }
+.actus-picker-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green-light); }
+.actus-empty { grid-column: 1 / -1; text-align: center; color: var(--text-2); font-size: 15px; padding: 48px 0; }
+
 .actus-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

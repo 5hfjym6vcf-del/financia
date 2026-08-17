@@ -333,6 +333,14 @@ fr: {
     title: "Dernières actualités",
     errorMsg: "Actus temporairement indisponibles.",
     readArticle: "Lire l'article →",
+    picker: {
+      label: "L'actu qu'il te faut",
+      all: "Tout",
+      cryptos: "🪙 Cryptos",
+      bourse: "📈 Bourse",
+      matieres: "🛢️ Matières premières",
+      empty: "Pas d'actu sur ce thème pour le moment, reviens un peu plus tard.",
+    },
   },
 
   temoignages: {
@@ -911,6 +919,14 @@ en: {
     title: "Latest news",
     errorMsg: "News temporarily unavailable.",
     readArticle: "Read article →",
+    picker: {
+      label: "The news that's right for you",
+      all: "All",
+      cryptos: "🪙 Crypto",
+      bourse: "📈 Stocks",
+      matieres: "🛢️ Commodities",
+      empty: "No news on this topic right now, check back a bit later.",
+    },
   },
 
   temoignages: {
@@ -1489,6 +1505,14 @@ es: {
     title: "Últimas noticias",
     errorMsg: "Noticias no disponibles temporalmente.",
     readArticle: "Leer el artículo →",
+    picker: {
+      label: "La noticia que necesitas",
+      all: "Todo",
+      cryptos: "🪙 Cripto",
+      bourse: "📈 Bolsa",
+      matieres: "🛢️ Materias primas",
+      empty: "No hay noticias sobre este tema por ahora, vuelve un poco más tarde.",
+    },
   },
 
   temoignages: {
@@ -2067,6 +2091,14 @@ ru: {
     title: "Последние новости",
     errorMsg: "Новости временно недоступны.",
     readArticle: "Читать статью →",
+    picker: {
+      label: "Новости, которые тебе подходят",
+      all: "Все",
+      cryptos: "🪙 Криптовалюты",
+      bourse: "📈 Биржа",
+      matieres: "🛢️ Сырьевые товары",
+      empty: "Пока нет новостей по этой теме, загляни чуть позже.",
+    },
   },
 
   temoignages: {
@@ -2645,6 +2677,14 @@ de: {
     title: "Neueste Nachrichten",
     errorMsg: "News vorübergehend nicht verfügbar.",
     readArticle: "Artikel lesen →",
+    picker: {
+      label: "Die News, die zu dir passen",
+      all: "Alle",
+      cryptos: "🪙 Krypto",
+      bourse: "📈 Börse",
+      matieres: "🛢️ Rohstoffe",
+      empty: "Aktuell keine News zu diesem Thema, schau später noch einmal vorbei.",
+    },
   },
 
   temoignages: {
