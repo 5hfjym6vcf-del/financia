@@ -42,15 +42,29 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // ============================================================
 // Marchés : chargement des données + rendu des cartes
 // ============================================================
-const ASSET_ORDER = [
-  { key: 'cac40', icon: '🇫🇷' },
-  { key: 'sp500', icon: '🇺🇸' },
-  { key: 'nasdaq', icon: '💻' },
-  { key: 'bitcoin', icon: '🪙' },
-  { key: 'ethereum', icon: '🔷' },
-  { key: 'gold', icon: '🥇' },
-  { key: 'msciWorld', icon: '🌍' },
+const REGIONS = [
+  { key: 'us', flag: '🇺🇸', assets: [
+    { key: 'sp500', icon: '🇺🇸' },
+    { key: 'nasdaq', icon: '💻' },
+    { key: 'dowjones', icon: '🏛️' },
+  ] },
+  { key: 'france', flag: '🇫🇷', assets: [{ key: 'cac40', icon: '🇫🇷' }] },
+  { key: 'allemagne', flag: '🇩🇪', assets: [{ key: 'dax', icon: '🇩🇪' }] },
+  { key: 'royaumeUni', flag: '🇬🇧', assets: [{ key: 'ftse100', icon: '🇬🇧' }] },
+  { key: 'japon', flag: '🇯🇵', assets: [{ key: 'nikkei225', icon: '🇯🇵' }] },
+  { key: 'chineAsie', flag: '🇭🇰', assets: [{ key: 'hangseng', icon: '🇭🇰' }] },
+  { key: 'mondial', flag: '🌍', assets: [
+    { key: 'gold', icon: '🥇' },
+    { key: 'msciWorld', icon: '🌍' },
+  ] },
+  { key: 'cryptos', flag: '🪙', assets: [
+    { key: 'bitcoin', icon: '🪙' },
+    { key: 'ethereum', icon: '🔷' },
+  ] },
 ];
+// À plat, pour le filtrage de disponibilité et les helpers existants qui
+// itèrent sur "tous les actifs" sans se soucier des régions.
+const ASSET_ORDER = REGIONS.flatMap(r => r.assets);
 
 let lastData = null; // dernière réponse /api/marches obtenue avec succès
 let charts = {};     // key -> { chart, series }, pour le resize et le cleanup
@@ -136,6 +150,13 @@ function cardHtml({ key, icon }) {
   </article>`;
 }
 
+function regionHtml(region, assets) {
+  return `<div class="mkt-region">
+    <h3 class="mkt-region-title"><span class="mkt-region-flag">${region.flag}</span>${FinanciaI18N.t('marches.regions.' + region.key)}</h3>
+    <div class="mkt-grid">${assets.map(cardHtml).join('')}</div>
+  </div>`;
+}
+
 function renderGrid() {
   const grid = $('#mktGrid');
   if (!grid || !lastData) return;
@@ -147,7 +168,12 @@ function renderGrid() {
   }
 
   destroyCharts();
-  grid.innerHTML = available.map(cardHtml).join('');
+
+  const populatedRegions = REGIONS
+    .map(region => ({ region, assets: region.assets.filter(a => lastData.assets[a.key]) }))
+    .filter(r => r.assets.length);
+
+  grid.innerHTML = populatedRegions.map(({ region, assets }) => regionHtml(region, assets)).join('');
 
   available.forEach(({ key }) => {
     const asset = lastData.assets[key];

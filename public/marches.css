@@ -68,14 +68,28 @@ body.marches-page {
   flex-shrink: 0;
 }
 
-/* ── Grille de cartes ── */
+/* ── Régions + grilles de cartes ── */
+.mkt-regions {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+.mkt-region-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.mkt-region-flag { font-size: 1.2rem; line-height: 1; }
 .mkt-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 .mkt-loading, .mkt-error {
-  grid-column: 1 / -1;
   display: flex;
   justify-content: center;
   padding: 48px;

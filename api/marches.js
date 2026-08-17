@@ -17,6 +17,11 @@ const YAHOO_ASSETS = [
   { key: 'cac40', symbol: '^FCHI', name: 'CAC 40' },
   { key: 'sp500', symbol: '^GSPC', name: 'S&P 500' },
   { key: 'nasdaq', symbol: '^IXIC', name: 'Nasdaq' },
+  { key: 'dowjones', symbol: '^DJI', name: 'Dow Jones' },
+  { key: 'dax', symbol: '^GDAXI', name: 'DAX' },
+  { key: 'ftse100', symbol: '^FTSE', name: 'FTSE 100' },
+  { key: 'nikkei225', symbol: '^N225', name: 'Nikkei 225' },
+  { key: 'hangseng', symbol: '^HSI', name: 'Hang Seng' },
   { key: 'gold', symbol: 'GC=F', name: 'Or (once)' },
   { key: 'msciWorld', symbol: 'CW8.PA', name: 'MSCI World (ETF)' },
 ];
