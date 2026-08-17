@@ -48,11 +48,26 @@ const REGIONS = [
     { key: 'nasdaq', icon: '💻' },
     { key: 'dowjones', icon: '🏛️' },
   ] },
-  { key: 'france', flag: '🇫🇷', assets: [{ key: 'cac40', icon: '🇫🇷' }] },
-  { key: 'allemagne', flag: '🇩🇪', assets: [{ key: 'dax', icon: '🇩🇪' }] },
-  { key: 'royaumeUni', flag: '🇬🇧', assets: [{ key: 'ftse100', icon: '🇬🇧' }] },
-  { key: 'japon', flag: '🇯🇵', assets: [{ key: 'nikkei225', icon: '🇯🇵' }] },
-  { key: 'chineAsie', flag: '🇭🇰', assets: [{ key: 'hangseng', icon: '🇭🇰' }] },
+  { key: 'france', flag: '🇫🇷', assets: [
+    { key: 'cac40', icon: '🇫🇷' },
+    { key: 'lvmh', icon: '👜' },
+  ] },
+  { key: 'allemagne', flag: '🇩🇪', assets: [
+    { key: 'dax', icon: '🇩🇪' },
+    { key: 'sap', icon: '💻' },
+  ] },
+  { key: 'royaumeUni', flag: '🇬🇧', assets: [
+    { key: 'ftse100', icon: '🇬🇧' },
+    { key: 'shell', icon: '⛽' },
+  ] },
+  { key: 'japon', flag: '🇯🇵', assets: [
+    { key: 'nikkei225', icon: '🇯🇵' },
+    { key: 'toyota', icon: '🚗' },
+  ] },
+  { key: 'chineAsie', flag: '🇭🇰', assets: [
+    { key: 'hangseng', icon: '🇭🇰' },
+    { key: 'alibaba', icon: '🛒' },
+  ] },
   { key: 'mondial', flag: '🌍', assets: [
     { key: 'gold', icon: '🥇' },
     { key: 'msciWorld', icon: '🌍' },

@@ -24,6 +24,11 @@ const YAHOO_ASSETS = [
   { key: 'hangseng', symbol: '^HSI', name: 'Hang Seng' },
   { key: 'gold', symbol: 'GC=F', name: 'Or (once)' },
   { key: 'msciWorld', symbol: 'CW8.PA', name: 'MSCI World (ETF)' },
+  { key: 'lvmh', symbol: 'MC.PA', name: 'LVMH' },
+  { key: 'sap', symbol: 'SAP.DE', name: 'SAP' },
+  { key: 'shell', symbol: 'SHEL.L', name: 'Shell' },
+  { key: 'toyota', symbol: '7203.T', name: 'Toyota' },
+  { key: 'alibaba', symbol: '9988.HK', name: 'Alibaba' },
 ];
 const COINGECKO_ASSETS = [
   { key: 'bitcoin', id: 'bitcoin', name: 'Bitcoin' },
@@ -41,11 +46,19 @@ async function fetchYahoo({ key, symbol, name }) {
   const meta = result.meta || {};
   const timestamps = result.timestamp || [];
   const closes = result.indicators?.quote?.[0]?.close || [];
+
+  // Yahoo quotes some LSE-listed equities (e.g. Shell) in pence (GBp/GBX)
+  // rather than pounds. Left uncorrected, prices would show 100x too high.
+  const rawCurrency = meta.currency || 'USD';
+  const isPence = rawCurrency === 'GBp' || rawCurrency === 'GBX';
+  const divisor = isPence ? 100 : 1;
+  const currency = isPence ? 'GBP' : rawCurrency;
+
   const history = timestamps
-    .map((t, i) => ({ time: t, value: closes[i] }))
+    .map((t, i) => ({ time: t, value: typeof closes[i] === 'number' ? closes[i] / divisor : closes[i] }))
     .filter(p => typeof p.value === 'number');
 
-  const price = meta.regularMarketPrice;
+  const price = typeof meta.regularMarketPrice === 'number' ? meta.regularMarketPrice / divisor : meta.regularMarketPrice;
   if (typeof price !== 'number' || !history.length) {
     throw new Error(`Yahoo : données incomplètes pour ${symbol}`);
   }
@@ -53,12 +66,13 @@ async function fetchYahoo({ key, symbol, name }) {
   // futures (e.g. gold) that field can reflect a contract rollover
   // reference rather than yesterday's actual close, producing a wildly
   // wrong "variation". The daily bars themselves don't have that issue.
+  const prevCloseRaw = meta.chartPreviousClose ?? meta.previousClose;
   const prevClose = history.length > 1
     ? history[history.length - 2].value
-    : (meta.chartPreviousClose ?? meta.previousClose ?? price);
+    : (typeof prevCloseRaw === 'number' ? prevCloseRaw / divisor : price);
   const changePct = prevClose ? ((price - prevClose) / prevClose) * 100 : 0;
 
-  return { key, name, price, changePct, currency: meta.currency || 'USD', history };
+  return { key, name, price, changePct, currency, history };
 }
 
 async function fetchCoinGecko() {
