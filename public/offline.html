@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Financia | Hors connexion</title>
+  <meta name="theme-color" content="#7C3AED" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/images/icons/icon-192.png" type="image/png" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: #000000;
+      color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .wrap { max-width: 460px; }
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 40px;
+    }
+    .logo span { color: #7C4DFF; }
+    .icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 28px;
+      border-radius: 20px;
+      background: rgba(124,58,237,0.14);
+      border: 1px solid rgba(124,58,237,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+    p {
+      color: rgba(255,255,255,0.62);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+    .btn {
+      display: inline-block;
+      background: #7C4DFF;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      border: none;
+      border-radius: 100px;
+      padding: 14px 32px;
+      cursor: pointer;
+      transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .btn:hover { background: #9E75FF; }
+    .btn:focus-visible { outline: 2px solid #9E75FF; outline-offset: 3px; }
+    .hint {
+      margin-top: 28px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">Financi<span>a</span></div>
+    <div class="icon">📡</div>
+    <h1 data-offline-title>Tu es hors connexion</h1>
+    <p data-offline-text>Cette page n'est pas encore disponible hors ligne. Reconnecte-toi pour continuer à explorer Financia.</p>
+    <button class="btn" type="button" onclick="location.reload()" data-offline-btn>Réessayer</button>
+    <p class="hint" data-offline-hint>Les pages déjà visitées restent accessibles hors connexion.</p>
+  </div>
+
+  <script>
+    // Traduction minimale et autonome : cette page doit fonctionner sans réseau,
+    // donc sans dépendre de i18n.js (250 Ko) ni d'aucun autre script du site.
+    (function () {
+      var STRINGS = {
+        fr: {
+          title: "Tu es hors connexion",
+          text: "Cette page n'est pas encore disponible hors ligne. Reconnecte-toi pour continuer à explorer Financia.",
+          btn: "Réessayer",
+          hint: "Les pages déjà visitées restent accessibles hors connexion.",
+        },
+        en: {
+          title: "You're offline",
+          text: "This page isn't available offline yet. Reconnect to keep exploring Financia.",
+          btn: "Try again",
+          hint: "Pages you've already visited stay available offline.",
+        },
+        es: {
+          title: "Estás sin conexión",
+          text: "Esta página aún no está disponible sin conexión. Vuelve a conectarte para seguir explorando Financia.",
+          btn: "Reintentar",
+          hint: "Las páginas que ya has visitado siguen disponibles sin conexión.",
+        },
+        ru: {
+          title: "Нет подключения к интернету",
+          text: "Эта страница пока недоступна офлайн. Подключитесь к сети, чтобы продолжить знакомство с Financia.",
+          btn: "Повторить",
+          hint: "Уже посещённые страницы остаются доступными офлайн.",
+        },
+        de: {
+          title: "Du bist offline",
+          text: "Diese Seite ist offline noch nicht verfügbar. Stelle die Verbindung wieder her, um Financia weiter zu erkunden.",
+          btn: "Erneut versuchen",
+          hint: "Bereits besuchte Seiten bleiben offline verfügbar.",
+        },
+      };
+
+      var lang = 'fr';
+      try {
+        var stored = localStorage.getItem('financia_lang');
+        if (STRINGS[stored]) lang = stored;
+      } catch (e) { /* storage désactivé */ }
+
+      var s = STRINGS[lang];
+      document.documentElement.lang = lang;
+      document.querySelector('[data-offline-title]').textContent = s.title;
+      document.querySelector('[data-offline-text]').textContent = s.text;
+      document.querySelector('[data-offline-btn]').textContent = s.btn;
+      document.querySelector('[data-offline-hint]').textContent = s.hint;
+    })();
+  </script>
+</body>
+</html>
