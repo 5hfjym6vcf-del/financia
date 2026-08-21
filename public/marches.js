@@ -47,6 +47,7 @@ const REGIONS = [
     { key: 'sp500', icon: '🇺🇸' },
     { key: 'nasdaq', icon: '💻' },
     { key: 'dowjones', icon: '🏛️' },
+    { key: 'jpmorgan', icon: '🏦' },
   ] },
   { key: 'france', flag: '🇫🇷', assets: [
     { key: 'cac40', icon: '🇫🇷' },

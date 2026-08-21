@@ -1433,6 +1433,32 @@ a { text-decoration: none; color: inherit; }
 .footer-links a:hover { color: var(--green); }
 .footer-legal p { font-size: 12px; color: var(--text-3); }
 
+.footer-reco {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+}
+.footer-reco-label {
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+.footer-reco a { color: var(--green); font-weight: 600; }
+.footer-reco a:hover { color: var(--green-light); }
+.footer-reco-note {
+  flex-basis: 100%;
+  color: var(--text-3);
+  line-height: 1.5;
+  max-width: 640px;
+}
+
 .menu-btn {
   display: none;
   align-items: center;

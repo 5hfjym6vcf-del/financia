@@ -24,6 +24,7 @@ const YAHOO_ASSETS = [
   { key: 'hangseng', symbol: '^HSI', name: 'Hang Seng' },
   { key: 'gold', symbol: 'GC=F', name: 'Or (once)' },
   { key: 'msciWorld', symbol: 'CW8.PA', name: 'MSCI World (ETF)' },
+  { key: 'jpmorgan', symbol: 'JPM', name: 'JPMorgan Chase' },
   { key: 'lvmh', symbol: 'MC.PA', name: 'LVMH' },
   { key: 'sap', symbol: 'SAP.DE', name: 'SAP' },
   { key: 'shell', symbol: 'SHEL.L', name: 'Shell' },
