@@ -24,7 +24,11 @@
   padding: 0 0 120px;
 }
 .contact-wrap {
-  max-width: 620px;
+  /* Plus large que la colonne de texte du hero (620px) : ce bloc ne contient
+     que le titre et la rangée de trois cartes, qui ont besoin de place pour
+     l'icône + le texte. À 620px il ne restait qu'une soixantaine de pixels de
+     texte par carte, et tous les libellés partaient sur trois lignes. */
+  max-width: 900px;
   text-align: center;
 }
 .contact-subtitle {
@@ -35,13 +39,25 @@
 }
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* auto-fit plutôt que repeat(3, 1fr) pour deux raisons :
+     - "1fr" vaut "minmax(auto, 1fr)" : la largeur mini du contenu l'emporte,
+       et l'adresse e-mail insécable élargissait sa colonne au détriment des
+       deux autres (colonnes inégales, contenus décalés, grille débordant son
+       conteneur) ;
+     - 266px est la largeur en dessous de laquelle l'e-mail et le libellé du
+       lien se coupent en plein mot. En laissant le navigateur choisir le
+       nombre de colonnes, on passe à 2 puis 1 colonne au lieu de tasser
+       trois cartes illisibles. */
+  grid-template-columns: repeat(auto-fit, minmax(min(266px, 100%), 1fr));
   gap: 16px;
   text-align: left;
 }
 .contact-card {
   display: flex;
-  align-items: center;
+  /* stretch (et non center) : le corps occupe toute la hauteur de la carte,
+     ce qui permet d'aligner titres et CTA d'une carte à l'autre même quand
+     un texte est plus long. */
+  align-items: stretch;
   gap: 16px;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -58,6 +74,7 @@
   width: 44px;
   height: 44px;
   flex-shrink: 0;
+  align-self: flex-start;
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(124,58,237,0.28) 0%, rgba(124,58,237,0.1) 100%);
   display: flex;
@@ -65,7 +82,11 @@
   justify-content: center;
   color: #9E75FF;
 }
-.contact-card-body { min-width: 0; }
+.contact-card-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
 .contact-card-body h3 {
   font-size: 0.95rem;
   font-weight: 700;
@@ -82,6 +103,9 @@
   font-size: 0.82rem;
   font-weight: 600;
   color: #7C3AED;
+  /* Colle le CTA en bas du corps : quel que soit le nombre de lignes des
+     textes au-dessus, les trois CTA restent alignés entre eux. */
+  margin-top: auto;
 }
 
 /* ── Footer ── */
@@ -89,5 +113,6 @@
 
 @media (max-width: 600px) {
   .contact-section { padding: 0 0 72px; }
-  .contact-cards { grid-template-columns: 1fr; }
+  /* Le passage en une colonne est déjà géré par l'auto-fit ci-dessus ; il ne
+     reste ici que l'ajustement d'espacement propre au mobile. */
 }
