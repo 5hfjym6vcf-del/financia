@@ -1,9 +1,9 @@
 // ============================================================
 // FINANCIA — service worker
 // Deux stratégies, choisies selon la nature de la ressource :
-//  - cache-first  : assets statiques (CSS/JS/images/polices) — ils ne
-//                   changent qu'au déploiement, où le bump de CACHE_VERSION
-//                   purge l'ancien cache.
+//  - stale-while-revalidate : assets statiques (CSS/JS/images/polices) —
+//                   servis depuis le cache pour la rapidité, puis rafraîchis
+//                   en arrière-plan pour la visite suivante.
 //  - network-first : pages HTML et données d'API (marchés, actus, avis) —
 //                   toujours frais si le réseau répond, sinon on ressert la
 //                   dernière version connue, sinon la page hors-ligne.
@@ -12,7 +12,7 @@
 
 // Bumper cette version à chaque déploiement qui change un asset statique :
 // l'activation supprime alors tous les caches d'une version antérieure.
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const STATIC_CACHE = `financia-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `financia-runtime-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';

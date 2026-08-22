@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Financia">
-  <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#9E75FF"/>
-      <stop offset="55%" stop-color="#7C3AED"/>
-      <stop offset="100%" stop-color="#4C1D95"/>
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" fill="url(#g)"/>
-  <path fill="#ffffff" d="M144 113h224v60H206v50h150v58H206v118h-62z"/>
+  <!-- Charte Financia : noir dominant, violet en accent (et non l'inverse). -->
+  <rect width="512" height="512" fill="#000000"/>
+  <path fill="#ffffff" d="M144 83h224v60H206v50h150v58H206v118h-62z"/>
+  <rect x="179" y="403" width="154" height="26" rx="13" fill="#7C3AED"/>
 </svg>
