@@ -431,14 +431,13 @@ fr: {
   ressources: {
     title: "Ressources utiles 🔗",
     sub: "Sélectionnées par Financia pour aller plus loin",
+    disclaimer: "Ces liens sont fournis à titre informatif. Financia n'a aucun partenariat ni lien commercial avec ces entités et ne touche aucune rémunération.",
   },
 
   footer: {
     brandDesc: "L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.",
     legal: "Financia · Projet éducatif · Pas de conseil en investissement",
     contactAria: "Contact",
-    recoLabel: "Ressource recommandée",
-    recoNote: "Recommandation personnelle à titre informatif. Financia n'a aucun partenariat ni lien commercial avec cette banque et ne touche aucune rémunération.",
   },
 
   histoire: {
@@ -1029,14 +1028,13 @@ en: {
   ressources: {
     title: "Useful resources 🔗",
     sub: "Selected by Financia to help you go further",
+    disclaimer: "These links are provided for information only. Financia has no partnership or commercial ties with these entities and receives no compensation.",
   },
 
   footer: {
     brandDesc: "The educational AI to learn how to invest. No personalized advice.",
     legal: "Financia · Educational project · Not investment advice",
     contactAria: "Contact",
-    recoLabel: "Recommended resource",
-    recoNote: "A personal recommendation, shared for information only. Financia has no partnership or commercial ties with this bank and receives no compensation.",
   },
 
   histoire: {
@@ -1627,14 +1625,13 @@ es: {
   ressources: {
     title: "Recursos útiles 🔗",
     sub: "Seleccionados por Financia para ir más allá",
+    disclaimer: "Estos enlaces se facilitan a título informativo. Financia no tiene ninguna asociación ni vínculo comercial con estas entidades y no recibe ninguna remuneración.",
   },
 
   footer: {
     brandDesc: "La IA educativa para aprender a invertir. Ningún consejo personalizado.",
     legal: "Financia · Proyecto educativo · No es asesoramiento de inversión",
     contactAria: "Contacto",
-    recoLabel: "Recurso recomendado",
-    recoNote: "Recomendación personal a título informativo. Financia no tiene ninguna asociación ni vínculo comercial con este banco y no recibe ninguna remuneración.",
   },
 
   histoire: {
@@ -2225,14 +2222,13 @@ ru: {
   ressources: {
     title: "Полезные ресурсы 🔗",
     sub: "Отобраны Financia, чтобы узнать больше",
+    disclaimer: "Эти ссылки приведены исключительно для информации. У Financia нет партнёрства или коммерческих связей с этими организациями и она не получает вознаграждения.",
   },
 
   footer: {
     brandDesc: "Образовательный ИИ для обучения инвестициям. Без персональных советов.",
     legal: "Financia · Образовательный проект · Не является инвестиционной консультацией",
     contactAria: "Контакты",
-    recoLabel: "Рекомендуемый ресурс",
-    recoNote: "Личная рекомендация, приведённая исключительно для информации. У Financia нет партнёрства или коммерческих связей с этим банком и она не получает вознаграждения.",
   },
 
   histoire: {
@@ -2823,14 +2819,13 @@ de: {
   ressources: {
     title: "Nützliche Ressourcen 🔗",
     sub: "Von Financia ausgewählt, um mehr zu erfahren",
+    disclaimer: "Diese Links dienen ausschließlich der Information. Financia unterhält keine Partnerschaft oder Geschäftsbeziehung mit diesen Anbietern und erhält keinerlei Vergütung.",
   },
 
   footer: {
     brandDesc: "Die pädagogische KI, um Investieren zu lernen. Keine persönliche Beratung.",
     legal: "Financia · Bildungsprojekt · Keine Anlageberatung",
     contactAria: "Kontakt",
-    recoLabel: "Empfohlene Ressource",
-    recoNote: "Eine persönliche Empfehlung, rein zur Information. Financia unterhält keine Partnerschaft oder Geschäftsbeziehung mit dieser Bank und erhält keinerlei Vergütung.",
   },
 
   histoire: {
