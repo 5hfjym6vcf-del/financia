@@ -12,7 +12,7 @@
 
 // Bumper cette version à chaque déploiement qui change un asset statique :
 // l'activation supprime alors tous les caches d'une version antérieure.
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const STATIC_CACHE = `financia-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `financia-runtime-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';
@@ -94,16 +94,31 @@ async function networkFirst(request, cacheName) {
   }
 }
 
-// Cache d'abord, réseau en secours (et mise en cache au passage).
-async function cacheFirst(request, cacheName) {
+// Sert le cache immédiatement (donc instantané et disponible hors ligne) tout
+// en rafraîchissant l'entrée en arrière-plan pour le prochain chargement.
+//
+// Remplace un "cache d'abord" strict, qui était un piège ici : les assets ne
+// sont pas versionnés dans leur nom (style.css, script.js…), donc une fois en
+// cache ils n'étaient JAMAIS repris tant que CACHE_VERSION ne changeait pas.
+// Un correctif CSS déployé restait ainsi invisible pour tous les visiteurs
+// déjà venus une fois.
+async function staleWhileRevalidate(request, cacheName) {
   const cached = await caches.match(request);
-  if (cached) return cached;
-  const response = await fetch(request);
-  if (response && response.ok) {
-    const cache = await caches.open(cacheName);
-    cache.put(request, response.clone());
+
+  const network = fetch(request).then(response => {
+    if (response && response.ok) {
+      caches.open(cacheName).then(cache => cache.put(request, response.clone()));
+    }
+    return response;
+  });
+
+  if (cached) {
+    // On laisse la mise à jour se faire sans bloquer la réponse, mais sans
+    // laisser filer une erreur réseau non gérée.
+    network.catch(() => {});
+    return cached;
   }
-  return response;
+  return network;
 }
 
 self.addEventListener('fetch', event => {
@@ -132,10 +147,10 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Assets statiques : cache d'abord.
+  // Assets statiques : cache immédiat + rafraîchissement en arrière-plan.
   if (isStaticAsset(url)) {
     event.respondWith(
-      cacheFirst(request, STATIC_CACHE).catch(() => caches.match(request))
+      staleWhileRevalidate(request, STATIC_CACHE).catch(() => caches.match(request))
     );
     return;
   }

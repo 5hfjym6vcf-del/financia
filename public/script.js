@@ -45,12 +45,69 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function mdInline(str) {
+  return str
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*\s][^*]*?)\*(?!\*)/g, '$1<em>$2</em>');
+}
+
+// Rendu volontairement partiel : la réponse s'affiche dans une petite fenêtre,
+// pas dans un document. Les titres deviennent des lignes en gras et les
+// tableaux sont aplatis en lignes lisibles, plutôt que de laisser passer du
+// Markdown brut ("##", "|---|") comme c'était le cas.
 function renderMarkdown(text) {
-  return escapeHtml(text)
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
+  // Le modèle glisse parfois de vraies balises HTML dans sa réponse ; une fois
+  // échappées elles s'affichaient littéralement ("<br>"). On les neutralise via
+  // un séparateur temporaire : dans une ligne de tableau il devient un simple
+  // séparateur de cellule, ailleurs il coupe bien la ligne en deux.
+  const BR = '';
+  const lines = [];
+  for (const rawLine of escapeHtml(text).replace(/&lt;br\s*\/?&gt;/gi, BR).split('\n')) {
+    if (/^\s*\|.*\|\s*$/.test(rawLine)) lines.push(rawLine.split(BR).join(' · '));
+    else lines.push(...rawLine.split(BR));
+  }
+
+  const out = [];
+  let inList = false;
+  const closeList = () => { if (inList) { out.push('</ul>'); inList = false; } };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    // Traits de séparation et lignes de séparation de tableau : sans objet ici.
+    if (/^-{3,}$/.test(line) || /^\|[\s|:-]+\|$/.test(line)) continue;
+
+    if (!line) { closeList(); continue; }
+
+    const heading = line.match(/^#{1,6}\s+(.+)$/);
+    if (heading) {
+      closeList();
+      out.push(`<p class="md-h">${mdInline(heading[1])}</p>`);
+      continue;
+    }
+
+    // Ligne de tableau : on conserve le contenu des cellules, séparées par « · ».
+    if (/^\|.*\|$/.test(line)) {
+      const cells = line.slice(1, -1).split('|').map(c => c.trim()).filter(Boolean);
+      if (cells.length) {
+        closeList();
+        out.push(`<p>${cells.map(mdInline).join(' · ')}</p>`);
+      }
+      continue;
+    }
+
+    const bullet = line.match(/^[-*•]\s+(.+)$/);
+    if (bullet) {
+      if (!inList) { out.push('<ul class="md-ul">'); inList = true; }
+      out.push(`<li>${mdInline(bullet[1])}</li>`);
+      continue;
+    }
+
+    closeList();
+    out.push(`<p>${mdInline(line)}</p>`);
+  }
+  closeList();
+  return out.join('');
 }
 
 function addMsg(role, text) {

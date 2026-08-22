@@ -755,6 +755,19 @@ a { text-decoration: none; color: inherit; }
 .overlay-content { font-size: 15px; line-height: 1.8; color: var(--text-2); }
 .overlay-content strong, .overlay-content b { color: var(--text); }
 
+/* Réponses de l'IA : paragraphes, listes et « titres » produits par
+   renderMarkdown() (voir script.js). */
+.overlay-content p, .bubble p { margin: 0 0 12px; }
+.overlay-content p:last-child, .bubble p:last-child { margin-bottom: 0; }
+.overlay-content .md-h, .bubble .md-h {
+  color: var(--text);
+  font-weight: 700;
+  margin-top: 20px;
+}
+.overlay-content .md-h:first-child, .bubble .md-h:first-child { margin-top: 0; }
+.overlay-content .md-ul, .bubble .md-ul { margin: 0 0 12px; padding-left: 20px; }
+.overlay-content .md-ul li, .bubble .md-ul li { margin-bottom: 6px; }
+
 .loading-dots { display: flex; gap: 6px; justify-content: center; padding: 24px; }
 .loading-dots span {
   width: 8px; height: 8px; border-radius: 50%;
