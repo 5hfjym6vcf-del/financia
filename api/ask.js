@@ -62,8 +62,8 @@ export default async function handler(req, res) {
   const { message, lang } = req.body || {};
   if (!message) return res.status(400).json({ error: 'No message' });
 
-  try {
-    const r = await axios.post(
+  function callGroq() {
+    return axios.post(
       'https://api.groq.com/openai/v1/chat/completions',
       {
         model: GROQ_MODEL,
@@ -82,12 +82,42 @@ export default async function handler(req, res) {
         timeout: 30000,
       }
     );
+  }
+
+  try {
+    let r;
+    try {
+      r = await callGroq();
+    } catch (err) {
+      // Le palier gratuit de Groq limite le débit : deux clics rapprochés sur
+      // deux modules, ou deux visiteurs simultanés, suffisent à déclencher un
+      // 429. Une seule reprise après une courte pause suffit à absorber ces
+      // pics, plutôt que d'afficher une erreur à l'utilisateur.
+      if (err?.response?.status !== 429) throw err;
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      r = await callGroq();
+    }
 
     const text = r?.data?.choices?.[0]?.message?.content?.trim() || "Je n'ai pas compris 🙂";
     return res.json({ text });
 
   } catch (e) {
-    console.error('Groq error:', e?.response?.data || e.message);
+    const status = e?.response?.status;
+    console.error(`Groq error (HTTP ${status ?? 'n/a'}):`, e?.response?.data || e.message);
+
+    // Un débit dépassé n'est pas une panne : le message doit inviter à
+    // réessayer, pas laisser croire que la fonctionnalité est cassée.
+    if (status === 429) {
+      const busy = {
+        fr: "Beaucoup de monde en ce moment. Réessaie dans quelques secondes.",
+        en: "A lot of traffic right now. Try again in a few seconds.",
+        es: "Hay mucho tráfico ahora mismo. Inténtalo de nuevo en unos segundos.",
+        ru: "Сейчас много запросов. Попробуй через несколько секунд.",
+        de: "Gerade ist viel Betrieb. Versuche es in einigen Sekunden erneut.",
+      };
+      res.setHeader('Retry-After', '5');
+      return res.status(429).json({ error: busy[lang] || busy.fr });
+    }
     return res.status(500).json({ error: 'Chat error' });
   }
 }
