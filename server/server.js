@@ -47,7 +47,8 @@ app.post('/ask', async (req, res) => {
     const r = await axios.post(
       'https://api.groq.com/openai/v1/chat/completions',
       {
-        model: 'llama-3.3-70b-versatile',
+        // Voir api/ask.js : la famille llama-3.x a été retirée par Groq.
+        model: 'openai/gpt-oss-120b',
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: message }

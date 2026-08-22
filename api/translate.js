@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+// Voir la note dans api/ask.js : Groq décommissionne ses modèles, et la
+// famille llama-3.x renvoyait un 404. Ici l'échec était invisible (on
+// retombe sur les titres d'origine), donc les actus restaient en anglais.
+const GROQ_MODEL = 'openai/gpt-oss-120b';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
@@ -20,7 +25,7 @@ export default async function handler(req, res) {
     const r = await axios.post(
       'https://api.groq.com/openai/v1/chat/completions',
       {
-        model: 'llama-3.3-70b-versatile',
+        model: GROQ_MODEL,
         max_tokens: 512,
         messages: [
           {

@@ -26,6 +26,12 @@ setInterval(() => {
   }
 }, 5 * 60_000);
 
+// Groq retire régulièrement ses modèles : la famille llama-3.x a été
+// décommissionnée et renvoyait un 404 "model_not_found" sur chaque requête,
+// ce qui cassait silencieusement tout le chat. En cas de nouvelle panne du
+// chat, vérifier d'abord https://api.groq.com/openai/v1/models.
+const GROQ_MODEL = 'openai/gpt-oss-120b';
+
 const LANG_NAMES = { fr: 'French', en: 'English', es: 'Spanish', ru: 'Russian', de: 'German' };
 
 function buildSystemPrompt(lang) {
@@ -54,7 +60,7 @@ export default async function handler(req, res) {
     const r = await axios.post(
       'https://api.groq.com/openai/v1/chat/completions',
       {
-        model: 'llama-3.3-70b-versatile',
+        model: GROQ_MODEL,
         messages: [
           { role: 'system', content: buildSystemPrompt(lang) },
           { role: 'user', content: message }
