@@ -883,8 +883,27 @@ a { text-decoration: none; color: inherit; }
 .chat-form:focus-within { border-color: var(--border-2); }
 .chat-form input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: var(--font-body); font-size: 14px; }
 .chat-form input::placeholder { color: var(--text-3); }
-.mic-btn { background: transparent; border: none; font-size: 18px; cursor: pointer; opacity: 0.4; transition: var(--transition); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.mic-btn:hover { opacity: 0.8; }
+/* Le micro était transparent et atténué à 40% d'opacité : sur fond noir il
+   passait presque inaperçu à côté du bouton d'envoi violet. Il reçoit donc un
+   fond circulaire et une couleur franche, en violet clair plutôt qu'en plein
+   violet, pour rester lisible sans concurrencer l'action principale. */
+.mic-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(124,58,237,0.16);
+  border: 1px solid rgba(124,58,237,0.45);
+  color: #9E75FF;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.mic-btn:hover {
+  background: rgba(124,58,237,0.3);
+  border-color: #7C3AED;
+  color: #fff;
+}
+.mic-btn:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
 .send-btn {
   width: 44px; height: 44px; border-radius: 50%;
   background: #7C3AED; border: none; color: #fff;
