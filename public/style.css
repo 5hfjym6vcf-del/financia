@@ -1452,6 +1452,105 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-2);
   margin-bottom: 36px;
 }
+/* ── INSTALLATION DE L'APP ── */
+/* Si l'app tourne déjà en mode installé, proposer de l'installer n'a plus
+   aucun sens : le point d'entrée disparaît entièrement. */
+html.is-installed .install-section,
+html.is-installed [data-install-open] { display: none !important; }
+
+.install-section { padding: 56px 0; border-top: 1px solid var(--border); }
+.install-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.install-icon {
+  width: 68px; height: 68px; border-radius: 18px;
+  background: #000; border: 1px solid rgba(255,255,255,.12);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 44px rgba(124,58,237,.45);
+}
+.install-icon-f { font-size: 34px; font-weight: 800; color: #fff; line-height: 1; }
+.install-icon-bar { width: 20px; height: 3.5px; border-radius: 99px; background: #7C3AED; margin-top: 5px; }
+.install-txt { flex: 1; min-width: 240px; }
+.install-title { font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.install-sub { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+.install-cta {
+  background: #7C3AED; color: #fff; border: none;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  padding: 14px 30px; border-radius: 100px; cursor: pointer;
+  transition: var(--transition); flex-shrink: 0;
+}
+.install-cta:hover { background: #6d28d9; }
+.install-cta:focus-visible { outline: 2px solid #9E75FF; outline-offset: 3px; }
+
+.install-modal {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,.78);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.install-modal[hidden] { display: none; }
+.im-box {
+  position: relative;
+  width: 100%; max-width: 520px;
+  max-height: 88vh; overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px 28px;
+}
+.im-close {
+  position: absolute; top: 14px; right: 16px;
+  background: transparent; border: none; color: var(--text-3);
+  font-size: 30px; line-height: 1; cursor: pointer; padding: 4px 8px;
+}
+.im-close:hover { color: var(--text); }
+.im-title { font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 20px; }
+
+.im-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.im-tab {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--bg-2); border: 1px solid var(--border);
+  color: var(--text-2);
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  padding: 9px 15px; border-radius: 100px; cursor: pointer;
+  transition: var(--transition);
+}
+.im-tab:hover { border-color: var(--border-2); color: var(--text); }
+.im-tab.active { background: var(--green-dim); border-color: #7C3AED; color: var(--green-light); }
+
+.im-native {
+  display: block; width: 100%;
+  background: #7C3AED; color: #fff; border: none;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  padding: 15px; border-radius: var(--radius-sm); cursor: pointer;
+  transition: var(--transition); margin-bottom: 6px;
+}
+.im-native:hover { background: #6d28d9; }
+
+.im-steps { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.im-steps li { display: flex; align-items: flex-start; gap: 13px; font-size: 14px; color: var(--text-2); line-height: 1.55; }
+.im-step-n {
+  flex-shrink: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--green-dim); border: 1px solid var(--border-2);
+  color: var(--green-light);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.im-steps strong { color: var(--text); font-weight: 600; }
+.im-note { margin-top: 18px; font-size: 12px; color: var(--text-3); line-height: 1.55; }
+
+@media (max-width: 600px) {
+  .install-inner { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .install-cta { width: 100%; }
+  .im-box { padding: 28px 20px 22px; }
+}
+
 .ressources-grid {
   display: flex;
   flex-wrap: wrap;

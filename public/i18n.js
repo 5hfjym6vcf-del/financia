@@ -432,6 +432,23 @@ fr: {
     networkErr: "Erreur réseau. Réessaie dans un instant.",
   },
 
+  install: {
+    title: "Installe Financia sur ton appareil",
+    sub: "iPhone, Android, Mac ou PC : accède au site en un appui, sans passer par le navigateur.",
+    cta: "Installer l'app",
+    modalTitle: "Choisis ton appareil",
+    close: "Fermer",
+    tabIos: "iPhone / iPad",
+    tabAndroid: "Android",
+    tabMac: "Mac",
+    tabWindows: "PC Windows",
+    nativeBtn: "Installer maintenant",
+    ios: { s1: "Ouvre financia.cloud dans <strong>Safari</strong>", s2: "Appuie sur le bouton <strong>Partager</strong> 📤 en bas de l'écran", s3: "Fais défiler et choisis <strong>Sur l'écran d'accueil</strong>", s4: "Appuie sur <strong>Ajouter</strong>, en haut à droite", note: "Sur iPhone et iPad, seul Safari permet d'ajouter une app à l'écran d'accueil." },
+    android: { s1: "Ouvre financia.cloud dans <strong>Chrome</strong>", s2: "Appuie sur le menu <strong>⋮</strong> en haut à droite", s3: "Choisis <strong>Installer l'application</strong> ou <strong>Ajouter à l'écran d'accueil</strong>" },
+    mac: { s1: "Dans <strong>Chrome</strong> ou <strong>Edge</strong> : clique sur l'icône d'installation dans la barre d'adresse", s2: "Dans <strong>Safari</strong> : menu <strong>Fichier</strong> puis <strong>Ajouter au Dock</strong>", note: "L'ajout au Dock depuis Safari demande macOS Sonoma ou plus récent." },
+    windows: { s1: "Ouvre financia.cloud dans <strong>Chrome</strong> ou <strong>Edge</strong>", s2: "Clique sur l'icône d'installation à droite de la barre d'adresse", s3: "Ou menu <strong>⋯</strong> puis <strong>Applications</strong> et <strong>Installer ce site</strong>" },
+  },
+
   ressources: {
     title: "Ressources utiles 🔗",
     sub: "Sélectionnées par Financia pour aller plus loin",
@@ -1031,6 +1048,23 @@ en: {
     successSub: "✅ You're in! See you Friday in your inbox.",
     genericErr: "Something went wrong.",
     networkErr: "Network error. Try again in a moment.",
+  },
+
+  install: {
+    title: "Install Financia on your device",
+    sub: "iPhone, Android, Mac or PC: reach the site in one tap, without opening a browser.",
+    cta: "Install the app",
+    modalTitle: "Choose your device",
+    close: "Close",
+    tabIos: "iPhone / iPad",
+    tabAndroid: "Android",
+    tabMac: "Mac",
+    tabWindows: "Windows PC",
+    nativeBtn: "Install now",
+    ios: { s1: "Open financia.cloud in <strong>Safari</strong>", s2: "Tap the <strong>Share</strong> button 📤 at the bottom of the screen", s3: "Scroll down and pick <strong>Add to Home Screen</strong>", s4: "Tap <strong>Add</strong>, top right", note: "On iPhone and iPad, only Safari can add an app to the Home Screen." },
+    android: { s1: "Open financia.cloud in <strong>Chrome</strong>", s2: "Tap the <strong>⋮</strong> menu, top right", s3: "Choose <strong>Install app</strong> or <strong>Add to Home screen</strong>" },
+    mac: { s1: "In <strong>Chrome</strong> or <strong>Edge</strong>: click the install icon in the address bar", s2: "In <strong>Safari</strong>: <strong>File</strong> menu, then <strong>Add to Dock</strong>", note: "Adding to the Dock from Safari requires macOS Sonoma or later." },
+    windows: { s1: "Open financia.cloud in <strong>Chrome</strong> or <strong>Edge</strong>", s2: "Click the install icon on the right of the address bar", s3: "Or the <strong>⋯</strong> menu, then <strong>Apps</strong> and <strong>Install this site</strong>" },
   },
 
   ressources: {
@@ -1634,6 +1668,23 @@ es: {
     networkErr: "Error de red. Vuelve a intentarlo en un momento.",
   },
 
+  install: {
+    title: "Instala Financia en tu dispositivo",
+    sub: "iPhone, Android, Mac o PC: accede al sitio con un toque, sin abrir el navegador.",
+    cta: "Instalar la app",
+    modalTitle: "Elige tu dispositivo",
+    close: "Cerrar",
+    tabIos: "iPhone / iPad",
+    tabAndroid: "Android",
+    tabMac: "Mac",
+    tabWindows: "PC Windows",
+    nativeBtn: "Instalar ahora",
+    ios: { s1: "Abre financia.cloud en <strong>Safari</strong>", s2: "Pulsa el botón <strong>Compartir</strong> 📤 en la parte inferior", s3: "Desplázate y elige <strong>Añadir a pantalla de inicio</strong>", s4: "Pulsa <strong>Añadir</strong>, arriba a la derecha", note: "En iPhone y iPad, solo Safari permite añadir una app a la pantalla de inicio." },
+    android: { s1: "Abre financia.cloud en <strong>Chrome</strong>", s2: "Pulsa el menú <strong>⋮</strong> arriba a la derecha", s3: "Elige <strong>Instalar aplicación</strong> o <strong>Añadir a pantalla de inicio</strong>" },
+    mac: { s1: "En <strong>Chrome</strong> o <strong>Edge</strong>: haz clic en el icono de instalación de la barra de direcciones", s2: "En <strong>Safari</strong>: menú <strong>Archivo</strong> y luego <strong>Añadir al Dock</strong>", note: "Añadir al Dock desde Safari requiere macOS Sonoma o posterior." },
+    windows: { s1: "Abre financia.cloud en <strong>Chrome</strong> o <strong>Edge</strong>", s2: "Haz clic en el icono de instalación a la derecha de la barra de direcciones", s3: "O el menú <strong>⋯</strong>, luego <strong>Aplicaciones</strong> e <strong>Instalar este sitio</strong>" },
+  },
+
   ressources: {
     title: "Recursos útiles 🔗",
     sub: "Seleccionados por Financia para ir más allá",
@@ -2235,6 +2286,23 @@ ru: {
     networkErr: "Ошибка сети. Попробуйте ещё раз через мгновение.",
   },
 
+  install: {
+    title: "Установи Financia на своё устройство",
+    sub: "iPhone, Android, Mac или ПК: заходи на сайт одним касанием, без браузера.",
+    cta: "Установить приложение",
+    modalTitle: "Выбери устройство",
+    close: "Закрыть",
+    tabIos: "iPhone / iPad",
+    tabAndroid: "Android",
+    tabMac: "Mac",
+    tabWindows: "ПК Windows",
+    nativeBtn: "Установить сейчас",
+    ios: { s1: "Открой financia.cloud в <strong>Safari</strong>", s2: "Нажми кнопку <strong>Поделиться</strong> 📤 внизу экрана", s3: "Прокрути и выбери <strong>На экран «Домой»</strong>", s4: "Нажми <strong>Добавить</strong> в правом верхнем углу", note: "На iPhone и iPad добавить приложение на экран «Домой» можно только через Safari." },
+    android: { s1: "Открой financia.cloud в <strong>Chrome</strong>", s2: "Нажми меню <strong>⋮</strong> в правом верхнем углу", s3: "Выбери <strong>Установить приложение</strong> или <strong>Добавить на главный экран</strong>" },
+    mac: { s1: "В <strong>Chrome</strong> или <strong>Edge</strong>: нажми значок установки в адресной строке", s2: "В <strong>Safari</strong>: меню <strong>Файл</strong>, затем <strong>Добавить в Dock</strong>", note: "Добавление в Dock из Safari требует macOS Sonoma или новее." },
+    windows: { s1: "Открой financia.cloud в <strong>Chrome</strong> или <strong>Edge</strong>", s2: "Нажми значок установки справа в адресной строке", s3: "Или меню <strong>⋯</strong>, затем <strong>Приложения</strong> и <strong>Установить этот сайт</strong>" },
+  },
+
   ressources: {
     title: "Полезные ресурсы 🔗",
     sub: "Отобраны Financia, чтобы узнать больше",
@@ -2834,6 +2902,23 @@ de: {
     successSub: "✅ Du bist angemeldet! Bis Freitag in deinem Postfach.",
     genericErr: "Ein Fehler ist aufgetreten.",
     networkErr: "Netzwerkfehler. Versuch es gleich noch einmal.",
+  },
+
+  install: {
+    title: "Installiere Financia auf deinem Gerät",
+    sub: "iPhone, Android, Mac oder PC: mit einem Tipp zur Seite, ganz ohne Browser.",
+    cta: "App installieren",
+    modalTitle: "Wähle dein Gerät",
+    close: "Schließen",
+    tabIos: "iPhone / iPad",
+    tabAndroid: "Android",
+    tabMac: "Mac",
+    tabWindows: "Windows-PC",
+    nativeBtn: "Jetzt installieren",
+    ios: { s1: "Öffne financia.cloud in <strong>Safari</strong>", s2: "Tippe unten auf <strong>Teilen</strong> 📤", s3: "Scrolle und wähle <strong>Zum Home-Bildschirm</strong>", s4: "Tippe oben rechts auf <strong>Hinzufügen</strong>", note: "Auf iPhone und iPad kann nur Safari eine App zum Home-Bildschirm hinzufügen." },
+    android: { s1: "Öffne financia.cloud in <strong>Chrome</strong>", s2: "Tippe oben rechts auf das Menü <strong>⋮</strong>", s3: "Wähle <strong>App installieren</strong> oder <strong>Zum Startbildschirm hinzufügen</strong>" },
+    mac: { s1: "In <strong>Chrome</strong> oder <strong>Edge</strong>: klicke auf das Installationssymbol in der Adressleiste", s2: "In <strong>Safari</strong>: Menü <strong>Ablage</strong>, dann <strong>Zum Dock hinzufügen</strong>", note: "Zum Dock hinzufügen über Safari setzt macOS Sonoma oder neuer voraus." },
+    windows: { s1: "Öffne financia.cloud in <strong>Chrome</strong> oder <strong>Edge</strong>", s2: "Klicke auf das Installationssymbol rechts in der Adressleiste", s3: "Oder Menü <strong>⋯</strong>, dann <strong>Apps</strong> und <strong>Diese Seite installieren</strong>" },
   },
 
   ressources: {

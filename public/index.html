@@ -96,6 +96,7 @@
   <a href="/histoire"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="mobileMenu.histoire">Histoire</span></a>
   <a href="#apropos"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span data-i18n="mobileMenu.apropos">À propos</span></a>
   <a href="/contact"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg><span data-i18n="mobileMenu.contact">Contact</span></a>
+  <a href="#installer" data-install-open><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><span data-i18n="install.cta">Installer l'app</span></a>
   <div class="mobile-menu-footer">
     <select id="langSelectMobile" aria-label="Langue" class="lang-select" data-i18n-aria="nav.langAria">
       <option value="fr">🇫🇷 FR</option>
@@ -936,6 +937,72 @@
     <p class="newsletter-msg hidden" id="newsletterMsg"></p>
   </div>
 </section>
+
+<!-- Masquée par CSS si l'app est déjà installée (html.is-installed) -->
+<section class="install-section" id="installer">
+  <div class="wrap install-inner">
+    <div class="install-icon" aria-hidden="true">
+      <span class="install-icon-f">F</span><span class="install-icon-bar"></span>
+    </div>
+    <div class="install-txt">
+      <h2 class="install-title" data-i18n="install.title">Installe Financia sur ton appareil</h2>
+      <p class="install-sub" data-i18n="install.sub">iPhone, Android, Mac ou PC : accède au site en un appui, sans passer par le navigateur.</p>
+    </div>
+    <button type="button" class="install-cta" data-install-open data-i18n="install.cta">Installer l'app</button>
+  </div>
+</section>
+
+<div class="install-modal" id="installModal" hidden role="dialog" aria-modal="true" aria-labelledby="installModalTitle">
+  <div class="im-box">
+    <button type="button" class="im-close" data-install-close aria-label="Fermer" data-i18n-aria="install.close">&times;</button>
+    <h3 class="im-title" id="installModalTitle" data-i18n="install.modalTitle">Choisis ton appareil</h3>
+
+    <div class="im-tabs" role="tablist">
+      <button type="button" class="im-tab" role="tab" aria-selected="false" data-platform="ios"><span>📱</span><span data-i18n="install.tabIos">iPhone / iPad</span></button>
+      <button type="button" class="im-tab" role="tab" aria-selected="false" data-platform="android"><span>🤖</span><span data-i18n="install.tabAndroid">Android</span></button>
+      <button type="button" class="im-tab" role="tab" aria-selected="false" data-platform="mac"><span>💻</span><span data-i18n="install.tabMac">Mac</span></button>
+      <button type="button" class="im-tab" role="tab" aria-selected="false" data-platform="windows"><span>🖥️</span><span data-i18n="install.tabWindows">PC Windows</span></button>
+    </div>
+
+    <!-- iOS : aucune installation automatique n'existe, uniquement le manuel -->
+    <div class="im-panel" role="tabpanel" data-platform="ios" hidden>
+      <ol class="im-steps" data-install-manual>
+        <li><span class="im-step-n">1</span><span data-i18n-html="install.ios.s1">Ouvre financia.cloud dans <strong>Safari</strong></span></li>
+        <li><span class="im-step-n">2</span><span data-i18n-html="install.ios.s2">Appuie sur le bouton <strong>Partager</strong> 📤 en bas de l'écran</span></li>
+        <li><span class="im-step-n">3</span><span data-i18n-html="install.ios.s3">Fais défiler et choisis <strong>Sur l'écran d'accueil</strong></span></li>
+        <li><span class="im-step-n">4</span><span data-i18n-html="install.ios.s4">Appuie sur <strong>Ajouter</strong>, en haut à droite</span></li>
+      </ol>
+      <p class="im-note" data-i18n="install.ios.note">Sur iPhone et iPad, seul Safari permet d'ajouter une app à l'écran d'accueil.</p>
+    </div>
+
+    <div class="im-panel" role="tabpanel" data-platform="android" hidden>
+      <button type="button" class="im-native" data-install-native hidden data-i18n="install.nativeBtn">Installer maintenant</button>
+      <ol class="im-steps" data-install-manual>
+        <li><span class="im-step-n">1</span><span data-i18n-html="install.android.s1">Ouvre financia.cloud dans <strong>Chrome</strong></span></li>
+        <li><span class="im-step-n">2</span><span data-i18n-html="install.android.s2">Appuie sur le menu <strong>⋮</strong> en haut à droite</span></li>
+        <li><span class="im-step-n">3</span><span data-i18n-html="install.android.s3">Choisis <strong>Installer l'application</strong> ou <strong>Ajouter à l'écran d'accueil</strong></span></li>
+      </ol>
+    </div>
+
+    <div class="im-panel" role="tabpanel" data-platform="mac" hidden>
+      <button type="button" class="im-native" data-install-native hidden data-i18n="install.nativeBtn">Installer maintenant</button>
+      <ol class="im-steps" data-install-manual>
+        <li><span class="im-step-n">1</span><span data-i18n-html="install.mac.s1">Dans <strong>Chrome</strong> ou <strong>Edge</strong> : clique sur l'icône d'installation dans la barre d'adresse</span></li>
+        <li><span class="im-step-n">2</span><span data-i18n-html="install.mac.s2">Dans <strong>Safari</strong> : menu <strong>Fichier</strong> puis <strong>Ajouter au Dock</strong></span></li>
+      </ol>
+      <p class="im-note" data-i18n="install.mac.note">L'ajout au Dock depuis Safari demande macOS Sonoma ou plus récent.</p>
+    </div>
+
+    <div class="im-panel" role="tabpanel" data-platform="windows" hidden>
+      <button type="button" class="im-native" data-install-native hidden data-i18n="install.nativeBtn">Installer maintenant</button>
+      <ol class="im-steps" data-install-manual>
+        <li><span class="im-step-n">1</span><span data-i18n-html="install.windows.s1">Ouvre financia.cloud dans <strong>Chrome</strong> ou <strong>Edge</strong></span></li>
+        <li><span class="im-step-n">2</span><span data-i18n-html="install.windows.s2">Clique sur l'icône d'installation à droite de la barre d'adresse</span></li>
+        <li><span class="im-step-n">3</span><span data-i18n-html="install.windows.s3">Ou menu <strong>⋯</strong> puis <strong>Applications</strong> et <strong>Installer ce site</strong></span></li>
+      </ol>
+    </div>
+  </div>
+</div>
 
 <section class="ressources-section">
   <div class="wrap">
