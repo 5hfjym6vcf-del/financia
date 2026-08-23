@@ -904,6 +904,21 @@ a { text-decoration: none; color: inherit; }
   color: #fff;
 }
 .mic-btn:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+/* Sans retour visuel, on ne savait pas si la dictée avait démarré : on
+   cliquait, on parlait, et rien ne bougeait à l'écran. */
+.mic-btn.listening {
+  background: #7C3AED;
+  border-color: #7C3AED;
+  color: #fff;
+  animation: micPulse 1.4s ease-in-out infinite;
+}
+@keyframes micPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0.55); }
+  50%      { box-shadow: 0 0 0 10px rgba(124,58,237,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mic-btn.listening { animation: none; }
+}
 .send-btn {
   width: 44px; height: 44px; border-radius: 50%;
   background: #7C3AED; border: none; color: #fff;

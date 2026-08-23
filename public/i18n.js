@@ -174,6 +174,10 @@ fr: {
     micTitle: "Dicter",
     sendAria: "Envoyer",
     genericError: "Désolé, une erreur est survenue.",
+    micDenied: "Accès au micro refusé. Autorise-le dans les réglages de ton navigateur, puis réessaie.",
+    micNoSpeech: "Je n'ai rien entendu. Appuie sur le micro et parle juste après.",
+    micNoDevice: "Aucun micro détecté sur cet appareil.",
+    micError: "La dictée n'a pas fonctionné. Réessaie ou écris ta question.",
   },
 
   quiz: {
@@ -771,6 +775,10 @@ en: {
     micTitle: "Dictate",
     sendAria: "Send",
     genericError: "Sorry, something went wrong.",
+    micDenied: "Microphone access denied. Allow it in your browser settings, then try again.",
+    micNoSpeech: "I didn't hear anything. Tap the mic and speak right after.",
+    micNoDevice: "No microphone detected on this device.",
+    micError: "Dictation didn't work. Try again or type your question.",
   },
 
   quiz: {
@@ -1368,6 +1376,10 @@ es: {
     micTitle: "Dictar",
     sendAria: "Enviar",
     genericError: "Lo sentimos, ha ocurrido un error.",
+    micDenied: "Acceso al micrófono denegado. Permítelo en los ajustes de tu navegador y vuelve a intentarlo.",
+    micNoSpeech: "No he oído nada. Pulsa el micrófono y habla justo después.",
+    micNoDevice: "No se ha detectado ningún micrófono en este dispositivo.",
+    micError: "El dictado no ha funcionado. Inténtalo de nuevo o escribe tu pregunta.",
   },
 
   quiz: {
@@ -1965,6 +1977,10 @@ ru: {
     micTitle: "Надиктовать",
     sendAria: "Отправить",
     genericError: "Извините, произошла ошибка.",
+    micDenied: "Доступ к микрофону запрещён. Разрешите его в настройках браузера и попробуйте снова.",
+    micNoSpeech: "Я ничего не услышал. Нажмите на микрофон и говорите сразу после.",
+    micNoDevice: "На этом устройстве микрофон не найден.",
+    micError: "Диктовка не сработала. Попробуйте снова или напишите вопрос.",
   },
 
   quiz: {
@@ -2562,6 +2578,10 @@ de: {
     micTitle: "Diktieren",
     sendAria: "Senden",
     genericError: "Entschuldigung, ein Fehler ist aufgetreten.",
+    micDenied: "Mikrofonzugriff verweigert. Erlaube ihn in den Browsereinstellungen und versuche es erneut.",
+    micNoSpeech: "Ich habe nichts gehört. Tippe auf das Mikrofon und sprich direkt danach.",
+    micNoDevice: "Auf diesem Gerät wurde kein Mikrofon gefunden.",
+    micError: "Die Diktierfunktion hat nicht funktioniert. Versuche es erneut oder tippe deine Frage.",
   },
 
   quiz: {

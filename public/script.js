@@ -170,13 +170,61 @@ const micBtn = $('#micBtn');
 if (micBtn) {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (SR) {
+    // Codes de langue attendus par l'API de reconnaissance vocale. Sans
+    // rec.lang, la dictée retombe sur la locale du navigateur : un visiteur
+    // dont le système est en anglais parlait français dans le vide.
+    const SPEECH_LANGS = { fr: 'fr-FR', en: 'en-US', es: 'es-ES', ru: 'ru-RU', de: 'de-DE' };
+
     const rec = new SR();
+    rec.continuous = false;
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+
+    let listening = false;
+    const setListening = (on) => {
+      listening = on;
+      micBtn.classList.toggle('listening', on);
+      micBtn.setAttribute('aria-pressed', String(on));
+    };
+
+    // Les erreurs étaient toutes avalées en silence : micro refusé, rien
+    // entendu, réseau indisponible… l'utilisateur cliquait, parlait, et rien
+    // ne se passait sans la moindre explication.
+    const MSG = {
+      'not-allowed': 'chat.micDenied',
+      'service-not-allowed': 'chat.micDenied',
+      'no-speech': 'chat.micNoSpeech',
+      'audio-capture': 'chat.micNoDevice',
+    };
+
     rec.onresult = (e) => {
-      if (chatInput) chatInput.value = e.results[0][0].transcript;
+      const transcript = (e.results?.[0]?.[0]?.transcript || '').trim();
+      if (!transcript) return;
+      if (chatInput) chatInput.value = transcript;
       chatForm?.dispatchEvent(new Event('submit'));
     };
-    rec.onerror = () => {};
-    micBtn.addEventListener('click', () => rec.start());
+
+    rec.onerror = (e) => {
+      setListening(false);
+      // "aborted" survient quand on arrête volontairement : rien à signaler.
+      if (e.error === 'aborted') return;
+      addMsg('bot', escapeHtml(FinanciaI18N.t(MSG[e.error] || 'chat.micError')));
+    };
+
+    rec.onend = () => setListening(false);
+
+    micBtn.addEventListener('click', () => {
+      // Un second appui sur start() lève une InvalidStateError et laissait le
+      // bouton apparemment mort : on bascule plutôt en arrêt.
+      if (listening) { rec.stop(); return; }
+      rec.lang = SPEECH_LANGS[FinanciaI18N.getLang()] || SPEECH_LANGS.fr;
+      try {
+        rec.start();
+        setListening(true);
+      } catch {
+        setListening(false);
+      }
+    });
   } else {
     micBtn.style.display = 'none';
   }
