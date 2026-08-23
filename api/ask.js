@@ -72,7 +72,13 @@ export default async function handler(req, res) {
           { role: 'user', content: message }
         ],
         temperature: 0.3,
-        max_tokens: 2048,
+        // Groq limite à 8000 tokens par minute et réserve la valeur de
+        // max_tokens sur ce budget, qu'elle soit consommée ou non. À 2048, on
+        // plafonnait à ~3 requêtes par minute et le chat renvoyait « beaucoup
+        // de monde » dès quelques visiteurs simultanés. Les réponses réelles
+        // mesurées montent à 667 tokens : 1200 laisse une marge confortable
+        // tout en doublant le nombre de conversations simultanées possibles.
+        max_tokens: 1200,
       },
       {
         headers: {
