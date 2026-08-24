@@ -1418,3 +1418,68 @@ FinanciaI18N.onLangChange(async () => {
 
   goTo(0);
 })();
+
+// ============================================================
+// Glossaire « Vocabulaire »
+// Ouvert depuis la carte du même nom dans Apprendre. Volontairement local :
+// les définitions viennent de i18n.js, donc l'ouverture est instantanée et
+// reste disponible même si le chat IA est indisponible.
+// ============================================================
+(function () {
+  const overlay = $('#vocab-overlay');
+  const list = $('#vocabList');
+  const search = $('#vocabSearch');
+  const empty = $('#vocabEmpty');
+  const closeBtn = $('#vocab-close');
+  if (!overlay || !list) return;
+
+  let lastFocused = null;
+
+  function terms() {
+    const t = FinanciaI18N.t('vocabulaire.terms');
+    return Array.isArray(t) ? t : [];
+  }
+
+  function render(filtre = '') {
+    const q = filtre.trim().toLowerCase();
+    const visibles = terms().filter(x =>
+      !q || x.t.toLowerCase().includes(q) || x.d.toLowerCase().includes(q)
+    );
+    list.innerHTML = visibles.map(x =>
+      `<div class="vocab-item"><dt>${escapeHtml(x.t)}</dt><dd>${escapeHtml(x.d)}</dd></div>`
+    ).join('');
+    if (empty) empty.hidden = visibles.length > 0;
+  }
+
+  function onKeydown(e) {
+    if (e.key === 'Escape') close();
+  }
+
+  function open() {
+    lastFocused = document.activeElement;
+    if (search) search.value = '';
+    render();
+    overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKeydown);
+    search?.focus();
+  }
+
+  function close() {
+    overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKeydown);
+    lastFocused?.focus();
+  }
+
+  $$('[data-vocab-open]').forEach(b => b.addEventListener('click', open));
+  closeBtn?.addEventListener('click', close);
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+  search?.addEventListener('input', () => render(search.value));
+
+  // Les définitions changent avec la langue : on redessine si la fenêtre est
+  // ouverte, en conservant la recherche en cours.
+  FinanciaI18N.onLangChange(() => {
+    if (!overlay.classList.contains('hidden')) render(search?.value || '');
+  });
+})();

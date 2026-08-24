@@ -215,6 +215,44 @@ function renderGrid() {
   renderUpdatedText();
 }
 
+function fmtCap(value, currency) {
+  // Les capitalisations se comptent en centaines de milliards : on abrège
+  // plutôt que d'aligner douze chiffres illisibles.
+  const unite = FinanciaI18N.t('marches.tops.milliards');
+  try {
+    const n = new Intl.NumberFormat(currentLocale(), { maximumFractionDigits: 0 }).format(value / 1e9);
+    return `${n} ${unite} ${currency === 'USD' ? '$' : currency}`;
+  } catch {
+    return `${Math.round(value / 1e9)} ${unite}`;
+  }
+}
+
+function renderTops() {
+  const wrap = $('#mktTops');
+  const cls = lastData?.classements;
+  if (!wrap) return;
+  // Les classements sont un complément : en leur absence, la page reste
+  // parfaitement utilisable sans bloc vide ni message d'erreur.
+  if (!cls?.capitalisation?.length && !cls?.dividendes?.length) { wrap.hidden = true; return; }
+
+  const ligne = (item, valeur) => {
+    const positive = (item.changePct ?? 0) >= 0;
+    return `<li class="mkt-top-row">
+      <span class="mkt-top-name">${item.name}</span>
+      <span class="mkt-top-val">${valeur}</span>
+      <span class="mkt-top-chg ${positive ? 'positive' : 'negative'}">${positive ? '+' : ''}${(item.changePct ?? 0).toFixed(2)}%</span>
+    </li>`;
+  };
+
+  const cap = $('#mktTopCap');
+  if (cap) cap.innerHTML = (cls.capitalisation || []).map(i => ligne(i, fmtCap(i.marketCap, i.currency))).join('');
+
+  const div = $('#mktTopDiv');
+  if (div) div.innerHTML = (cls.dividendes || []).map(i => ligne(i, `${i.dividendYield.toFixed(2)} %`)).join('');
+
+  wrap.hidden = false;
+}
+
 async function loadMarches() {
   try {
     const res = await fetch('/api/marches');
@@ -223,6 +261,7 @@ async function loadMarches() {
     if (!data.assets || !Object.keys(data.assets).length) throw new Error('Réponse vide');
     lastData = data;
     renderGrid();
+    renderTops();
   } catch (e) {
     console.error('[marches] Échec chargement :', e.message);
     // Le fallback "dernière valeur en cache" est géré côté serveur ; ici on
@@ -253,5 +292,5 @@ setInterval(loadMarches, 5 * 60 * 1000);   // repasse voir le cache serveur, san
 setInterval(renderUpdatedText, 30 * 1000); // rafraîchit juste le texte "il y a X min"
 
 FinanciaI18N.onLangChange(() => {
-  if (lastData) renderGrid();
+  if (lastData) { renderGrid(); renderTops(); }
 });

@@ -522,6 +522,14 @@
           <a href="#jeunes-chiffres" class="btn-learn" data-i18n="modules.cta">En savoir plus →</a>
         </div>
       </article>
+      <article class="module-card" data-color="teal">
+        <div class="mc-top"><div class="mc-icon-big"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="mc-tag" data-i18n="modules.vocabulaire.tag">Glossaire</div></div>
+        <h3 data-i18n="modules.vocabulaire.title">Vocabulaire</h3>
+        <p data-i18n="modules.vocabulaire.desc">Les 20 mots à connaître pour ne plus être perdu : action, ETF, dividende, volatilité, plus-value…</p>
+        <div class="mc-actions">
+          <button type="button" class="btn-learn" data-vocab-open data-i18n="modules.vocabulaire.cta">Ouvrir le glossaire →</button>
+        </div>
+      </article>
       <article class="module-card" data-color="blue">
         <div class="mc-top"><div class="mc-icon-big"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><path d="M5 21V10M19 21V10M9 21V10M15 21V10"/><path d="M12 3 3 8h18z"/></svg></div><div class="mc-tag" data-i18n="modules.banqueInvest.tag">Acteurs</div></div>
         <h3 data-i18n="modules.banqueInvest.title">Les banques d'investissement</h3>
@@ -603,6 +611,18 @@
     </div>
   </div>
 </section>
+
+<div id="vocab-overlay" class="module-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="vocabTitle">
+  <div class="module-overlay-inner">
+    <button id="vocab-close" class="overlay-close" aria-label="Fermer" data-i18n-aria="vocabulaire.close">✕</button>
+    <h3 class="vocab-title" id="vocabTitle" data-i18n="vocabulaire.title">Le vocabulaire de l'investissement</h3>
+    <input type="search" id="vocabSearch" class="vocab-search" autocomplete="off"
+           placeholder="Rechercher un mot…" data-i18n-placeholder="vocabulaire.searchPlaceholder"
+           aria-label="Rechercher un mot" data-i18n-aria="vocabulaire.searchPlaceholder" />
+    <dl class="vocab-list" id="vocabList"></dl>
+    <p class="vocab-empty" id="vocabEmpty" hidden data-i18n="vocabulaire.empty">Aucun mot ne correspond à ta recherche.</p>
+  </div>
+</div>
 
 <div id="module-answer-overlay" class="module-overlay hidden">
   <div class="module-overlay-inner">

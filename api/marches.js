@@ -113,11 +113,65 @@ async function fetchCoinGecko() {
   return results;
 }
 
+// Classements. L'endpoint "chart" utilisé plus haut ne renvoie ni
+// capitalisation ni dividende : il faut passer par le screener, qui reste
+// public et sans clé. On agrège plusieurs listes prédéfinies pour élargir
+// l'échantillon, puis on trie nous-mêmes.
+const SCREENER_LISTS = ['most_actives', 'day_gainers', 'growth_technology_stocks', 'undervalued_growth_stocks'];
+
+async function fetchScreener(scrId) {
+  const url = `https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?scrIds=${scrId}&count=50`;
+  const r = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+  if (!r.ok) throw new Error(`Screener HTTP ${r.status} pour ${scrId}`);
+  const data = await r.json();
+  return data?.finance?.result?.[0]?.quotes || [];
+}
+
+async function fetchClassements() {
+  const settled = await Promise.allSettled(SCREENER_LISTS.map(fetchScreener));
+  const parSymbole = new Map();
+  settled.forEach(s => {
+    if (s.status !== 'fulfilled') return;
+    // Les listes se recoupent : on déduplique sur le symbole.
+    s.value.forEach(q => { if (q?.symbol && !parSymbole.has(q.symbol)) parSymbole.set(q.symbol, q); });
+  });
+  const quotes = [...parSymbole.values()];
+  if (!quotes.length) throw new Error('Screener : aucune valeur exploitable');
+
+  const mapper = q => ({
+    symbol: q.symbol,
+    name: q.shortName || q.longName || q.symbol,
+    price: q.regularMarketPrice ?? null,
+    changePct: q.regularMarketChangePercent ?? 0,
+    currency: q.currency || 'USD',
+    marketCap: q.marketCap ?? null,
+    dividendYield: q.dividendYield ?? null,
+  });
+
+  const capitalisation = quotes
+    .filter(q => typeof q.marketCap === 'number' && q.marketCap > 0)
+    .sort((a, b) => b.marketCap - a.marketCap)
+    .slice(0, 8)
+    .map(mapper);
+
+  // Un rendement aberrant (au-delà de 15 %) trahit presque toujours une
+  // donnée erronée ou une société en grande difficulté : on l'écarte plutôt
+  // que de la présenter en tête de classement à des débutants.
+  const dividendes = quotes
+    .filter(q => typeof q.dividendYield === 'number' && q.dividendYield > 0 && q.dividendYield < 15)
+    .sort((a, b) => b.dividendYield - a.dividendYield)
+    .slice(0, 8)
+    .map(mapper);
+
+  return { capitalisation, dividendes };
+}
+
 async function refresh() {
   const prevAssets = cache?.assets || {};
   const jobs = [
     ...YAHOO_ASSETS.map(a => fetchYahoo(a)),
     fetchCoinGecko().then(arr => arr), // resolves to an array, flattened below
+    fetchClassements(),
   ];
   const settled = await Promise.allSettled(jobs);
 
@@ -142,11 +196,22 @@ async function refresh() {
     console.error('[marches] Échec CoinGecko :', cgResult.reason?.message || cgResult.reason);
   }
 
+  // Les classements sont un complément : leur échec ne doit jamais priver la
+  // page de ses données de marché, on conserve simplement les précédents.
+  const clsResult = settled[YAHOO_ASSETS.length + 1];
+  let classements = cache?.classements || null;
+  if (clsResult.status === 'fulfilled') {
+    classements = clsResult.value;
+    anySuccess = true;
+  } else {
+    console.error('[marches] Échec classements :', clsResult.reason?.message || clsResult.reason);
+  }
+
   if (!anySuccess && !cache) {
     throw new Error('Toutes les sources ont échoué et aucun cache disponible');
   }
 
-  cache = { assets, updatedAt: Date.now() };
+  cache = { assets, classements, updatedAt: Date.now() };
   cacheAt = Date.now();
   console.log('[marches] Cache mis à jour :', Object.keys(assets).join(', '));
 }
