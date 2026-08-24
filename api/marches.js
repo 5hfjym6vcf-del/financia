@@ -20,6 +20,7 @@ const YAHOO_ASSETS = [
   { key: 'dowjones', symbol: '^DJI', name: 'Dow Jones' },
   { key: 'dax', symbol: '^GDAXI', name: 'DAX' },
   { key: 'ftse100', symbol: '^FTSE', name: 'FTSE 100' },
+  { key: 'smi', symbol: '^SSMI', name: 'SMI' },
   { key: 'nikkei225', symbol: '^N225', name: 'Nikkei 225' },
   { key: 'hangseng', symbol: '^HSI', name: 'Hang Seng' },
   { key: 'gold', symbol: 'GC=F', name: 'Or (once)' },
@@ -28,6 +29,7 @@ const YAHOO_ASSETS = [
   { key: 'lvmh', symbol: 'MC.PA', name: 'LVMH' },
   { key: 'sap', symbol: 'SAP.DE', name: 'SAP' },
   { key: 'shell', symbol: 'SHEL.L', name: 'Shell' },
+  { key: 'nestle', symbol: 'NESN.SW', name: 'Nestlé' },
   { key: 'toyota', symbol: '7203.T', name: 'Toyota' },
   { key: 'alibaba', symbol: '9988.HK', name: 'Alibaba' },
 ];

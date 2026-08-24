@@ -61,6 +61,10 @@ const REGIONS = [
     { key: 'ftse100', icon: '🇬🇧' },
     { key: 'shell', icon: '⛽' },
   ] },
+  { key: 'suisse', flag: '🇨🇭', assets: [
+    { key: 'smi', icon: '🇨🇭' },
+    { key: 'nestle', icon: '🍫' },
+  ] },
   { key: 'japon', flag: '🇯🇵', assets: [
     { key: 'nikkei225', icon: '🇯🇵' },
     { key: 'toyota', icon: '🚗' },
