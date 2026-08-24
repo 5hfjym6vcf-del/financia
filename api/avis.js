@@ -11,7 +11,11 @@
 const PUB_ID = '2PACX-1vTVtvWuOYw1p-aVF0Vjm84cNWLdpAy_cf27ufE1jbvbTSubyAGbaWTGp53cbRuqzz9WncrUER40bOok';
 const CSV_URL = `https://docs.google.com/spreadsheets/d/e/${PUB_ID}/pub?output=csv`;
 
-const CACHE_MS = 10 * 60 * 1000; // 10 min — un Sheet public n'a pas besoin d'être lu à chaque requête
+// 2 min : assez court pour qu'un avis validé dans le tableur apparaisse
+// rapidement — attendre dix minutes sans aucun retour donnait l'impression
+// que la modération ne fonctionnait pas — et assez long pour qu'un pic de
+// visiteurs ne déclenche pas une lecture du Sheet à chaque requête.
+const CACHE_MS = 2 * 60 * 1000;
 let cache = { data: null, fetchedAt: 0 };
 
 // Parseur CSV minimal mais correct : gère les champs entre guillemets
