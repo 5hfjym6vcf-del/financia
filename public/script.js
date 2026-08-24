@@ -1483,3 +1483,63 @@ FinanciaI18N.onLangChange(async () => {
     if (!overlay.classList.contains('hidden')) render(search?.value || '');
   });
 })();
+
+// ============================================================
+// Classements en page d'accueil
+// Version courte (5 lignes) de ce que la page Marchés détaille, pour rendre
+// les palmarès visibles sans obliger à changer de page. La section reste
+// masquée si /api/marches ne renvoie rien : mieux vaut son absence qu'un
+// bloc vide.
+// ============================================================
+(function () {
+  const wrap = $('#homeTops');
+  if (!wrap) return;
+
+  const LIGNES = 5;
+  let donnees = null;
+
+  function locale() {
+    const l = FinanciaI18N.getLang();
+    return l === 'en' ? 'en-US' : l === 'es' ? 'es-ES' : l === 'ru' ? 'ru-RU' : l === 'de' ? 'de-DE' : 'fr-FR';
+  }
+
+  function fmtCap(v, currency) {
+    const unite = FinanciaI18N.t('marches.tops.milliards');
+    try {
+      const n = new Intl.NumberFormat(locale(), { maximumFractionDigits: 0 }).format(v / 1e9);
+      return `${n} ${unite} ${currency === 'USD' ? '$' : currency}`;
+    } catch {
+      return `${Math.round(v / 1e9)} ${unite}`;
+    }
+  }
+
+  const ligne = (item, valeur) => {
+    const pos = (item.changePct ?? 0) >= 0;
+    return `<li class="mkt-top-row">
+      <span class="mkt-top-name">${escapeHtml(item.name)}</span>
+      <span class="mkt-top-val">${valeur}</span>
+      <span class="mkt-top-chg ${pos ? 'positive' : 'negative'}">${pos ? '+' : ''}${(item.changePct ?? 0).toFixed(2)}%</span>
+    </li>`;
+  };
+
+  function render() {
+    if (!donnees) return;
+    const cap = $('#homeTopCap');
+    const div = $('#homeTopDiv');
+    if (cap) cap.innerHTML = (donnees.capitalisation || []).slice(0, LIGNES).map(i => ligne(i, fmtCap(i.marketCap, i.currency))).join('');
+    if (div) div.innerHTML = (donnees.dividendes || []).slice(0, LIGNES).map(i => ligne(i, `${i.dividendYield.toFixed(2)} %`)).join('');
+    wrap.hidden = false;
+  }
+
+  fetch('/api/marches')
+    .then(r => r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`)))
+    .then(d => {
+      const c = d?.classements;
+      if (!c?.capitalisation?.length && !c?.dividendes?.length) return;
+      donnees = c;
+      render();
+    })
+    .catch(e => console.warn('[classements] indisponibles :', e.message));
+
+  FinanciaI18N.onLangChange(() => { if (donnees) render(); });
+})();

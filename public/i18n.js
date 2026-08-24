@@ -612,7 +612,9 @@ fr: {
     updatedAgo: "Données mises à jour il y a {min} min",
     errorMsg: "Impossible de charger les données de marché pour le moment.",
     tops: {
+      label: "Palmarès",
       title: "Deux façons de regarder les entreprises",
+      cta: "Voir tous les marchés →",
       capTitle: "Les plus grandes capitalisations",
       capSub: "La capitalisation mesure la taille d'une entreprise en bourse, pas sa performance.",
       divTitle: "Les plus gros rendements du dividende",
@@ -1272,7 +1274,9 @@ en: {
     updatedAgo: "Data updated {min} min ago",
     errorMsg: "Unable to load market data right now.",
     tops: {
+      label: "Rankings",
       title: "Two ways to look at companies",
+      cta: "See all markets →",
       capTitle: "Largest market capitalisations",
       capSub: "Market cap measures how big a company is on the stock market, not how well it performs.",
       divTitle: "Highest dividend yields",
@@ -1932,7 +1936,9 @@ es: {
     updatedAgo: "Datos actualizados hace {min} min",
     errorMsg: "No se han podido cargar los datos de mercado en este momento.",
     tops: {
+      label: "Clasificaciones",
       title: "Dos formas de mirar a las empresas",
+      cta: "Ver todos los mercados →",
       capTitle: "Las mayores capitalizaciones",
       capSub: "La capitalización mide el tamaño de una empresa en bolsa, no su rendimiento.",
       divTitle: "Las mayores rentabilidades por dividendo",
@@ -2592,7 +2598,9 @@ ru: {
     updatedAgo: "Данные обновлены {min} мин назад",
     errorMsg: "Не удалось загрузить рыночные данные в данный момент.",
     tops: {
+      label: "Рейтинги",
       title: "Два способа смотреть на компании",
+      cta: "Все рынки →",
       capTitle: "Крупнейшие капитализации",
       capSub: "Капитализация показывает размер компании на бирже, а не её доходность.",
       divTitle: "Самая высокая дивидендная доходность",
@@ -3252,7 +3260,9 @@ de: {
     updatedAgo: "Daten vor {min} Min. aktualisiert",
     errorMsg: "Marktdaten können momentan nicht geladen werden.",
     tops: {
+      label: "Ranglisten",
       title: "Zwei Blickwinkel auf Unternehmen",
+      cta: "Alle Märkte ansehen →",
       capTitle: "Die größten Marktkapitalisierungen",
       capSub: "Die Marktkapitalisierung misst die Größe eines Unternehmens an der Börse, nicht seine Wertentwicklung.",
       divTitle: "Die höchsten Dividendenrenditen",

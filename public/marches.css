@@ -96,52 +96,6 @@ body.marches-page {
 }
 .mkt-error { color: rgba(255,255,255,0.5); font-size: 0.95rem; text-align: center; }
 
-/* ── Classements (capitalisation / dividendes) ── */
-.mkt-tops { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
-.mkt-tops-title {
-  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
-  font-weight: 800; color: #fff; letter-spacing: -0.5px; margin-bottom: 32px;
-}
-.mkt-tops-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
-.mkt-top {
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(124,58,237,0.22);
-  border-radius: 18px;
-  padding: 26px 24px;
-}
-.mkt-top-h { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.mkt-top-sub { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 20px; }
-.mkt-top-list { list-style: none; counter-reset: rang; display: flex; flex-direction: column; gap: 2px; }
-.mkt-top-row {
-  counter-increment: rang;
-  display: grid;
-  grid-template-columns: 22px minmax(0, 1fr) auto auto;
-  align-items: baseline;
-  gap: 10px;
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-size: 0.86rem;
-}
-.mkt-top-row:last-child { border-bottom: none; }
-.mkt-top-row::before {
-  content: counter(rang);
-  color: rgba(255,255,255,0.3);
-  font-weight: 700;
-  font-size: 0.78rem;
-}
-.mkt-top-name { color: rgba(255,255,255,0.85); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.mkt-top-val { color: #fff; font-weight: 700; white-space: nowrap; }
-.mkt-top-chg { font-weight: 700; font-size: 0.78rem; white-space: nowrap; min-width: 58px; text-align: right; }
-.mkt-top-chg.positive { color: #4ade80; }
-.mkt-top-chg.negative { color: #f87171; }
-.mkt-tops-note {
-  margin-top: 24px;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.6;
-  max-width: 760px;
-}
-
 .mkt-card {
   background: rgba(255,255,255,0.035);
   border: 1px solid rgba(124,58,237,0.22);
@@ -216,20 +170,11 @@ body.marches-page {
   .mkt-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 900px) {
-  .mkt-tops-cols { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 680px) {
   .mkt-hero { padding: 116px 0 48px; }
   .mkt-section { padding: 44px 0 64px; }
   .mkt-grid { grid-template-columns: 1fr; }
   .mkt-section-head { align-items: flex-start; }
-  .mkt-tops { margin-top: 44px; padding-top: 36px; }
-  /* La variation passe sous le nom : à cette largeur, quatre colonnes
-     écraseraient les noms d'entreprises à quelques caractères. */
-  .mkt-top-row { grid-template-columns: 22px minmax(0, 1fr) auto; }
-  .mkt-top-chg { grid-column: 2 / -1; text-align: left; min-width: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
