@@ -96,6 +96,50 @@ body.marches-page {
 }
 .mkt-error { color: rgba(255,255,255,0.5); font-size: 0.95rem; text-align: center; }
 
+/* ── Calendrier des résultats ── */
+.mkt-earnings { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
+.mkt-earn-sub {
+  font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6;
+  max-width: 660px; margin: -22px 0 32px;
+}
+.mkt-earn-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 22px; }
+.mkt-earn-day {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(124,58,237,0.22);
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+}
+.mkt-earn-date {
+  font-size: 0.9rem; font-weight: 700; color: #c4b5fd;
+  text-transform: capitalize; margin-bottom: 14px;
+}
+.mkt-earn-list { list-style: none; display: flex; flex-direction: column; }
+.mkt-earn-row {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.85rem;
+}
+.mkt-earn-row:last-child { border-bottom: none; }
+.mkt-earn-tick {
+  grid-row: span 2;
+  font-weight: 800; color: #fff; font-size: 0.76rem;
+  background: rgba(124,58,237,0.16);
+  border: 1px solid rgba(124,58,237,0.4);
+  border-radius: 6px;
+  padding: 4px 6px;
+  text-align: center;
+  align-self: center;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.mkt-earn-name { color: rgba(255,255,255,0.85); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mkt-earn-when { font-size: 0.74rem; color: rgba(255,255,255,0.45); }
+.mkt-earn-est { font-size: 0.74rem; color: rgba(255,255,255,0.35); }
+.mkt-earn-empty { color: rgba(255,255,255,0.45); font-size: 0.9rem; padding: 20px 0; }
+
 .mkt-card {
   background: rgba(255,255,255,0.035);
   border: 1px solid rgba(124,58,237,0.22);

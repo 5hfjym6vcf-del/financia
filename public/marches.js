@@ -253,6 +253,61 @@ function renderTops() {
   wrap.hidden = false;
 }
 
+// ── Calendrier des résultats ──
+let lastResultats = null;
+
+function renderResultats() {
+  const wrap = $('#mktEarnings');
+  const cont = $('#mktEarnDays');
+  const vide = $('#mktEarnEmpty');
+  if (!wrap || !cont) return;
+  if (!lastResultats) { wrap.hidden = true; return; }
+
+  const jours = lastResultats.jours || [];
+  cont.innerHTML = jours.map(j => {
+    // Date construite en UTC : un "2026-08-26" interprété en heure locale
+    // reculerait d'un jour pour les fuseaux à l'ouest de Greenwich.
+    const [a, m, d] = j.date.split('-').map(Number);
+    const libelle = new Date(Date.UTC(a, m - 1, d)).toLocaleDateString(currentLocale(), {
+      weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC',
+    });
+    const lignes = j.evenements.map(e => {
+      const cle = e.moment === 'pre-market' ? 'avantOuverture'
+                : e.moment === 'post-market' ? 'apresCloture' : null;
+      const moment = cle ? FinanciaI18N.t('marches.resultats.' + cle) : '';
+      const est = e.estimation !== null && !Number.isNaN(e.estimation)
+        ? `<span class="mkt-earn-est">${FinanciaI18N.t('marches.resultats.estimation')} ${e.estimation}</span>` : '';
+      return `<li class="mkt-earn-row">
+        <span class="mkt-earn-tick">${e.symbole}</span>
+        <span class="mkt-earn-name">${e.nom}</span>
+        ${moment ? `<span class="mkt-earn-when">${moment}</span>` : '<span></span>'}
+        ${est || '<span></span>'}
+      </li>`;
+    }).join('');
+    return `<div class="mkt-earn-day">
+      <h4 class="mkt-earn-date">${libelle}</h4>
+      <ul class="mkt-earn-list">${lignes}</ul>
+    </div>`;
+  }).join('');
+
+  if (vide) vide.hidden = jours.length > 0;
+  wrap.hidden = false;
+}
+
+async function loadResultats() {
+  try {
+    const res = await fetch('/api/resultats');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    lastResultats = data;
+    renderResultats();
+  } catch (e) {
+    // Le calendrier est un complément : son absence ne doit rien casser.
+    console.error('[resultats] Échec chargement :', e.message);
+  }
+}
+
 async function loadMarches() {
   try {
     const res = await fetch('/api/marches');
@@ -288,9 +343,11 @@ window.addEventListener('resize', () => {
 });
 
 loadMarches();
+loadResultats();
 setInterval(loadMarches, 5 * 60 * 1000);   // repasse voir le cache serveur, sans jamais le solliciter en direct
 setInterval(renderUpdatedText, 30 * 1000); // rafraîchit juste le texte "il y a X min"
 
 FinanciaI18N.onLangChange(() => {
   if (lastData) { renderGrid(); renderTops(); }
+  if (lastResultats) renderResultats();
 });
