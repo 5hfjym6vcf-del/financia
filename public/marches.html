@@ -171,9 +171,15 @@
       <h3 class="mkt-tops-title" data-i18n="marches.resultats.title">Résultats attendus cette semaine</h3>
       <p class="mkt-earn-sub" data-i18n="marches.resultats.sub">Quand une entreprise publie ses comptes, son cours peut bouger fortement dans les heures qui suivent.</p>
 
+      <div class="mkt-earn-nav">
+        <button type="button" class="mkt-earn-arrow" id="mktEarnPrev" aria-label="Mois précédent" data-i18n-aria="marches.resultats.moisPrec">‹</button>
+        <span class="mkt-earn-month" id="mktEarnMonth"></span>
+        <button type="button" class="mkt-earn-arrow" id="mktEarnNext" aria-label="Mois suivant" data-i18n-aria="marches.resultats.moisSuiv">›</button>
+      </div>
+
       <div class="mkt-earn-days" id="mktEarnDays"></div>
 
-      <p class="mkt-earn-empty" id="mktEarnEmpty" hidden data-i18n="marches.resultats.empty">Aucune grande publication prévue cette semaine.</p>
+      <p class="mkt-earn-empty" id="mktEarnEmpty" hidden data-i18n="marches.resultats.empty">Aucune grande publication prévue ce mois-ci.</p>
       <p class="mkt-tops-note" data-i18n="marches.resultats.note">Calendrier limité aux grandes valeurs américaines, seule couverture fiable disponible en source gratuite. Les horaires sont donnés en heure de marché américain. Informations fournies à titre indicatif.</p>
     </div>
   </div>

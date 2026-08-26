@@ -102,6 +102,62 @@ body.marches-page {
   font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6;
   max-width: 660px; margin: -22px 0 32px;
 }
+.mkt-earn-nav {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 26px;
+}
+.mkt-earn-arrow {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(124,58,237,0.14);
+  border: 1px solid rgba(124,58,237,0.4);
+  color: #c4b5fd;
+  font-size: 20px; line-height: 1;
+  cursor: pointer; flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+.mkt-earn-arrow:hover:not(:disabled) { background: rgba(124,58,237,0.3); border-color: #7C3AED; color: #fff; }
+.mkt-earn-arrow:disabled { opacity: 0.28; cursor: default; }
+.mkt-earn-arrow:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+.mkt-earn-month {
+  font-size: 1rem; font-weight: 700; color: #fff;
+  text-transform: capitalize; min-width: 150px;
+}
+
+/* Info-bulle « attendu » : ouverte au survol comme au clic, ce dernier étant
+   le seul déclencheur disponible au doigt. */
+.mkt-info {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 15px; height: 15px; margin-left: 5px;
+  border-radius: 50%;
+  background: rgba(124,58,237,0.2);
+  border: 1px solid rgba(124,58,237,0.5);
+  color: #c4b5fd;
+  font-size: 9px; font-weight: 800; font-family: var(--font-body);
+  cursor: pointer; position: relative; vertical-align: 1px;
+}
+.mkt-info-bulle {
+  /* Ancrée à gauche du bouton : l'ancrage à droite la faisait déborder hors
+     de l'écran, les repères « attendu » se trouvant dans la moitié gauche
+     des cartes. Une largeur maximale relative évite tout dépassement sur les
+     écrans étroits. */
+  position: absolute; bottom: calc(100% + 9px); left: -8px;
+  width: max-content; max-width: min(268px, 72vw);
+  background: #16161c;
+  border: 1px solid rgba(124,58,237,0.45);
+  border-radius: 12px;
+  padding: 13px 15px;
+  font-size: 0.76rem; font-weight: 500; line-height: 1.55;
+  color: rgba(255,255,255,0.82);
+  text-align: left; text-transform: none; letter-spacing: normal;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.16s ease;
+  z-index: 20;
+}
+.mkt-info:hover .mkt-info-bulle,
+.mkt-info:focus-visible .mkt-info-bulle,
+.mkt-info.ouverte .mkt-info-bulle { opacity: 1; visibility: visible; }
+
 .mkt-earn-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 22px; }
 .mkt-earn-day {
   background: rgba(255,255,255,0.035);

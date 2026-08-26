@@ -37,15 +37,9 @@ const GRANDES_VALEURS = new Set([
   'STZ','TAP','EL','LULU','RL','GPS','M','KSS','BBY','DG','DLTR','ROST','ORLY','AZO','TSCO','ULTA',
 ]);
 
-function semaineCourante() {
-  const auj = new Date();
-  const jour = (auj.getUTCDay() + 6) % 7; // lundi = 0
-  const lundi = new Date(Date.UTC(auj.getUTCFullYear(), auj.getUTCMonth(), auj.getUTCDate() - jour));
-  const dimanche = new Date(lundi);
-  dimanche.setUTCDate(lundi.getUTCDate() + 6);
-  const iso = d => d.toISOString().slice(0, 10);
-  return { debut: iso(lundi), fin: iso(dimanche) };
-}
+// Le calendrier ne regarde que vers l'avant : il démarre à la date du jour.
+// Aucun mois passé n'est donc disponible, quelle que soit la valeur d'horizon.
+const HORIZONS = ['12month', '6month', '3month'];
 
 // Les noms arrivent tout en majuscules et gonflés de suffixes juridiques.
 // « ADVANCED MICRO DEVICES INCORPORATED » devient « Advanced Micro Devices ».
@@ -82,25 +76,36 @@ function parseCsv(texte) {
   return texte.trim().split('\n').map(l => l.split(','));
 }
 
+// Alpha Vantage refuse certains horizons selon la clé : on tente le plus
+// large et on retombe sur un plus court plutôt que de renvoyer une erreur.
+async function fetchCalendrier(key) {
+  let derniereErreur = null;
+  for (const horizon of HORIZONS) {
+    const url = `https://www.alphavantage.co/query?function=EARNINGS_CALENDAR&horizon=${horizon}&apikey=${key}`;
+    const r = await fetch(url);
+    if (!r.ok) { derniereErreur = new Error(`Alpha Vantage HTTP ${r.status}`); continue; }
+    const texte = await r.text();
+
+    // Un horizon refusé renvoie l'en-tête CSV attendu, suivi du mot
+    // « Information » éclaté sur les colonnes ("I,n,f,o,r,m,a"). Vérifier
+    // l'en-tête ne suffit donc pas : on exige de vraies dates dans le corps.
+    const lignes = parseCsv(texte);
+    const datesValides = lignes.slice(1).filter(c => /^\d{4}-\d{2}-\d{2}$/.test((c[2] || '').trim()));
+    if (datesValides.length < 10) {
+      derniereErreur = new Error(`horizon ${horizon} sans données exploitables`);
+      continue;
+    }
+    return { texte, horizon };
+  }
+  throw derniereErreur || new Error('Aucun horizon exploitable');
+}
+
 async function fetchResultats() {
   const key = process.env.ALPHAVANTAGE_API_KEY;
   if (!key) throw new Error('ALPHAVANTAGE_API_KEY manquante');
 
-  const url = `https://www.alphavantage.co/query?function=EARNINGS_CALENDAR&horizon=3month&apikey=${key}`;
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`Alpha Vantage HTTP ${r.status}`);
-  const texte = await r.text();
-
-  // En cas de quota dépassé, l'API répond 200 avec un message JSON au lieu du CSV.
-  if (texte.trim().startsWith('{')) {
-    throw new Error(`Réponse inattendue : ${texte.slice(0, 120)}`);
-  }
-
-  const lignes = parseCsv(texte);
-  const [entete, ...corps] = lignes;
-  if (!entete || !/symbol/i.test(entete[0])) throw new Error('CSV inattendu');
-
-  const { debut, fin } = semaineCourante();
+  const { texte, horizon } = await fetchCalendrier(key);
+  const [, ...corps] = parseCsv(texte);
 
   const evenements = corps
     .map(c => ({
@@ -111,19 +116,34 @@ async function fetchResultats() {
       devise: (c[5] || 'USD').trim(),
       moment: (c[6] || '').trim(), // pre-market / post-market
     }))
-    .filter(e => e.date >= debut && e.date <= fin)
+    .filter(e => /^\d{4}-\d{2}-\d{2}$/.test(e.date))
     .filter(e => GRANDES_VALEURS.has(e.symbole))
     .map(e => ({ ...e, nom: nettoyerNom(e.nom) }))
     .sort((a, b) => a.date.localeCompare(b.date) || a.symbole.localeCompare(b.symbole));
 
-  // Regroupé par jour : c'est la forme qu'attend l'affichage en calendrier.
-  const parJour = {};
-  evenements.forEach(e => { (parJour[e.date] = parJour[e.date] || []).push(e); });
+  if (!evenements.length) throw new Error('Aucune publication exploitable');
+
+  // Regroupé par mois puis par jour : c'est la forme qu'attend la navigation
+  // mois par mois côté affichage.
+  const parMois = {};
+  evenements.forEach(e => {
+    const mois = e.date.slice(0, 7);
+    const jours = (parMois[mois] = parMois[mois] || {});
+    (jours[e.date] = jours[e.date] || []).push(e);
+  });
+
+  const mois = Object.keys(parMois).sort().map(cle => ({
+    mois: cle,
+    total: Object.values(parMois[cle]).reduce((n, j) => n + j.length, 0),
+    jours: Object.keys(parMois[cle]).sort().map(date => ({ date, evenements: parMois[cle][date] })),
+  }));
 
   return {
-    debut, fin,
+    horizon,
+    debut: evenements[0].date,
+    fin: evenements[evenements.length - 1].date,
     total: evenements.length,
-    jours: Object.keys(parJour).sort().map(date => ({ date, evenements: parJour[date] })),
+    mois,
   };
 }
 

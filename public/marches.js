@@ -255,18 +255,47 @@ function renderTops() {
 
 // ── Calendrier des résultats ──
 let lastResultats = null;
+let moisCourant = 0; // index dans lastResultats.mois
+
+// Info-bulle sur « attendu » : le sigle BPA ne parle pas à un débutant, et
+// l'intérêt du chiffre (l'écart avec le réel fait bouger le cours) n'est pas
+// évident. Déclenchée au clic autant qu'au survol, sinon elle serait
+// inaccessible au tactile.
+function infobulleHtml() {
+  return `<button type="button" class="mkt-info" aria-label="${FinanciaI18N.t('marches.resultats.infoAria')}">
+    <span aria-hidden="true">i</span>
+    <span class="mkt-info-bulle" role="tooltip">${FinanciaI18N.t('marches.resultats.infoTexte')}</span>
+  </button>`;
+}
 
 function renderResultats() {
   const wrap = $('#mktEarnings');
   const cont = $('#mktEarnDays');
   const vide = $('#mktEarnEmpty');
   if (!wrap || !cont) return;
-  if (!lastResultats) { wrap.hidden = true; return; }
+  if (!lastResultats?.mois?.length) { wrap.hidden = true; return; }
 
-  const jours = lastResultats.jours || [];
-  cont.innerHTML = jours.map(j => {
-    // Date construite en UTC : un "2026-08-26" interprété en heure locale
-    // reculerait d'un jour pour les fuseaux à l'ouest de Greenwich.
+  const mois = lastResultats.mois;
+  moisCourant = Math.max(0, Math.min(moisCourant, mois.length - 1));
+  const courant = mois[moisCourant];
+
+  // Libellé du mois, construit en UTC pour ne pas reculer d'un jour selon le
+  // fuseau du visiteur.
+  const [an, mo] = courant.mois.split('-').map(Number);
+  const libelleMois = new Date(Date.UTC(an, mo - 1, 1)).toLocaleDateString(currentLocale(), {
+    month: 'long', year: 'numeric', timeZone: 'UTC',
+  });
+  const label = $('#mktEarnMonth');
+  if (label) label.textContent = libelleMois;
+
+  // Les flèches ne mènent nulle part au-delà de la période couverte : on les
+  // désactive plutôt que d'afficher des mois vides.
+  const prev = $('#mktEarnPrev');
+  const next = $('#mktEarnNext');
+  if (prev) prev.disabled = moisCourant === 0;
+  if (next) next.disabled = moisCourant === mois.length - 1;
+
+  cont.innerHTML = courant.jours.map(j => {
     const [a, m, d] = j.date.split('-').map(Number);
     const libelle = new Date(Date.UTC(a, m - 1, d)).toLocaleDateString(currentLocale(), {
       weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC',
@@ -276,7 +305,8 @@ function renderResultats() {
                 : e.moment === 'post-market' ? 'apresCloture' : null;
       const moment = cle ? FinanciaI18N.t('marches.resultats.' + cle) : '';
       const est = e.estimation !== null && !Number.isNaN(e.estimation)
-        ? `<span class="mkt-earn-est">${FinanciaI18N.t('marches.resultats.estimation')} ${e.estimation}</span>` : '';
+        ? `<span class="mkt-earn-est">${FinanciaI18N.t('marches.resultats.estimation')} ${e.estimation}${infobulleHtml()}</span>`
+        : '';
       return `<li class="mkt-earn-row">
         <span class="mkt-earn-tick">${e.symbole}</span>
         <span class="mkt-earn-name">${e.nom}</span>
@@ -290,8 +320,21 @@ function renderResultats() {
     </div>`;
   }).join('');
 
-  if (vide) vide.hidden = jours.length > 0;
+  if (vide) vide.hidden = courant.jours.length > 0;
   wrap.hidden = false;
+}
+
+function brancherNavMois() {
+  $('#mktEarnPrev')?.addEventListener('click', () => { moisCourant--; renderResultats(); });
+  $('#mktEarnNext')?.addEventListener('click', () => { moisCourant++; renderResultats(); });
+
+  // Une info-bulle au survol seul serait inatteignable au doigt : le clic la
+  // bascule, et un clic ailleurs la referme.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.mkt-info');
+    $$('.mkt-info.ouverte').forEach(b => { if (b !== btn) b.classList.remove('ouverte'); });
+    if (btn) { e.preventDefault(); btn.classList.toggle('ouverte'); }
+  });
 }
 
 async function loadResultats() {
@@ -301,12 +344,15 @@ async function loadResultats() {
     const data = await res.json();
     if (data.error) throw new Error(data.error);
     lastResultats = data;
+    moisCourant = 0;
     renderResultats();
   } catch (e) {
     // Le calendrier est un complément : son absence ne doit rien casser.
     console.error('[resultats] Échec chargement :', e.message);
   }
 }
+
+brancherNavMois();
 
 async function loadMarches() {
   try {
