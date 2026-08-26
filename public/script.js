@@ -479,15 +479,16 @@ function profileKeyForQuiz() {
   return 'beginner';
 }
 
-// Niveau de pertinence (1=à limiter, 2=à considérer, 3=à privilégier) par profil × type de
-// placement. Reste qualitatif (pas d'allocation chiffrée), pédagogique, jamais un conseil précis.
+// Ordre de lecture conseillé (3=à comprendre en premier, 2=à explorer ensuite,
+// 1=à aborder avec prudence) par profil × famille de placement. L'échelle porte sur
+// les notions à découvrir, pas sur une allocation : le site n'oriente pas un portefeuille.
 const RECO_LEVELS = {
   beginner: { epargne: 3, bourse: 2, crypto: 1, immobilier: 1 },
   saver: { epargne: 2, bourse: 3, crypto: 1, immobilier: 2 },
   intermediate: { epargne: 2, bourse: 3, crypto: 2, immobilier: 2 },
   active: { epargne: 2, bourse: 3, crypto: 2, immobilier: 3 },
 };
-// Si l'objectif déclaré (q5) correspond directement à un type, on relève sa pertinence d'un cran.
+// Si l'objectif déclaré (q5) correspond directement à un type, on remonte ce sujet d'un cran.
 const RECO_OBJECTIF_BOOST = { securite: 'epargne', retraite: 'bourse', fructifier: 'bourse', immobilier: 'immobilier' };
 const RECO_LEVEL_KEYS = { 1: 'limiter', 2: 'considerer', 3: 'privilegier' };
 
