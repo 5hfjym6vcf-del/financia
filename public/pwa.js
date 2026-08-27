@@ -86,8 +86,11 @@
   }
 
   const btnRetour = document.getElementById('navBack');
-  if (btnRetour && isStandalone() && peutRevenir()) {
-    btnRetour.hidden = false;
+  if (btnRetour) {
+    const majRetour = () => {
+      btnRetour.hidden = !(isStandalone() && peutRevenir());
+    };
+
     btnRetour.addEventListener('click', () => {
       // Le repli vers l'accueil couvre le lancement direct sur une page
       // profonde, où il n'y a rien derrière mais où l'utilisateur attend
@@ -95,6 +98,19 @@
       if (peutRevenir()) window.history.back();
       else window.location.href = '/';
     });
+
+    // L'état ne peut pas être calculé une fois pour toutes au chargement :
+    // l'accueil navigue par ancres (#apprendre, #quiz…), ce qui empile de
+    // l'historique sans recharger le document. Figé, le bouton restait donc
+    // absent de la page où se fait l'essentiel de la navigation, et resté
+    // visible ailleurs quand il n'y avait plus rien derrière.
+    majRetour();
+    window.addEventListener('hashchange', majRetour);
+    window.addEventListener('popstate', majRetour);
+    // Restauration depuis le cache de navigation : le script ne rejoue pas.
+    window.addEventListener('pageshow', majRetour);
+    // Couvre aussi pushState et les navigations dans le même document.
+    window.navigation?.addEventListener?.('currententrychange', majRetour);
   }
 
   // ── 5. Modale ──────────────────────────────────────────────
