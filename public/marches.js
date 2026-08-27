@@ -237,7 +237,44 @@ function renderGrid() {
   });
 
   syncTousFavoris();
+  renderNoticeStockage();
   renderUpdatedText();
+}
+
+// ── Avis sur la fragilité du stockage ──
+// Les favoris vivent dans le navigateur, et certains navigateurs les effacent
+// après quelques jours sans visite. Le dire est une question de loyauté : sans
+// ça, l'utilisateur constate la perte sans jamais comprendre pourquoi.
+// Affiché seulement une fois le premier favori posé (avant, l'avertissement ne
+// parlerait de rien), et jamais dans l'app installée, qui n'est pas concernée.
+const NOTICE_STOCKAGE = 'stockage-local';
+
+function appInstallee() {
+  return window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+}
+
+function renderNoticeStockage() {
+  const hote = $('#mktNotice');
+  if (!hote) return;
+
+  const aLieu = FinanciaProfil.nbFavoris() > 0
+    && !FinanciaProfil.noticeEcartee(NOTICE_STOCKAGE)
+    && !appInstallee();
+
+  if (!aLieu) { hote.hidden = true; hote.innerHTML = ''; return; }
+
+  hote.innerHTML = `
+    <p class="mkt-notice-txt">${FinanciaI18N.t('marches.favoris.noticeTexte')}
+      <a class="mkt-notice-lien" href="/#installer">${FinanciaI18N.t('marches.favoris.noticeLien')}</a>
+    </p>
+    <button type="button" class="mkt-notice-fermer" aria-label="${FinanciaI18N.t('marches.favoris.noticeFermer')}">&times;</button>`;
+  hote.hidden = false;
+
+  hote.querySelector('.mkt-notice-fermer').addEventListener('click', () => {
+    FinanciaProfil.ecarterNotice(NOTICE_STOCKAGE);
+    renderNoticeStockage();
+  });
 }
 
 // Délégation sur le conteneur, qui survit aux rendus : renderGrid() remplace
@@ -247,6 +284,7 @@ $('#mktGrid')?.addEventListener('click', e => {
   const btn = e.target.closest('.mkt-fav');
   if (!btn) return;
   syncFavBtn(btn, FinanciaProfil.basculerFavori(btn.dataset.fav));
+  renderNoticeStockage();
 });
 
 // Garde les cœurs justes si le profil change ailleurs (autre onglet ouvert

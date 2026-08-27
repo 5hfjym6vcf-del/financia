@@ -613,6 +613,9 @@ fr: {
     errorMsg: "Impossible de charger les données de marché pour le moment.",
     favoris: {
       ajouter: "Ajouter aux favoris",
+      noticeTexte: "Tes favoris sont enregistrés sur cet appareil, pas sur un compte. Certains navigateurs les effacent après quelques jours sans visite.",
+      noticeLien: "Installe l'app pour les garder",
+      noticeFermer: "Fermer cet avis",
       retirer: "Retirer des favoris",
     },
     resultats: {
@@ -1292,6 +1295,9 @@ en: {
     errorMsg: "Unable to load market data right now.",
     favoris: {
       ajouter: "Add to favourites",
+      noticeTexte: "Your favourites are saved on this device, not in an account. Some browsers clear them after a few days without a visit.",
+      noticeLien: "Install the app to keep them",
+      noticeFermer: "Dismiss this notice",
       retirer: "Remove from favourites",
     },
     resultats: {
@@ -1971,6 +1977,9 @@ es: {
     errorMsg: "No se han podido cargar los datos de mercado en este momento.",
     favoris: {
       ajouter: "Añadir a favoritos",
+      noticeTexte: "Tus favoritos se guardan en este dispositivo, no en una cuenta. Algunos navegadores los borran tras unos días sin visita.",
+      noticeLien: "Instala la app para conservarlos",
+      noticeFermer: "Cerrar este aviso",
       retirer: "Quitar de favoritos",
     },
     resultats: {
@@ -2650,6 +2659,9 @@ ru: {
     errorMsg: "Не удалось загрузить рыночные данные в данный момент.",
     favoris: {
       ajouter: "Добавить в избранное",
+      noticeTexte: "Избранное сохраняется на этом устройстве, а не в аккаунте. Некоторые браузеры удаляют его после нескольких дней без посещений.",
+      noticeLien: "Установи приложение, чтобы сохранить",
+      noticeFermer: "Закрыть это уведомление",
       retirer: "Убрать из избранного",
     },
     resultats: {
@@ -3329,6 +3341,9 @@ de: {
     errorMsg: "Marktdaten können momentan nicht geladen werden.",
     favoris: {
       ajouter: "Zu Favoriten hinzufügen",
+      noticeTexte: "Deine Favoriten liegen auf diesem Gerät, nicht in einem Konto. Manche Browser löschen sie nach einigen Tagen ohne Besuch.",
+      noticeLien: "Installiere die App, um sie zu behalten",
+      noticeFermer: "Diesen Hinweis schließen",
       retirer: "Aus Favoriten entfernen",
     },
     resultats: {

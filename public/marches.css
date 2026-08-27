@@ -68,6 +68,46 @@ body.marches-page {
   flex-shrink: 0;
 }
 
+/* ── Avis « favoris stockés sur cet appareil » ──
+   Volontairement sobre : c'est une information utile, pas un bandeau de
+   consentement. Il n'apparaît qu'après le premier favori et se referme
+   définitivement d'un clic. */
+.mkt-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(124, 58, 237, 0.07);
+  border: 1px solid rgba(124, 58, 237, 0.26);
+  border-radius: 12px;
+  padding: 13px 14px 13px 18px;
+  margin-bottom: 30px;
+}
+.mkt-notice-txt {
+  flex: 1;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+}
+.mkt-notice-lien {
+  color: #c4b5fd;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+.mkt-notice-lien:hover { color: #fff; }
+.mkt-notice-fermer {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border: none; background: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 21px; line-height: 1;
+  cursor: pointer; border-radius: 6px;
+  transition: color 0.18s ease;
+}
+.mkt-notice-fermer:hover { color: #fff; }
+.mkt-notice-fermer:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+
 /* ── Régions + grilles de cartes ── */
 .mkt-regions {
   display: flex;

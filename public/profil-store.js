@@ -21,7 +21,7 @@
   // distinguer un objet ancien d'un objet courant au lieu de deviner.
   const VERSION = 1;
 
-  const VIDE = { v: VERSION, favoris: [], zones: [], maj: null };
+  const VIDE = { v: VERSION, favoris: [], zones: [], notices: [], maj: null };
 
   // Un abonné est une fonction rappelée à chaque modification. Sert à garder
   // plusieurs vues d'une même page synchronisées (les cartes de Marchés
@@ -48,6 +48,7 @@
         v: VERSION,
         favoris: Array.isArray(objet.favoris) ? objet.favoris.filter(k => typeof k === 'string') : [],
         zones: Array.isArray(objet.zones) ? objet.zones.filter(k => typeof k === 'string') : [],
+        notices: Array.isArray(objet.notices) ? objet.notices.filter(k => typeof k === 'string') : [],
         maj: typeof objet.maj === 'string' ? objet.maj : null,
       };
     } catch {
@@ -74,7 +75,7 @@
     /** Copie du profil courant. Modifier l'objet renvoyé n'affecte rien. */
     lire() {
       const p = lire();
-      return { ...p, favoris: [...p.favoris], zones: [...p.zones] };
+      return { ...p, favoris: [...p.favoris], zones: [...p.zones], notices: [...p.notices] };
     },
 
     favoris() { return [...lire().favoris]; },
@@ -91,6 +92,17 @@
       else p.favoris.splice(i, 1);
       ecrire(p);
       return i === -1;
+    },
+
+    /* Messages ponctuels déjà écartés par le visiteur. Stockés au même endroit
+       que le reste : si le navigateur efface tout, l'avis réapparaît, ce qui
+       est exactement le comportement voulu — la mise en garde redevient utile
+       au moment précis où le risque qu'elle décrit s'est réalisé. */
+    noticeEcartee(id) { return lire().notices.includes(id); },
+
+    ecarterNotice(id) {
+      const p = lire();
+      if (!p.notices.includes(id)) { p.notices.push(id); ecrire(p); }
     },
 
     estZoneSuivie(cle) { return lire().zones.includes(cle); },
