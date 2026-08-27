@@ -859,7 +859,7 @@ async function loadActus() {
     await applyActusTheme(currentActusTheme);
   } catch {
     actusFailed = true;
-    grid.innerHTML = `<p class="actus-error">${FinanciaI18N.t('actus.errorMsg')}</p>`;
+    FinanciaErreur.afficher(grid, 'actus.errorMsg', loadActus);
   }
 }
 
@@ -867,7 +867,7 @@ loadActus();
 FinanciaI18N.onLangChange(async () => {
   if (actusFailed) {
     const grid = $('#actus-grid');
-    if (grid) grid.innerHTML = `<p class="actus-error">${FinanciaI18N.t('actus.errorMsg')}</p>`;
+    FinanciaErreur.afficher(grid, 'actus.errorMsg', loadActus);
     return;
   }
   await applyActusTheme(currentActusTheme);

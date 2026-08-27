@@ -1323,6 +1323,43 @@ a { text-decoration: none; color: inherit; }
 .actus-loading { grid-column: 1 / -1; display: flex; justify-content: center; padding: 48px; }
 .actus-error { grid-column: 1 / -1; text-align: center; color: var(--text-2); font-size: 15px; padding: 48px 0; }
 
+/* ── État d'erreur, avec bouton « Réessayer » ──
+   Employé par la grille de Marchés, celle de Mes favoris et le flux d'actus.
+   grid-column vaut pour le seul conteneur qui soit une grille (#actus-grid) et
+   reste sans effet ailleurs. */
+.ui-erreur {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  padding: 48px 24px;
+}
+.ui-erreur-txt {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+.ui-erreur-btn {
+  /* 44 px de haut : c'est le geste de rattrapage, il doit être facile à viser. */
+  min-height: 44px;
+  padding: 11px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 58, 237, 0.45);
+  background: rgba(124, 58, 237, 0.16);
+  color: #c4b5fd;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+}
+.ui-erreur-btn:hover:not(:disabled) { background: rgba(124, 58, 237, 0.32); color: #fff; }
+.ui-erreur-btn:disabled { opacity: 0.55; cursor: default; }
+.ui-erreur-btn:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+
 /* À PROPOS */
 .apropos-bio {
   max-width: 680px;

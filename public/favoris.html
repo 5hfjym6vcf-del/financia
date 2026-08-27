@@ -15,6 +15,7 @@
   <script src="./i18n.js"></script>
   <script src="./i18n-core.js"></script>
   <script src="./favoris-store.js"></script>
+  <script src="./ui-erreur.js"></script>
   <script src="./actifs-ui.js"></script>
 
   <meta name="description" content="Retrouve les actifs que tu suis sur Financia, avec leurs cours du jour." />
@@ -164,7 +165,7 @@
       <a class="btn-primary fav-vide-cta" href="/marches" data-i18n="favoris.videCta">Voir les marchés →</a>
     </div>
 
-    <p id="favErreur" class="mkt-error" hidden data-i18n="marches.errorMsg">Impossible de charger les données de marché pour le moment.</p>
+    <div id="favErreur" hidden></div>
 
     <!-- L'actu liée aux favoris. Masquée tant qu'aucun actif n'est suivi, et
          en cas de source indisponible : c'est un complément, pas le cœur de

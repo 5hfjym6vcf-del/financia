@@ -96,7 +96,12 @@ function render() {
   if (chargement && !lastData) { loading.hidden = false; grid.hidden = true; return; }
   loading.hidden = true;
 
-  if (!lastData) { erreur.hidden = false; grid.hidden = true; return; }
+  if (!lastData) {
+    FinanciaErreur.afficher(erreur, 'marches.errorMsg', loadMarches);
+    erreur.hidden = false;
+    grid.hidden = true;
+    return;
+  }
   erreur.hidden = true;
 
   // Un actif favori que l'API ne renvoie pas (source momentanément muette) est

@@ -9,6 +9,7 @@ window.I18N = {
 
 fr: {
   meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleContact: "Financia | Contact" },
+  commun: { reessayer: "Réessayer", reessaiEnCours: "Chargement…" },
   nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", retour: "Revenir en arrière" },
   mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact" },
 
@@ -714,6 +715,7 @@ fr: {
 
 en: {
   meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleContact: "Financia | Contact" },
+  commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
   nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", retour: "Go back" },
   mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact" },
 
@@ -1419,6 +1421,7 @@ en: {
 
 es: {
   meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleContact: "Financia | Contacto" },
+  commun: { reessayer: "Reintentar", reessaiEnCours: "Cargando…" },
   nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", retour: "Volver atrás" },
   mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto" },
 
@@ -2124,6 +2127,7 @@ es: {
 
 ru: {
   meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleContact: "Financia | Контакты" },
+  commun: { reessayer: "Повторить", reessaiEnCours: "Загрузка…" },
   nav: { apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", retour: "Назад" },
   mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты" },
 
@@ -2829,6 +2833,7 @@ ru: {
 
 de: {
   meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleContact: "Financia | Kontakt" },
+  commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
   nav: { apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", retour: "Zurück" },
   mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt" },
 

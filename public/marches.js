@@ -138,7 +138,7 @@ function renderGrid() {
 
   const available = ASSET_ORDER.filter(a => lastData.assets[a.key]);
   if (!available.length) {
-    grid.innerHTML = `<p class="mkt-error">${FinanciaI18N.t('marches.errorMsg')}</p>`;
+    FinanciaErreur.afficher(grid, 'marches.errorMsg', loadMarches);
     return;
   }
 
@@ -385,10 +385,7 @@ async function loadMarches() {
     // Le fallback "dernière valeur en cache" est géré côté serveur ; ici on
     // protège seulement le tout premier chargement (si même ça échoue, on
     // n'a rien d'autre à afficher que le message d'erreur).
-    if (!lastData) {
-      const grid = $('#mktGrid');
-      if (grid) grid.innerHTML = `<p class="mkt-error">${FinanciaI18N.t('marches.errorMsg')}</p>`;
-    }
+    if (!lastData) FinanciaErreur.afficher($('#mktGrid'), 'marches.errorMsg', loadMarches);
   }
 }
 
