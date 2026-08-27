@@ -625,6 +625,12 @@ fr: {
     updatedJustNow: "Données mises à jour à l'instant",
     updatedAgo: "Données mises à jour il y a {min} min",
     errorMsg: "Impossible de charger les données de marché pour le moment.",
+    zones: {
+      label: "Zones affichées",
+      tout: "Tout",
+      aria: "Zones affichées",
+      vide: "Aucun actif disponible pour les zones choisies.",
+    },
     favoris: {
       ajouter: "Ajouter aux favoris",
       noticeTexte: "Tes favoris sont enregistrés sur cet appareil, pas sur un compte. Certains navigateurs les effacent après quelques jours sans visite.",
@@ -1321,6 +1327,12 @@ en: {
     updatedJustNow: "Data updated just now",
     updatedAgo: "Data updated {min} min ago",
     errorMsg: "Unable to load market data right now.",
+    zones: {
+      label: "Regions shown",
+      tout: "All",
+      aria: "Regions shown",
+      vide: "No asset available for the selected regions.",
+    },
     favoris: {
       ajouter: "Add to favourites",
       noticeTexte: "Your favourites are saved on this device, not in an account. Some browsers clear them after a few days without a visit.",
@@ -2017,6 +2029,12 @@ es: {
     updatedJustNow: "Datos actualizados justo ahora",
     updatedAgo: "Datos actualizados hace {min} min",
     errorMsg: "No se han podido cargar los datos de mercado en este momento.",
+    zones: {
+      label: "Zonas mostradas",
+      tout: "Todo",
+      aria: "Zonas mostradas",
+      vide: "Ningún activo disponible para las zonas elegidas.",
+    },
     favoris: {
       ajouter: "Añadir a favoritos",
       noticeTexte: "Tus favoritos se guardan en este dispositivo, no en una cuenta. Algunos navegadores los borran tras unos días sin visita.",
@@ -2713,6 +2731,12 @@ ru: {
     updatedJustNow: "Данные обновлены только что",
     updatedAgo: "Данные обновлены {min} мин назад",
     errorMsg: "Не удалось загрузить рыночные данные в данный момент.",
+    zones: {
+      label: "Показанные регионы",
+      tout: "Все",
+      aria: "Показанные регионы",
+      vide: "Нет доступных активов для выбранных регионов.",
+    },
     favoris: {
       ajouter: "Добавить в избранное",
       noticeTexte: "Избранное сохраняется на этом устройстве, а не в аккаунте. Некоторые браузеры удаляют его после нескольких дней без посещений.",
@@ -3409,6 +3433,12 @@ de: {
     updatedJustNow: "Daten gerade aktualisiert",
     updatedAgo: "Daten vor {min} Min. aktualisiert",
     errorMsg: "Marktdaten können momentan nicht geladen werden.",
+    zones: {
+      label: "Angezeigte Regionen",
+      tout: "Alle",
+      aria: "Angezeigte Regionen",
+      vide: "Kein Wert für die gewählten Regionen verfügbar.",
+    },
     favoris: {
       ajouter: "Zu Favoriten hinzufügen",
       noticeTexte: "Deine Favoriten liegen auf diesem Gerät, nicht in einem Konto. Manche Browser löschen sie nach einigen Tagen ohne Besuch.",

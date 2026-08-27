@@ -69,6 +69,54 @@ function regionHtml(region, assets) {
   </div>`;
 }
 
+// ── Zones affichées ──
+// Puces multi-sélection, sur le modèle du sélecteur « L'actu qu'il te faut »
+// de la page d'accueil. Aucune zone retenue signifie « toutes ».
+//
+// Le filtre s'applique au rendu, jamais en masquant des régions déjà tracées :
+// un mini-graphique construit dans un conteneur masqué naît avec une largeur
+// nulle et le reste, puisqu'il ne serait plus redimensionné qu'au prochain
+// changement de fenêtre.
+function zonesRetenues() {
+  const choisies = FinanciaFavoris.zones();
+  return choisies.length ? REGIONS.filter(r => choisies.includes(r.key)) : REGIONS;
+}
+
+function renderZones() {
+  const hote = $('#mktZones');
+  if (!hote) return;
+  const choisies = FinanciaFavoris.zones();
+  const tout = choisies.length === 0;
+
+  const puce = (cle, libelle, actif, drapeau) => `
+    <button type="button" class="mkt-zone-btn${actif ? ' active' : ''}" data-zone="${cle}" aria-pressed="${actif}">
+      ${drapeau ? `<span aria-hidden="true">${drapeau}</span>` : ''}${libelle}
+    </button>`;
+
+  // Les zones retenues sont rappelées dans le libellé : sur mobile la rangée
+  // de puces défile horizontalement, et une puce active peut se trouver hors
+  // de l'écran. Le résumé garde l'état lisible sans avoir à faire défiler.
+  const resume = choisies.length
+    ? ` · ${zonesRetenues().map(r => FinanciaI18N.t('marches.regions.' + r.key)).join(', ')}`
+    : '';
+
+  hote.innerHTML = `
+    <span class="mkt-zones-label">${FinanciaI18N.t('marches.zones.label')}<span class="mkt-zones-resume">${resume}</span></span>
+    <div class="mkt-zones-btns">
+      ${puce('', FinanciaI18N.t('marches.zones.tout'), tout, '')}
+      ${REGIONS.map(r => puce(r.key, FinanciaI18N.t('marches.regions.' + r.key), choisies.includes(r.key), r.flag)).join('')}
+    </div>`;
+}
+
+$('#mktZones')?.addEventListener('click', e => {
+  const btn = e.target.closest('.mkt-zone-btn');
+  if (!btn) return;
+  if (btn.dataset.zone === '') FinanciaFavoris.reinitialiserZones();
+  else FinanciaFavoris.basculerZone(btn.dataset.zone);
+  renderZones();
+  renderGrid();
+});
+
 function renderGrid() {
   const grid = $('#mktGrid');
   if (!grid || !lastData) return;
@@ -81,9 +129,19 @@ function renderGrid() {
 
   FinanciaActifs.detruireGraphes();
 
-  const populatedRegions = REGIONS
+  const populatedRegions = zonesRetenues()
     .map(region => ({ region, assets: region.assets.filter(a => lastData.assets[a.key]) }))
     .filter(r => r.assets.length);
+
+  // Cas rare mais possible : les zones retenues sont justement celles dont la
+  // source n'a rien renvoyé. Mieux vaut le dire que d'afficher une page nue.
+  if (!populatedRegions.length) {
+    grid.innerHTML = `<p class="mkt-error">${FinanciaI18N.t('marches.zones.vide')}</p>`;
+    renderNoticeStockage();
+    renderLienFavoris();
+    renderUpdatedText();
+    return;
+  }
 
   grid.innerHTML = populatedRegions.map(({ region, assets }) => regionHtml(region, assets)).join('');
   FinanciaActifs.remplirCartes(grid, lastData.assets);
@@ -151,9 +209,10 @@ FinanciaFavoris.surChangement(() => {
   renderLienFavoris();
 });
 
-// Le raccourci ne dépend que du stockage local : il s'affiche sans attendre
-// que /api/marches ait répondu.
+// Ni le raccourci ni les puces ne dépendent des données de marché : ils
+// s'affichent sans attendre que /api/marches ait répondu.
 renderLienFavoris();
+renderZones();
 
 function fmtCap(value, currency) {
   // Les capitalisations se comptent en centaines de milliards : on abrège
@@ -321,6 +380,7 @@ setInterval(loadMarches, 5 * 60 * 1000);   // repasse voir le cache serveur, san
 setInterval(renderUpdatedText, 30 * 1000); // rafraîchit juste le texte "il y a X min"
 
 FinanciaI18N.onLangChange(() => {
+  renderZones();
   if (lastData) { renderGrid(); renderTops(); }
   if (lastResultats) renderResultats();
 });

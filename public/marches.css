@@ -121,6 +121,51 @@ body.marches-page {
 .mkt-notice-fermer:hover { color: #fff; }
 .mkt-notice-fermer:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
 
+/* ── Sélecteur de zones ──
+   Même langage visuel que le sélecteur « L'actu qu'il te faut » de l'accueil,
+   pour ne pas inventer un troisième vocabulaire d'interface. Les puces restent
+   visibles en permanence : c'est ce qui évite qu'un filtre posé et oublié passe
+   plus tard pour un site qui aurait perdu la moitié de son contenu. */
+.mkt-zones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.mkt-zones-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+.mkt-zones-resume { color: #c4b5fd; }
+.mkt-zones-btns { display: flex; flex-wrap: wrap; gap: 9px; min-width: 0; }
+.mkt-zone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* 44 px de haut : en dessous, la puce devient une cible incertaine au doigt. */
+  min-height: 44px;
+  padding: 10px 17px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.66);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.mkt-zone-btn:hover { border-color: rgba(124, 58, 237, 0.5); color: #fff; }
+.mkt-zone-btn.active {
+  background: rgba(124, 58, 237, 0.18);
+  border-color: #7C3AED;
+  color: #c4b5fd;
+}
+.mkt-zone-btn:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+
 /* ── Régions + grilles de cartes ── */
 .mkt-regions {
   display: flex;
@@ -406,6 +451,20 @@ body.marches-page {
   .mkt-section { padding: 44px 0 64px; }
   .mkt-grid { grid-template-columns: minmax(0, 1fr); }
   .mkt-section-head { align-items: flex-start; }
+
+  /* Les dix puces empilées occupaient près de 470 px avant le premier cours.
+     En rangée défilante elles n'en prennent plus qu'une, et le libellé rappelle
+     la sélection pour celles qui sortent de l'écran. Le défilement reste
+     interne : la page elle-même ne défile jamais horizontalement. */
+  .mkt-zones-btns {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Marge de respiration à droite, sinon la dernière puce colle au bord. */
+    padding-right: 16px;
+  }
+  .mkt-zones-btns::-webkit-scrollbar { display: none; }
+  .mkt-zone-btn { flex-shrink: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

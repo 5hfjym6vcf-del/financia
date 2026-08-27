@@ -118,6 +118,13 @@
 
     estZoneSuivie(cle) { return lire().zones.includes(cle); },
 
+    /* Aucune zone retenue vaut « toutes » : c'est l'état par défaut, et c'est
+       aussi celui vers lequel on revient. Pas besoin d'un drapeau séparé. */
+    reinitialiserZones() {
+      const p = lire();
+      if (p.zones.length) { p.zones = []; ecrire(p); }
+    },
+
     basculerZone(cle) {
       const p = lire();
       const i = p.zones.indexOf(cle);
