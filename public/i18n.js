@@ -611,6 +611,10 @@ fr: {
     updatedJustNow: "Données mises à jour à l'instant",
     updatedAgo: "Données mises à jour il y a {min} min",
     errorMsg: "Impossible de charger les données de marché pour le moment.",
+    favoris: {
+      ajouter: "Ajouter aux favoris",
+      retirer: "Retirer des favoris",
+    },
     resultats: {
       title: "Résultats attendus cette semaine",
       sub: "Quand une entreprise publie ses comptes, son cours peut bouger fortement dans les heures qui suivent.",
@@ -1286,6 +1290,10 @@ en: {
     updatedJustNow: "Data updated just now",
     updatedAgo: "Data updated {min} min ago",
     errorMsg: "Unable to load market data right now.",
+    favoris: {
+      ajouter: "Add to favourites",
+      retirer: "Remove from favourites",
+    },
     resultats: {
       title: "Earnings due this week",
       sub: "When a company reports its results, its share price can move sharply in the hours that follow.",
@@ -1961,6 +1969,10 @@ es: {
     updatedJustNow: "Datos actualizados justo ahora",
     updatedAgo: "Datos actualizados hace {min} min",
     errorMsg: "No se han podido cargar los datos de mercado en este momento.",
+    favoris: {
+      ajouter: "Añadir a favoritos",
+      retirer: "Quitar de favoritos",
+    },
     resultats: {
       title: "Resultados previstos esta semana",
       sub: "Cuando una empresa publica sus cuentas, su cotización puede moverse con fuerza en las horas siguientes.",
@@ -2636,6 +2648,10 @@ ru: {
     updatedJustNow: "Данные обновлены только что",
     updatedAgo: "Данные обновлены {min} мин назад",
     errorMsg: "Не удалось загрузить рыночные данные в данный момент.",
+    favoris: {
+      ajouter: "Добавить в избранное",
+      retirer: "Убрать из избранного",
+    },
     resultats: {
       title: "Отчёты, ожидаемые на этой неделе",
       sub: "Когда компания публикует отчётность, её котировки могут резко измениться в ближайшие часы.",
@@ -3311,6 +3327,10 @@ de: {
     updatedJustNow: "Daten gerade aktualisiert",
     updatedAgo: "Daten vor {min} Min. aktualisiert",
     errorMsg: "Marktdaten können momentan nicht geladen werden.",
+    favoris: {
+      ajouter: "Zu Favoriten hinzufügen",
+      retirer: "Aus Favoriten entfernen",
+    },
     resultats: {
       title: "Diese Woche erwartete Zahlen",
       sub: "Wenn ein Unternehmen seine Zahlen vorlegt, kann sich der Kurs in den folgenden Stunden stark bewegen.",

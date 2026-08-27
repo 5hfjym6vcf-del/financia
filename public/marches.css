@@ -215,6 +215,33 @@ body.marches-page {
   margin-bottom: 12px;
 }
 .mkt-card-name { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.mkt-card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+/* Cœur de mise en favori. Contour tant que l'actif n'est pas suivi, plein
+   dès qu'il l'est : l'état se lit sans couleur seule, pour rester clair en
+   cas de daltonisme. */
+.mkt-fav {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  border: none; background: none; padding: 0;
+  cursor: pointer; flex-shrink: 0;
+  /* 0.42 place le contour à 4:1 sur le fond de carte, au-dessus du minimum
+     de 3:1 exigé pour un contrôle interactif ; 0.35 n'y était qu'à 3,1:1. */
+  color: rgba(255, 255, 255, 0.42);
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+/* Le cœur reste petit pour ne pas concurrencer la variation du jour, mais sa
+   zone tactile est étendue à 46 px : en dessous de ~44 px, la cible est trop
+   fine au doigt. Le pseudo-élément agrandit la surface sans décaler la mise
+   en page, et le badge voisin n'étant pas cliquable, aucun conflit possible. */
+.mkt-fav { position: relative; }
+.mkt-fav::after { content: ''; position: absolute; inset: -8px; }
+.mkt-fav svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+.mkt-fav:hover { color: #c4b5fd; transform: scale(1.12); }
+.mkt-fav.actif { color: #7C3AED; }
+.mkt-fav.actif svg { fill: currentColor; stroke: currentColor; }
+.mkt-fav.actif:hover { color: #9E75FF; }
+.mkt-fav:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; border-radius: 6px; }
 .mkt-icon {
   width: 34px; height: 34px;
   flex-shrink: 0;
@@ -279,4 +306,6 @@ body.marches-page {
 
 @media (prefers-reduced-motion: reduce) {
   .mkt-card { transition: none; }
+  .mkt-fav { transition: none; }
+  .mkt-fav:hover { transform: none; }
 }

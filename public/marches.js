@@ -155,6 +155,27 @@ function buildChart(container, history, positive) {
   return { chart, series };
 }
 
+// ── Favoris ──
+// Le cœur se superpose aux cartes sans rien retirer : la page reste
+// exactement la même pour qui ne s'en sert pas.
+const COEUR_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+
+function favBtnHtml(key) {
+  return `<button type="button" class="mkt-fav" data-fav="${key}">${COEUR_SVG}</button>`;
+}
+
+// Le libellé accessible dit l'action à venir, pas l'état courant : c'est ce
+// qu'attend un lecteur d'écran sur un bouton à bascule.
+function syncFavBtn(btn, actif) {
+  btn.classList.toggle('actif', actif);
+  btn.setAttribute('aria-pressed', String(actif));
+  btn.setAttribute('aria-label', FinanciaI18N.t(actif ? 'marches.favoris.retirer' : 'marches.favoris.ajouter'));
+}
+
+function syncTousFavoris() {
+  $$('.mkt-fav').forEach(btn => syncFavBtn(btn, FinanciaProfil.estFavori(btn.dataset.fav)));
+}
+
 function cardHtml({ key, icon }) {
   return `<article class="mkt-card" data-asset="${key}">
     <div class="mkt-card-top">
@@ -162,7 +183,10 @@ function cardHtml({ key, icon }) {
         <span class="mkt-icon">${icon}</span>
         <h3>${FinanciaI18N.t('marches.assets.' + key + '.name')}</h3>
       </div>
-      <span class="mkt-change" data-field="change">···</span>
+      <div class="mkt-card-actions">
+        <span class="mkt-change" data-field="change">···</span>
+        ${favBtnHtml(key)}
+      </div>
     </div>
     <div class="mkt-price" data-field="price">···</div>
     <div class="mkt-chart" data-chart="${key}"></div>
@@ -212,8 +236,22 @@ function renderGrid() {
     if (built) charts[key] = built;
   });
 
+  syncTousFavoris();
   renderUpdatedText();
 }
+
+// Délégation sur le conteneur, qui survit aux rendus : renderGrid() remplace
+// tout son contenu à chaque changement de langue, des écouteurs posés sur les
+// boutons eux-mêmes seraient perdus à la première bascule.
+$('#mktGrid')?.addEventListener('click', e => {
+  const btn = e.target.closest('.mkt-fav');
+  if (!btn) return;
+  syncFavBtn(btn, FinanciaProfil.basculerFavori(btn.dataset.fav));
+});
+
+// Garde les cœurs justes si le profil change ailleurs (autre onglet ouvert
+// sur la même page, ou page profil à venir).
+FinanciaProfil.surChangement(syncTousFavoris);
 
 function fmtCap(value, currency) {
   // Les capitalisations se comptent en centaines de milliards : on abrège
