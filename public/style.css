@@ -136,6 +136,38 @@ a { text-decoration: none; color: inherit; }
   flex-shrink: 0;
 }
 .logo span { color: var(--green); }
+/* Bouton retour + logo groupés, pour que .nav-inner conserve ses trois enfants
+   et donc sa répartition d'origine : en quatrième enfant, le bouton aurait
+   décalé le logo vers le centre dès que .nav-links disparaît, sous 900 px. */
+.nav-gauche { display: flex; align-items: center; gap: 8px; }
+
+/* Visible uniquement en mode application, où la barre du navigateur et sa
+   flèche retour n'existent plus. En navigateur, le bouton natif suffit. */
+.nav-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+/* L'attribut hidden ne l'emporterait pas sur le display de la classe. */
+.nav-back[hidden] { display: none; }
+/* Zone tactile portée à 46 px sans grossir le cercle : en dessous de ~44 px,
+   la cible est trop fine au doigt, et c'est ici un contrôle de navigation. */
+.nav-back { position: relative; }
+.nav-back::after { content: ''; position: absolute; inset: -5px; }
+.nav-back svg { width: 19px; height: 19px; }
+.nav-back:hover { color: #fff; border-color: #7C3AED; background: rgba(124, 58, 237, 0.16); }
+.nav-back:active { transform: scale(0.94); }
+.nav-back:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+
 .nav-links { display: flex; align-items: center; gap: 2px; }
 .nav-links a {
   font-size: 14px;

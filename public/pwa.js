@@ -69,7 +69,35 @@
       || window.navigator.standalone === true;
   }
 
-  // ── 4. Modale ──────────────────────────────────────────────
+  // ── 4. Bouton retour ───────────────────────────────────────
+  // Installée, l'application perd la barre du navigateur, donc sa flèche
+  // retour : sur iOS le geste depuis le bord est peu fiable et invisible, et
+  // sur Mac la fenêtre autonome n'offre rien. En navigateur en revanche le
+  // bouton natif existe déjà, et en ajouter un second encombrerait pour rien.
+  //
+  // Placé avant la modale : celle-ci n'existe que sur l'accueil, et la sortie
+  // anticipée juste en dessous empêcherait ce bloc de s'exécuter ailleurs.
+  function peutRevenir() {
+    // navigation.canGoBack répond exactement à la question, mais n'existe que
+    // sur les moteurs Chromium. Ailleurs, la longueur de l'historique en est
+    // une approximation suffisante : elle vaut 1 au premier écran seulement.
+    if (typeof window.navigation?.canGoBack === 'boolean') return window.navigation.canGoBack;
+    return window.history.length > 1;
+  }
+
+  const btnRetour = document.getElementById('navBack');
+  if (btnRetour && isStandalone() && peutRevenir()) {
+    btnRetour.hidden = false;
+    btnRetour.addEventListener('click', () => {
+      // Le repli vers l'accueil couvre le lancement direct sur une page
+      // profonde, où il n'y a rien derrière mais où l'utilisateur attend
+      // quand même de pouvoir remonter.
+      if (peutRevenir()) window.history.back();
+      else window.location.href = '/';
+    });
+  }
+
+  // ── 5. Modale ──────────────────────────────────────────────
   const modal = document.getElementById('installModal');
   if (!modal) return;
 
