@@ -26,7 +26,15 @@ export default async function handler(req, res) {
       'https://api.groq.com/openai/v1/chat/completions',
       {
         model: GROQ_MODEL,
-        max_tokens: 512,
+        // gpt-oss est un modèle à raisonnement, et ses tokens de réflexion sont
+        // décomptés de max_tokens. À l'effort par défaut, il en consommait 510
+        // sur 512 pour six titres : la réponse était tronquée avant d'avoir rien
+        // écrit, le contenu revenait vide, et la traduction retombait
+        // silencieusement sur les titres anglais. Un seul titre passait, d'où un
+        // bug qui n'apparaissait qu'en lot. En effort réduit, la réflexion tombe
+        // à une vingtaine de tokens — traduire n'en demande pas davantage.
+        reasoning_effort: 'low',
+        max_tokens: 700,
         messages: [
           {
             role: 'system',
@@ -51,14 +59,26 @@ export default async function handler(req, res) {
       .filter(l => /^\d+\./.test(l.trim()))
       .map(l => l.replace(/^\d+\.\s*/, '').trim());
 
-    // Fallback: if parse fails, return originals
+    // Le repli sur les titres d'origine reste le bon comportement pour le
+    // visiteur, mais il ne doit plus être muet : c'est précisément ce silence
+    // qui a laissé les actus en anglais sans que rien ne le signale. On trace
+    // donc de quoi diagnostiquer sans avoir à reproduire.
     if (translated.length !== titles.length) {
-      return res.status(200).json({ titles });
+      const fin = r?.data?.choices?.[0]?.finish_reason;
+      const reflexion = r?.data?.usage?.completion_tokens_details?.reasoning_tokens;
+      console.error(
+        `[translate] Analyse impossible : ${translated.length} lignes pour ${titles.length} titres` +
+        ` (finish_reason=${fin}, tokens de réflexion=${reflexion}).` +
+        ` Réponse : ${JSON.stringify(raw).slice(0, 200)}`
+      );
+      return res.status(200).json({ titles, degrade: true });
     }
 
     return res.status(200).json({ titles: translated });
   } catch (e) {
-    console.error('[translate] Groq error:', e?.response?.data || e.message);
-    return res.status(200).json({ titles }); // graceful fallback
+    console.error('[translate] Échec Groq :', e?.response?.data || e.message);
+    // Même principe : le visiteur voit les titres d'origine plutôt qu'un vide,
+    // mais l'appelant sait que la traduction n'a pas eu lieu.
+    return res.status(200).json({ titles, degrade: true });
   }
 }
