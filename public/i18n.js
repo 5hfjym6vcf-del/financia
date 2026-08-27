@@ -450,7 +450,7 @@ fr: {
   },
 
   newsletter: {
-    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Reçois les actus bourse chaque vendredi",
+    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Je te préviens quand il y a du nouveau sur Financia",
     sub: "Gratuit. Sans spam. Désabonnement en 1 clic.",
     placeholder: "ton@email.com",
     btn: "Je m'inscris",
@@ -458,7 +458,7 @@ fr: {
     btnConfirmed: "Inscrit ✓",
     errEmail: "Merci de renseigner ton email.",
     alreadySub: "Tu es déjà inscrit à la newsletter !",
-    successSub: "✅ Tu es inscrit ! Rendez-vous vendredi dans ta boîte mail.",
+    successSub: "✅ Tu es inscrit ! Je t'écris dès qu'il y a du nouveau.",
     genericErr: "Une erreur est survenue.",
     networkErr: "Erreur réseau. Réessaie dans un instant.",
   },
@@ -1156,7 +1156,7 @@ en: {
   },
 
   newsletter: {
-    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Get market news every Friday",
+    titleHtml: "<span class=\"newsletter-envelope\">📬</span> I'll let you know when there's something new on Financia",
     sub: "Free. No spam. Unsubscribe in 1 click.",
     placeholder: "your@email.com",
     btn: "Sign me up",
@@ -1164,7 +1164,7 @@ en: {
     btnConfirmed: "Signed up ✓",
     errEmail: "Please enter your email.",
     alreadySub: "You're already subscribed to the newsletter!",
-    successSub: "✅ You're in! See you Friday in your inbox.",
+    successSub: "✅ You're in! I'll write as soon as there's something new.",
     genericErr: "Something went wrong.",
     networkErr: "Network error. Try again in a moment.",
   },
@@ -1862,7 +1862,7 @@ es: {
   },
 
   newsletter: {
-    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Recibe las noticias bursátiles cada viernes",
+    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Te aviso cuando haya novedades en Financia",
     sub: "Gratis. Sin spam. Cancela cuando quieras en 1 clic.",
     placeholder: "tu@email.com",
     btn: "Suscribirme",
@@ -1870,7 +1870,7 @@ es: {
     btnConfirmed: "Suscrito ✓",
     errEmail: "Por favor, introduce tu email.",
     alreadySub: "¡Ya estás suscrito a la newsletter!",
-    successSub: "✅ ¡Ya estás suscrito! Nos vemos el viernes en tu bandeja de entrada.",
+    successSub: "✅ ¡Ya estás suscrito! Te escribo en cuanto haya novedades.",
     genericErr: "Ha ocurrido un error.",
     networkErr: "Error de red. Vuelve a intentarlo en un momento.",
   },
@@ -2568,7 +2568,7 @@ ru: {
   },
 
   newsletter: {
-    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Получай биржевые новости каждую пятницу",
+    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Сообщу, когда на Financia появится что-то новое",
     sub: "Бесплатно. Без спама. Отписка в 1 клик.",
     placeholder: "твой@email.com",
     btn: "Подписаться",
@@ -2576,7 +2576,7 @@ ru: {
     btnConfirmed: "Подписан ✓",
     errEmail: "Пожалуйста, укажите свой email.",
     alreadySub: "Вы уже подписаны на рассылку!",
-    successSub: "✅ Вы подписаны! До встречи в пятницу в вашей почте.",
+    successSub: "✅ Вы подписаны! Напишу, как только появится что-то новое.",
     genericErr: "Произошла ошибка.",
     networkErr: "Ошибка сети. Попробуйте ещё раз через мгновение.",
   },
@@ -3274,7 +3274,7 @@ de: {
   },
 
   newsletter: {
-    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Erhalte jeden Freitag die Börsennews",
+    titleHtml: "<span class=\"newsletter-envelope\">📬</span> Ich sage dir Bescheid, wenn es auf Financia Neues gibt",
     sub: "Kostenlos. Kein Spam. Abmeldung mit 1 Klick.",
     placeholder: "deine@email.com",
     btn: "Anmelden",
@@ -3282,7 +3282,7 @@ de: {
     btnConfirmed: "Angemeldet ✓",
     errEmail: "Bitte gib deine E-Mail-Adresse ein.",
     alreadySub: "Du bist bereits für den Newsletter angemeldet!",
-    successSub: "✅ Du bist angemeldet! Bis Freitag in deinem Postfach.",
+    successSub: "✅ Du bist angemeldet! Ich schreibe, sobald es Neues gibt.",
     genericErr: "Ein Fehler ist aufgetreten.",
     networkErr: "Netzwerkfehler. Versuch es gleich noch einmal.",
   },
