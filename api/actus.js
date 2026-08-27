@@ -26,12 +26,16 @@ const CACHE_CONTROL = 's-maxage=1800, stale-while-revalidate=3600';
 // c'est le réglage qu'il faudra desserrer si la source ne fournit pas assez.
 const FRAICHEUR_HEURES = 72;
 
-// Une requête large : les articles sont ensuite rangés par thème ci-dessous,
-// et mieux vaut trier trop d'articles que d'en manquer.
+// Uniquement des termes sans ambiguïté en français courant. Une première
+// version incluait « actions », « marché » et « investissement » : ces mots
+// existent hors de la finance, et la section s'est remplie de pédagogie et de
+// cyberattaques. Les expressions à plusieurs mots sont entre guillemets pour
+// être cherchées telles quelles.
 const REQUETE = [
-  'bourse', 'actions', 'investissement', '"marchés financiers"', 'CAC 40',
-  'crypto', 'bitcoin', 'ethereum',
-  'pétrole', 'inflation', 'BCE', 'Fed', 'taux directeurs',
+  'bourse', '"CAC 40"', 'Nasdaq', '"Wall Street"', '"marchés financiers"',
+  'crypto', 'bitcoin', 'ethereum', 'stablecoin',
+  'pétrole', 'OPEP', '"cours de l\'or"', '"matières premières"',
+  'BCE', 'Fed', '"taux directeurs"', 'inflation', 'dividende', 'ETF',
 ].join(' OR ');
 
 // Les thèmes du sélecteur « L'actu qu'il te faut ». NewsAPI ne classe pas les
@@ -51,6 +55,11 @@ const THEMES = {
     'bourse', 'action', 'cac 40', 'nasdaq', 's&p', 'dow jones', 'indice',
     'etf', 'marché', 'cotation', 'dividende', 'obligation', 'wall street',
     'introduction en bourse', 'capitalisation',
+    // Macroéconomie : ces termes figurent dans la requête, ils doivent donc
+    // aussi être reconnus ici, sinon un article sur l'inflation serait ramené
+    // par la source puis écarté au classement.
+    'inflation', 'bce', 'fed', 'taux directeurs', "taux d'intérêt",
+    'récession', 'croissance', 'pib', 'banque centrale',
   ],
 };
 
@@ -66,12 +75,14 @@ export function horodatage(iso) {
 // Une simple recherche de sous-chaîne serait piégeuse : « or » se trouve dans
 // trésor, record, majoration. On borne donc chaque terme par des positions qui
 // ne sont pas des lettres, ce qui laisse passer « l'or » et « or, » sans
-// attraper les mots qui le contiennent.
+// attraper les mots qui le contiennent. Le « s » final facultatif rattrape les
+// pluriels français, sans quoi « actions » ou « marchés » passeraient au
+// travers de leurs propres mots-clés.
 const bornes = new Map();
 function contient(texte, motCle) {
   if (!bornes.has(motCle)) {
     const echappe = motCle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    bornes.set(motCle, new RegExp(`(?<!\\p{L})${echappe}(?!\\p{L})`, 'iu'));
+    bornes.set(motCle, new RegExp(`(?<!\\p{L})${echappe}s?(?!\\p{L})`, 'iu'));
   }
   return bornes.get(motCle).test(texte);
 }
@@ -89,9 +100,10 @@ export function sujets(article) {
     trouves.push({ topic: sujet, relevance_score: String(Math.min(1, 0.4 + touches * 0.2)) });
   }
 
-  // Un article financier qui n'emploie aucun terme reconnu reste une actu de
-  // marché : le classer là vaut mieux que de le faire disparaître du « Tout ».
-  if (!trouves.length) trouves.push({ topic: 'financial_markets', relevance_score: '0.3' });
+  // Renvoyer un tableau vide plutôt que de reverser l'article dans les marchés
+  // par défaut : ce filet de sécurité laissait justement passer tout ce que la
+  // requête avait ramené par erreur. Sans vocabulaire financier reconnu,
+  // l'article est écarté.
   return trouves;
 }
 
@@ -102,6 +114,9 @@ async function fetchActus(key) {
   url.searchParams.set('q', REQUETE);
   url.searchParams.set('language', 'fr');
   url.searchParams.set('sortBy', 'publishedAt');
+  // Sans cela, NewsAPI cherche aussi dans le corps de l'article : un papier sur
+  // la rentrée scolaire citant « la Fed » au détour d'un paragraphe remontait.
+  url.searchParams.set('searchIn', 'title,description');
   url.searchParams.set('pageSize', '50');
   // La fenêtre est demandée à la source plutôt que filtrée après coup : inutile
   // de faire transiter des articles qu'on jetterait.
@@ -132,7 +147,7 @@ async function fetchActus(key) {
       time_published: horodatage(a.publishedAt),
       topics: sujets(a),
     }))
-    .filter(a => a.time_published);
+    .filter(a => a.time_published && a.topics.length);
 
   return { feed, items: String(feed.length), fraicheurHeures: FRAICHEUR_HEURES };
 }
