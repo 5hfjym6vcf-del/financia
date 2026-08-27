@@ -9,6 +9,13 @@ body.marches-page {
   color: #ffffff;
 }
 
+/* L'attribut hidden ne pose qu'un `display: none` de feuille utilisateur, que
+   la moindre classe posant un display (flex, grid…) écrase. Plusieurs blocs de
+   ces pages sont dans ce cas — le bandeau d'horodatage, l'écran de chargement,
+   l'avis sur le stockage — et restaient donc visibles, vides, alors que le
+   code les croyait masqués. On rétablit la sémantique attendue pour tous. */
+[hidden] { display: none !important; }
+
 /* ── Layout de base ── */
 .mkt-section { padding: 64px 0 96px; position: relative; }
 .mkt-h2 {
@@ -51,6 +58,12 @@ body.marches-page {
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 36px;
+}
+.mkt-head-droite {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 .mkt-updated {
   display: flex;
@@ -126,7 +139,12 @@ body.marches-page {
 .mkt-region-flag { font-size: 1.2rem; line-height: 1; }
 .mkt-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* minmax(0, …) et non 1fr seul : « 1fr » vaut « minmax(auto, 1fr) », dont la
+     borne basse est le contenu minimal. Le canevas d'un mini-graphique garde la
+     largeur qu'il avait au tracé ; à la première réduction de fenêtre, il
+     devenait ce contenu minimal et élargissait la colonne au lieu de suivre,
+     débordant l'écran sur mobile. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 .mkt-loading, .mkt-error {
@@ -135,6 +153,48 @@ body.marches-page {
   padding: 48px;
 }
 .mkt-error { color: rgba(255,255,255,0.5); font-size: 0.95rem; text-align: center; }
+
+/* ── Page « Mes favoris » ── */
+/* La grille des favoris réutilise .mkt-grid : mêmes cartes, mêmes colonnes. */
+.fav-vide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 56px 24px 64px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px dashed rgba(124, 58, 237, 0.32);
+  border-radius: 20px;
+}
+.fav-vide-coeur { font-size: 42px; line-height: 1; }
+.fav-vide-titre { font-size: 1.15rem; font-weight: 700; color: #fff; }
+.fav-vide-txt {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  max-width: 420px;
+}
+.fav-vide-cta { margin-top: 10px; }
+
+/* Raccourci vers les favoris, dans l'en-tête de section de Marchés. Masqué
+   tant qu'aucun actif n'est suivi : la page n'aurait rien à montrer. */
+.mkt-fav-lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124, 58, 237, 0.14);
+  border: 1px solid rgba(124, 58, 237, 0.42);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #c4b5fd;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.mkt-fav-lien:hover { background: rgba(124, 58, 237, 0.3); color: #fff; }
+.mkt-fav-lien:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+.mkt-fav-lien svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
 
 /* ── Calendrier des résultats ── */
 .mkt-earnings { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
@@ -313,7 +373,11 @@ body.marches-page {
 }
 .mkt-price small { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.4); margin-left: 4px; }
 
-.mkt-chart { width: 100%; height: 64px; margin-bottom: 16px; }
+/* overflow caché en complément de minmax(0, 1fr) : entre le moment où la
+   fenêtre rétrécit et celui où le graphique est retracé, le canevas reste à son
+   ancienne largeur. Sans cette ligne il débordait de la carte pendant ce court
+   intervalle, et allongeait la page. */
+.mkt-chart { width: 100%; height: 64px; margin-bottom: 16px; overflow: hidden; }
 
 .mkt-blurb {
   font-size: 0.85rem;
@@ -334,13 +398,13 @@ body.marches-page {
    Responsive — mobile-first adjustments
    ============================================================ */
 @media (max-width: 900px) {
-  .mkt-grid { grid-template-columns: repeat(2, 1fr); }
+  .mkt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 680px) {
   .mkt-hero { padding: 116px 0 48px; }
   .mkt-section { padding: 44px 0 64px; }
-  .mkt-grid { grid-template-columns: 1fr; }
+  .mkt-grid { grid-template-columns: minmax(0, 1fr); }
   .mkt-section-head { align-items: flex-start; }
 }
 

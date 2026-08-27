@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-i18n="meta.titleMarches">Financia | Analyse de marché</title>
+  <title data-i18n="meta.titleFavoris">Financia | Mes favoris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -17,9 +17,9 @@
   <script src="./favoris-store.js"></script>
   <script src="./actifs-ui.js"></script>
 
-  <meta name="description" content="Suis l'évolution du CAC 40, S&P 500, Nasdaq, Bitcoin, Ethereum, de l'or et d'un ETF monde, avec des graphiques simples et des explications pédagogiques, par Financia." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://financia.cloud/marches" />
+  <meta name="description" content="Retrouve les actifs que tu suis sur Financia, avec leurs cours du jour." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://financia.cloud/favoris" />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="./images/financia-logo-transparent.png" type="image/png" />
 
@@ -33,16 +33,16 @@
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://financia.cloud/marches" />
-  <meta property="og:title" content="Financia | Analyse de marché" />
-  <meta property="og:description" content="CAC 40, S&P 500, Nasdaq, Bitcoin, Ethereum, or, ETF monde : suis les marchés simplement, avec des explications pédagogiques." />
+  <meta property="og:url" content="https://financia.cloud/favoris" />
+  <meta property="og:title" content="Financia | Mes favoris" />
+  <meta property="og:description" content="Les actifs que tu suis, avec leurs cours du jour." />
   <meta property="og:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
   <meta property="og:locale" content="fr_FR" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Financia | Analyse de marché" />
-  <meta name="twitter:description" content="CAC 40, S&P 500, Nasdaq, Bitcoin, Ethereum, or, ETF monde : suis les marchés simplement." />
+  <meta property="twitter:title" content="Financia | Mes favoris" />
+  <meta property="twitter:description" content="Les actifs que tu suis, avec leurs cours du jour." />
   <meta name="twitter:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
 
   <!-- Google Analytics -->
@@ -54,7 +54,7 @@
     gtag('config', 'G-GHBV40V2G1');
   </script>
 </head>
-<body class="marches-page">
+<body class="marches-page favoris-page">
 
 <header class="nav-bar" id="navbar">
   <div class="nav-inner">
@@ -65,7 +65,7 @@
       <a href="/#chat" data-i18n="nav.chat">Chat IA</a>
       <a href="/#quiz" data-i18n="nav.quiz">Quiz</a>
       <a href="/#actus" data-i18n="nav.actus">Actus</a>
-      <a href="/marches" aria-current="page" data-i18n="nav.marches">Marchés</a>
+      <a href="/marches" data-i18n="nav.marches">Marchés</a>
       <a href="/#temoignages" data-i18n="nav.temoignages">Témoignages</a>
       <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
       <a href="/#apropos" data-i18n="nav.apropos">À propos</a>
@@ -94,7 +94,8 @@
   <a href="/#chat"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="mobileMenu.chat">Chat IA</span></a>
   <a href="/#quiz"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span data-i18n="mobileMenu.quiz">Quiz</span></a>
   <a href="/#actus"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg><span data-i18n="mobileMenu.actus">Actus</span></a>
-  <a href="/marches" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span data-i18n="mobileMenu.marches">Marchés</span></a>
+  <a href="/marches"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span data-i18n="mobileMenu.marches">Marchés</span></a>
+  <a href="/favoris" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span data-i18n="mobileMenu.favoris">Mes favoris</span></a>
   <a href="/#temoignages"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="mobileMenu.temoignages">Témoignages</span></a>
   <a href="/histoire"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="mobileMenu.histoire">Histoire</span></a>
   <a href="/#apropos"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span data-i18n="mobileMenu.apropos">À propos</span></a>
@@ -117,9 +118,9 @@
   <div class="page-hero-glow page-hero-glow-1"></div>
   <div class="page-hero-glow page-hero-glow-2"></div>
   <div class="wrap page-hero-inner">
-    <div class="hero-badge page-hero-badge" data-i18n="marches.hero.badge">📊 Analyse de marché</div>
-    <h1 class="page-hero-h1" data-i18n-html="marches.hero.titleHtml">Les marchés, <em>en un coup d'œil</em></h1>
-    <p class="page-hero-lead" data-i18n="marches.hero.lead">Indices, crypto, or : l'essentiel de l'actualité des marchés, expliqué simplement.</p>
+    <div class="hero-badge page-hero-badge" data-i18n="favoris.hero.badge">❤️ Mes favoris</div>
+    <h1 class="page-hero-h1" data-i18n-html="favoris.hero.titleHtml">Les actifs <em>que tu suis</em></h1>
+    <p class="page-hero-lead" data-i18n="favoris.hero.lead">Tous les actifs que tu as mis en favori, avec leur cours du jour, au même endroit.</p>
     <div class="mkt-disclaimer" role="note">
       <span class="mkt-disclaimer-icon">⚠️</span>
       <p data-i18n="marches.disclaimer">Données à but pédagogique, différées de quelques minutes. Ne constitue pas un conseil en investissement.</p>
@@ -127,71 +128,38 @@
   </div>
 </section>
 
-<!-- ═══ GRILLE DES ACTIFS ═══ -->
-<section class="mkt-section" id="marches-grid-section">
+<!-- ═══ GRILLE DES FAVORIS ═══ -->
+<section class="mkt-section">
   <div class="wrap">
     <div class="mkt-section-head">
       <div>
-        <div class="section-label mkt-label" data-i18n="marches.label">Marchés</div>
-        <h2 class="mkt-h2" data-i18n="marches.title">Ce que font les marchés aujourd'hui</h2>
+        <div class="section-label mkt-label" data-i18n="favoris.label">Favoris</div>
+        <h2 class="mkt-h2" id="favTitre" data-i18n="favoris.title">Ce que tu suis</h2>
       </div>
-      <div class="mkt-head-droite">
-        <a class="mkt-fav-lien" id="mktFavLien" href="/favoris" hidden>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          <span id="mktFavLienTxt"></span>
-        </a>
-        <div class="mkt-updated" id="mktUpdated" hidden>
-          <span class="mkt-updated-dot"></span>
-          <span id="mktUpdatedText"></span>
-        </div>
+      <div class="mkt-updated" id="mktUpdated" hidden>
+        <span class="mkt-updated-dot"></span>
+        <span id="mktUpdatedText"></span>
       </div>
     </div>
 
     <div id="mktNotice" class="mkt-notice" hidden></div>
 
-    <div id="mktGrid" class="mkt-regions">
-      <div class="mkt-loading">
-        <div class="loading-dots"><span></span><span></span><span></span></div>
-      </div>
+    <div id="favGrid" class="mkt-grid" hidden></div>
+
+    <div id="favLoading" class="mkt-loading">
+      <div class="loading-dots"><span></span><span></span><span></span></div>
     </div>
 
-    <!-- Classements : masqués tant que les données ne sont pas disponibles -->
-    <div class="mkt-tops" id="mktTops" hidden>
-      <h3 class="mkt-tops-title" data-i18n="marches.tops.title">Deux façons de regarder les entreprises</h3>
-
-      <div class="mkt-tops-cols">
-        <div class="mkt-top">
-          <h4 class="mkt-top-h" data-i18n="marches.tops.capTitle">Les plus grandes capitalisations</h4>
-          <p class="mkt-top-sub" data-i18n="marches.tops.capSub">La capitalisation mesure la taille d'une entreprise en bourse, pas sa performance.</p>
-          <ol class="mkt-top-list" id="mktTopCap"></ol>
-        </div>
-
-        <div class="mkt-top">
-          <h4 class="mkt-top-h" data-i18n="marches.tops.divTitle">Les plus gros rendements du dividende</h4>
-          <p class="mkt-top-sub" data-i18n="marches.tops.divSub">Attention : un rendement élevé vient souvent d'un cours qui a chuté, pas d'une entreprise plus généreuse.</p>
-          <ol class="mkt-top-list" id="mktTopDiv"></ol>
-        </div>
-      </div>
-
-      <p class="mkt-tops-note" data-i18n="marches.tops.note">Ces classements sont fournis à titre informatif et ne constituent pas un conseil en investissement. Ils portent sur un échantillon de valeurs majoritairement américaines.</p>
+    <!-- État vide : le seul endroit d'où l'on peut ajouter un favori est
+         Marchés, donc l'écran vide y renvoie explicitement. -->
+    <div id="favVide" class="fav-vide" hidden>
+      <div class="fav-vide-coeur" aria-hidden="true">🤍</div>
+      <h3 class="fav-vide-titre" data-i18n="favoris.videTitre">Tu ne suis encore aucun actif</h3>
+      <p class="fav-vide-txt" data-i18n="favoris.videTexte">Sur la page Marchés, clique sur le cœur d'un actif pour le retrouver ici.</p>
+      <a class="btn-primary fav-vide-cta" href="/marches" data-i18n="favoris.videCta">Voir les marchés →</a>
     </div>
 
-    <!-- Calendrier des résultats : masqué tant que les données manquent -->
-    <div class="mkt-earnings" id="mktEarnings" hidden>
-      <h3 class="mkt-tops-title" data-i18n="marches.resultats.title">Résultats attendus cette semaine</h3>
-      <p class="mkt-earn-sub" data-i18n="marches.resultats.sub">Quand une entreprise publie ses comptes, son cours peut bouger fortement dans les heures qui suivent.</p>
-
-      <div class="mkt-earn-nav">
-        <button type="button" class="mkt-earn-arrow" id="mktEarnPrev" aria-label="Mois précédent" data-i18n-aria="marches.resultats.moisPrec">‹</button>
-        <span class="mkt-earn-month" id="mktEarnMonth"></span>
-        <button type="button" class="mkt-earn-arrow" id="mktEarnNext" aria-label="Mois suivant" data-i18n-aria="marches.resultats.moisSuiv">›</button>
-      </div>
-
-      <div class="mkt-earn-days" id="mktEarnDays"></div>
-
-      <p class="mkt-earn-empty" id="mktEarnEmpty" hidden data-i18n="marches.resultats.empty">Aucune grande publication prévue ce mois-ci.</p>
-      <p class="mkt-tops-note" data-i18n="marches.resultats.note">Calendrier limité aux grandes valeurs américaines, seule couverture fiable disponible en source gratuite. Les horaires sont donnés en heure de marché américain. Informations fournies à titre indicatif.</p>
-    </div>
+    <p id="favErreur" class="mkt-error" hidden data-i18n="marches.errorMsg">Impossible de charger les données de marché pour le moment.</p>
   </div>
 </section>
 
@@ -235,7 +203,7 @@
 </footer>
 
 <script src="https://unpkg.com/lightweight-charts@5.2.0/dist/lightweight-charts.standalone.production.js"></script>
-<script src="./marches.js"></script>
+<script src="./favoris.js"></script>
 <script src="./pwa.js" defer></script>
 </body>
 </html>

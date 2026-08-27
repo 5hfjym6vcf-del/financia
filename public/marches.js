@@ -41,70 +41,15 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ============================================================
 // Marchés : chargement des données + rendu des cartes
+//
+// Catalogue, gabarit de carte, graphiques et cœurs viennent de actifs-ui.js,
+// partagé avec la page « Mes favoris » qui affiche exactement les mêmes cartes.
+// Ne reste ici que ce qui est propre à cette page : le découpage par région,
+// les classements et le calendrier des résultats.
 // ============================================================
-const REGIONS = [
-  { key: 'us', flag: '🇺🇸', assets: [
-    { key: 'sp500', icon: '🇺🇸' },
-    { key: 'nasdaq', icon: '💻' },
-    { key: 'dowjones', icon: '🏛️' },
-    { key: 'jpmorgan', icon: '🏦' },
-  ] },
-  { key: 'france', flag: '🇫🇷', assets: [
-    { key: 'cac40', icon: '🇫🇷' },
-    { key: 'lvmh', icon: '👜' },
-  ] },
-  { key: 'allemagne', flag: '🇩🇪', assets: [
-    { key: 'dax', icon: '🇩🇪' },
-    { key: 'sap', icon: '💻' },
-  ] },
-  { key: 'royaumeUni', flag: '🇬🇧', assets: [
-    { key: 'ftse100', icon: '🇬🇧' },
-    { key: 'shell', icon: '⛽' },
-  ] },
-  { key: 'suisse', flag: '🇨🇭', assets: [
-    { key: 'smi', icon: '🇨🇭' },
-    { key: 'nestle', icon: '🍫' },
-  ] },
-  { key: 'japon', flag: '🇯🇵', assets: [
-    { key: 'nikkei225', icon: '🇯🇵' },
-    { key: 'toyota', icon: '🚗' },
-  ] },
-  { key: 'chineAsie', flag: '🇭🇰', assets: [
-    { key: 'hangseng', icon: '🇭🇰' },
-    { key: 'alibaba', icon: '🛒' },
-  ] },
-  { key: 'mondial', flag: '🌍', assets: [
-    { key: 'gold', icon: '🥇' },
-    { key: 'msciWorld', icon: '🌍' },
-  ] },
-  { key: 'cryptos', flag: '🪙', assets: [
-    { key: 'bitcoin', icon: '🪙' },
-    { key: 'ethereum', icon: '🔷' },
-  ] },
-];
-// À plat, pour le filtrage de disponibilité et les helpers existants qui
-// itèrent sur "tous les actifs" sans se soucier des régions.
-const ASSET_ORDER = REGIONS.flatMap(r => r.assets);
+const { REGIONS, ORDRE: ASSET_ORDER } = FinanciaActifs;
 
 let lastData = null; // dernière réponse /api/marches obtenue avec succès
-let charts = {};     // key -> { chart, series }, pour le resize et le cleanup
-
-function currentLocale() {
-  const lang = FinanciaI18N.getLang();
-  return lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : lang === 'ru' ? 'ru-RU' : lang === 'de' ? 'de-DE' : 'fr-FR';
-}
-
-function fmtPrice(value, currency) {
-  try {
-    return new Intl.NumberFormat(currentLocale(), {
-      style: 'currency',
-      currency,
-      maximumFractionDigits: value >= 1000 ? 0 : 2,
-    }).format(value);
-  } catch {
-    return `${value.toFixed(2)} ${currency}`;
-  }
-}
 
 function renderUpdatedText() {
   const wrap = $('#mktUpdated');
@@ -117,87 +62,10 @@ function renderUpdatedText() {
   wrap.hidden = false;
 }
 
-function destroyCharts() {
-  Object.values(charts).forEach(c => { try { c?.chart?.remove(); } catch { /* déjà détruit */ } });
-  charts = {};
-}
-
-function buildChart(container, history, positive) {
-  if (!window.LightweightCharts || !container || !history?.length) return null;
-  const chart = LightweightCharts.createChart(container, {
-    width: container.clientWidth,
-    height: 64,
-    layout: {
-      background: { type: LightweightCharts.ColorType.Solid, color: 'transparent' },
-      textColor: 'rgba(255,255,255,0.4)',
-      attributionLogo: false,
-    },
-    grid: { vertLines: { visible: false }, horzLines: { visible: false } },
-    rightPriceScale: { visible: false },
-    leftPriceScale: { visible: false },
-    timeScale: { visible: false },
-    crosshair: {
-      vertLine: { visible: false, labelVisible: false },
-      horzLine: { visible: false, labelVisible: false },
-    },
-    handleScroll: false,
-    handleScale: false,
-  });
-  const series = chart.addSeries(LightweightCharts.LineSeries, {
-    color: positive ? '#4ade80' : '#f87171',
-    lineWidth: 2,
-    priceLineVisible: false,
-    lastValueVisible: false,
-    crosshairMarkerVisible: false,
-  });
-  series.setData(history);
-  chart.timeScale().fitContent();
-  return { chart, series };
-}
-
-// ── Favoris ──
-// Le cœur se superpose aux cartes sans rien retirer : la page reste
-// exactement la même pour qui ne s'en sert pas.
-const COEUR_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
-
-function favBtnHtml(key) {
-  return `<button type="button" class="mkt-fav" data-fav="${key}">${COEUR_SVG}</button>`;
-}
-
-// Le libellé accessible dit l'action à venir, pas l'état courant : c'est ce
-// qu'attend un lecteur d'écran sur un bouton à bascule.
-function syncFavBtn(btn, actif) {
-  btn.classList.toggle('actif', actif);
-  btn.setAttribute('aria-pressed', String(actif));
-  btn.setAttribute('aria-label', FinanciaI18N.t(actif ? 'marches.favoris.retirer' : 'marches.favoris.ajouter'));
-}
-
-function syncTousFavoris() {
-  $$('.mkt-fav').forEach(btn => syncFavBtn(btn, FinanciaProfil.estFavori(btn.dataset.fav)));
-}
-
-function cardHtml({ key, icon }) {
-  return `<article class="mkt-card" data-asset="${key}">
-    <div class="mkt-card-top">
-      <div class="mkt-card-name">
-        <span class="mkt-icon">${icon}</span>
-        <h3>${FinanciaI18N.t('marches.assets.' + key + '.name')}</h3>
-      </div>
-      <div class="mkt-card-actions">
-        <span class="mkt-change" data-field="change">···</span>
-        ${favBtnHtml(key)}
-      </div>
-    </div>
-    <div class="mkt-price" data-field="price">···</div>
-    <div class="mkt-chart" data-chart="${key}"></div>
-    <p class="mkt-blurb">${FinanciaI18N.t('marches.assets.' + key + '.blurb')}</p>
-  </article>`;
-}
-
 function regionHtml(region, assets) {
   return `<div class="mkt-region">
     <h3 class="mkt-region-title"><span class="mkt-region-flag">${region.flag}</span>${FinanciaI18N.t('marches.regions.' + region.key)}</h3>
-    <div class="mkt-grid">${assets.map(cardHtml).join('')}</div>
+    <div class="mkt-grid">${assets.map(FinanciaActifs.carteHtml).join('')}</div>
   </div>`;
 }
 
@@ -211,33 +79,16 @@ function renderGrid() {
     return;
   }
 
-  destroyCharts();
+  FinanciaActifs.detruireGraphes();
 
   const populatedRegions = REGIONS
     .map(region => ({ region, assets: region.assets.filter(a => lastData.assets[a.key]) }))
     .filter(r => r.assets.length);
 
   grid.innerHTML = populatedRegions.map(({ region, assets }) => regionHtml(region, assets)).join('');
-
-  available.forEach(({ key }) => {
-    const asset = lastData.assets[key];
-    const card = grid.querySelector(`.mkt-card[data-asset="${key}"]`);
-    if (!card || !asset) return;
-
-    const positive = asset.changePct >= 0;
-    const changeEl = card.querySelector('[data-field="change"]');
-    changeEl.textContent = `${positive ? '+' : ''}${asset.changePct.toFixed(2)}%`;
-    changeEl.classList.add(positive ? 'positive' : 'negative');
-
-    card.querySelector('[data-field="price"]').textContent = fmtPrice(asset.price, asset.currency);
-
-    const chartContainer = card.querySelector(`[data-chart="${key}"]`);
-    const built = buildChart(chartContainer, asset.history, positive);
-    if (built) charts[key] = built;
-  });
-
-  syncTousFavoris();
+  FinanciaActifs.remplirCartes(grid, lastData.assets);
   renderNoticeStockage();
+  renderLienFavoris();
   renderUpdatedText();
 }
 
@@ -254,12 +105,23 @@ function appInstallee() {
     || window.navigator.standalone === true;
 }
 
+// Raccourci vers la page des favoris. Il n'apparaît qu'une fois un actif
+// suivi : y envoyer quelqu'un dont la liste est vide n'aurait pas de sens.
+function renderLienFavoris() {
+  const lien = $('#mktFavLien');
+  const txt = $('#mktFavLienTxt');
+  if (!lien || !txt) return;
+  const n = FinanciaFavoris.nbFavoris();
+  lien.hidden = n === 0;
+  if (n > 0) txt.textContent = FinanciaI18N.t('favoris.lien', { n });
+}
+
 function renderNoticeStockage() {
   const hote = $('#mktNotice');
   if (!hote) return;
 
-  const aLieu = FinanciaProfil.nbFavoris() > 0
-    && !FinanciaProfil.noticeEcartee(NOTICE_STOCKAGE)
+  const aLieu = FinanciaFavoris.nbFavoris() > 0
+    && !FinanciaFavoris.noticeEcartee(NOTICE_STOCKAGE)
     && !appInstallee();
 
   if (!aLieu) { hote.hidden = true; hote.innerHTML = ''; return; }
@@ -272,31 +134,33 @@ function renderNoticeStockage() {
   hote.hidden = false;
 
   hote.querySelector('.mkt-notice-fermer').addEventListener('click', () => {
-    FinanciaProfil.ecarterNotice(NOTICE_STOCKAGE);
+    FinanciaFavoris.ecarterNotice(NOTICE_STOCKAGE);
     renderNoticeStockage();
   });
 }
 
-// Délégation sur le conteneur, qui survit aux rendus : renderGrid() remplace
-// tout son contenu à chaque changement de langue, des écouteurs posés sur les
-// boutons eux-mêmes seraient perdus à la première bascule.
-$('#mktGrid')?.addEventListener('click', e => {
-  const btn = e.target.closest('.mkt-fav');
-  if (!btn) return;
-  syncFavBtn(btn, FinanciaProfil.basculerFavori(btn.dataset.fav));
+FinanciaActifs.brancherFavoris($('#mktGrid'), () => {
   renderNoticeStockage();
+  renderLienFavoris();
 });
 
-// Garde les cœurs justes si le profil change ailleurs (autre onglet ouvert
-// sur la même page, ou page profil à venir).
-FinanciaProfil.surChangement(syncTousFavoris);
+// Garde les cœurs justes si la liste change ailleurs : autre onglet ouvert sur
+// cette page, ou favori retiré depuis la page « Mes favoris ».
+FinanciaFavoris.surChangement(() => {
+  FinanciaActifs.syncFavoris();
+  renderLienFavoris();
+});
+
+// Le raccourci ne dépend que du stockage local : il s'affiche sans attendre
+// que /api/marches ait répondu.
+renderLienFavoris();
 
 function fmtCap(value, currency) {
   // Les capitalisations se comptent en centaines de milliards : on abrège
   // plutôt que d'aligner douze chiffres illisibles.
   const unite = FinanciaI18N.t('marches.tops.milliards');
   try {
-    const n = new Intl.NumberFormat(currentLocale(), { maximumFractionDigits: 0 }).format(value / 1e9);
+    const n = new Intl.NumberFormat(FinanciaActifs.locale(), { maximumFractionDigits: 0 }).format(value / 1e9);
     return `${n} ${unite} ${currency === 'USD' ? '$' : currency}`;
   } catch {
     return `${Math.round(value / 1e9)} ${unite}`;
@@ -358,7 +222,7 @@ function renderResultats() {
   // Libellé du mois, construit en UTC pour ne pas reculer d'un jour selon le
   // fuseau du visiteur.
   const [an, mo] = courant.mois.split('-').map(Number);
-  const libelleMois = new Date(Date.UTC(an, mo - 1, 1)).toLocaleDateString(currentLocale(), {
+  const libelleMois = new Date(Date.UTC(an, mo - 1, 1)).toLocaleDateString(FinanciaActifs.locale(), {
     month: 'long', year: 'numeric', timeZone: 'UTC',
   });
   const label = $('#mktEarnMonth');
@@ -373,7 +237,7 @@ function renderResultats() {
 
   cont.innerHTML = courant.jours.map(j => {
     const [a, m, d] = j.date.split('-').map(Number);
-    const libelle = new Date(Date.UTC(a, m - 1, d)).toLocaleDateString(currentLocale(), {
+    const libelle = new Date(Date.UTC(a, m - 1, d)).toLocaleDateString(FinanciaActifs.locale(), {
       weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC',
     });
     const lignes = j.evenements.map(e => {
@@ -450,19 +314,6 @@ async function loadMarches() {
     }
   }
 }
-
-// Redimensionne les mini-graphiques avec la fenêtre (les cartes passent
-// de 3 → 2 → 1 colonnes selon la largeur).
-let resizeTimer = null;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    Object.entries(charts).forEach(([key, c]) => {
-      const container = $(`[data-chart="${key}"]`);
-      if (c?.chart && container?.clientWidth) c.chart.resize(container.clientWidth, 64);
-    });
-  }, 150);
-});
 
 loadMarches();
 loadResultats();

@@ -8,9 +8,9 @@
 window.I18N = {
 
 fr: {
-  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleContact: "Financia | Contact" },
-  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
-  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact" },
+  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleContact: "Financia | Contact" },
+  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue" },
+  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact" },
 
   hero: {
     badge: "🚀 Pour les 18–30 ans · 100% pédagogique",
@@ -599,6 +599,20 @@ fr: {
     ctaTiktok: "🎵 Suivre sur TikTok",
   },
 
+    favoris: {
+      hero: {
+        badge: "❤️ Mes favoris",
+        titleHtml: "Les actifs <em>que tu suis</em>",
+        lead: "Tous les actifs que tu as mis en favori, avec leur cours du jour, au même endroit.",
+      },
+      label: "Favoris",
+      title: "Ce que tu suis",
+      titleCompte: "Ce que tu suis ({n})",
+      lien: "Mes favoris ({n})",
+      videTitre: "Tu ne suis encore aucun actif",
+      videTexte: "Sur la page Marchés, clique sur le cœur d'un actif pour le retrouver ici.",
+      videCta: "Voir les marchés →",
+    },
   marches: {
     hero: {
       badge: "📊 Analyse de marché",
@@ -690,9 +704,9 @@ fr: {
 },
 
 en: {
-  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleContact: "Financia | Contact" },
-  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
-  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact" },
+  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleContact: "Financia | Contact" },
+  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language" },
+  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact" },
 
   hero: {
     badge: "🚀 For 18–30 year-olds · 100% educational",
@@ -1281,6 +1295,20 @@ en: {
     ctaTiktok: "🎵 Follow on TikTok",
   },
 
+    favoris: {
+      hero: {
+        badge: "❤️ My favourites",
+        titleHtml: "The assets <em>you follow</em>",
+        lead: "Every asset you have marked as a favourite, with today's price, in one place.",
+      },
+      label: "Favourites",
+      title: "What you follow",
+      titleCompte: "What you follow ({n})",
+      lien: "My favourites ({n})",
+      videTitre: "You are not following any asset yet",
+      videTexte: "On the Markets page, tap the heart on an asset to find it here.",
+      videCta: "See the markets →",
+    },
   marches: {
     hero: {
       badge: "📊 Market Analysis",
@@ -1372,9 +1400,9 @@ en: {
 },
 
 es: {
-  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleContact: "Financia | Contacto" },
-  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
-  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto" },
+  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleContact: "Financia | Contacto" },
+  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma" },
+  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto" },
 
   hero: {
     badge: "🚀 Para jóvenes de 18–30 años · 100% educativo",
@@ -1963,6 +1991,20 @@ es: {
     ctaTiktok: "🎵 Seguir en TikTok",
   },
 
+    favoris: {
+      hero: {
+        badge: "❤️ Mis favoritos",
+        titleHtml: "Los activos <em>que sigues</em>",
+        lead: "Todos los activos que has marcado como favoritos, con su cotización del día, en un solo lugar.",
+      },
+      label: "Favoritos",
+      title: "Lo que sigues",
+      titleCompte: "Lo que sigues ({n})",
+      lien: "Mis favoritos ({n})",
+      videTitre: "Aún no sigues ningún activo",
+      videTexte: "En la página Mercados, pulsa el corazón de un activo para encontrarlo aquí.",
+      videCta: "Ver los mercados →",
+    },
   marches: {
     hero: {
       badge: "📊 Análisis de mercado",
@@ -2054,9 +2096,9 @@ es: {
 },
 
 ru: {
-  meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleContact: "Financia | Контакты" },
-  nav: { apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык" },
-  mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты" },
+  meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleContact: "Financia | Контакты" },
+  nav: { apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык" },
+  mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты" },
 
   hero: {
     badge: "🚀 Для 18–30 лет · 100% образовательно",
@@ -2645,6 +2687,20 @@ ru: {
     ctaTiktok: "🎵 Подписаться в TikTok",
   },
 
+    favoris: {
+      hero: {
+        badge: "❤️ Избранное",
+        titleHtml: "Активы, <em>за которыми ты следишь</em>",
+        lead: "Все активы, добавленные в избранное, вместе с их курсом на сегодня, в одном месте.",
+      },
+      label: "Избранное",
+      title: "За чем ты следишь",
+      titleCompte: "За чем ты следишь ({n})",
+      lien: "Избранное ({n})",
+      videTitre: "Ты пока не следишь ни за одним активом",
+      videTexte: "На странице «Рынки» нажми на сердечко у актива, чтобы найти его здесь.",
+      videCta: "Смотреть рынки →",
+    },
   marches: {
     hero: {
       badge: "📊 Анализ рынка",
@@ -2736,9 +2792,9 @@ ru: {
 },
 
 de: {
-  meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleContact: "Financia | Kontakt" },
-  nav: { apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache" },
-  mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt" },
+  meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleContact: "Financia | Kontakt" },
+  nav: { apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache" },
+  mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt" },
 
   hero: {
     badge: "🚀 Für 18–30-Jährige · 100% pädagogisch",
@@ -3327,6 +3383,20 @@ de: {
     ctaTiktok: "🎵 Auf TikTok folgen",
   },
 
+    favoris: {
+      hero: {
+        badge: "❤️ Meine Favoriten",
+        titleHtml: "Die Werte, <em>die du verfolgst</em>",
+        lead: "Alle Werte, die du als Favorit markiert hast, mit ihrem Tageskurs, an einem Ort.",
+      },
+      label: "Favoriten",
+      title: "Was du verfolgst",
+      titleCompte: "Was du verfolgst ({n})",
+      lien: "Meine Favoriten ({n})",
+      videTitre: "Du verfolgst noch keinen Wert",
+      videTexte: "Tippe auf der Märkte-Seite auf das Herz eines Wertes, um ihn hier wiederzufinden.",
+      videCta: "Zu den Märkten →",
+    },
   marches: {
     hero: {
       badge: "📊 Marktanalyse",

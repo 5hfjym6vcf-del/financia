@@ -1,6 +1,6 @@
 // ============================================================
-// FINANCIA — profil-store.js
-// Préférences personnelles du visiteur (favoris, zones suivies).
+// FINANCIA — favoris-store.js
+// Favoris et préférences du visiteur, conservés sur son appareil.
 //
 // Tout est stocké sur l'appareil, dans localStorage. Aucun compte, aucun
 // email, aucune base : le site ne collecte volontairement aucune donnée
@@ -10,12 +10,18 @@
 // toucher au reste du code, puisque personne n'écrit dans le stockage en
 // dehors de ce module.
 //
-// Exposé en global (window.FinanciaProfil), comme FinanciaI18N : les pages
+// Exposé en global (window.FinanciaFavoris), comme FinanciaI18N : les pages
 // chargent des scripts classiques, sans bundler ni modules ES.
 // ============================================================
 
 (function () {
-  const CLE = 'financia.profil';
+  const CLE = 'financia.favoris';
+
+  // Nom porté par la clé pendant la demi-journée qui a suivi la mise en ligne,
+  // avant que la section soit renommée « Mes favoris ». Reprise une fois puis
+  // effacée, pour ne perdre les favoris de personne. Supprimable sans risque
+  // passé l'automne 2026.
+  const CLE_HERITEE = 'financia.profil';
 
   // Versionné dès le départ : le jour où la forme stockée change, on saura
   // distinguer un objet ancien d'un objet courant au lieu de deviner.
@@ -37,8 +43,13 @@
   function lire() {
     if (secours) return secours;
     try {
-      const brut = localStorage.getItem(CLE);
-      if (!brut) return { ...VIDE };
+      let brut = localStorage.getItem(CLE);
+      if (!brut) {
+        brut = localStorage.getItem(CLE_HERITEE);
+        if (!brut) return { ...VIDE };
+        localStorage.setItem(CLE, brut);
+        localStorage.removeItem(CLE_HERITEE);
+      }
       const objet = JSON.parse(brut);
       // Un objet d'une version inconnue (plus récente, ou corrompu) est
       // ignoré plutôt que fusionné de force : mieux vaut repartir de zéro
@@ -119,7 +130,7 @@
     /** Efface tout. Le visiteur reste maître de ses données, y compris pour les supprimer. */
     reinitialiser() {
       secours = null;
-      try { localStorage.removeItem(CLE); } catch { /* rien à faire */ }
+      try { localStorage.removeItem(CLE); localStorage.removeItem(CLE_HERITEE); } catch { /* rien à faire */ }
       abonnes.forEach(fn => { try { fn({ ...VIDE }); } catch { /* ignoré */ } });
     },
 
@@ -142,5 +153,5 @@
     abonnes.forEach(fn => { try { fn(p); } catch { /* ignoré */ } });
   });
 
-  window.FinanciaProfil = API;
+  window.FinanciaFavoris = API;
 })();
