@@ -92,6 +92,31 @@
   border-color: rgba(124,58,237,0.55);
   background: rgba(124,58,237,0.06);
 }
+/* Illustration en tête de carte. Les marges négatives annulent le padding de
+   .hist-tl-card pour que le visuel touche les bords ; le rayon vaut celui de
+   la carte moins son trait d'1 px, sinon un cheveu de fond dépasse aux angles. */
+.hist-tl-visuel {
+  margin: -28px -30px 22px;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 17px 17px 0 0;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.22);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 26px;
+  /* Dégradé et quadrillage portés par le conteneur, donc étirés à la largeur
+     réelle de la carte. Le motif SVG, lui, garde sa taille de dessin. */
+  background-color: rgba(124, 58, 237, 0.07);
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.13), rgba(124, 58, 237, 0.02)),
+    repeating-linear-gradient(to right, rgba(124, 58, 237, 0.13) 0 1px, transparent 1px 54px),
+    repeating-linear-gradient(to bottom, rgba(124, 58, 237, 0.13) 0 1px, transparent 1px 22px);
+}
+/* max-width plutôt qu'une largeur figée : sur une carte plus étroite que le
+   dessin, le SVG se réduit au lieu de déborder, en gardant ses proportions. */
+.hist-tl-visuel svg { display: block; width: 320px; max-width: 100%; height: 110px; }
+
 .hist-tl-year {
   font-family: var(--font-display);
   font-size: 1.7rem;
@@ -332,6 +357,11 @@
   .hist-tl-item { padding-left: 40px; gap: 0; }
   .hist-tl-dot::before { left: 12px; }
   .hist-tl-card { padding: 22px 20px; }
+  /* Le padding de la carte change ici : les marges négatives du visuel doivent
+     le suivre, sinon il ne touche plus les bords. */
+  .hist-tl-visuel { margin: -22px -20px 18px; padding-right: 16px; height: 96px; }
+  .hist-tl-visuel svg { height: 96px; }
+
   .hist-tl-year { font-size: 1.4rem; }
 
   .hist-detail { padding: 26px 18px; }

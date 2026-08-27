@@ -273,3 +273,26 @@ const LEGENDS = {
     if (activeKey && !detail.hidden) renderLegend(activeKey);
   });
 })();
+
+
+// ── Illustrations de la chronologie ──
+// L'année est lue dans la carte plutôt que codée dans le HTML : les douze
+// blocs restent inchangés, et ajouter un événement ne demande qu'un visuel
+// de plus dans histoire-visuels.js.
+(function () {
+  const visuels = window.FinanciaHistoireVisuels;
+  if (!visuels) return;
+
+  document.querySelectorAll('.hist-tl-card').forEach(carte => {
+    // Le libellé n'est pas toujours une année seule : le dernier événement
+    // s'affiche « 2022–2026 ». On retient donc la première année écrite.
+    const libelle = carte.querySelector('.hist-tl-year')?.textContent || '';
+    const annee = libelle.match(/\d{4}/)?.[0];
+    const svg = annee && visuels[annee];
+    if (!svg) return;
+    const hote = document.createElement('div');
+    hote.className = 'hist-tl-visuel';
+    hote.innerHTML = svg;
+    carte.prepend(hote);
+  });
+})();
