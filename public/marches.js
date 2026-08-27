@@ -77,6 +77,8 @@ function regionHtml(region, assets) {
 // un mini-graphique construit dans un conteneur masqué naît avec une largeur
 // nulle et le reste, puisqu'il ne serait plus redimensionné qu'au prochain
 // changement de fenêtre.
+const NOTICE_ZONES = 'zones-astuce';
+
 function zonesRetenues() {
   const choisies = FinanciaFavoris.zones();
   return choisies.length ? REGIONS.filter(r => choisies.includes(r.key)) : REGIONS;
@@ -100,8 +102,18 @@ function renderZones() {
     ? ` · ${zonesRetenues().map(r => FinanciaI18N.t('marches.regions.' + r.key)).join(', ')}`
     : '';
 
+  // Une phrase pour dire à quoi servent les puces, retirée définitivement dès
+  // le premier clic : passé ce geste, le fonctionnement est acquis et la
+  // répéter à chaque visite encombrerait la page pour rien.
+  const astuce = FinanciaFavoris.noticeEcartee(NOTICE_ZONES)
+    ? ''
+    : `<p class="mkt-zones-astuce">${FinanciaI18N.t('marches.zones.astuce')}</p>`;
+
   hote.innerHTML = `
-    <span class="mkt-zones-label">${FinanciaI18N.t('marches.zones.label')}<span class="mkt-zones-resume">${resume}</span></span>
+    <div class="mkt-zones-tete">
+      <span class="mkt-zones-label">${FinanciaI18N.t('marches.zones.label')}<span class="mkt-zones-resume">${resume}</span></span>
+      ${astuce}
+    </div>
     <div class="mkt-zones-btns">
       ${puce('', FinanciaI18N.t('marches.zones.tout'), tout, '')}
       ${REGIONS.map(r => puce(r.key, FinanciaI18N.t('marches.regions.' + r.key), choisies.includes(r.key), r.flag)).join('')}
@@ -111,6 +123,9 @@ function renderZones() {
 $('#mktZones')?.addEventListener('click', e => {
   const btn = e.target.closest('.mkt-zone-btn');
   if (!btn) return;
+  // « Tout » compte autant qu'une région : dans les deux cas le visiteur vient
+  // de manipuler le filtre, donc l'astuce a fait son office.
+  FinanciaFavoris.ecarterNotice(NOTICE_ZONES);
   if (btn.dataset.zone === '') FinanciaFavoris.reinitialiserZones();
   else FinanciaFavoris.basculerZone(btn.dataset.zone);
   renderZones();
@@ -207,6 +222,9 @@ FinanciaActifs.brancherFavoris($('#mktGrid'), () => {
 FinanciaFavoris.surChangement(() => {
   FinanciaActifs.syncFavoris();
   renderLienFavoris();
+  // Les zones aussi peuvent changer dans un autre onglet : sans ce rendu, les
+  // puces resteraient sur un état que le stockage a déjà quitté.
+  renderZones();
 });
 
 // Ni le raccourci ni les puces ne dépendent des données de marché : ils

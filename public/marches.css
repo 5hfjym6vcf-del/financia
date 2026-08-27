@@ -140,6 +140,12 @@ body.marches-page {
   color: rgba(255, 255, 255, 0.42);
 }
 .mkt-zones-resume { color: #c4b5fd; }
+.mkt-zones-tete { display: flex; flex-direction: column; gap: 5px; }
+.mkt-zones-astuce {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.5);
+}
 .mkt-zones-btns { display: flex; flex-wrap: wrap; gap: 9px; min-width: 0; }
 .mkt-zone-btn {
   display: inline-flex;

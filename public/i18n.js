@@ -630,6 +630,7 @@ fr: {
     zones: {
       label: "Zones affichées",
       tout: "Tout",
+      astuce: "Clique sur une région pour n'afficher que ses marchés.",
       aria: "Zones affichées",
       vide: "Aucun actif disponible pour les zones choisies.",
     },
@@ -1334,6 +1335,7 @@ en: {
     zones: {
       label: "Regions shown",
       tout: "All",
+      astuce: "Tap a region to show only its markets.",
       aria: "Regions shown",
       vide: "No asset available for the selected regions.",
     },
@@ -2038,6 +2040,7 @@ es: {
     zones: {
       label: "Zonas mostradas",
       tout: "Todo",
+      astuce: "Pulsa una región para mostrar solo sus mercados.",
       aria: "Zonas mostradas",
       vide: "Ningún activo disponible para las zonas elegidas.",
     },
@@ -2742,6 +2745,7 @@ ru: {
     zones: {
       label: "Показанные регионы",
       tout: "Все",
+      astuce: "Нажми на регион, чтобы показать только его рынки.",
       aria: "Показанные регионы",
       vide: "Нет доступных активов для выбранных регионов.",
     },
@@ -3446,6 +3450,7 @@ de: {
     zones: {
       label: "Angezeigte Regionen",
       tout: "Alle",
+      astuce: "Tippe auf eine Region, um nur ihre Märkte zu zeigen.",
       aria: "Angezeigte Regionen",
       vide: "Kein Wert für die gewählten Regionen verfügbar.",
     },
