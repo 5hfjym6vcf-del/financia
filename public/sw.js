@@ -12,7 +12,7 @@
 
 // Bumper cette version à chaque déploiement qui change un asset statique :
 // l'activation supprime alors tous les caches d'une version antérieure.
-const CACHE_VERSION = 'v21';
+const CACHE_VERSION = 'v22';
 const STATIC_CACHE = `financia-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `financia-runtime-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';
@@ -35,6 +35,7 @@ const PRECACHE_URLS = [
   '/favoris-store.js',
   '/actifs-ui.js',
   '/ui-erreur.js',
+  '/analytics.js',
   '/actus-ui.js',
   '/favoris.js',
   '/script.js',

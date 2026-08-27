@@ -620,7 +620,12 @@ FinanciaI18N.onLangChange(() => {
 });
 
 window.addEventListener('hashchange', () => {
-  if (window.location.hash === '#quiz') resetQuiz();
+  if (window.location.hash !== '#quiz') return;
+  // Ne réinitialiser qu'un quiz déjà terminé : revenir sur « Quiz » après avoir
+  // vu son résultat relance bien un test neuf, mais le bouton retour du
+  // navigateur ramène aussi ici, et il effaçait alors les réponses en cours.
+  const resultat = $('#quiz-result');
+  if (resultat && !resultat.classList.contains('hidden')) resetQuiz();
 });
 
 // ── Test de connaissances — mode alternatif au quiz de profil ci-dessus.
