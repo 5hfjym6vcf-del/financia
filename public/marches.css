@@ -222,6 +222,17 @@ body.marches-page {
 }
 .fav-vide-cta { margin-top: 10px; }
 
+/* Bloc d'actualités de la page des favoris. Les cartes elles-mêmes viennent de
+   style.css (.actus-grid / .actu-card), partagées avec la page d'accueil. */
+.fav-actus { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124, 58, 237, 0.2); }
+.fav-actus-sub {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  max-width: 660px;
+  margin: 6px 0 30px;
+}
+
 /* Raccourci vers les favoris, dans l'en-tête de section de Marchés. Masqué
    tant qu'aucun actif n'est suivi : la page n'aurait rien à montrer. */
 .mkt-fav-lien {

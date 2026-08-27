@@ -160,6 +160,15 @@
     </div>
 
     <p id="favErreur" class="mkt-error" hidden data-i18n="marches.errorMsg">Impossible de charger les données de marché pour le moment.</p>
+
+    <!-- L'actu liée aux favoris. Masquée tant qu'aucun actif n'est suivi, et
+         en cas de source indisponible : c'est un complément, pas le cœur de
+         la page. -->
+    <div id="favActus" class="fav-actus" hidden>
+      <h2 class="mkt-h2" data-i18n="favoris.actusTitre">L'actu de ce que tu suis</h2>
+      <p class="fav-actus-sub" data-i18n="favoris.actusSub">Les articles du moment sur les sujets qui correspondent à tes favoris.</p>
+      <div id="favActusGrid" class="actus-grid"></div>
+    </div>
   </div>
 </section>
 
@@ -203,6 +212,7 @@
 </footer>
 
 <script src="https://unpkg.com/lightweight-charts@5.2.0/dist/lightweight-charts.standalone.production.js"></script>
+<script src="./actus-ui.js"></script>
 <script src="./favoris.js"></script>
 <script src="./pwa.js" defer></script>
 </body>

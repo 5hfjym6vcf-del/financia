@@ -823,50 +823,28 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   obs.observe(statsEl);
 })();
 
-let lastActusFeed = null;   // flux complet renvoyé par /api/actus (jusqu'à 20 articles)
-let lastActusItems = null;  // sous-ensemble actuellement affiché (thème choisi ou "tout")
+// ── Actualités ──
+// Chargement, sélection par thème, traduction et rendu viennent de actus-ui.js,
+// partagé avec la page « Mes favoris ». Ne reste ici que le sélecteur de thème
+// propre à cette page.
+let lastActusItems = null;
 let lastActusTitles = null;
-let lastActusLang = null;
 let actusFailed = false;
 let currentActusTheme = 'all';
-
-// Un seul appel API couvre tous les thèmes : chaque article Alpha Vantage porte
-// un tableau "topics" avec un score de pertinence par sujet. On filtre côté
-// client plutôt que de multiplier les requêtes (le quota gratuit est de 25/jour).
-const ACTUS_THEME_TOPICS = {
-  cryptos: 'blockchain',
-  bourse: 'financial_markets',
-  matieres: 'energy_transportation',
-};
-const ACTUS_RELEVANCE_MIN = 0.1;
-
-function pickActusItems(theme) {
-  if (!lastActusFeed) return [];
-  if (theme === 'all') return lastActusFeed.slice(0, 6);
-  const topic = ACTUS_THEME_TOPICS[theme];
-  return lastActusFeed
-    .map(item => {
-      const match = item.topics?.find(t => t.topic === topic);
-      return match ? { item, relevance: parseFloat(match.relevance_score) || 0 } : null;
-    })
-    .filter(entry => entry && entry.relevance >= ACTUS_RELEVANCE_MIN)
-    .sort((a, b) => b.relevance - a.relevance)
-    .slice(0, 6)
-    .map(entry => entry.item);
-}
 
 async function applyActusTheme(theme) {
   currentActusTheme = theme;
   $$('.actus-picker-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
 
   const grid = $('#actus-grid');
-  lastActusItems = pickActusItems(theme);
+  const topic = FinanciaActus.TOPICS[theme];
+  lastActusItems = FinanciaActus.selection(topic ? [topic] : []);
   if (!lastActusItems.length) {
     if (grid) grid.innerHTML = `<p class="actus-empty">${FinanciaI18N.t('actus.picker.empty')}</p>`;
     return;
   }
-  await translateActusTitles();
-  renderActus();
+  lastActusTitles = await FinanciaActus.traduire(lastActusItems);
+  FinanciaActus.rendre(grid, lastActusItems, lastActusTitles);
 }
 
 $$('.actus-picker-btn').forEach(btn => {
@@ -877,12 +855,7 @@ async function loadActus() {
   const grid = $('#actus-grid');
   if (!grid) return;
   try {
-    const res = await fetch('/api/actus');
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    if (data.Information || data.Note) throw new Error();
-    if (!data.feed?.length) throw new Error();
-    lastActusFeed = data.feed;
+    await FinanciaActus.charger();
     await applyActusTheme(currentActusTheme);
   } catch {
     actusFailed = true;
@@ -890,58 +863,14 @@ async function loadActus() {
   }
 }
 
-// Traduit les titres (issus d'Alpha Vantage, en anglais) via Groq — best-effort,
-// retombe sur les titres originaux en cas d'erreur.
-async function translateActusTitles() {
-  if (!lastActusItems) return;
-  const lang = FinanciaI18N.getLang();
-  const titles = lastActusItems.map(item => item.title || '');
-  lastActusTitles = titles;
-  lastActusLang = lang;
-  try {
-    const tr = await fetch('/api/translate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ titles, lang }),
-    });
-    if (tr.ok) {
-      const trData = await tr.json();
-      if (Array.isArray(trData.titles) && trData.titles.length === titles.length) {
-        lastActusTitles = trData.titles;
-      }
-    }
-  } catch { /* keep originals */ }
-}
-
-function renderActus() {
-  const grid = $('#actus-grid');
-  if (!grid || !lastActusItems) return;
-  grid.innerHTML = lastActusItems.map((item, i) => {
-    const raw = item.time_published || '';
-    let date = '';
-    if (raw.length >= 8) {
-      const d = new Date(`${raw.slice(0,4)}-${raw.slice(4,6)}-${raw.slice(6,8)}T${raw.slice(9,11)}:${raw.slice(11,13)}:00`);
-      if (!isNaN(d)) date = d.toLocaleDateString(currentLocale(), { day: 'numeric', month: 'long', year: 'numeric' });
-    }
-    return `<a class="actu-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
-      <div class="actu-meta">
-        <span class="actu-source">${escapeHtml(item.source || '')}</span>
-        <span class="actu-date">${date}</span>
-      </div>
-      <p class="actu-title">${escapeHtml(lastActusTitles[i] || item.title || '')}</p>
-      <span class="actu-link">${FinanciaI18N.t('actus.readArticle')}</span>
-    </a>`;
-  }).join('');
-}
-
 loadActus();
 FinanciaI18N.onLangChange(async () => {
-  if (lastActusFeed) {
-    await applyActusTheme(currentActusTheme);
-  } else if (actusFailed) {
+  if (actusFailed) {
     const grid = $('#actus-grid');
     if (grid) grid.innerHTML = `<p class="actus-error">${FinanciaI18N.t('actus.errorMsg')}</p>`;
+    return;
   }
+  await applyActusTheme(currentActusTheme);
 });
 
 // ── Newsletter ──

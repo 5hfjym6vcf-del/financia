@@ -612,6 +612,8 @@ fr: {
       videTitre: "Tu ne suis encore aucun actif",
       videTexte: "Sur la page Marchés, clique sur le cœur d'un actif pour le retrouver ici.",
       videCta: "Voir les marchés →",
+      actusTitre: "L'actu de ce que tu suis",
+      actusSub: "Les articles du moment sur les sujets qui correspondent à tes favoris.",
     },
   marches: {
     hero: {
@@ -1314,6 +1316,8 @@ en: {
       videTitre: "You are not following any asset yet",
       videTexte: "On the Markets page, tap the heart on an asset to find it here.",
       videCta: "See the markets →",
+      actusTitre: "News on what you follow",
+      actusSub: "Current articles on the topics matching your favourites.",
     },
   marches: {
     hero: {
@@ -2016,6 +2020,8 @@ es: {
       videTitre: "Aún no sigues ningún activo",
       videTexte: "En la página Mercados, pulsa el corazón de un activo para encontrarlo aquí.",
       videCta: "Ver los mercados →",
+      actusTitre: "La actualidad de lo que sigues",
+      actusSub: "Los artículos del momento sobre los temas que corresponden a tus favoritos.",
     },
   marches: {
     hero: {
@@ -2718,6 +2724,8 @@ ru: {
       videTitre: "Ты пока не следишь ни за одним активом",
       videTexte: "На странице «Рынки» нажми на сердечко у актива, чтобы найти его здесь.",
       videCta: "Смотреть рынки →",
+      actusTitre: "Новости по тому, за чем ты следишь",
+      actusSub: "Свежие статьи по темам, которые соответствуют твоему избранному.",
     },
   marches: {
     hero: {
@@ -3420,6 +3428,8 @@ de: {
       videTitre: "Du verfolgst noch keinen Wert",
       videTexte: "Tippe auf der Märkte-Seite auf das Herz eines Wertes, um ihn hier wiederzufinden.",
       videCta: "Zu den Märkten →",
+      actusTitre: "Neues zu dem, was du verfolgst",
+      actusSub: "Aktuelle Artikel zu den Themen, die zu deinen Favoriten passen.",
     },
   marches: {
     hero: {
