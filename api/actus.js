@@ -40,27 +40,31 @@ const REQUETE = [
 
 // Les thèmes du sélecteur « L'actu qu'il te faut ». NewsAPI ne classe pas les
 // articles, contrairement à Alpha Vantage : on retrouve le sujet par mots-clés,
-// dans le titre et le chapô. Les termes anglais sont inclus, la presse
-// économique francophone les employant couramment.
+// dans le titre et le chapô.
+//
+// Les termes sont séparés en forts et faibles. Un terme fort ne s'emploie
+// guère hors de la finance ; un terme faible est ambigu en français courant —
+// « bourse » désigne aussi une bourse d'études ou une bourse aux minéraux, et
+// c'est exactement ce qui remontait. Il faut donc un terme fort, ou deux
+// faibles qui se confortent l'un l'autre.
 const THEMES = {
-  blockchain: [
-    'crypto', 'bitcoin', 'btc', 'ethereum', 'eth', 'blockchain', 'stablecoin',
-    'token', 'nft', 'binance', 'coinbase', 'monnaie numérique',
-  ],
-  energy_transportation: [
-    'pétrole', 'petrole', 'brent', 'baril', 'opep', 'gaz', 'énergie', 'energie',
-    'électricité', 'or', 'cuivre', 'matières premières', 'lithium', 'uranium',
-  ],
-  financial_markets: [
-    'bourse', 'action', 'cac 40', 'nasdaq', 's&p', 'dow jones', 'indice',
-    'etf', 'marché', 'cotation', 'dividende', 'obligation', 'wall street',
-    'introduction en bourse', 'capitalisation',
-    // Macroéconomie : ces termes figurent dans la requête, ils doivent donc
-    // aussi être reconnus ici, sinon un article sur l'inflation serait ramené
-    // par la source puis écarté au classement.
-    'inflation', 'bce', 'fed', 'taux directeurs', "taux d'intérêt",
-    'récession', 'croissance', 'pib', 'banque centrale',
-  ],
+  blockchain: {
+    forts: ['bitcoin', 'btc', 'ethereum', 'crypto', 'cryptomonnaie', 'blockchain',
+            'stablecoin', 'binance', 'coinbase', 'nft'],
+    faibles: ['token', 'monnaie numérique', 'minage'],
+  },
+  energy_transportation: {
+    forts: ['pétrole', 'petrole', 'brent', 'baril', 'opep', 'matières premières',
+            'lithium', 'uranium', 'cuivre'],
+    faibles: ['gaz', 'énergie', 'energie', 'électricité', 'or', 'carburant', 'diesel'],
+  },
+  financial_markets: {
+    forts: ['cac 40', 'nasdaq', 's&p', 'dow jones', 'wall street', 'etf', 'bce',
+            'fed', 'taux directeurs', 'inflation', 'dividende', 'banque centrale',
+            'introduction en bourse', 'investisseur', 'pib'],
+    faibles: ['bourse', 'action', 'marché', 'indice', 'cotation', 'obligation',
+              'capitalisation', 'croissance', 'récession', "taux d'intérêt", 'titre'],
+  },
 };
 
 export function horodatage(iso) {
@@ -91,13 +95,16 @@ export function sujets(article) {
   const texte = `${article.title || ''} ${article.description || ''}`.toLowerCase();
   const trouves = [];
 
-  for (const [sujet, motsCles] of Object.entries(THEMES)) {
-    const touches = motsCles.filter(m => contient(texte, m)).length;
-    if (!touches) continue;
-    // Le score sert à classer les articles au sein d'un thème : plus un article
-    // emploie le vocabulaire du sujet, plus il remonte. Plafonné à 1, et au
-    // moins 0,4 pour rester au-dessus du seuil de pertinence côté affichage.
-    trouves.push({ topic: sujet, relevance_score: String(Math.min(1, 0.4 + touches * 0.2)) });
+  for (const [sujet, { forts, faibles }] of Object.entries(THEMES)) {
+    const nbForts = forts.filter(m => contient(texte, m)).length;
+    const nbFaibles = faibles.filter(m => contient(texte, m)).length;
+    // Un terme fort suffit ; sinon il en faut deux faibles. Un seul terme
+    // ambigu ne fait pas d'un article une actualité financière.
+    if (!nbForts && nbFaibles < 2) continue;
+    // Le score classe les articles au sein d'un thème : un terme fort pèse plus
+    // qu'un faible. Plafonné à 1, plancher au-dessus du seuil d'affichage.
+    const score = Math.min(1, 0.4 + nbForts * 0.25 + nbFaibles * 0.1);
+    trouves.push({ topic: sujet, relevance_score: String(score.toFixed(2)) });
   }
 
   // Renvoyer un tableau vide plutôt que de reverser l'article dans les marchés
@@ -118,6 +125,9 @@ async function fetchActus(key) {
   // la rentrée scolaire citant « la Fed » au détour d'un paragraphe remontait.
   url.searchParams.set('searchIn', 'title,description');
   url.searchParams.set('pageSize', '50');
+  // NewsAPI indexe des dépôts de paquets comme s'il s'agissait de presse : les
+  // pages PyPI de « binance » ou « bitget » remontaient en tête d'actualité.
+  url.searchParams.set('excludeDomains', 'pypi.org,npmjs.com,github.com,gitlab.com');
   // La fenêtre est demandée à la source plutôt que filtrée après coup : inutile
   // de faire transiter des articles qu'on jetterait.
   url.searchParams.set('from', depuis.toISOString().slice(0, 19));
@@ -134,6 +144,9 @@ async function fetchActus(key) {
 
   const feed = (data.articles || [])
     .filter(a => a.title && a.url && a.publishedAt)
+    // Filet pour les autres dépôts de paquets : « binance 0.3.137 » n'est pas
+    // un titre de presse.
+    .filter(a => !/\s\d+\.\d+\.\d+\s*$/.test(a.title))
     // Le même sujet ressort souvent chez plusieurs reprises de dépêche.
     .filter(a => { const c = a.title.toLowerCase(); if (vus.has(c)) return false; vus.add(c); return true; })
     // Deuxième garde après le paramètre from : une source qui l'ignorerait ne
