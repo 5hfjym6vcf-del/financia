@@ -42,6 +42,55 @@ async function checkGroq() {
   return { model: GROQ_MODEL, modelesDisponibles: ids.length };
 }
 
+// ── Contrôle profond de la traduction ──
+// Vérifier que le modèle figure dans la liste Groq ne suffit pas : le 27 août,
+// le modèle était bien présent et la traduction renvoyait pourtant les titres
+// anglais tels quels, son budget de tokens étant englouti par le raisonnement.
+// Le seul test qui l'aurait vu est celui-ci : traduire et regarder le résultat.
+//
+// Il consomme une génération, donc son résultat est gardé une heure. Un
+// superviseur qui sonde toutes les 5 minutes ne déclenche ainsi qu'une
+// vingtaine d'appels par jour, sur un quota de mille.
+const DUREE_CACHE_PROFOND_MS = 60 * 60 * 1000;
+let cacheTraduction = null;
+
+async function checkTraduction(origin) {
+  const now = Date.now();
+  if (cacheTraduction && now - cacheTraduction.a < DUREE_CACHE_PROFOND_MS) {
+    if (cacheTraduction.erreur) throw new Error(cacheTraduction.erreur + ' (en cache)');
+    return { ...cacheTraduction.valeur, enCache: true };
+  }
+
+  const memoriser = (erreur, valeur) => { cacheTraduction = { a: now, erreur, valeur }; };
+
+  try {
+    const titres = ['Stocks rise as inflation cools', 'Oil prices fall after OPEC meeting'];
+    const r = await fetch(`${origin}/api/translate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'User-Agent': 'financia-health' },
+      body: JSON.stringify({ titles: titres, lang: 'fr' }),
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const data = await r.json();
+
+    if (!Array.isArray(data?.titles) || data.titles.length !== titres.length) {
+      throw new Error('réponse de forme inattendue');
+    }
+    // Le repli renvoie les titres d'origine à l'identique : c'est exactement
+    // la signature de la panne, et elle est silencieuse côté HTTP.
+    const inchanges = data.titles.filter((t, i) => t === titres[i]).length;
+    if (inchanges) throw new Error(`${inchanges} titre(s) non traduit(s) : repli silencieux`);
+    if (data.degrade) throw new Error('le service signale une traduction dégradée');
+
+    const valeur = { exemple: data.titles[0].slice(0, 40) };
+    memoriser(null, valeur);
+    return valeur;
+  } catch (e) {
+    memoriser(e.message, null);
+    throw e;
+  }
+}
+
 // Les endpoints de données sont interrogés par leur URL publique : la réponse
 // vient du cache CDN, donc le contrôle ne consomme pas les quotas des sources
 // externes (Alpha Vantage n'autorise que 25 requêtes par jour).
@@ -68,10 +117,28 @@ export default async function handler(req, res) {
       return { actifs: n, stale: !!d.stale };
     }),
 
+    // Un flux non vide ne suffit pas : le 27 août, la source renvoyait douze
+    // articles dont le plus récent datait de quatre mois, et ce contrôle les
+    // acceptait. On vérifie donc aussi leur âge.
     actus: () => checkEndpoint(origin, '/api/actus', d => {
       if (!Array.isArray(d?.feed) || !d.feed.length) throw new Error('flux vide');
-      return { articles: d.feed.length, stale: !!d.stale };
+
+      const ages = d.feed
+        .map(a => a.time_published)
+        .filter(t => typeof t === 'string' && t.length >= 13)
+        .map(t => Date.UTC(+t.slice(0, 4), +t.slice(4, 6) - 1, +t.slice(6, 8), +t.slice(9, 11), +t.slice(11, 13)))
+        .filter(ms => !Number.isNaN(ms));
+      if (!ages.length) throw new Error('aucune date exploitable');
+
+      const heures = (Date.now() - Math.max(...ages)) / 3600000;
+      // Une marge au-delà de la fenêtre annoncée par l'API : le cache peut
+      // vieillir de trente minutes sans que ce soit une panne.
+      if (heures > 96) throw new Error(`article le plus récent vieux de ${Math.round(heures)} h`);
+
+      return { articles: d.feed.length, plusRecentHeures: Math.round(heures), stale: !!d.stale };
     }),
+
+    traduction: () => checkTraduction(origin),
 
     avis: () => checkEndpoint(origin, '/api/avis', d => {
       // Une liste vide est un état légitime (aucun avis modéré) : seule
