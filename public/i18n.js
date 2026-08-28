@@ -491,6 +491,34 @@ fr: {
   ressources: {
     title: "Ressources utiles 🔗",
     sub: "Sélectionnées par Financia pour aller plus loin",
+    media: {
+      titre: "Podcasts et livres 🎧",
+      sous: "Pour approfondir hors du site, à ton rythme",
+      podcast: "Podcast",
+      livre: "Livre",
+      ecouter: "Écouter",
+      savoir: "En savoir plus",
+      martingale: {
+        cat: "Bases de l'investissement",
+        desc: "Un invité par épisode raconte une façon d'investir (Bourse, immobilier, private equity) et la manière dont il s'y est pris.",
+      },
+      eco: {
+        cat: "Actualité économique",
+        desc: "Une émission documentaire qui replace l'actualité économique dans son histoire et ses grandes théories.",
+      },
+      gdiy: {
+        cat: "Entrepreneuriat",
+        desc: "Des entretiens longs avec des fondateurs et fondatrices, sur la construction d'une activité et son financement.",
+      },
+      epargnant: {
+        cat: "Bases de l'investissement",
+        desc: "Une introduction courte à la gestion passive et aux ETF, écrite pour un lecteur qui part de zéro.",
+      },
+      housel: {
+        cat: "Épargne et comportement",
+        desc: "Vingt courts chapitres sur la façon dont les émotions, plus que les calculs, décident de la plupart des choix d'argent.",
+      },
+    },
     disclaimer: "Ces liens sont fournis à titre informatif. Financia n'a aucun partenariat ni lien commercial avec ces entités et ne touche aucune rémunération.",
   },
 
@@ -1215,6 +1243,34 @@ en: {
   ressources: {
     title: "Useful resources 🔗",
     sub: "Selected by Financia to help you go further",
+    media: {
+      titre: "Podcasts and books 🎧",
+      sous: "To go further beyond the site, at your own pace",
+      podcast: "Podcast",
+      livre: "Book",
+      ecouter: "Listen",
+      savoir: "Learn more",
+      martingale: {
+        cat: "Investing basics",
+        desc: "Each episode, a guest walks through one way of investing (stocks, property, private equity) and how they went about it. In French.",
+      },
+      eco: {
+        cat: "Economic news",
+        desc: "A documentary series placing economic news back into its history and its major theories. In French.",
+      },
+      gdiy: {
+        cat: "Entrepreneurship",
+        desc: "Long-form interviews with founders about building a business and funding it. In French.",
+      },
+      epargnant: {
+        cat: "Investing basics",
+        desc: "A short introduction to passive investing and ETFs, written for a reader starting from zero. In French.",
+      },
+      housel: {
+        cat: "Saving and behaviour",
+        desc: "Twenty short chapters on how emotions, rather than calculations, drive most money decisions.",
+      },
+    },
     disclaimer: "These links are provided for information only. Financia has no partnership or commercial ties with these entities and receives no compensation.",
   },
 
@@ -1939,6 +1995,34 @@ es: {
   ressources: {
     title: "Recursos útiles 🔗",
     sub: "Seleccionados por Financia para ir más allá",
+    media: {
+      titre: "Pódcast y libros 🎧",
+      sous: "Para profundizar fuera del sitio, a tu ritmo",
+      podcast: "Pódcast",
+      livre: "Libro",
+      ecouter: "Escuchar",
+      savoir: "Saber más",
+      martingale: {
+        cat: "Bases de la inversión",
+        desc: "Cada episodio, un invitado explica una forma de invertir (bolsa, inmobiliario, private equity) y cómo lo hizo. En francés.",
+      },
+      eco: {
+        cat: "Actualidad económica",
+        desc: "Un programa documental que sitúa la actualidad económica en su historia y sus grandes teorías. En francés.",
+      },
+      gdiy: {
+        cat: "Emprendimiento",
+        desc: "Entrevistas largas con fundadores sobre cómo construir una actividad y financiarla. En francés.",
+      },
+      epargnant: {
+        cat: "Bases de la inversión",
+        desc: "Una introducción breve a la gestión pasiva y a los ETF, escrita para quien parte de cero. En francés.",
+      },
+      housel: {
+        cat: "Ahorro y comportamiento",
+        desc: "Veinte capítulos breves sobre cómo las emociones, más que los cálculos, deciden la mayoría de las elecciones de dinero.",
+      },
+    },
     disclaimer: "Estos enlaces se facilitan a título informativo. Financia no tiene ninguna asociación ni vínculo comercial con estas entidades y no recibe ninguna remuneración.",
   },
 
@@ -2663,6 +2747,34 @@ ru: {
   ressources: {
     title: "Полезные ресурсы 🔗",
     sub: "Отобраны Financia, чтобы узнать больше",
+    media: {
+      titre: "Подкасты и книги 🎧",
+      sous: "Чтобы углубиться за пределами сайта, в своём темпе",
+      podcast: "Подкаст",
+      livre: "Книга",
+      ecouter: "Слушать",
+      savoir: "Подробнее",
+      martingale: {
+        cat: "Основы инвестирования",
+        desc: "В каждом выпуске гость рассказывает об одном способе инвестировать (биржа, недвижимость, private equity) и о том, как он это сделал. На французском языке.",
+      },
+      eco: {
+        cat: "Экономические новости",
+        desc: "Документальная программа, которая помещает экономические новости в контекст истории и основных теорий. На французском языке.",
+      },
+      gdiy: {
+        cat: "Предпринимательство",
+        desc: "Долгие интервью с основателями о создании дела и его финансировании. На французском языке.",
+      },
+      epargnant: {
+        cat: "Основы инвестирования",
+        desc: "Краткое введение в пассивное управление и ETF, написанное для читателя, который начинает с нуля. На французском языке.",
+      },
+      housel: {
+        cat: "Сбережения и поведение",
+        desc: "Двадцать коротких глав о том, как эмоции, а не расчёты, определяют большинство денежных решений.",
+      },
+    },
     disclaimer: "Эти ссылки приведены исключительно для информации. У Financia нет партнёрства или коммерческих связей с этими организациями и она не получает вознаграждения.",
   },
 
@@ -3387,6 +3499,34 @@ de: {
   ressources: {
     title: "Nützliche Ressourcen 🔗",
     sub: "Von Financia ausgewählt, um mehr zu erfahren",
+    media: {
+      titre: "Podcasts und Bücher 🎧",
+      sous: "Zum Vertiefen außerhalb der Website, in deinem Tempo",
+      podcast: "Podcast",
+      livre: "Buch",
+      ecouter: "Anhören",
+      savoir: "Mehr erfahren",
+      martingale: {
+        cat: "Grundlagen des Investierens",
+        desc: "In jeder Folge schildert ein Gast eine Art zu investieren (Börse, Immobilien, Private Equity) und wie er dabei vorgegangen ist. Auf Französisch.",
+      },
+      eco: {
+        cat: "Wirtschaftsnachrichten",
+        desc: "Eine Dokumentationsreihe, die Wirtschaftsnachrichten in ihre Geschichte und ihre großen Theorien einordnet. Auf Französisch.",
+      },
+      gdiy: {
+        cat: "Unternehmertum",
+        desc: "Ausführliche Gespräche mit Gründerinnen und Gründern über den Aufbau einer Tätigkeit und deren Finanzierung. Auf Französisch.",
+      },
+      epargnant: {
+        cat: "Grundlagen des Investierens",
+        desc: "Eine kurze Einführung in passives Anlegen und ETFs, geschrieben für Leserinnen und Leser, die bei null anfangen. Auf Französisch.",
+      },
+      housel: {
+        cat: "Sparen und Verhalten",
+        desc: "Zwanzig kurze Kapitel darüber, wie Emotionen und nicht Berechnungen die meisten Geldentscheidungen bestimmen.",
+      },
+    },
     disclaimer: "Diese Links dienen ausschließlich der Information. Financia unterhält keine Partnerschaft oder Geschäftsbeziehung mit diesen Anbietern und erhält keinerlei Vergütung.",
   },
 

@@ -1774,6 +1774,122 @@ html.is-installed [data-install-open] { display: none !important; }
   color: var(--text-3);
   max-width: 720px;
 }
+/* Masqué à l'œil, lu par les lecteurs d'écran : sert à donner à « Écouter »
+   un intitulé complet (« Écouter — La Martingale »), sans quoi une page
+   comportant cinq liens identiques est inutilisable au clavier. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Podcasts et livres ── */
+.res-media {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(124,58,237,0.14);
+}
+.res-media-titre {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.res-media-sous {
+  font-size: 14px;
+  color: var(--text-2);
+  margin-bottom: 28px;
+}
+.res-media-grille {
+  display: grid;
+  /* minmax(0, …) et non 1fr seul : une description longue imposerait sinon sa
+     largeur de min-content à la colonne et ferait déborder la grille. */
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 18px;
+}
+.res-carte {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid rgba(124,58,237,0.18);
+  border-radius: 16px;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.res-carte:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(124,58,237,0.13);
+  border-color: rgba(124,58,237,0.4);
+}
+.res-haut {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.res-format {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+/* Teintes prises dans la palette du site, et non choisies à l'œil : le violet
+   de base (#7C3AED) ne donne que 3,2:1 sur le fond des cartes, sous le seuil
+   AA de 4,5:1 exigé pour un texte de 11 px. --green-light monte à 5,7:1 et
+   --teal à 8,8:1, tout en gardant les deux formats bien distincts. */
+.res-format-podcast { background: var(--green-dim); color: var(--green-light); }
+.res-format-livre   { background: rgba(38,198,198,0.14); color: var(--teal); }
+.res-cat {
+  font-size: 12px;
+  color: var(--text-3);
+}
+.res-titre {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.res-auteur {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 10px;
+}
+.res-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-2);
+  /* Pousse le lien en bas : les cartes d'une même rangée alignent leur appel
+     à l'action, quelle que soit la longueur du résumé. */
+  flex: 1 1 auto;
+  margin-bottom: 16px;
+}
+.res-lien {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-light);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.res-lien:hover { border-bottom-color: var(--green-light); }
+.res-lien:focus-visible {
+  outline: 2px solid var(--green-light);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 .ressource-pill {
   display: inline-flex;
   align-items: center;
