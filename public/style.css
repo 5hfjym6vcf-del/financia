@@ -1282,7 +1282,11 @@ a { text-decoration: none; color: inherit; }
   white-space: nowrap;
 }
 .actus-picker-btns { display: flex; flex-wrap: wrap; gap: 8px; }
-.actus-picker-btn {
+/* Les puces de langue partagent l'apparence de celles de thème : deux rangées
+   du même objet, il serait déroutant qu'elles ne se ressemblent pas. */
+.actus-picker-langue { margin-top: -8px; }
+.actus-picker-btn,
+.actus-langue-btn {
   background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-2);
@@ -1294,8 +1298,10 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: var(--transition);
 }
-.actus-picker-btn:hover { border-color: var(--border-2); color: var(--text); }
-.actus-picker-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green-light); }
+.actus-picker-btn:hover,
+.actus-langue-btn:hover { border-color: var(--border-2); color: var(--text); }
+.actus-picker-btn.active,
+.actus-langue-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green-light); }
 .actus-empty { grid-column: 1 / -1; text-align: center; color: var(--text-2); font-size: 15px; padding: 48px 0; }
 
 .actus-grid {

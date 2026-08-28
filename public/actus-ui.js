@@ -64,13 +64,21 @@
   /**
    * Articles correspondant à un ou plusieurs sujets, du plus pertinent au moins
    * pertinent. Sans sujet, on renvoie les plus récents.
+   *
+   * `langue` restreint à la langue d'origine de l'article ; les deux filtres se
+   * combinent, un article devant satisfaire les deux pour être retenu.
    */
-  function selection(sujets, limite = 6) {
+  function selection(sujets, { langue = null, limite = 6 } = {}) {
     if (!flux) return [];
-    const vises = [...new Set(sujets)].filter(Boolean);
-    if (!vises.length) return flux.slice(0, limite);
+    // Un article sans langue déclarée vient d'avant l'ouverture aux sources
+    // anglophones : on le considère français plutôt que de le faire disparaître
+    // d'un flux servi depuis le cache.
+    const base = langue ? flux.filter(a => (a.langue || 'fr') === langue) : flux;
 
-    return flux
+    const vises = [...new Set(sujets)].filter(Boolean);
+    if (!vises.length) return base.slice(0, limite);
+
+    return base
       .map(item => {
         // Un article peut relever de plusieurs sujets retenus : on garde son
         // meilleur score, sinon un article générique remonterait devant un

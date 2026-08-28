@@ -836,14 +836,20 @@ let lastActusItems = null;
 let lastActusTitles = null;
 let actusFailed = false;
 let currentActusTheme = 'all';
+let currentActusLangue = 'all';
 
-async function applyActusTheme(theme) {
-  currentActusTheme = theme;
-  $$('.actus-picker-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
+async function applyActusTheme(theme, langue) {
+  if (theme !== undefined) currentActusTheme = theme;
+  if (langue !== undefined) currentActusLangue = langue;
+
+  $$('.actus-picker-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.theme === currentActusTheme));
+  $$('.actus-langue-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.langue === currentActusLangue));
 
   const grid = $('#actus-grid');
-  const topic = FinanciaActus.TOPICS[theme];
-  lastActusItems = FinanciaActus.selection(topic ? [topic] : []);
+  const topic = FinanciaActus.TOPICS[currentActusTheme];
+  lastActusItems = FinanciaActus.selection(topic ? [topic] : [], {
+    langue: currentActusLangue === 'all' ? null : currentActusLangue,
+  });
   if (!lastActusItems.length) {
     if (grid) grid.innerHTML = `<p class="actus-empty">${FinanciaI18N.t('actus.picker.empty')}</p>`;
     return;
@@ -853,7 +859,10 @@ async function applyActusTheme(theme) {
 }
 
 $$('.actus-picker-btn').forEach(btn => {
-  btn.addEventListener('click', () => applyActusTheme(btn.dataset.theme));
+  btn.addEventListener('click', () => applyActusTheme(btn.dataset.theme, undefined));
+});
+$$('.actus-langue-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyActusTheme(undefined, btn.dataset.langue));
 });
 
 async function loadActus() {
@@ -861,7 +870,7 @@ async function loadActus() {
   if (!grid) return;
   try {
     await FinanciaActus.charger();
-    await applyActusTheme(currentActusTheme);
+    await applyActusTheme();
   } catch {
     actusFailed = true;
     FinanciaErreur.afficher(grid, 'actus.errorMsg', loadActus);
@@ -875,7 +884,7 @@ FinanciaI18N.onLangChange(async () => {
     FinanciaErreur.afficher(grid, 'actus.errorMsg', loadActus);
     return;
   }
-  await applyActusTheme(currentActusTheme);
+  await applyActusTheme();
 });
 
 // ── Newsletter ──

@@ -378,6 +378,12 @@ fr: {
       matieres: "🛢️ Matières premières",
       empty: "Pas d'actu sur ce thème pour le moment, reviens un peu plus tard.",
     },
+    langue: {
+      label: "Langue de l'article",
+      all: "Toutes",
+      fr: "🇫🇷 Français",
+      en: "🇬🇧 Anglais",
+    },
   },
 
   temoignages: {
@@ -1083,6 +1089,12 @@ en: {
       bourse: "📈 Stocks",
       matieres: "🛢️ Commodities",
       empty: "No news on this topic right now, check back a bit later.",
+    },
+    langue: {
+      label: "Article language",
+      all: "All",
+      fr: "🇫🇷 French",
+      en: "🇬🇧 English",
     },
   },
 
@@ -1790,6 +1802,12 @@ es: {
       matieres: "🛢️ Materias primas",
       empty: "No hay noticias sobre este tema por ahora, vuelve un poco más tarde.",
     },
+    langue: {
+      label: "Idioma del artículo",
+      all: "Todos",
+      fr: "🇫🇷 Francés",
+      en: "🇬🇧 Inglés",
+    },
   },
 
   temoignages: {
@@ -2496,6 +2514,12 @@ ru: {
       matieres: "🛢️ Сырьевые товары",
       empty: "Пока нет новостей по этой теме, загляни чуть позже.",
     },
+    langue: {
+      label: "Язык статьи",
+      all: "Все",
+      fr: "🇫🇷 Французский",
+      en: "🇬🇧 Английский",
+    },
   },
 
   temoignages: {
@@ -3201,6 +3225,12 @@ de: {
       bourse: "📈 Börse",
       matieres: "🛢️ Rohstoffe",
       empty: "Aktuell keine News zu diesem Thema, schau später noch einmal vorbei.",
+    },
+    langue: {
+      label: "Sprache des Artikels",
+      all: "Alle",
+      fr: "🇫🇷 Französisch",
+      en: "🇬🇧 Englisch",
     },
   },
 
