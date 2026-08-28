@@ -41,7 +41,15 @@ const REJETS = [
   /today'?s gold rate|gold rate today|gold price in [a-z]/i,
   /(car|auto|personal|home) loan (rates?|offers?)/i,
   /check (best )?offers/i,
+  /sued for securities|securities law violations/i,
 ];
+
+// La presse écrit l'apostrophe typographique, mes motifs l'apostrophe droite :
+// sans cette normalisation, « cours de l'or » ne reconnaissait pas « cours de
+// l'or », et les rejets anglophones passaient au travers.
+function normaliser(texte) {
+  return (texte || '').replace(/[\u2018\u2019\u02BC]/g, "'").toLowerCase();
+}
 
 // Une requête par langue. Uniquement des termes sans ambiguïté dans la langue
 // visée : une première version incluait « actions », « marché » et
@@ -147,7 +155,7 @@ function contient(texte, motCle) {
 }
 
 export function sujets(article, langue = 'fr') {
-  const texte = `${article.title || ''} ${article.description || ''}`.toLowerCase();
+  const texte = normaliser(`${article.title || ''} ${article.description || ''}`);
   const trouves = [];
 
   for (const [sujet, parLangue] of Object.entries(THEMES)) {
@@ -191,7 +199,7 @@ async function fetchLangue(key, langue, depuis) {
   const data = await r.json();
   if (!r.ok || data.status !== 'ok') throw new Error(data.message || `NewsAPI HTTP ${r.status}`);
   return (data.articles || [])
-    .filter(a => a.title && !REJETS.some(r => r.test(a.title)))
+    .filter(a => a.title && !REJETS.some(r => r.test(normaliser(a.title))))
     // Le plafond s'applique ici, avant la fusion : la source renvoie déjà ses
     // articles du plus récent au plus ancien.
     .slice(0, MAX_PAR_LANGUE)
