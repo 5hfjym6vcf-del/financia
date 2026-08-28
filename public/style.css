@@ -2641,3 +2641,36 @@ textarea:focus-visible,
   outline: 2px solid #c4b5fd;
   outline-offset: 3px;
 }
+
+
+/* ============================================================
+   Apparition au défilement, et survols
+   ============================================================ */
+
+/* La classe est posée par reveal.js, jamais dans le HTML : si le script ne
+   s'exécute pas, rien n'est masqué et la page reste entièrement lisible. */
+.a-reveler {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.a-reveler.est-visible { opacity: 1; transform: none; }
+
+/* Un soupçon d'échelle en plus de l'élévation déjà en place. Volontairement
+   absent des cartes de Marchés : elles contiennent un graphique en canevas,
+   que la mise à l'échelle rendrait flou. */
+.module-card:hover,
+.valeur-card:hover,
+.actu-card:hover { transform: translateY(-2px) scale(1.008); }
+
+.temoignage-card { transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s; }
+.temoignage-card:hover { transform: translateY(-2px) scale(1.008); }
+
+@media (prefers-reduced-motion: reduce) {
+  .a-reveler { opacity: 1; transform: none; transition: none; }
+  .module-card:hover,
+  .valeur-card:hover,
+  .actu-card:hover,
+  .temoignage-card:hover { transform: none; }
+}
