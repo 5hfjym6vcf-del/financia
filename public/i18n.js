@@ -29,8 +29,8 @@ fr: {
     pcAssetPea: "PEA ETF",
     pcAssetAv: "Assurance vie",
     pcAssetCrypto: "Crypto",
-    mcPlusValue: "Plus-value",
-    mcObjectif: "Objectif",
+    mcActifs: "actifs suivis",
+    mcRegions: "régions couvertes",
   },
 
   logoBanner: {
@@ -743,8 +743,8 @@ en: {
     pcAssetPea: "PEA ETF",
     pcAssetAv: "Life insurance",
     pcAssetCrypto: "Crypto",
-    mcPlusValue: "Gain",
-    mcObjectif: "Goal",
+    mcActifs: "assets tracked",
+    mcRegions: "regions covered",
   },
 
   logoBanner: {
@@ -1457,8 +1457,8 @@ es: {
     pcAssetPea: "PEA ETF",
     pcAssetAv: "Seguro de vida",
     pcAssetCrypto: "Cripto",
-    mcPlusValue: "Plusvalía",
-    mcObjectif: "Objetivo",
+    mcActifs: "activos seguidos",
+    mcRegions: "regiones cubiertas",
   },
 
   logoBanner: {
@@ -2171,8 +2171,8 @@ ru: {
     pcAssetPea: "PEA ETF",
     pcAssetAv: "Страхование жизни",
     pcAssetCrypto: "Крипто",
-    mcPlusValue: "Прибыль",
-    mcObjectif: "Цель",
+    mcActifs: "активов отслеживается",
+    mcRegions: "регионов охвачено",
   },
 
   logoBanner: {
@@ -2885,8 +2885,8 @@ de: {
     pcAssetPea: "PEA ETF",
     pcAssetAv: "Lebensversicherung",
     pcAssetCrypto: "Krypto",
-    mcPlusValue: "Gewinn",
-    mcObjectif: "Ziel",
+    mcActifs: "Werte verfolgt",
+    mcRegions: "Regionen abgedeckt",
   },
 
   logoBanner: {
