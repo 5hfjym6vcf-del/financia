@@ -1487,3 +1487,24 @@ FinanciaI18N.onLangChange(async () => {
 
   FinanciaI18N.onLangChange(() => { if (donnees) render(); });
 })();
+
+
+// ── Illustrations des modules pédagogiques ──
+// La clé du module est lue dans la carte, via l'attribut de traduction que
+// portent déjà son étiquette et son titre : aucune donnée à ajouter au HTML,
+// et un module de plus ne demande qu'un dessin de plus.
+(function () {
+  const visuels = window.FinanciaModulesVisuels;
+  if (!visuels) return;
+
+  $$('.module-card').forEach(carte => {
+    const ref = carte.querySelector('[data-i18n^="modules."]')?.getAttribute('data-i18n') || '';
+    const cle = ref.split('.')[1];
+    const svg = cle && visuels[cle];
+    if (!svg) return;
+    const hote = document.createElement('div');
+    hote.className = 'mc-visuel';
+    hote.innerHTML = svg;
+    carte.prepend(hote);
+  });
+})();
