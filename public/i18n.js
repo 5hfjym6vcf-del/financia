@@ -426,6 +426,7 @@ fr: {
   apropos: {
     label: "Notre histoire",
     title: "Notre identité",
+    signature: "Fondateur de Financia",
     bioP1Html: "Je m'appelle <strong>Paolo</strong>, j'ai <strong>20 ans</strong> et je vis sur la <strong>Côte d'Azur</strong>. À 19 ans, j'ai ouvert mon premier PEA et j'ai vite réalisé que personne ne prenait le temps d'expliquer la finance aux jeunes, sans jargon, sans bullshit.",
     bioP2Html: "J'ai alors créé <strong>Financia</strong> pour combler ce vide : une plateforme 100&nbsp;% gratuite et pédagogique, pensée pour les <strong>18–30 ans</strong> qui veulent apprendre à investir à leur propre rythme, guidés par une IA qui s'adapte à leur niveau.",
     audience: {
@@ -1138,6 +1139,7 @@ en: {
   apropos: {
     label: "Our story",
     title: "Our identity",
+    signature: "Founder of Financia",
     bioP1Html: "My name is <strong>Paolo</strong>, I'm <strong>20 years old</strong> and I live on the <strong>French Riviera</strong>. At 19, I opened my first PEA and quickly realized no one was taking the time to explain finance to young people, no jargon, no bullshit.",
     bioP2Html: "So I created <strong>Financia</strong> to fill that gap: a 100% free, educational platform, built for <strong>18–30 year-olds</strong> who want to learn to invest at their own pace, guided by an AI that adapts to their level.",
     audience: {
@@ -1850,6 +1852,7 @@ es: {
   apropos: {
     label: "Nuestra historia",
     title: "Nuestra identidad",
+    signature: "Fundador de Financia",
     bioP1Html: "Me llamo <strong>Paolo</strong>, tengo <strong>20 años</strong> y vivo en la <strong>Costa Azul</strong>. A los 19 años abrí mi primer PEA y me di cuenta enseguida de que nadie se tomaba el tiempo de explicar las finanzas a los jóvenes, sin jerga, sin rollos.",
     bioP2Html: "Así que creé <strong>Financia</strong> para llenar ese vacío: una plataforma 100% gratuita y educativa, pensada para los <strong>jóvenes de 18–30 años</strong> que quieren aprender a invertir a su propio ritmo, guiados por una IA que se adapta a su nivel.",
     audience: {
@@ -2562,6 +2565,7 @@ ru: {
   apropos: {
     label: "Наша история",
     title: "Наша миссия",
+    signature: "Основатель Financia",
     bioP1Html: "Меня зовут <strong>Паоло</strong>, мне <strong>20 лет</strong>, и я живу на <strong>Лазурном Берегу</strong>. В 19 лет я открыл свой первый PEA и быстро понял, что никто не находит времени, чтобы объяснить финансы молодым людям — без жаргона и без воды.",
     bioP2Html: "Тогда я создал <strong>Financia</strong>, чтобы восполнить этот пробел: платформу, на 100&nbsp;% бесплатную и образовательную, созданную для <strong>18–30-летних</strong>, которые хотят научиться инвестировать в своём темпе, под руководством ИИ, который подстраивается под их уровень.",
     audience: {
@@ -3274,6 +3278,7 @@ de: {
   apropos: {
     label: "Unsere Geschichte",
     title: "Unsere Identität",
+    signature: "Gründer von Financia",
     bioP1Html: "Ich heiße <strong>Paolo</strong>, bin <strong>20 Jahre alt</strong> und lebe an der <strong>Côte d'Azur</strong>. Mit 19 habe ich mein erstes PEA eröffnet und schnell gemerkt, dass sich niemand die Zeit nimmt, jungen Menschen Finanzen zu erklären — ohne Fachchinesisch, ohne Bullshit.",
     bioP2Html: "Also habe ich <strong>Financia</strong> gegründet, um diese Lücke zu schließen: eine zu 100&nbsp;% kostenlose und pädagogische Plattform, gedacht für <strong>18–30-Jährige</strong>, die in ihrem eigenen Tempo investieren lernen möchten, begleitet von einer KI, die sich ihrem Niveau anpasst.",
     audience: {
