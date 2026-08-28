@@ -489,3 +489,60 @@ body.marches-page {
   .mkt-fav { transition: none; }
   .mkt-fav:hover { transform: none; }
 }
+
+
+/* ── Sociétés par secteur ── */
+.mkt-secteurs { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
+.sect-avis {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(124,58,237,0.07);
+  border: 1px solid rgba(124,58,237,0.26);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 28px;
+  max-width: 640px;
+}
+.sect-avis p { font-size: 0.84rem; line-height: 1.55; color: rgba(255,255,255,0.65); }
+
+.sect-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 22px;
+}
+.sect-carte {
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(124,58,237,0.22);
+  border-radius: 18px;
+  padding: 24px 24px 14px;
+}
+.sect-titre { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.sect-desc {
+  font-size: 0.85rem; line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 18px;
+}
+.sect-liste { list-style: none; }
+.sect-ligne {
+  display: grid;
+  /* minmax(0, …) et non 1fr : un nom long ne doit pas élargir sa colonne au
+     point de pousser le cours hors de la carte. */
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.85rem;
+}
+.sect-ligne:last-child { border-bottom: none; }
+.sect-nom { color: rgba(255,255,255,0.88); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sect-ticker {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
+  color: #c4b5fd; background: rgba(124,58,237,0.16);
+  border-radius: 5px; padding: 3px 7px; white-space: nowrap;
+}
+.sect-cours { font-weight: 700; color: #fff; white-space: nowrap; }
+.sect-var { font-size: 0.78rem; font-weight: 700; white-space: nowrap; min-width: 62px; text-align: right; }
+.sect-var.positive { color: #4ade80; }
+.sect-var.negative { color: #f87171; }
+.sect-ligne-hors .sect-nom { color: rgba(255,255,255,0.5); }
+.sect-ligne-hors .sect-ticker { color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }

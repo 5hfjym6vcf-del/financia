@@ -185,6 +185,17 @@
     </div>
 
     <!-- Calendrier des résultats : masqué tant que les données manquent -->
+    <!-- ═══ SOCIÉTÉS PAR SECTEUR ═══ -->
+    <div class="mkt-secteurs" id="mktSecteurs" hidden>
+      <h2 class="mkt-h2" data-i18n="marches.secteurs.titre">Les sociétés par secteur</h2>
+      <p class="mkt-earn-sub" data-i18n="marches.secteurs.sous">Quelques sociétés représentatives de chaque secteur, classées par activité. Ni sélection, ni classement.</p>
+      <div class="sect-avis" role="note">
+        <span aria-hidden="true">⚠️</span>
+        <p data-i18n="marches.secteurs.avis">À titre informatif. Ne constitue pas un conseil en investissement.</p>
+      </div>
+      <div class="sect-grille" id="mktSecteursGrille"></div>
+    </div>
+
     <div class="mkt-earnings" id="mktEarnings" hidden>
       <h3 class="mkt-tops-title" data-i18n="marches.resultats.title">Résultats attendus cette semaine</h3>
       <p class="mkt-earn-sub" data-i18n="marches.resultats.sub">Quand une entreprise publie ses comptes, son cours peut bouger fortement dans les heures qui suivent.</p>
@@ -244,6 +255,7 @@
 
 <script src="https://unpkg.com/lightweight-charts@5.2.0/dist/lightweight-charts.standalone.production.js"></script>
 <script src="./marches.js"></script>
+<script src="./secteurs-ui.js" defer></script>
 <script src="./analytics.js" defer></script>
 <script src="./pwa.js" defer></script>
 </body>
