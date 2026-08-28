@@ -26,6 +26,23 @@ const CACHE_CONTROL = 's-maxage=1800, stale-while-revalidate=3600';
 // c'est le réglage qu'il faudra desserrer si la source ne fournit pas assez.
 const FRAICHEUR_HEURES = 72;
 
+// Plafond par langue, appliqué AVANT la fusion. Sans lui, l'anglais publiant
+// bien plus vite que le français, les trente articles les plus récents étaient
+// anglais à 28 sur 29 : le français disparaissait de l'onglet « Toutes ».
+const MAX_PAR_LANGUE = 14;
+
+// Bruit récurrent des flux financiers anglophones : communiqués d'actions
+// collectives, pages de cours locales régénérées chaque jour, publicités de
+// crédit. Ce ne sont pas des actualités de marché.
+const REJETS = [
+  /investors? have opportunity to lead/i,
+  /class action|securities fraud|rosen law|levi & korsinsky|pomerantz/i,
+  /deadline (approaching|reminder)/i,
+  /today'?s gold rate|gold rate today|gold price in [a-z]/i,
+  /(car|auto|personal|home) loan (rates?|offers?)/i,
+  /check (best )?offers/i,
+];
+
 // Une requête par langue. Uniquement des termes sans ambiguïté dans la langue
 // visée : une première version incluait « actions », « marché » et
 // « investissement », mots courants hors finance, et la section s'est remplie de
@@ -173,7 +190,12 @@ async function fetchLangue(key, langue, depuis) {
   const r = await fetch(url.toString(), { headers: { 'X-Api-Key': key } });
   const data = await r.json();
   if (!r.ok || data.status !== 'ok') throw new Error(data.message || `NewsAPI HTTP ${r.status}`);
-  return (data.articles || []).map(a => ({ ...a, langue }));
+  return (data.articles || [])
+    .filter(a => a.title && !REJETS.some(r => r.test(a.title)))
+    // Le plafond s'applique ici, avant la fusion : la source renvoie déjà ses
+    // articles du plus récent au plus ancien.
+    .slice(0, MAX_PAR_LANGUE)
+    .map(a => ({ ...a, langue }));
 }
 
 async function fetchActus(key) {
@@ -204,8 +226,8 @@ async function fetchActus(key) {
     // doit pas pouvoir réintroduire de vieux articles.
     .filter(a => new Date(a.publishedAt).getTime() >= limite)
     // Les deux flux arrivent triés séparément : il faut retrier l'ensemble.
+    // Le plafond par langue ayant déjà joué, aucune coupe supplémentaire ici.
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-    .slice(0, 30)
     .map(a => ({
       title: a.title,
       url: a.url,
