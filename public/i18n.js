@@ -489,6 +489,13 @@ fr: {
   },
 
 
+
+  navSections: {
+    precedente: "Section précédente : {s}",
+    suivante: "Section suivante : {s}",
+    debut: "Première section",
+    fin: "Dernière section",
+  },
   accueilMarches: {
     label: "Aujourd'hui",
     titre: "Actions & cryptos du jour",
@@ -1273,6 +1280,13 @@ en: {
   },
 
 
+
+  navSections: {
+    precedente: "Previous section: {s}",
+    suivante: "Next section: {s}",
+    debut: "First section",
+    fin: "Last section",
+  },
   accueilMarches: {
     label: "Today",
     titre: "Stocks & crypto today",
@@ -2057,6 +2071,13 @@ es: {
   },
 
 
+
+  navSections: {
+    precedente: "Sección anterior: {s}",
+    suivante: "Sección siguiente: {s}",
+    debut: "Primera sección",
+    fin: "Última sección",
+  },
   accueilMarches: {
     label: "Hoy",
     titre: "Acciones y criptos de hoy",
@@ -2841,6 +2862,13 @@ ru: {
   },
 
 
+
+  navSections: {
+    precedente: "Предыдущий раздел: {s}",
+    suivante: "Следующий раздел: {s}",
+    debut: "Первый раздел",
+    fin: "Последний раздел",
+  },
   accueilMarches: {
     label: "Сегодня",
     titre: "Акции и криптовалюты сегодня",
@@ -3625,6 +3653,13 @@ de: {
   },
 
 
+
+  navSections: {
+    precedente: "Vorheriger Abschnitt: {s}",
+    suivante: "Nächster Abschnitt: {s}",
+    debut: "Erster Abschnitt",
+    fin: "Letzter Abschnitt",
+  },
   accueilMarches: {
     label: "Heute",
     titre: "Aktien & Kryptos des Tages",
