@@ -10,7 +10,7 @@ window.I18N = {
 fr: {
   meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Ressources", titleContact: "Financia | Contact" },
   commun: { reessayer: "Réessayer", reessaiEnCours: "Chargement…" },
-  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", retour: "Revenir en arrière", avant: "Aller à la page suivante", },
+  nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", retour: "Revenir en arrière", avant: "Aller à la page suivante", },
   mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
 
   hero: {
@@ -488,6 +488,14 @@ fr: {
     windows: { s1: "Ouvre financia.cloud dans <strong>Chrome</strong> ou <strong>Edge</strong>", s2: "Clique sur l'icône d'installation à droite de la barre d'adresse", s3: "Ou menu <strong>⋯</strong> puis <strong>Applications</strong> et <strong>Installer ce site</strong>" },
   },
 
+
+  accueilMarches: {
+    label: "Aujourd'hui",
+    titre: "Actions & cryptos du jour",
+    sous: "Un échantillon d'actions et de cryptos, avec leur cours et leur variation du jour. À titre informatif, sans sélection ni recommandation.",
+    cta: "Voir tous les marchés →",
+    maj: "Mis à jour à {h}",
+  },
   ressources: {
     title: "Ressources utiles 🔗",
     sub: "Sélectionnées par Financia pour aller plus loin",
@@ -786,7 +794,7 @@ fr: {
 en: {
   meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Resources", titleContact: "Financia | Contact" },
   commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
-  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", retour: "Go back", avant: "Go forward", },
+  nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", retour: "Go back", avant: "Go forward", },
   mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
 
   hero: {
@@ -1264,6 +1272,14 @@ en: {
     windows: { s1: "Open financia.cloud in <strong>Chrome</strong> or <strong>Edge</strong>", s2: "Click the install icon on the right of the address bar", s3: "Or the <strong>⋯</strong> menu, then <strong>Apps</strong> and <strong>Install this site</strong>" },
   },
 
+
+  accueilMarches: {
+    label: "Today",
+    titre: "Stocks & crypto today",
+    sous: "A sample of stocks and crypto, with their price and change for the day. For information only, no selection and no recommendation.",
+    cta: "See all markets →",
+    maj: "Updated at {h}",
+  },
   ressources: {
     title: "Useful resources 🔗",
     sub: "Selected by Financia to help you go further",
@@ -1562,7 +1578,7 @@ en: {
 es: {
   meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Recursos", titleContact: "Financia | Contacto" },
   commun: { reessayer: "Reintentar", reessaiEnCours: "Cargando…" },
-  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", retour: "Volver atrás", avant: "Ir a la página siguiente", },
+  nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", retour: "Volver atrás", avant: "Ir a la página siguiente", },
   mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
 
   hero: {
@@ -2040,6 +2056,14 @@ es: {
     windows: { s1: "Abre financia.cloud en <strong>Chrome</strong> o <strong>Edge</strong>", s2: "Haz clic en el icono de instalación a la derecha de la barra de direcciones", s3: "O el menú <strong>⋯</strong>, luego <strong>Aplicaciones</strong> e <strong>Instalar este sitio</strong>" },
   },
 
+
+  accueilMarches: {
+    label: "Hoy",
+    titre: "Acciones y criptos de hoy",
+    sous: "Una muestra de acciones y criptomonedas, con su cotización y su variación del día. A título informativo, sin selección ni recomendación.",
+    cta: "Ver todos los mercados →",
+    maj: "Actualizado a las {h}",
+  },
   ressources: {
     title: "Recursos útiles 🔗",
     sub: "Seleccionados por Financia para ir más allá",
@@ -2338,7 +2362,7 @@ es: {
 ru: {
   meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Ресурсы", titleContact: "Financia | Контакты" },
   commun: { reessayer: "Повторить", reessaiEnCours: "Загрузка…" },
-  nav: { apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", retour: "Назад", avant: "Вперёд", },
+  nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", retour: "Назад", avant: "Вперёд", },
   mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
 
   hero: {
@@ -2816,6 +2840,14 @@ ru: {
     windows: { s1: "Открой financia.cloud в <strong>Chrome</strong> или <strong>Edge</strong>", s2: "Нажми значок установки справа в адресной строке", s3: "Или меню <strong>⋯</strong>, затем <strong>Приложения</strong> и <strong>Установить этот сайт</strong>" },
   },
 
+
+  accueilMarches: {
+    label: "Сегодня",
+    titre: "Акции и криптовалюты сегодня",
+    sous: "Выборка акций и криптовалют с ценой и дневным изменением. Информационно, без отбора и без рекомендаций.",
+    cta: "Все рынки →",
+    maj: "Обновлено в {h}",
+  },
   ressources: {
     title: "Полезные ресурсы 🔗",
     sub: "Отобраны Financia, чтобы узнать больше",
@@ -3114,7 +3146,7 @@ ru: {
 de: {
   meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Ressourcen", titleContact: "Financia | Kontakt" },
   commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
-  nav: { apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", retour: "Zurück", avant: "Vorwärts", },
+  nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", retour: "Zurück", avant: "Vorwärts", },
   mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
 
   hero: {
@@ -3592,6 +3624,14 @@ de: {
     windows: { s1: "Öffne financia.cloud in <strong>Chrome</strong> oder <strong>Edge</strong>", s2: "Klicke auf das Installationssymbol rechts in der Adressleiste", s3: "Oder Menü <strong>⋯</strong>, dann <strong>Apps</strong> und <strong>Diese Seite installieren</strong>" },
   },
 
+
+  accueilMarches: {
+    label: "Heute",
+    titre: "Aktien & Kryptos des Tages",
+    sous: "Eine Auswahl an Aktien und Kryptowährungen mit Kurs und Tagesveränderung. Nur zur Information, ohne Auswahl und ohne Empfehlung.",
+    cta: "Alle Märkte ansehen →",
+    maj: "Aktualisiert um {h}",
+  },
   ressources: {
     title: "Nützliche Ressourcen 🔗",
     sub: "Von Financia ausgewählt, um mehr zu erfahren",

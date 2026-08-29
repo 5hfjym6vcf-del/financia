@@ -75,7 +75,7 @@ async function fetchYahoo({ key, symbol, name }) {
     : (typeof prevCloseRaw === 'number' ? prevCloseRaw / divisor : price);
   const changePct = prevClose ? ((price - prevClose) / prevClose) * 100 : 0;
 
-  return { key, name, price, changePct, currency, history };
+  return { key, name, ticker: symbol, price, changePct, currency, history };
 }
 
 async function fetchCoinGecko() {
@@ -103,6 +103,8 @@ async function fetchCoinGecko() {
 
     return {
       key, name,
+      // Les cryptos n'ont pas de symbole boursier : on affiche le code usuel.
+      ticker: id === 'bitcoin' ? 'BTC' : id === 'ethereum' ? 'ETH' : id.toUpperCase(),
       price: m.current_price,
       changePct: m.price_change_percentage_24h ?? 0,
       currency: 'USD',

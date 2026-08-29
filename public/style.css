@@ -1810,6 +1810,83 @@ html.is-installed [data-install-open] { display: none !important; }
   border: 0;
 }
 
+/* ── Actions & cryptos du jour (accueil) ──
+   Reprend le fond, la bordure et le rayon des cartes de Marchés, en version
+   compacte : ni graphique ni bouton favori, qui restent le propre de la page
+   dédiée. Ici on ne montre que ticker, prix et variation. */
+.am-tete {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.am-maj { font-size: 13px; color: var(--text-3); padding-bottom: 4px; }
+.am-maj[hidden] { display: none; }
+.am-sous {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-2);
+  max-width: 660px;
+  margin: 10px 0 28px;
+}
+.am-grille {
+  display: grid;
+  /* minmax(0, …) : une devise longue ne doit pas élargir sa colonne au point
+     de faire déborder la grille sur un petit écran. */
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+  gap: 16px;
+}
+.am-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid rgba(124,58,237,0.22);
+  border-radius: 16px;
+  padding: 18px 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.am-carte:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(124,58,237,0.13);
+  border-color: rgba(124,58,237,0.45);
+}
+.am-haut { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.am-icone { font-size: 22px; line-height: 1; flex-shrink: 0; }
+.am-ident { min-width: 0; }
+/* Pas d'ellipse : un nom de société tronqué est une information perdue. */
+.am-nom {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.am-ticker {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #c4b5fd;
+  background: rgba(124,58,237,0.16);
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+.am-bas {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+}
+.am-prix { font-size: 18px; font-weight: 800; color: var(--text); white-space: nowrap; }
+.am-var { font-size: 13px; font-weight: 700; white-space: nowrap; }
+.am-var.positive { color: #4ade80; }
+.am-var.negative { color: #f87171; }
+.am-cta { margin-top: 28px; display: inline-block; }
+
 /* ── Podcasts et livres ── */
 .res-media {
   margin-top: 48px;

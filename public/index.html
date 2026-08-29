@@ -65,7 +65,7 @@
       <a class="logo" href="#">Financi<span>a</span></a>
     </div>
     <nav class="nav-links">
-      <a href="#apprendre" data-i18n="nav.apprendre">Apprendre</a>
+      <a href="#apprendre" data-i18n="nav.accueil">Accueil</a>
       <a href="#quiz" data-i18n="nav.quiz">Quiz</a>
       <a href="/ressources" data-i18n="nav.ressources">Ressources</a>
       <a href="#simulateur" data-i18n="nav.simulateur">Simulateur</a>
@@ -358,6 +358,27 @@
       <p class="mkt-tops-note" data-i18n="marches.tops.note">Ces classements sont fournis à titre informatif et ne constituent pas un conseil en investissement. Ils portent sur un échantillon de valeurs majoritairement américaines.</p>
       <a href="/marches" class="btn-ghost home-tops-cta" data-i18n="marches.tops.cta">Voir tous les marchés →</a>
     </div>
+  </div>
+</section>
+
+<!-- ══ ACTIONS & CRYPTOS DU JOUR ══ -->
+<!-- Placé à la suite des classements plutôt qu'ailleurs : les deux blocs
+     parlent de marchés et partagent la même source, /api/marches. Masqué tant
+     que rien n'est chargé, comme les classements juste au-dessus. -->
+<section class="section" id="accueilMarches" hidden>
+  <div class="wrap">
+    <div class="am-tete">
+      <div>
+        <div class="section-label" data-i18n="accueilMarches.label">Aujourd'hui</div>
+        <h2 class="section-title" data-i18n="accueilMarches.titre">Actions &amp; cryptos du jour</h2>
+      </div>
+      <span class="am-maj" id="accueilMarchesMaj" hidden></span>
+    </div>
+    <p class="am-sous" data-i18n="accueilMarches.sous">Un échantillon d'actions et de cryptos, avec leur cours et leur variation du jour. À titre informatif, sans sélection ni recommandation.</p>
+
+    <div class="am-grille" id="accueilMarchesGrille"></div>
+
+    <a href="/marches" class="btn-ghost am-cta" data-i18n="accueilMarches.cta">Voir tous les marchés →</a>
   </div>
 </section>
 
@@ -1150,6 +1171,7 @@
 <script src="./script.js"></script>
 <script src="./hero-courbe.js" defer></script>
 <script src="./reveal.js" defer></script>
+<script src="./accueil-marches.js" defer></script>
 <script src="./analytics.js" defer></script>
 <script src="./pwa.js" defer></script>
 </body>
