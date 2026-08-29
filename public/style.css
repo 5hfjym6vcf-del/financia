@@ -1887,6 +1887,16 @@ html.is-installed [data-install-open] { display: none !important; }
 .am-var.negative { color: #f87171; }
 .am-cta { margin-top: 28px; display: inline-block; }
 
+/* Sur un écran étroit, l'horodatage passe à la ligne. Il héritait alors de la
+   marge basse du titre et se retrouvait à 62 px de celui-ci, laissant un vide
+   au milieu de l'en-tête. On empile explicitement plutôt que de laisser le
+   repli décider. */
+@media (max-width: 700px) {
+  .am-tete { flex-direction: column; align-items: flex-start; gap: 0; }
+  .am-tete .section-title { margin-bottom: 0; }
+  .am-maj { padding-bottom: 0; margin-top: 8px; }
+}
+
 /* ── Podcasts et livres ── */
 .res-media {
   margin-top: 48px;
