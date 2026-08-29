@@ -353,7 +353,9 @@ body.marches-page {
   align-self: center;
   overflow: hidden; text-overflow: ellipsis;
 }
-.mkt-earn-name { color: rgba(255,255,255,0.85); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Même raison que les cartes d'actifs : un nom tronqué est une information
+   perdue. On laisse le nom se replier sur deux lignes. */
+.mkt-earn-name { color: rgba(255,255,255,0.85); line-height: 1.3; overflow-wrap: anywhere; }
 .mkt-earn-when { font-size: 0.74rem; color: rgba(255,255,255,0.45); }
 .mkt-earn-est { font-size: 0.74rem; color: rgba(255,255,255,0.35); }
 .mkt-earn-empty { color: rgba(255,255,255,0.45); font-size: 0.9rem; padding: 20px 0; }
@@ -412,7 +414,14 @@ body.marches-page {
   display: flex; align-items: center; justify-content: center;
   font-size: 16px;
 }
-.mkt-card-name h3 { font-size: 1rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Le nom se replie sur deux lignes plutôt que d'être coupé : « JPMorgan Chase »
+   réclamait 133 px pour 126 disponibles et perdait ses dernières lettres. Une
+   ellipse sur un nom de société est une perte d'information, pas une élégance. */
+.mkt-card-name h3 {
+  font-size: 1rem; font-weight: 700; color: #fff;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
 
 .mkt-change {
   flex-shrink: 0;
