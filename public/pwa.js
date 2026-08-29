@@ -69,48 +69,95 @@
       || window.navigator.standalone === true;
   }
 
-  // ── 4. Bouton retour ───────────────────────────────────────
-  // Installée, l'application perd la barre du navigateur, donc sa flèche
-  // retour : sur iOS le geste depuis le bord est peu fiable et invisible, et
-  // sur Mac la fenêtre autonome n'offre rien. En navigateur en revanche le
-  // bouton natif existe déjà, et en ajouter un second encombrerait pour rien.
+  // ── 4. Flèches retour et avant ─────────────────────────────
+  // Présentes dans tous les contextes, et plus seulement en application :
+  // installée, l'app perd la barre du navigateur donc ses flèches, sur iOS le
+  // geste depuis le bord est peu fiable et invisible, et sur Mac la fenêtre
+  // autonome n'offre rien. Le couple se comporte comme la navigation native,
+  // la flèche inutilisable restant grisée en place.
   //
   // Placé avant la modale : celle-ci n'existe que sur l'accueil, et la sortie
   // anticipée juste en dessous empêcherait ce bloc de s'exécuter ailleurs.
-  function peutRevenir() {
-    // navigation.canGoBack répond exactement à la question, mais n'existe que
-    // sur les moteurs Chromium. Ailleurs, la longueur de l'historique en est
-    // une approximation suffisante : elle vaut 1 au premier écran seulement.
-    if (typeof window.navigation?.canGoBack === 'boolean') return window.navigation.canGoBack;
-    return window.history.length > 1;
-  }
-
   const btnRetour = document.getElementById('navBack');
-  if (btnRetour) {
-    const majRetour = () => {
-      btnRetour.hidden = !(isStandalone() && peutRevenir());
-    };
+  const btnAvant  = document.getElementById('navForward');
 
-    btnRetour.addEventListener('click', () => {
-      // Le repli vers l'accueil couvre le lancement direct sur une page
-      // profonde, où il n'y a rien derrière mais où l'utilisateur attend
-      // quand même de pouvoir remonter.
-      if (peutRevenir()) window.history.back();
-      else window.location.href = '/';
-    });
+  if (btnRetour || btnAvant) {
+    const CLE_COURANT = 'financia.nav.courant';
+    const CLE_MAX     = 'financia.nav.max';
+
+    // sessionStorage jette en navigation privée sur certains navigateurs, et
+    // le couple de flèches ne doit jamais faire tomber le reste de la page.
+    const lire = (cle) => {
+      try {
+        const v = sessionStorage.getItem(cle);
+        return v === null ? null : Number(v);
+      } catch { return null; }
+    };
+    const ecrire = (cle, v) => { try { sessionStorage.setItem(cle, String(v)); } catch {} };
+
+    function peutRevenir() {
+      // navigation.canGoBack répond exactement à la question, mais n'existe
+      // que sur les moteurs Chromium.
+      if (typeof window.navigation?.canGoBack === 'boolean') return window.navigation.canGoBack;
+      const courant = lire(CLE_COURANT);
+      if (courant !== null) return courant > 0;
+      return window.history.length > 1;
+    }
+
+    // Aucune API ne dit s'il y a quelque chose devant en dehors de Chromium,
+    // et c'est précisément Safari qui porte l'usage en application sur iOS.
+    // On tient donc notre propre compteur : chaque entrée d'historique est
+    // estampillée d'un index, et l'on compare l'index courant au plus haut
+    // atteint. history.length ne sert à rien ici, il ne décroît jamais.
+    function peutAvancer() {
+      if (typeof window.navigation?.canGoForward === 'boolean') return window.navigation.canGoForward;
+      const courant = lire(CLE_COURANT), max = lire(CLE_MAX);
+      return courant !== null && max !== null && courant < max;
+    }
+
+    function majBoutons() {
+      // Sur une première page sans rien devant ni derrière, on masque le couple
+      // au lieu d'afficher deux pastilles mortes à l'arrivée d'un visiteur.
+      const utile = peutRevenir() || peutAvancer();
+      if (btnRetour) { btnRetour.hidden = !utile; btnRetour.disabled = !peutRevenir(); }
+      if (btnAvant)  { btnAvant.hidden  = !utile; btnAvant.disabled  = !peutAvancer(); }
+    }
+
+    function synchroniser() {
+      const etat = window.history.state;
+      const estampille = etat && typeof etat.navIdx === 'number' ? etat.navIdx : null;
+
+      if (estampille === null) {
+        // Entrée neuve. Une navigation vers l'avant tronque toujours ce qui
+        // suivait : le maximum retombe donc sur elle, sinon la flèche avant
+        // resterait active vers des entrées qui n'existent plus.
+        const idx = (lire(CLE_COURANT) ?? -1) + 1;
+        try { window.history.replaceState({ ...(etat || {}), navIdx: idx }, ''); } catch {}
+        ecrire(CLE_COURANT, idx);
+        ecrire(CLE_MAX, idx);
+      } else {
+        // Entrée déjà connue : c'est un retour ou une avance, le maximum ne
+        // bouge pas.
+        ecrire(CLE_COURANT, estampille);
+      }
+      majBoutons();
+    }
+
+    btnRetour?.addEventListener('click', () => { window.history.back(); });
+    btnAvant?.addEventListener('click', () => { window.history.forward(); });
 
     // L'état ne peut pas être calculé une fois pour toutes au chargement :
     // l'accueil navigue par ancres (#apprendre, #quiz…), ce qui empile de
     // l'historique sans recharger le document. Figé, le bouton restait donc
     // absent de la page où se fait l'essentiel de la navigation, et resté
     // visible ailleurs quand il n'y avait plus rien derrière.
-    majRetour();
-    window.addEventListener('hashchange', majRetour);
-    window.addEventListener('popstate', majRetour);
+    synchroniser();
+    window.addEventListener('hashchange', synchroniser);
+    window.addEventListener('popstate', synchroniser);
     // Restauration depuis le cache de navigation : le script ne rejoue pas.
-    window.addEventListener('pageshow', majRetour);
+    window.addEventListener('pageshow', synchroniser);
     // Couvre aussi pushState et les navigations dans le même document.
-    window.navigation?.addEventListener?.('currententrychange', majRetour);
+    window.navigation?.addEventListener?.('currententrychange', synchroniser);
   }
 
   // ── 5. Modale ──────────────────────────────────────────────
