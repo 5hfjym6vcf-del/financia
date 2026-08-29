@@ -502,6 +502,12 @@ body.marches-page {
 
 /* ── Sociétés par secteur ── */
 .mkt-secteurs { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
+/* .mkt-earn-sub porte un margin-top de -22 px, calibré pour .mkt-tops-title et
+   ses 32 px de marge basse. Sous .mkt-h2, qui n'en a que 6, ce rappel faisait
+   remonter le paragraphe 16 px au-dessus du bas du titre : les deux se
+   chevauchaient. On neutralise ici sans toucher au bloc « Résultats attendus »,
+   où le calage d'origine est juste. */
+.mkt-secteurs .mkt-earn-sub { margin-top: 4px; }
 .sect-avis {
   display: flex; align-items: flex-start; gap: 10px;
   background: rgba(124,58,237,0.07);
