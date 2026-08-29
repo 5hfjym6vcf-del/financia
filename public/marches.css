@@ -506,8 +506,13 @@ body.marches-page {
    ses 32 px de marge basse. Sous .mkt-h2, qui n'en a que 6, ce rappel faisait
    remonter le paragraphe 16 px au-dessus du bas du titre : les deux se
    chevauchaient. On neutralise ici sans toucher au bloc « Résultats attendus »,
-   où le calage d'origine est juste. */
-.mkt-secteurs .mkt-earn-sub { margin-top: 4px; }
+   où le calage d'origine est juste.
+
+   10 px et non 4 : les marges adjacentes fusionnent, la valeur retenue est le
+   maximum des deux et non leur somme. À 4 px c'est donc la marge basse du
+   titre qui l'emportait, pour un écart de 6 px seulement. À 10 px l'écart
+   correspond à celui du bloc « Résultats attendus ». */
+.mkt-secteurs .mkt-earn-sub { margin-top: 10px; }
 .sect-avis {
   display: flex; align-items: flex-start; gap: 10px;
   background: rgba(124,58,237,0.07);
