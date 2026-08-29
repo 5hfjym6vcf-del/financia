@@ -522,26 +522,44 @@ body.marches-page {
   margin-bottom: 18px;
 }
 .sect-liste { list-style: none; }
+/* Deux rangées par société, et non une seule ligne à quatre colonnes.
+   Sur une carte de 336 px, ticker + cours + variation laissaient 80 px au nom
+   quand « Johnson & Johnson » en réclame 127 : quatre noms sur dix-sept
+   étaient coupés. En empilant le ticker sous le nom, celui-ci dispose de
+   toute la largeur moins le cours, et plus rien n'est tronqué. */
 .sect-ligne {
   display: grid;
   /* minmax(0, …) et non 1fr : un nom long ne doit pas élargir sa colonne au
      point de pousser le cours hors de la carte. */
-  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "nom    cours"
+    "ticker var";
   align-items: baseline;
-  gap: 10px;
-  padding: 9px 0;
+  column-gap: 12px;
+  row-gap: 3px;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   font-size: 0.85rem;
 }
 .sect-ligne:last-child { border-bottom: none; }
-.sect-nom { color: rgba(255,255,255,0.88); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Pas d'ellipsis : le nom se replie sur deux lignes plutôt que d'être coupé,
+   au cas où une société au nom plus long serait ajoutée à la liste. */
+.sect-nom {
+  grid-area: nom;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
 .sect-ticker {
+  grid-area: ticker;
+  justify-self: start;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
   color: #c4b5fd; background: rgba(124,58,237,0.16);
   border-radius: 5px; padding: 3px 7px; white-space: nowrap;
 }
-.sect-cours { font-weight: 700; color: #fff; white-space: nowrap; }
-.sect-var { font-size: 0.78rem; font-weight: 700; white-space: nowrap; min-width: 62px; text-align: right; }
+.sect-cours { grid-area: cours; font-weight: 700; color: #fff; white-space: nowrap; text-align: right; }
+.sect-var { grid-area: var; font-size: 0.78rem; font-weight: 700; white-space: nowrap; text-align: right; }
 .sect-var.positive { color: #4ade80; }
 .sect-var.negative { color: #f87171; }
 .sect-ligne-hors .sect-nom { color: rgba(255,255,255,0.5); }

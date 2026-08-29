@@ -8,10 +8,10 @@
 window.I18N = {
 
 fr: {
-  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleContact: "Financia | Contact" },
+  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Ressources", titleContact: "Financia | Contact" },
   commun: { reessayer: "Réessayer", reessaiEnCours: "Chargement…" },
-  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", retour: "Revenir en arrière" },
-  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", apropos: "À propos", contact: "Contact" },
+  nav: { apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", retour: "Revenir en arrière" },
+  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
 
   hero: {
     badge: "🚀 Pour les 18–30 ans · 100% pédagogique",
@@ -498,6 +498,8 @@ fr: {
       livre: "Livre",
       ecouter: "Écouter",
       savoir: "En savoir plus",
+      site: "Site",
+      consulter: "Consulter",
       martingale: {
         cat: "Bases de l'investissement",
         desc: "Un invité par épisode raconte une façon d'investir (Bourse, immobilier, private equity) et la manière dont il s'y est pris.",
@@ -518,8 +520,30 @@ fr: {
         cat: "Épargne et comportement",
         desc: "Vingt courts chapitres sur la façon dont les émotions, plus que les calculs, décident de la plupart des choix d'argent.",
       },
+      lfpt: {
+        cat: "Pédagogie générale",
+        desc: "Des fiches et des simulateurs sur l'épargne, le crédit et la Bourse, publiés par un organisme d'intérêt général.",
+      },
+      mqa: {
+        cat: "Épargne et budget",
+        desc: "Le service public d'information budgétaire : gérer un budget, ouvrir un compte, réagir en cas de difficulté.",
+      },
     },
+    versPage: "🎧 Podcasts et livres pour aller plus loin",
     disclaimer: "Ces liens sont fournis à titre informatif. Financia n'a aucun partenariat ni lien commercial avec ces entités et ne touche aucune rémunération.",
+  },
+
+  ressourcesPage: {
+    badge: "🎧 Ressources",
+    titreHtml: "Podcasts, livres et <em>sites de référence</em>",
+    lead: "Une courte sélection pour apprendre la finance en dehors de Financia. Chaque lien mène au site officiel de l'auteur ou du diffuseur, jamais à un revendeur.",
+    podcastsTitre: "Podcasts",
+    podcastsSous: "À écouter dans les transports, sans rien connaître au départ.",
+    livresTitre: "Livres",
+    livresSous: "Deux lectures courtes, sans jargon et sans promesse de rendement.",
+    sitesTitre: "Sites de référence",
+    sitesSous: "Deux services publics d'éducation financière, gratuits et sans publicité.",
+    versOutils: "🔗 Voir aussi les sites et outils du quotidien",
   },
 
   footer: {
@@ -760,10 +784,10 @@ fr: {
 },
 
 en: {
-  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleContact: "Financia | Contact" },
+  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Resources", titleContact: "Financia | Contact" },
   commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
-  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", retour: "Go back" },
-  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", apropos: "About", contact: "Contact" },
+  nav: { apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", retour: "Go back" },
+  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
 
   hero: {
     badge: "🚀 For 18–30 year-olds · 100% educational",
@@ -1250,6 +1274,8 @@ en: {
       livre: "Book",
       ecouter: "Listen",
       savoir: "Learn more",
+      site: "Website",
+      consulter: "Visit",
       martingale: {
         cat: "Investing basics",
         desc: "Each episode, a guest walks through one way of investing (stocks, property, private equity) and how they went about it. In French.",
@@ -1270,8 +1296,30 @@ en: {
         cat: "Saving and behaviour",
         desc: "Twenty short chapters on how emotions, rather than calculations, drive most money decisions.",
       },
+      lfpt: {
+        cat: "General education",
+        desc: "Fact sheets and calculators on saving, credit and the stock market, published by a public-interest body. In French.",
+      },
+      mqa: {
+        cat: "Saving and budgeting",
+        desc: "The public budget-information service: managing a budget, opening an account, reacting to difficulty. In French.",
+      },
     },
+    versPage: "🎧 Podcasts and books to go further",
     disclaimer: "These links are provided for information only. Financia has no partnership or commercial ties with these entities and receives no compensation.",
+  },
+
+  ressourcesPage: {
+    badge: "🎧 Resources",
+    titreHtml: "Podcasts, books and <em>reference sites</em>",
+    lead: "A short selection for learning about finance beyond Financia. Every link goes to the official site of the author or broadcaster, never to a reseller.",
+    podcastsTitre: "Podcasts",
+    podcastsSous: "To listen to on your commute, with no prior knowledge.",
+    livresTitre: "Books",
+    livresSous: "Two short reads, no jargon and no promise of returns.",
+    sitesTitre: "Reference sites",
+    sitesSous: "Two public financial-education services, free and ad-free. In French.",
+    versOutils: "🔗 See also the everyday sites and tools",
   },
 
   footer: {
@@ -1512,10 +1560,10 @@ en: {
 },
 
 es: {
-  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleContact: "Financia | Contacto" },
+  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Recursos", titleContact: "Financia | Contacto" },
   commun: { reessayer: "Reintentar", reessaiEnCours: "Cargando…" },
-  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", retour: "Volver atrás" },
-  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", apropos: "Sobre nosotros", contact: "Contacto" },
+  nav: { apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", retour: "Volver atrás" },
+  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
 
   hero: {
     badge: "🚀 Para jóvenes de 18–30 años · 100% educativo",
@@ -2002,6 +2050,8 @@ es: {
       livre: "Libro",
       ecouter: "Escuchar",
       savoir: "Saber más",
+      site: "Sitio",
+      consulter: "Consultar",
       martingale: {
         cat: "Bases de la inversión",
         desc: "Cada episodio, un invitado explica una forma de invertir (bolsa, inmobiliario, private equity) y cómo lo hizo. En francés.",
@@ -2022,8 +2072,30 @@ es: {
         cat: "Ahorro y comportamiento",
         desc: "Veinte capítulos breves sobre cómo las emociones, más que los cálculos, deciden la mayoría de las elecciones de dinero.",
       },
+      lfpt: {
+        cat: "Pedagogía general",
+        desc: "Fichas y simuladores sobre el ahorro, el crédito y la bolsa, publicados por un organismo de interés general. En francés.",
+      },
+      mqa: {
+        cat: "Ahorro y presupuesto",
+        desc: "El servicio público de información presupuestaria: gestionar un presupuesto, abrir una cuenta, reaccionar ante dificultades. En francés.",
+      },
     },
+    versPage: "🎧 Pódcast y libros para profundizar",
     disclaimer: "Estos enlaces se facilitan a título informativo. Financia no tiene ninguna asociación ni vínculo comercial con estas entidades y no recibe ninguna remuneración.",
+  },
+
+  ressourcesPage: {
+    badge: "🎧 Recursos",
+    titreHtml: "Pódcast, libros y <em>sitios de referencia</em>",
+    lead: "Una breve selección para aprender finanzas fuera de Financia. Cada enlace lleva al sitio oficial del autor o del difusor, nunca a un revendedor.",
+    podcastsTitre: "Pódcast",
+    podcastsSous: "Para escuchar en el transporte, sin saber nada de partida.",
+    livresTitre: "Libros",
+    livresSous: "Dos lecturas breves, sin jerga y sin promesas de rentabilidad.",
+    sitesTitre: "Sitios de referencia",
+    sitesSous: "Dos servicios públicos de educación financiera, gratuitos y sin publicidad. En francés.",
+    versOutils: "🔗 Ver también los sitios y herramientas del día a día",
   },
 
   footer: {
@@ -2264,10 +2336,10 @@ es: {
 },
 
 ru: {
-  meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleContact: "Financia | Контакты" },
+  meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Ресурсы", titleContact: "Financia | Контакты" },
   commun: { reessayer: "Повторить", reessaiEnCours: "Загрузка…" },
-  nav: { apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", retour: "Назад" },
-  mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", apropos: "О нас", contact: "Контакты" },
+  nav: { apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", retour: "Назад" },
+  mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
 
   hero: {
     badge: "🚀 Для 18–30 лет · 100% образовательно",
@@ -2754,6 +2826,8 @@ ru: {
       livre: "Книга",
       ecouter: "Слушать",
       savoir: "Подробнее",
+      site: "Сайт",
+      consulter: "Открыть",
       martingale: {
         cat: "Основы инвестирования",
         desc: "В каждом выпуске гость рассказывает об одном способе инвестировать (биржа, недвижимость, private equity) и о том, как он это сделал. На французском языке.",
@@ -2774,8 +2848,30 @@ ru: {
         cat: "Сбережения и поведение",
         desc: "Двадцать коротких глав о том, как эмоции, а не расчёты, определяют большинство денежных решений.",
       },
+      lfpt: {
+        cat: "Общее просвещение",
+        desc: "Справки и калькуляторы по сбережениям, кредиту и бирже, публикуемые организацией общественного интереса. На французском языке.",
+      },
+      mqa: {
+        cat: "Сбережения и бюджет",
+        desc: "Государственная служба бюджетной информации: как вести бюджет, открыть счёт, действовать при трудностях. На французском языке.",
+      },
     },
+    versPage: "🎧 Подкасты и книги, чтобы узнать больше",
     disclaimer: "Эти ссылки приведены исключительно для информации. У Financia нет партнёрства или коммерческих связей с этими организациями и она не получает вознаграждения.",
+  },
+
+  ressourcesPage: {
+    badge: "🎧 Ресурсы",
+    titreHtml: "Подкасты, книги и <em>справочные сайты</em>",
+    lead: "Небольшая подборка, чтобы изучать финансы за пределами Financia. Каждая ссылка ведёт на официальный сайт автора или вещателя, а не к продавцу.",
+    podcastsTitre: "Подкасты",
+    podcastsSous: "Слушать в дороге, даже если вы начинаете с нуля.",
+    livresTitre: "Книги",
+    livresSous: "Два коротких чтения, без жаргона и без обещаний доходности.",
+    sitesTitre: "Справочные сайты",
+    sitesSous: "Две государственные службы финансового просвещения, бесплатные и без рекламы. На французском языке.",
+    versOutils: "🔗 Смотрите также повседневные сайты и сервисы",
   },
 
   footer: {
@@ -3016,10 +3112,10 @@ ru: {
 },
 
 de: {
-  meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleContact: "Financia | Kontakt" },
+  meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Ressourcen", titleContact: "Financia | Kontakt" },
   commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
-  nav: { apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", retour: "Zurück" },
-  mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", apropos: "Über uns", contact: "Kontakt" },
+  nav: { apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", retour: "Zurück" },
+  mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
 
   hero: {
     badge: "🚀 Für 18–30-Jährige · 100% pädagogisch",
@@ -3506,6 +3602,8 @@ de: {
       livre: "Buch",
       ecouter: "Anhören",
       savoir: "Mehr erfahren",
+      site: "Website",
+      consulter: "Ansehen",
       martingale: {
         cat: "Grundlagen des Investierens",
         desc: "In jeder Folge schildert ein Gast eine Art zu investieren (Börse, Immobilien, Private Equity) und wie er dabei vorgegangen ist. Auf Französisch.",
@@ -3526,8 +3624,30 @@ de: {
         cat: "Sparen und Verhalten",
         desc: "Zwanzig kurze Kapitel darüber, wie Emotionen und nicht Berechnungen die meisten Geldentscheidungen bestimmen.",
       },
+      lfpt: {
+        cat: "Allgemeine Bildung",
+        desc: "Merkblätter und Rechner zu Sparen, Krediten und Börse, herausgegeben von einer gemeinnützigen Einrichtung. Auf Französisch.",
+      },
+      mqa: {
+        cat: "Sparen und Budget",
+        desc: "Der öffentliche Dienst für Budgetinformation: ein Budget führen, ein Konto eröffnen, bei Schwierigkeiten reagieren. Auf Französisch.",
+      },
     },
+    versPage: "🎧 Podcasts und Bücher, um weiterzugehen",
     disclaimer: "Diese Links dienen ausschließlich der Information. Financia unterhält keine Partnerschaft oder Geschäftsbeziehung mit diesen Anbietern und erhält keinerlei Vergütung.",
+  },
+
+  ressourcesPage: {
+    badge: "🎧 Ressourcen",
+    titreHtml: "Podcasts, Bücher und <em>Referenzseiten</em>",
+    lead: "Eine kurze Auswahl, um Finanzwissen außerhalb von Financia zu erwerben. Jeder Link führt zur offiziellen Seite der Autorin, des Autors oder des Senders, nie zu einem Händler.",
+    podcastsTitre: "Podcasts",
+    podcastsSous: "Zum Hören unterwegs, auch ohne Vorkenntnisse.",
+    livresTitre: "Bücher",
+    livresSous: "Zwei kurze Lektüren, ohne Fachjargon und ohne Renditeversprechen.",
+    sitesTitre: "Referenzseiten",
+    sitesSous: "Zwei öffentliche Angebote zur Finanzbildung, kostenlos und werbefrei. Auf Französisch.",
+    versOutils: "🔗 Auch die Seiten und Werkzeuge für den Alltag ansehen",
   },
 
   footer: {

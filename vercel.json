@@ -13,6 +13,10 @@
       "destination": "/favoris.html"
     },
     {
+      "source": "/ressources",
+      "destination": "/ressources.html"
+    },
+    {
       "source": "/contact",
       "destination": "/contact.html"
     }
