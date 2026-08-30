@@ -174,6 +174,18 @@
       <p class="com-sous com-sous-fictif" data-i18n="communaute.membresFictifs">Les membres ci-dessous sont fictifs, générés pour l'aperçu. Aucune personne réelle n'est représentée.</p>
       <ul class="com-liste" id="comListeMembres"></ul>
 
+
+      <div class="com-actions">
+        <button type="button" class="btn-ghost" id="comChangerGroupe" data-i18n="communaute.changerGroupe">Changer de groupe</button>
+        <button type="button" class="btn-ghost" id="comRecommencer" data-i18n="communaute.recommencer">Recommencer</button>
+      </div>
+    </div>
+
+    <!-- Blocs permanents : visibles à toutes les étapes. La feuille de route et
+         les règles ne dépendent pas du groupe choisi, et la liste d'attente doit
+         rester atteignable sans dérouler tout le parcours. -->
+    <div class="com-permanent">
+
       <div class="com-bientot">
         <h3 class="com-h3" data-i18n="communaute.bientotTitre">Ce qui arrivera ensuite</h3>
         <ul class="com-bientot-liste">
@@ -183,9 +195,34 @@
         </ul>
       </div>
 
-      <div class="com-actions">
-        <button type="button" class="btn-ghost" id="comChangerGroupe" data-i18n="communaute.changerGroupe">Changer de groupe</button>
-        <button type="button" class="btn-ghost" id="comRecommencer" data-i18n="communaute.recommencer">Recommencer</button>
+      <!-- Charte. Annoncée avant l'ouverture et non après : ce sont les règles
+           qui rendent la promesse « 0 % conseils perso » tenable une fois que
+           ce sont les membres qui écrivent, pas Financia. -->
+      <div class="com-charte">
+        <h3 class="com-h3" data-i18n="communaute.charteTitre">Les règles, écrites avant l'ouverture</h3>
+        <p class="com-sous" data-i18n="communaute.charteSous">Un forum sur l'argent sans règles devient vite autre chose. Voici celles qui s'appliqueront dès le premier message.</p>
+        <ol class="com-charte-liste">
+          <li data-i18n="communaute.charte1">Aucun conseil personnalisé entre membres. On explique, on ne recommande pas.</li>
+          <li data-i18n="communaute.charte2">Aucun lien de parrainage, aucune promotion de token ou de plateforme.</li>
+          <li data-i18n="communaute.charte3">Pas de montants ni de situation personnelle : ce qui est écrit ici est public.</li>
+          <li data-i18n="communaute.charte4">Chaque message est relu avant publication.</li>
+          <li data-i18n="communaute.charte5">On s'adresse à des débutants : pas de moquerie, pas de jargon inutile.</li>
+        </ol>
+      </div>
+
+      <!-- Liste d'attente, branchée sur l'endpoint newsletter existant : une
+           inscription réelle vaut mieux qu'un effectif inventé, et c'est le seul
+           chiffre de cette page qui pourra un jour être cité honnêtement. -->
+      <div class="com-attente">
+        <h3 class="com-h3" data-i18n="communaute.attenteTitre">Être prévenu à l'ouverture</h3>
+        <p class="com-sous" data-i18n="communaute.attenteSous">Laisse ton email et tu seras prévenu en premier. C'est la même liste que la lettre Financia : tu recevras aussi les nouveautés du site, et tu peux te désinscrire en un clic.</p>
+        <form class="com-form" id="comFormAttente" novalidate>
+          <label class="sr-only" for="comEmail" data-i18n="newsletter.placeholder">ton@email.com</label>
+          <input type="email" id="comEmail" class="com-champ" autocomplete="email" required
+                 data-i18n-placeholder="newsletter.placeholder" placeholder="ton@email.com" />
+          <button type="submit" class="btn-primary" id="comBtnAttente" data-i18n="communaute.attenteBtn">Me prévenir</button>
+        </form>
+        <p class="com-msg" id="comMsgAttente" role="status" hidden></p>
       </div>
     </div>
 

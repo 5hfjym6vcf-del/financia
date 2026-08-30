@@ -223,6 +223,61 @@ $('#comChangerGroupe')?.addEventListener('click', () => {
   montrer('groupes');
 });
 
+// ── Liste d'attente ────────────────────────────────────────
+// Branchée sur /api/newsletter, l'endpoint qui alimente déjà la liste Mailjet :
+// pas de second point d'entrée à maintenir, et une seule liste de diffusion
+// donc un seul consentement. Le texte au-dessus du champ le dit explicitement,
+// sinon on collecterait une adresse pour un usage et on s'en servirait pour un
+// autre.
+(function () {
+  const form = $('#comFormAttente');
+  if (!form) return;
+  const champ = $('#comEmail');
+  const btn = $('#comBtnAttente');
+  const msg = $('#comMsgAttente');
+
+  function afficher(texte, type) {
+    msg.textContent = texte;
+    msg.className = 'com-msg com-msg-' + type;
+    msg.hidden = false;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = champ.value.trim();
+    // Validation minimale côté client : l'endpoint revalide de toute façon,
+    // mais un aller-retour réseau pour une adresse vide est inutile.
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      afficher(FinanciaI18N.t('newsletter.errEmail'), 'erreur');
+      champ.focus();
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = FinanciaI18N.t('newsletter.btnLoading');
+    try {
+      const r = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await r.json();
+      if (r.ok) {
+        champ.value = '';
+        afficher(FinanciaI18N.t(data.already ? 'communaute.attenteDeja' : 'communaute.attenteSucces'), 'succes');
+        btn.textContent = FinanciaI18N.t('newsletter.btnConfirmed');
+      } else {
+        afficher(data.error || FinanciaI18N.t('newsletter.genericErr'), 'erreur');
+        btn.disabled = false;
+        btn.textContent = FinanciaI18N.t('communaute.attenteBtn');
+      }
+    } catch {
+      afficher(FinanciaI18N.t('newsletter.networkErr'), 'erreur');
+      btn.disabled = false;
+      btn.textContent = FinanciaI18N.t('communaute.attenteBtn');
+    }
+  });
+})();
+
 function demarrer() {
   if (etat.pseudo && etat.groupe && GROUPES.some(g => g.cle === etat.groupe)) {
     rendreGroupe();

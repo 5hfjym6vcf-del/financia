@@ -3083,3 +3083,35 @@ textarea:focus-visible,
   .com-section { padding: 40px 0 64px; }
   .com-entete { gap: 12px; }
 }
+/* Blocs permanents de la page Communauté : feuille de route, charte, liste
+   d'attente. Séparés du parcours par un filet, pour qu'on voie qu'ils ne
+   dépendent pas de l'étape en cours. */
+.com-permanent { margin-top: 56px; padding-top: 44px; border-top: 1px solid rgba(124,58,237,0.16); display: flex; flex-direction: column; gap: 28px; }
+.com-charte, .com-attente {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(124,58,237,0.22);
+  border-radius: 16px;
+  padding: 24px 26px;
+}
+.com-charte-liste { list-style: none; counter-reset: regle; display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+.com-charte-liste li {
+  counter-increment: regle;
+  position: relative;
+  padding-left: 38px;
+  font-size: 14px; line-height: 1.6; color: var(--text-2);
+}
+/* Numéro en pastille : une charte se lit comme une liste de règles, pas comme
+   un paragraphe à puces. */
+.com-charte-liste li::before {
+  content: counter(regle);
+  position: absolute; left: 0; top: -1px;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--green-dim); color: var(--green-light);
+  font-size: 12px; font-weight: 800;
+}
+.com-attente .com-sous { margin-bottom: 18px; }
+.com-msg { margin-top: 14px; font-size: 14px; font-weight: 600; line-height: 1.5; }
+.com-msg[hidden] { display: none; }
+.com-msg-succes { color: #4ade80; }
+.com-msg-erreur { color: #f87171; }
