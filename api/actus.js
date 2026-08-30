@@ -17,10 +17,11 @@
 // favoris, fonctionne sans modification.
 // ============================================================
 
-// 60 min et non 30 : /api/news et /api/actus puisent dans la même clé
-// NewsAPI, pour 3 requêtes par rafraîchissement. A 30 minutes cela faisait
-// 144 requêtes par jour contre un quota de 100, donc une panne quotidienne
-// garantie. A 60 minutes on retombe à 72, avec de la marge.
+// 60 min. Cet endpoint est désormais la seule porte vers NewsAPI : le widget
+// de l'accueil passait par /api/news, un doublon qui puisait dans la même clé.
+// Il fait deux requêtes par rafraîchissement, une par langue, soit 48 par jour
+// contre un quota de 100. Avant la fusion et à 30 minutes de cache, le total
+// montait à 144 : le dépassement était quotidien et garanti.
 let cache = null;
 let cacheAt = 0;
 const CACHE_MS = 60 * 60 * 1000;

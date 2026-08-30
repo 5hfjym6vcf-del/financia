@@ -1,6 +1,6 @@
 /* ============================================================
    FINANCIA — style.css
-   Design: dark premium tech, noir #000000, violet #7C3AED, Inter
+   Design: dark premium tech, noir #000000, violet #7C3AED, Montserrat
    ============================================================ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; font-style: normal; }
@@ -35,8 +35,8 @@ button, select, input, textarea { font-family: inherit; }
   --radius: 16px;
   --radius-sm: 10px;
   --radius-xs: 6px;
-  --font-display: 'Inter', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
 }
 
@@ -156,12 +156,15 @@ a { text-decoration: none; color: inherit; }
 
 .nav-links { display: flex; align-items: center; gap: 0; }
 .nav-links a {
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255,255,255,0.72);
-  /* 8 px et non 12 : « Ressources » porte la barre à onze liens. La marge
-     gagnée ici, sur l'écart entre liens et sur .nav-inner, évite d'avoir à
-     réduire la taille du texte, qui coûterait davantage à la lisibilité. */
-  padding: 6px 8px;
+  /* 13 px et 7 px d'écart, pour onze liens. Montserrat est sensiblement plus
+     large qu'Inter à taille égale : au réglage précédent (14 px / 8 px) la
+     barre allemande débordait de 21 px et l'espagnole n'avait plus que 15 px
+     de marge. Descendre d'un point coûte moins que de basculer les portables
+     de 1280 px sur le menu burger. Marge la plus faible mesurée : 53 px en
+     allemand. */
+  padding: 6px 7px;
   border-radius: var(--radius-xs);
   white-space: nowrap;
   transition: var(--transition);
@@ -2342,7 +2345,7 @@ html.is-installed [data-install-open] { display: none !important; }
       font-weight: 500;
       color: #ffffff;
       letter-spacing: 0.1em;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
     }
     .logo-banner-dots {
       display: flex;
@@ -2795,7 +2798,7 @@ html.is-installed [data-install-open] { display: none !important; }
       border-radius: 10px;
       padding: 14px 18px;
       font-size: 15px;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
       color: #fff;
       outline: none;
       transition: border-color 0.2s;
@@ -2810,7 +2813,7 @@ html.is-installed [data-install-open] { display: none !important; }
       padding: 14px 28px;
       font-size: 15px;
       font-weight: 700;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
       cursor: pointer;
       white-space: nowrap;
       transition: opacity 0.2s;

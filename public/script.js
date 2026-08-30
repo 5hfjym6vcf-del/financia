@@ -1156,11 +1156,35 @@ FinanciaI18N.onLangChange(async () => {
 
   let newsFailed = false;
 
-  fetch('/api/news')
-    .then(r => r.json())
-    .then(data => {
-      const articles = data.articles;
-      if (!articles || !articles.length) throw new Error('empty');
+  // Le widget puisait dans /api/news, un second endpoint qui interrogeait la
+  // même clé NewsAPI que /api/actus. Deux appels pour la même matière, sur un
+  // quota de 100 par jour que le site dépassait quotidiennement.
+  //
+  // Il passe donc par FinanciaActus.charger(), qui mémoïse sa promesse : la
+  // section Actus de cette même page l'appelle déjà, donc aucune requête
+  // supplémentaire n'est émise ici. Le flux y est en prime dédupliqué, filtré
+  // sur la fraîcheur et classé par sujet, là où /api/news servait du brut.
+  //
+  // time_published arrive au format Alpha Vantage (AAAAMMJJTHHMMSS), que
+  // formatDate ne sait pas lire : on le repasse en ISO à la conversion.
+  function versFormatWidget(item) {
+    const b = item.time_published || '';
+    const iso = b.length >= 13
+      ? `${b.slice(0, 4)}-${b.slice(4, 6)}-${b.slice(6, 8)}T${b.slice(9, 11)}:${b.slice(11, 13)}:00`
+      : '';
+    return { title: item.title, url: item.url, source: { name: item.source || '' }, publishedAt: iso };
+  }
+
+  FinanciaActus.charger()
+    .then(flux => {
+      // La langue de l'interface d'abord, pour ne pas servir des titres
+      // anglais à un lecteur francophone ; à défaut, le flux entier plutôt
+      // qu'un widget vide.
+      const langue = FinanciaI18N.getLang();
+      const parLangue = FinanciaActus.selection([], { langue, limite: 5 });
+      const articles = (parLangue.length ? parLangue : FinanciaActus.selection([], { limite: 5 }))
+        .map(versFormatWidget);
+      if (!articles.length) throw new Error('empty');
       render(articles);
     })
     .catch((err) => {

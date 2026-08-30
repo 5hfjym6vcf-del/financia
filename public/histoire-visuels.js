@@ -60,7 +60,7 @@
       <path d="M18 26 L70 38 L104 30 L150 62 L196 78 L250 92 L302 98" fill="none" stroke="${R}" stroke-width="3.5" stroke-linecap="round"/>
       <path d="M18 26 L70 38 L104 30 L150 62 L196 78 L250 92 L302 98 L302 110 L18 110 Z" fill="${R}" fill-opacity="0.12"/>
       <circle cx="302" cy="98" r="5" fill="${R}"/>
-      <text x="292" y="26" text-anchor="end" fill="${R}" font-family="Inter,sans-serif" font-size="19" font-weight="800">-89%</text>`),
+      <text x="292" y="26" text-anchor="end" fill="${R}" font-family="Montserrat,sans-serif" font-size="19" font-weight="800">-89%</text>`),
 
     // 1971 : le lingot se détache du billet, l'ancrage est rompu.
     1971: cadre(1971, `${grille}
@@ -122,7 +122,7 @@
         ${[0, 1, 2, 3].map(i => `<rect x="${44 + i * 62}" y="38" width="44" height="36" rx="5" fill="${V}" fill-opacity="${0.3 - i * 0.06}"/>`).join('')}
         ${[0, 1, 2].map(i => `<line x1="${88 + i * 62}" y1="56" x2="${106 + i * 62}" y2="56" stroke="${VC}"/>`).join('')}
       </g>
-      <text x="66" y="62" text-anchor="middle" fill="${VC}" font-family="Inter,sans-serif" font-size="17" font-weight="800">0</text>
+      <text x="66" y="62" text-anchor="middle" fill="${VC}" font-family="Montserrat,sans-serif" font-size="17" font-weight="800">0</text>
       <circle cx="270" cy="30" r="12" fill="none" stroke="${G}" stroke-width="2"/>
       <path d="M270 24v12M266 27h8" stroke="${G}" stroke-width="2" stroke-linecap="round"/>`),
 
@@ -143,7 +143,7 @@
       </g>
       <path d="M150 98 C176 96 186 60 196 20" fill="none" stroke="${G}" stroke-width="3.5" stroke-linecap="round"/>
       <path d="M196 20 l-9 13 h18 z" fill="${G}"/>
-      <text x="286" y="42" text-anchor="end" fill="${G}" font-family="Inter,sans-serif" font-size="17" font-weight="800">+1600%</text>`),
+      <text x="286" y="42" text-anchor="end" fill="${G}" font-family="Montserrat,sans-serif" font-size="17" font-weight="800">+1600%</text>`),
 
     // 2022 : la puce et le réseau qui en irradie.
     2022: cadre(2022, `${grille}

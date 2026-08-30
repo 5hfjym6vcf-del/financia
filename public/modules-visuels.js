@@ -42,7 +42,7 @@
         <line x1="0" y1="80" x2="96" y2="80" stroke="${V}" stroke-opacity="0.5" stroke-width="2"/>
         ${[0, 1, 2, 3, 4].map(i => `<line x1="${i * 24}" y1="74" x2="${i * 24}" y2="86" stroke="${V}" stroke-opacity="0.5" stroke-width="2"/>`).join('')}
         <circle cx="96" cy="80" r="7" fill="${G}"/>
-        <text x="96" y="60" text-anchor="middle" fill="${G}" font-family="Inter,sans-serif" font-size="15" font-weight="800">5 ans</text>
+        <text x="96" y="60" text-anchor="middle" fill="${G}" font-family="Montserrat,sans-serif" font-size="15" font-weight="800">5 ans</text>
       </g>`),
 
     // Un seul panier, des dizaines de titres dedans.
@@ -59,7 +59,7 @@
       <g transform="translate(72 34)">
         <rect width="86" height="52" rx="6" fill="${V}" fill-opacity="0.3" stroke="${V}" stroke-width="2"/>
         <line x1="16" y1="34" x2="70" y2="34" stroke="${VC}" stroke-width="3"/>
-        <text x="43" y="24" text-anchor="middle" fill="${VC}" font-family="Inter,sans-serif" font-size="12" font-weight="700">€</text>
+        <text x="43" y="24" text-anchor="middle" fill="${VC}" font-family="Montserrat,sans-serif" font-size="12" font-weight="700">€</text>
       </g>
       <g transform="translate(180 34)">
         <rect width="68" height="52" rx="6" fill="${V}" fill-opacity="0.1" stroke="${V}" stroke-width="2" stroke-dasharray="5 5"/>
@@ -98,7 +98,7 @@
     jeunes: cadre(`
       <line x1="56" y1="70" x2="268" y2="70" stroke="${V}" stroke-opacity="0.5" stroke-width="2"/>
       <circle cx="62" cy="70" r="9" fill="${V}"/>
-      <text x="62" y="46" text-anchor="middle" fill="${VC}" font-family="Inter,sans-serif" font-size="13" font-weight="800">18</text>
+      <text x="62" y="46" text-anchor="middle" fill="${VC}" font-family="Montserrat,sans-serif" font-size="13" font-weight="800">18</text>
       <g stroke="${V}" stroke-opacity="0.4" stroke-width="2">
         ${[1, 2, 3, 4, 5].map(i => `<line x1="${62 + i * 40}" y1="64" x2="${62 + i * 40}" y2="76"/>`).join('')}
       </g>
