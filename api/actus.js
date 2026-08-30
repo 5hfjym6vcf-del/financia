@@ -17,10 +17,14 @@
 // favoris, fonctionne sans modification.
 // ============================================================
 
+// 60 min et non 30 : /api/news et /api/actus puisent dans la même clé
+// NewsAPI, pour 3 requêtes par rafraîchissement. A 30 minutes cela faisait
+// 144 requêtes par jour contre un quota de 100, donc une panne quotidienne
+// garantie. A 60 minutes on retombe à 72, avec de la marge.
 let cache = null;
 let cacheAt = 0;
-const CACHE_MS = 30 * 60 * 1000;
-const CACHE_CONTROL = 's-maxage=1800, stale-while-revalidate=3600';
+const CACHE_MS = 60 * 60 * 1000;
+const CACHE_CONTROL = 's-maxage=3600, stale-while-revalidate=7200';
 
 // Au-delà, ce n'est plus de l'actualité. Le seuil est volontairement lisible :
 // c'est le réglage qu'il faudra desserrer si la source ne fournit pas assez.

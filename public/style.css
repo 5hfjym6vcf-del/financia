@@ -1,9 +1,15 @@
 /* ============================================================
    FINANCIA — style.css
-   Design: dark premium tech, black #000000, violet #7C4DFF, Inter
+   Design: dark premium tech, noir #000000, violet #7C3AED, Inter
    ============================================================ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; font-style: normal; }
+
+/* Les contrôles de formulaire n'héritent pas de la police : sans cette règle,
+   boutons, sélecteurs et champs retombent sur la police du navigateur. Le
+   sélecteur de langue et les flèches des carrousels s'affichaient en Arial.
+   Seule la famille est héritée, pour ne pas écraser tailles et graisses. */
+button, select, input, textarea { font-family: inherit; }
 
 :root {
   --bg: #000000;

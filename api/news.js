@@ -1,14 +1,15 @@
 // In-memory cache — resets on cold start but survives warm instances.
 let cache = null;
 let cacheAt = 0;
-const CACHE_MS = 30 * 60 * 1000; // 30 minutes
+// 60 min : voir api/actus.js, les deux endpoints partagent le quota NewsAPI.
+const CACHE_MS = 60 * 60 * 1000;
 
 export default async function handler(req, res) {
   const now = Date.now();
 
   // Serve from cache if still fresh
   if (cache && now - cacheAt < CACHE_MS) {
-    res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=7200');
     res.setHeader('X-Cache', 'HIT');
     return res.status(200).json(cache);
   }
@@ -46,7 +47,7 @@ export default async function handler(req, res) {
     cacheAt = now;
     console.log('[news] Cache mis à jour :', data.articles?.length, 'articles');
 
-    res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=7200');
     res.setHeader('X-Cache', 'MISS');
     return res.status(200).json(data);
   } catch (e) {
