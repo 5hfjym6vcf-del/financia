@@ -3,24 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-i18n="meta.titleFavoris">Financia | Mes favoris</title>
+  <title data-i18n="meta.titleCommunaute">Financia | Communauté</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="./marches.css" />
 
   <!-- i18n : chargé de façon bloquante pour éviter tout flash de contenu FR -->
   <style>html:not(.i18n-ready) body { visibility: hidden; }</style>
   <script src="./i18n.js"></script>
   <script src="./i18n-core.js"></script>
-  <script src="./favoris-store.js"></script>
-  <script src="./ui-erreur.js"></script>
-  <script src="./actifs-ui.js"></script>
 
-  <meta name="description" content="Retrouve les actifs que tu suis sur Financia, avec leurs cours du jour." />
+  <meta name="description" content="Aperçu de la future page Communauté de Financia : groupes par thème, sans compte et sans message. Fonctionnalité en cours de développement." />
   <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="https://financia.cloud/favoris" />
+  <link rel="canonical" href="https://financia.cloud/communaute" />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="./images/financia-logo-transparent.png" type="image/png" />
 
@@ -34,16 +30,16 @@
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://financia.cloud/favoris" />
-  <meta property="og:title" content="Financia | Mes favoris" />
-  <meta property="og:description" content="Les actifs que tu suis, avec leurs cours du jour." />
+  <meta property="og:url" content="https://financia.cloud/communaute" />
+  <meta property="og:title" content="Financia | Communauté" />
+  <meta property="og:description" content="Aperçu de la future page Communauté. Fonctionnalité en cours de développement." />
   <meta property="og:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
   <meta property="og:locale" content="fr_FR" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="Financia | Mes favoris" />
-  <meta property="twitter:description" content="Les actifs que tu suis, avec leurs cours du jour." />
+  <meta property="twitter:title" content="Financia | Communauté" />
+  <meta property="twitter:description" content="Aperçu de la future page Communauté. Fonctionnalité en cours de développement." />
   <meta name="twitter:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
 
   <!-- Google Analytics -->
@@ -55,7 +51,7 @@
     gtag('config', 'G-GHBV40V2G1');
   </script>
 </head>
-<body class="marches-page favoris-page">
+<body class="communaute-page">
 
 <header class="nav-bar" id="navbar">
   <div class="nav-inner">
@@ -69,7 +65,7 @@
       <a href="/#simulateur" data-i18n="nav.simulateur">Simulateur</a>
       <a href="/#chat" data-i18n="nav.chat">Chat IA</a>
       <a href="/marches" data-i18n="nav.marches">Marchés</a>
-      <a href="/communaute" data-i18n="nav.communaute">Communauté</a>
+      <a href="/communaute" aria-current="page" data-i18n="nav.communaute">Communauté</a>
       <a href="/#actus" data-i18n="nav.actus">Actus</a>
       <a href="/#temoignages" data-i18n="nav.temoignages">Témoignages</a>
       <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
@@ -96,12 +92,12 @@
   <a href="/#hub"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="mobileMenu.accueil">Accueil</span></a>
   <a href="/#apprendre"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span data-i18n="mobileMenu.apprendre">Apprendre</span></a>
   <a href="/#quiz"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span data-i18n="mobileMenu.quiz">Quiz</span></a>
-  <a href="/ressources"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="mobileMenu.ressources">Ressources</span></a>
+  <a href="/ressources" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="mobileMenu.ressources">Ressources</span></a>
   <a href="/#simulateur"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><span data-i18n="mobileMenu.simulateur">Simulateur</span></a>
   <a href="/#chat"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="mobileMenu.chat">Chat IA</span></a>
   <a href="/marches"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span data-i18n="mobileMenu.marches">Marchés</span></a>
-  <a href="/communaute"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="mobileMenu.communaute">Communauté</span></a>
-  <a href="/favoris" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span data-i18n="mobileMenu.favoris">Mes favoris</span></a>
+  <a href="/communaute" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="mobileMenu.communaute">Communauté</span></a>
+  <a href="/favoris"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span data-i18n="mobileMenu.favoris">Mes favoris</span></a>
   <a href="/#actus"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg><span data-i18n="mobileMenu.actus">Actus</span></a>
   <a href="/#temoignages"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="mobileMenu.temoignages">Témoignages</span></a>
   <a href="/histoire"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="mobileMenu.histoire">Histoire</span></a>
@@ -125,57 +121,74 @@
   <div class="page-hero-glow page-hero-glow-1"></div>
   <div class="page-hero-glow page-hero-glow-2"></div>
   <div class="wrap page-hero-inner">
-    <div class="hero-badge page-hero-badge" data-i18n="favoris.hero.badge">❤️ Mes favoris</div>
-    <h1 class="page-hero-h1" data-i18n-html="favoris.hero.titleHtml">Les actifs <em>que tu suis</em></h1>
-    <p class="page-hero-lead" data-i18n="favoris.hero.lead">Tous les actifs que tu as mis en favori, avec leur cours du jour, au même endroit.</p>
-    <div class="mkt-disclaimer" role="note">
-      <span class="mkt-disclaimer-icon">⚠️</span>
-      <p data-i18n="marches.disclaimer">Données à but pédagogique, différées de quelques minutes. Ne constitue pas un conseil en investissement.</p>
-    </div>
+    <div class="hero-badge page-hero-badge" data-i18n="communaute.badge">👥 Communauté</div>
+    <h1 class="page-hero-h1" data-i18n-html="communaute.titreHtml">Échanger avec <em>d'autres débutants</em></h1>
+    <p class="page-hero-lead" data-i18n="communaute.lead">Des groupes par thème, pour suivre ce qui t'intéresse et voir que tu n'es pas seul à débuter.</p>
   </div>
 </section>
 
-<!-- ═══ GRILLE DES FAVORIS ═══ -->
-<section class="mkt-section">
+<section class="com-section">
   <div class="wrap">
-    <div class="mkt-section-head">
-      <div>
-        <div class="section-label mkt-label" data-i18n="favoris.label">Favoris</div>
-        <h2 class="mkt-h2" id="favTitre" data-i18n="favoris.title">Ce que tu suis</h2>
+
+    <!-- Bandeau d'avertissement. Placé avant tout contenu simulé et non en bas
+         de page : effectifs et pseudos sont crédibles, et sans cette mention en
+         tête un visiteur pourrait les prendre pour une communauté réelle. -->
+    <div class="com-avis" role="note">
+      <span class="com-avis-icone" aria-hidden="true">🚧</span>
+      <p data-i18n="communaute.chantier">Fonctionnalité en cours de développement. Ceci est un aperçu de ce qui arrive bientôt sur Financia.</p>
+    </div>
+
+    <!-- ── Étape 1 : pseudo ── -->
+    <div class="com-etape" id="comPseudo" hidden>
+      <h2 class="com-h2" data-i18n="communaute.pseudoTitre">Choisis un pseudo</h2>
+      <p class="com-sous" data-i18n="communaute.pseudoSous">Il reste sur cet appareil : aucun compte n'est créé, rien n'est envoyé sur Internet.</p>
+      <form class="com-form" id="comFormPseudo" novalidate>
+        <label class="sr-only" for="comChampPseudo" data-i18n="communaute.pseudoLabel">Ton pseudo</label>
+        <input type="text" id="comChampPseudo" class="com-champ" maxlength="20" autocomplete="off"
+               data-i18n-placeholder="communaute.pseudoPlaceholder" placeholder="Ex : RenardCurieux" />
+        <button type="submit" class="btn-primary" data-i18n="communaute.pseudoValider">Continuer</button>
+      </form>
+      <p class="com-erreur" id="comErreurPseudo" role="alert" hidden></p>
+    </div>
+
+    <!-- ── Étape 2 : choix du groupe ── -->
+    <div class="com-etape" id="comGroupes" hidden>
+      <h2 class="com-h2" data-i18n="communaute.groupesTitre">Choisis un groupe</h2>
+      <p class="com-sous" data-i18n="communaute.groupesSous">Chaque groupe rassemble des sujets voisins. Ce sont des thèmes de discussion, pas des orientations de placement.</p>
+      <div class="com-grille" id="comGrilleGroupes"></div>
+      <button type="button" class="btn-ghost com-lien-retour" id="comChangerPseudo" data-i18n="communaute.changerPseudo">Changer de pseudo</button>
+    </div>
+
+    <!-- ── Étape 3 : aperçu du groupe ── -->
+    <div class="com-etape" id="comGroupe" hidden>
+      <div class="com-entete">
+        <span class="com-icone-grande" id="comGroupeIcone" aria-hidden="true"></span>
+        <div class="com-entete-txt">
+          <h2 class="com-h2" id="comGroupeNom"></h2>
+          <p class="com-sous" id="comGroupeSujets"></p>
+        </div>
+        <span class="com-membres com-membres-grand" id="comGroupeMembres"></span>
       </div>
-      <div class="mkt-updated" id="mktUpdated" hidden>
-        <span class="mkt-updated-dot"></span>
-        <span id="mktUpdatedText"></span>
+
+      <h3 class="com-h3" data-i18n="communaute.membresTitre">Membres du groupe</h3>
+      <p class="com-sous com-sous-fictif" data-i18n="communaute.membresFictifs">Les membres ci-dessous sont fictifs, générés pour l'aperçu. Aucune personne réelle n'est représentée.</p>
+      <ul class="com-liste" id="comListeMembres"></ul>
+
+      <div class="com-bientot">
+        <h3 class="com-h3" data-i18n="communaute.bientotTitre">Ce qui arrivera ensuite</h3>
+        <ul class="com-bientot-liste">
+          <li data-i18n="communaute.bientot1">Des fils de discussion par groupe, modérés.</li>
+          <li data-i18n="communaute.bientot2">Des questions posées à la communauté plutôt qu'à l'IA.</li>
+          <li data-i18n="communaute.bientot3">Un rappel des règles : aucun conseil personnalisé entre membres.</li>
+        </ul>
+      </div>
+
+      <div class="com-actions">
+        <button type="button" class="btn-ghost" id="comChangerGroupe" data-i18n="communaute.changerGroupe">Changer de groupe</button>
+        <button type="button" class="btn-ghost" id="comRecommencer" data-i18n="communaute.recommencer">Recommencer</button>
       </div>
     </div>
 
-    <div id="mktNotice" class="mkt-notice" hidden></div>
-
-    <div id="favGrid" class="mkt-grid" hidden></div>
-
-    <div id="favLoading" class="mkt-loading">
-      <div class="loading-dots"><span></span><span></span><span></span></div>
-    </div>
-
-    <!-- État vide : le seul endroit d'où l'on peut ajouter un favori est
-         Marchés, donc l'écran vide y renvoie explicitement. -->
-    <div id="favVide" class="fav-vide" hidden>
-      <div class="fav-vide-coeur" aria-hidden="true">🤍</div>
-      <h3 class="fav-vide-titre" data-i18n="favoris.videTitre">Tu ne suis encore aucun actif</h3>
-      <p class="fav-vide-txt" data-i18n="favoris.videTexte">Sur la page Marchés, clique sur le cœur d'un actif pour le retrouver ici.</p>
-      <a class="btn-primary fav-vide-cta" href="/marches" data-i18n="favoris.videCta">Voir les marchés →</a>
-    </div>
-
-    <div id="favErreur" hidden></div>
-
-    <!-- L'actu liée aux favoris. Masquée tant qu'aucun actif n'est suivi, et
-         en cas de source indisponible : c'est un complément, pas le cœur de
-         la page. -->
-    <div id="favActus" class="fav-actus" hidden>
-      <h2 class="mkt-h2" data-i18n="favoris.actusTitre">L'actu de ce que tu suis</h2>
-      <p class="fav-actus-sub" data-i18n="favoris.actusSub">Les articles du moment sur les sujets qui correspondent à tes favoris.</p>
-      <div id="favActusGrid" class="actus-grid"></div>
-    </div>
   </div>
 </section>
 
@@ -220,9 +233,8 @@
   </div>
 </footer>
 
-<script src="https://unpkg.com/lightweight-charts@5.2.0/dist/lightweight-charts.standalone.production.js"></script>
-<script src="./actus-ui.js"></script>
-<script src="./favoris.js"></script>
+<script src="./communaute.js"></script>
+<script src="./reveal.js" defer></script>
 <script src="./analytics.js" defer></script>
 <script src="./pwa.js" defer></script>
 </body>

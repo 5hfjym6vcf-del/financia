@@ -17,6 +17,10 @@
       "destination": "/ressources.html"
     },
     {
+      "source": "/communaute",
+      "destination": "/communaute.html"
+    },
+    {
       "source": "/contact",
       "destination": "/contact.html"
     }

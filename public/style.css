@@ -126,12 +126,13 @@ a { text-decoration: none; color: inherit; }
   border-bottom: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 2px 24px rgba(0,0,0,0.35);
 }
-/* 1240 px et non 1100 comme .wrap : la barre doit loger onze liens, le logo,
-   le sélecteur de langue et le bouton d'appel. À 1100 px elle débordait de
-   33 px quelle que soit la taille de l'écran, le plafond étant atteint bien
-   avant le bord de la fenêtre. La zone de contenu, elle, reste à 1100 px. */
+/* 1320 px et non 1100 comme .wrap : la barre doit loger douze liens, le logo,
+   le sélecteur de langue et le bouton d'appel. Le plafond est atteint bien
+   avant le bord de la fenêtre, donc élargir l'écran n'y change rien : à
+   1240 px, l'arrivée de « Communauté » faisait déborder l'allemand de 39 px,
+   le français de 15 et l'espagnol de 5. La zone de contenu reste à 1100 px. */
 .nav-inner {
-  max-width: 1240px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -164,7 +165,7 @@ a { text-decoration: none; color: inherit; }
      de marge. Descendre d'un point coûte moins que de basculer les portables
      de 1280 px sur le menu burger. Marge la plus faible mesurée : 53 px en
      allemand. */
-  padding: 6px 7px;
+  padding: 6px 6px;
   border-radius: var(--radius-xs);
   white-space: nowrap;
   transition: var(--transition);
@@ -2089,10 +2090,11 @@ html.is-installed [data-install-open] { display: none !important; }
 .menu-btn.open .menu-btn-bar:nth-child(2) { opacity: 0; }
 .menu-btn.open .menu-btn-bar:nth-child(3) { top: 5.5px; transform: rotate(-45deg); }
 
-/* Bascule sur le menu burger dès 1240 px : en dessous, la barre ne peut pas
-   afficher les onze liens sans les tasser au point de les rendre illisibles.
-   Le menu mobile, lui, les reprend tous. */
-@media (max-width: 1240px) {
+/* Bascule sur le menu burger dès 1320 px : en dessous, la barre ne peut pas
+   afficher les douze liens sans les tasser au point de les rendre illisibles.
+   Le menu mobile, lui, les reprend tous, et les présente en liste verticale,
+   plus confortable qu'une barre saturée. */
+@media (max-width: 1320px) {
   .nav-links { display: none; }
   .menu-btn { display: flex; }
 }
@@ -2947,4 +2949,122 @@ textarea:focus-visible,
 @media (prefers-reduced-motion: reduce) {
   .pc-point.est-actif { animation: none; }
   .pc-value { transition: none; }
+}
+
+
+/* ── Page Communauté (aperçu) ──
+   Cartes calées sur celles de Marchés et des secteurs : mêmes fond, bordure et
+   rayon, pour que l'aperçu ne détonne pas au milieu du site. */
+.com-section { padding: 56px 0 88px; }
+.com-avis {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: rgba(233,162,59,0.09);
+  border: 1px solid rgba(233,162,59,0.4);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 40px;
+  max-width: 720px;
+}
+.com-avis-icone { font-size: 18px; line-height: 1.4; flex-shrink: 0; }
+.com-avis p { font-size: 0.9rem; line-height: 1.6; color: var(--amber); font-weight: 600; }
+.com-etape[hidden] { display: none; }
+.com-h2 { font-size: clamp(1.3rem, 2.8vw, 1.7rem); font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+.com-h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.com-sous { font-size: 15px; line-height: 1.6; color: var(--text-2); max-width: 640px; margin: 8px 0 26px; }
+.com-sous-fictif { font-size: 13px; color: var(--text-3); }
+
+/* Formulaire du pseudo */
+.com-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.com-champ {
+  flex: 1 1 260px; min-width: 0;
+  background: var(--bg-card);
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 15px;
+  color: var(--text);
+}
+.com-champ::placeholder { color: var(--text-3); }
+.com-champ:focus-visible { outline: 2px solid var(--green-light); outline-offset: 2px; border-color: #7C3AED; }
+.com-erreur { margin-top: 12px; font-size: 14px; color: #f87171; font-weight: 600; }
+.com-erreur[hidden] { display: none; }
+
+/* Cartes de groupe */
+.com-grille {
+  display: grid;
+  /* minmax(0, …) : un intitulé long ne doit pas élargir sa colonne au point de
+     faire déborder la grille sur un petit écran. */
+  grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+  gap: 20px;
+}
+.com-carte {
+  display: flex; flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid rgba(124,58,237,0.22);
+  border-radius: 18px;
+  padding: 22px 24px 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.com-carte:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(124,58,237,0.13);
+  border-color: rgba(124,58,237,0.45);
+}
+.com-carte-haut { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.com-icone { font-size: 26px; line-height: 1; }
+.com-membres {
+  font-size: 12px; font-weight: 700;
+  color: #c4b5fd; background: rgba(124,58,237,0.16);
+  border-radius: 50px; padding: 4px 12px; white-space: nowrap;
+}
+.com-membres-grand { font-size: 14px; padding: 6px 16px; }
+.com-carte-titre { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.com-carte-sujets { font-size: 14px; line-height: 1.55; color: var(--text-2); flex: 1 1 auto; margin-bottom: 18px; }
+.com-rejoindre { align-self: flex-start; }
+
+/* Aperçu d'un groupe */
+.com-entete { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+.com-icone-grande { font-size: 40px; line-height: 1; }
+.com-entete-txt { flex: 1 1 240px; min-width: 0; }
+.com-entete-txt .com-sous { margin: 4px 0 0; }
+.com-liste { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 10px; margin-bottom: 40px; }
+.com-membre {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(124,58,237,0.18);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.com-membre-moi { border-color: rgba(124,58,237,0.5); background: var(--green-dim); }
+.com-avatar {
+  flex-shrink: 0;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(124,58,237,0.22); color: var(--green-light);
+  font-size: 14px; font-weight: 800;
+}
+/* Pas d'ellipse : un pseudo tronqué est une information perdue. */
+.com-membre-nom { font-size: 14px; color: var(--text); overflow-wrap: anywhere; min-width: 0; }
+.com-badge-moi {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;
+  color: var(--green-light); background: rgba(124,77,255,0.18);
+  border-radius: 50px; padding: 3px 9px;
+}
+.com-bientot {
+  background: rgba(255,255,255,0.025);
+  border: 1px dashed rgba(124,58,237,0.3);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 28px;
+}
+.com-bientot-liste { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.com-bientot-liste li { position: relative; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--text-2); }
+.com-bientot-liste li::before { content: '·'; position: absolute; left: 6px; color: var(--green-light); font-weight: 800; }
+.com-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.com-lien-retour { margin-top: 26px; }
+
+@media (max-width: 600px) {
+  .com-section { padding: 40px 0 64px; }
+  .com-entete { gap: 12px; }
 }
