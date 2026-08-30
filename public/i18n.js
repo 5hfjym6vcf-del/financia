@@ -10,7 +10,7 @@ window.I18N = {
 fr: {
   meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Ressources", titleContact: "Financia | Contact" },
   commun: { reessayer: "Réessayer", reessaiEnCours: "Chargement…" },
-  nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", retour: "Revenir en arrière", avant: "Aller à la page suivante", },
+  nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", },
   mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
 
   hero: {
@@ -489,13 +489,6 @@ fr: {
   },
 
 
-
-  navSections: {
-    precedente: "Section précédente : {s}",
-    suivante: "Section suivante : {s}",
-    debut: "Première section",
-    fin: "Dernière section",
-  },
   accueilMarches: {
     label: "Aujourd'hui",
     titre: "Actions & cryptos du jour",
@@ -801,7 +794,7 @@ fr: {
 en: {
   meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Resources", titleContact: "Financia | Contact" },
   commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
-  nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", retour: "Go back", avant: "Go forward", },
+  nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", },
   mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
 
   hero: {
@@ -1280,13 +1273,6 @@ en: {
   },
 
 
-
-  navSections: {
-    precedente: "Previous section: {s}",
-    suivante: "Next section: {s}",
-    debut: "First section",
-    fin: "Last section",
-  },
   accueilMarches: {
     label: "Today",
     titre: "Stocks & crypto today",
@@ -1592,7 +1578,7 @@ en: {
 es: {
   meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Recursos", titleContact: "Financia | Contacto" },
   commun: { reessayer: "Reintentar", reessaiEnCours: "Cargando…" },
-  nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", retour: "Volver atrás", avant: "Ir a la página siguiente", },
+  nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", },
   mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
 
   hero: {
@@ -2071,13 +2057,6 @@ es: {
   },
 
 
-
-  navSections: {
-    precedente: "Sección anterior: {s}",
-    suivante: "Sección siguiente: {s}",
-    debut: "Primera sección",
-    fin: "Última sección",
-  },
   accueilMarches: {
     label: "Hoy",
     titre: "Acciones y criptos de hoy",
@@ -2383,7 +2362,7 @@ es: {
 ru: {
   meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Ресурсы", titleContact: "Financia | Контакты" },
   commun: { reessayer: "Повторить", reessaiEnCours: "Загрузка…" },
-  nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", retour: "Назад", avant: "Вперёд", },
+  nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", },
   mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
 
   hero: {
@@ -2862,13 +2841,6 @@ ru: {
   },
 
 
-
-  navSections: {
-    precedente: "Предыдущий раздел: {s}",
-    suivante: "Следующий раздел: {s}",
-    debut: "Первый раздел",
-    fin: "Последний раздел",
-  },
   accueilMarches: {
     label: "Сегодня",
     titre: "Акции и криптовалюты сегодня",
@@ -3174,7 +3146,7 @@ ru: {
 de: {
   meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Ressourcen", titleContact: "Financia | Kontakt" },
   commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
-  nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", retour: "Zurück", avant: "Vorwärts", },
+  nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", },
   mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
 
   hero: {
@@ -3653,13 +3625,6 @@ de: {
   },
 
 
-
-  navSections: {
-    precedente: "Vorheriger Abschnitt: {s}",
-    suivante: "Nächster Abschnitt: {s}",
-    debut: "Erster Abschnitt",
-    fin: "Letzter Abschnitt",
-  },
   accueilMarches: {
     label: "Heute",
     titre: "Aktien & Kryptos des Tages",

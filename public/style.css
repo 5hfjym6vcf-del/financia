@@ -149,48 +149,10 @@ a { text-decoration: none; color: inherit; }
   flex-shrink: 0;
 }
 .logo span { color: var(--green); }
-/* Bouton retour + logo groupés, pour que .nav-inner conserve ses trois enfants
-   et donc sa répartition d'origine : en quatrième enfant, le bouton aurait
-   décalé le logo vers le centre dès que .nav-links disparaît, sous 900 px. */
+/* Conteneur du logo. Conservé bien qu'il n'enveloppe plus qu'un élément : il
+   maintient les trois enfants de .nav-inner, dont dépend la répartition en
+   space-between une fois .nav-links masqué. */
 .nav-gauche { display: flex; align-items: center; gap: 8px; }
-
-/* Flèches retour et avant, présentes sur toutes les pages et dans tous les
-   contextes : navigateur, mobile et application installée. En application la
-   barre du navigateur disparaît avec ses propres flèches, et sur iOS le geste
-   depuis le bord est peu fiable et invisible.
-   Le couple se comporte comme la navigation native : la flèche inutilisable
-   reste en place, grisée, plutôt que de disparaître et de décaler le logo à
-   chaque page. */
-.nav-nav {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--text-2);
-  cursor: pointer;
-  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease, opacity 0.18s ease;
-}
-/* L'attribut hidden ne l'emporterait pas sur le display de la classe. */
-.nav-nav[hidden] { display: none; }
-/* Zone tactile portée à 46 px sans grossir le cercle : en dessous de ~44 px,
-   la cible est trop fine au doigt, et c'est ici un contrôle de navigation. */
-.nav-nav::after { content: ''; position: absolute; inset: -5px; }
-.nav-nav svg { width: 19px; height: 19px; }
-.nav-nav:hover:not(:disabled) { color: #fff; border-color: #7C3AED; background: rgba(124, 58, 237, 0.16); }
-.nav-nav:active:not(:disabled) { transform: scale(0.94); }
-.nav-nav:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
-/* Grisée mais toujours lisible : le contour reste visible pour que le couple
-   de flèches garde sa forme, et le curseur signale l'indisponibilité. */
-.nav-nav:disabled {
-  opacity: 0.32;
-  cursor: default;
-}
 
 .nav-links { display: flex; align-items: center; gap: 0; }
 .nav-links a {
@@ -2090,7 +2052,6 @@ html.is-installed [data-install-open] { display: none !important; }
 .footer-links a:hover { color: var(--green-light); }
 .footer-legal p { font-size: 12px; color: var(--text-3); }
 
-
 .menu-btn {
   display: none;
   align-items: center;
@@ -2925,7 +2886,6 @@ textarea:focus-visible,
   outline-offset: 3px;
 }
 
-
 /* ============================================================
    Apparition au défilement, et survols
    ============================================================ */
@@ -2957,7 +2917,6 @@ textarea:focus-visible,
   .actu-card:hover,
   .temoignage-card:hover { transform: none; }
 }
-
 
 /* ── Carte de marché du hero ── */
 /* Le point à l'extrémité de la courbe. Il ne pulse qu'une fois de vraies

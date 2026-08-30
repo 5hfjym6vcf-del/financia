@@ -1508,3 +1508,26 @@ FinanciaI18N.onLangChange(async () => {
     carte.prepend(hote);
   });
 })();
+
+// ── Arrivée sur /#ancre depuis une autre page ──────────────
+// Le navigateur vise le fragment avant que la page ne soit posée, et le
+// contenu qui se charge ensuite (actus, cours, images) décale tout : le saut
+// est perdu et l'on reste en haut. Sans ce rattrapage, cliquer « Quiz » depuis
+// Marchés n'emmène nulle part.
+//
+// N'a de sens que sur l'accueil, seule page à porter des ancres de menu.
+(function () {
+  function rattraperAncre() {
+    if (!location.hash) return;
+    const el = document.getElementById(location.hash.slice(1));
+    if (!el) return;
+    // Au-delà de 50 px, le visiteur a fait défiler lui-même : on ne lui
+    // reprend pas la main.
+    if (window.scrollY > 50) return;
+    if (el.getBoundingClientRect().top < 100) return;
+    // 'instant' et non 'auto' : ce dernier hérite du scroll-behavior: smooth
+    // posé sur html, dont l'animation n'aboutit pas toujours à l'arrivée.
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'instant' });
+  }
+  window.addEventListener('load', () => setTimeout(rattraperAncre, 350));
+})();
