@@ -3018,6 +3018,21 @@ textarea:focus-visible,
   border-radius: 50px; padding: 4px 12px; white-space: nowrap;
 }
 .com-membres-grand { font-size: 14px; padding: 6px 16px; }
+/* Mention « exemple » logée dans la pastille elle-même : un effectif est une
+   métrique d'adoption, et c'est le chiffre qu'un lecteur retient. Il doit se
+   démentir à l'endroit exact où on le lit, pas seulement dans le bandeau en
+   tête de page. Séparée par un filet et en retrait, pour qu'on ne la confonde
+   pas avec le nombre. */
+.com-membres-ex {
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(255,255,255,0.22);
+  font-size: 0.82em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: rgba(255,255,255,0.55);
+}
 .com-carte-titre { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .com-carte-sujets { font-size: 14px; line-height: 1.55; color: var(--text-2); flex: 1 1 auto; margin-bottom: 18px; }
 .com-rejoindre { align-self: flex-start; }

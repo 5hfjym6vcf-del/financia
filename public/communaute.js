@@ -102,6 +102,17 @@ function pseudosFictifs(cleGroupe, combien) {
   return out;
 }
 
+
+// Le compteur porte sa propre mention « exemple ». Le bandeau de chantier en
+// tête de page ne suffit pas ici : un effectif est une métrique d'adoption,
+// c'est le chiffre qu'un lecteur retient et cite. Il doit se démentir
+// lui-même, à l'endroit où on le lit.
+function compteurHtml(n, grand) {
+  const taille = grand ? ' com-membres-grand' : '';
+  return `<span class="com-membres${taille}">${FinanciaI18N.t('communaute.membres').replace('{n}', n)}`
+       + `<span class="com-membres-ex">${FinanciaI18N.t('communaute.exemple')}</span></span>`;
+}
+
 // ── Rendu ──────────────────────────────────────────────────
 const ecranPseudo = $('#comPseudo');
 const ecranGroupes = $('#comGroupes');
@@ -122,7 +133,7 @@ function rendreGroupes() {
     <article class="com-carte" data-groupe="${g.cle}">
       <div class="com-carte-haut">
         <span class="com-icone" aria-hidden="true">${g.icone}</span>
-        <span class="com-membres">${FinanciaI18N.t('communaute.membres').replace('{n}', g.membres)}</span>
+        ${compteurHtml(g.membres)}
       </div>
       <h3 class="com-carte-titre">${FinanciaI18N.t('communaute.groupes.' + g.cle + '.nom')}</h3>
       <p class="com-carte-sujets">${FinanciaI18N.t('communaute.groupes.' + g.cle + '.sujets')}</p>
@@ -149,7 +160,7 @@ function rendreGroupe() {
   $('#comGroupeIcone').textContent = g.icone;
   $('#comGroupeNom').textContent = FinanciaI18N.t('communaute.groupes.' + g.cle + '.nom');
   $('#comGroupeSujets').textContent = FinanciaI18N.t('communaute.groupes.' + g.cle + '.sujets');
-  $('#comGroupeMembres').textContent = FinanciaI18N.t('communaute.membres').replace('{n}', g.membres);
+  $('#comGroupeMembres').innerHTML = compteurHtml(g.membres, true);
 
   const liste = $('#comListeMembres');
   // Le pseudo choisi apparaît en tête et marqué, pour que la démonstration
