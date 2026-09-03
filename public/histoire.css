@@ -11,10 +11,10 @@
 .hist-section { padding: 88px 0; position: relative; }
 .hist-section-alt { background: #0A0A0A; }
 .hist-h2 {
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
   color: #fff;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.015em;
   margin-bottom: 14px;
 }
 .hist-section-sub {

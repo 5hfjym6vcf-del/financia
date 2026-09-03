@@ -16,13 +16,21 @@ body.marches-page {
    code les croyait masqués. On rétablit la sémantique attendue pour tous. */
 [hidden] { display: none !important; }
 
+/* Chiffres à chasse fixe. Ici plus qu'ailleurs : ces valeurs sont rafraîchies
+   en place, et sans tnum toute la colonne se décale quand un 1 remplace un 0. */
+.mkt-price, .mkt-change, .sect-cours, .sect-var, .sect-ticker,
+.mkt-earn-date, .mkt-updated {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
 /* ── Layout de base ── */
 .mkt-section { padding: 64px 0 96px; position: relative; }
 .mkt-h2 {
-  font-size: clamp(1.5rem, 3.6vw, 2.1rem);
-  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
   color: #fff;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.015em;
   margin-bottom: 6px;
 }
 

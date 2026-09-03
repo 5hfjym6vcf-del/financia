@@ -38,6 +38,41 @@ button, select, input, textarea { font-family: inherit; }
   --font-display: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+
+  /* ────────────────────────────────────────────────────────────
+     Vocabulaire de l'audit de finition (septembre 2026).
+     Ces noms décrivent des RÔLES ; les anciens décrivent des
+     couleurs. Ils sont donc branchés sur les mêmes valeurs plutôt
+     que dupliqués : une seule source de vérité, et les écrans ne
+     bougent pas d'un pixel tant qu'un composant ne les adopte pas.
+     ──────────────────────────────────────────────────────────── */
+
+  /* Surfaces */
+  --surface-1:     var(--bg-card);      /* cartes */
+  --surface-2:     var(--bg-card-2);    /* carte dans carte, champs */
+  --border-strong: rgba(255,255,255,0.14);
+
+  /* Accent. --violet-text est la seule valeur neuve : #7C3AED plafonne
+     à 3,9:1 sur noir, insuffisant pour du texte. #A78BFA monte à 7,7:1. */
+  --violet:        var(--green);
+  --violet-text:   #A78BFA;
+  --violet-soft:   rgba(124,58,237,0.12);
+  --violet-ring:   rgba(124,58,237,0.35);
+
+  /* Sémantique de marché. --down est déjà la valeur visée partout.
+     --up reste #4ade80 : 11,6:1 sur noir contre 10,6:1 pour le
+     #34D399 proposé, et ce n'est déjà pas un vert saturé par défaut. */
+  --up:   #4ade80;
+  --down: #f87171;
+
+  /* Rayons — trois valeurs, branchées sur les rayons existants. */
+  --r-sm: var(--radius-sm);   /* badges, tags, champs */
+  --r-md: var(--radius);      /* cartes */
+  --r-lg: 20px;               /* grands blocs, modales */
+
+  /* Espacement — échelle 4px */
+  --s1:4px;  --s2:8px;  --s3:12px; --s4:16px; --s5:24px;
+  --s6:32px; --s7:48px; --s8:64px; --s9:96px; --s10:128px;
 }
 
 html { scroll-behavior: smooth; }
@@ -46,14 +81,34 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.65;
   overflow-x: hidden;
 }
+/* Le corps repasse à 16 px sur mobile. Les tailles en rem ne suivent pas :
+   elles se calent sur <html>, pas sur <body>. C'est voulu — seuls les
+   paragraphes sans taille explicite, c'est-à-dire le rôle « corps », bougent. */
+@media (max-width: 640px) { body { font-size: 16px; } }
 
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -1px; }
-h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -0.5px; }
-h3 { font-size: 1.05rem; font-weight: 600; }
+/* ── Échelle typographique ──
+   Sept rôles, une seule valeur par rôle. clamp() absorbe le responsive
+   sans media query. Les tailles montent d'environ 18 % : l'ancienne
+   échelle datait d'avant le passage au tout-Montserrat, dont l'œil est
+   plus petit que celui de l'Inter qu'elle remplaçait. */
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; }
+h1 { font-size: clamp(40px, 5.5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.2vw, 42px); font-weight: 700; letter-spacing: -0.015em; }
+h3 { font-size: 20px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+
+/* Chiffres : chasse fixe. Sans cela une colonne de cours tremble à chaque
+   rafraîchissement, le « 1 » étant deux fois plus étroit que le « 0 ». */
+.hstat-n, .jc-stat-value, .jc-highlight-value,
+.sim-val, .sim-result-val,
+.am-prix, .am-var, .am-ticker,
+.mkt-top-val, .mkt-top-chg {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
 
 em { color: var(--green); font-weight: 700; }
 a { text-decoration: none; color: inherit; }
@@ -61,13 +116,15 @@ a { text-decoration: none; color: inherit; }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 .section { padding: 80px 0; }
 .section-dark { background: var(--bg-2); }
+/* Rôle « eyebrow » de l'échelle : sur-titre de section. */
 .section-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #7C3AED;
-  margin-bottom: 12px;
+  margin-bottom: var(--s3);
 }
 .section-title { margin-bottom: 48px; color: var(--text); }
 
@@ -581,11 +638,14 @@ a { text-decoration: none; color: inherit; }
   border: 1px solid rgba(124,58,237,0.4);
   color: #c4b5fd;
 }
+/* Même rôle que h1, donc mêmes valeurs : c'est le titre des pages
+   secondaires. Il portait une graisse 900 et un interlignage 1.12 qui
+   lui étaient propres, sans raison typographique. */
 .page-hero-h1 {
-  font-size: clamp(2.2rem, 6vw, 3.6rem);
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  line-height: 1.12;
+  font-size: clamp(40px, 5.5vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
   color: #fff;
   margin: 20px 0 22px;
 }
@@ -1934,9 +1994,9 @@ html.is-installed [data-install-open] { display: none !important; }
 .respage-section { padding: 64px 0 88px; }
 .respage-bloc + .respage-bloc { margin-top: 56px; }
 .respage-h2 {
-  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   color: var(--text);
   margin-bottom: 6px;
 }
@@ -2968,8 +3028,8 @@ textarea:focus-visible,
 .com-avis-icone { font-size: 18px; line-height: 1.4; flex-shrink: 0; }
 .com-avis p { font-size: 0.9rem; line-height: 1.6; color: var(--amber); font-weight: 600; }
 .com-etape[hidden] { display: none; }
-.com-h2 { font-size: clamp(1.3rem, 2.8vw, 1.7rem); font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
-.com-h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.com-h2 { font-size: clamp(28px, 3.2vw, 42px); font-weight: 700; color: var(--text); letter-spacing: -0.015em; }
+.com-h3 { font-size: 20px; font-weight: 600; line-height: 1.25; color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em; }
 .com-sous { font-size: 15px; line-height: 1.6; color: var(--text-2); max-width: 640px; margin: 8px 0 26px; }
 .com-sous-fictif { font-size: 13px; color: var(--text-3); }
 
