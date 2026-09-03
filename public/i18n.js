@@ -10,7 +10,7 @@ window.I18N = {
 fr: {
   meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Ressources", titleCommunaute: "Financia | Communauté", titleContact: "Financia | Contact" },
   commun: { reessayer: "Réessayer", reessaiEnCours: "Chargement…" },
-  nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", commencer: "Commencer", langAria: "Langue", },
+  nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", confidentialite: "Confidentialité", risques: "Avertissement sur les risques", commencer: "Commencer", langAria: "Langue", },
   mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
 
   hero: {
@@ -446,6 +446,19 @@ fr: {
     contactText: "Une question ? Écris-nous à",
   },
 
+
+  consent: {
+    titre: "Mesure d'audience",
+    texte: "Financia utilise Google Analytics pour compter les visites et comprendre quelles pages servent. Aucune publicité, aucune revente de données.",
+    enSavoirPlus: "Politique de confidentialité",
+    accepter: "Accepter",
+    refuser: "Refuser",
+    gerer: "Gérer les cookies",
+  },
+
+  risque: {
+    simulateur: "Les simulations et contenus présentés sur Financia sont fournis à titre purement pédagogique et ne constituent pas des conseils en investissement. Investir comporte des risques de perte en capital.",
+  },
   mentions: {
     label: "Légal",
     title: "Mentions légales",
@@ -839,7 +852,7 @@ fr: {
 en: {
   meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Resources", titleCommunaute: "Financia | Community", titleContact: "Financia | Contact" },
   commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
-  nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", commencer: "Get Started", langAria: "Language", },
+  nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", confidentialite: "Privacy", risques: "Risk warning", commencer: "Get Started", langAria: "Language", },
   mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
 
   hero: {
@@ -1275,6 +1288,19 @@ en: {
     contactText: "Got a question? Email us at",
   },
 
+
+  consent: {
+    titre: "Audience measurement",
+    texte: "Financia uses Google Analytics to count visits and understand which pages are useful. No advertising, no data resale.",
+    enSavoirPlus: "Privacy policy",
+    accepter: "Accept",
+    refuser: "Decline",
+    gerer: "Manage cookies",
+  },
+
+  risque: {
+    simulateur: "The simulations and content presented on Financia are provided for educational purposes only and do not constitute investment advice. Investing carries a risk of capital loss.",
+  },
   mentions: {
     label: "Legal",
     title: "Legal Notice",
@@ -1668,7 +1694,7 @@ en: {
 es: {
   meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Recursos", titleCommunaute: "Financia | Comunidad", titleContact: "Financia | Contacto" },
   commun: { reessayer: "Reintentar", reessaiEnCours: "Cargando…" },
-  nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", commencer: "Empezar", langAria: "Idioma", },
+  nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", confidentialite: "Privacidad", risques: "Advertencia sobre los riesgos", commencer: "Empezar", langAria: "Idioma", },
   mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
 
   hero: {
@@ -2104,6 +2130,19 @@ es: {
     contactText: "¿Alguna pregunta? Escríbenos a",
   },
 
+
+  consent: {
+    titre: "Medición de audiencia",
+    texte: "Financia utiliza Google Analytics para contar las visitas y entender qué páginas son útiles. Sin publicidad y sin reventa de datos.",
+    enSavoirPlus: "Política de privacidad",
+    accepter: "Aceptar",
+    refuser: "Rechazar",
+    gerer: "Gestionar cookies",
+  },
+
+  risque: {
+    simulateur: "Las simulaciones y los contenidos presentados en Financia se ofrecen con fines puramente pedagógicos y no constituyen asesoramiento de inversión. Invertir conlleva riesgo de pérdida de capital.",
+  },
   mentions: {
     label: "Legal",
     title: "Aviso legal",
@@ -2497,7 +2536,7 @@ es: {
 ru: {
   meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Ресурсы", titleCommunaute: "Financia | Сообщество", titleContact: "Financia | Контакты" },
   commun: { reessayer: "Повторить", reessaiEnCours: "Загрузка…" },
-  nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", commencer: "Начать", langAria: "Язык", },
+  nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", confidentialite: "Конфиденциальность", risques: "Предупреждение о рисках", commencer: "Начать", langAria: "Язык", },
   mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
 
   hero: {
@@ -2933,6 +2972,19 @@ ru: {
     contactText: "Есть вопрос? Напишите нам на",
   },
 
+
+  consent: {
+    titre: "Измерение аудитории",
+    texte: "Financia использует Google Analytics, чтобы считать посещения и понимать, какие страницы полезны. Без рекламы и без перепродажи данных.",
+    enSavoirPlus: "Политика конфиденциальности",
+    accepter: "Принять",
+    refuser: "Отклонить",
+    gerer: "Настройки файлов cookie",
+  },
+
+  risque: {
+    simulateur: "Симуляции и материалы на Financia носят исключительно образовательный характер и не являются инвестиционной рекомендацией. Инвестирование сопряжено с риском потери капитала.",
+  },
   mentions: {
     label: "Правовая информация",
     title: "Правовая информация",
@@ -3326,7 +3378,7 @@ ru: {
 de: {
   meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Ressourcen", titleCommunaute: "Financia | Community", titleContact: "Financia | Kontakt" },
   commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
-  nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", commencer: "Loslegen", langAria: "Sprache", },
+  nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", confidentialite: "Datenschutz", risques: "Risikohinweis", commencer: "Loslegen", langAria: "Sprache", },
   mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
 
   hero: {
@@ -3762,6 +3814,19 @@ de: {
     contactText: "Eine Frage? Schreib uns an",
   },
 
+
+  consent: {
+    titre: "Reichweitenmessung",
+    texte: "Financia nutzt Google Analytics, um Besuche zu zählen und zu verstehen, welche Seiten nützlich sind. Keine Werbung, kein Weiterverkauf von Daten.",
+    enSavoirPlus: "Datenschutzerklärung",
+    accepter: "Annehmen",
+    refuser: "Ablehnen",
+    gerer: "Cookies verwalten",
+  },
+
+  risque: {
+    simulateur: "Die auf Financia dargestellten Simulationen und Inhalte dienen ausschließlich Bildungszwecken und stellen keine Anlageberatung dar. Investieren ist mit dem Risiko eines Kapitalverlusts verbunden.",
+  },
   mentions: {
     label: "Rechtliches",
     title: "Impressum",

@@ -42,14 +42,31 @@
   <meta name="twitter:description" content="Financia t'explique la bourse, le PEA, l'assurance-vie, sans jargon, sans bullshit." />
   <meta name="twitter:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBV40V2G1"></script>
+  <!-- Google Analytics, sous Consent Mode v2.
+       L'ordre compte : le refus par défaut doit être enregistré AVANT que
+       gtag.js ne s'exécute, sinon des mesures partent avant tout choix de
+       l'utilisateur. C'est pourquoi ce bloc est en ligne et précède le script
+       distant, et non l'inverse comme dans l'intégration par défaut de Google.
+       Le consentement déjà donné est relu ici pour éviter que le bandeau ne
+       réapparaisse et que la mesure ne soit suspendue à chaque page. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      var c = JSON.parse(localStorage.getItem('financia.consentement') || 'null');
+      if (c && c.choix === 'accepte') gtag('consent', 'update', { analytics_storage: 'granted' });
+    } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-GHBV40V2G1');
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBV40V2G1"></script>
 </head>
 <body>
 
@@ -727,6 +744,14 @@
           <div class="sim-result-item sim-result-big"><span class="sim-result-label" data-i18n="simulator.finalLabel">Patrimoine final</span><span class="sim-result-val" id="simFinal">—</span></div>
         </div>
         <button class="btn-primary full" id="simAskBtn" data-i18n="simulator.analyzeBtn">💬 Analyser avec Financia →</button>
+        <!-- Avertissement au contact direct du simulateur. Le site portait déjà
+             cette mention sur Histoire, Marchés et le quiz, mais pas sur l'outil
+             qui produit des montants à l'écran, donc celui qu'on peut le plus
+             facilement prendre pour une projection personnelle. -->
+        <div class="risque" role="note">
+          <span class="risque-icone" aria-hidden="true">⚠️</span>
+          <p data-i18n="risque.simulateur">Les simulations et contenus présentés sur Financia sont fournis à titre purement pédagogique et ne constituent pas des conseils en investissement. Investir comporte des risques de perte en capital.</p>
+        </div>
       </div>
       <div class="simulator-chart-area">
         <canvas id="simChart" width="400" height="300"></canvas>
@@ -1153,7 +1178,10 @@
       <a href="/ressources" data-i18n="nav.ressources">Ressources</a>
       <a href="#apropos" data-i18n="nav.apropos">À propos</a>
       <a href="/contact" data-i18n="nav.contact">Contact</a>
-      <a href="#mentions" data-i18n="nav.mentions">Mentions légales</a>
+      <a href="/mentions-legales" data-i18n="nav.mentions">Mentions légales</a>
+      <a href="/confidentialite" data-i18n="nav.confidentialite">Confidentialité</a>
+      <a href="/mentions-legales#risques" data-i18n="nav.risques">Avertissement sur les risques</a>
+      <a href="#" data-consent-rouvrir data-i18n="consent.gerer">Gérer les cookies</a>
     </div>
     <div class="footer-legal">
       <p>© <span id="year"></span> <span data-i18n="footer.legal">Financia · Projet éducatif · Pas de conseil en investissement</span></p>
@@ -1170,6 +1198,7 @@
 <script src="./reveal.js" defer></script>
 <script src="./accueil-marches.js" defer></script>
 <script src="./analytics.js" defer></script>
+<script src="./consentement.js" defer></script>
 <script src="./pwa.js" defer></script>
 </body>
 </html>

@@ -23,6 +23,14 @@
     {
       "source": "/contact",
       "destination": "/contact.html"
+    },
+    {
+      "source": "/mentions-legales",
+      "destination": "/mentions-legales.html"
+    },
+    {
+      "source": "/confidentialite",
+      "destination": "/confidentialite.html"
     }
   ],
   "headers": [

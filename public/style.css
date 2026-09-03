@@ -3115,3 +3115,98 @@ textarea:focus-visible,
 .com-msg[hidden] { display: none; }
 .com-msg-succes { color: #4ade80; }
 .com-msg-erreur { color: #f87171; }
+
+
+/* ── Bandeau de consentement ──
+   Ancré en bas : il ne masque pas le contenu et laisse la page consultable,
+   ce qu'un mur bloquant ne permettrait pas. Les deux boutons ont exactement
+   le même poids visuel : la CNIL exige que refuser soit aussi simple
+   qu'accepter, ce qu'un « Refuser » en lien discret ne respecterait pas. */
+.consent{
+  position:fixed;left:0;right:0;bottom:0;z-index:9000;
+  background:rgba(10,10,15,.97);
+  border-top:1px solid rgba(124,58,237,.4);
+  backdrop-filter:blur(14px);
+  padding:20px 24px calc(20px + env(safe-area-inset-bottom));
+  animation:consentEntree .32s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes consentEntree{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.consent{animation:none}}
+.consent-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+}
+.consent-txt{flex:1 1 420px;min-width:0}
+.consent-txt strong{display:block;font-size:15px;font-weight:800;color:var(--text);margin-bottom:6px}
+.consent-txt p{font-size:13px;line-height:1.6;color:var(--text-2);margin-bottom:6px}
+.consent-txt a{font-size:13px;font-weight:600;color:var(--green-light);text-decoration:underline;text-underline-offset:2px}
+.consent-actions{display:flex;gap:12px;flex-shrink:0}
+.consent-btn{
+  /* 44 px de haut : en dessous, la cible est trop fine au doigt, et c'est
+     ici une décision que l'on ne veut pas voir prise par erreur. */
+  min-height:44px;padding:12px 26px;border-radius:50px;
+  font-size:14px;font-weight:700;cursor:pointer;
+  transition:transform .18s ease,background .18s ease,border-color .18s ease;
+}
+.consent-btn:active{transform:scale(.97)}
+.consent-btn:focus-visible{outline:2px solid var(--green-light);outline-offset:2px}
+.consent-refuser{background:transparent;border:1px solid rgba(255,255,255,.28);color:var(--text)}
+.consent-refuser:hover{border-color:#fff}
+.consent-accepter{background:#7C3AED;border:1px solid #7C3AED;color:#fff}
+.consent-accepter:hover{background:#8B4DF0}
+
+@media (max-width:600px){
+  .consent{padding:16px 18px calc(16px + env(safe-area-inset-bottom))}
+  /* flex-basis de 420px : en rangée c'est une largeur, en colonne une
+     hauteur. Sans cette remise à zéro, le bloc de texte s'étirait à 420 px
+     et creusait 300 px de vide au milieu du bandeau. */
+  .consent-inner{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:14px}
+  .consent-txt{flex:0 0 auto}
+  .consent-txt p{font-size:12.5px;line-height:1.5}
+  .consent-actions{width:100%}
+  .consent-btn{flex:1;padding:12px 16px}
+}
+
+/* ── Avertissement sur les outils de simulation ──
+   Placé au contact direct du simulateur : une mention en pied de page ne
+   couvre pas un outil qui produit des chiffres à l'écran. */
+.risque{
+  display:flex;align-items:flex-start;gap:12px;
+  background:rgba(233,162,59,.08);
+  border:1px solid rgba(233,162,59,.36);
+  border-radius:14px;
+  padding:14px 18px;
+  margin-top:26px;
+  max-width:760px;
+}
+.risque-icone{font-size:17px;line-height:1.5;flex-shrink:0}
+.risque p{font-size:13px;line-height:1.6;color:var(--amber);font-weight:500}
+
+
+/* ── Pages légales ──
+   Mesure de lecture volontairement étroite : un texte juridique se lit en
+   colonne, pas sur toute la largeur d'un écran. */
+.legal-section{padding:56px 0 96px}
+.legal-section .wrap{max-width:760px}
+.legal-vf{font-size:13px;color:var(--text-3);font-style:italic;margin-bottom:36px}
+.legal-bloc{margin-bottom:44px}
+.legal-bloc h2{font-size:clamp(1.15rem,2.4vw,1.4rem);font-weight:800;color:var(--text);margin-bottom:14px;letter-spacing:-0.4px}
+.legal-bloc p{font-size:15px;line-height:1.75;color:var(--text-2);margin-bottom:14px}
+.legal-bloc p strong{color:var(--text);font-weight:700}
+.legal-note{font-size:13px;color:var(--text-3);border-left:2px solid rgba(124,58,237,.4);padding-left:14px}
+.legal-liste{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0 0 16px}
+.legal-liste li{position:relative;padding-left:20px;font-size:15px;line-height:1.7;color:var(--text-2)}
+.legal-liste li::before{content:'·';position:absolute;left:6px;color:var(--green-light);font-weight:800}
+.legal-contact{font-size:17px}
+.legal-lien{color:var(--green-light);font-weight:700;text-decoration:none;border-bottom:1px solid transparent}
+.legal-lien:hover{border-bottom-color:var(--green-light)}
+.legal-liens{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(124,58,237,.16)}
+
+/* Le tableau doit défiler dans sa propre boîte : sur mobile, trois colonnes
+   ne tiennent pas, et la page entière ne doit jamais défiler latéralement. */
+.legal-table{width:100%;border-collapse:collapse;margin:6px 0 16px;font-size:14px;display:block;overflow-x:auto}
+.legal-table th,.legal-table td{text-align:left;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.09);vertical-align:top}
+.legal-table th{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--green-light);white-space:nowrap}
+.legal-table td{color:var(--text-2);line-height:1.55}
+
+.risque-large{max-width:none;margin:0 0 40px}
