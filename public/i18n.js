@@ -8,7 +8,7 @@
 window.I18N = {
 
 fr: {
-  meta: { titleHome: "Financia | Apprends à investir", titleHistoire: "Financia | Histoire des marchés", titleMarches: "Financia | Analyse de marché", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Ressources", titleCommunaute: "Financia | Communauté", titleContact: "Financia | Contact" },
+  meta: { titleHome: "Financia | Apprendre à investir : PEA, ETF et simulateur", titleHistoire: "Financia | Histoire des marchés : krachs, bulles et légendes", titleMarches: "Financia | Marchés en direct : CAC 40, S&P 500, Bitcoin, or", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Podcasts et livres pour débuter en finance", titleCommunaute: "Financia | Communauté", titleContact: "Financia | Contact : poser une question à l'équipe" },
   commun: { reessayer: "Réessayer", reessaiEnCours: "Chargement…" },
   nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", confidentialite: "Confidentialité", risques: "Avertissement sur les risques", commencer: "Commencer", langAria: "Langue", },
   mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
@@ -461,8 +461,9 @@ fr: {
   },
   mentions: {
     label: "Légal",
+    versPage: "Lire les mentions légales complètes →",
     title: "Mentions légales",
-    editeur: { title: "Éditeur", textHtml: "Financia est un projet personnel édité par <strong>Paolo</strong>, résidant sur la Côte d'Azur, France." },
+    editeur: { title: "Éditeur", textHtml: "Financia est un projet personnel et non commercial, édité par <strong>Paolo Scappaticci</strong>, directeur de la publication, France." },
     objet: { title: "Objet du site", text: "Financia est une plateforme éducative et pédagogique. Les contenus proposés ont une vocation strictement informative et ne constituent en aucun cas un conseil en investissement financier personnalisé." },
     absence: { title: "Absence de conseil financier", text: "Toutes les informations diffusées sur Financia (textes, simulations, réponses de l'IA) sont fournies à titre purement éducatif. Elles ne remplacent pas l'avis d'un conseiller financier agréé. Investir comporte des risques de perte en capital." },
     hebergement: { title: "Hébergement", textHtml: "Ce site est hébergé par <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis." },
@@ -850,7 +851,7 @@ fr: {
 },
 
 en: {
-  meta: { titleHome: "Financia | Learn to Invest", titleHistoire: "Financia | History of the Markets", titleMarches: "Financia | Market Analysis", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Resources", titleCommunaute: "Financia | Community", titleContact: "Financia | Contact" },
+  meta: { titleHome: "Financia | Learn to invest: shares, ETFs and a free simulator", titleHistoire: "Financia | Market history: crashes, bubbles and legends", titleMarches: "Financia | Live markets: CAC 40, S&P 500, Bitcoin and gold", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Podcasts and books to start out in finance", titleCommunaute: "Financia | Community", titleContact: "Financia | Contact: ask the team a question" },
   commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
   nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", confidentialite: "Privacy", risques: "Risk warning", commencer: "Get Started", langAria: "Language", },
   mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
@@ -1303,8 +1304,9 @@ en: {
   },
   mentions: {
     label: "Legal",
+    versPage: "Read the full legal notice →",
     title: "Legal Notice",
-    editeur: { title: "Publisher", textHtml: "Financia is a personal project published by <strong>Paolo</strong>, residing on the French Riviera, France." },
+    editeur: { title: "Publisher", textHtml: "Financia is a personal, non-commercial project published by <strong>Paolo Scappaticci</strong>, publication director, France." },
     objet: { title: "Purpose of the site", text: "Financia is an educational platform. The content provided is strictly informational and does not, under any circumstances, constitute personalized financial investment advice." },
     absence: { title: "No financial advice", text: "All information published on Financia (texts, simulations, AI responses) is provided for purely educational purposes. It does not replace the advice of a licensed financial advisor. Investing carries a risk of capital loss." },
     hebergement: { title: "Hosting", textHtml: "This site is hosted by <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, USA." },
@@ -1692,7 +1694,7 @@ en: {
 },
 
 es: {
-  meta: { titleHome: "Financia | Aprende a invertir", titleHistoire: "Financia | Historia de los mercados", titleMarches: "Financia | Análisis de mercado", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Recursos", titleCommunaute: "Financia | Comunidad", titleContact: "Financia | Contacto" },
+  meta: { titleHome: "Financia | Aprende a invertir: bolsa, ETF y simulador gratis", titleHistoire: "Financia | Historia de los mercados: cracs, burbujas y leyendas", titleMarches: "Financia | Mercados en directo: CAC 40, S&P 500, Bitcoin y oro", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Pódcast y libros para empezar en finanzas", titleCommunaute: "Financia | Comunidad", titleContact: "Financia | Contacto: haz una pregunta al equipo" },
   commun: { reessayer: "Reintentar", reessaiEnCours: "Cargando…" },
   nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", confidentialite: "Privacidad", risques: "Advertencia sobre los riesgos", commencer: "Empezar", langAria: "Idioma", },
   mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
@@ -2145,8 +2147,9 @@ es: {
   },
   mentions: {
     label: "Legal",
+    versPage: "Leer el aviso legal completo →",
     title: "Aviso legal",
-    editeur: { title: "Editor", textHtml: "Financia es un proyecto personal editado por <strong>Paolo</strong>, residente en la Costa Azul, Francia." },
+    editeur: { title: "Editor", textHtml: "Financia es un proyecto personal y no comercial, editado por <strong>Paolo Scappaticci</strong>, director de la publicación, Francia." },
     objet: { title: "Objeto del sitio", text: "Financia es una plataforma educativa. Los contenidos ofrecidos tienen una vocación estrictamente informativa y no constituyen en ningún caso un consejo de inversión financiera personalizado." },
     absence: { title: "Ausencia de asesoramiento financiero", text: "Toda la información publicada en Financia (textos, simulaciones, respuestas de la IA) se proporciona con fines puramente educativos. No sustituye el consejo de un asesor financiero autorizado. Invertir conlleva riesgo de pérdida de capital." },
     hebergement: { title: "Alojamiento", textHtml: "Este sitio está alojado por <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, Estados Unidos." },
@@ -2534,7 +2537,7 @@ es: {
 },
 
 ru: {
-  meta: { titleHome: "Financia | Учись инвестировать", titleHistoire: "Financia | История рынков", titleMarches: "Financia | Анализ рынка", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Ресурсы", titleCommunaute: "Financia | Сообщество", titleContact: "Financia | Контакты" },
+  meta: { titleHome: "Financia | Учитесь инвестировать: биржа, ETF и симулятор", titleHistoire: "Financia | История рынков: крахи, пузыри и легенды", titleMarches: "Financia | Рынки в реальном времени: индексы, биткоин, золото", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Подкасты и книги для старта в финансах", titleCommunaute: "Financia | Сообщество", titleContact: "Financia | Контакты: задайте вопрос команде" },
   commun: { reessayer: "Повторить", reessaiEnCours: "Загрузка…" },
   nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", confidentialite: "Конфиденциальность", risques: "Предупреждение о рисках", commencer: "Начать", langAria: "Язык", },
   mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
@@ -2987,8 +2990,9 @@ ru: {
   },
   mentions: {
     label: "Правовая информация",
+    versPage: "Читать полные правовые сведения →",
     title: "Правовая информация",
-    editeur: { title: "Издатель", textHtml: "Financia — личный проект, издаваемый <strong>Паоло</strong>, проживающим на Лазурном Берегу, Франция." },
+    editeur: { title: "Издатель", textHtml: "Financia — личный некоммерческий проект, издаваемый <strong>Paolo Scappaticci</strong>, директором публикации, Франция." },
     objet: { title: "Назначение сайта", text: "Financia — образовательная платформа. Предлагаемые материалы носят исключительно информационный характер и ни в коем случае не являются персональной инвестиционной консультацией." },
     absence: { title: "Отсутствие финансовой консультации", text: "Вся информация, публикуемая на Financia (тексты, симуляции, ответы ИИ), предоставляется исключительно в образовательных целях. Она не заменяет мнение лицензированного финансового консультанта. Инвестирование сопряжено с риском потери капитала." },
     hebergement: { title: "Хостинг", textHtml: "Этот сайт размещён на <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, Сан-Франциско, CA 94104, США." },
@@ -3376,7 +3380,7 @@ ru: {
 },
 
 de: {
-  meta: { titleHome: "Financia | Investieren lernen", titleHistoire: "Financia | Geschichte der Märkte", titleMarches: "Financia | Marktanalyse", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Ressourcen", titleCommunaute: "Financia | Community", titleContact: "Financia | Kontakt" },
+  meta: { titleHome: "Financia | Investieren lernen: Börse, ETFs und Simulator", titleHistoire: "Financia | Geschichte der Märkte: Crashs, Blasen, Legenden", titleMarches: "Financia | Märkte live: CAC 40, S&P 500, Bitcoin und Gold", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Podcasts und Bücher für den Einstieg", titleCommunaute: "Financia | Community", titleContact: "Financia | Kontakt: dem Team eine Frage stellen" },
   commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
   nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", confidentialite: "Datenschutz", risques: "Risikohinweis", commencer: "Loslegen", langAria: "Sprache", },
   mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
@@ -3829,8 +3833,9 @@ de: {
   },
   mentions: {
     label: "Rechtliches",
+    versPage: "Vollständiges Impressum lesen →",
     title: "Impressum",
-    editeur: { title: "Herausgeber", textHtml: "Financia ist ein persönliches Projekt, herausgegeben von <strong>Paolo</strong>, wohnhaft an der Côte d'Azur, Frankreich." },
+    editeur: { title: "Herausgeber", textHtml: "Financia ist ein persönliches, nicht kommerzielles Projekt, herausgegeben von <strong>Paolo Scappaticci</strong>, verantwortlich für den Inhalt, Frankreich." },
     objet: { title: "Zweck der Website", text: "Financia ist eine Bildungs- und Lernplattform. Die angebotenen Inhalte dienen ausschließlich der Information und stellen in keinem Fall eine persönliche Finanzanlageberatung dar." },
     absence: { title: "Keine Finanzberatung", text: "Alle auf Financia veröffentlichten Informationen (Texte, Simulationen, KI-Antworten) werden ausschließlich zu Bildungszwecken bereitgestellt. Sie ersetzen nicht die Meinung eines zugelassenen Finanzberaters. Investieren birgt das Risiko eines Kapitalverlusts." },
     hebergement: { title: "Hosting", textHtml: "Diese Website wird gehostet von <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, USA." },

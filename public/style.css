@@ -3210,3 +3210,5 @@ textarea:focus-visible,
 .legal-table td{color:var(--text-2);line-height:1.55}
 
 .risque-large{max-width:none;margin:0 0 40px}
+
+.mentions-cta{display:inline-block;margin-top:28px}
