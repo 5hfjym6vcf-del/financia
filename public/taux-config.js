@@ -19,6 +19,18 @@
 
 (function () {
 
+
+  // ── Où mène le bouton « Découvrir l'offre » de chaque carte ───────────
+  //
+  //   ctaUrl      Lien d'affiliation définitif. Vide tant que la convention
+  //               n'est pas signée. Quand il est renseigné, et seulement
+  //               alors, la carte affiche la mention « Lien partenaire » :
+  //               apposer cette mention sur un lien interne serait une
+  //               fausse déclaration, aussi trompeuse que de l'omettre sur
+  //               un lien rémunéré.
+  //   ctaRepli    Destination tant que ctaUrl est vide. Interne, informative,
+  //               sans rémunération : le bouton reste utile sans rien
+  //               promettre.
   const SUPPORTS = [
     {
       id: 'livret-a',
@@ -33,6 +45,8 @@
       fiscalite: 0,
       garanti: true,
       note: 'Capital garanti par l\'État. Retrait possible à tout moment.',
+      ctaUrl: '',
+      ctaRepli: '/ressources#outils-quotidien',
       verifieLe: '2026-09-04',
     },
     {
@@ -47,6 +61,8 @@
       fiscalite: 30,
       garanti: true,
       note: 'Taux variable, révisable par l\'établissement à tout moment.',
+      ctaUrl: '',
+      ctaRepli: '/ressources#outils-quotidien',
       verifieLe: '2026-09-04',
     },
     {
@@ -63,6 +79,8 @@
       fiscalite: 17.2,
       garanti: false,
       note: 'Capital non garanti. La valeur peut baisser, y compris durablement.',
+      ctaUrl: '',
+      ctaRepli: '/ressources#outils-quotidien',
       verifieLe: '2026-09-04',
     },
   ];

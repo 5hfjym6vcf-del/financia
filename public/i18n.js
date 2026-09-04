@@ -625,6 +625,8 @@ fr: {
   },
 
   comparateur: {
+    decouvrir: "Découvrir l'offre",
+    lienPartenaire: "Lien partenaire",
     label: "Outil interactif",
     titreHtml: "Livret, compte espèces ou ETF :<br>ce que ça change sur la durée",
     sous: "Les mêmes versements, placés sur trois supports différents. Le plus rémunérateur sur le papier est aussi le seul dont le capital n'est pas garanti.",
@@ -645,12 +647,13 @@ fr: {
   },
 
   partenaires: {
+    lienPartenaire: "Lien partenaire",
     mention: "Lien affilié",
     ordre: "Présentés dans un ordre qui ne constitue pas un classement. Financia perçoit une commission si tu ouvres un compte via ces liens, sans surcoût pour toi.",
     verifie: "Données vérifiées le {d}.",
     nouvelOnglet: "nouvel onglet, lien affilié",
     depotMin: "Dépôt minimum",
-    ouvrir: "Découvrir",
+    ouvrir: "Découvrir l'offre",
     titreDefaut: "Où ouvrir ce type de compte ?",
     oui: "disponible",
     non: "non disponible",
@@ -1534,6 +1537,8 @@ en: {
   },
 
   comparateur: {
+    decouvrir: "See the offer",
+    lienPartenaire: "Partner link",
     label: "Interactive tool",
     titreHtml: "Savings account, cash account or ETF:<br>what changes over time",
     sous: "The same contributions, placed on three different vehicles. The one that pays most on paper is also the only one whose capital is not guaranteed.",
@@ -1554,12 +1559,13 @@ en: {
   },
 
   partenaires: {
+    lienPartenaire: "Partner link",
     mention: "Affiliate link",
     ordre: "Listed in an order that is not a ranking. Financia earns a commission if you open an account through these links, at no extra cost to you.",
     verifie: "Data checked on {d}.",
     nouvelOnglet: "new tab, affiliate link",
     depotMin: "Minimum deposit",
-    ouvrir: "Find out more",
+    ouvrir: "See the offer",
     titreDefaut: "Where to open this type of account?",
     oui: "available",
     non: "not available",
@@ -2443,6 +2449,8 @@ es: {
   },
 
   comparateur: {
+    decouvrir: "Ver la oferta",
+    lienPartenaire: "Enlace de socio",
     label: "Herramienta interactiva",
     titreHtml: "Libreta, cuenta de efectivo o ETF:<br>lo que cambia con el tiempo",
     sous: "Las mismas aportaciones, en tres productos distintos. El más rentable sobre el papel es también el único cuyo capital no está garantizado.",
@@ -2463,12 +2471,13 @@ es: {
   },
 
   partenaires: {
+    lienPartenaire: "Enlace de socio",
     mention: "Enlace de afiliación",
     ordre: "Presentados en un orden que no constituye una clasificación. Financia percibe una comisión si abres una cuenta a través de estos enlaces, sin coste adicional para ti.",
     verifie: "Datos verificados el {d}.",
     nouvelOnglet: "nueva pestaña, enlace de afiliación",
     depotMin: "Depósito mínimo",
-    ouvrir: "Descubrir",
+    ouvrir: "Ver la oferta",
     titreDefaut: "¿Dónde abrir este tipo de cuenta?",
     oui: "disponible",
     non: "no disponible",
@@ -3352,6 +3361,8 @@ ru: {
   },
 
   comparateur: {
+    decouvrir: "Смотреть предложение",
+    lienPartenaire: "Партнёрская ссылка",
     label: "Интерактивный инструмент",
     titreHtml: "Сберкнижка, денежный счёт или ETF:<br>что меняется на длинной дистанции",
     sous: "Одни и те же взносы, размещённые в трёх разных инструментах. Самый доходный на бумаге — единственный, чей капитал не защищён.",
@@ -3372,12 +3383,13 @@ ru: {
   },
 
   partenaires: {
+    lienPartenaire: "Партнёрская ссылка",
     mention: "Партнёрская ссылка",
     ordre: "Порядок перечисления не является рейтингом. Financia получает комиссию, если вы открываете счёт по этим ссылкам, без дополнительных расходов для вас.",
     verifie: "Данные проверены {d}.",
     nouvelOnglet: "новая вкладка, партнёрская ссылка",
     depotMin: "Минимальный депозит",
-    ouvrir: "Подробнее",
+    ouvrir: "Смотреть предложение",
     titreDefaut: "Где открыть такой счёт?",
     oui: "доступно",
     non: "недоступно",
@@ -4261,6 +4273,8 @@ de: {
   },
 
   comparateur: {
+    decouvrir: "Angebot ansehen",
+    lienPartenaire: "Partnerlink",
     label: "Interaktives Werkzeug",
     titreHtml: "Sparbuch, Verrechnungskonto oder ETF:<br>was über die Jahre den Unterschied macht",
     sous: "Dieselben Einzahlungen, auf drei verschiedenen Anlagen. Die auf dem Papier rentabelste ist zugleich die einzige ohne Kapitalgarantie.",
@@ -4281,12 +4295,13 @@ de: {
   },
 
   partenaires: {
+    lienPartenaire: "Partnerlink",
     mention: "Affiliate-Link",
     ordre: "Die Reihenfolge stellt keine Rangliste dar. Financia erhält eine Provision, wenn du über diese Links ein Konto eröffnest, ohne Mehrkosten für dich.",
     verifie: "Daten geprüft am {d}.",
     nouvelOnglet: "neuer Tab, Affiliate-Link",
     depotMin: "Mindesteinzahlung",
-    ouvrir: "Entdecken",
+    ouvrir: "Angebot ansehen",
     titreDefaut: "Wo lässt sich ein solches Konto eröffnen?",
     oui: "verfügbar",
     non: "nicht verfügbar",

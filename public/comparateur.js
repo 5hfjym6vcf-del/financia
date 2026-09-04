@@ -97,7 +97,35 @@
         </div>
         <p class="comp-note">${support.note}</p>
         ${plafond}
+        ${cta(support)}
       </article>`;
+  }
+
+  // Bouton « Découvrir l'offre ».
+  //
+  // Deux régimes, et un seul détail les sépare aux yeux de la loi : la
+  // mention. Tant que ctaUrl est vide, le bouton mène à une page interne,
+  // Financia ne touche rien, et afficher « Lien partenaire » serait faux.
+  // Dès que ctaUrl est renseigné, la mention apparaît et le lien porte
+  // rel="sponsored", que Google exige sur tout lien rémunéré.
+  function cta(support) {
+    const affilie = !!(support.ctaUrl && support.ctaUrl.trim());
+    const url = affilie ? support.ctaUrl : (support.ctaRepli || '');
+    if (!url) return '';
+
+    const libelle = t('comparateur.decouvrir', "Découvrir l'offre");
+    const attrs = affilie
+      ? ` target="_blank" rel="sponsored nofollow noopener"`
+      : '';
+    const mention = affilie
+      ? `<span class="comp-partenaire">${t('comparateur.lienPartenaire', 'Lien partenaire')}</span>`
+      : '';
+
+    return `
+      <div class="comp-cta-zone">
+        <a class="comp-cta" href="${url}"${attrs}>${libelle}</a>
+        ${mention}
+      </div>`;
   }
 
   function calculer() {

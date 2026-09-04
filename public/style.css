@@ -3707,3 +3707,37 @@ textarea:focus-visible,
   .comp-reglages { grid-template-columns: 1fr; gap: 18px; }
   .comp-resultats { grid-template-columns: 1fr; }
 }
+
+/* Zone de CTA : le bouton, puis la mention juste dessous. La mention n'est
+   posée que sur un lien réellement rémunéré — l'apposer sur un lien interne
+   serait une fausse déclaration, symétrique de son omission sur un lien
+   affilié. */
+.comp-cta-zone, .part-cta-zone {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+.comp-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  border-radius: var(--r-sm);
+  background: var(--violet-soft);
+  border: 1px solid var(--violet-ring);
+  color: var(--green-light);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition), border-color var(--transition);
+}
+.comp-cta:hover { background: rgba(124,58,237,.20); border-color: var(--green); }
+.comp-partenaire, .part-partenaire {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--text-3);
+}
+.part-cta-zone .part-cta { margin-top: 0; }

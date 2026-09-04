@@ -84,7 +84,10 @@
         <h4 class="part-nom">${echappe(p.nom)}</h4>
       </div>
       ${bouts.join('')}
-      ${lien(p, t('partenaires.ouvrir', 'Découvrir'))}
+      <div class="part-cta-zone">
+        ${lien(p, t('partenaires.ouvrir', "Découvrir l'offre"))}
+        <span class="part-partenaire">${echappe(t('partenaires.lienPartenaire', 'Lien partenaire'))}</span>
+      </div>
     </article>`;
   }
 
