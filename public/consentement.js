@@ -49,7 +49,12 @@
         analytics_storage: etat,
         ad_storage: etat,
         ad_user_data: etat,
-        ad_personalization: etat,
+        // Toujours refusé, même après acceptation. ad_storage et ad_user_data
+        // suffisent à compter les conversions ; ad_personalization autorise en
+        // plus le ciblage publicitaire, que le bandeau n'annonce pas : il parle
+        // de « mesurer l'efficacité des campagnes ». Le rétablir supposerait
+        // d'élargir d'abord ce texte.
+        ad_personalization: 'denied',
       });
     }
   }
