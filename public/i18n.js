@@ -8,10 +8,10 @@
 window.I18N = {
 
 fr: {
-  meta: { titleHome: "Financia | Apprendre à investir : PEA, ETF et simulateur", titleHistoire: "Financia | Histoire des marchés : krachs, bulles et légendes", titleMarches: "Financia | Marchés en direct : CAC 40, S&P 500, Bitcoin, or", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Podcasts et livres pour débuter en finance", titleCommunaute: "Financia | Communauté", titleContact: "Financia | Contact : poser une question à l'équipe" },
+  meta: { titleHome: "Financia | Apprendre à investir : PEA, ETF et simulateur", titleHistoire: "Financia | Histoire des marchés : krachs, bulles et légendes", titleMarches: "Financia | Marchés en direct : CAC 40, S&P 500, Bitcoin, or", titleFavoris: "Financia | Mes favoris", titleRessources: "Financia | Podcasts et livres pour débuter en finance", titleCommunaute: "Financia | Communauté", titleAvis: "Financia | Avis des utilisateurs, publiés sans filtre", titleContact: "Financia | Contact : poser une question à l'équipe" },
   commun: { reessayer: "Réessayer", reessaiEnCours: "Chargement…" },
-  nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", confidentialite: "Confidentialité", risques: "Avertissement sur les risques", commencer: "Commencer", langAria: "Langue", },
-  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
+  nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", favoris: "Mes favoris", avis: "Avis", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", confidentialite: "Confidentialité", risques: "Avertissement sur les risques", commencer: "Commencer", langAria: "Langue", },
+  mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", avis: "Avis", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
 
   hero: {
     badge: "🚀 Pour les 18–30 ans · 100% pédagogique",
@@ -81,6 +81,7 @@ fr: {
     emptyTitle: "Aucun avis pour le moment",
     emptySub: "Reviens bientôt pour découvrir les retours de la communauté.",
     loadError: "Impossible de charger les avis pour le moment.",
+    voirTout: "Voir tous les avis",
     cta: "✍️ Laisser un avis",
   },
 
@@ -463,7 +464,7 @@ fr: {
     label: "Légal",
     versPage: "Lire les mentions légales complètes →",
     title: "Mentions légales",
-    editeur: { title: "Éditeur", textHtml: "Financia est un projet personnel et non commercial, édité par <strong>Paolo Scappaticci</strong>, directeur de la publication, France." },
+    editeur: { title: "Éditeur", textHtml: "Financia est un projet personnel édité par <strong>Paolo Scappaticci</strong>, directeur de la publication, France." },
     objet: { title: "Objet du site", text: "Financia est une plateforme éducative et pédagogique. Les contenus proposés ont une vocation strictement informative et ne constituent en aucun cas un conseil en investissement financier personnalisé." },
     absence: { title: "Absence de conseil financier", text: "Toutes les informations diffusées sur Financia (textes, simulations, réponses de l'IA) sont fournies à titre purement éducatif. Elles ne remplacent pas l'avis d'un conseiller financier agréé. Investir comporte des risques de perte en capital." },
     hebergement: { title: "Hébergement", textHtml: "Ce site est hébergé par <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis." },
@@ -597,7 +598,30 @@ fr: {
       },
     },
     versPage: "🎧 Podcasts et livres pour aller plus loin",
-    disclaimer: "Ces liens sont fournis à titre informatif. Financia n'a aucun partenariat ni lien commercial avec ces entités et ne touche aucune rémunération.",
+    disclaimer: "Ces liens sont fournis à titre informatif et ne sont pas des liens d'affiliation : Financia ne perçoit aucune rémunération sur les ressources listées ci-dessus.",
+  },
+
+  avisPage: {
+    badge: "Avis",
+    titreHtml: "Ce qu'en disent <em>celles et ceux qui l'utilisent</em>",
+    lead: "Les retours laissés par les visiteurs de Financia, publiés tels qu'ils ont été écrits. Le formulaire est ouvert à tout le monde, sans compte et sans contrepartie.",
+    listeTitre: "Les avis publiés",
+    compte: "{n} avis publiés, du plus récent au plus ancien.",
+    compteUn: "1 avis publié pour le moment.",
+    noteAria: "Note de {n} sur 5",
+    reglesTitre: "Comment ces avis sont publiés",
+    reglesSous: "Un site qui ne montre que des éloges n'apprend rien à personne. Voici la règle, écrite avant d'en avoir besoin.",
+    regle1Titre: "Qui peut écrire",
+    regle1Texte: "N'importe qui, via un formulaire public. Aucun compte, aucune adresse à laisser, aucune contrepartie : ni cadeau, ni tirage au sort, ni accès à quoi que ce soit.",
+    regle2Titre: "Ce qui est publié",
+    regle2Texte: "Le texte tel qu'il a été écrit, sans retouche ni résumé. Les avis critiques sont publiés au même titre que les autres, et dans le même ordre : du plus récent au plus ancien.",
+    regle3Titre: "Ce qui ne l'est pas",
+    regle3Texte: "Les insultes, le spam, les liens commerciaux, et tout message qui recommande d'acheter ou de vendre quoi que ce soit. Financia ne donne pas de conseil personnalisé, et n'en héberge pas non plus.",
+    disclaimer: "Un avis exprime l'expérience de son auteur avec le site. Il ne constitue ni une recommandation d'investissement, ni une garantie de résultat.",
+    appelTitre: "Tu as utilisé Financia ?",
+    appelSous: "Dis ce que tu en as pensé, y compris si ça ne t'a pas servi. C'est de cette façon que le site s'améliore.",
+    appelCta: "Laisser un avis",
+    appelNote: "Le formulaire est hébergé par Google. Seuls le prénom et le texte que tu saisis sont transmis.",
   },
 
   ressourcesPage: {
@@ -851,10 +875,10 @@ fr: {
 },
 
 en: {
-  meta: { titleHome: "Financia | Learn to invest: shares, ETFs and a free simulator", titleHistoire: "Financia | Market history: crashes, bubbles and legends", titleMarches: "Financia | Live markets: CAC 40, S&P 500, Bitcoin and gold", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Podcasts and books to start out in finance", titleCommunaute: "Financia | Community", titleContact: "Financia | Contact: ask the team a question" },
+  meta: { titleHome: "Financia | Learn to invest: shares, ETFs and a free simulator", titleHistoire: "Financia | Market history: crashes, bubbles and legends", titleMarches: "Financia | Live markets: CAC 40, S&P 500, Bitcoin and gold", titleFavoris: "Financia | My favourites", titleRessources: "Financia | Podcasts and books to start out in finance", titleCommunaute: "Financia | Community", titleAvis: "Financia | User reviews, published unfiltered", titleContact: "Financia | Contact: ask the team a question" },
   commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
-  nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", confidentialite: "Privacy", risques: "Risk warning", commencer: "Get Started", langAria: "Language", },
-  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
+  nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", favoris: "My favourites", avis: "Reviews", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", confidentialite: "Privacy", risques: "Risk warning", commencer: "Get Started", langAria: "Language", },
+  mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", avis: "Reviews", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
 
   hero: {
     badge: "🚀 For 18–30 year-olds · 100% educational",
@@ -924,6 +948,7 @@ en: {
     emptyTitle: "No reviews yet",
     emptySub: "Check back soon to see what the community has to say.",
     loadError: "Couldn't load reviews right now.",
+    voirTout: "See all reviews",
     cta: "✍️ Leave a review",
   },
 
@@ -1306,7 +1331,7 @@ en: {
     label: "Legal",
     versPage: "Read the full legal notice →",
     title: "Legal Notice",
-    editeur: { title: "Publisher", textHtml: "Financia is a personal, non-commercial project published by <strong>Paolo Scappaticci</strong>, publication director, France." },
+    editeur: { title: "Publisher", textHtml: "Financia is a personal project published by <strong>Paolo Scappaticci</strong>, publication director, France." },
     objet: { title: "Purpose of the site", text: "Financia is an educational platform. The content provided is strictly informational and does not, under any circumstances, constitute personalized financial investment advice." },
     absence: { title: "No financial advice", text: "All information published on Financia (texts, simulations, AI responses) is provided for purely educational purposes. It does not replace the advice of a licensed financial advisor. Investing carries a risk of capital loss." },
     hebergement: { title: "Hosting", textHtml: "This site is hosted by <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, USA." },
@@ -1440,7 +1465,30 @@ en: {
       },
     },
     versPage: "🎧 Podcasts and books to go further",
-    disclaimer: "These links are provided for information only. Financia has no partnership or commercial ties with these entities and receives no compensation.",
+    disclaimer: "These links are provided for information only and are not affiliate links: Financia receives no compensation on the resources listed above.",
+  },
+
+  avisPage: {
+    badge: "Reviews",
+    titreHtml: "What <em>the people who use it</em> say",
+    lead: "Feedback left by Financia visitors, published exactly as written. The form is open to everyone, with no account and nothing given in return.",
+    listeTitre: "Published reviews",
+    compte: "{n} reviews published, most recent first.",
+    compteUn: "1 review published so far.",
+    noteAria: "Rated {n} out of 5",
+    reglesTitre: "How these reviews are published",
+    reglesSous: "A site that only shows praise teaches no one anything. Here is the rule, written before it was needed.",
+    regle1Titre: "Who can write one",
+    regle1Texte: "Anyone, through a public form. No account, no address to hand over, nothing in return: no gift, no prize draw, no access to anything.",
+    regle2Titre: "What gets published",
+    regle2Texte: "The text exactly as written, unedited and unabridged. Critical reviews are published like any other, and in the same order: most recent first.",
+    regle3Titre: "What does not",
+    regle3Texte: "Insults, spam, commercial links, and any message recommending that you buy or sell anything. Financia gives no personalised advice, and hosts none either.",
+    disclaimer: "A review reflects its author's experience of the site. It is neither an investment recommendation nor a guarantee of any outcome.",
+    appelTitre: "Have you used Financia?",
+    appelSous: "Say what you thought, including if it was no use to you. That is how the site gets better.",
+    appelCta: "Leave a review",
+    appelNote: "The form is hosted by Google. Only the first name and the text you enter are sent.",
   },
 
   ressourcesPage: {
@@ -1694,10 +1742,10 @@ en: {
 },
 
 es: {
-  meta: { titleHome: "Financia | Aprende a invertir: bolsa, ETF y simulador gratis", titleHistoire: "Financia | Historia de los mercados: cracs, burbujas y leyendas", titleMarches: "Financia | Mercados en directo: CAC 40, S&P 500, Bitcoin y oro", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Pódcast y libros para empezar en finanzas", titleCommunaute: "Financia | Comunidad", titleContact: "Financia | Contacto: haz una pregunta al equipo" },
+  meta: { titleHome: "Financia | Aprende a invertir: bolsa, ETF y simulador gratis", titleHistoire: "Financia | Historia de los mercados: cracs, burbujas y leyendas", titleMarches: "Financia | Mercados en directo: CAC 40, S&P 500, Bitcoin y oro", titleFavoris: "Financia | Mis favoritos", titleRessources: "Financia | Pódcast y libros para empezar en finanzas", titleCommunaute: "Financia | Comunidad", titleAvis: "Financia | Opiniones de los usuarios, publicadas sin filtro", titleContact: "Financia | Contacto: haz una pregunta al equipo" },
   commun: { reessayer: "Reintentar", reessaiEnCours: "Cargando…" },
-  nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", confidentialite: "Privacidad", risques: "Advertencia sobre los riesgos", commencer: "Empezar", langAria: "Idioma", },
-  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
+  nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", favoris: "Mis favoritos", avis: "Opiniones", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", confidentialite: "Privacidad", risques: "Advertencia sobre los riesgos", commencer: "Empezar", langAria: "Idioma", },
+  mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", avis: "Opiniones", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
 
   hero: {
     badge: "🚀 Para jóvenes de 18–30 años · 100% educativo",
@@ -1767,6 +1815,7 @@ es: {
     emptyTitle: "Todavía no hay opiniones",
     emptySub: "Vuelve pronto para ver lo que dice la comunidad.",
     loadError: "No se pudieron cargar las opiniones por ahora.",
+    voirTout: "Ver todas las opiniones",
     cta: "✍️ Dejar una opinión",
   },
 
@@ -2149,7 +2198,7 @@ es: {
     label: "Legal",
     versPage: "Leer el aviso legal completo →",
     title: "Aviso legal",
-    editeur: { title: "Editor", textHtml: "Financia es un proyecto personal y no comercial, editado por <strong>Paolo Scappaticci</strong>, director de la publicación, Francia." },
+    editeur: { title: "Editor", textHtml: "Financia es un proyecto personal editado por <strong>Paolo Scappaticci</strong>, director de la publicación, Francia." },
     objet: { title: "Objeto del sitio", text: "Financia es una plataforma educativa. Los contenidos ofrecidos tienen una vocación estrictamente informativa y no constituyen en ningún caso un consejo de inversión financiera personalizado." },
     absence: { title: "Ausencia de asesoramiento financiero", text: "Toda la información publicada en Financia (textos, simulaciones, respuestas de la IA) se proporciona con fines puramente educativos. No sustituye el consejo de un asesor financiero autorizado. Invertir conlleva riesgo de pérdida de capital." },
     hebergement: { title: "Alojamiento", textHtml: "Este sitio está alojado por <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, Estados Unidos." },
@@ -2283,7 +2332,30 @@ es: {
       },
     },
     versPage: "🎧 Pódcast y libros para profundizar",
-    disclaimer: "Estos enlaces se facilitan a título informativo. Financia no tiene ninguna asociación ni vínculo comercial con estas entidades y no recibe ninguna remuneración.",
+    disclaimer: "Estos enlaces se facilitan a título informativo y no son enlaces de afiliación: Financia no percibe ninguna remuneración por los recursos enumerados más arriba.",
+  },
+
+  avisPage: {
+    badge: "Opiniones",
+    titreHtml: "Lo que dicen <em>quienes lo usan</em>",
+    lead: "Los comentarios dejados por quienes visitan Financia, publicados tal y como se escribieron. El formulario está abierto a todo el mundo, sin cuenta y sin nada a cambio.",
+    listeTitre: "Opiniones publicadas",
+    compte: "{n} opiniones publicadas, de la más reciente a la más antigua.",
+    compteUn: "1 opinión publicada por ahora.",
+    noteAria: "Valoración de {n} sobre 5",
+    reglesTitre: "Cómo se publican estas opiniones",
+    reglesSous: "Un sitio que solo muestra elogios no enseña nada a nadie. Esta es la regla, escrita antes de necesitarla.",
+    regle1Titre: "Quién puede escribir",
+    regle1Texte: "Cualquiera, mediante un formulario público. Sin cuenta, sin dejar ninguna dirección, sin nada a cambio: ni regalo, ni sorteo, ni acceso a nada.",
+    regle2Titre: "Lo que se publica",
+    regle2Texte: "El texto tal y como se escribió, sin retoques ni resúmenes. Las opiniones críticas se publican igual que las demás, y en el mismo orden: de la más reciente a la más antigua.",
+    regle3Titre: "Lo que no",
+    regle3Texte: "Los insultos, el spam, los enlaces comerciales y cualquier mensaje que recomiende comprar o vender algo. Financia no da consejos personalizados, y tampoco los aloja.",
+    disclaimer: "Una opinión expresa la experiencia de quien la escribe con el sitio. No constituye ni una recomendación de inversión ni una garantía de resultado.",
+    appelTitre: "¿Has usado Financia?",
+    appelSous: "Cuenta qué te ha parecido, también si no te ha servido. Así es como el sitio mejora.",
+    appelCta: "Dejar una opinión",
+    appelNote: "El formulario está alojado por Google. Solo se envían el nombre y el texto que escribas.",
   },
 
   ressourcesPage: {
@@ -2537,10 +2609,10 @@ es: {
 },
 
 ru: {
-  meta: { titleHome: "Financia | Учитесь инвестировать: биржа, ETF и симулятор", titleHistoire: "Financia | История рынков: крахи, пузыри и легенды", titleMarches: "Financia | Рынки в реальном времени: индексы, биткоин, золото", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Подкасты и книги для старта в финансах", titleCommunaute: "Financia | Сообщество", titleContact: "Financia | Контакты: задайте вопрос команде" },
+  meta: { titleHome: "Financia | Учитесь инвестировать: биржа, ETF и симулятор", titleHistoire: "Financia | История рынков: крахи, пузыри и легенды", titleMarches: "Financia | Рынки в реальном времени: индексы, биткоин, золото", titleFavoris: "Financia | Избранное", titleRessources: "Financia | Подкасты и книги для старта в финансах", titleCommunaute: "Financia | Сообщество", titleAvis: "Financia | Отзывы пользователей, публикуются без фильтра", titleContact: "Financia | Контакты: задайте вопрос команде" },
   commun: { reessayer: "Повторить", reessaiEnCours: "Загрузка…" },
-  nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", confidentialite: "Конфиденциальность", risques: "Предупреждение о рисках", commencer: "Начать", langAria: "Язык", },
-  mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
+  nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", favoris: "Избранное", avis: "Отзывы", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", confidentialite: "Конфиденциальность", risques: "Предупреждение о рисках", commencer: "Начать", langAria: "Язык", },
+  mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", avis: "Отзывы", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
 
   hero: {
     badge: "🚀 Для 18–30 лет · 100% образовательно",
@@ -2610,6 +2682,7 @@ ru: {
     emptyTitle: "Пока нет отзывов",
     emptySub: "Загляни позже, чтобы узнать мнение сообщества.",
     loadError: "Не удалось загрузить отзывы.",
+    voirTout: "Все отзывы",
     cta: "✍️ Оставить отзыв",
   },
 
@@ -2992,7 +3065,7 @@ ru: {
     label: "Правовая информация",
     versPage: "Читать полные правовые сведения →",
     title: "Правовая информация",
-    editeur: { title: "Издатель", textHtml: "Financia — личный некоммерческий проект, издаваемый <strong>Paolo Scappaticci</strong>, директором публикации, Франция." },
+    editeur: { title: "Издатель", textHtml: "Financia — личный проект, издаваемый <strong>Paolo Scappaticci</strong>, директором публикации, Франция." },
     objet: { title: "Назначение сайта", text: "Financia — образовательная платформа. Предлагаемые материалы носят исключительно информационный характер и ни в коем случае не являются персональной инвестиционной консультацией." },
     absence: { title: "Отсутствие финансовой консультации", text: "Вся информация, публикуемая на Financia (тексты, симуляции, ответы ИИ), предоставляется исключительно в образовательных целях. Она не заменяет мнение лицензированного финансового консультанта. Инвестирование сопряжено с риском потери капитала." },
     hebergement: { title: "Хостинг", textHtml: "Этот сайт размещён на <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, Сан-Франциско, CA 94104, США." },
@@ -3126,7 +3199,30 @@ ru: {
       },
     },
     versPage: "🎧 Подкасты и книги, чтобы узнать больше",
-    disclaimer: "Эти ссылки приведены исключительно для информации. У Financia нет партнёрства или коммерческих связей с этими организациями и она не получает вознаграждения.",
+    disclaimer: "Эти ссылки приведены исключительно для информации и не являются партнёрскими: Financia не получает вознаграждения за перечисленные выше ресурсы.",
+  },
+
+  avisPage: {
+    badge: "Отзывы",
+    titreHtml: "Что говорят <em>те, кто им пользуется</em>",
+    lead: "Отзывы, оставленные посетителями Financia, публикуются ровно в том виде, в каком написаны. Форма открыта для всех, без аккаунта и без чего-либо взамен.",
+    listeTitre: "Опубликованные отзывы",
+    compte: "Опубликовано отзывов: {n}, от самых новых к старым.",
+    compteUn: "Пока опубликован 1 отзыв.",
+    noteAria: "Оценка {n} из 5",
+    reglesTitre: "Как публикуются эти отзывы",
+    reglesSous: "Сайт, на котором одни похвалы, никого ничему не учит. Вот правило, записанное заранее.",
+    regle1Titre: "Кто может написать",
+    regle1Texte: "Любой, через публичную форму. Без аккаунта, без указания адреса, без чего-либо взамен: ни подарка, ни розыгрыша, ни доступа к чему-либо.",
+    regle2Titre: "Что публикуется",
+    regle2Texte: "Текст ровно в том виде, в каком написан, без правок и сокращений. Критические отзывы публикуются наравне с остальными и в том же порядке: от новых к старым.",
+    regle3Titre: "Что не публикуется",
+    regle3Texte: "Оскорбления, спам, коммерческие ссылки и любые сообщения, советующие что-либо купить или продать. Financia не даёт персональных советов и не размещает их.",
+    disclaimer: "Отзыв выражает личный опыт его автора при работе с сайтом. Он не является ни инвестиционной рекомендацией, ни гарантией результата.",
+    appelTitre: "Пользовались Financia?",
+    appelSous: "Расскажите, что вы об этом думаете, в том числе если это вам не пригодилось. Именно так сайт становится лучше.",
+    appelCta: "Оставить отзыв",
+    appelNote: "Форма размещена в Google. Передаются только имя и текст, которые вы вводите.",
   },
 
   ressourcesPage: {
@@ -3380,10 +3476,10 @@ ru: {
 },
 
 de: {
-  meta: { titleHome: "Financia | Investieren lernen: Börse, ETFs und Simulator", titleHistoire: "Financia | Geschichte der Märkte: Crashs, Blasen, Legenden", titleMarches: "Financia | Märkte live: CAC 40, S&P 500, Bitcoin und Gold", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Podcasts und Bücher für den Einstieg", titleCommunaute: "Financia | Community", titleContact: "Financia | Kontakt: dem Team eine Frage stellen" },
+  meta: { titleHome: "Financia | Investieren lernen: Börse, ETFs und Simulator", titleHistoire: "Financia | Geschichte der Märkte: Crashs, Blasen, Legenden", titleMarches: "Financia | Märkte live: CAC 40, S&P 500, Bitcoin und Gold", titleFavoris: "Financia | Meine Favoriten", titleRessources: "Financia | Podcasts und Bücher für den Einstieg", titleCommunaute: "Financia | Community", titleAvis: "Financia | Nutzerbewertungen, ungefiltert veröffentlicht", titleContact: "Financia | Kontakt: dem Team eine Frage stellen" },
   commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
-  nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", confidentialite: "Datenschutz", risques: "Risikohinweis", commencer: "Loslegen", langAria: "Sprache", },
-  mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
+  nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", favoris: "Meine Favoriten", avis: "Bewertungen", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", confidentialite: "Datenschutz", risques: "Risikohinweis", commencer: "Loslegen", langAria: "Sprache", },
+  mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", avis: "Bewertungen", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
 
   hero: {
     badge: "🚀 Für 18–30-Jährige · 100% pädagogisch",
@@ -3453,6 +3549,7 @@ de: {
     emptyTitle: "Noch keine Bewertungen",
     emptySub: "Schau bald wieder vorbei, um zu sehen, was die Community sagt.",
     loadError: "Bewertungen konnten gerade nicht geladen werden.",
+    voirTout: "Alle Bewertungen ansehen",
     cta: "✍️ Bewertung abgeben",
   },
 
@@ -3835,7 +3932,7 @@ de: {
     label: "Rechtliches",
     versPage: "Vollständiges Impressum lesen →",
     title: "Impressum",
-    editeur: { title: "Herausgeber", textHtml: "Financia ist ein persönliches, nicht kommerzielles Projekt, herausgegeben von <strong>Paolo Scappaticci</strong>, verantwortlich für den Inhalt, Frankreich." },
+    editeur: { title: "Herausgeber", textHtml: "Financia ist ein persönliches Projekt, herausgegeben von <strong>Paolo Scappaticci</strong>, verantwortlich für den Inhalt, Frankreich." },
     objet: { title: "Zweck der Website", text: "Financia ist eine Bildungs- und Lernplattform. Die angebotenen Inhalte dienen ausschließlich der Information und stellen in keinem Fall eine persönliche Finanzanlageberatung dar." },
     absence: { title: "Keine Finanzberatung", text: "Alle auf Financia veröffentlichten Informationen (Texte, Simulationen, KI-Antworten) werden ausschließlich zu Bildungszwecken bereitgestellt. Sie ersetzen nicht die Meinung eines zugelassenen Finanzberaters. Investieren birgt das Risiko eines Kapitalverlusts." },
     hebergement: { title: "Hosting", textHtml: "Diese Website wird gehostet von <strong>Vercel Inc.</strong>, 340 Pine Street, Suite 701, San Francisco, CA 94104, USA." },
@@ -3969,7 +4066,30 @@ de: {
       },
     },
     versPage: "🎧 Podcasts und Bücher, um weiterzugehen",
-    disclaimer: "Diese Links dienen ausschließlich der Information. Financia unterhält keine Partnerschaft oder Geschäftsbeziehung mit diesen Anbietern und erhält keinerlei Vergütung.",
+    disclaimer: "Diese Links dienen ausschließlich der Information und sind keine Affiliate-Links: Financia erhält für die oben aufgeführten Ressourcen keinerlei Vergütung.",
+  },
+
+  avisPage: {
+    badge: "Bewertungen",
+    titreHtml: "Was <em>die Nutzenden</em> sagen",
+    lead: "Rückmeldungen von Financia-Besuchenden, genau so veröffentlicht, wie sie geschrieben wurden. Das Formular steht allen offen, ohne Konto und ohne Gegenleistung.",
+    listeTitre: "Veröffentlichte Bewertungen",
+    compte: "{n} Bewertungen veröffentlicht, von der neuesten zur ältesten.",
+    compteUn: "Bisher 1 veröffentlichte Bewertung.",
+    noteAria: "Bewertung {n} von 5",
+    reglesTitre: "Wie diese Bewertungen veröffentlicht werden",
+    reglesSous: "Eine Seite, die nur Lob zeigt, bringt niemandem etwas bei. Hier die Regel, aufgeschrieben, bevor sie gebraucht wurde.",
+    regle1Titre: "Wer schreiben darf",
+    regle1Texte: "Alle, über ein öffentliches Formular. Kein Konto, keine Adresse, keine Gegenleistung: kein Geschenk, keine Verlosung, kein Zugang zu irgendetwas.",
+    regle2Titre: "Was veröffentlicht wird",
+    regle2Texte: "Der Text genau so, wie er geschrieben wurde, ohne Bearbeitung oder Kürzung. Kritische Bewertungen werden wie alle anderen veröffentlicht, in derselben Reihenfolge: von der neuesten zur ältesten.",
+    regle3Titre: "Was nicht",
+    regle3Texte: "Beleidigungen, Spam, kommerzielle Links und jede Nachricht, die zum Kauf oder Verkauf von irgendetwas rät. Financia gibt keine persönliche Beratung und beherbergt auch keine.",
+    disclaimer: "Eine Bewertung gibt die Erfahrung ihrer Verfasserin oder ihres Verfassers mit der Seite wieder. Sie ist weder eine Anlageempfehlung noch eine Ergebnisgarantie.",
+    appelTitre: "Hast du Financia benutzt?",
+    appelSous: "Sag, was du davon hältst, auch wenn es dir nichts gebracht hat. So wird die Seite besser.",
+    appelCta: "Bewertung abgeben",
+    appelNote: "Das Formular wird von Google gehostet. Übertragen werden nur der Vorname und der Text, den du eingibst.",
   },
 
   ressourcesPage: {
