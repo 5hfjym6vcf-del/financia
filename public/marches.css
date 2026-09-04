@@ -48,7 +48,7 @@ body.marches-page {
   text-align: left;
   background: rgba(124,58,237,0.08);
   border: 1px solid rgba(124,58,237,0.3);
-  border-radius: 14px;
+  border-radius: var(--radius);
   padding: 16px 20px;
 }
 .mkt-disclaimer-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
@@ -99,7 +99,7 @@ body.marches-page {
   gap: 12px;
   background: rgba(124, 58, 237, 0.07);
   border: 1px solid rgba(124, 58, 237, 0.26);
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   padding: 13px 14px 13px 18px;
   margin-bottom: 30px;
 }
@@ -123,7 +123,7 @@ body.marches-page {
   border: none; background: none;
   color: rgba(255, 255, 255, 0.45);
   font-size: 21px; line-height: 1;
-  cursor: pointer; border-radius: 6px;
+  cursor: pointer; border-radius: var(--radius-xs);
   transition: color 0.18s ease;
 }
 .mkt-notice-fermer:hover { color: #fff; }
@@ -224,7 +224,7 @@ body.marches-page {
   padding: 56px 24px 64px;
   background: rgba(255, 255, 255, 0.025);
   border: 1px dashed rgba(124, 58, 237, 0.32);
-  border-radius: 20px;
+  border-radius: var(--r-lg);
 }
 .fav-vide-coeur { font-size: 42px; line-height: 1; }
 .fav-vide-titre { font-size: 1.15rem; font-weight: 700; color: #fff; }
@@ -238,7 +238,7 @@ body.marches-page {
 
 /* Bloc d'actualités de la page des favoris. Les cartes elles-mêmes viennent de
    style.css (.actus-grid / .actu-card), partagées avec la page d'accueil. */
-.fav-actus { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124, 58, 237, 0.2); }
+.fav-actus { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
 .fav-actus-sub {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.55);
@@ -267,7 +267,7 @@ body.marches-page {
 .mkt-fav-lien svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
 
 /* ── Calendrier des résultats ── */
-.mkt-earnings { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
+.mkt-earnings { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
 .mkt-earn-sub {
   font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6;
   max-width: 660px; margin: -22px 0 32px;
@@ -314,7 +314,7 @@ body.marches-page {
   width: max-content; max-width: min(268px, 72vw);
   background: #16161c;
   border: 1px solid rgba(124,58,237,0.45);
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   padding: 13px 15px;
   font-size: 0.76rem; font-weight: 500; line-height: 1.55;
   color: rgba(255,255,255,0.82);
@@ -330,9 +330,9 @@ body.marches-page {
 
 .mkt-earn-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 22px; }
 .mkt-earn-day {
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(124,58,237,0.22);
-  border-radius: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 22px 22px 18px;
 }
 .mkt-earn-date {
@@ -355,7 +355,7 @@ body.marches-page {
   font-weight: 800; color: #fff; font-size: 0.76rem;
   background: rgba(124,58,237,0.16);
   border: 1px solid rgba(124,58,237,0.4);
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
   padding: 4px 6px;
   text-align: center;
   align-self: center;
@@ -369,15 +369,19 @@ body.marches-page {
 .mkt-earn-empty { color: rgba(255,255,255,0.45); font-size: 0.9rem; padding: 20px 0; }
 
 .mkt-card {
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(124,58,237,0.22);
-  border-radius: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 24px 24px 22px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
 }
-.mkt-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.5); }
+.mkt-card:hover {
+  border-color: var(--violet-ring);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.18);
+}
 
 .mkt-card-top {
   display: flex;
@@ -413,11 +417,11 @@ body.marches-page {
 .mkt-fav.actif { color: #7C3AED; }
 .mkt-fav.actif svg { fill: currentColor; stroke: currentColor; }
 .mkt-fav.actif:hover { color: var(--violet-text); }
-.mkt-fav:focus-visible { outline: 2px solid var(--violet-text); outline-offset: 2px; border-radius: 6px; }
+.mkt-fav:focus-visible { outline: 2px solid var(--violet-text); outline-offset: 2px; border-radius: var(--radius-xs); }
 .mkt-icon {
   width: 34px; height: 34px;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(135deg, rgba(124,58,237,0.28) 0%, rgba(124,58,237,0.08) 100%);
   display: flex; align-items: center; justify-content: center;
   font-size: 16px;
@@ -436,7 +440,7 @@ body.marches-page {
   font-size: 0.82rem;
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: 100px;
+  border-radius: 999px;
   white-space: nowrap;
 }
 .mkt-change.positive { color: #4ade80; background: rgba(34,197,94,0.14); }
@@ -509,7 +513,7 @@ body.marches-page {
 
 
 /* ── Sociétés par secteur ── */
-.mkt-secteurs { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
+.mkt-secteurs { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
 /* .mkt-earn-sub porte un margin-top de -22 px, calibré pour .mkt-tops-title et
    ses 32 px de marge basse. Sous .mkt-h2, qui n'en a que 6, ce rappel faisait
    remonter le paragraphe 16 px au-dessus du bas du titre : les deux se
@@ -525,7 +529,7 @@ body.marches-page {
   display: flex; align-items: flex-start; gap: 10px;
   background: rgba(124,58,237,0.07);
   border: 1px solid rgba(124,58,237,0.26);
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   padding: 12px 16px;
   margin-bottom: 28px;
   max-width: 640px;
@@ -538,10 +542,10 @@ body.marches-page {
   gap: 22px;
 }
 .sect-carte {
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(124,58,237,0.22);
-  border-radius: 18px;
-  padding: 24px 24px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 24px 22px;
 }
 .sect-titre { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .sect-desc {
@@ -584,7 +588,7 @@ body.marches-page {
   justify-self: start;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
   color: var(--violet-text); background: rgba(124,58,237,0.16);
-  border-radius: 5px; padding: 3px 7px; white-space: nowrap;
+  border-radius: var(--radius-xs); padding: 3px 7px; white-space: nowrap;
 }
 .sect-cours { grid-area: cours; font-weight: 700; color: #fff; white-space: nowrap; text-align: right; }
 .sect-var { grid-area: var; font-size: 0.78rem; font-weight: 700; white-space: nowrap; text-align: right; }
