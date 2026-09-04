@@ -28,7 +28,7 @@ button, select, input, textarea { font-family: inherit; }
   --border-2: rgba(124,58,237,0.35);
   --text: #ffffff;
   --text-2: rgba(255,255,255,0.62);
-  --text-3: rgba(255,255,255,0.4);
+  --text-3: rgba(255,255,255,0.5);
   /* Violet unique de la charte, pour les aplats, bordures et points de
      graphique. Le site en a compté jusqu'à cinq : un 7C4DFF bleuté sur la
      courbe du hero et le quiz, un c4b5fd et un 9E75FF sur Marchés et

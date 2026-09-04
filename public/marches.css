@@ -53,7 +53,7 @@ body.marches-page {
 }
 .mkt-disclaimer-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
 .mkt-disclaimer p {
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   color: rgba(255,255,255,0.7);
   line-height: 1.55;
 }
@@ -77,8 +77,8 @@ body.marches-page {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
   padding-bottom: 4px;
 }
 .mkt-updated-dot {
@@ -105,7 +105,7 @@ body.marches-page {
 }
 .mkt-notice-txt {
   flex: 1;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.65);
 }
@@ -121,7 +121,7 @@ body.marches-page {
   flex-shrink: 0;
   width: 26px; height: 26px;
   border: none; background: none;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255,255,255,0.55);
   font-size: 21px; line-height: 1;
   cursor: pointer; border-radius: var(--radius-xs);
   transition: color 0.18s ease;
@@ -141,18 +141,18 @@ body.marches-page {
   margin-bottom: 32px;
 }
 .mkt-zones-label {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255,255,255,0.55);
 }
 .mkt-zones-resume { color: var(--violet-text); }
 .mkt-zones-tete { display: flex; flex-direction: column; gap: 5px; }
 .mkt-zones-astuce {
   font-size: 0.82rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255,255,255,0.55);
 }
 .mkt-zones-btns { display: flex; flex-wrap: wrap; gap: 9px; min-width: 0; }
 .mkt-zone-btn {
@@ -167,7 +167,7 @@ body.marches-page {
   background: rgba(255, 255, 255, 0.04);
   color: rgba(255, 255, 255, 0.66);
   font-family: inherit;
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
@@ -195,7 +195,7 @@ body.marches-page {
   color: var(--text);
   margin-bottom: 18px;
 }
-.mkt-region-flag { font-size: 1.2rem; line-height: 1; }
+.mkt-region-flag { font-size: 1.05rem; line-height: 1; }
 .mkt-grid {
   display: grid;
   /* minmax(0, …) et non 1fr seul : « 1fr » vaut « minmax(auto, 1fr) », dont la
@@ -211,7 +211,7 @@ body.marches-page {
   justify-content: center;
   padding: 48px;
 }
-.mkt-error { color: rgba(255,255,255,0.5); font-size: 0.95rem; text-align: center; }
+.mkt-error { color: rgba(255,255,255,0.55); font-size: 0.92rem; text-align: center; }
 
 /* ── Page « Mes favoris » ── */
 /* La grille des favoris réutilise .mkt-grid : mêmes cartes, mêmes colonnes. */
@@ -227,7 +227,7 @@ body.marches-page {
   border-radius: var(--r-lg);
 }
 .fav-vide-coeur { font-size: 42px; line-height: 1; }
-.fav-vide-titre { font-size: 1.15rem; font-weight: 700; color: #fff; }
+.fav-vide-titre { font-size: 1.05rem; font-weight: 700; color: #fff; }
 .fav-vide-txt {
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.6);
@@ -240,7 +240,7 @@ body.marches-page {
    style.css (.actus-grid / .actu-card), partagées avec la page d'accueil. */
 .fav-actus { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
 .fav-actus-sub {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.6;
   max-width: 660px;
@@ -257,7 +257,7 @@ body.marches-page {
   border: 1px solid rgba(124, 58, 237, 0.42);
   border-radius: 999px;
   padding: 9px 18px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--violet-text);
   transition: background 0.18s ease, color 0.18s ease;
@@ -269,7 +269,7 @@ body.marches-page {
 /* ── Calendrier des résultats ── */
 .mkt-earnings { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
 .mkt-earn-sub {
-  font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6;
+  font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.6;
   max-width: 660px; margin: -22px 0 32px;
 }
 .mkt-earn-nav {
@@ -289,7 +289,7 @@ body.marches-page {
 .mkt-earn-arrow:disabled { opacity: 0.28; cursor: default; }
 .mkt-earn-arrow:focus-visible { outline: 2px solid var(--violet-text); outline-offset: 2px; }
 .mkt-earn-month {
-  font-size: 1rem; font-weight: 700; color: #fff;
+  font-size: 1.05rem; font-weight: 700; color: #fff;
   text-transform: capitalize; min-width: 150px;
 }
 
@@ -336,7 +336,7 @@ body.marches-page {
   padding: 22px 22px 18px;
 }
 .mkt-earn-date {
-  font-size: 0.9rem; font-weight: 700; color: var(--violet-text);
+  font-size: 0.92rem; font-weight: 700; color: var(--violet-text);
   text-transform: capitalize; margin-bottom: 14px;
 }
 .mkt-earn-list { list-style: none; display: flex; flex-direction: column; }
@@ -347,7 +347,7 @@ body.marches-page {
   gap: 4px 10px;
   padding: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 .mkt-earn-row:last-child { border-bottom: none; }
 .mkt-earn-tick {
@@ -364,9 +364,9 @@ body.marches-page {
 /* Même raison que les cartes d'actifs : un nom tronqué est une information
    perdue. On laisse le nom se replier sur deux lignes. */
 .mkt-earn-name { color: rgba(255,255,255,0.85); line-height: 1.3; overflow-wrap: anywhere; }
-.mkt-earn-when { font-size: 0.74rem; color: rgba(255,255,255,0.45); }
-.mkt-earn-est { font-size: 0.74rem; color: rgba(255,255,255,0.35); }
-.mkt-earn-empty { color: rgba(255,255,255,0.45); font-size: 0.9rem; padding: 20px 0; }
+.mkt-earn-when { font-size: 0.76rem; color: rgba(255,255,255,0.55); }
+.mkt-earn-est { font-size: 0.76rem; color: rgba(255,255,255,0.55); }
+.mkt-earn-empty { color: rgba(255,255,255,0.55); font-size: 0.92rem; padding: 20px 0; }
 
 .mkt-card {
   background: var(--bg-card);
@@ -402,8 +402,11 @@ body.marches-page {
   border: none; background: none; padding: 0;
   cursor: pointer; flex-shrink: 0;
   /* 0.42 place le contour à 4:1 sur le fond de carte, au-dessus du minimum
-     de 3:1 exigé pour un contrôle interactif ; 0.35 n'y était qu'à 3,1:1. */
-  color: rgba(255, 255, 255, 0.42);
+     de 3:1 exigé pour un contrôle interactif ; 0.35 n'y était qu'à 3,1:1.
+     Seule exception au plancher de 0.55 posé ailleurs pour la projection :
+     monter ce contour le ferait concurrencer la variation du jour, affichée
+     juste à côté et plus importante à lire. */
+  color: rgba(255,255,255,0.42);
   transition: color 0.18s ease, transform 0.18s ease;
 }
 /* Le cœur reste petit pour ne pas concurrencer la variation du jour, mais sa
@@ -430,7 +433,7 @@ body.marches-page {
    réclamait 133 px pour 126 disponibles et perdait ses dernières lettres. Une
    ellipse sur un nom de société est une perte d'information, pas une élégance. */
 .mkt-card-name h3 {
-  font-size: 1rem; font-weight: 700; color: #fff;
+  font-size: 1.05rem; font-weight: 700; color: #fff;
   line-height: 1.25;
   overflow-wrap: anywhere;
 }
@@ -454,7 +457,7 @@ body.marches-page {
   letter-spacing: -0.5px;
   margin-bottom: 14px;
 }
-.mkt-price small { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.4); margin-left: 4px; }
+.mkt-price small { font-size: 0.92rem; font-weight: 600; color: rgba(255,255,255,0.55); margin-left: 4px; }
 
 /* overflow caché en complément de minmax(0, 1fr) : entre le moment où la
    fenêtre rétrécit et celui où le graphique est retracé, le canevas reste à son
@@ -463,14 +466,14 @@ body.marches-page {
 .mkt-chart { width: 100%; height: 64px; margin-bottom: 16px; overflow: hidden; }
 
 .mkt-blurb {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: rgba(255,255,255,0.55);
   line-height: 1.55;
   margin-top: auto;
 }
 
 /* ── Footer sur fond noir ── */
-.mkt-footer { background: #000; border-top-color: rgba(255,255,255,0.1); }
+.mkt-footer { background: #000; border-top-color: rgba(255,255,255,0.55); }
 .mkt-footer .footer-brand p,
 .mkt-footer .footer-links a,
 .mkt-footer .footer-legal p { color: rgba(255,255,255,0.55); }
@@ -534,7 +537,7 @@ body.marches-page {
   margin-bottom: 28px;
   max-width: 640px;
 }
-.sect-avis p { font-size: 0.84rem; line-height: 1.55; color: rgba(255,255,255,0.65); }
+.sect-avis p { font-size: 0.82rem; line-height: 1.55; color: rgba(255,255,255,0.65); }
 
 .sect-grille {
   display: grid;
@@ -549,7 +552,7 @@ body.marches-page {
 }
 .sect-titre { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .sect-desc {
-  font-size: 0.85rem; line-height: 1.6;
+  font-size: 0.82rem; line-height: 1.6;
   color: rgba(255,255,255,0.55);
   margin-bottom: 18px;
 }
@@ -572,7 +575,7 @@ body.marches-page {
   row-gap: 3px;
   padding: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 .sect-ligne:last-child { border-bottom: none; }
 /* Pas d'ellipsis : le nom se replie sur deux lignes plutôt que d'être coupé,
@@ -586,13 +589,13 @@ body.marches-page {
 .sect-ticker {
   grid-area: ticker;
   justify-self: start;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px;
   color: var(--violet-text); background: rgba(124,58,237,0.16);
   border-radius: var(--radius-xs); padding: 3px 7px; white-space: nowrap;
 }
 .sect-cours { grid-area: cours; font-weight: 700; color: #fff; white-space: nowrap; text-align: right; }
-.sect-var { grid-area: var; font-size: 0.78rem; font-weight: 700; white-space: nowrap; text-align: right; }
+.sect-var { grid-area: var; font-size: 0.76rem; font-weight: 700; white-space: nowrap; text-align: right; }
 .sect-var.positive { color: #4ade80; }
 .sect-var.negative { color: #f87171; }
-.sect-ligne-hors .sect-nom { color: rgba(255,255,255,0.5); }
-.sect-ligne-hors .sect-ticker { color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
+.sect-ligne-hors .sect-nom { color: rgba(255,255,255,0.55); }
+.sect-ligne-hors .sect-ticker { color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.06); }
