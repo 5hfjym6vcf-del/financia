@@ -11,6 +11,14 @@
    Seule la famille est héritée, pour ne pas écraser tailles et graisses. */
 button, select, input, textarea { font-family: inherit; }
 
+/* L'attribut hidden ne pose qu'un `display: none` de feuille utilisateur, que
+   la moindre classe posant un display (flex, grid…) écrase silencieusement.
+   Le menu déroulant « Plus », en display:flex, restait donc déplié en
+   permanence sous le header sur toutes les pages sauf /marches, seule à
+   embarquer déjà cette règle dans sa propre feuille. On rétablit la
+   sémantique attendue pour tout le site, une bonne fois. */
+[hidden] { display: none !important; }
+
 :root {
   --bg: #000000;
   --bg-2: #0a0a0f;

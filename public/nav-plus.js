@@ -51,6 +51,14 @@
     fermer(false);
   });
 
+  // Clic sur une entrée. Pour /histoire ou /contact, la navigation ferait
+  // disparaître le menu de toute façon ; mais « Actus », « Témoignages » et
+  // « À propos » sont des ancres de l'accueil : depuis l'accueil, la page ne
+  // change pas, et le menu resterait ouvert par-dessus la section visée.
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) fermer(false);
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && ouvert()) {
       e.preventDefault();
