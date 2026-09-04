@@ -560,6 +560,7 @@ function buildProfileDiagram(niveauLabel) {
 }
 
 function showQuizResult() {
+  document.dispatchEvent(new CustomEvent('financia:quiz-termine'));
   const profileKey = profileKeyForQuiz();
   const profile = FinanciaI18N.get('quiz.profiles.' + profileKey);
   const { niveau, desc } = profile;
@@ -921,6 +922,9 @@ FinanciaI18N.onLangChange(async () => {
         showMsg(FinanciaI18N.t(data.already ? 'newsletter.alreadySub' : 'newsletter.successSub'), 'success');
         btn.textContent = FinanciaI18N.t('newsletter.btnConfirmed');
         btn.classList.add('confirmed');
+        // Conversion Google Ads : ici et pas au clic, un envoi qui échoue
+        // n'étant pas une conversion. Écouté par conversion.js.
+        document.dispatchEvent(new CustomEvent('financia:newsletter-ok'));
       } else {
         showMsg(data.error || FinanciaI18N.t('newsletter.genericErr'), 'error');
         btn.disabled = false;

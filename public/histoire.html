@@ -69,6 +69,12 @@
     } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-GHBV40V2G1');
+    // Google Ads. La conversion elle-même n'est PAS déclenchée ici : posée
+    // dans ce bloc, elle partirait à chaque page vue, pour chaque visiteur.
+    // Google enregistrerait alors 100 % de taux de conversion, ce qui rend
+    // le Smart Bidding aveugle et fait payer des clics qui ne convertissent
+    // pas. Elle est déclenchée sur des actions réelles, dans conversion.js.
+    gtag('config', 'AW-18423213452');
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBV40V2G1"></script>
 </head>

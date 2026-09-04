@@ -67,6 +67,12 @@
     } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-GHBV40V2G1');
+    // Google Ads. La conversion elle-même n'est PAS déclenchée ici : posée
+    // dans ce bloc, elle partirait à chaque page vue, pour chaque visiteur.
+    // Google enregistrerait alors 100 % de taux de conversion, ce qui rend
+    // le Smart Bidding aveugle et fait payer des clics qui ne convertissent
+    // pas. Elle est déclenchée sur des actions réelles, dans conversion.js.
+    gtag('config', 'AW-18423213452');
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBV40V2G1"></script>
 </head>
@@ -186,7 +192,8 @@
            d'affiliation. La promesse est reformulée sur ce qui compte au
            regard du RGPD, et qui reste exact : aucune régie chargée, aucun
            profil publicitaire, aucune revente. -->
-      <p>Financia utilise <strong>Google Analytics 4</strong> pour compter les visites et savoir quelles pages sont réellement lues. Aucune régie publicitaire n'est chargée sur le site, aucun profil publicitaire n'est constitué à ton sujet, et aucune donnée n'est revendue.</p>
+      <p>Financia utilise <strong>Google Analytics 4</strong> pour compter les visites et savoir quelles pages sont réellement lues, et <strong>Google Ads</strong> pour mesurer si une campagne publicitaire a mené à une inscription. Aucune donnée n'est revendue.</p>
+      <p class="legal-note">La mesure publicitaire est limitée au comptage : tant que tu n'as pas accepté, le stockage publicitaire reste désactivé côté Google, et aucun profil publicitaire n'est constitué à ton sujet.</p>
       <p>Cette mesure ne démarre <strong>qu'après ton accord explicite</strong>. Tant que tu n'as pas accepté, le stockage analytique est désactivé côté Google. Tu peux changer d'avis à tout moment : le lien « Gérer les cookies » en bas de chaque page rouvre le choix.</p>
       <p class="legal-note">Responsable du traitement : Google Ireland Limited. Base légale : ton consentement, article 6.1.a du RGPD.</p>
     </div>
@@ -200,6 +207,7 @@
           <tr><td>Tu laisses un avis</td><td>Le prénom et le texte que tu saisis</td><td>Google Forms</td></tr>
           <tr><td>Tu poses une question à l'assistant</td><td>Le contenu de ta question</td><td>Groq, États-Unis</td></tr>
           <tr><td>Tu consultes le site</td><td>Adresse IP, journaux techniques</td><td>Vercel, hébergeur</td></tr>
+          <tr><td>Tu arrives depuis une publicité et t'inscris</td><td>Le fait que l'inscription vienne de cette campagne</td><td>Google Ads (Google Ireland)</td></tr>
           <tr><td>Tu cliques sur un lien partenaire</td><td>Le fait que la visite vienne de Financia</td><td>Le partenaire concerné</td></tr>
         </tbody>
       </table>
