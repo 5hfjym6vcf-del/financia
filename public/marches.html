@@ -80,18 +80,24 @@
       <a class="logo" href="/">Financi<span>a</span></a>
     </div>
     <nav class="nav-links">
-      <a href="/#apprendre" data-i18n="nav.accueil">Accueil</a>
+      <a href="/#simulateur" data-i18n="nav.simulateur">Simulateur</a>
       <a href="/#quiz" data-i18n="nav.quiz">Quiz</a>
       <a href="/ressources" data-i18n="nav.ressources">Ressources</a>
-      <a href="/#simulateur" data-i18n="nav.simulateur">Simulateur</a>
       <a href="/#chat" data-i18n="nav.chat">Chat IA</a>
       <a href="/marches" aria-current="page" data-i18n="nav.marches">Marchés</a>
       <a href="/communaute" data-i18n="nav.communaute">Communauté</a>
-      <a href="/#actus" data-i18n="nav.actus">Actus</a>
-      <a href="/#temoignages" data-i18n="nav.temoignages">Témoignages</a>
-      <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
-      <a href="/#apropos" data-i18n="nav.apropos">À propos</a>
-      <a href="/contact" data-i18n="nav.contact">Contact</a>
+      <div class="nav-plus">
+        <button type="button" class="nav-plus-btn" id="navPlusBtn" aria-expanded="false" aria-haspopup="true" aria-controls="navPlusMenu"><span data-i18n="nav.plus">Plus</span><svg class="nav-plus-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-plus-menu" id="navPlusMenu" role="menu" hidden>
+          <a href="/#actus" role="menuitem" data-i18n="nav.actus">Actus</a>
+          <a href="/avis" role="menuitem" data-i18n="nav.avis">Avis</a>
+          <a href="/#temoignages" role="menuitem" data-i18n="nav.temoignages">Témoignages</a>
+          <a href="/histoire" role="menuitem" data-i18n="nav.histoire">Histoire</a>
+          <a href="/favoris" role="menuitem" data-i18n="nav.favoris">Mes favoris</a>
+          <a href="/#apropos" role="menuitem" data-i18n="nav.apropos">À propos</a>
+          <a href="/contact" role="menuitem" data-i18n="nav.contact">Contact</a>
+        </div>
+      </div>
     </nav>
     <div class="nav-right">
       <select id="langSelect" aria-label="Langue" class="lang-select" data-i18n-aria="nav.langAria">
@@ -282,5 +288,6 @@
 <script src="./analytics.js" defer></script>
 <script src="./consentement.js" defer></script>
 <script src="./pwa.js" defer></script>
+<script src="./nav-plus.js" defer></script>
 </body>
 </html>

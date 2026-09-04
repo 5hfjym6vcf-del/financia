@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title >Financia | Politique de confidentialité et données</title>
+  <title data-i18n="meta.titleAvis">Financia | Avis des utilisateurs, publiés sans filtre</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -14,8 +14,8 @@
   <script src="./i18n.js"></script>
   <script src="./i18n-core.js"></script>
 
-  <meta name="description" content="Ce que Financia collecte, ce qui reste sur votre appareil, qui reçoit quoi et comment exercer vos droits. Aucun compte, aucune revente de données." />
-  <link rel="canonical" href="https://financia.cloud/confidentialite" />
+  <meta name="description" content="Les avis laissés par les utilisateurs de Financia, publiés tels quels, les négatifs compris. Formulaire ouvert, sans compte, sans contrepartie." />
+  <link rel="canonical" href="https://financia.cloud/avis" />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="./images/financia-logo-transparent.png" type="image/png" />
 
@@ -29,16 +29,16 @@
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://financia.cloud/confidentialite" />
-  <meta property="og:title" content="Financia | Politique de confidentialité et données" />
-  <meta property="og:description" content="Ce que Financia collecte, ce qui reste sur votre appareil, qui reçoit quoi et comment exercer vos droits. Aucun compte, aucune revente de données." />
+  <meta property="og:url" content="https://financia.cloud/avis" />
+  <meta property="og:title" content="Financia | Avis des utilisateurs, publiés sans filtre" />
+  <meta property="og:description" content="Les avis laissés par les utilisateurs de Financia, publiés tels quels, les négatifs compris. Formulaire ouvert, sans compte, sans contrepartie." />
   <meta property="og:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
   <meta property="og:locale" content="fr_FR" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="Financia | Politique de confidentialité et données" />
-  <meta property="twitter:description" content="Ce que Financia collecte, ce qui reste sur votre appareil, qui reçoit quoi et comment exercer vos droits. Aucun compte, aucune revente de données." />
+  <meta property="twitter:title" content="Financia | Avis des utilisateurs, publiés sans filtre" />
+  <meta property="twitter:description" content="Les avis laissés par les utilisateurs de Financia, publiés tels quels, les négatifs compris. Formulaire ouvert, sans compte, sans contrepartie." />
   <meta name="twitter:image" content="https://financia.cloud/images/financia-logo-transparent.png" />
 
   <!-- Google Analytics, sous Consent Mode v2.
@@ -67,7 +67,7 @@
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBV40V2G1"></script>
 </head>
-<body class="legal-page">
+<body class="avis-page">
 
 <header class="nav-bar" id="navbar">
   <div class="nav-inner">
@@ -81,11 +81,11 @@
       <a href="/#chat" data-i18n="nav.chat">Chat IA</a>
       <a href="/marches" data-i18n="nav.marches">Marchés</a>
       <a href="/communaute" data-i18n="nav.communaute">Communauté</a>
-      <div class="nav-plus">
+      <div class="nav-plus nav-plus-actif">
         <button type="button" class="nav-plus-btn" id="navPlusBtn" aria-expanded="false" aria-haspopup="true" aria-controls="navPlusMenu"><span data-i18n="nav.plus">Plus</span><svg class="nav-plus-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="nav-plus-menu" id="navPlusMenu" role="menu" hidden>
           <a href="/#actus" role="menuitem" data-i18n="nav.actus">Actus</a>
-          <a href="/avis" role="menuitem" data-i18n="nav.avis">Avis</a>
+          <a href="/avis" aria-current="page" role="menuitem" data-i18n="nav.avis">Avis</a>
           <a href="/#temoignages" role="menuitem" data-i18n="nav.temoignages">Témoignages</a>
           <a href="/histoire" role="menuitem" data-i18n="nav.histoire">Histoire</a>
           <a href="/favoris" role="menuitem" data-i18n="nav.favoris">Mes favoris</a>
@@ -114,11 +114,12 @@
   <a href="/#hub"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="mobileMenu.accueil">Accueil</span></a>
   <a href="/#apprendre"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span data-i18n="mobileMenu.apprendre">Apprendre</span></a>
   <a href="/#quiz"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span data-i18n="mobileMenu.quiz">Quiz</span></a>
-  <a href="/ressources" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="mobileMenu.ressources">Ressources</span></a>
+  <a href="/ressources"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="mobileMenu.ressources">Ressources</span></a>
   <a href="/#simulateur"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><span data-i18n="mobileMenu.simulateur">Simulateur</span></a>
   <a href="/#chat"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="mobileMenu.chat">Chat IA</span></a>
   <a href="/marches"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span data-i18n="mobileMenu.marches">Marchés</span></a>
   <a href="/communaute"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="mobileMenu.communaute">Communauté</span></a>
+  <a href="/avis" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="mobileMenu.avis">Avis</span></a>
   <a href="/favoris"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span data-i18n="mobileMenu.favoris">Mes favoris</span></a>
   <a href="/#actus"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg><span data-i18n="mobileMenu.actus">Actus</span></a>
   <a href="/#temoignages"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-i18n="mobileMenu.temoignages">Témoignages</span></a>
@@ -143,82 +144,84 @@
   <div class="page-hero-glow page-hero-glow-1"></div>
   <div class="page-hero-glow page-hero-glow-2"></div>
   <div class="wrap page-hero-inner">
-    <div class="hero-badge page-hero-badge">🔒 Confidentialité</div>
-    <h1 class="page-hero-h1">Ce que Financia <em>sait de toi</em></h1>
-    <p class="page-hero-lead">La réponse courte : presque rien. Voici le détail, service par service.</p>
+    <div class="hero-badge page-hero-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span data-i18n="avisPage.badge">Avis</span>
+    </div>
+    <h1 class="page-hero-h1" data-i18n-html="avisPage.titreHtml">Ce qu'en disent <em>celles et ceux qui l'utilisent</em></h1>
+    <p class="page-hero-lead" data-i18n="avisPage.lead">Les retours laissés par les visiteurs de Financia, publiés tels qu'ils ont été écrits. Le formulaire est ouvert à tout le monde, sans compte et sans contrepartie.</p>
   </div>
 </section>
 
-<section class="legal-section">
+<!-- ═══ LES AVIS ═══ -->
+<section class="avispage-section">
   <div class="wrap">
 
-    <!-- Version faisant foi. Traduire un texte juridique automatiquement
-         créerait un risque supérieur à l'absence de traduction : une nuance
-         mal rendue engage l'éditeur. -->
-    <p class="legal-vf">Cette page est rédigée en français, seule version faisant foi. Dernière mise à jour : 30 août 2026.</p>
-
-    <div class="legal-bloc">
-      <h2>En résumé</h2>
-      <p>Financia ne demande aucun compte, aucun mot de passe, aucune information personnelle pour être utilisé. Tu peux lire l'intégralité du site, faire les quiz, utiliser le simulateur et enregistrer des favoris sans jamais rien fournir.</p>
-      <p>Trois cas seulement font sortir une donnée de ton appareil, et chacun résulte d'une action que tu déclenches toi-même : t'inscrire à la lettre d'information, laisser un avis, ou poser une question à l'assistant.</p>
+    <div class="avispage-tete">
+      <h2 class="avispage-h2" data-i18n="avisPage.listeTitre">Les avis publiés</h2>
+      <!-- Rempli par avis.js une fois la donnée arrivée. Volontairement absent
+           du HTML : afficher « 0 avis » pendant le chargement serait faux. -->
+      <p class="avispage-compte" id="avisCompte" hidden></p>
     </div>
 
-    <div class="legal-bloc">
-      <h2>Ce qui reste sur ton appareil</h2>
-      <p>Ces informations sont stockées dans la mémoire locale de ton navigateur. Elles ne sont transmises à personne, pas même à Financia, et disparaissent si tu vides les données du site.</p>
-      <ul class="legal-liste">
-        <li><strong>Tes favoris</strong> : les actifs que tu suis sur la page Marchés.</li>
-        <li><strong>Ta langue</strong> : pour ne pas la redemander à chaque visite.</li>
-        <li><strong>Ton pseudo et ton groupe</strong> dans l'aperçu Communauté, qui est une démonstration sans serveur.</li>
-        <li><strong>Ton choix sur la mesure d'audience</strong>, pour ne pas réafficher le bandeau.</li>
-      </ul>
-      <p class="legal-note">Ces éléments relèvent du fonctionnement que tu demandes et ne nécessitent pas de consentement. Ils ne permettent pas de t'identifier.</p>
+    <div class="avis-grid" id="avisGrid" aria-busy="true">
+      <!-- Squelettes : ils tiennent la place exacte des cartes finales, ce qui
+           évite le saut de mise en page à l'arrivée des données et, pendant une
+           démonstration, l'impression d'une page cassée. -->
+      <div class="avis-squelette" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="avis-squelette" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="avis-squelette" aria-hidden="true"><span></span><span></span><span></span></div>
     </div>
 
-    <div class="legal-bloc">
-      <h2>Mesure d'audience</h2>
-      <!-- « Aucune publicité » était devenu imprécis avec l'arrivée de liens
-           d'affiliation. La promesse est reformulée sur ce qui compte au
-           regard du RGPD, et qui reste exact : aucune régie chargée, aucun
-           profil publicitaire, aucune revente. -->
-      <p>Financia utilise <strong>Google Analytics 4</strong> pour compter les visites et savoir quelles pages sont réellement lues. Aucune régie publicitaire n'est chargée sur le site, aucun profil publicitaire n'est constitué à ton sujet, et aucune donnée n'est revendue.</p>
-      <p>Cette mesure ne démarre <strong>qu'après ton accord explicite</strong>. Tant que tu n'as pas accepté, le stockage analytique est désactivé côté Google. Tu peux changer d'avis à tout moment : le lien « Gérer les cookies » en bas de chaque page rouvre le choix.</p>
-      <p class="legal-note">Responsable du traitement : Google Ireland Limited. Base légale : ton consentement, article 6.1.a du RGPD.</p>
+  </div>
+</section>
+
+<!-- ═══ TRANSPARENCE ═══ -->
+<section class="avispage-section avispage-section-alt">
+  <div class="wrap">
+    <h2 class="avispage-h2" data-i18n="avisPage.reglesTitre">Comment ces avis sont publiés</h2>
+    <p class="avispage-sous" data-i18n="avisPage.reglesSous">Un site qui ne montre que des éloges n'apprend rien à personne. Voici la règle, écrite avant d'en avoir besoin.</p>
+
+    <div class="avispage-regles">
+      <article class="avispage-regle">
+        <span class="avispage-regle-num" aria-hidden="true">1</span>
+        <div>
+          <h3 data-i18n="avisPage.regle1Titre">Qui peut écrire</h3>
+          <p data-i18n="avisPage.regle1Texte">N'importe qui, via un formulaire public. Aucun compte, aucune adresse à laisser, aucune contrepartie : ni cadeau, ni tirage au sort, ni accès à quoi que ce soit.</p>
+        </div>
+      </article>
+      <article class="avispage-regle">
+        <span class="avispage-regle-num" aria-hidden="true">2</span>
+        <div>
+          <h3 data-i18n="avisPage.regle2Titre">Ce qui est publié</h3>
+          <p data-i18n="avisPage.regle2Texte">Le texte tel qu'il a été écrit, sans retouche ni résumé. Les avis critiques sont publiés au même titre que les autres, et dans le même ordre : du plus récent au plus ancien.</p>
+        </div>
+      </article>
+      <article class="avispage-regle">
+        <span class="avispage-regle-num" aria-hidden="true">3</span>
+        <div>
+          <h3 data-i18n="avisPage.regle3Titre">Ce qui ne l'est pas</h3>
+          <p data-i18n="avisPage.regle3Texte">Les insultes, le spam, les liens commerciaux, et tout message qui recommande d'acheter ou de vendre quoi que ce soit. Financia ne donne pas de conseil personnalisé, et n'en héberge pas non plus.</p>
+        </div>
+      </article>
     </div>
 
-    <div class="legal-bloc">
-      <h2>Les services qui reçoivent une donnée</h2>
-      <table class="legal-table">
-        <thead><tr><th>Quand</th><th>Ce qui part</th><th>Vers qui</th></tr></thead>
-        <tbody>
-          <tr><td>Tu t'inscris à la lettre d'information</td><td>Ton adresse email</td><td>Mailjet (Sinch), France</td></tr>
-          <tr><td>Tu laisses un avis</td><td>Le prénom et le texte que tu saisis</td><td>Google Forms</td></tr>
-          <tr><td>Tu poses une question à l'assistant</td><td>Le contenu de ta question</td><td>Groq, États-Unis</td></tr>
-          <tr><td>Tu consultes le site</td><td>Adresse IP, journaux techniques</td><td>Vercel, hébergeur</td></tr>
-          <tr><td>Tu cliques sur un lien partenaire</td><td>Le fait que la visite vienne de Financia</td><td>Le partenaire concerné</td></tr>
-        </tbody>
-      </table>
-      <p class="legal-note">Les données de marché et les articles d'actualité proviennent de sources publiques et ne transportent aucune information te concernant.</p>
-      <p class="legal-note">Un lien partenaire transmet uniquement l'origine de la visite, ce qui permet au partenaire de savoir qu'elle vient d'ici. Financia ne lui transmet ni ton identité, ni ton parcours sur le site, ni aucune donnée que tu aurais saisie. Une fois sur son site, c'est sa propre politique de confidentialité qui s'applique.</p>
+    <div class="risque" role="note">
+      <span class="risque-icone" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </span>
+      <p data-i18n="avisPage.disclaimer">Un avis exprime l'expérience de son auteur avec le site. Il ne constitue ni une recommandation d'investissement, ni une garantie de résultat.</p>
     </div>
+  </div>
+</section>
 
-    <div class="legal-bloc">
-      <h2>Conservation</h2>
-      <p>Ton adresse email est conservée dans la liste de diffusion jusqu'à ta désinscription, possible en un clic depuis chaque message. Les avis publiés le restent tant que tu n'en demandes pas le retrait. Les questions posées à l'assistant ne sont pas conservées par Financia.</p>
-    </div>
-
-    <div class="legal-bloc">
-      <h2>Tes droits</h2>
-      <p>Tu disposes d'un droit d'accès, de rectification, d'effacement, d'opposition et de portabilité sur les données te concernant. Pour l'exercer, une seule adresse :</p>
-      <p class="legal-contact"><strong>financiacloud@gmail.com</strong></p>
-      <p>Tu peux également introduire une réclamation auprès de la <strong>CNIL</strong>, autorité de contrôle française.</p>
-    </div>
-
-    <div class="legal-liens">
-      <a href="/mentions-legales" class="btn-ghost">Mentions légales</a>
-      <a href="#" class="btn-ghost" data-consent-rouvrir>Gérer les cookies</a>
-    </div>
-
+<!-- ═══ APPEL ═══ -->
+<section class="avispage-appel">
+  <div class="wrap">
+    <h2 class="avispage-h2" data-i18n="avisPage.appelTitre">Tu as utilisé Financia ?</h2>
+    <p class="avispage-sous" data-i18n="avisPage.appelSous">Dis ce que tu en as pensé, y compris si ça ne t'a pas servi. C'est de cette façon que le site s'améliore.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScxTNlnJN6PB949Se0fTqOba-M5tcBG8RBXz3o6yGY-ZdtTSQ/viewform" target="_blank" rel="noopener" class="btn-primary" data-i18n="avisPage.appelCta">Laisser un avis</a>
+    <p class="avispage-appel-note" data-i18n="avisPage.appelNote">Le formulaire est hébergé par Google. Seuls le prénom et le texte que tu saisis sont transmis.</p>
   </div>
 </section>
 
@@ -250,6 +253,7 @@
       <a href="/#actus" data-i18n="nav.actus">Actus</a>
       <a href="/marches" data-i18n="nav.marches">Marchés</a>
       <a href="/communaute" data-i18n="nav.communaute">Communauté</a>
+      <a href="/avis" data-i18n="nav.avis">Avis</a>
       <a href="/#temoignages" data-i18n="nav.temoignages">Témoignages</a>
       <a href="/histoire" data-i18n="nav.histoire">Histoire</a>
       <a href="/ressources" data-i18n="nav.ressources">Ressources</a>
@@ -266,7 +270,7 @@
   </div>
 </footer>
 
-<script src="./legal.js"></script>
+<script src="./avis.js"></script>
 <script src="./reveal.js" defer></script>
 <script src="./analytics.js" defer></script>
 <script src="./consentement.js" defer></script>

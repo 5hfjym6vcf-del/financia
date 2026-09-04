@@ -228,6 +228,59 @@ a { text-decoration: none; color: inherit; }
   transition: var(--transition);
 }
 .nav-links a:hover { color: #7C3AED; background: rgba(124,58,237,0.14); }
+
+/* ── Déroulant « Plus » ──
+   Il porte les cinq liens secondaires, plus Avis et Mes favoris qui
+   n'existaient que dans le menu mobile. La barre passe de douze entrées
+   à sept, ce qui lui rend environ 240 px de marge en allemand. */
+.nav-plus { position: relative; }
+.nav-plus-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  background: none;
+  border: none;
+  padding: 6px 6px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+.nav-plus-btn:hover { color: #7C3AED; background: rgba(124,58,237,0.14); }
+/* La page courante est repliée dans le menu : sans ce rappel, plus rien
+   dans la barre n'indiquerait où l'on se trouve sur /histoire ou /contact. */
+.nav-plus-actif > .nav-plus-btn { color: var(--green-light); }
+.nav-plus-chevron { transition: transform 0.2s ease; }
+.nav-plus-btn[aria-expanded="true"] .nav-plus-chevron { transform: rotate(180deg); }
+
+.nav-plus-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: rgba(10,10,15,0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  /* Seule exception admise à l'absence d'ombre portée sur fond noir : un
+     élément flottant doit se détacher de ce qu'il recouvre. */
+  box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+  z-index: 120;
+}
+.nav-plus-menu a {
+  padding: 9px 12px;
+  border-radius: var(--radius-xs);
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.82);
+}
+.nav-plus-menu a[aria-current="page"] { color: var(--green-light); font-weight: 600; }
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .lang-select {
   background: rgba(255,255,255,0.08);
@@ -2172,7 +2225,13 @@ html.is-installed [data-install-open] { display: none !important; }
    afficher les douze liens sans les tasser au point de les rendre illisibles.
    Le menu mobile, lui, les reprend tous, et les présente en liste verticale,
    plus confortable qu'une barre saturée. */
-@media (max-width: 1320px) {
+/* Seuil descendu de 1320 à 960 px. Il valait 1320 parce que douze liens à
+   plat ne tenaient pas en dessous ; avec six liens et le déroulant « Plus »,
+   la barre la plus large — le français, à 803 px de contenu — se loge dès
+   883 px de fenêtre. Les portables de 1024 à 1280 px récupèrent donc la
+   navigation complète au lieu du menu burger. 960 laisse 77 px de marge, de
+   quoi absorber une entrée un peu plus longue dans une future traduction. */
+@media (max-width: 960px) {
   .nav-links { display: none; }
   .menu-btn { display: flex; }
 }
@@ -2195,8 +2254,16 @@ html.is-installed [data-install-open] { display: none !important; }
   opacity: 0;
   pointer-events: none;
   transition: transform 0.24s cubic-bezier(0.4,0,0.2,1), opacity 0.24s ease;
-  max-height: calc(100vh - 64px);
+  /* dvh et non vh : sur iOS, vh se calcule sur la fenêtre barre d'URL
+     rétractée. Le panneau, qui compte quinze entrées, dépassait donc sous
+     l'écran tant que la barre était déployée, et ses dernières entrées
+     étaient inatteignables. dvh suit la hauteur réellement visible. */
+  max-height: calc(100dvh - 64px);
   overflow-y: auto;
+}
+/* Repli pour les navigateurs sans dvh — la règle ci-dessus les ignore. */
+@supports not (height: 100dvh) {
+  .mobile-menu { max-height: calc(100vh - 64px); }
 }
 .mobile-menu.open {
   transform: translateY(0);
