@@ -35,6 +35,14 @@
     {
       "source": "/confidentialite",
       "destination": "/confidentialite.html"
+    },
+    {
+      "source": "/comparateur",
+      "destination": "/comparateur.html"
+    },
+    {
+      "source": "/simulateur",
+      "destination": "/simulateur.html"
     }
   ],
   "headers": [

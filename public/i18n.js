@@ -450,7 +450,7 @@ fr: {
 
   consent: {
     titre: "Mesure d'audience",
-    texte: "Financia utilise Google Analytics pour compter les visites et comprendre quelles pages servent. Aucune publicité, aucune revente de données.",
+    texte: "Financia utilise Google Analytics pour compter les visites et comprendre quelles pages servent. Aucune régie publicitaire, aucun profil publicitaire, aucune revente de données.",
     enSavoirPlus: "Politique de confidentialité",
     accepter: "Accepter",
     refuser: "Refuser",
@@ -598,7 +598,7 @@ fr: {
       },
     },
     versPage: "🎧 Podcasts et livres pour aller plus loin",
-    disclaimer: "Ces liens sont fournis à titre informatif et ne sont pas des liens d'affiliation : Financia ne perçoit aucune rémunération sur les ressources listées ci-dessus.",
+    disclaimer: "Liens d'affiliation : certains liens présents sur cette page sont des liens affiliés. Financia est susceptible de recevoir une commission si vous ouvrez un compte via ces partenaires, sans aucun surcoût pour vous. Ces partenariats n'impactent pas l'impartialité de nos outils.",
   },
 
   avisPage: {
@@ -684,7 +684,7 @@ fr: {
 
   footer: {
     brandDesc: "L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.",
-    legal: "Financia · Projet éducatif · Pas de conseil en investissement",
+    legal: "Financia · Projet éducatif · Pas de conseil en investissement · Investir comporte un risque de perte en capital · Certains liens sont affiliés",
     contactAria: "Contact",
   },
 
@@ -1362,7 +1362,7 @@ en: {
 
   consent: {
     titre: "Audience measurement",
-    texte: "Financia uses Google Analytics to count visits and understand which pages are useful. No advertising, no data resale.",
+    texte: "Financia uses Google Analytics to count visits and understand which pages are useful. No ad network, no advertising profile, no data resale.",
     enSavoirPlus: "Privacy policy",
     accepter: "Accept",
     refuser: "Decline",
@@ -1510,7 +1510,7 @@ en: {
       },
     },
     versPage: "🎧 Podcasts and books to go further",
-    disclaimer: "These links are provided for information only and are not affiliate links: Financia receives no compensation on the resources listed above.",
+    disclaimer: "Affiliate links: some links on this page are affiliate links. Financia may receive a commission if you open an account through these partners, at no extra cost to you. These partnerships do not affect the impartiality of our tools.",
   },
 
   avisPage: {
@@ -1596,7 +1596,7 @@ en: {
 
   footer: {
     brandDesc: "The educational AI to learn how to invest. No personalized advice.",
-    legal: "Financia · Educational project · Not investment advice",
+    legal: "Financia · Educational project · No investment advice · Investing carries a risk of capital loss · Some links are affiliate links",
     contactAria: "Contact",
   },
 
@@ -2274,7 +2274,7 @@ es: {
 
   consent: {
     titre: "Medición de audiencia",
-    texte: "Financia utiliza Google Analytics para contar las visitas y entender qué páginas son útiles. Sin publicidad y sin reventa de datos.",
+    texte: "Financia utiliza Google Analytics para contar las visitas y entender qué páginas son útiles. Sin red publicitaria, sin perfil publicitario y sin reventa de datos.",
     enSavoirPlus: "Política de privacidad",
     accepter: "Aceptar",
     refuser: "Rechazar",
@@ -2422,7 +2422,7 @@ es: {
       },
     },
     versPage: "🎧 Pódcast y libros para profundizar",
-    disclaimer: "Estos enlaces se facilitan a título informativo y no son enlaces de afiliación: Financia no percibe ninguna remuneración por los recursos enumerados más arriba.",
+    disclaimer: "Enlaces de afiliación: algunos enlaces de esta página son enlaces afiliados. Financia puede recibir una comisión si abres una cuenta a través de estos socios, sin ningún coste adicional para ti. Estas colaboraciones no afectan a la imparcialidad de nuestras herramientas.",
   },
 
   avisPage: {
@@ -2508,7 +2508,7 @@ es: {
 
   footer: {
     brandDesc: "La IA educativa para aprender a invertir. Ningún consejo personalizado.",
-    legal: "Financia · Proyecto educativo · No es asesoramiento de inversión",
+    legal: "Financia · Proyecto educativo · Sin asesoramiento de inversión · Invertir conlleva riesgo de pérdida de capital · Algunos enlaces son de afiliación",
     contactAria: "Contacto",
   },
 
@@ -3186,7 +3186,7 @@ ru: {
 
   consent: {
     titre: "Измерение аудитории",
-    texte: "Financia использует Google Analytics, чтобы считать посещения и понимать, какие страницы полезны. Без рекламы и без перепродажи данных.",
+    texte: "Financia использует Google Analytics, чтобы считать посещения и понимать, какие страницы полезны. Без рекламных сетей, без рекламного профиля и без перепродажи данных.",
     enSavoirPlus: "Политика конфиденциальности",
     accepter: "Принять",
     refuser: "Отклонить",
@@ -3334,7 +3334,7 @@ ru: {
       },
     },
     versPage: "🎧 Подкасты и книги, чтобы узнать больше",
-    disclaimer: "Эти ссылки приведены исключительно для информации и не являются партнёрскими: Financia не получает вознаграждения за перечисленные выше ресурсы.",
+    disclaimer: "Партнёрские ссылки: некоторые ссылки на этой странице являются партнёрскими. Financia может получить комиссию, если вы откроете счёт через этих партнёров, без каких-либо дополнительных расходов для вас. Эти партнёрства не влияют на беспристрастность наших инструментов.",
   },
 
   avisPage: {
@@ -3420,7 +3420,7 @@ ru: {
 
   footer: {
     brandDesc: "Образовательный ИИ для обучения инвестициям. Без персональных советов.",
-    legal: "Financia · Образовательный проект · Не является инвестиционной консультацией",
+    legal: "Financia · Образовательный проект · Без инвестиционных рекомендаций · Инвестирование сопряжено с риском потери капитала · Некоторые ссылки партнёрские",
     contactAria: "Контакты",
   },
 
@@ -4098,7 +4098,7 @@ de: {
 
   consent: {
     titre: "Reichweitenmessung",
-    texte: "Financia nutzt Google Analytics, um Besuche zu zählen und zu verstehen, welche Seiten nützlich sind. Keine Werbung, kein Weiterverkauf von Daten.",
+    texte: "Financia nutzt Google Analytics, um Besuche zu zählen und zu verstehen, welche Seiten nützlich sind. Kein Werbenetzwerk, kein Werbeprofil, kein Datenverkauf.",
     enSavoirPlus: "Datenschutzerklärung",
     accepter: "Annehmen",
     refuser: "Ablehnen",
@@ -4246,7 +4246,7 @@ de: {
       },
     },
     versPage: "🎧 Podcasts und Bücher, um weiterzugehen",
-    disclaimer: "Diese Links dienen ausschließlich der Information und sind keine Affiliate-Links: Financia erhält für die oben aufgeführten Ressourcen keinerlei Vergütung.",
+    disclaimer: "Affiliate-Links: Einige Links auf dieser Seite sind Affiliate-Links. Financia kann eine Provision erhalten, wenn du über diese Partner ein Konto eröffnest, ohne Mehrkosten für dich. Diese Partnerschaften beeinflussen die Unparteilichkeit unserer Werkzeuge nicht.",
   },
 
   avisPage: {
@@ -4332,7 +4332,7 @@ de: {
 
   footer: {
     brandDesc: "Die pädagogische KI, um Investieren zu lernen. Keine persönliche Beratung.",
-    legal: "Financia · Bildungsprojekt · Keine Anlageberatung",
+    legal: "Financia · Bildungsprojekt · Keine Anlageberatung · Investieren birgt das Risiko eines Kapitalverlusts · Einige Links sind Affiliate-Links",
     contactAria: "Kontakt",
   },
 

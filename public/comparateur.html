@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-i18n="meta.titleAvis">Financia | Avis des utilisateurs, publiés sans filtre</title>
+  <title>Financia | Comparateur d'épargne : Livret A, compte espèces ou ETF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -11,11 +11,12 @@
 
   <!-- i18n : chargé de façon bloquante pour éviter tout flash de contenu FR -->
   <style>html:not(.i18n-ready) body { visibility: hidden; }</style>
+  <meta name="robots" content="index, follow" />
   <script src="./i18n.js"></script>
   <script src="./i18n-core.js"></script>
 
-  <meta name="description" content="Les avis laissés par les utilisateurs de Financia, publiés tels quels, les négatifs compris. Formulaire ouvert, sans compte, sans contrepartie." />
-  <link rel="canonical" href="https://financia.cloud/avis" />
+  <meta name="description" content="Compare le rendement net d'un Livret A, d'un compte espèces rémunéré et d'un ETF sur la durée de ton choix. Fiscalité et capital garanti affichés. Gratuit, sans conseil personnalisé." />
+  <link rel="canonical" href="https://financia.cloud/comparateur" />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="./images/financia-logo-transparent.png" type="image/png" />
 
@@ -29,9 +30,9 @@
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://financia.cloud/avis" />
-  <meta property="og:title" content="Financia | Avis des utilisateurs, publiés sans filtre" />
-  <meta property="og:description" content="Les avis laissés par les utilisateurs de Financia, publiés tels quels, les négatifs compris. Formulaire ouvert, sans compte, sans contrepartie." />
+  <meta property="og:url" content="https://financia.cloud/comparateur" />
+  <meta property="og:title" content="Financia | Comparateur d'épargne : Livret A, compte espèces ou ETF" />
+  <meta property="og:description" content="Compare le rendement net d'un Livret A, d'un compte espèces rémunéré et d'un ETF sur la durée de ton choix. Fiscalité et capital garanti affichés. Gratuit, sans conseil personnalisé." />
   <meta property="og:image" content="https://financia.cloud/images/og-financia.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -40,8 +41,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="Financia | Avis des utilisateurs, publiés sans filtre" />
-  <meta property="twitter:description" content="Les avis laissés par les utilisateurs de Financia, publiés tels quels, les négatifs compris. Formulaire ouvert, sans compte, sans contrepartie." />
+  <meta property="twitter:title" content="Financia | Comparateur d'épargne : Livret A, compte espèces ou ETF" />
+  <meta property="twitter:description" content="Compare le rendement net d'un Livret A, d'un compte espèces rémunéré et d'un ETF sur la durée de ton choix. Fiscalité et capital garanti affichés. Gratuit, sans conseil personnalisé." />
   <meta name="twitter:image" content="https://financia.cloud/images/og-financia.png" />
 
   <!-- Google Analytics, sous Consent Mode v2.
@@ -70,7 +71,7 @@
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHBV40V2G1"></script>
 </head>
-<body class="avis-page">
+<body class="comparateur-page">
 
 <header class="nav-bar" id="navbar">
   <div class="nav-inner">
@@ -148,84 +149,52 @@
   <div class="page-hero-glow page-hero-glow-1"></div>
   <div class="page-hero-glow page-hero-glow-2"></div>
   <div class="wrap page-hero-inner">
-    <div class="hero-badge page-hero-badge">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-      <span data-i18n="avisPage.badge">Avis</span>
-    </div>
-    <h1 class="page-hero-h1" data-i18n-html="avisPage.titreHtml">Ce qu'en disent <em>celles et ceux qui l'utilisent</em></h1>
-    <p class="page-hero-lead" data-i18n="avisPage.lead">Les retours laissés par les visiteurs de Financia, publiés tels qu'ils ont été écrits. Le formulaire est ouvert à tout le monde, sans compte et sans contrepartie.</p>
+    <div class="hero-badge page-hero-badge">Outil interactif</div>
+    <h1 class="page-hero-h1">Comparateur <em>d'épargne</em></h1>
+    <p class="page-hero-lead">Les mêmes versements sur trois supports, projetés côte à côte, nets de fiscalité. Le plus rémunérateur sur le papier est aussi le seul dont le capital n'est pas garanti.</p>
   </div>
 </section>
 
-<!-- ═══ LES AVIS ═══ -->
-<section class="avispage-section">
+<section id="comparateur" class="section">
   <div class="wrap">
+    <div class="section-label" data-i18n="comparateur.label">Outil interactif</div>
+    <h2 class="section-title" data-i18n-html="comparateur.titreHtml">Livret, compte espèces ou ETF :<br>ce que ça change sur la durée</h2>
+    <p class="comp-sous" data-i18n="comparateur.sous">Les mêmes versements, placés sur trois supports différents. Le plus rémunérateur sur le papier est aussi le seul dont le capital n'est pas garanti.</p>
 
-    <div class="avispage-tete">
-      <h2 class="avispage-h2" data-i18n="avisPage.listeTitre">Les avis publiés</h2>
-      <!-- Rempli par avis.js une fois la donnée arrivée. Volontairement absent
-           du HTML : afficher « 0 avis » pendant le chargement serait faux. -->
-      <p class="avispage-compte" id="avisCompte" hidden></p>
+    <div class="comp-reglages">
+      <div class="comp-champ">
+        <label for="compCapital" data-i18n="comparateur.capital">Capital de départ</label>
+        <div class="comp-rangee">
+          <input type="range" id="compCapital" min="0" max="50000" step="500" value="2000" />
+          <span id="compCapitalVal" class="comp-val">2 000 €</span>
+        </div>
+      </div>
+      <div class="comp-champ">
+        <label for="compMensuel" data-i18n="comparateur.mensuel">Versement mensuel</label>
+        <div class="comp-rangee">
+          <input type="range" id="compMensuel" min="0" max="1000" step="10" value="150" />
+          <span id="compMensuelVal" class="comp-val">150 €/mois</span>
+        </div>
+      </div>
+      <div class="comp-champ">
+        <label for="compDuree" data-i18n="comparateur.duree">Durée</label>
+        <div class="comp-rangee">
+          <input type="range" id="compDuree" min="1" max="40" step="1" value="15" />
+          <span id="compDureeVal" class="comp-val">15 ans</span>
+        </div>
+      </div>
     </div>
 
-    <div class="avis-grid" id="avisGrid" aria-busy="true">
-      <!-- Squelettes : ils tiennent la place exacte des cartes finales, ce qui
-           évite le saut de mise en page à l'arrivée des données et, pendant une
-           démonstration, l'impression d'une page cassée. -->
-      <div class="avis-squelette" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="avis-squelette" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="avis-squelette" aria-hidden="true"><span></span><span></span><span></span></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══ TRANSPARENCE ═══ -->
-<section class="avispage-section avispage-section-alt">
-  <div class="wrap">
-    <h2 class="avispage-h2" data-i18n="avisPage.reglesTitre">Comment ces avis sont publiés</h2>
-    <p class="avispage-sous" data-i18n="avisPage.reglesSous">Un site qui ne montre que des éloges n'apprend rien à personne. Voici la règle, écrite avant d'en avoir besoin.</p>
-
-    <div class="avispage-regles">
-      <article class="avispage-regle">
-        <span class="avispage-regle-num" aria-hidden="true">1</span>
-        <div>
-          <h3 data-i18n="avisPage.regle1Titre">Qui peut écrire</h3>
-          <p data-i18n="avisPage.regle1Texte">N'importe qui, via un formulaire public. Aucun compte, aucune adresse à laisser, aucune contrepartie : ni cadeau, ni tirage au sort, ni accès à quoi que ce soit.</p>
-        </div>
-      </article>
-      <article class="avispage-regle">
-        <span class="avispage-regle-num" aria-hidden="true">2</span>
-        <div>
-          <h3 data-i18n="avisPage.regle2Titre">Ce qui est publié</h3>
-          <p data-i18n="avisPage.regle2Texte">Le texte tel qu'il a été écrit, sans retouche ni résumé. Les avis critiques sont publiés au même titre que les autres, et dans le même ordre : du plus récent au plus ancien.</p>
-        </div>
-      </article>
-      <article class="avispage-regle">
-        <span class="avispage-regle-num" aria-hidden="true">3</span>
-        <div>
-          <h3 data-i18n="avisPage.regle3Titre">Ce qui ne l'est pas</h3>
-          <p data-i18n="avisPage.regle3Texte">Les insultes, le spam, les liens commerciaux, et tout message qui recommande d'acheter ou de vendre quoi que ce soit. Financia ne donne pas de conseil personnalisé, et n'en héberge pas non plus.</p>
-        </div>
-      </article>
-    </div>
+    <!-- Rempli par comparateur.js dès le chargement : un tiret en guise de
+         résultat ressemble à une panne. -->
+    <div class="comp-resultats" id="compResultats"></div>
 
     <div class="risque" role="note">
-      <span class="risque-icone" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-      </span>
-      <p data-i18n="avisPage.disclaimer">Un avis exprime l'expérience de son auteur avec le site. Il ne constitue ni une recommandation d'investissement, ni une garantie de résultat.</p>
+      <span class="risque-icone" aria-hidden="true">⚠️</span>
+      <p data-i18n="comparateur.risque">Ces projections sont des illustrations pédagogiques, pas des prévisions. Le taux des ETF est une hypothèse que tu choisis : les marchés actions peuvent baisser durablement, et le capital investi n'est pas garanti. Aucun élément de cet outil ne constitue un conseil en investissement.</p>
     </div>
-  </div>
-</section>
 
-<!-- ═══ APPEL ═══ -->
-<section class="avispage-appel">
-  <div class="wrap">
-    <h2 class="avispage-h2" data-i18n="avisPage.appelTitre">Tu as utilisé Financia ?</h2>
-    <p class="avispage-sous" data-i18n="avisPage.appelSous">Dis ce que tu en as pensé, y compris si ça ne t'a pas servi. C'est de cette façon que le site s'améliore.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScxTNlnJN6PB949Se0fTqOba-M5tcBG8RBXz3o6yGY-ZdtTSQ/viewform" target="_blank" rel="noopener" class="btn-primary" data-i18n="avisPage.appelCta">Laisser un avis</a>
-    <p class="avispage-appel-note" data-i18n="avisPage.appelNote">Le formulaire est hébergé par Google. Seuls le prénom et le texte que tu saisis sont transmis.</p>
+    <div data-partenaires="epargne" data-partenaires-titre="Où ouvrir un livret ou un compte espèces ?"></div>
   </div>
 </section>
 
@@ -274,11 +243,15 @@
   </div>
 </footer>
 
-<script src="./avis.js"></script>
+<script src="./page-socle.js"></script>
+<script src="./taux-config.js"></script>
+<script src="./comparateur.js"></script>
+<script src="./nav-plus.js" defer></script>
 <script src="./reveal.js" defer></script>
 <script src="./analytics.js" defer></script>
 <script src="./consentement.js" defer></script>
 <script src="./pwa.js" defer></script>
-<script src="./nav-plus.js" defer></script>
+<script src="./partenaires-config.js" defer></script>
+<script src="./partenaires-ui.js" defer></script>
 </body>
 </html>
