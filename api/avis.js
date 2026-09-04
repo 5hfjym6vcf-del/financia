@@ -55,6 +55,31 @@ function parseCsv(text) {
   return rows.filter(r => r.some(cell => cell.trim() !== ''));
 }
 
+// Google Sheets écrit l'horodateur dans la locale du tableur, ici le français :
+// « 03/09/2026 20:45:20 », soit JJ/MM/AAAA. Or `new Date(chaîne)` applique la
+// convention américaine MM/JJ, ce qui produisait deux défauts :
+//   - jour et mois intervertis quand le jour est <= 12 : le 3 septembre
+//     s'affichait « 09 mars », le 2 septembre « 09 févr. » ;
+//   - date invalide quand le jour est > 12 : « 30/08/2026 » donnait un mois 30,
+//     donc Invalid Date, donc aucune date affichée du tout.
+// On normalise donc ici, une fois, plutôt que dans chaque page qui consomme
+// l'endpoint. Sans suffixe Z : l'heure est déjà celle du tableur (Europe/Paris),
+// et la marquer UTC la décalerait de deux heures.
+function versIso(brut) {
+  const s = String(brut ?? '').trim();
+  if (!s) return '';
+  const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/.exec(s);
+  if (!m) return s; // déjà ISO, ou format inconnu : on ne dégrade pas l'existant
+  const [, j, mo, a, h = '0', mi = '0', se = '0'] = m;
+  const jour = Number(j), mois = Number(mo);
+  // Garde-fou : si le premier nombre dépasse 12, ce ne peut être qu'un jour,
+  // ce qui confirme la lecture JJ/MM. S'il est le second à dépasser 12, le
+  // tableur aurait basculé en MM/JJ et on refuse plutôt que d'inventer.
+  if (jour > 31 || mois > 12) return s;
+  const p = (n) => String(n).padStart(2, '0');
+  return `${a}-${p(mois)}-${p(jour)}T${p(Number(h))}:${p(Number(mi))}:${p(Number(se))}`;
+}
+
 function escapeHtml(str) {
   return String(str ?? '')
     .replace(/&/g, '&amp;')
@@ -84,7 +109,7 @@ async function fetchAvis() {
       prenom: escapeHtml((r[idx.prenom] || '').trim()).slice(0, 60),
       texte: escapeHtml((r[idx.texte] || '').trim()).slice(0, 400),
       note: Math.max(0, Math.min(5, parseInt(r[idx.note], 10) || 0)),
-      created_at: (r[idx.date] || '').trim(),
+      created_at: versIso(r[idx.date]),
     }))
     .filter(a => a.prenom && a.texte)
     .reverse(); // les réponses de formulaire arrivent en bas du Sheet — plus récent en premier

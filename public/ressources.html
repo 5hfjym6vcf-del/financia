@@ -278,6 +278,12 @@
 
     <p class="ressources-disclaimer" data-i18n="ressources.disclaimer">Ces liens sont fournis à titre informatif et ne sont pas des liens d'affiliation : Financia ne perçoit aucune rémunération sur les ressources listées ci-dessus.</p>
 
+    <!-- Comparatif des plateformes. Placé APRÈS l'avertissement ci-dessus,
+         qui porte sur les ressources gratuites : la frontière entre ce qui
+         est rémunéré et ce qui ne l'est pas doit être lisible sans effort.
+         Vide tant que partenaires-config.js n'est pas rempli. -->
+    <div data-partenaires-tableau></div>
+
     <a class="ressources-vers-page respage-retour" href="/#ressources">
       <span data-i18n="ressourcesPage.versOutils">🔗 Voir aussi les sites et outils du quotidien</span>
       <span aria-hidden="true">→</span>
@@ -337,5 +343,7 @@
 <script src="./consentement.js" defer></script>
 <script src="./pwa.js" defer></script>
 <script src="./nav-plus.js" defer></script>
+<script src="./partenaires-config.js" defer></script>
+<script src="./partenaires-ui.js" defer></script>
 </body>
 </html>

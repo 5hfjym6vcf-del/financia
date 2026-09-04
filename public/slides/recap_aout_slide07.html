@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8" />
+<title>recap_aout_slide07</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden;background:#000}
+  body{font-family:'Montserrat',sans-serif;-webkit-font-smoothing:antialiased}
+
+  .slide{
+    position:relative;width:1080px;height:1920px;overflow:hidden;
+    background:#000;display:flex;flex-direction:column;
+    padding:150px 88px 130px;
+  }
+
+  /* Fond : un halo coloré par l'accent du jour, plus une trame violette. Le
+     dégradé n'est pas décoratif, il donne à chaque slide son identité tout en
+     gardant le même noir de base. */
+  .slide::before{
+    content:'';position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(1100px 900px at 78% -8%, #E9A23B26 0%, transparent 62%),
+      radial-gradient(900px 800px at 8% 104%, #7C3AED1f 0%, transparent 60%);
+  }
+  .slide::after{
+    content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(#7C3AED0d 1px,transparent 1px),
+      linear-gradient(90deg,#7C3AED0d 1px,transparent 1px);
+    background-size:90px 90px;
+  }
+  .slide>*{position:relative;z-index:1}
+
+  /* Barre de progression : reprend le code visuel des stories Instagram, et
+     dit d'un coup d'œil où l'on en est dans la série. */
+  .prog{position:absolute;top:52px;left:88px;right:88px;height:5px;
+    background:rgba(255,255,255,.13);border-radius:99px;z-index:2;overflow:hidden}
+  .prog span{display:block;height:100%;width:70%;border-radius:99px;
+    background:linear-gradient(90deg,#7C3AED,#E9A23B)}
+
+  .tete{position:absolute;top:88px;left:88px;right:88px;
+    display:flex;align-items:center;justify-content:space-between;z-index:2}
+  .logo{font-size:31px;font-weight:800;letter-spacing:1.6px;color:#fff}
+  .logo i{font-style:normal;color:#7C3AED}
+  .num{font-size:26px;font-weight:700;color:rgba(255,255,255,.34);letter-spacing:.5px}
+
+  .pied{position:absolute;bottom:62px;left:0;right:0;text-align:center;
+    font-size:25px;font-weight:500;color:rgba(255,255,255,.3);z-index:2}
+
+  .badge{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
+    background:#E9A23B22;border:1.5px solid #E9A23B66;border-radius:999px;
+    padding:13px 28px;font-size:24px;font-weight:800;letter-spacing:1.8px;
+    text-transform:uppercase;color:#E9A23B;margin-bottom:46px}
+
+  h1{font-size:124px;font-weight:900;line-height:1;letter-spacing:-4px;color:#fff}
+  /* Filet sous le titre de couverture : donne un point d'appui au regard
+     là où une page centrée sans repère paraît flotter. */
+  .filet{width:190px;height:7px;border-radius:99px;margin:46px auto 0;
+    background:linear-gradient(90deg,#7C3AED,#9E75FF)}
+  h2{font-size:72px;font-weight:900;line-height:1.1;letter-spacing:-2px;color:#fff}
+  em{font-style:normal;color:#E9A23B}
+  .lead{font-size:37px;font-weight:500;line-height:1.5;color:rgba(255,255,255,.72);margin-top:34px}
+  .note{font-size:26px;font-weight:500;color:rgba(255,255,255,.4);margin-top:30px}
+
+  /* Variante « chiffre » : la statistique occupe l'espace, le texte la sert. */
+  .stat{font-size:210px;font-weight:900;line-height:.9;letter-spacing:-8px;
+    color:#E9A23B;margin:44px 0 6px}
+  .stat-u{font-size:74px;font-weight:800;color:#fff;letter-spacing:-1px}
+  .stat-l{font-size:34px;font-weight:600;color:rgba(255,255,255,.62);margin-top:22px}
+  .delta{display:inline-block;margin-top:34px;background:#22C55E1f;
+    border:1.5px solid #22C55E59;border-radius:18px;padding:16px 30px;
+    font-size:44px;font-weight:900;color:#22C55E}
+
+  /* Variante « cartes » : deux blocs de même poids. */
+  .cartes{display:flex;flex-direction:column;gap:26px;margin-top:16px}
+  .carte{background:rgba(255,255,255,.045);border:1.5px solid #E9A23B3d;
+    border-radius:30px;padding:38px 40px}
+  .carte-t{font-size:44px;font-weight:800;color:#fff;letter-spacing:-1px}
+  .carte-s{font-size:29px;font-weight:500;color:rgba(255,255,255,.62);margin-top:12px;line-height:1.45}
+  .carte-i{font-size:46px;line-height:1;margin-bottom:18px;display:block}
+
+  /* Variante « graphique » : barres proportionnelles, valeurs lisibles. */
+  .graph{display:flex;align-items:flex-end;gap:26px;height:520px;margin-top:26px}
+  .barre{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+  .barre b{font-size:44px;font-weight:900;color:#fff;margin-bottom:16px}
+  .barre span{width:100%;border-radius:20px 20px 8px 8px;
+    background:linear-gradient(180deg,#E9A23B,#E9A23B55)}
+  .barre i{font-style:normal;font-size:25px;font-weight:600;
+    color:rgba(255,255,255,.5);margin-top:20px;text-align:center;line-height:1.3}
+
+  /* Variante « liste » : trois faits, même rythme. */
+  .liste{display:flex;flex-direction:column;gap:30px;margin-top:12px}
+  .item{display:flex;gap:26px;align-items:flex-start}
+  .item .p{flex-shrink:0;width:66px;height:66px;border-radius:20px;
+    background:#E9A23B20;border:1.5px solid #E9A23B59;
+    display:flex;align-items:center;justify-content:center;font-size:31px}
+  .item .t{font-size:38px;font-weight:800;color:#fff;line-height:1.25}
+  .item .s{font-size:27px;font-weight:500;color:rgba(255,255,255,.58);margin-top:8px;line-height:1.4}
+
+  .centre{align-items:center;text-align:center;justify-content:center}
+  .centre .badge{align-self:center}
+  .haut{justify-content:center}
+
+  .logo-fin{font-size:112px;font-weight:900;letter-spacing:-3px;color:#fff}
+  .logo-fin i{font-style:normal;color:#7C3AED}
+  .site{margin-top:44px;font-size:44px;font-weight:800;color:#E9A23B}
+</style></head>
+<body>
+<div class="slide haut">
+  <div class="prog"><span></span></div>
+  <div class="tete">
+    <div class="logo">FINANCI<i>A</i></div>
+    <div class="num">7/10</div>
+  </div>
+  <div class="badge">Ce qu'on a suivi</div>
+  
+    <h2>Le reste<br>du <em>mois</em></h2>
+    <div class="liste">
+      <div class="item"><div class="p">💸</div><div>
+        <div class="t">650 milliards $ envolés</div>
+        <div class="s">Elon Musk, en six semaines. 3 août.</div></div></div>
+      <div class="item"><div class="p">🤖</div><div>
+        <div class="t">500 milliards $ pour l'IA</div>
+        <div class="s">BlackRock, Goldman Sachs et Nvidia s'associent. 11 août.</div></div></div>
+      <div class="item"><div class="p">🪙</div><div>
+        <div class="t">Bitcoin passe 71 000 $</div>
+        <div class="s">Après six semaines de stagnation. 21 août.</div></div></div>
+    </div>
+  <div class="pied">@financia_cloud</div>
+</div>
+</body></html>

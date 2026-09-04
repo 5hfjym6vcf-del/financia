@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>infos_cto_slide3 — CTO vs PEA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body {
+    background: #000000;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .stage {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1920px;
+    flex-shrink: 0;
+    transform-origin: center center;
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 220px 90px 140px;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-top-right {
+    width: 620px; height: 620px;
+    top: -220px; right: -220px;
+    background: radial-gradient(circle, rgba(124,58,237,0.16) 0%, transparent 70%);
+  }
+  .orb-bottom-left {
+    width: 520px; height: 520px;
+    bottom: -160px; left: -160px;
+    background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  .header {
+    position: absolute;
+    top: 64px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+  }
+  .logo {
+    font-size: 36px;
+    font-weight: 800;
+    color: #7C3AED;
+    letter-spacing: 1.5px;
+  }
+  .slide-num {
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 56px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.32);
+    letter-spacing: 0.3px;
+    z-index: 2;
+  }
+
+  .infos-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(124,58,237,0.15);
+    border: 1.5px solid rgba(124,58,237,0.45);
+    border-radius: 999px;
+    padding: 12px 26px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #c4b5fd;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+  }
+
+  .infos-date {
+    font-size: 26px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 44px;
+  }
+
+  .s-title {
+    font-size: 60px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1.4px;
+    line-height: 1.15;
+    margin-bottom: 56px;
+  }
+
+  .reason-list { width: 100%; display: flex; flex-direction: column; gap: 32px; }
+  .reason-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .reason-num {
+    font-size: 30px;
+    font-weight: 800;
+    color: #7C3AED;
+    min-width: 46px;
+    flex-shrink: 0;
+  }
+  .reason-text {
+    font-size: 34px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.42;
+  }
+  .reason-text strong { color: #7C3AED; font-weight: 800; }
+
+  .vs-wrap { display: flex; gap: 32px; width: 100%; margin-bottom: 56px; }
+  .vs-card {
+    flex: 1;
+    background: rgba(124,58,237,0.08);
+    border: 1.5px solid rgba(124,58,237,0.35);
+    border-radius: 26px;
+    padding: 40px 34px;
+  }
+  .vs-label {
+    font-size: 30px;
+    font-weight: 900;
+    color: #c4b5fd;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 26px;
+  }
+  .vs-item {
+    font-size: 30px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.42;
+    margin-bottom: 22px;
+  }
+  .vs-item:last-child { margin-bottom: 0; }
+  .vs-item strong { color: #7C3AED; font-weight: 800; }
+
+  .disclaimer-box {
+    margin-top: auto;
+    width: 100%;
+    background: rgba(124,58,237,0.08);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 18px;
+    padding: 28px 32px;
+    font-size: 26px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="slide" id="slide3">
+    <div class="glow-orb orb-top-right"></div>
+    <div class="glow-orb orb-bottom-left"></div>
+
+    <div class="header">
+      <div class="logo">FINANCIA</div>
+      <div class="slide-num">3/3</div>
+    </div>
+
+    <div class="infos-badge">Infos utiles</div>
+    <h2 class="s-title">CTO vs PEA, en un coup d'œil 👀</h2>
+
+    <div class="vs-wrap">
+      <div class="vs-card">
+        <div class="vs-label">PEA</div>
+        <p class="vs-item">Avantageux après <strong>5 ans</strong> (18,6% prélèvements sociaux seuls)</p>
+        <p class="vs-item">Limité aux <strong>actions européennes</strong></p>
+        <p class="vs-item">Plafond <strong>150 000€</strong></p>
+      </div>
+      <div class="vs-card">
+        <div class="vs-label">CTO</div>
+        <p class="vs-item">Accès <strong>mondial illimité</strong></p>
+        <p class="vs-item"><strong>31,4%</strong> flat tax dès le premier euro</p>
+        <p class="vs-item"><strong>Aucun plafond</strong></p>
+      </div>
+    </div>
+
+    <div class="disclaimer-box">⚠️ À vérifier selon ta situation personnelle — ceci n'est pas un conseil personnalisé</div>
+
+    <div class="footer">@financia_cloud</div>
+  </div>
+</div>
+
+<script>
+  function fitStage() {
+    var scale = Math.min(window.innerWidth / 1080, window.innerHeight / 1920);
+    document.querySelector('.slide').style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', fitStage);
+  window.addEventListener('orientationchange', fitStage);
+  window.addEventListener('load', fitStage);
+  fitStage();
+</script>
+
+</body>
+</html>

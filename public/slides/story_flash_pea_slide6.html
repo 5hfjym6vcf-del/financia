@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>story_flash_pea_slide6 — CTA</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body { background: #000000; font-family: 'Montserrat', sans-serif; }
+
+  .stage {
+    position: fixed; inset: 0;
+    width: 100vw; height: 100vh;
+    background: #000000;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 1080px; height: 1920px;
+    flex-shrink: 0;
+    transform-origin: center center;
+    background: radial-gradient(circle at 50% 0%, #141018 0%, #000000 62%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 300px 90px 200px;
+    text-align: center;
+  }
+
+  /* Bandeau d'alerte : orange vif, volontairement hors charte violette pour
+     signaler l'urgence au premier coup d'œil dans le fil de stories. */
+  .flash-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: linear-gradient(90deg, #FF4D1C 0%, #FF8A00 100%);
+    padding: 34px 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+  }
+  .flash-bar-label {
+    display: flex; align-items: center; gap: 18px;
+    font-size: 40px; font-weight: 900;
+    color: #fff;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+  .flash-dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 10px rgba(255,255,255,0.28);
+    flex-shrink: 0;
+  }
+  .flash-bar-num { font-size: 30px; font-weight: 800; color: rgba(255,255,255,0.9); letter-spacing: 1px; }
+
+  .accent-rule {
+    width: 120px; height: 8px;
+    border-radius: 99px;
+    background: #7C3AED;
+    margin-bottom: 46px;
+  }
+
+  .s-title {
+    font-size: 82px; font-weight: 900;
+    color: #fff;
+    line-height: 1.12;
+    letter-spacing: -2.4px;
+    margin-bottom: 46px;
+  }
+  .s-sub {
+    font-size: 40px; font-weight: 500;
+    color: rgba(255,255,255,0.66);
+    line-height: 1.45;
+  }
+
+  .s-text {
+    font-size: 40px; font-weight: 500;
+    color: rgba(255,255,255,0.86);
+    line-height: 1.55;
+  }
+  .s-text strong { color: #c4b5fd; font-weight: 800; }
+  .s-text + .s-text { margin-top: 34px; }
+
+  .s-figures { display: flex; gap: 40px; margin-bottom: 52px; width: 100%; }
+  .s-figure {
+    flex: 1;
+    background: rgba(124,58,237,0.1);
+    border: 2px solid rgba(124,58,237,0.4);
+    border-radius: 28px;
+    padding: 38px 32px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .s-figure-n { font-size: 62px; font-weight: 900; color: #fff; letter-spacing: -1.5px; line-height: 1; }
+  .s-figure-l { font-size: 27px; font-weight: 600; color: rgba(255,255,255,0.6); }
+
+  .s-text-cta { margin-bottom: 40px; }
+  .s-cta-hook {
+    font-size: 44px; font-weight: 700;
+    color: #fff;
+    line-height: 1.45;
+  }
+  .s-cta-hook strong { color: #7C3AED; font-weight: 900; }
+
+  .footer {
+    position: absolute;
+    bottom: 62px; left: 0; right: 0;
+    text-align: center;
+    font-size: 27px; font-weight: 600;
+    color: rgba(255,255,255,0.34);
+    letter-spacing: 0.4px;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="slide">
+    <div class="flash-bar">
+      <div class="flash-bar-label"><span class="flash-dot"></span>Flash info</div>
+      <div class="flash-bar-num">6/6</div>
+    </div>
+
+      <p class="s-text s-text-cta">On continue de suivre ce dossier de près.</p>
+      <p class="s-cta-hook">Abonne-toi à <strong>@financia_cloud</strong><br>c'est ce genre de sujet qu'on veut creuser avec vous 📈</p>
+
+    <div class="footer">@financia_cloud</div>
+  </div>
+</div>
+
+<script>
+  function fitStage() {
+    var scale = Math.min(window.innerWidth / 1080, window.innerHeight / 1920);
+    document.querySelector('.slide').style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', fitStage);
+  window.addEventListener('orientationchange', fitStage);
+  window.addEventListener('load', fitStage);
+  fitStage();
+</script>
+
+</body>
+</html>

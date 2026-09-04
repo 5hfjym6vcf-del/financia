@@ -629,6 +629,13 @@
         </div>
       </article>
     </div>
+
+    <!-- Encadré contextuel réutilisable. Placé en fin de section, après que
+         les notions (PEA, CTO, ETF) ont été expliquées : une proposition
+         d'ouverture de compte n'a de sens qu'une fois le sujet compris.
+         Le même composant se pose partout où un contenu pédagogique le
+         justifiera, en changeant la catégorie et le titre. -->
+    <div data-partenaires="bourse" data-partenaires-titre="Mettre en pratique : où ouvrir un PEA ou un CTO"></div>
   </div>
 </section>
 
@@ -771,6 +778,13 @@
         <canvas id="simChart" width="400" height="300"></canvas>
       </div>
     </div>
+
+    <!-- Emplacement partenaires. Rendu par partenaires-ui.js à partir de
+         partenaires-config.js, et rigoureusement vide tant qu'aucune
+         convention n'y est renseignée : aucune carte, aucun titre, aucun
+         espace occupé. Placé APRÈS l'avertissement pédagogique, jamais
+         avant : la mise en garde doit précéder la proposition. -->
+    <div data-partenaires="bourse" data-partenaires-titre="Où ouvrir ce type de compte ?"></div>
   </div>
 </section>
 
@@ -1217,5 +1231,7 @@
 <script src="./consentement.js" defer></script>
 <script src="./pwa.js" defer></script>
 <script src="./nav-plus.js" defer></script>
+<script src="./partenaires-config.js" defer></script>
+<script src="./partenaires-ui.js" defer></script>
 </body>
 </html>

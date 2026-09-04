@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>carousel_jeunesinvest_slide4 — L'âge moyen chute</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body { background: #000000; font-family: 'Montserrat', sans-serif; }
+
+  .stage {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    flex-shrink: 0;
+    transform-origin: center center;
+    background: radial-gradient(circle at 50% 0%, #121014 0%, #000000 65%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 110px 90px;
+  }
+
+  .slide-num {
+    position: absolute;
+    top: 56px;
+    right: 64px;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.28);
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 46px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 70px;
+  }
+  .footer-logo { font-size: 22px; font-weight: 800; color: rgba(255,255,255,0.55); letter-spacing: 2px; }
+  .footer-logo .handle { color: rgba(255,255,255,0.3); font-weight: 600; letter-spacing: 0.3px; margin-left: 10px; }
+  .footer-source { font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.28); }
+
+  .title {
+    font-size: 44px;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    line-height: 1.28;
+    letter-spacing: -0.8px;
+    max-width: 820px;
+    margin-bottom: 80px;
+  }
+
+  .line-wrap { position: relative; width: 760px; height: 300px; }
+  .line-wrap svg { position: absolute; inset: 0; overflow: visible; }
+
+  .pt-label { position: absolute; transform: translateX(-50%); text-align: center; }
+  .pt-value { font-size: 40px; font-weight: 800; color: #fff; white-space: nowrap; }
+  .pt-value.accent { color: #c4b5fd; }
+  .pt-year { font-size: 21px; font-weight: 600; color: rgba(255,255,255,0.45); margin-top: 8px; }
+
+  .down-arrow { position: absolute; }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="slide" id="slide4">
+    <div class="slide-num">4/6</div>
+
+    <h2 class="title">L'âge moyen des<br>investisseurs chute</h2>
+
+    <div class="line-wrap">
+      <svg viewBox="0 0 760 300" width="760" height="300">
+        <line x1="110" y1="70" x2="650" y2="230" stroke="#7C3AED" stroke-width="6" stroke-linecap="round" />
+        <circle cx="110" cy="70" r="11" fill="#7C3AED" />
+        <circle cx="650" cy="230" r="11" fill="#c4b5fd" />
+      </svg>
+
+      <div class="pt-label" style="left:110px; top:-6px;">
+        <div class="pt-value">49,6 ans</div>
+      </div>
+      <div class="pt-label" style="left:110px; top:96px;">
+        <div class="pt-year">2022</div>
+      </div>
+
+      <div class="pt-label" style="left:650px; top:156px;">
+        <div class="pt-value accent">43,8 ans</div>
+      </div>
+      <div class="pt-label" style="left:650px; top:256px;">
+        <div class="pt-year">2024</div>
+      </div>
+
+      <svg class="down-arrow" style="left:650px; top:196px;" width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <path d="M12 4V18M12 18L6 12M12 18L18 12" stroke="#7C3AED" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+
+    <div class="footer">
+      <div class="footer-logo">FINANCIA</div>
+      <div class="footer-source">Source : AMF, 2025</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function fitStage() {
+    var scale = Math.min(window.innerWidth / 1080, window.innerHeight / 1080);
+    document.querySelector('.slide').style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', fitStage);
+  window.addEventListener('orientationchange', fitStage);
+  window.addEventListener('load', fitStage);
+  fitStage();
+</script>
+
+</body>
+</html>
