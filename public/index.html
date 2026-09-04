@@ -788,6 +788,53 @@
   </div>
 </section>
 
+<!-- ══ COMPARATEUR D'ÉPARGNE ══
+     Deuxième outil, distinct du simulateur : celui-ci ne projette pas un
+     portefeuille, il met trois supports côte à côte. Les taux viennent de
+     taux-config.js, jamais du HTML. -->
+<section id="comparateur" class="section">
+  <div class="wrap">
+    <div class="section-label" data-i18n="comparateur.label">Outil interactif</div>
+    <h2 class="section-title" data-i18n-html="comparateur.titreHtml">Livret, compte espèces ou ETF :<br>ce que ça change sur la durée</h2>
+    <p class="comp-sous" data-i18n="comparateur.sous">Les mêmes versements, placés sur trois supports différents. Le plus rémunérateur sur le papier est aussi le seul dont le capital n'est pas garanti.</p>
+
+    <div class="comp-reglages">
+      <div class="comp-champ">
+        <label for="compCapital" data-i18n="comparateur.capital">Capital de départ</label>
+        <div class="comp-rangee">
+          <input type="range" id="compCapital" min="0" max="50000" step="500" value="2000" />
+          <span id="compCapitalVal" class="comp-val">2 000 €</span>
+        </div>
+      </div>
+      <div class="comp-champ">
+        <label for="compMensuel" data-i18n="comparateur.mensuel">Versement mensuel</label>
+        <div class="comp-rangee">
+          <input type="range" id="compMensuel" min="0" max="1000" step="10" value="150" />
+          <span id="compMensuelVal" class="comp-val">150 €/mois</span>
+        </div>
+      </div>
+      <div class="comp-champ">
+        <label for="compDuree" data-i18n="comparateur.duree">Durée</label>
+        <div class="comp-rangee">
+          <input type="range" id="compDuree" min="1" max="40" step="1" value="15" />
+          <span id="compDureeVal" class="comp-val">15 ans</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rempli par comparateur.js dès le chargement : un tiret en guise de
+         résultat ressemble à une panne. -->
+    <div class="comp-resultats" id="compResultats"></div>
+
+    <div class="risque" role="note">
+      <span class="risque-icone" aria-hidden="true">⚠️</span>
+      <p data-i18n="comparateur.risque">Ces projections sont des illustrations pédagogiques, pas des prévisions. Le taux des ETF est une hypothèse que tu choisis : les marchés actions peuvent baisser durablement, et le capital investi n'est pas garanti. Aucun élément de cet outil ne constitue un conseil en investissement.</p>
+    </div>
+
+    <div data-partenaires="epargne" data-partenaires-titre="Où ouvrir un livret ou un compte espèces ?"></div>
+  </div>
+</section>
+
 <section id="chat" class="section">
   <div class="wrap">
     <div class="section-label" data-i18n="chat.label">Intelligence artificielle</div>
@@ -1218,6 +1265,8 @@
 <script src="./consentement.js" defer></script>
 <script src="./pwa.js" defer></script>
 <script src="./nav-plus.js" defer></script>
+<script src="./taux-config.js" defer></script>
+<script src="./comparateur.js" defer></script>
 <script src="./partenaires-config.js" defer></script>
 <script src="./partenaires-ui.js" defer></script>
 </body>
