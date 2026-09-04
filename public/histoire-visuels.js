@@ -16,7 +16,7 @@
   // Repères communs, pour que les douze vignettes forment une série et non une
   // collection. Le violet porte le sujet, le rouge la chute, le vert la reprise.
   const V = '#7C3AED';   // violet de marque
-  const VC = '#c4b5fd';  // violet clair, pour les détails
+  const VC = '#A78BFA';  // violet clair, pour les détails
   const R = '#f87171';   // baisse
   const G = '#4ade80';   // hausse
 

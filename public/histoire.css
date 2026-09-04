@@ -131,7 +131,7 @@
   display: inline-block;
   font-size: 0.82rem;
   font-weight: 700;
-  color: #c4b5fd;
+  color: var(--violet-text);
   background: rgba(124,58,237,0.12);
   border: 1px solid rgba(124,58,237,0.3);
   border-radius: 100px;
@@ -183,7 +183,7 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #c4b5fd;
+  color: var(--violet-text);
   background: rgba(124,58,237,0.14);
   border: 1px solid rgba(124,58,237,0.3);
   border-radius: 100px;
@@ -292,7 +292,7 @@
   border-radius: 12px;
   padding: 14px 16px;
 }
-.hist-stat-chip .n { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: #c4b5fd; display: block; margin-bottom: 2px; }
+.hist-stat-chip .n { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--violet-text); display: block; margin-bottom: 2px; }
 .hist-stat-chip .l { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
 .hist-lesson {
   font-size: 0.95rem;
@@ -336,7 +336,7 @@
 .hist-footer .footer-brand p,
 .hist-footer .footer-links a,
 .hist-footer .footer-legal p { color: rgba(255,255,255,0.55); }
-.hist-footer .footer-links a:hover { color: #c4b5fd; }
+.hist-footer .footer-links a:hover { color: var(--violet-text); }
 .hist-footer .logo { color: #fff; }
 
 /* ============================================================

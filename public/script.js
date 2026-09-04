@@ -297,14 +297,14 @@ function renderSimChart({ data }) {
       datasets: [{
         label: 'Patrimoine',
         data,
-        borderColor: '#7C4DFF',
-        backgroundColor: 'rgba(124,77,255,0.08)',
+        borderColor: '#7C3AED',
+        backgroundColor: 'rgba(124,58,237,0.08)',
         borderWidth: 2.5,
         fill: true,
         tension: 0.4,
         pointRadius: 0,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: '#7C4DFF',
+        pointHoverBackgroundColor: '#7C3AED',
       }]
     },
     options: {

@@ -25,17 +25,20 @@ button, select, input, textarea { font-family: inherit; }
   --bg-card: #131319;
   --bg-card-2: #1a1a22;
   --border: rgba(255,255,255,0.1);
-  --border-2: rgba(124,77,255,0.35);
+  --border-2: rgba(124,58,237,0.35);
   --text: #ffffff;
   --text-2: rgba(255,255,255,0.62);
   --text-3: rgba(255,255,255,0.4);
-  /* Violet de la charte. La variable valait #7C4DFF alors que le reste de la
-     feuille codait #7C3AED en dur : le logo et les mots en emphase tiraient donc
-     sur un violet légèrement différent des boutons et des bordures. */
+  /* Violet unique de la charte, pour les aplats, bordures et points de
+     graphique. Le site en a compté jusqu'à cinq : un 7C4DFF bleuté sur la
+     courbe du hero et le quiz, un c4b5fd et un 9E75FF sur Marchés et
+     Histoire. Tout converge ici. Pour le TEXTE, utiliser --green-light,
+     alias --violet-text : #7C3AED plafonne à 3,7:1 sur noir, sous le seuil
+     de lisibilité, quand #A78BFA atteint 7,7:1. */
   --green: #7C3AED;
-  --green-light: #9E75FF;
-  --green-dim: rgba(124,77,255,0.14);
-  --green-dim-2: rgba(124,77,255,0.07);
+  --green-light: #A78BFA;
+  --green-dim: rgba(124,58,237,0.14);
+  --green-dim-2: rgba(124,58,237,0.07);
   --amber: #E9A23B;
   --blue: #3B8ADE;
   --coral: #E05C3A;
@@ -170,7 +173,7 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: var(--transition);
 }
-.btn-ghost:hover { border-color: var(--green); color: var(--green-light); box-shadow: 0 4px 16px rgba(124,77,255,0.12); transform: translateY(-1px); }
+.btn-ghost:hover { border-color: var(--green); color: var(--green-light); box-shadow: 0 4px 16px rgba(124,58,237,0.12); transform: translateY(-1px); }
 .btn-ghost.full { width: 100%; justify-content: center; margin-top: 8px; }
 
 /* NAV — dark glass chrome, consistent across every page */
@@ -362,8 +365,8 @@ a { text-decoration: none; color: inherit; }
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(124,77,255,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124,77,255,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
   z-index: 0;
@@ -428,13 +431,13 @@ a { text-decoration: none; color: inherit; }
 .pc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .pc-label { font-size: 12px; color: rgba(255,255,255,0.5); }
 .pc-badge {
-  background: rgba(124,77,255,0.2);
+  background: rgba(124,58,237,0.2);
   color: var(--green-light);
   font-size: 12px;
   font-weight: 600;
   padding: 3px 10px;
   border-radius: 100px;
-  border: 1px solid rgba(124,77,255,0.3);
+  border: 1px solid rgba(124,58,237,0.3);
 }
 .pc-value { font-family: var(--font-display); font-size: 32px; font-weight: 700; margin-bottom: 16px; color: #fff; }
 .pc-chart { margin-bottom: 20px; position: relative; }
@@ -459,7 +462,7 @@ a { text-decoration: none; color: inherit; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 30px;
-  background: radial-gradient(ellipse at 70% 100%, rgba(124,77,255,0.25) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 70% 100%, rgba(124,58,237,0.25) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -621,7 +624,7 @@ a { text-decoration: none; color: inherit; }
   height: 68px;
   border: none;
   border-radius: 50%;
-  background: rgba(124,77,255,0.85);
+  background: rgba(124,58,237,0.85);
   color: #fff;
   display: flex;
   align-items: center;
@@ -715,7 +718,7 @@ a { text-decoration: none; color: inherit; }
 .page-hero-badge {
   background: rgba(124,58,237,0.15);
   border: 1px solid rgba(124,58,237,0.4);
-  color: #c4b5fd;
+  color: var(--violet-text);
 }
 /* Même rôle que h1, donc mêmes valeurs : c'est le titre des pages
    secondaires. Il portait une graisse 900 et un interlignage 1.12 qui
@@ -774,7 +777,7 @@ a { text-decoration: none; color: inherit; }
 }
 .mc-visuel svg { display: block; width: 300px; max-width: 100%; height: 104px; }
 
-.module-card:hover { border-color: var(--border-2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,77,255,0.08); }
+.module-card:hover { border-color: var(--border-2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
 .mc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
 .mc-icon-big {
   width: 44px; height: 44px;
@@ -858,7 +861,7 @@ a { text-decoration: none; color: inherit; }
   transition: var(--transition);
   min-width: 0;
 }
-.jc-card:hover { border-color: var(--border-2); box-shadow: 0 12px 40px rgba(124,77,255,0.08); }
+.jc-card:hover { border-color: var(--border-2); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
 .jc-block-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 18px; }
 .jc-stat { margin-bottom: 22px; }
 .jc-stat:last-child { margin-bottom: 0; }
@@ -1099,7 +1102,7 @@ a { text-decoration: none; color: inherit; }
   width: 44px; height: 44px; border-radius: 50%;
   background: rgba(124,58,237,0.16);
   border: 1px solid rgba(124,58,237,0.45);
-  color: #9E75FF;
+  color: var(--violet-text);
   font-size: 18px;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
@@ -1111,7 +1114,7 @@ a { text-decoration: none; color: inherit; }
   border-color: #7C3AED;
   color: #fff;
 }
-.mic-btn:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+.mic-btn:focus-visible { outline: 2px solid var(--violet-text); outline-offset: 2px; }
 /* Sans retour visuel, on ne savait pas si la dictée avait démarré : on
    cliquait, on parlait, et rien ne bougeait à l'écran. */
 .mic-btn.listening {
@@ -1305,7 +1308,7 @@ a { text-decoration: none; color: inherit; }
 .quiz-share-btn {
   background: transparent;
   border: 1.5px solid rgba(124,58,237,0.55);
-  color: #c4b5fd;
+  color: var(--violet-text);
 }
 .quiz-share-btn:hover { background: rgba(124,58,237,0.12); }
 
@@ -1472,7 +1475,7 @@ a { text-decoration: none; color: inherit; }
   text-decoration: none;
   color: inherit;
 }
-.actu-card:hover { border-color: var(--border-2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,77,255,0.08); }
+.actu-card:hover { border-color: var(--border-2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
 .actu-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; gap: 12px; }
 .actu-source { font-size: 11px; font-weight: 600; color: var(--green-light); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
 .actu-date { font-size: 12px; color: var(--text-3); white-space: nowrap; }
@@ -1507,7 +1510,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 999px;
   border: 1px solid rgba(124, 58, 237, 0.45);
   background: rgba(124, 58, 237, 0.16);
-  color: #c4b5fd;
+  color: var(--violet-text);
   font-family: inherit;
   font-size: 0.9rem;
   font-weight: 700;
@@ -1516,7 +1519,7 @@ a { text-decoration: none; color: inherit; }
 }
 .ui-erreur-btn:hover:not(:disabled) { background: rgba(124, 58, 237, 0.32); color: #fff; }
 .ui-erreur-btn:disabled { opacity: 0.55; cursor: default; }
-.ui-erreur-btn:focus-visible { outline: 2px solid #9E75FF; outline-offset: 2px; }
+.ui-erreur-btn:focus-visible { outline: 2px solid var(--violet-text); outline-offset: 2px; }
 
 /* À PROPOS */
 .apropos-bio {
@@ -1534,7 +1537,7 @@ a { text-decoration: none; color: inherit; }
   display: flex; align-items: center; justify-content: center;
   border-radius: 50%;
   background: linear-gradient(135deg, #7C3AED 0%, rgba(124, 58, 237, 0.35) 100%);
-  border: 1px solid rgba(196, 181, 253, 0.45);
+  border: 1px solid var(--violet-ring);
   color: #fff;
   font-family: var(--font-display);
   font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
@@ -1571,7 +1574,7 @@ a { text-decoration: none; color: inherit; }
   padding: 24px;
   transition: var(--transition);
 }
-.valeur-card:hover { border-color: var(--border-2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,77,255,0.08); }
+.valeur-card:hover { border-color: var(--border-2); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.08); }
 .valeur-icon {
   width: 44px; height: 44px;
   margin-bottom: 12px;
@@ -1818,7 +1821,7 @@ html.is-installed [data-install-open] { display: none !important; }
   transition: var(--transition); flex-shrink: 0;
 }
 .install-cta:hover { background: #6d28d9; }
-.install-cta:focus-visible { outline: 2px solid #9E75FF; outline-offset: 3px; }
+.install-cta:focus-visible { outline: 2px solid var(--violet-text); outline-offset: 3px; }
 
 .install-modal {
   position: fixed; inset: 0; z-index: 200;
@@ -1980,7 +1983,7 @@ html.is-installed [data-install-open] { display: none !important; }
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: #c4b5fd;
+  color: var(--violet-text);
   background: rgba(124,58,237,0.16);
   border-radius: 5px;
   padding: 2px 7px;
@@ -2106,7 +2109,7 @@ html.is-installed [data-install-open] { display: none !important; }
 }
 .ressources-vers-page:hover {
   transform: translateY(-2px);
-  background: rgba(124,77,255,0.2);
+  background: rgba(124,58,237,0.2);
 }
 .ressources-vers-page:focus-visible {
   outline: 2px solid var(--green-light);
@@ -2420,7 +2423,7 @@ html.is-installed [data-install-open] { display: none !important; }
       align-items: center;
       justify-content: center;
     }
-    .hub-card-icon svg { color: #9E75FF; }
+    .hub-card-icon svg { color: var(--violet-text); }
     .hub-card h3 {
       font-size: 1.05rem;
       font-weight: 600;
@@ -2436,7 +2439,7 @@ html.is-installed [data-install-open] { display: none !important; }
     .hub-card-arrow {
       margin-top: auto;
       font-size: 0.85rem;
-      color: #7C4DFF;
+      color: #7C3AED;
       font-weight: 500;
     }
     .quiz-input-wrap {
@@ -2466,7 +2469,7 @@ html.is-installed [data-install-open] { display: none !important; }
       color: var(--text);
       width: 100%;
     }
-    .quiz-free-input:focus { border-color: #7C4DFF; }
+    .quiz-free-input:focus { border-color: #7C3AED; }
     .quiz-free-input.quiz-input-error {
       border-color: #ef4444;
       animation: shake 0.3s ease;
@@ -2852,7 +2855,7 @@ html.is-installed [data-install-open] { display: none !important; }
       border-radius: 14px;
       padding: 20px 22px;
     }
-    .temoignage-lesson-box p { font-size: 14px; color: #e9d5ff; line-height: 1.6; font-weight: 500; }
+    .temoignage-lesson-box p { font-size: 14px; color: var(--violet-text); line-height: 1.6; font-weight: 500; }
     .temoignages-cta-wrap { text-align: center; }
     .temoignages-cta-tiktok {
       display: block;
@@ -3052,7 +3055,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #c4b5fd;
+  outline: 2px solid var(--violet-text);
   outline-offset: 3px;
 }
 
@@ -3179,7 +3182,7 @@ textarea:focus-visible,
 .com-icone { font-size: 26px; line-height: 1; }
 .com-membres {
   font-size: 12px; font-weight: 700;
-  color: #c4b5fd; background: rgba(124,58,237,0.16);
+  color: var(--violet-text); background: rgba(124,58,237,0.16);
   border-radius: 50px; padding: 4px 12px; white-space: nowrap;
 }
 .com-membres-grand { font-size: 14px; padding: 6px 16px; }
@@ -3228,7 +3231,7 @@ textarea:focus-visible,
 .com-badge-moi {
   margin-left: auto; flex-shrink: 0;
   font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;
-  color: var(--green-light); background: rgba(124,77,255,0.18);
+  color: var(--green-light); background: rgba(124,58,237,0.18);
   border-radius: 50px; padding: 3px 9px;
 }
 .com-bientot {

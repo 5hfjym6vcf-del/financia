@@ -15,7 +15,7 @@
 
 (function () {
   const V = '#7C3AED';   // violet de marque
-  const VC = '#c4b5fd';  // violet clair
+  const VC = '#A78BFA';  // violet clair
   const R = '#f87171';   // baisse, risque
   const G = '#4ade80';   // hausse
 
