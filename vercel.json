@@ -21,6 +21,10 @@
       "destination": "/communaute.html"
     },
     {
+      "source": "/avis",
+      "destination": "/avis.html"
+    },
+    {
       "source": "/contact",
       "destination": "/contact.html"
     },
