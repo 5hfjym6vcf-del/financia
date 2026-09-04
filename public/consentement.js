@@ -39,11 +39,17 @@
   }
 
   function appliquer(choix) {
-    // Consent Mode v2 : on ne touche qu'à la mesure d'audience. Le site
-    // n'affiche aucune publicité, les signaux publicitaires restent refusés.
+    // Consent Mode v2. Les signaux publicitaires suivent le même choix que la
+    // mesure d'audience depuis l'ouverture des campagnes Google Ads : sans
+    // ad_storage, les conversions ne remontent qu'en mode modélisé, très
+    // largement sous-comptées. Le refus, lui, refuse tout.
     if (typeof window.gtag === 'function') {
+      const etat = choix === 'accepte' ? 'granted' : 'denied';
       window.gtag('consent', 'update', {
-        analytics_storage: choix === 'accepte' ? 'granted' : 'denied',
+        analytics_storage: etat,
+        ad_storage: etat,
+        ad_user_data: etat,
+        ad_personalization: etat,
       });
     }
   }
@@ -60,7 +66,7 @@
       <div class="consent-inner">
         <div class="consent-txt">
           <strong data-i18n="consent.titre">Mesure d'audience</strong>
-          <p data-i18n="consent.texte">Financia utilise Google Analytics pour compter les visites et comprendre quelles pages servent. Aucune régie publicitaire, aucun profil publicitaire, aucune revente de données.</p>
+          <p data-i18n="consent.texte">Financia utilise Google Analytics et Google Ads pour mesurer son audience et l'efficacité de ses campagnes.</p>
           <a href="/confidentialite" data-i18n="consent.enSavoirPlus">Politique de confidentialité</a>
         </div>
         <div class="consent-actions">

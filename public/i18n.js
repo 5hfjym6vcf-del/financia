@@ -452,7 +452,7 @@ fr: {
 
   consent: {
     titre: "Mesure d'audience",
-    texte: "Financia utilise Google Analytics pour compter les visites et comprendre quelles pages servent. Aucune régie publicitaire, aucun profil publicitaire, aucune revente de données.",
+    texte: "Financia utilise Google Analytics et Google Ads pour mesurer son audience et l'efficacité de ses campagnes.",
     enSavoirPlus: "Politique de confidentialité",
     accepter: "Accepter",
     refuser: "Refuser",
@@ -1368,7 +1368,7 @@ en: {
 
   consent: {
     titre: "Audience measurement",
-    texte: "Financia uses Google Analytics to count visits and understand which pages are useful. No ad network, no advertising profile, no data resale.",
+    texte: "Financia uses Google Analytics and Google Ads to measure its audience and the effectiveness of its campaigns.",
     enSavoirPlus: "Privacy policy",
     accepter: "Accept",
     refuser: "Decline",
@@ -2284,7 +2284,7 @@ es: {
 
   consent: {
     titre: "Medición de audiencia",
-    texte: "Financia utiliza Google Analytics para contar las visitas y entender qué páginas son útiles. Sin red publicitaria, sin perfil publicitario y sin reventa de datos.",
+    texte: "Financia utiliza Google Analytics y Google Ads para medir su audiencia y la eficacia de sus campañas.",
     enSavoirPlus: "Política de privacidad",
     accepter: "Aceptar",
     refuser: "Rechazar",
@@ -3200,7 +3200,7 @@ ru: {
 
   consent: {
     titre: "Измерение аудитории",
-    texte: "Financia использует Google Analytics, чтобы считать посещения и понимать, какие страницы полезны. Без рекламных сетей, без рекламного профиля и без перепродажи данных.",
+    texte: "Financia использует Google Analytics и Google Ads, чтобы измерять аудиторию и эффективность своих кампаний.",
     enSavoirPlus: "Политика конфиденциальности",
     accepter: "Принять",
     refuser: "Отклонить",
@@ -4116,7 +4116,7 @@ de: {
 
   consent: {
     titre: "Reichweitenmessung",
-    texte: "Financia nutzt Google Analytics, um Besuche zu zählen und zu verstehen, welche Seiten nützlich sind. Kein Werbenetzwerk, kein Werbeprofil, kein Datenverkauf.",
+    texte: "Financia nutzt Google Analytics und Google Ads, um die Reichweite und die Wirksamkeit seiner Kampagnen zu messen.",
     enSavoirPlus: "Datenschutzerklärung",
     accepter: "Annehmen",
     refuser: "Ablehnen",
