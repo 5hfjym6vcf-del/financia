@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>educfi_slide2 — Chiffres</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body { background: #000; font-family: 'Montserrat', sans-serif; }
+  .stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .slide {
+    width: 1080px; height: 1350px; flex-shrink: 0; position: relative; overflow: hidden;
+    background: radial-gradient(circle at 50% 0%, #121014 0%, #000 65%);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 130px 96px;
+  }
+  .slide-num { position: absolute; top: 60px; right: 68px; font-size: 22px; font-weight: 600;
+    color: rgba(255,255,255,.28); letter-spacing: .5px; }
+  .eyebrow { font-size: 24px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: #A78BFA; margin-bottom: 34px; }
+  h1 { font-size: 92px; font-weight: 800; line-height: 1.04; letter-spacing: -.025em; color: #fff; }
+  h2 { font-size: 66px; font-weight: 800; line-height: 1.08; letter-spacing: -.02em; color: #fff; }
+  .lead { font-size: 34px; font-weight: 500; line-height: 1.5; color: rgba(255,255,255,.72); margin-top: 34px; }
+  em { color: #A78BFA; font-style: normal; }
+  .footer { position: absolute; bottom: 56px; left: 96px; right: 96px; display: flex;
+    align-items: center; justify-content: space-between; }
+  .logo { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -.5px; }
+  .logo span { color: #7C3AED; }
+  .handle { font-size: 24px; font-weight: 600; color: rgba(255,255,255,.42); }
+  
+  .barres { display: flex; flex-direction: column; gap: 76px; margin-top: 20px; }
+  .chiffre { font-size: 118px; font-weight: 800; line-height: 1; letter-spacing: -.03em; color: #fff;
+    font-variant-numeric: tabular-nums; }
+  .chiffre.alerte { color: #A78BFA; }
+  .jauge { height: 16px; border-radius: 8px; background: rgba(255,255,255,.09); margin: 26px 0 22px; overflow: hidden; }
+  .jauge i { display: block; height: 100%; border-radius: 8px; background: rgba(255,255,255,.30); }
+  .jauge i.alerte { background: #7C3AED; }
+  .etiquette { font-size: 31px; font-weight: 500; line-height: 1.4; color: rgba(255,255,255,.72); }
+  .source { position: absolute; bottom: 120px; left: 96px; font-size: 21px; font-weight: 600;
+    color: #A78BFA; border: 2px dashed rgba(167,139,250,.55); border-radius: 10px; padding: 10px 16px; }
+
+</style>
+</head>
+<body><div class="stage"><div class="slide">
+  <div class="slide-num">2 / 5</div>
+  
+  <div class="eyebrow">Ce que disent les chiffres</div>
+  <div class="barres">
+    <div class="bloc">
+      <div class="chiffre">52 %</div>
+      <div class="jauge"><i style="width:52%"></i></div>
+      <div class="etiquette">estiment maîtriser le budget du quotidien</div>
+    </div>
+    <div class="bloc">
+      <div class="chiffre alerte">71 %</div>
+      <div class="jauge"><i class="alerte" style="width:71%"></i></div>
+      <div class="etiquette">n'ont pas les clés dès qu'il s'agit d'investir</div>
+    </div>
+  </div>
+  <p class="source">Source à compléter avant publication</p>
+
+  <div class="footer"><div class="logo">Financi<span>a</span></div><div class="handle">@financia_cloud</div></div>
+</div></div></body></html>

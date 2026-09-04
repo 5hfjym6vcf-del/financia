@@ -2174,6 +2174,18 @@ html.is-installed [data-install-open] { display: none !important; }
   animation: floatPill 4s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
+/* L'emoji est un élément flex distinct : le gap:8px ci-dessus ne s'appliquait
+   pas tant qu'emoji et nom formaient un seul nœud de texte, et l'écart réel
+   dépendait alors de la chasse propre à chaque emoji. Le 🛡️ de l'AMF, le 📊
+   de Google Finance et le 💰 de Moneyvox tombaient ainsi plus serrés que les
+   autres. La largeur fixe verrouille l'alignement quelle que soit l'icône. */
+.pill-icone {
+  flex-shrink: 0;
+  width: 1.15em;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+}
 .ressource-pill:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 28px rgba(124,58,237,0.14);
@@ -3627,4 +3639,71 @@ textarea:focus-visible,
   .part-bloc { padding: 20px; margin-top: 32px; }
   .part-bloc-titre { font-size: 18px; }
   .part-cartes { grid-template-columns: 1fr; }
+}
+
+
+/* ── Comparateur d'épargne ──
+   Trois supports côte à côte, dans l'ordre du fichier de configuration et
+   jamais triés par rendement : classer par montant reviendrait à désigner
+   un gagnant, donc à recommander. */
+.comp-sous {
+  font-size: 17px; line-height: 1.65; color: var(--text-2);
+  max-width: 62ch; margin: -24px 0 40px;
+}
+.comp-reglages {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px; margin-bottom: 40px;
+}
+.comp-champ label {
+  display: block; font-size: 14px; font-weight: 600;
+  color: var(--text-2); margin-bottom: 10px;
+}
+.comp-rangee { display: flex; align-items: center; gap: 14px; }
+.comp-rangee input[type="range"] { flex: 1; min-width: 0; accent-color: var(--green); }
+.comp-val {
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  color: var(--green-light); min-width: 104px; text-align: right;
+  font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1;
+}
+
+.comp-resultats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+}
+.comp-ligne {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.comp-tete { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.comp-nom { font-size: 17px; font-weight: 700; color: var(--text); }
+
+/* La distinction garanti / non garanti est le vrai enseignement de l'outil :
+   elle est donc portée par un libellé lisible, pas par la seule couleur. */
+.comp-badge {
+  font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  padding: 4px 9px; border-radius: var(--r-sm); white-space: nowrap;
+}
+.comp-badge-sur { background: rgba(74,222,128,.12); border: 1px solid rgba(74,222,128,.35); color: var(--up); }
+.comp-badge-risque { background: var(--violet-soft); border: 1px solid var(--violet-ring); color: var(--green-light); }
+
+.comp-taux { font-size: 13px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.comp-jauge { height: 8px; border-radius: 4px; background: var(--bg-card-2); overflow: hidden; margin: 4px 0; }
+.comp-jauge i { display: block; height: 100%; border-radius: 4px; background: rgba(255,255,255,.28); }
+.comp-jauge i.comp-jauge-risque { background: var(--green); }
+.comp-final {
+  font-family: var(--font-display); font-size: 30px; font-weight: 800;
+  color: var(--text); line-height: 1.1;
+  font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1;
+}
+.comp-detail { font-size: 13px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.comp-note { font-size: 12.5px; line-height: 1.5; color: var(--text-3); margin-top: 2px; }
+.comp-alerte {
+  font-size: 12.5px; line-height: 1.5; color: var(--amber);
+  border-left: 2px solid rgba(233,162,59,.5); padding-left: 10px; margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .comp-sous { font-size: 16px; margin-bottom: 32px; }
+  .comp-reglages { grid-template-columns: 1fr; gap: 18px; }
+  .comp-resultats { grid-template-columns: 1fr; }
 }
