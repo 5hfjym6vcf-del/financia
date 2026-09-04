@@ -279,13 +279,20 @@ a { text-decoration: none; color: inherit; }
   top: 45%; left: 38%;
   background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
 }
+/* 1240 px et non 1100 comme .wrap. Le titre passé à 68 px contient un mot
+   insécable, « intelligemment », qui mesure 534 px : plus que la demi-colonne
+   de 496 px qu'offrait 1100 px. La colonne de texte s'élargissait donc pour le
+   loger, la colonne visuelle rétrécissait d'autant, et le badge « 20 actifs
+   suivis » — calé à -60 px de celle-ci — venait toucher le titre d'un côté et
+   recouvrir le montant de la carte de l'autre. À 1240 px, les deux colonnes
+   font 566 px : le mot tient, et le badge retrouve ses 32 px de dégagement. */
 .hero {
   min-height: 90vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 60px;
-  max-width: 1100px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 80px 24px;
   position: relative;
@@ -427,6 +434,17 @@ a { text-decoration: none; color: inherit; }
 }
 .mc-left { left: -60px; top: 40px; animation: floatBadge 4s ease-in-out infinite; }
 .mc-right { right: -40px; bottom: 60px; animation: floatBadge 4s ease-in-out infinite 1.1s; }
+
+/* Les badges flottants débordent de 60 px à gauche et 40 px à droite de la
+   colonne visuelle. Pour qu'ils ne recouvrent ni le titre ni le montant de la
+   carte, cette colonne doit mesurer au moins 494 px, ce qui n'arrive qu'à
+   partir de 1140 px de fenêtre. En dessous, ils recouvraient « ETF MSCI World »
+   et le montant de 17 px — un défaut antérieur au passage du titre à 68 px.
+   Plutôt qu'un décalage négatif recalculé par palier, on les retire là où il
+   est démontré qu'ils ne tiennent pas : ils sont décoratifs, la carte non. */
+@media (max-width: 1140px) {
+  .mc-left, .mc-right { display: none; }
+}
 
 @keyframes floatBadge {
   0%, 100% { transform: translateY(0); }
@@ -3272,3 +3290,266 @@ textarea:focus-visible,
 .risque-large{max-width:none;margin:0 0 40px}
 
 .mentions-cta{display:inline-block;margin-top:28px}
+
+
+/* ── Page /avis ──
+   Les avis existaient déjà, mais au milieu d'une page d'accueil qui compte
+   une vingtaine de sections : personne ne les trouvait. La page reprend la
+   même grille (.avis-grid / .avis-card) plutôt que d'en créer une seconde. */
+.avispage-section { padding: 64px 0 80px; }
+.avispage-section-alt { background: var(--bg-2); }
+.avispage-appel { padding: 72px 0 96px; text-align: center; }
+
+.avispage-h2 {
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.avispage-sous {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-2);
+  max-width: 62ch;
+  margin-bottom: 40px;
+}
+.avispage-appel .avispage-sous { margin: 0 auto 32px; }
+
+.avispage-tete { margin-bottom: 32px; }
+.avispage-compte {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Squelettes de chargement. Ils occupent la hauteur d'une carte réelle, ce
+   qui supprime le saut de mise en page à l'arrivée des données — et évite
+   qu'une page lente ne passe pour une page cassée pendant une démonstration. */
+.avis-squelette {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 168px;
+}
+.avis-squelette span {
+  display: block;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--bg-card-2);
+  animation: avisPulse 1.4s ease-in-out infinite;
+}
+.avis-squelette span:nth-child(1) { width: 40%; height: 15px; }
+.avis-squelette span:nth-child(2) { width: 100%; animation-delay: .15s; }
+.avis-squelette span:nth-child(3) { width: 72%;  animation-delay: .3s; }
+@keyframes avisPulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+/* Une pulsation permanente est pénible pour qui y est sensible, et sans
+   valeur informative : la carte occupe déjà la place. */
+@media (prefers-reduced-motion: reduce) {
+  .avis-squelette span { animation: none; opacity: .5; }
+}
+
+/* Les trois règles de publication. Pastille numérotée plutôt que puce :
+   l'ordre compte, ces règles se lisent de la plus large à la plus étroite. */
+.avispage-regles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.avispage-regle {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.avispage-regle-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--violet-soft);
+  border: 1px solid var(--violet-ring);
+  color: var(--green-light);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+.avispage-regle h3 { margin-bottom: 6px; color: var(--text); }
+.avispage-regle p { font-size: 15px; line-height: 1.7; color: var(--text-2); }
+
+.avispage-appel-note {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-3);
+  margin-top: 20px;
+}
+
+/* Renvoi depuis la section de l'accueil vers la page complète. */
+.avis-voir-tout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green-light);
+  border-bottom: 1px solid transparent;
+}
+.avis-voir-tout:hover { border-bottom-color: var(--green-light); }
+
+@media (max-width: 640px) {
+  .avispage-section { padding: 48px 0 56px; }
+  .avispage-appel { padding: 56px 0 72px; }
+  .avispage-sous { font-size: 16px; margin-bottom: 32px; }
+}
+
+
+/* ── Emplacements partenaires (affiliation) ──
+   Rendus par partenaires-ui.js, vides tant que partenaires-config.js n'est
+   pas rempli. Les styles restent chargés : ils ne coûtent rien et évitent
+   d'avoir à y revenir le jour où les conventions sont signées. */
+.part-bloc {
+  margin-top: 40px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.part-bloc-tete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.part-bloc-titre {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+/* La mention doit se lire sans effort : c'est une obligation d'information,
+   pas une petite ligne à faire disparaître. D'où le contraste plein et la
+   position en tête de bloc plutôt qu'en pied. */
+.part-mention {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border-radius: var(--r-sm);
+  background: var(--violet-soft);
+  border: 1px solid var(--violet-ring);
+  color: var(--green-light);
+  white-space: nowrap;
+}
+
+.part-cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.part-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+.part-carte-tete { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
+.part-logo {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--violet-soft);
+  border: 1px solid var(--violet-ring);
+  color: var(--green-light);
+  font-size: 12px; font-weight: 700; line-height: 1;
+}
+.part-nom { font-size: 16px; font-weight: 700; color: var(--text); }
+.part-fait   { font-size: 14px; line-height: 1.55; color: var(--text-2); }
+.part-prime  { font-size: 14px; font-weight: 600; color: var(--green-light); }
+.part-detail { font-size: 13px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+
+/* margin-top:auto aligne tous les boutons sur la même ligne de base, quelles
+   que soient les longueurs de texte au-dessus. */
+.part-cta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--r-sm);
+  background: var(--green);
+  color: #fff;
+  font-size: 14px; font-weight: 600;
+  transition: background var(--transition);
+}
+.part-cta:hover { background: #6d28d9; }
+
+.part-note {
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+
+/* ── Tableau comparatif ── */
+/* Il défile dans sa propre boîte : huit colonnes ne tiennent pas sur un
+   téléphone, et la page elle-même ne doit jamais défiler latéralement. */
+.part-table-boite { overflow-x: auto; }
+.part-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 720px;
+}
+.part-table th, .part-table td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.part-table thead th {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--green-light);
+  white-space: nowrap;
+}
+.part-table td { color: var(--text-2); font-variant-numeric: tabular-nums; }
+.part-td-nom { color: var(--text); font-weight: 700; white-space: nowrap; }
+.part-td-c { text-align: center; }
+.part-td-lien { text-align: right; }
+.part-td-lien .part-cta { margin-top: 0; padding: 8px 14px; font-size: 13px; }
+
+/* L'information n'est jamais portée par la seule couleur : chaque symbole a
+   un libellé lu par les lecteurs d'écran, et les trois se distinguent par
+   leur forme autant que par leur teinte. */
+.part-oui     { color: var(--up); font-size: 15px; }
+.part-non     { color: var(--text-3); font-size: 15px; }
+.part-inconnu { color: var(--text-3); font-size: 18px; }
+.part-legende { margin-top: 14px; font-size: 12px; color: var(--text-3); }
+
+@media (max-width: 640px) {
+  .part-bloc { padding: 20px; margin-top: 32px; }
+  .part-bloc-titre { font-size: 18px; }
+  .part-cartes { grid-template-columns: 1fr; }
+}
