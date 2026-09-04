@@ -25,7 +25,9 @@ body.marches-page {
 }
 
 /* ── Layout de base ── */
-.mkt-section { padding: 64px 0 96px; position: relative; }
+/* Même rythme que .section de style.css : l'accueil et Marchés n'avaient pas
+   le même souffle vertical, ce qui se sent en enchaînant les pages. */
+.mkt-section { padding: 80px 0; position: relative; }
 .mkt-h2 {
   font-size: clamp(28px, 3.2vw, 42px);
   font-weight: 700;
@@ -84,8 +86,11 @@ body.marches-page {
 .mkt-updated-dot {
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+  /* Violet et non vert : c'est un témoin de fraîcheur de donnée, posé à
+     quelques centimètres des variations vertes de gain. Le vert y était lu
+     comme une hausse. */
+  background: var(--violet-text);
+  box-shadow: 0 0 0 3px rgba(167,139,250,0.2);
   flex-shrink: 0;
 }
 
@@ -203,7 +208,7 @@ body.marches-page {
      largeur qu'il avait au tracé ; à la première réduction de fenêtre, il
      devenait ce contenu minimal et élargissait la colonne au lieu de suivre,
      débordant l'écran sur mobile. */
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 20px;
 }
 .mkt-loading, .mkt-error {
@@ -223,10 +228,15 @@ body.marches-page {
   gap: 14px;
   padding: 56px 24px 64px;
   background: rgba(255, 255, 255, 0.025);
-  border: 1px dashed rgba(124, 58, 237, 0.32);
+  /* Trait plein : le tireté était le seul du site, et se lisait comme un
+     champ à remplir plutôt que comme un état vide. */
+  border: 1px solid var(--violet-ring);
   border-radius: var(--r-lg);
 }
-.fav-vide-coeur { font-size: 42px; line-height: 1; }
+/* 28 px et non 42 : un emoji système à cette taille est le détail le plus
+   « fait vite » d'une page, et il change d'aspect entre le Mac de démo et le
+   vidéoprojecteur. */
+.fav-vide-coeur { font-size: 28px; line-height: 1; }
 .fav-vide-titre { font-size: 1.05rem; font-weight: 700; color: #fff; }
 .fav-vide-txt {
   font-size: 0.92rem;
@@ -270,7 +280,7 @@ body.marches-page {
 .mkt-earnings { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
 .mkt-earn-sub {
   font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.6;
-  max-width: 660px; margin: -22px 0 32px;
+  max-width: 660px; margin: 10px 0 32px;
 }
 .mkt-earn-nav {
   display: flex; align-items: center; gap: 16px;
@@ -446,8 +456,8 @@ body.marches-page {
   border-radius: 999px;
   white-space: nowrap;
 }
-.mkt-change.positive { color: #4ade80; background: rgba(34,197,94,0.14); }
-.mkt-change.negative { color: #f87171; background: rgba(239,68,68,0.14); }
+.mkt-change.positive { color: var(--up); background: rgba(74,222,128,0.14); }
+.mkt-change.negative { color: var(--down); background: rgba(248,113,113,0.14); }
 
 .mkt-price {
   font-family: var(--font-display);
@@ -484,13 +494,11 @@ body.marches-page {
    Responsive — mobile-first adjustments
    ============================================================ */
 @media (max-width: 900px) {
-  .mkt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 680px) {
   .mkt-hero { padding: 116px 0 48px; }
   .mkt-section { padding: 44px 0 64px; }
-  .mkt-grid { grid-template-columns: minmax(0, 1fr); }
   .mkt-section-head { align-items: flex-start; }
 
   /* Les dix puces empilées occupaient près de 470 px avant le premier cours.
@@ -517,17 +525,6 @@ body.marches-page {
 
 /* ── Sociétés par secteur ── */
 .mkt-secteurs { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
-/* .mkt-earn-sub porte un margin-top de -22 px, calibré pour .mkt-tops-title et
-   ses 32 px de marge basse. Sous .mkt-h2, qui n'en a que 6, ce rappel faisait
-   remonter le paragraphe 16 px au-dessus du bas du titre : les deux se
-   chevauchaient. On neutralise ici sans toucher au bloc « Résultats attendus »,
-   où le calage d'origine est juste.
-
-   10 px et non 4 : les marges adjacentes fusionnent, la valeur retenue est le
-   maximum des deux et non leur somme. À 4 px c'est donc la marge basse du
-   titre qui l'emportait, pour un écart de 6 px seulement. À 10 px l'écart
-   correspond à celui du bloc « Résultats attendus ». */
-.mkt-secteurs .mkt-earn-sub { margin-top: 10px; }
 .sect-avis {
   display: flex; align-items: flex-start; gap: 10px;
   background: rgba(124,58,237,0.07);
@@ -594,8 +591,19 @@ body.marches-page {
   border-radius: var(--radius-xs); padding: 3px 7px; white-space: nowrap;
 }
 .sect-cours { grid-area: cours; font-weight: 700; color: #fff; white-space: nowrap; text-align: right; }
-.sect-var { grid-area: var; font-size: 0.76rem; font-weight: 700; white-space: nowrap; text-align: right; }
-.sect-var.positive { color: #4ade80; }
-.sect-var.negative { color: #f87171; }
+/* Même donnée que .mkt-change, donc même composant : une pastille et non du
+   texte coloré nu. Deux traitements pour une variation de cours donnaient
+   l'impression de deux informations différentes. */
+.sect-var {
+  grid-area: var;
+  justify-self: end;
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.sect-var.positive { color: var(--up); background: rgba(74,222,128,0.14); }
+.sect-var.negative { color: var(--down); background: rgba(248,113,113,0.14); }
 .sect-ligne-hors .sect-nom { color: rgba(255,255,255,0.55); }
 .sect-ligne-hors .sect-ticker { color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.06); }

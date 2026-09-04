@@ -1140,7 +1140,7 @@ a { text-decoration: none; color: inherit; }
 
 /* QUIZ */
 .quiz-container { max-width: 580px; margin: 0 auto; }
-.quiz-progress-bar { height: 3px; background: var(--border); border-radius: 2px; margin-bottom: 32px; overflow: hidden; }
+.quiz-progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 32px; overflow: hidden; }
 .quiz-progress-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.4s ease; }
 .quiz-step { display: none; }
 .quiz-step.active { display: block; }
@@ -1727,7 +1727,10 @@ a { text-decoration: none; color: inherit; }
 .mkt-tops { margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(124,58,237,0.2); }
 .mkt-tops-title {
   font-size: clamp(1.2rem, 2.6vw, 1.5rem);
-  font-weight: 800; color: #fff; letter-spacing: -0.5px; margin-bottom: 32px;
+  /* 10 px et non 32 : .mkt-earn-sub ne porte plus de marge négative de -22 px
+     pour compenser. Les marges adjacentes fusionnent au maximum des deux, donc
+     l'écart rendu reste identique, sans le piège pour une réutilisation. */
+  font-weight: 800; color: #fff; letter-spacing: -0.5px; margin-bottom: 10px;
 }
 .mkt-tops-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .mkt-top {
