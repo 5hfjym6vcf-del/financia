@@ -3741,3 +3741,19 @@ textarea:focus-visible,
   color: var(--text-3);
 }
 .part-cta-zone .part-cta { margin-top: 0; }
+
+/* Mise en avant du Chat IA dans la barre. Volontairement sobre : une pastille
+   de 6 px et une graisse au-dessus des autres liens suffisent à créer un point
+   d'entrée. Un badge « NOUVEAU » ou un fond plein aurait fait promotionnel sur
+   un site qui revendique l'absence de démarchage. */
+.nav-links a.nav-phare { color: rgba(255,255,255,0.92); font-weight: 600; }
+.nav-links a.nav-phare:hover { color: #7C3AED; }
+.nav-pastille {
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.18);
+  vertical-align: middle;
+}
