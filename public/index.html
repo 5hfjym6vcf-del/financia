@@ -741,54 +741,17 @@
   </a>
 </div>
 
-<section id="simulateur" class="section section-dark">
+<!-- ══ SIMULATEUR : bloc de présentation ══
+     L'outil complet vit sur /simulateur. Garder ici la version fonctionnelle
+     dupliquait le contenu entre deux URL et laissait Google choisir laquelle
+     afficher, alors que c'est la page dédiée qu'on pousse en référencement
+     comme en campagne. -->
+<section id="simulateur" class="section">
   <div class="wrap">
     <div class="section-label" data-i18n="simulator.label">Outil interactif</div>
     <h2 class="section-title" data-i18n-html="simulator.titleHtml">Simule ton portefeuille<br>dans 20 ans</h2>
-    <div class="simulator-grid">
-      <div class="simulator-controls">
-        <div class="sim-field">
-          <label data-i18n="simulator.capitalLabel">Capital de départ</label>
-          <div class="sim-input-row"><input type="range" id="simCapital" min="0" max="20000" step="100" value="6000" /><span id="simCapitalVal" class="sim-val">6 000 €</span></div>
-        </div>
-        <div class="sim-field">
-          <label data-i18n="simulator.monthlyLabel">Versement mensuel</label>
-          <div class="sim-input-row"><input type="range" id="simMonthly" min="0" max="1000" step="10" value="100" /><span id="simMonthlyVal" class="sim-val">100 €/mois</span></div>
-        </div>
-        <div class="sim-field">
-          <label data-i18n="simulator.yearsLabel">Durée (années)</label>
-          <div class="sim-input-row"><input type="range" id="simYears" min="5" max="40" step="1" value="20" /><span id="simYearsVal" class="sim-val">20 ans</span></div>
-        </div>
-        <div class="sim-field">
-          <label data-i18n="simulator.rateLabel">Rendement annuel estimé</label>
-          <div class="sim-input-row"><input type="range" id="simRate" min="2" max="12" step="0.5" value="8" /><span id="simRateVal" class="sim-val">8%</span></div>
-        </div>
-        <div class="sim-results">
-          <div class="sim-result-item"><span class="sim-result-label" data-i18n="simulator.totalInvestedLabel">Total investi</span><span class="sim-result-val" id="simTotalInvested">—</span></div>
-          <div class="sim-result-item"><span class="sim-result-label" data-i18n="simulator.gainsLabel">Gains générés</span><span class="sim-result-val green" id="simGains">—</span></div>
-          <div class="sim-result-item sim-result-big"><span class="sim-result-label" data-i18n="simulator.finalLabel">Patrimoine final</span><span class="sim-result-val" id="simFinal">—</span></div>
-        </div>
-        <button class="btn-primary full" id="simAskBtn" data-i18n="simulator.analyzeBtn">💬 Analyser avec Financia →</button>
-        <!-- Avertissement au contact direct du simulateur. Le site portait déjà
-             cette mention sur Histoire, Marchés et le quiz, mais pas sur l'outil
-             qui produit des montants à l'écran, donc celui qu'on peut le plus
-             facilement prendre pour une projection personnelle. -->
-        <div class="risque" role="note">
-          <span class="risque-icone" aria-hidden="true">⚠️</span>
-          <p data-i18n="risque.simulateur">Les simulations et contenus présentés sur Financia sont fournis à titre purement pédagogique et ne constituent pas des conseils en investissement. Investir comporte des risques de perte en capital.</p>
-        </div>
-      </div>
-      <div class="simulator-chart-area">
-        <canvas id="simChart" width="400" height="300"></canvas>
-      </div>
-    </div>
-
-    <!-- Emplacement partenaires. Rendu par partenaires-ui.js à partir de
-         partenaires-config.js, et rigoureusement vide tant qu'aucune
-         convention n'y est renseignée : aucune carte, aucun titre, aucun
-         espace occupé. Placé APRÈS l'avertissement pédagogique, jamais
-         avant : la mise en garde doit précéder la proposition. -->
-    <div data-partenaires="bourse" data-partenaires-titre="Où ouvrir ce type de compte ?"></div>
+    <p class="teaser-texte" data-i18n="simulator.teaser">Capital de départ, versement mensuel, durée. La courbe montre ce que produisent les intérêts composés, et ce que tu as réellement versé.</p>
+    <a href="/simulateur" class="btn-primary teaser-cta" data-i18n="simulator.cta">Ouvrir le simulateur</a>
   </div>
 </section>
 
@@ -796,46 +759,17 @@
      Deuxième outil, distinct du simulateur : celui-ci ne projette pas un
      portefeuille, il met trois supports côte à côte. Les taux viennent de
      taux-config.js, jamais du HTML. -->
-<section id="comparateur" class="section">
+<!-- ══ COMPARATEUR : bloc de présentation ══
+     L'outil complet vit sur /comparateur. Garder ici la version fonctionnelle
+     dupliquait le contenu entre deux URL et laissait Google choisir laquelle
+     afficher, alors que c'est la page dédiée qu'on pousse en référencement
+     comme en campagne. -->
+<section id="comparateur" class="section section-dark">
   <div class="wrap">
     <div class="section-label" data-i18n="comparateur.label">Outil interactif</div>
     <h2 class="section-title" data-i18n-html="comparateur.titreHtml">Livret, compte espèces ou ETF :<br>ce que ça change sur la durée</h2>
-    <p class="comp-sous" data-i18n="comparateur.sous">Les mêmes versements, placés sur trois supports différents. Le plus rémunérateur sur le papier est aussi le seul dont le capital n'est pas garanti.</p>
-
-    <div class="comp-reglages">
-      <div class="comp-champ">
-        <label for="compCapital" data-i18n="comparateur.capital">Capital de départ</label>
-        <div class="comp-rangee">
-          <input type="range" id="compCapital" min="0" max="50000" step="500" value="2000" />
-          <span id="compCapitalVal" class="comp-val">2 000 €</span>
-        </div>
-      </div>
-      <div class="comp-champ">
-        <label for="compMensuel" data-i18n="comparateur.mensuel">Versement mensuel</label>
-        <div class="comp-rangee">
-          <input type="range" id="compMensuel" min="0" max="1000" step="10" value="150" />
-          <span id="compMensuelVal" class="comp-val">150 €/mois</span>
-        </div>
-      </div>
-      <div class="comp-champ">
-        <label for="compDuree" data-i18n="comparateur.duree">Durée</label>
-        <div class="comp-rangee">
-          <input type="range" id="compDuree" min="1" max="40" step="1" value="15" />
-          <span id="compDureeVal" class="comp-val">15 ans</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Rempli par comparateur.js dès le chargement : un tiret en guise de
-         résultat ressemble à une panne. -->
-    <div class="comp-resultats" id="compResultats"></div>
-
-    <div class="risque" role="note">
-      <span class="risque-icone" aria-hidden="true">⚠️</span>
-      <p data-i18n="comparateur.risque">Ces projections sont des illustrations pédagogiques, pas des prévisions. Le taux des ETF est une hypothèse que tu choisis : les marchés actions peuvent baisser durablement, et le capital investi n'est pas garanti. Aucun élément de cet outil ne constitue un conseil en investissement.</p>
-    </div>
-
-    <div data-partenaires="epargne" data-partenaires-titre="Où ouvrir un livret ou un compte espèces ?"></div>
+    <p class="teaser-texte" data-i18n="comparateur.teaser">Les mêmes versements sur trois supports, projetés côte à côte et nets de fiscalité. Le plus rémunérateur sur le papier est aussi le seul dont le capital n'est pas garanti.</p>
+    <a href="/comparateur" class="btn-primary teaser-cta" data-i18n="comparateur.cta">Ouvrir le comparateur</a>
   </div>
 </section>
 

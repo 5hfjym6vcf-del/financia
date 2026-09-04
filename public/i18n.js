@@ -154,6 +154,8 @@ fr: {
   },
 
   simulator: {
+    teaser: "Capital de départ, versement mensuel, durée. La courbe montre ce que produisent les intérêts composés, et ce que tu as réellement versé.",
+    cta: "Ouvrir le simulateur",
     label: "Outil interactif",
     titleHtml: "Simule ton portefeuille<br>dans 20 ans",
     capitalLabel: "Capital de départ",
@@ -625,6 +627,8 @@ fr: {
   },
 
   comparateur: {
+    teaser: "Les mêmes versements sur trois supports, projetés côte à côte et nets de fiscalité. Le plus rémunérateur sur le papier est aussi le seul dont le capital n'est pas garanti.",
+    cta: "Ouvrir le comparateur",
     decouvrir: "Découvrir l'offre",
     lienPartenaire: "Lien partenaire",
     label: "Outil interactif",
@@ -1066,6 +1070,8 @@ en: {
   },
 
   simulator: {
+    teaser: "Starting capital, monthly contribution, duration. The curve shows what compound interest produces, and what you actually paid in.",
+    cta: "Open the simulator",
     label: "Interactive tool",
     titleHtml: "Simulate your portfolio<br>over 20 years",
     capitalLabel: "Starting capital",
@@ -1537,6 +1543,8 @@ en: {
   },
 
   comparateur: {
+    teaser: "The same contributions across three vehicles, projected side by side and net of tax. The one that pays most on paper is also the only one whose capital is not guaranteed.",
+    cta: "Open the comparator",
     decouvrir: "See the offer",
     lienPartenaire: "Partner link",
     label: "Interactive tool",
@@ -1978,6 +1986,8 @@ es: {
   },
 
   simulator: {
+    teaser: "Capital inicial, aportación mensual, duración. La curva muestra lo que producen los intereses compuestos, y lo que realmente has aportado.",
+    cta: "Abrir el simulador",
     label: "Herramienta interactiva",
     titleHtml: "Simula tu cartera<br>a 20 años",
     capitalLabel: "Capital inicial",
@@ -2449,6 +2459,8 @@ es: {
   },
 
   comparateur: {
+    teaser: "Las mismas aportaciones en tres productos, proyectadas una al lado de otra y netas de impuestos. El más rentable sobre el papel es también el único cuyo capital no está garantizado.",
+    cta: "Abrir el comparador",
     decouvrir: "Ver la oferta",
     lienPartenaire: "Enlace de socio",
     label: "Herramienta interactiva",
@@ -2890,6 +2902,8 @@ ru: {
   },
 
   simulator: {
+    teaser: "Начальный капитал, ежемесячный взнос, срок. Кривая показывает, что даёт сложный процент и сколько вы внесли на самом деле.",
+    cta: "Открыть симулятор",
     label: "Интерактивный инструмент",
     titleHtml: "Смоделируй свой портфель<br>через 20 лет",
     capitalLabel: "Стартовый капитал",
@@ -3361,6 +3375,8 @@ ru: {
   },
 
   comparateur: {
+    teaser: "Одни и те же взносы в трёх инструментах, показанные рядом и после налогов. Самый доходный на бумаге — единственный, чей капитал не защищён.",
+    cta: "Открыть сравнение",
     decouvrir: "Смотреть предложение",
     lienPartenaire: "Партнёрская ссылка",
     label: "Интерактивный инструмент",
@@ -3802,6 +3818,8 @@ de: {
   },
 
   simulator: {
+    teaser: "Startkapital, monatliche Einzahlung, Laufzeit. Die Kurve zeigt, was der Zinseszins bewirkt und wie viel du tatsächlich eingezahlt hast.",
+    cta: "Simulator öffnen",
     label: "Interaktives Tool",
     titleHtml: "Simuliere dein Portfolio<br>in 20 Jahren",
     capitalLabel: "Startkapital",
@@ -4273,6 +4291,8 @@ de: {
   },
 
   comparateur: {
+    teaser: "Dieselben Einzahlungen auf drei Anlagen, nebeneinander und nach Steuern dargestellt. Die auf dem Papier rentabelste ist zugleich die einzige ohne Kapitalgarantie.",
+    cta: "Vergleich öffnen",
     decouvrir: "Angebot ansehen",
     lienPartenaire: "Partnerlink",
     label: "Interaktives Werkzeug",

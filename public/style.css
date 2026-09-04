@@ -3757,3 +3757,17 @@ textarea:focus-visible,
   box-shadow: 0 0 0 3px rgba(124,58,237,0.18);
   vertical-align: middle;
 }
+
+/* Blocs de présentation des outils sur l'accueil. L'outil complet vit sur sa
+   page dédiée : ici on annonce, on ne calcule pas. */
+.teaser-texte {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-2);
+  max-width: 62ch;
+  margin: -24px 0 32px;
+}
+.teaser-cta { font-size: 16px; padding: 15px 30px; }
+@media (max-width: 640px) {
+  .teaser-texte { font-size: 16px; margin-bottom: 26px; }
+}
