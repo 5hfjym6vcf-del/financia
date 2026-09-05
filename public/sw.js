@@ -12,7 +12,7 @@
 
 // Bumper cette version à chaque déploiement qui change un asset statique :
 // l'activation supprime alors tous les caches d'une version antérieure.
-const CACHE_VERSION = 'v50';
+const CACHE_VERSION = 'v51';
 const STATIC_CACHE = `financia-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `financia-runtime-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';
@@ -30,6 +30,8 @@ const PRECACHE_URLS = [
   '/histoire',
   '/contact',
   '/avis',
+  '/comparateur',
+  '/simulateur',
   OFFLINE_URL,
   '/style.css',
   '/marches.css',
@@ -38,6 +40,13 @@ const PRECACHE_URLS = [
   '/i18n.js',
   '/i18n-core.js',
   '/nav-plus.js',
+  '/page-socle.js',
+  '/pwa.js',
+  '/conversion.js',
+  '/taux-config.js',
+  '/comparateur.js',
+  '/partenaires-config.js',
+  '/partenaires-ui.js',
   '/avis.js',
   '/favoris-store.js',
   '/actifs-ui.js',

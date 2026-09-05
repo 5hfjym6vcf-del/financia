@@ -3777,3 +3777,26 @@ textarea:focus-visible,
 @media (max-width: 640px) {
   .teaser-texte { font-size: 16px; margin-bottom: 26px; }
 }
+
+/* Bandeau légal du menu mobile. Ces liens n'existaient que dans le pied de
+   page : sur téléphone, il fallait faire défiler jusqu'à 5 000 px pour les
+   atteindre, alors que la LCEN les veut « facilement accessibles ». Plus
+   discrets que les entrées de navigation, mais toujours à un geste. */
+.mobile-menu-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 10px;
+  padding: 14px 12px 4px;
+  border-top: 1px solid var(--border);
+}
+.mobile-menu-legal a {
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-3);
+  background: none;
+  min-height: 0;
+}
+.mobile-menu-legal a:hover,
+.mobile-menu-legal a:active { color: var(--green-light); background: none; }
