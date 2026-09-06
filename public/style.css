@@ -3868,3 +3868,66 @@ textarea:focus-visible,
   .rassurance { gap: 16px; }
   .rassurance-carte { padding: 22px 20px; }
 }
+
+/* ── Sigles expliqués ──
+   Posés par sigles.js sur la première occurrence de chaque sigle. Le
+   déclencheur est un <button> : l'attribut title d'un <abbr> n'apparaît
+   qu'au survol de la souris, donc jamais sur téléphone, d'où vient
+   l'essentiel du trafic. Un bouton reçoit le focus à la tape, ce qui rend
+   l'affichage possible en CSS pur. */
+.sigle {
+  position: relative;
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: help;
+  /* Le pointillé signale « il y a quelque chose à savoir » sans crier. */
+  border-bottom: 1px dotted var(--green-light);
+  text-underline-offset: 2px;
+}
+.sigle:hover, .sigle:focus-visible { color: var(--green-light); }
+.sigle:focus-visible { outline: 2px solid var(--green-light); outline-offset: 2px; }
+
+.sigle-bulle {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  z-index: 60;
+  width: max-content;
+  max-width: min(300px, 78vw);
+  padding: 12px 14px;
+  background: var(--bg-card-2);
+  border: 1px solid var(--violet-ring);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-2);
+  text-align: left;
+  white-space: normal;
+  /* Masquée par défaut sans display:none, pour rester lisible par les
+     lecteurs d'écran via aria-describedby. */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  pointer-events: none;
+}
+.sigle:hover .sigle-bulle,
+.sigle:focus .sigle-bulle,
+.sigle:focus-visible .sigle-bulle {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+/* Près du bord droit, l'infobulle s'ancre à droite pour ne pas sortir. */
+@media (max-width: 640px) {
+  .sigle-bulle { left: auto; right: 0; max-width: 78vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sigle-bulle { transition: none; transform: none; }
+}

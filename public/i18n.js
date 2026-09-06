@@ -13,6 +13,13 @@ fr: {
   nav: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", communauteBientot: "Communauté (bientôt)", favoris: "Mes favoris", avis: "Avis", temoignages: "Témoignages", histoire: "Histoire", comparateur: "Comparateur", ressources: "Ressources", apropos: "À propos", contact: "Contact", mentions: "Mentions légales", confidentialite: "Confidentialité", risques: "Avertissement sur les risques", plus: "Plus", commencer: "Commencer", langAria: "Langue", },
   mobileMenu: { accueil: "Accueil", apprendre: "Apprendre", simulateur: "Simulateur", chat: "Chat IA", quiz: "Quiz", actus: "Actus", marches: "Marchés", communaute: "Communauté", avis: "Avis", communauteBientot: "Communauté (bientôt)", favoris: "Mes favoris", temoignages: "Témoignages", histoire: "Histoire", ressources: "Ressources", apropos: "À propos", contact: "Contact" },
 
+  sigles: {
+    pea: "Plan d'épargne en actions. Un compte pour investir en Bourse européenne, dont la fiscalité s'allège après cinq ans de détention.",
+    cto: "Compte-titres ordinaire. Un compte pour investir sans limite géographique, dont les gains sont imposés à 30 %.",
+    amf: "Autorité des marchés financiers. Le régulateur français de la Bourse et de l'épargne.",
+    orias: "Le registre français des intermédiaires en assurance, banque et finance.",
+  },
+
   accueil: {
     titreHtml: "Investir,<br><em>ça s'apprend</em>",
     lead: "Gratuit, sans jargon, sans conseil personnalisé. On explique comment ça marche, tu décides ensuite.",
@@ -951,6 +958,13 @@ en: {
   commun: { reessayer: "Try again", reessaiEnCours: "Loading…" },
   nav: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", communauteBientot: "Community (soon)", favoris: "My favourites", avis: "Reviews", temoignages: "Testimonials", histoire: "History", comparateur: "Comparator", ressources: "Resources", apropos: "About", contact: "Contact", mentions: "Legal Notice", confidentialite: "Privacy", risques: "Risk warning", plus: "More", commencer: "Get Started", langAria: "Language", },
   mobileMenu: { accueil: "Home", apprendre: "Learn", simulateur: "Simulator", chat: "AI Chat", quiz: "Quiz", actus: "News", marches: "Markets", communaute: "Community", avis: "Reviews", communauteBientot: "Community (soon)", favoris: "My favourites", temoignages: "Testimonials", histoire: "History", ressources: "Resources", apropos: "About", contact: "Contact" },
+
+  sigles: {
+    pea: "Plan d'épargne en actions, a French share savings account for investing in European markets, with lighter taxation after five years.",
+    cto: "Compte-titres ordinaire, a standard French securities account with no geographic limit, whose gains are taxed at 30 %.",
+    amf: "Autorité des marchés financiers, the French regulator for markets and savings.",
+    orias: "The French register of insurance, banking and finance intermediaries.",
+  },
 
   accueil: {
     titreHtml: "Investing<br><em>can be learned</em>",
@@ -1891,6 +1905,13 @@ es: {
   nav: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", communauteBientot: "Comunidad (pronto)", favoris: "Mis favoritos", avis: "Opiniones", temoignages: "Testimonios", histoire: "Historia", comparateur: "Comparador", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto", mentions: "Aviso legal", confidentialite: "Privacidad", risques: "Advertencia sobre los riesgos", plus: "Más", commencer: "Empezar", langAria: "Idioma", },
   mobileMenu: { accueil: "Inicio", apprendre: "Aprender", simulateur: "Simulador", chat: "Chat IA", quiz: "Quiz", actus: "Noticias", marches: "Mercados", communaute: "Comunidad", avis: "Opiniones", communauteBientot: "Comunidad (pronto)", favoris: "Mis favoritos", temoignages: "Testimonios", histoire: "Historia", ressources: "Recursos", apropos: "Sobre nosotros", contact: "Contacto" },
 
+  sigles: {
+    pea: "Plan d'épargne en actions, una cuenta francesa para invertir en la Bolsa europea, con fiscalidad reducida tras cinco años.",
+    cto: "Compte-titres ordinaire, una cuenta de valores sin límite geográfico, cuyas ganancias tributan al 30 %.",
+    amf: "Autorité des marchés financiers, el regulador francés de la Bolsa y el ahorro.",
+    orias: "El registro francés de intermediarios de seguros, banca y finanzas.",
+  },
+
   accueil: {
     titreHtml: "Invertir<br><em>se aprende</em>",
     lead: "Gratis, sin jerga, sin asesoramiento personalizado. Explicamos cómo funciona, tú decides después.",
@@ -2830,6 +2851,13 @@ ru: {
   nav: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", communauteBientot: "Сообщество (скоро)", favoris: "Избранное", avis: "Отзывы", temoignages: "Отзывы", histoire: "История", comparateur: "Сравнение", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты", mentions: "Правовая информация", confidentialite: "Конфиденциальность", risques: "Предупреждение о рисках", plus: "Ещё", commencer: "Начать", langAria: "Язык", },
   mobileMenu: { accueil: "Главная", apprendre: "Обучение", simulateur: "Симулятор", chat: "Чат с ИИ", quiz: "Квиз", actus: "Новости", marches: "Рынки", communaute: "Сообщество", avis: "Отзывы", communauteBientot: "Сообщество (скоро)", favoris: "Избранное", temoignages: "Отзывы", histoire: "История", ressources: "Ресурсы", apropos: "О нас", contact: "Контакты" },
 
+  sigles: {
+    pea: "Plan d'épargne en actions — французский счёт для инвестиций на европейском рынке, с пониженным налогом после пяти лет.",
+    cto: "Compte-titres ordinaire — обычный брокерский счёт без географических ограничений, прибыль облагается по ставке 30 %.",
+    amf: "Autorité des marchés financiers — французский регулятор рынка и сбережений.",
+    orias: "Французский реестр посредников в страховании, банковском деле и финансах.",
+  },
+
   accueil: {
     titreHtml: "Инвестировать<br><em>можно научиться</em>",
     lead: "Бесплатно, без жаргона, без персональных рекомендаций. Мы объясняем, как это устроено, решение за вами.",
@@ -3768,6 +3796,13 @@ de: {
   commun: { reessayer: "Erneut versuchen", reessaiEnCours: "Wird geladen…" },
   nav: { accueil: "Startseite", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", communauteBientot: "Community (bald)", favoris: "Meine Favoriten", avis: "Bewertungen", temoignages: "Erfahrungsberichte", histoire: "Geschichte", comparateur: "Vergleich", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt", mentions: "Impressum", confidentialite: "Datenschutz", risques: "Risikohinweis", plus: "Mehr", commencer: "Loslegen", langAria: "Sprache", },
   mobileMenu: { accueil: "Start", apprendre: "Lernen", simulateur: "Simulator", chat: "KI-Chat", quiz: "Quiz", actus: "News", marches: "Märkte", communaute: "Community", avis: "Bewertungen", communauteBientot: "Community (bald)", favoris: "Meine Favoriten", temoignages: "Erfahrungsberichte", histoire: "Geschichte", ressources: "Ressourcen", apropos: "Über uns", contact: "Kontakt" },
+
+  sigles: {
+    pea: "Plan d'épargne en actions, ein französisches Depot für europäische Aktien, nach fünf Jahren steuerlich begünstigt.",
+    cto: "Compte-titres ordinaire, ein gewöhnliches Wertpapierdepot ohne geografische Grenze, dessen Gewinne mit 30 % besteuert werden.",
+    amf: "Autorité des marchés financiers, die französische Aufsicht für Börse und Sparen.",
+    orias: "Das französische Register für Vermittler in Versicherung, Bank und Finanzen.",
+  },
 
   accueil: {
     titreHtml: "Investieren<br><em>kann man lernen</em>",
