@@ -122,9 +122,14 @@
     if (!bulle) return;
     bulle.style.left = '0px';
     bulle.style.right = 'auto';
+    // clientWidth et non innerWidth : le second inclut la barre de
+    // défilement, sous laquelle la bulle passerait sur un bureau qui
+    // l'affiche en permanence. clientWidth est la largeur de mise en page,
+    // celle qui définit réellement le débordement.
+    const cadre = document.documentElement.clientWidth;
     const b = bulle.getBoundingClientRect();
     let decalage = 0;
-    if (b.right > innerWidth - MARGE) decalage = innerWidth - MARGE - b.right;
+    if (b.right > cadre - MARGE) decalage = cadre - MARGE - b.right;
     if (b.left + decalage < MARGE) decalage = MARGE - b.left;
     if (decalage) bulle.style.left = Math.round(decalage) + 'px';
   }
