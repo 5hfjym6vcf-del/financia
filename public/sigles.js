@@ -106,6 +106,36 @@
     }
   }
 
+  // Recalage horizontal a l'ouverture.
+  //
+  // Une bulle ancree a gauche du sigle sort a droite quand le mot est en fin
+  // de ligne ; ancree a droite, elle part dans le negatif quand il est en
+  // debut de ligne. Aucun ancrage fixe ne convient aux deux cas, et
+  // position:fixed n'est pas une issue : reveal.js pose un transform sur les
+  // sections, ce qui en ferait le bloc conteneur de la bulle.
+  //
+  // On mesure donc a l'ouverture, une fois la largeur reelle connue, et on
+  // decale juste assez pour rentrer dans la fenetre.
+  const MARGE = 12;
+  function recaler(bouton) {
+    const bulle = bouton.querySelector('.sigle-bulle');
+    if (!bulle) return;
+    bulle.style.left = '0px';
+    bulle.style.right = 'auto';
+    const b = bulle.getBoundingClientRect();
+    let decalage = 0;
+    if (b.right > innerWidth - MARGE) decalage = innerWidth - MARGE - b.right;
+    if (b.left + decalage < MARGE) decalage = MARGE - b.left;
+    if (decalage) bulle.style.left = Math.round(decalage) + 'px';
+  }
+  document.addEventListener('focusin', (e) => {
+    if (e.target.classList && e.target.classList.contains('sigle')) recaler(e.target);
+  });
+  document.addEventListener('mouseover', (e) => {
+    const s = e.target.closest && e.target.closest('.sigle');
+    if (s) recaler(s);
+  });
+
   // Échap referme, quand l'infobulle a été ouverte au clavier ou à la tape.
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && document.activeElement?.classList.contains('sigle')) {

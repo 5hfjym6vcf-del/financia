@@ -3924,9 +3924,10 @@ textarea:focus-visible,
   visibility: visible;
   transform: translateY(0);
 }
-/* Près du bord droit, l'infobulle s'ancre à droite pour ne pas sortir. */
+/* La largeur reste bornee a la fenetre ; le calage horizontal exact est
+   fait a l'ouverture par sigles.js, qui seul connait la largeur rendue. */
 @media (max-width: 640px) {
-  .sigle-bulle { left: auto; right: 0; max-width: 78vw; }
+  .sigle-bulle { max-width: calc(100vw - 24px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .sigle-bulle { transition: none; transform: none; }
