@@ -55,6 +55,12 @@
   //                « Le meilleur courtier du marché » : non.
   //   prime        Prime de bienvenue. Vide tant qu'elle n'est pas au
   //                contrat. Si elle est conditionnée, écrire la condition.
+  //   url          Site public de l'établissement. Toujours renseigné.
+  //   urlAffiliee  Lien rémunéré, vide tant qu'aucune convention n'est
+  //                signée. C'est LUI, et lui seul, qui déclenche la mention
+  //                « Lien affilié » et le rel="sponsored". Une fiche sans
+  //                urlAffiliee reste affichable : c'est alors une simple
+  //                référence, sans rémunération à déclarer.
   //   verifieLe    Date de vérification des chiffres, format AAAA-MM-JJ.
   //                Affichée sous le tableau. Au-delà de PEREMPTION_JOURS,
   //                la fiche est masquée automatiquement.
@@ -74,6 +80,7 @@
     //   fait: '',
     //   prime: '',
     //   url: '',
+    //   urlAffiliee: '',
     //   verifieLe: '',
     // },
   ];

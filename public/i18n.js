@@ -672,6 +672,8 @@ fr: {
   },
 
   partenaires: {
+    ordreNeutre: "Présentés dans un ordre qui ne constitue pas un classement. Financia ne perçoit aucune rémunération sur ces liens.",
+    nouvelOngletSimple: "nouvel onglet",
     lienPartenaire: "Lien partenaire",
     mention: "Lien affilié",
     ordre: "Présentés dans un ordre qui ne constitue pas un classement. Financia perçoit une commission si tu ouvres un compte via ces liens, sans surcoût pour toi.",
@@ -1609,6 +1611,8 @@ en: {
   },
 
   partenaires: {
+    ordreNeutre: "Listed in an order that is not a ranking. Financia receives no compensation on these links.",
+    nouvelOngletSimple: "new tab",
     lienPartenaire: "Partner link",
     mention: "Affiliate link",
     ordre: "Listed in an order that is not a ranking. Financia earns a commission if you open an account through these links, at no extra cost to you.",
@@ -2546,6 +2550,8 @@ es: {
   },
 
   partenaires: {
+    ordreNeutre: "Presentados en un orden que no constituye una clasificación. Financia no percibe ninguna remuneración por estos enlaces.",
+    nouvelOngletSimple: "nueva pestaña",
     lienPartenaire: "Enlace de socio",
     mention: "Enlace de afiliación",
     ordre: "Presentados en un orden que no constituye una clasificación. Financia percibe una comisión si abres una cuenta a través de estos enlaces, sin coste adicional para ti.",
@@ -3483,6 +3489,8 @@ ru: {
   },
 
   partenaires: {
+    ordreNeutre: "Порядок перечисления не является рейтингом. Financia не получает вознаграждения за эти ссылки.",
+    nouvelOngletSimple: "новая вкладка",
     lienPartenaire: "Партнёрская ссылка",
     mention: "Партнёрская ссылка",
     ordre: "Порядок перечисления не является рейтингом. Financia получает комиссию, если вы открываете счёт по этим ссылкам, без дополнительных расходов для вас.",
@@ -4420,6 +4428,8 @@ de: {
   },
 
   partenaires: {
+    ordreNeutre: "Die Reihenfolge stellt keine Rangliste dar. Financia erhält für diese Links keine Vergütung.",
+    nouvelOngletSimple: "neuer Tab",
     lienPartenaire: "Partnerlink",
     mention: "Affiliate-Link",
     ordre: "Die Reihenfolge stellt keine Rangliste dar. Financia erhält eine Provision, wenn du über diese Links ein Konto eröffnest, ohne Mehrkosten für dich.",

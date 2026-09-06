@@ -15,13 +15,15 @@
 // TROIS RÈGLES NON NÉGOCIABLES, appliquées par le code et non par la
 // vigilance de celui qui remplira la configuration :
 //
-//  1. Toute sortie porte rel="sponsored nofollow noopener". « sponsored »
-//     est ce que Google attend d'un lien rémunéré ; sans lui, le site
-//     s'expose à une pénalité pour échange de liens, ce qui coûterait plus
-//     cher que ne rapporte l'affiliation.
-//  2. Tout bloc porte une mention « Lien affilié » visible, jamais repliée
-//     ni en survol. C'est l'obligation de transparence de l'article
-//     L.121-4 du code de la consommation, et de la loi du 9 juin 2023.
+//  1. Une sortie RÉMUNÉRÉE porte rel="sponsored nofollow noopener", ce que
+//     Google attend d'un lien payé ; sans lui, le site s'expose à une
+//     pénalité pour échange de liens. Une sortie non rémunérée ne le porte
+//     PAS : ce serait déclarer à Google un achat de lien inexistant.
+//  2. Une fiche rémunérée porte une mention « Lien affilié » visible,
+//     jamais repliée ni en survol, au titre de l'article L.121-4 du code de
+//     la consommation et de la loi du 9 juin 2023. Une fiche non rémunérée
+//     ne la porte pas : l'apposer serait une fausse déclaration, aussi
+//     trompeuse que de l'omettre là où elle est due.
 //  3. Aucun classement, aucune note, aucun superlatif. L'ordre est celui du
 //     fichier de configuration, et il est annoncé comme tel.
 // ============================================================
@@ -52,7 +54,10 @@
   // Ligne d'honnêteté commune : ordre non hiérarchique + date de contrôle.
   function note(fiches) {
     const le = P.verifieLe(fiches);
-    const ordre = echappe(t('partenaires.ordre', "Présentés dans un ordre qui ne constitue pas un classement. Financia perçoit une commission si tu ouvres un compte via ces liens, sans surcoût pour toi."));
+    const remunere = fiches.some(estAffilie);
+    const ordre = echappe(remunere
+      ? t('partenaires.ordre', "Présentés dans un ordre qui ne constitue pas un classement. Financia perçoit une commission si tu ouvres un compte via ces liens, sans surcoût pour toi.")
+      : t('partenaires.ordreNeutre', "Présentés dans un ordre qui ne constitue pas un classement. Financia ne perçoit aucune rémunération sur ces liens."));
     if (!le) return `<p class="part-note">${ordre}</p>`;
     const d = new Date(le);
     const jolie = isNaN(d) ? le : d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
@@ -60,10 +65,24 @@
     return `<p class="part-note">${ordre} ${verif}</p>`;
   }
 
+  // Un partenaire est « affilié » quand une convention est signée, ce que
+  // marque urlAffiliee. Tant qu'elle est vide, la fiche peut exister et
+  // pointer vers le site public de l'établissement : c'est alors un lien
+  // ordinaire, sans rel="sponsored" ni mention de rémunération. Déclarer un
+  // lien partenaire qui ne rapporte rien serait aussi faux que d'omettre la
+  // mention sur un lien qui rapporte.
+  const estAffilie = (p) => !!(p.urlAffiliee && p.urlAffiliee.trim());
+  const destination = (p) => estAffilie(p) ? p.urlAffiliee : p.url;
+
   function lien(p, libelle) {
-    return `<a class="part-cta" href="${echappe(p.url)}" target="_blank" rel="sponsored nofollow noopener">
+    const aff = estAffilie(p);
+    const rel = aff ? 'sponsored nofollow noopener' : 'noopener';
+    const suffixe = aff
+      ? t('partenaires.nouvelOnglet', 'nouvel onglet, lien affilié')
+      : t('partenaires.nouvelOngletSimple', 'nouvel onglet');
+    return `<a class="part-cta" href="${echappe(destination(p))}" target="_blank" rel="${rel}">
       ${echappe(libelle)}<span aria-hidden="true">↗</span>
-      <span class="sr-only"> — ${echappe(p.nom)}, ${echappe(t('partenaires.nouvelOnglet', 'nouvel onglet, lien affilié'))}</span>
+      <span class="sr-only"> — ${echappe(p.nom)}, ${echappe(suffixe)}</span>
     </a>`;
   }
 
@@ -86,7 +105,7 @@
       ${bouts.join('')}
       <div class="part-cta-zone">
         ${lien(p, t('partenaires.ouvrir', "Découvrir l'offre"))}
-        <span class="part-partenaire">${echappe(t('partenaires.lienPartenaire', 'Lien partenaire'))}</span>
+        ${estAffilie(p) ? `<span class="part-partenaire">${echappe(t('partenaires.lienPartenaire', 'Lien partenaire'))}</span>` : ''}
       </div>
     </article>`;
   }
@@ -103,7 +122,7 @@
     hote.innerHTML = `
       <div class="part-bloc-tete">
         <h3 class="part-bloc-titre">${echappe(titre)}</h3>
-        ${mention()}
+        ${fiches.some(estAffilie) ? mention() : ''}
       </div>
       <div class="part-cartes">${fiches.map(carte).join('')}</div>
       ${note(fiches)}`;
