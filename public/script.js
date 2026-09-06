@@ -1284,7 +1284,7 @@ FinanciaI18N.onLangChange(async () => {
       pauseAllExcept(-1);
       current = idx;
     }
-    track.style.transform = `translateX(-${current * (100 / total)}%)`;
+    track.style.transform = `translateX(-${current * 100}%)`;
     updateBars();
     updateArrows();
   }
@@ -1323,7 +1323,7 @@ FinanciaI18N.onLangChange(async () => {
   let dragDeltaX = 0;
   const DECIDE_THRESHOLD = 8;
 
-  function baseOffsetPercent() { return -(current * (100 / total)); }
+  function baseOffsetPercent() { return -(current * 100); }
 
   player.addEventListener('pointerdown', (e) => {
     if (e.target.closest('.vs-play-btn') || e.target.closest('.vs-arrow') || e.target.closest('.vs-mute-btn')) return;
@@ -1356,7 +1356,7 @@ FinanciaI18N.onLangChange(async () => {
 
     if (!dragging) return;
     dragDeltaX = dx;
-    const deltaPercent = (dragDeltaX / playerWidth) * (100 / total);
+    const deltaPercent = (dragDeltaX / playerWidth) * 100;
     track.style.transform = `translateX(${baseOffsetPercent() + deltaPercent}%)`;
   });
 

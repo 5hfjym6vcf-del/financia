@@ -592,9 +592,15 @@ a { text-decoration: none; color: inherit; }
 .vs-bar-fill.instant { transition: none; }
 .vs-bar-fill:not(.instant) { transition: width 0.1s linear; }
 
+/* La piste fait la largeur du lecteur, et chaque diapositive fait la largeur
+   de la piste. Les diapositives débordent donc volontairement, le lecteur les
+   masquant. Un pas de translation vaut alors exactement un écran, quel que
+   soit leur nombre. La version précédente codait « trois » en dur, en piste à
+   300 % et en diapositives à 100/3 : l'ajout d'une quatrième vidéo faisait
+   avancer de 0,75 écran par pas, laissant deux vidéos visibles à la fois. */
 .vs-track {
   display: flex;
-  width: 300%;
+  width: 100%;
   height: 100%;
   will-change: transform;
 }
@@ -602,7 +608,7 @@ a { text-decoration: none; color: inherit; }
 
 .vs-slide {
   position: relative;
-  flex: 0 0 calc(100% / 3);
+  flex: 0 0 100%;
   height: 100%;
   background: #000;
 }
