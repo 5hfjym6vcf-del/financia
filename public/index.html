@@ -166,8 +166,8 @@
     <div class="hero-bg-grid"></div>
     <div class="hero-inner">
       <div class="hero-badge" data-i18n="hero.badge">🚀 Pour les 18–30 ans · 100% pédagogique</div>
-      <h1 data-i18n-html="hero.titleHtml">Investis <em>intelligemment</em><br>dès aujourd'hui</h1>
-      <p class="hero-lead" data-i18n="hero.lead">Financia t'explique la bourse, le PEA, l'assurance-vie, sans jargon, sans bullshit, avec une IA qui s'adapte à toi.</p>
+      <h1 data-i18n-html="accueil.titreHtml">Investir,<br><em>ça s'apprend</em></h1>
+      <p class="hero-lead" data-i18n="accueil.lead">Gratuit, sans jargon, sans conseil personnalisé. On explique comment ça marche, tu décides ensuite.</p>
       <div class="hero-actions">
         <a href="#chat" class="btn-primary" data-i18n="hero.cta1">💬 Parler à Financia</a>
         <a href="#quiz" class="btn-ghost" data-i18n="hero.cta2">🧠 Tester mon niveau</a>
@@ -218,6 +218,69 @@
     </div>
   </section>
 </div>
+
+<!-- ══ PARCOURS EN TROIS ÉTAPES ══
+     Première section sous le pli. Elle répond à la question qu'un débutant
+     se pose avant toute autre : « qu'est-ce qui va m'arriver si je reste ? »
+     Formulation descriptive, jamais prescriptive : on décrit un parcours,
+     on ne dit à personne d'investir. -->
+<section id="parcours" class="section parcours-section">
+  <div class="wrap">
+    <div class="section-label" data-i18n="accueil.parcoursLabel">Comment ça se passe</div>
+    <h2 class="section-title" data-i18n="accueil.parcoursTitre">De « je n'y connais rien » à « je sais où je vais »</h2>
+
+    <ol class="parcours">
+      <li class="parcours-etape">
+        <span class="parcours-num" aria-hidden="true">1</span>
+        <h3 data-i18n="accueil.e1t">Tu pars de zéro</h3>
+        <p data-i18n="accueil.e1">Aucune connaissance requise. Chaque mot est expliqué avant d'être utilisé, et rien ne suppose que tu saches déjà.</p>
+      </li>
+      <li class="parcours-etape">
+        <span class="parcours-num" aria-hidden="true">2</span>
+        <h3 data-i18n="accueil.e2t">Tu apprends les bases</h3>
+        <p data-i18n="accueil.e2">PEA, ETF, intérêts composés. Un quiz pour situer ton niveau, un simulateur et un comparateur pour essayer sans risquer un euro.</p>
+      </li>
+      <li class="parcours-etape">
+        <span class="parcours-num" aria-hidden="true">3</span>
+        <h3 data-i18n="accueil.e3t">Tu ouvres un compte ailleurs</h3>
+        <p data-i18n="accueil.e3">Financia ne détient ni ne gère aucun fonds. Quand tu te sens prêt, l'ouverture se fait chez un établissement agréé, pas ici.</p>
+      </li>
+    </ol>
+
+    <!-- Emplacement des établissements de l'étape 3. Rendu par
+         partenaires-ui.js depuis partenaires-config.js, et rigoureusement
+         vide tant qu'aucun nom n'y est renseigné : ni titre, ni cadre, ni
+         espace occupé. Le composant pose déjà de lui-même la mention
+         « Lien affilié » et le rel="sponsored" le jour où une convention
+         est signée, sans rien restructurer ici. -->
+    <div data-partenaires="bourse" data-partenaires-titre="Où ouvrir un compte, une fois prêt"></div>
+  </div>
+</section>
+
+<!-- ══ CE QUE FINANCIA EST, ET N'EST PAS ══
+     Lève l'anxiété du débutant et pose la différence, sans nommer ni
+     dénigrer aucun concurrent. -->
+<section id="rassurance" class="section section-dark rassurance-section">
+  <div class="wrap">
+    <div class="section-label" data-i18n="accueil.rassuranceLabel">Ce que Financia est, et n'est pas</div>
+    <h2 class="section-title" data-i18n="accueil.rassuranceTitre">Trois choses à savoir avant de commencer</h2>
+
+    <div class="rassurance">
+      <article class="rassurance-carte">
+        <h3 data-i18n="accueil.r1t">Gratuit, sans compte</h3>
+        <p data-i18n="accueil.r1">Aucun paiement, aucun abonnement, aucune inscription pour lire le site et utiliser les outils.</p>
+      </article>
+      <article class="rassurance-carte">
+        <h3 data-i18n="accueil.r2t">Aucun conseil personnalisé</h3>
+        <p data-i18n="accueil.r2">Financia n'est pas conseiller en investissements financiers et n'est enregistré ni à l'AMF ni à l'ORIAS. On explique, tu décides.</p>
+      </article>
+      <article class="rassurance-carte">
+        <h3 data-i18n="accueil.r3t">Aucun fonds détenu</h3>
+        <p data-i18n="accueil.r3">Ton argent ne passe jamais par Financia. Le site n'ouvre pas de compte et ne reçoit aucun dépôt.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section class="video-showcase-section">
   <div class="wrap">

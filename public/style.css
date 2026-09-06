@@ -3800,3 +3800,71 @@ textarea:focus-visible,
 }
 .mobile-menu-legal a:hover,
 .mobile-menu-legal a:active { color: var(--green-light); background: none; }
+
+/* ── Parcours en trois étapes ──
+   Première section sous le pli. Numérotation en <ol> : l'ordre porte du sens,
+   et un lecteur d'écran l'annonce comme une séquence. */
+.parcours {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 28px;
+  counter-reset: none;
+}
+.parcours-etape {
+  position: relative;
+  padding: 28px 26px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+/* Le trait de liaison n'apparaît qu'à trois colonnes : dès que la grille se
+   replie, il pointerait dans le vide. */
+@media (min-width: 900px) {
+  .parcours-etape:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 52px;
+    right: -28px;
+    width: 28px;
+    height: 1px;
+    background: var(--border);
+  }
+}
+.parcours-num {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: var(--violet-soft);
+  border: 1px solid var(--violet-ring);
+  color: var(--green-light);
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.parcours-etape h3 { margin-bottom: 10px; color: var(--text); }
+.parcours-etape p { font-size: 15px; line-height: 1.65; color: var(--text-2); }
+
+/* ── Ce que Financia est, et n'est pas ── */
+.rassurance {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 24px;
+}
+.rassurance-carte {
+  padding: 26px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.rassurance-carte h3 { margin-bottom: 10px; color: var(--text); }
+.rassurance-carte p { font-size: 15px; line-height: 1.65; color: var(--text-2); }
+
+@media (max-width: 640px) {
+  .parcours { gap: 18px; }
+  .parcours-etape { padding: 22px 20px; }
+  .rassurance { gap: 16px; }
+  .rassurance-carte { padding: 22px 20px; }
+}
