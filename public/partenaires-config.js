@@ -28,7 +28,7 @@
   // À passer à true une fois les conventions signées ET les données
   // ci-dessous renseignées. Un seul endroit à changer pour tout allumer,
   // et un seul à rebasculer si une convention prend fin.
-  const ACTIF = false;
+  const ACTIF = true;
 
   // ── Les partenaires ───────────────────────────────────────────────────
   //
@@ -67,22 +67,69 @@
   //
   // Le gabarit ci-dessous est commenté : il documente la forme sans rien
   // publier. Décommenter et remplir au moment de la signature.
+  //
+  // ── ÉTAT AU 7 SEPTEMBRE 2026 ──────────────────────────────────────────
+  // Trois établissements, dans l'ordre validé, et RIEN D'AUTRE que le nom et
+  // le lien vers leur site public. Aucune convention n'est signée : les trois
+  // `urlAffiliee` sont vides, donc les liens partent sans rel="sponsored",
+  // sans mention « Lien affilié », et la ligne d'honnêteté sous les cartes
+  // annonce d'elle-même que Financia ne perçoit aucune rémunération. Le jour
+  // où financeAds valide, il suffit de renseigner `urlAffiliee` : la mention
+  // et le rel apparaissent seuls, sans toucher à une seule page.
+  //
+  // Les champs chiffrés restent vides à dessein. Un barème de courtage ou un
+  // dépôt minimum recopié de mémoire serait une allégation commerciale au
+  // sens de l'art. L.121-2 du code de la consommation, pas une approximation.
+  // `verifieLe` n'atteste donc ici que d'une chose, la seule qui soit écrite :
+  // le nom de l'établissement et la validité de son URL publique.
   const PARTENAIRES = [
-    // {
-    //   id: 'exemple',
-    //   nom: '',
-    //   categories: ['bourse'],
-    //   comptes: { pea: null, cto: null, per: null, av: null },
-    //   fraisOrdre: '',
-    //   fraisGestion: '',
-    //   depotMin: '',
-    //   depositaire: '',
-    //   fait: '',
-    //   prime: '',
-    //   url: '',
-    //   urlAffiliee: '',
-    //   verifieLe: '',
-    // },
+    {
+      id: 'boursobank',
+      nom: 'BoursoBank',
+      categories: ['bourse'],
+      comptes: { pea: null, cto: null, per: null, av: null },
+      fraisOrdre: '',
+      fraisGestion: '',
+      depotMin: '',
+      depositaire: '',
+      fait: '',
+      prime: '',
+      url: 'https://www.boursobank.com',
+      urlAffiliee: '',
+      verifieLe: '2026-09-07',
+    },
+    {
+      id: 'fortuneo',
+      nom: 'Fortuneo',
+      categories: ['bourse'],
+      comptes: { pea: null, cto: null, per: null, av: null },
+      fraisOrdre: '',
+      fraisGestion: '',
+      depotMin: '',
+      depositaire: '',
+      fait: '',
+      prime: '',
+      url: 'https://www.fortuneo.fr',
+      urlAffiliee: '',
+      verifieLe: '2026-09-07',
+    },
+    {
+      id: 'trade-republic',
+      nom: 'Trade Republic',
+      categories: ['bourse'],
+      comptes: { pea: null, cto: null, per: null, av: null },
+      fraisOrdre: '',
+      fraisGestion: '',
+      depotMin: '',
+      depositaire: '',
+      fait: '',
+      prime: '',
+      // /fr-fr et non la racine : celle-ci redirige vers /en-fr, la version
+      // anglaise servie en France.
+      url: 'https://traderepublic.com/fr-fr',
+      urlAffiliee: '',
+      verifieLe: '2026-09-07',
+    },
   ];
 
   // Un barème de frais bouge. Passé ce délai sans revérification, la fiche

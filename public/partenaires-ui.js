@@ -137,8 +137,19 @@
     return `<span class="part-inconnu" role="img" aria-label="${echappe(t('partenaires.inconnu', 'non vérifié'))}">·</span>`;
   }
 
+  // Une fiche apporte-t-elle quelque chose à COMPARER ? Un nom et un lien ne
+  // suffisent pas : sans eux, le tableau afficherait huit colonnes de « — » et
+  // de « non vérifié », ce qui n'informe personne et donne à lire un outil en
+  // panne plutôt qu'un comparatif honnête. Les cartes, elles, se contentent
+  // très bien d'un nom et d'un lien.
+  const aDeQuoiComparer = (p) => {
+    const c = p.comptes || {};
+    return !!(p.fraisOrdre || p.fraisGestion || p.depotMin || p.depositaire)
+      || [c.pea, c.cto, c.per].some(v => v === true || v === false);
+  };
+
   document.querySelectorAll('[data-partenaires-tableau]').forEach(hote => {
-    const fiches = P.toutes();
+    const fiches = P.toutes().filter(aDeQuoiComparer);
     if (!fiches.length) return;
 
     const th = (cle, secours) => `<th scope="col">${echappe(t(cle, secours))}</th>`;
@@ -147,7 +158,7 @@
     hote.innerHTML = `
       <div class="part-bloc-tete">
         <h3 class="part-bloc-titre">${echappe(t('partenaires.comparatifTitre', 'Comparatif des plateformes & outils'))}</h3>
-        ${mention()}
+        ${fiches.some(estAffilie) ? mention() : ''}
       </div>
       <div class="part-table-boite">
         <table class="part-table">
