@@ -14,7 +14,7 @@
   <script src="./i18n.js"></script>
   <script src="./i18n-core.js"></script>
 
-  <meta name="description" content="Une sélection de podcasts, de livres et de services publics pour apprendre la finance en partant de zéro. Aucun lien d'affiliation sur cette page." />
+  <meta name="description" content="Une sélection de podcasts, de livres et de services publics pour apprendre la finance en partant de zéro, et des repères pour comprendre le crédit." />
   <link rel="canonical" href="https://financia.cloud/ressources" />
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="./images/financia-logo-transparent.png" type="image/png" />
@@ -31,7 +31,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://financia.cloud/ressources" />
   <meta property="og:title" content="Financia | Podcasts et livres pour débuter en finance" />
-  <meta property="og:description" content="Une sélection de podcasts, de livres et de services publics pour apprendre la finance en partant de zéro. Aucun lien d'affiliation sur cette page." />
+  <meta property="og:description" content="Une sélection de podcasts, de livres et de services publics pour apprendre la finance en partant de zéro, et des repères pour comprendre le crédit." />
   <meta property="og:image" content="https://financia.cloud/images/og-financia.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -41,7 +41,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:title" content="Financia | Podcasts et livres pour débuter en finance" />
-  <meta property="twitter:description" content="Une sélection de podcasts, de livres et de services publics pour apprendre la finance en partant de zéro. Aucun lien d'affiliation sur cette page." />
+  <meta property="twitter:description" content="Une sélection de podcasts, de livres et de services publics pour apprendre la finance en partant de zéro, et des repères pour comprendre le crédit." />
   <meta name="twitter:image" content="https://financia.cloud/images/og-financia.png" />
 
   <!-- Google Analytics, sous Consent Mode v2.
@@ -252,6 +252,63 @@
           <p class="res-desc" data-i18n="ressources.media.housel.desc">Vingt courts chapitres sur la façon dont les émotions, plus que les calculs, décident de la plupart des choix d'argent.</p>
           <a class="res-lien" href="https://www.morganhousel.com" target="_blank" rel="noopener noreferrer">
             <span data-i18n="ressources.media.savoir">En savoir plus</span><span class="sr-only"> : La psychologie de l'argent</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ═══ LES CLASSIQUES ═══
+         POURQUOI UN BLOC SÉPARÉ ET NON DEUX CARTES DE PLUS CI-DESSUS
+         Le sous-titre du bloc « Livres » est la clé i18n
+         ressourcesPage.livresSous, traduite en cinq langues, et il annonce
+         « Deux lectures courtes, sans jargon ». Y verser deux ouvrages longs
+         et techniques, dont l'un n'existe qu'en anglais, rendrait cette
+         phrase fausse dans les cinq langues à la fois ; la corriger
+         supposerait de modifier i18n.js, gelé jusqu'à la revue financeAds.
+         Un bloc distinct laisse la phrase exacte pour les deux livres
+         qu'elle décrit, et annonce honnêtement ce que sont les deux autres.
+
+         FRANÇAIS SEUL, comme « Comprendre le crédit » plus bas : un visiteur
+         en EN/ES/RU/DE verra la page traduite sauf ce bloc. Seuls la pastille
+         « Livre » et le libellé « En savoir plus » réutilisent des clés
+         existantes, donc sans ajout dans i18n.js.
+
+         REGISTRE : ces deux ouvrages décrivent une méthode de sélection de
+         titres, là où les deux précédents parlent de gestion passive. On dit
+         ce que chaque livre est et ce qu'il expose, jamais ce que le lecteur
+         devrait en faire. Recommander une lecture n'est pas recommander un
+         placement, et le sous-titre le pose explicitement. -->
+    <div class="respage-bloc">
+      <h2 class="respage-h2">Les classiques de l'investissement</h2>
+      <p class="respage-sous">Deux références historiques, plus longues et plus techniques que les précédentes. Elles exposent une méthode d'analyse, pas une marche à suivre.</p>
+      <div class="res-media-grille">
+
+        <article class="res-carte">
+          <div class="res-haut">
+            <span class="res-format res-format-livre" data-i18n="ressources.media.livre">Livre</span>
+            <span class="res-cat">Lettres d'actionnaires</span>
+          </div>
+          <h3 class="res-titre">The Essays of Warren Buffett</h3>
+          <p class="res-auteur">Warren Buffett, édité par Lawrence Cunningham</p>
+          <p class="res-desc">Les lettres annuelles adressées par Warren Buffett aux actionnaires de Berkshire Hathaway, regroupées par thème plutôt que par année. Ouvrage en anglais, publié par Carolina Academic Press.</p>
+          <a class="res-lien" href="https://cap-press.com/books/isbn/9781531017507/The-Essays-of-Warren-Buffett-Fifth-Edition" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="ressources.media.savoir">En savoir plus</span><span class="sr-only"> : The Essays of Warren Buffett</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="res-carte">
+          <div class="res-haut">
+            <span class="res-format res-format-livre" data-i18n="ressources.media.livre">Livre</span>
+            <span class="res-cat">Analyse fondamentale</span>
+          </div>
+          <h3 class="res-titre">L'Investisseur intelligent</h3>
+          <p class="res-auteur">Benjamin Graham</p>
+          <p class="res-desc">Paru en 1949, l'ouvrage qui a formalisé l'investissement dit « value » et la notion de marge de sécurité. Son auteur a été le professeur, puis l'employeur, de Warren Buffett. L'édition française est annotée et commentée.</p>
+          <a class="res-lien" href="https://www.valor-editions.fr/produit/134/9782361171179/l-investisseur-intelligent" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="ressources.media.savoir">En savoir plus</span><span class="sr-only"> : L'Investisseur intelligent</span>
             <span aria-hidden="true">↗</span>
           </a>
         </article>
