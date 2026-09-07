@@ -266,6 +266,17 @@
   </div>
 </footer>
 
+<!-- Chart.js AVANT script.js, et sans defer.
+     renderSimChart() commence par « if (typeof Chart === 'undefined') return »
+     et se déclenche sur DOMContentLoaded. Un defer ici ferait exécuter la
+     bibliothèque après cet événement : la garde renverrait, les chiffres
+     s'afficheraient et le canvas resterait noir, ce qui est exactement le
+     bug que cette ligne corrige. Un script de fin de body sans defer, lui,
+     s'exécute avant DOMContentLoaded.
+     URL identique au caractère près à celle de index.html : c'est ce qui
+     fait partager la même entrée de cache HTTP entre l'accueil et cette
+     page, au lieu de retélécharger 200 Ko. -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="./script.js"></script>
 <script src="./nav-plus.js" defer></script>
 <script src="./reveal.js" defer></script>

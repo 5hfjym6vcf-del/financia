@@ -282,7 +282,15 @@ let simChart = null;
 
 function renderSimChart({ data }) {
   const canvas = $('#simChart');
-  if (!canvas || typeof Chart === 'undefined') return;
+  if (!canvas) return;
+  // Cette garde a déjà coûté cher : /simulateur a été mise en ligne sans la
+  // balise Chart.js, et le symptôme était un rectangle noir à côté de chiffres
+  // parfaitement corrects, sans une ligne dans la console ni dans le réseau.
+  // On refuse d'échouer en silence une deuxième fois.
+  if (typeof Chart === 'undefined') {
+    console.warn('[simulateur] Chart.js absent de cette page : le graphique ne sera pas dessiné.');
+    return;
+  }
   const labels = Array.from({ length: data.length }, (_, i) => `Année ${i}`);
   if (simChart) {
     simChart.data.labels = labels;
@@ -945,6 +953,14 @@ FinanciaI18N.onLangChange(async () => {
   const dotsEl = document.getElementById('faqDots');
   const prev   = document.getElementById('faqPrev');
   const next   = document.getElementById('faqNext');
+  // Le carrousel FAQ n'existe que sur l'accueil. Sans ce garde, prev est null
+  // sur les douze autres pages et addEventListener lève une TypeError. Dans un
+  // script classique, une exception non capturée au niveau racine interrompt
+  // l'exécution du RESTE du fichier : tout ce qui suit ce bloc ne s'exécutait
+  // pas hors accueil. Aucune conséquence visible aujourd'hui, puisque les blocs
+  // suivants ne visent que l'accueil, mais la prochaine ligne ajoutée en fin de
+  // fichier serait morte partout ailleurs sans que rien ne le signale.
+  if (!track || !dotsEl || !prev || !next) return;
   let cur = 0, timer = null, faqLen = 0;
 
   function buildCards() {
@@ -991,6 +1007,9 @@ FinanciaI18N.onLangChange(async () => {
   const btn     = document.getElementById('faqAskBtn');
   const card    = document.getElementById('faqAnswerCard');
   const powered = document.getElementById('faqPowered');
+  // Même raison que le carrousel FAQ juste au-dessus : ces quatre éléments
+  // n'existent que sur l'accueil.
+  if (!input || !btn || !card || !powered) return;
 
   async function ask() {
     const q = input.value.trim();
@@ -1080,6 +1099,8 @@ FinanciaI18N.onLangChange(async () => {
   const dotsEl  = document.getElementById('newsDots');
   const prevBtn = document.getElementById('newsPrev');
   const nextBtn = document.getElementById('newsNext');
+  // Le carrousel d'actus est propre à l'accueil.
+  if (!track || !dotsEl || !prevBtn || !nextBtn) return;
   let cards = [];
   let current = 0;
   let autoTimer = null;
