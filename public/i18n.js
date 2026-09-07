@@ -628,7 +628,7 @@ fr: {
       },
     },
     versPage: "🎧 Podcasts et livres pour aller plus loin",
-    disclaimer: "Liens d'affiliation : certains liens présents sur cette page sont des liens affiliés. Financia est susceptible de recevoir une commission si vous ouvrez un compte via ces partenaires, sans aucun surcoût pour vous. Ces partenariats n'impactent pas l'impartialité de nos outils.",
+    disclaimer: "Financia ne perçoit aucune rémunération sur les liens de cette page. Tout lien rémunéré porte la mention « Lien affilié » à l'endroit où il apparaît.",
   },
 
   avisPage: {
@@ -718,7 +718,7 @@ fr: {
 
   footer: {
     brandDesc: "L'IA pédagogique pour apprendre à investir. Aucun conseil personnalisé.",
-    legal: "Financia · Projet éducatif · Pas de conseil en investissement · Investir comporte un risque de perte en capital · Certains liens sont affiliés",
+    legal: "Financia · Projet éducatif · Pas de conseil en investissement · Investir comporte un risque de perte en capital",
     contactAria: "Contact",
   },
 
@@ -1574,7 +1574,7 @@ en: {
       },
     },
     versPage: "🎧 Podcasts and books to go further",
-    disclaimer: "Affiliate links: some links on this page are affiliate links. Financia may receive a commission if you open an account through these partners, at no extra cost to you. These partnerships do not affect the impartiality of our tools.",
+    disclaimer: "Financia receives no compensation on the links on this page. Any paid link carries an “Affiliate link” label where it appears.",
   },
 
   avisPage: {
@@ -1664,7 +1664,7 @@ en: {
 
   footer: {
     brandDesc: "The educational AI to learn how to invest. No personalized advice.",
-    legal: "Financia · Educational project · No investment advice · Investing carries a risk of capital loss · Some links are affiliate links",
+    legal: "Financia · Educational project · No investment advice · Investing carries a risk of capital loss",
     contactAria: "Contact",
   },
 
@@ -2520,7 +2520,7 @@ es: {
       },
     },
     versPage: "🎧 Pódcast y libros para profundizar",
-    disclaimer: "Enlaces de afiliación: algunos enlaces de esta página son enlaces afiliados. Financia puede recibir una comisión si abres una cuenta a través de estos socios, sin ningún coste adicional para ti. Estas colaboraciones no afectan a la imparcialidad de nuestras herramientas.",
+    disclaimer: "Financia no percibe ninguna remuneración por los enlaces de esta página. Todo enlace remunerado lleva la mención «Enlace de afiliación» allí donde aparece.",
   },
 
   avisPage: {
@@ -2610,7 +2610,7 @@ es: {
 
   footer: {
     brandDesc: "La IA educativa para aprender a invertir. Ningún consejo personalizado.",
-    legal: "Financia · Proyecto educativo · Sin asesoramiento de inversión · Invertir conlleva riesgo de pérdida de capital · Algunos enlaces son de afiliación",
+    legal: "Financia · Proyecto educativo · Sin asesoramiento de inversión · Invertir conlleva riesgo de pérdida de capital",
     contactAria: "Contacto",
   },
 
@@ -3466,7 +3466,7 @@ ru: {
       },
     },
     versPage: "🎧 Подкасты и книги, чтобы узнать больше",
-    disclaimer: "Партнёрские ссылки: некоторые ссылки на этой странице являются партнёрскими. Financia может получить комиссию, если вы откроете счёт через этих партнёров, без каких-либо дополнительных расходов для вас. Эти партнёрства не влияют на беспристрастность наших инструментов.",
+    disclaimer: "Financia не получает вознаграждения за ссылки на этой странице. Любая оплачиваемая ссылка помечается как «Партнёрская ссылка» там, где она появляется.",
   },
 
   avisPage: {
@@ -3556,7 +3556,7 @@ ru: {
 
   footer: {
     brandDesc: "Образовательный ИИ для обучения инвестициям. Без персональных советов.",
-    legal: "Financia · Образовательный проект · Без инвестиционных рекомендаций · Инвестирование сопряжено с риском потери капитала · Некоторые ссылки партнёрские",
+    legal: "Financia · Образовательный проект · Без инвестиционных рекомендаций · Инвестирование сопряжено с риском потери капитала",
     contactAria: "Контакты",
   },
 
@@ -4412,7 +4412,7 @@ de: {
       },
     },
     versPage: "🎧 Podcasts und Bücher, um weiterzugehen",
-    disclaimer: "Affiliate-Links: Einige Links auf dieser Seite sind Affiliate-Links. Financia kann eine Provision erhalten, wenn du über diese Partner ein Konto eröffnest, ohne Mehrkosten für dich. Diese Partnerschaften beeinflussen die Unparteilichkeit unserer Werkzeuge nicht.",
+    disclaimer: "Financia erhält für die Links auf dieser Seite keine Vergütung. Jeder vergütete Link trägt an Ort und Stelle den Hinweis „Affiliate-Link“.",
   },
 
   avisPage: {
@@ -4502,7 +4502,7 @@ de: {
 
   footer: {
     brandDesc: "Die pädagogische KI, um Investieren zu lernen. Keine persönliche Beratung.",
-    legal: "Financia · Bildungsprojekt · Keine Anlageberatung · Investieren birgt das Risiko eines Kapitalverlusts · Einige Links sind Affiliate-Links",
+    legal: "Financia · Bildungsprojekt · Keine Anlageberatung · Investieren birgt das Risiko eines Kapitalverlusts",
     contactAria: "Kontakt",
   },
 
