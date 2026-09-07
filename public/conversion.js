@@ -22,7 +22,15 @@
 // ============================================================
 
 (function () {
-  const ID = 'AW-18423213452/A2yxCJjYKowcEIzb79BE';
+  // Label fourni par Google Ads le 7 septembre 2026. Il REMPLACE
+  // A2yxCJjYKowcEIzb79BE, utilisé jusqu'ici : même compte, mais action de
+  // conversion différente. Les deux ne sont pas cumulés à dessein — envoyer
+  // deux actions de conversion sur un même geste du visiteur les compte deux
+  // fois dès qu'elles sont toutes deux marquées « principale » dans une même
+  // campagne, et fausse l'optimisation des enchères.
+  // À VÉRIFIER CÔTÉ GOOGLE ADS : si l'ancienne action existe toujours et sert
+  // encore à une campagne, elle n'est plus alimentée depuis ce déploiement.
+  const ID = 'AW-18423213452/nuGlCLvYmu8cEIzb79BE';
 
   // Une même action ne doit compter qu'une fois par session : sans cela,
   // trois clics sur un lien partenaire remonteraient comme trois
@@ -55,8 +63,18 @@
 
   // ── 2. Clic sur un lien partenaire ──
   // C'est la conversion qui a une valeur monétaire directe.
+  //
+  // DEUX SÉLECTEURS, ET NON UN SEUL. rel="sponsored" ne sera posé que le jour
+  // où une convention sera signée ; d'ici là aucune balise ne le porte, et ce
+  // déclencheur ne partirait jamais. Or les liens vers les courtiers existent
+  // déjà : le geste à mesurer, « le visiteur est parti ouvrir un compte », a
+  // exactement la même valeur pour une campagne, qu'il soit rémunéré ou non.
+  // .part-cta est la sortie des cartes partenaires, rendue par
+  // partenaires-ui.js. Les deux sélecteurs se recouvriront une fois
+  // l'affiliation active, d'où la déduplication par session ci-dessus, qui
+  // empêche de compter deux fois le même clic.
   document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[rel~="sponsored"]');
+    const a = e.target.closest('a[rel~="sponsored"], a.part-cta');
     if (a) convertir('partenaire');
   });
 
