@@ -4,3 +4,4 @@ cache
 Visual Studio Code.app
 .vercel
 .env*
+.tmp-planche/

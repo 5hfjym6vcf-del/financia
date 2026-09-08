@@ -12,7 +12,7 @@
 
 // Bumper cette version à chaque déploiement qui change un asset statique :
 // l'activation supprime alors tous les caches d'une version antérieure.
-const CACHE_VERSION = 'v63';
+const CACHE_VERSION = 'v64';
 const STATIC_CACHE = `financia-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `financia-runtime-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';
@@ -70,6 +70,10 @@ const PRECACHE_URLS = [
   '/contact.js',
   '/images/icons/icon-192.png',
   '/images/icons/icon-512.png',
+  // Pastille de la navbar : présente sur les douze pages, donc précachée.
+  // Sans elle, la première visite hors ligne afficherait une image cassée en
+  // haut de chaque page.
+  '/images/financia-mark-tile.svg',
 ];
 
 self.addEventListener('install', event => {

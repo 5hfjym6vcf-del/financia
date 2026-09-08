@@ -218,6 +218,25 @@ a { text-decoration: none; color: inherit; }
   flex-shrink: 0;
 }
 .logo span { color: var(--green); }
+/* Pastille de la navbar : le même objet que l'icône d'application et que le
+   favicon, pour qu'un visiteur retrouve la même forme dans l'onglet, sur son
+   écran d'accueil et en haut de page. Absente du pied de page, où le mot seul
+   suffit et où une seconde pastille alourdirait.
+   Hauteur 26 px pour un mot à 22 px : la pastille dépasse légèrement les
+   capitales, ce qui l'ancre au lieu de la faire flotter.
+
+   SURTOUT PAS de display:flex sur .logo pour aligner tout ça. Le mot est
+   « Financi<span>a</span> » : dans un conteneur flex, le texte et le span
+   deviennent deux éléments distincts, un gap s'insère au milieu du mot et le
+   crénage entre le « i » et le « a » est perdu. On reste donc en flux inline,
+   et c'est vertical-align qui centre la pastille sur la ligne. */
+.logo-marque {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  vertical-align: -6px;
+  margin-right: 9px;
+}
 /* Conteneur du logo. Conservé bien qu'il n'enveloppe plus qu'un élément : il
    maintient les trois enfants de .nav-inner, dont dépend la répartition en
    space-between une fois .nav-links masqué. */
