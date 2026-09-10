@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>carousel_logo_slide4</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+  body { font-family: 'Montserrat', sans-serif; }
+
+  .slide {
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    background: radial-gradient(circle at 50% 0%, #141018 0%, #000000 62%);
+    display: flex; flex-direction: column; padding: 96px 88px;
+  }
+  /* Trame discrète, reprise de la texture des pages du site. */
+  .grille {
+    position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image:
+      linear-gradient(rgba(124,58,237,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,.055) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  .halo {
+    position: absolute; width: 900px; height: 900px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,.20) 0%, transparent 68%);
+    top: -340px; left: 50%; transform: translateX(-50%); pointer-events: none;
+  }
+
+  .num {
+    position: absolute; top: 56px; right: 64px; font-size: 22px; font-weight: 600;
+    color: rgba(255,255,255,.28); letter-spacing: .5px;
+  }
+  /* Ancre de marque, présente sur chaque slide. */
+  .coin { position: absolute; top: 52px; left: 64px; display: flex; align-items: center; gap: 12px; }
+  .coin .mot { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: -.5px; }
+  .coin .mot span { color: #7C3AED; }
+
+  .corps { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; }
+
+  .label { font-size: 22px; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase;
+            color: #A78BFA; margin-bottom: 26px; }
+  h1 { font-size: 82px; font-weight: 800; line-height: 1.06; letter-spacing: -2px; color: #fff; }
+  h1 .accent { color: #7C3AED; }
+  .chapo { margin-top: 34px; font-size: 32px; font-weight: 500; line-height: 1.5;
+            color: rgba(255,255,255,.62); max-width: 780px; }
+
+  .pied { position: absolute; bottom: 62px; left: 0; right: 0; text-align: center;
+           font-size: 24px; font-weight: 600; color: rgba(255,255,255,.32); letter-spacing: .4px; }
+
+
+  .supports { margin-top: 58px; display: flex; align-items: flex-start; gap: 36px; }
+  .sup { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 268px; }
+  .cap { font-size: 21px; font-weight: 600; color: rgba(255,255,255,.38); }
+  .navbar { width: 100%; height: 116px; border-radius: 18px; border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.04); display: flex; align-items: center; justify-content: center; gap: 11px; }
+  .nm { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -.5px; }
+  .ecran { width: 100%; height: 116px; border-radius: 18px; border: 1px solid rgba(255,255,255,.12);
+           background: rgba(255,255,255,.04); display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .appicon svg { border-radius: 16px; box-shadow: 0 12px 30px rgba(0,0,0,.5); }
+  .appnom { font-size: 22px; font-weight: 600; color: rgba(255,255,255,.75); }
+  .onglet { width: 100%; height: 116px; border-radius: 18px; border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.04); display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .pastilleonglet svg { border-radius: 6px; }
+  .ongtxt { font-size: 21px; font-weight: 600; color: rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="grille"></div><div class="halo"></div>
+  <div class="coin"><svg class="marque" width="38" height="38" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#7C3AED"/>
+      <g fill="#0A0A0B" shape-rendering="crispEdges">
+        <rect x="8" y="6" width="4" height="20"/><rect x="8" y="6" width="16" height="4"/><rect x="8" y="14" width="12" height="4"/>
+      </g>
+    </svg><span class="mot">Financi<span>a</span></span></div>
+  <div class="num">4/6</div>
+  <div class="corps">
+    <div class="label">Cohérence</div>
+    <h1>Le même objet,<br>partout</h1>
+    <div class="supports">
+      <div class="sup">
+        <div class="navbar"><svg class="marque" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#7C3AED"/>
+      <g fill="#0A0A0B" shape-rendering="crispEdges">
+        <rect x="8" y="6" width="4" height="20"/><rect x="8" y="6" width="16" height="4"/><rect x="8" y="14" width="12" height="4"/>
+      </g>
+    </svg><span class="nm">Financi<span class="accent">a</span></span></div>
+        <span class="cap">Sur le site</span>
+      </div>
+      <div class="sup">
+        <div class="ecran"><div class="appicon"><svg class="marque" width="74" height="74" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#7C3AED"/>
+      <g fill="#0A0A0B" shape-rendering="crispEdges">
+        <rect x="8" y="6" width="4" height="20"/><rect x="8" y="6" width="16" height="4"/><rect x="8" y="14" width="12" height="4"/>
+      </g>
+    </svg></div><span class="appnom">Financia</span></div>
+        <span class="cap">Icône d'application</span>
+      </div>
+      <div class="sup">
+        <div class="onglet"><div class="pastilleonglet"><svg class="marque" width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#7C3AED"/>
+      <g fill="#0A0A0B" shape-rendering="crispEdges">
+        <rect x="8" y="6" width="4" height="20"/><rect x="8" y="6" width="16" height="4"/><rect x="8" y="14" width="12" height="4"/>
+      </g>
+    </svg></div><span class="ongtxt">financia.cloud</span></div>
+        <span class="cap">Dans l'onglet</span>
+      </div>
+    </div>
+    <p class="chapo" style="margin-top:56px;font-size:29px">Une seule forme à retenir, du favicon à l'écran d'accueil.</p>
+  </div>
+  
+</div>
+</body>
+</html>
