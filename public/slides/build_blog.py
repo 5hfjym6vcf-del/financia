@@ -37,6 +37,101 @@ DISCLAIMER_BOURSE = ("Financia rappelle que la performance passée d'une action 
 
 ARTICLES = [
     {
+        'slug': 'pea-explique-simplement',
+        'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '6 min',
+        'categorie': 'Guide', 'icone': '📘',
+        # Contenu pérenne : il se démode par mise à jour, pas par péremption.
+        # D'où « Mis à jour le » plutôt que « Publié le », et le type Article
+        # en données structurées là où les actualités portent NewsArticle.
+        'perenne': True,
+        'titre': "Le PEA expliqué simplement",
+        'h1': "Le PEA <em>expliqué simplement</em>",
+        'meta_titre': "PEA débutant : le guide complet pour ouvrir un plan d'épargne en actions",
+        'meta_desc': ("Plafonds, fiscalité après 5 ans, PEA Jeune pour les étudiants, ETF "
+                      "éligibles : le plan d'épargne en actions expliqué simplement, sans jargon."),
+        'lead': ("Le guide complet pour débuter en 2026 : ce qu'est un PEA, ce qu'on peut y mettre, "
+                 "et ce que change le cap des cinq ans."),
+        'corps': '''
+      <p class="art-chapo">Le <strong>Plan d'épargne en actions (PEA)</strong> est souvent présenté comme l'enveloppe la plus avantageuse pour investir en bourse en France. Voici comment il fonctionne, concrètement, sans jargon.</p>
+
+      <h2>Qu'est-ce qu'un PEA ?</h2>
+
+      <p>Un PEA est une enveloppe fiscale qui permet d'investir dans des <strong>actions européennes</strong> et certains <strong>ETF</strong>, ces fonds qui regroupent plusieurs entreprises, avec un avantage fiscal important : après cinq ans, tes gains ne sont plus imposés sur le revenu.</p>
+
+      <p>Concrètement, un PEA se compose de deux parties :</p>
+
+      <ul class="art-liste">
+        <li>Un <strong>compte espèces</strong>, où atterrit l'argent que tu verses mais n'as pas encore investi</li>
+        <li>Un <strong>compte-titres associé</strong>, où sont logées tes actions et tes ETF</li>
+      </ul>
+
+      <h2>Les plafonds à connaître</h2>
+
+      <div class="part-table-boite">
+        <table class="part-table art-table">
+          <caption class="sr-only">Plafonds de versement des différents types de PEA</caption>
+          <thead>
+            <tr><th scope="col">Type de PEA</th><th scope="col">Plafond de versement</th><th scope="col">Pour qui</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" class="part-td-nom">PEA classique</th><td>150 000 €</td><td>Tout majeur fiscalement indépendant</td></tr>
+            <tr><th scope="row" class="part-td-nom">PEA-PME</th><td>225 000 € <span class="art-cond">(cumulé avec le PEA classique)</span></td><td>Investir dans des PME et ETI</td></tr>
+            <tr><th scope="row" class="part-td-nom">PEA Jeune</th><td>20 000 €</td><td>18-25 ans rattachés au foyer fiscal parental</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Si tu es étudiant et rattaché au foyer fiscal de tes parents, c'est le <strong>PEA Jeune</strong> qui te concerne. À 25 ans, ou dès la fin de ton rattachement fiscal, il se transforme automatiquement en PEA classique <strong>sans perdre l'antériorité fiscale déjà acquise</strong>. C'est un point important : les années comptées avant tes 25 ans continuent de courir vers le cap des cinq ans.</p>
+
+      <h2>La fiscalité : ce qui change avant et après cinq ans</h2>
+
+      <p>C'est le cœur de l'intérêt du PEA. Tant que tu ne retires rien, <strong>aucun impôt n'est dû</strong>, même si tes placements prennent de la valeur.</p>
+
+      <div class="part-table-boite">
+        <table class="part-table art-table">
+          <caption class="sr-only">Fiscalité d'un retrait sur PEA avant et après cinq ans</caption>
+          <thead>
+            <tr><th scope="col">Prélèvement</th><th scope="col">Avant 5 ans</th><th scope="col">Après 5 ans</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" class="part-td-nom">Impôt sur le revenu</th><td>12,8 %</td><td>0 %</td></tr>
+            <tr><th scope="row" class="part-td-nom">Prélèvements sociaux</th><td>18,6 %</td><td>18,6 %</td></tr>
+            <tr class="art-tr-total"><th scope="row" class="part-td-nom">Total</th><td>31,4 %</td><td>18,6 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Le point à retenir</strong> : un retrait avant cinq ans ferme en principe le plan, sauf exceptions comme la création d'entreprise, le licenciement ou l'invalidité. L'horizon du PEA est donc pensé pour du long terme, pas pour de l'épargne disponible à court terme.</p>
+
+      <h2>Ce que tu peux mettre dans un PEA</h2>
+
+      <p>Le PEA est limité aux actions d'entreprises européennes et à certains fonds et ETF composés d'au moins <strong>75 % d'actions européennes</strong>.</p>
+
+      <p>Il existe cependant des <strong>ETF synthétiques</strong> qui répliquent des indices mondiaux, comme le S&amp;P 500 ou le MSCI World, tout en restant éligibles au PEA. C'est une façon d'avoir une exposition internationale sans sortir du cadre fiscal.</p>
+
+      <h2>PEA ou Livret A : lequel choisir en premier ?</h2>
+
+      <p>Ce n'est pas vraiment l'un ou l'autre, ce sont deux outils complémentaires :</p>
+
+      <ul class="art-liste">
+        <li>Le <a href="/blog/placements-jeunes-actifs"><strong>Livret A</strong></a>, le LDDS ou le LEP servent à l'épargne de précaution : disponible immédiatement, sans risque de perte</li>
+        <li>Le <strong>PEA</strong> sert à investir sur le long terme, avec un potentiel de rendement supérieur, mais aussi un <strong>risque de perte en capital</strong> que n'a pas un livret</li>
+      </ul>
+
+      <p>La logique généralement présentée par les acteurs de l'éducation financière : consolider d'abord son épargne de précaution, puis envisager le PEA une fois son fonctionnement compris et à condition de pouvoir se projeter sur plusieurs années sans avoir besoin de cet argent.</p>
+
+      <h2>En résumé</h2>
+
+      <p>Le PEA est un outil puissant pour qui investit sur le long terme, avec un vrai avantage fiscal après cinq ans. Mais il demande de comprendre ses règles avant de s'y lancer : <strong>un retrait mal calibré peut faire perdre l'avantage fiscal accumulé</strong>.</p>
+''',
+        'disclaimer': ("Cet article est informatif et pédagogique. Il ne constitue ni un conseil "
+                       "ni une recommandation d'investissement personnalisée. Investir comporte "
+                       "un risque de perte en capital. Les plafonds et taux cités sont ceux en "
+                       "vigueur à la date de mise à jour et évoluent par voie législative."),
+        'resume': ("Plafonds, PEA Jeune pour les étudiants, fiscalité avant et après cinq ans, "
+                   "et ce qu'on peut réellement y loger. Le guide pour partir de zéro."),
+    },
+    {
         'slug': 'nvidia-premiere-capitalisation-mondiale',
         'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '4 min',
         'categorie': 'Actualité', 'icone': '📈',
@@ -245,10 +340,12 @@ def tete(titre, desc, url, og_type, ld=''):
 
 
 def ld_article(a, url):
+    # Un guide pérenne n'est pas une actualité : Article, pas NewsArticle.
+    tp = "Article" if a.get("perenne") else "NewsArticle"
     return f'''
   <script type="application/ld+json">
   {{
-    "@context": "https://schema.org", "@type": "NewsArticle",
+    "@context": "https://schema.org", "@type": "{tp}",
     "headline": "{a['titre']}",
     "description": "{a['meta_desc']}",
     "datePublished": "{a['date_iso']}", "dateModified": "{a['date_iso']}",
@@ -273,7 +370,7 @@ def page_article(a):
     <div class="hero-badge page-hero-badge">{a['categorie']}</div>
     <h1 class="page-hero-h1">{a['h1']}</h1>
     <p class="page-hero-lead">{a['lead']}</p>
-    <p class="art-meta">Publié le {a['date']} &middot; Lecture {a['duree']}</p>
+    <p class="art-meta">{'Mis à jour le' if a.get('perenne') else 'Publié le'} {a['date']} &middot; Lecture {a['duree']}</p>
   </div>
 </section>
 
@@ -311,7 +408,7 @@ def page_article(a):
 
 def carte(a):
     return f'''
-        <article class="blog-carte">
+        <article class="blog-carte{' blog-carte-guide' if a.get('perenne') or a['categorie'] == 'Guide' else ''}">
           <a class="blog-carte-lien" href="/blog/{a['slug']}">
             <div class="blog-carte-haut">
               <span class="blog-icone" aria-hidden="true">{a['icone']}</span>

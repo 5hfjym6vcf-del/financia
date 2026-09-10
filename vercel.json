@@ -63,6 +63,10 @@
     {
       "source": "/blog/education-financiere-college",
       "destination": "/blog-education-financiere-college.html"
+    },
+    {
+      "source": "/blog/pea-explique-simplement",
+      "destination": "/blog-pea-explique-simplement.html"
     }
   ],
   "headers": [

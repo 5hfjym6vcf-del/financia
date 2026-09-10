@@ -4197,3 +4197,20 @@ textarea:focus-visible,
   color: var(--green-light);
 }
 .blog-carte:hover .blog-carte-cta { color: #fff; }
+
+/* Ligne de total d'un tableau d'article : la somme doit se détacher des lignes
+   qu'elle additionne, sinon elle se lit comme une quatrième donnée. */
+.art-tr-total th, .art-tr-total td {
+  color: #fff;
+  font-weight: 700;
+  border-top: 1px solid var(--violet-ring);
+}
+/* Carte « Guide » du listing : les contenus pérennes se distinguent des
+   actualités par la teinte de leur catégorie, sans changer la structure. */
+.blog-carte-guide .res-cat {
+  color: var(--green-light);
+  background: var(--violet-soft);
+  border: 1px solid var(--violet-ring);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
