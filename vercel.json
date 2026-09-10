@@ -43,6 +43,26 @@
     {
       "source": "/simulateur",
       "destination": "/simulateur.html"
+    },
+    {
+      "source": "/blog/placements-jeunes-actifs",
+      "destination": "/blog-placements-jeunes-actifs.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/nvidia-premiere-capitalisation-mondiale",
+      "destination": "/blog-nvidia-premiere-capitalisation-mondiale.html"
+    },
+    {
+      "source": "/blog/apple-nouvelle-ere",
+      "destination": "/blog-apple-nouvelle-ere.html"
+    },
+    {
+      "source": "/blog/education-financiere-college",
+      "destination": "/blog-education-financiere-college.html"
     }
   ],
   "headers": [

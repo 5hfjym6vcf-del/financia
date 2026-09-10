@@ -4003,3 +4003,197 @@ textarea:focus-visible,
   .credit-grille { gap: 16px; }
   .credit-carte { padding: 22px 20px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ARTICLE DE BLOG
+   Une colonne de lecture, et non la grille des autres pages : un texte long
+   se lit mal au-delà de 70 caractères par ligne. 72ch cale la mesure sans
+   dépendre de la taille de police choisie par le visiteur.
+   ══════════════════════════════════════════════════════════════════════════ */
+.art-meta {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--text-3);
+  letter-spacing: 0.02em;
+}
+/* 760 et non 820 : l'unité ch calcule à 11,3 px sur Montserrat, donc un
+   max-width de 72ch valait 810 px et ne mordait jamais. C'est le conteneur
+   qui fixe réellement la mesure de lecture. */
+.art-wrap { max-width: 760px; }
+.art-corps { font-size: 17px; line-height: 1.75; color: var(--text-2); }
+.art-corps > p { margin-bottom: 22px; max-width: 72ch; }
+.art-corps strong { color: var(--text); font-weight: 700; }
+.art-corps a { color: var(--green-light); text-decoration: underline; text-underline-offset: 3px; }
+.art-corps a:hover { color: #fff; }
+
+.art-chapo {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--text);
+  padding-bottom: 6px;
+}
+
+/* Les titres reprennent l'échelle du site, resserrée : dans un article, un h2
+   à 42px couperait le fil de lecture au lieu de le rythmer. */
+.art-corps h2 {
+  margin: 44px 0 18px;
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: #fff;
+}
+.art-corps h3 {
+  margin: 32px 0 12px;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--green-light);
+}
+
+.art-liste, .art-etapes { margin: 0 0 22px; padding-left: 0; max-width: 72ch; }
+.art-liste { list-style: none; }
+.art-liste li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 12px;
+}
+.art-liste li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 12px; height: 3px;
+  border-radius: 2px;
+  background: var(--violet);
+}
+.art-etapes { list-style: none; counter-reset: etape; }
+.art-etapes li {
+  position: relative;
+  padding-left: 44px;
+  margin-bottom: 16px;
+  counter-increment: etape;
+}
+.art-etapes li::before {
+  content: counter(etape);
+  position: absolute;
+  left: 0; top: -1px;
+  display: grid; place-items: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--violet-soft);
+  border: 1px solid var(--violet-ring);
+  color: var(--green-light);
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Le tableau reprend .part-table du comparatif. Seul le min-width change :
+   720px est calibré pour huit colonnes, l'article n'en a que quatre et le
+   défilement horizontal serait inutile sur mobile. */
+.art-table { min-width: 420px; }
+.art-cond { color: var(--text-3); font-weight: 500; white-space: nowrap; }
+.art-note-table {
+  margin: 12px 0 26px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+
+.art-corps .risque { margin: 32px 0; max-width: none; }
+
+.art-suite {
+  margin-top: 52px;
+  padding: 32px 30px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.art-suite-titre { margin: 0 0 10px; font-size: 22px; font-weight: 800; color: #fff; }
+.art-suite p { font-size: 15.5px; line-height: 1.6; color: var(--text-2); margin-bottom: 22px; }
+.art-suite-liens { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn-secondaire {
+  display: inline-flex; align-items: center;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border-2);
+  background: transparent;
+  color: var(--text);
+  font-size: 15px; font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-secondaire:hover { background: var(--violet-soft); border-color: var(--violet); }
+
+@media (max-width: 640px) {
+  .art-corps { font-size: 16px; }
+  .art-chapo { font-size: 17.5px; }
+  .art-suite { padding: 26px 22px; }
+  .art-suite-liens a { width: 100%; justify-content: center; }
+}
+
+/* ══ LISTING DU BLOG ══
+   Même grammaire que les cartes de Marchés et de Ressources : fond de carte,
+   bordure, coins arrondis, survol qui soulève. La carte entière est un lien,
+   d'où le <a> qui enveloppe le contenu plutôt qu'un lien en pied de carte :
+   une cible de 300 px de large se touche mieux qu'un mot de 90 px. */
+.blog-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 22px;
+}
+.blog-carte {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+.blog-carte:hover {
+  border-color: var(--violet-ring);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.18);
+}
+.blog-carte-lien {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 26px 24px;
+  text-decoration: none;
+  color: inherit;
+}
+.blog-carte-haut {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.blog-icone { font-size: 26px; line-height: 1; }
+.blog-carte-titre {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.28;
+  color: #fff;
+  margin: 0;
+}
+.blog-carte-meta {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.blog-carte-resume {
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+/* margin-top:auto colle le libellé en bas : quel que soit le nombre de lignes
+   du résumé, les appels à lire restent alignés d'une carte à l'autre. */
+.blog-carte-cta {
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green-light);
+}
+.blog-carte:hover .blog-carte-cta { color: #fff; }
