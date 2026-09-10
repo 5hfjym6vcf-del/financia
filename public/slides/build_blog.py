@@ -17,6 +17,16 @@ FRANÇAIS SEUL, comme les autres ajouts récents. Aucun data-i18n sur le
 contenu rédactionnel, aucune clé ajoutée dans i18n.js.
 """
 import io, os
+# CHEMINS ABSOLUS, ET NON RELATIFS
+# Les routes du blog sont imbriquées : /blog/<slug>. Un src="./x.js" y résout
+# vers /blog/x.js, qui n'existe pas. Toutes les feuilles et tous les scripts
+# partaient donc en 404, i18n compris, la classe i18n-ready n'était jamais
+# posée et le voile anti-FOUC laissait la page entièrement blanche, sans une
+# seule erreur en console. Les autres pages du site vivent sur une route à un
+# seul segment, où "./" tombe juste par accident.
+def absolus(html):
+    return html.replace('src="./', 'src="/').replace('href="./', 'href="/')
+
 
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE = os.path.join(RACINE, 'ressources.html')
@@ -295,7 +305,7 @@ def page_article(a):
     html = (tete(a['meta_titre'], a['meta_desc'], url, 'article', ld_article(a, url))
             + GTAG + '\n</head>\n' + nav('article-page') + '\n' + corps + '\n' + PIED)
     chemin = os.path.join(RACINE, f"blog-{a['slug']}.html")
-    io.open(chemin, 'w', encoding='utf-8').write(html)
+    io.open(chemin, 'w', encoding='utf-8').write(absolus(html))
     return chemin
 
 
@@ -346,7 +356,7 @@ def page_listing(tous):
 '''
     html = (tete(titre, desc, url, 'website') + GTAG + '\n</head>\n'
             + nav('blog-page', courant=True) + '\n' + corps + '\n' + PIED)
-    io.open(os.path.join(RACINE, 'blog.html'), 'w', encoding='utf-8').write(html)
+    io.open(os.path.join(RACINE, 'blog.html'), 'w', encoding='utf-8').write(absolus(html))
 
 
 if __name__ == '__main__':

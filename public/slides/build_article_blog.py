@@ -13,6 +13,15 @@ attribut data-i18n n'est posé sur le contenu rédactionnel : un visiteur en
 EN/ES/RU/DE verra la navigation traduite et l'article en français.
 """
 import io, os, re
+# CHEMINS ABSOLUS, ET NON RELATIFS
+# Les routes du blog sont imbriquées : /blog/<slug>. Un src="./x.js" y résout
+# vers /blog/x.js, qui n'existe pas. Toutes les feuilles et tous les scripts
+# partaient donc en 404, i18n compris, la classe i18n-ready n'était jamais
+# posée et le voile anti-FOUC laissait la page entièrement blanche, sans une
+# seule erreur en console. Les autres pages du site vivent sur une route à un
+# seul segment, où "./" tombe juste par accident.
+def absolus(html):
+    return html.replace('src="./', 'src="/').replace('href="./', 'href="/')
 
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # public/
 SOURCE = os.path.join(RACINE, 'ressources.html')
@@ -263,6 +272,6 @@ CORPS = '''
 </section>
 '''
 
-io.open(CIBLE, 'w', encoding='utf-8').write(
-    TETE + '</head>\n' + NAV + '\n' + CORPS + '\n' + PIED)
+io.open(CIBLE, 'w', encoding='utf-8').write(absolus(
+    TETE + '</head>\n' + NAV + '\n' + CORPS + '\n' + PIED))
 print('écrit :', os.path.relpath(CIBLE, os.path.dirname(RACINE)))
