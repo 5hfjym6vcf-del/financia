@@ -148,6 +148,37 @@
     }
   });
 
-  habiller();
-  if (window.FinanciaI18N) FinanciaI18N.onLangChange(habiller);
+  // Recalage AU REPOS, et pas seulement à l'ouverture.
+  //
+  // La bulle est masquée par visibility:hidden et non par display:none, pour
+  // rester dans l'arbre d'accessibilité où aria-describedby la référence. Mais
+  // un élément en visibility:hidden occupe toujours la mise en page : posée à
+  // left:0 d'un sigle situé à droite du texte, elle poussait la largeur de
+  // défilement du document bien au-delà de la fenêtre. L'accueil défilait
+  // ainsi horizontalement de 216 px sur un écran de 390 px, sans que rien ne
+  // soit visible à l'écran pour l'expliquer.
+  //
+  // On cale donc chaque bulle dès sa création, puis à chaque redimensionnement.
+  function recalerToutes() {
+    document.querySelectorAll('.sigle').forEach(recaler);
+  }
+
+  let minuteur;
+  window.addEventListener('resize', () => {
+    clearTimeout(minuteur);
+    minuteur = setTimeout(recalerToutes, 120);
+  });
+
+  function poser() {
+    habiller();
+    // Après le prochain rendu : les largeurs ne sont fiables qu'une fois la
+    // police appliquée, et Montserrat arrive de Google Fonts.
+    requestAnimationFrame(recalerToutes);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(recalerToutes);
+    }
+  }
+
+  poser();
+  if (window.FinanciaI18N) FinanciaI18N.onLangChange(poser);
 })();
