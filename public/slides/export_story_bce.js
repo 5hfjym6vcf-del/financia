@@ -18,7 +18,7 @@ const page = await browser.newPage();
 // et partir du double évite que le texte fin des slides 3 et 4 bave.
 await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 2 });
 
-for (let i = 1; i <= 5; i++) {
+for (let i = 1; i <= 6; i++) {
   const htmlPath = resolve(__dirname, `story_bce_slide${i}.html`);
   await page.goto(`file://${htmlPath}`, { waitUntil: 'networkidle0' });
   // Montserrat vient de Google Fonts : sans cette attente, une slide peut
@@ -75,4 +75,4 @@ for (let i = 1; i <= 5; i++) {
 }
 
 await browser.close();
-console.log('5 slides exportées dans public/slides/png/');
+console.log('6 slides exportées dans public/slides/png/');

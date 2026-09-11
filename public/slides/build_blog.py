@@ -37,6 +37,72 @@ DISCLAIMER_BOURSE = ("Financia rappelle que la performance passée d'une action 
 
 ARTICLES = [
     {
+        'slug': 'bce-hausse-taux-2026',
+        'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '5 min',
+        'categorie': 'Actualité', 'icone': '🏛️',
+        'titre': "La BCE relève ses taux : ce que ça change pour ton épargne et tes crédits",
+        'h1': "La BCE relève ses taux : ce que ça change pour <em>ton épargne et tes crédits</em>",
+        'meta_titre': "Hausse des taux BCE 2026 : quel impact sur le crédit et l'épargne ?",
+        'meta_desc': ("La BCE relève ses trois taux directeurs de 0,25 point au 16 septembre 2026. "
+                      "Taux de dépôt à 2,50 %, inflation à 3,3 % : ce que ça change concrètement "
+                      "pour tes crédits et ton épargne."),
+        'lead': ("Deuxième hausse de l'année. Ce qu'est un taux directeur, pourquoi il monte, et "
+                 "ce que ça déplace vraiment de ton côté."),
+        'corps': '''
+      <p class="art-chapo">Le 10 septembre 2026, la Banque centrale européenne a annoncé une nouvelle hausse de ses taux directeurs, la deuxième de l'année. Voici ce qu'il faut comprendre, sans jargon.</p>
+
+      <h2>Ce qui a été décidé</h2>
+
+      <p>Le Conseil des gouverneurs de la BCE, réuni à Berlin, a relevé ses <strong>trois taux directeurs de 25 points de base</strong>, soit 0,25 point.</p>
+
+      <div class="part-table-boite">
+        <table class="part-table art-table">
+          <caption class="sr-only">Taux directeurs de la BCE avant et après le 16 septembre 2026</caption>
+          <thead>
+            <tr><th scope="col">Taux</th><th scope="col">Avant</th><th scope="col">Après le 16 septembre</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" class="part-td-nom">Facilité de dépôt</th><td>2,25 %</td><td class="art-td-fort">2,50 %</td></tr>
+            <tr><th scope="row" class="part-td-nom">Refinancement <span class="art-cond">(MRO)</span></th><td>2,40 %</td><td class="art-td-fort">2,65 %</td></tr>
+            <tr><th scope="row" class="part-td-nom">Prêt marginal</th><td>2,65 %</td><td class="art-td-fort">2,90 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Le taux de dépôt, celui qui sert de référence principale, atteint ainsi son plus haut niveau depuis mars 2025. Les nouveaux barèmes entrent en application le <strong>16 septembre 2026</strong>.</p>
+
+      <h2>Pourquoi cette hausse ?</h2>
+
+      <p>L'inflation en zone euro s'est établie à <strong>3,3 %</strong> en août 2026, bien au-dessus de l'objectif de 2 % que vise la BCE. Cette poussée est largement liée à la flambée du prix du pétrole : le baril de Brent a dépassé les 100 dollars début septembre, un niveau plus vu depuis fin juillet, sur fond de tensions géopolitiques persistantes au Moyen-Orient.</p>
+
+      <p>Face à des perspectives économiques que l'institution juge « de plus en plus instables », la BCE a choisi de resserrer sa politique monétaire pour tenter de contenir cette inflation.</p>
+
+      <h2>Qu'est-ce qu'un taux directeur, concrètement ?</h2>
+
+      <p>Le taux directeur est le taux auquel les banques commerciales se refinancent auprès de la banque centrale. Quand il monte, l'argent devient plus cher à emprunter pour les banques, et ce surcoût se répercute, avec un certain délai, sur les taux qu'elles proposent à leurs clients.</p>
+
+      <div class="risque risque-info" role="note">
+        <span class="risque-icone" aria-hidden="true">&#128161;</span>
+        <p><strong>Un point important à retenir.</strong> En France, la majorité des crédits immobiliers sont à taux fixe. Un prêt déjà signé n'est donc pas recalculé après une décision de la BCE : seuls les nouveaux prêts et certains produits à taux variable sont concernés à court terme. Les barèmes des crédits immobiliers à taux fixe réagissent surtout aux taux des obligations d'État à long terme, l'OAT à 10 ans, et non directement au taux BCE du jour.</p>
+      </div>
+
+      <h2>Ce que ça peut changer pour toi</h2>
+
+      <p><strong>Côté crédit.</strong> Si tu envisages un prêt étudiant, un crédit à la consommation ou un futur prêt immobilier, un contexte général de taux plus élevés peut se traduire par des mensualités plus importantes sur les nouveaux emprunts. L'effet n'est ni immédiat ni automatique.</p>
+
+      <p><strong>Côté épargne.</strong> À l'inverse, une hausse des taux directeurs peut, avec le temps, améliorer la rémunération de certains produits d'épargne à terme ou de certains comptes rémunérés. Les <a href="/blog/placements-jeunes-actifs">livrets réglementés</a> comme le Livret A ou le LDDS suivent en revanche leur propre mécanisme de révision, indépendant des décisions de la BCE.</p>
+
+      <h2>Et la suite ?</h2>
+
+      <p>La prochaine réunion du Conseil des gouverneurs est prévue le <strong>29 octobre 2026</strong>. La présidente de la BCE, Christine Lagarde, a indiqué que l'institution reste attentive à l'évolution de l'inflation, avec des projections qui tablent sur un retour progressif vers l'objectif de 2 % d'ici 2028.</p>
+''',
+        'disclaimer': ("Cet article est informatif et pédagogique. Il ne constitue ni un conseil "
+                       "ni une recommandation d'investissement. Les taux cités sont ceux annoncés "
+                       "à la date de publication."),
+        'resume': ("Trois taux relevés de 0,25 point au 16 septembre, inflation à 3,3 %. "
+                   "Ce qu'est un taux directeur, et pourquoi un prêt déjà signé ne bouge pas."),
+    },
+    {
         'slug': 'pea-explique-simplement',
         'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '6 min',
         'categorie': 'Guide', 'icone': '📘',

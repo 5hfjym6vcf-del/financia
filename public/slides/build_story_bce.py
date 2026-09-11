@@ -185,6 +185,24 @@ s5 = page(5, '''    <p class="texte" style="margin:0 0 76px">On en parle plus en
              color: rgba(255,255,255,.32); line-height: 1.5; max-width: 720px; }''',
     coin='')
 
-for n, contenu in enumerate([s1, s2, s3, s4, s5], 1):
+# ── 6. Renvoi vers l'article ──────────────────────────────────────────────
+# Distincte de la clôture : celle-ci pose la marque, celle-là envoie lire.
+# D'où la pastille en très grand, une phrase à l'impératif, et une adresse
+# traitée comme un bouton plutôt que comme une mention de pied de page.
+s6 = page(6, '''    <div class="marque-geante">''' + marque(300) + '''</div>
+    <h1 class="appel">Retrouve<br>l'article <span class="accent">complet</span></h1>
+    <div class="bouton">financia.cloud/blog</div>''',
+    style='''
+  .marque-geante svg { border-radius: 66px; filter: drop-shadow(0 34px 90px rgba(124,58,237,.5)); }
+  .appel { margin-top: 76px; font-size: 88px; line-height: 1.08; }
+  .bouton {
+    margin-top: 72px; padding: 30px 56px; border-radius: 999px;
+    background: #7C3AED; color: #fff;
+    font-size: 38px; font-weight: 800; letter-spacing: -.5px;
+    box-shadow: 0 22px 60px rgba(124,58,237,.45);
+  }''',
+    coin='')
+
+for n, contenu in enumerate([s1, s2, s3, s4, s5, s6], 1):
     io.open(os.path.join(ICI, f'story_bce_slide{n}.html'), 'w', encoding='utf-8').write(contenu)
     print(f'  story_bce_slide{n}.html')

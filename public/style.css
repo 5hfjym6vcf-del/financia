@@ -4214,3 +4214,14 @@ textarea:focus-visible,
   border-radius: 999px;
   padding: 4px 12px;
 }
+
+/* Valeur mise en avant dans un tableau d'article : l'ancienne et la nouvelle
+   se lisent côte à côte, seule la nouvelle doit accrocher l'œil. */
+.art-td-fort { color: #fff; font-weight: 700; }
+/* Variante informative de l'encadré .risque : même structure, mais l'accent
+   violet au lieu de l'orangé, parce que c'est une précision utile et non une
+   mise en garde. Confondre les deux userait le signal d'avertissement. */
+.risque-info {
+  border-color: var(--violet-ring);
+  background: var(--violet-soft);
+}
