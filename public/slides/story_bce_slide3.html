@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>story_bce_slide3</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+  body { font-family: 'Montserrat', sans-serif; }
+
+  .slide {
+    width: 1080px; height: 1920px; position: relative; overflow: hidden;
+    background: radial-gradient(circle at 50% 8%, #161020 0%, #000000 60%);
+    display: flex; flex-direction: column;
+    /* 300 px en haut, 340 px en bas : zones où Instagram superpose l'avatar
+       du compte et la barre de réponse. Rien de lisible ne doit y tomber. */
+    padding: 300px 92px 340px;
+  }
+  .grille {
+    position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image:
+      linear-gradient(rgba(124,58,237,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,.055) 1px, transparent 1px);
+    background-size: 76px 76px;
+  }
+  .halo {
+    position: absolute; width: 1000px; height: 1000px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,.22) 0%, transparent 68%);
+    top: -320px; left: 50%; transform: translateX(-50%); pointer-events: none;
+  }
+  /* Logo en haut, sous la zone d'interface d'Instagram. */
+  .coin {
+    position: absolute; top: 168px; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+  }
+  .coin .mot { font-size: 32px; font-weight: 800; color: #fff; letter-spacing: -.5px; }
+  .coin .mot span { color: #7C3AED; }
+
+  .corps { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; }
+
+  .label { font-size: 26px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+            color: #A78BFA; margin-bottom: 34px; }
+  h1 { font-size: 92px; font-weight: 800; line-height: 1.06; letter-spacing: -2.5px; color: #fff; }
+  h1 .accent { color: #7C3AED; }
+  .texte { margin-top: 48px; font-size: 40px; font-weight: 500; line-height: 1.5;
+            color: rgba(255,255,255,.7); max-width: 840px; }
+  .texte b { color: #fff; font-weight: 700; }
+
+
+  .chiffre { margin-top: 56px; padding: 36px 52px; border-radius: 28px;
+             border: 1px solid rgba(124,58,237,.5); background: rgba(124,58,237,.11);
+             display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .chiffre .v { font-size: 104px; font-weight: 900; letter-spacing: -3px; color: #A78BFA; line-height: 1; }
+  .chiffre .l { font-size: 30px; font-weight: 600; color: rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="grille"></div><div class="halo"></div>
+  <div class="coin"><svg width="46" height="46" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#7C3AED"/>
+      <g fill="#0A0A0B" shape-rendering="crispEdges">
+        <rect x="8" y="6" width="4" height="20"/><rect x="8" y="6" width="16" height="4"/><rect x="8" y="14" width="12" height="4"/>
+      </g>
+    </svg><span class="mot">Financi<span>a</span></span></div>
+  <div class="corps">
+    <div class="label">Pourquoi</div>
+    <h1>Pourquoi<br>cette <span class="accent">hausse</span> ?</h1>
+    <div class="chiffre"><span class="v">3,3 %</span><span class="l">d'inflation en zone euro</span></div>
+    <p class="texte">Portée par la flambée du prix du pétrole, liée aux tensions au Moyen-Orient.</p>
+  </div>
+</div>
+</body>
+</html>
