@@ -12,7 +12,7 @@
 
 // Bumper cette version à chaque déploiement qui change un asset statique :
 // l'activation supprime alors tous les caches d'une version antérieure.
-const CACHE_VERSION = 'v73';
+const CACHE_VERSION = 'v74';
 const STATIC_CACHE = `financia-static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `financia-runtime-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';
@@ -34,6 +34,8 @@ const PRECACHE_URLS = [
   '/simulateur',
   '/blog/placements-jeunes-actifs',
   '/blog/pea-explique-simplement',
+  '/blog/interets-composes',
+  '/blog/etf-debutant',
   '/blog/bce-hausse-taux-2026',
   '/blog/education-financiere-college',
   '/blog/apple-nouvelle-ere',

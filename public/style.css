@@ -4225,3 +4225,70 @@ textarea:focus-visible,
   border-color: var(--violet-ring);
   background: var(--violet-soft);
 }
+
+/* ══ BLOC SOURCES ══
+   Volontairement discret : il ferme l'article sans concurrencer le contenu,
+   et se distingue de l'encadré d'avertissement, qui lui doit accrocher l'œil.
+   D'où un simple filet supérieur plutôt qu'un cadre plein. */
+.sources-block {
+  margin: 40px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.sources-titre {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.sources-liste { margin: 0; padding: 0; list-style: none; }
+.sources-liste li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+.sources-liste li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 8px; height: 2px;
+  border-radius: 1px;
+  background: var(--border-2);
+}
+/* Une source sans lien reste lisible comme une source : c'est une référence
+   vérifiable hors ligne, pas un lien cassé. */
+.sources-liste a {
+  color: var(--text-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.sources-liste a:hover { color: var(--green-light); }
+
+/* ══ SECTIONS DU LISTING ══
+   Le composant carte est inchangé : seul le regroupement diffère. */
+.blog-section + .blog-section { margin-top: 56px; }
+.blog-section-tete { margin-bottom: 22px; }
+.blog-section-titre {
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.blog-section-sous {
+  margin-top: 8px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+/* Les guides portent le même accent violet que leur pastille de catégorie :
+   le filet vertical prolonge visuellement le code déjà posé sur les cartes. */
+.blog-section-guides .blog-section-tete {
+  padding-left: 16px;
+  border-left: 3px solid var(--violet);
+}

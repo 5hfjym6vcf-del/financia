@@ -71,6 +71,14 @@
     {
       "source": "/blog/bce-hausse-taux-2026",
       "destination": "/blog-bce-hausse-taux-2026.html"
+    },
+    {
+      "source": "/blog/etf-debutant",
+      "destination": "/blog-etf-debutant.html"
+    },
+    {
+      "source": "/blog/interets-composes",
+      "destination": "/blog-interets-composes.html"
     }
   ],
   "headers": [

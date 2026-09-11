@@ -37,7 +37,149 @@ DISCLAIMER_BOURSE = ("Financia rappelle que la performance passée d'une action 
 
 ARTICLES = [
     {
+        'slug': 'etf-debutant',
+        'date_iso': '2026-09-11', 'date': '11 septembre 2026', 'duree': '6 min',
+        'categorie': 'Guide', 'icone': '📊',
+        'perenne': True,
+        'titre': 'Les ETF expliqués simplement',
+        'h1': 'Les ETF <em>expliqués simplement</em>',
+        'meta_titre': "ETF débutant : comment investir dans des centaines d'entreprises en un clic",
+        'meta_desc': "Ce qu'est un ETF, comment lire son TER, les grandes familles et la différence avec une action individuelle. Le guide pour débuter, sans jargon.",
+        'lead': "Comment investir dans des centaines d'entreprises en une seule opération, ce que coûte un ETF, et ce qu'il ne garantit pas.",
+        'sources': [
+            ('AMF, espace épargnants : définitions réglementaires des produits financiers', 'https://www.amf-france.org/fr/espace-epargnants'),
+        ],
+        'corps': '''
+      <p class="art-chapo">Tu as sûrement déjà entendu ce terme sans savoir exactement ce qu'il recouvre. Voici ce qu'est un <strong>ETF</strong>, sans jargon.</p>
+
+      <h2>Qu'est-ce qu'un ETF ?</h2>
+
+      <p><strong>ETF</strong> signifie <em>Exchange Traded Fund</em>, ou <strong>fonds indiciel coté</strong> en français. Concrètement, c'est un panier qui regroupe automatiquement des dizaines, des centaines, voire des milliers d'entreprises, et que tu achètes en une seule opération, comme une action classique.</p>
+
+      <p>Plutôt que de choisir toi-même chaque entreprise dans laquelle investir, un ETF <strong>réplique un indice</strong> existant : le CAC 40 (les 40 plus grandes entreprises françaises), le S&amp;P 500 (les 500 plus grandes entreprises américaines), ou le MSCI World (plus de 1 500 entreprises dans le monde entier).</p>
+
+      <h2>Pourquoi les ETF reviennent souvent quand on débute</h2>
+
+      <ul class="art-liste">
+        <li><strong>La diversification automatique.</strong> En achetant un seul ETF MSCI World, tu es exposé à des milliers d'entreprises de secteurs et de pays différents. Si une entreprise se porte mal, elle ne pèse qu'une infime partie de l'ensemble, contrairement à une action individuelle où tout repose sur une seule société.</li>
+        <li><strong>Des frais généralement bas.</strong> Les ETF sont majoritairement des fonds <em>passifs</em> : ils suivent un indice sans intervention humaine active, ce qui réduit fortement leurs frais de gestion comparé à des fonds gérés activement.</li>
+        <li><strong>La simplicité.</strong> Un seul achat suffit pour obtenir une exposition large, plutôt que de sélectionner et suivre individuellement plusieurs dizaines d'entreprises.</li>
+      </ul>
+
+      <h2>Comment lire les frais d'un ETF : le TER</h2>
+
+      <p>Le <strong>TER</strong> (<em>Total Expense Ratio</em>, ou ratio de frais total) est le pourcentage annuel prélevé sur ton investissement pour couvrir les frais de gestion du fonds. Il est directement déduit de la performance de l'ETF : tu ne le paies pas séparément, mais il réduit mécaniquement ton rendement.</p>
+
+      <p>Un TER bas, souvent en dessous de 0,5 % pour les grands indices comme le S&amp;P 500 ou le MSCI World, est généralement recherché : sur le long terme, même un petit écart de frais a un effet cumulatif important.</p>
+
+      <h2>Les grandes familles d'ETF</h2>
+
+      <ul class="art-liste">
+        <li><strong>ETF actions monde.</strong> Exposition très large, par exemple le MSCI World, pour une diversification maximale.</li>
+        <li><strong>ETF sectoriels.</strong> Concentrés sur un secteur précis, technologie, santé, énergie, donc moins diversifiés.</li>
+        <li><strong>ETF obligataires.</strong> Composés d'obligations plutôt que d'actions, généralement moins volatils.</li>
+        <li><strong>ETF éligibles au <a href="/blog/pea-explique-simplement">PEA</a>.</strong> Certains ETF dits « synthétiques » répliquent des indices internationaux tout en restant éligibles à cette enveloppe fiscale.</li>
+      </ul>
+
+      <h2>ETF ou action individuelle : quelle différence ?</h2>
+
+      <div class="part-table-boite">
+        <table class="part-table art-table">
+          <caption class="sr-only">Comparaison entre une action individuelle et un ETF</caption>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Action individuelle</th><th scope="col">ETF</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" class="part-td-nom">Diversification</th><td>Une seule entreprise</td><td>Des dizaines à des milliers</td></tr>
+            <tr><th scope="row" class="part-td-nom">Risque</th><td>Concentré sur une société</td><td>Réparti sur l'ensemble de l'indice</td></tr>
+            <tr><th scope="row" class="part-td-nom">Suivi nécessaire</th><td>Analyser chaque entreprise</td><td>Suivre la tendance de l'indice</td></tr>
+            <tr><th scope="row" class="part-td-nom">Frais</th><td>Courtage à l'achat et à la vente</td><td>Courtage, plus le TER annuel</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Ni l'un ni l'autre n'est « meilleur » dans l'absolu. Cela dépend de ton objectif, du temps dont tu disposes pour te former, et de ta tolérance au risque.</p>
+
+      <h2>En résumé</h2>
+
+      <p>Les ETF permettent d'investir de façon diversifiée sans choisir soi-même chaque entreprise, avec des frais généralement contenus. Comme tout placement en actions, ils comportent un <strong>risque de perte en capital</strong> : ce n'est pas un placement sans risque comme un <a href="/blog/placements-jeunes-actifs">livret réglementé</a>.</p>
+''',
+        'disclaimer': "Cet article est informatif et pédagogique. Il ne constitue ni un conseil ni une recommandation d'investissement personnalisée. Investir comporte un risque de perte en capital.",
+        'resume': "Diversification, TER, familles d'ETF et comparaison avec l'action individuelle. Ce qu'un ETF apporte, et le risque qu'il ne supprime pas.",
+    },
+    {
+        'slug': 'interets-composes',
+        'date_iso': '2026-09-11', 'date': '11 septembre 2026', 'duree': '4 min',
+        'categorie': 'Guide', 'icone': '📈',
+        'perenne': True,
+        'titre': 'Les intérêts composés',
+        'h1': 'Les intérêts composés : pourquoi <em>commencer tôt</em> change la donne',
+        'meta_titre': 'Intérêts composés : pourquoi commencer tôt change vraiment la donne',
+        'meta_desc': "Intérêts simples ou composés, l'écart sur 30 ans, et pourquoi la durée pèse souvent plus que le montant investi. Expliqué avec un exemple chiffré.",
+        'lead': 'Tes gains produisent eux-mêmes des gains. Ce que ça donne sur dix, vingt et trente ans, et ce que ça ne garantit pas.',
+        'sources': [
+            ("Exemple mathématique illustratif calculé pour cet article, à taux fixe de 5 %. Aucune source externe, aucun placement réel n'est décrit.", None),
+        ],
+        'corps': '''
+      <p class="art-chapo">C'est un concept simple sur le papier, mais dont l'effet réel surprend presque toujours. Voici comment ça marche.</p>
+
+      <h2>Le principe en une phrase</h2>
+
+      <p>Les intérêts composés, c'est le fait que <strong>tes gains génèrent eux-mêmes des gains</strong>, année après année, plutôt que de rester figés.</p>
+
+      <p>Avec des intérêts simples, seul ton capital de départ produit des gains chaque année. Avec des intérêts composés, les gains de l'année précédente s'ajoutent au capital et produisent, à leur tour, de nouveaux gains l'année suivante.</p>
+
+      <h2>Un exemple pour visualiser</h2>
+
+      <p>Imaginons un placement à 5 % de rendement annuel, sans aucun versement supplémentaire :</p>
+
+      <div class="part-table-boite">
+        <table class="part-table art-table">
+          <caption class="sr-only">Comparaison illustrative entre intérêts simples et intérêts composés sur 30 ans</caption>
+          <thead>
+            <tr><th scope="col">Année</th><th scope="col">Avec intérêts simples</th><th scope="col">Avec intérêts composés</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" class="part-td-nom">Départ</th><td>1 000 €</td><td>1 000 €</td></tr>
+            <tr><th scope="row" class="part-td-nom">Après 10 ans</th><td>1 500 €</td><td class="art-td-fort">1 629 €</td></tr>
+            <tr><th scope="row" class="part-td-nom">Après 20 ans</th><td>2 000 €</td><td class="art-td-fort">2 653 €</td></tr>
+            <tr><th scope="row" class="part-td-nom">Après 30 ans</th><td>2 500 €</td><td class="art-td-fort">4 322 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="art-note-table">Exemple purement illustratif, à taux fixe de 5 %, à but pédagogique. Aucun placement ne garantit un rendement constant.</p>
+
+      <p>L'écart entre les deux se creuse progressivement, puis s'accélère avec le temps. C'est tout l'intérêt, au sens propre, de laisser un placement fructifier sur une longue durée.</p>
+
+      <h2>Pourquoi le facteur temps compte plus que le montant</h2>
+
+      <p>Une conséquence directe : <strong>commencer tôt avec un petit montant peut, sur le long terme, produire un résultat comparable à commencer plus tard avec un montant plus important</strong>. Ce n'est pas systématique, cela dépend du rendement, de la durée et des versements, mais c'est la logique qui explique pourquoi l'horizon de temps est souvent présenté comme un facteur aussi important que le montant investi.</p>
+
+      <h2>Ce qui influence la puissance des intérêts composés</h2>
+
+      <ul class="art-liste">
+        <li><strong>Le rendement annuel.</strong> Plus il est élevé, plus l'effet est marqué. Mais un rendement plus élevé s'accompagne généralement d'un risque plus élevé.</li>
+        <li><strong>La durée.</strong> C'est le facteur le plus déterminant. L'effet reste modeste les premières années, puis s'accélère nettement sur le long terme.</li>
+        <li><strong>La régularité des versements.</strong> Ajouter des versements réguliers, même modestes, amplifie encore l'effet : chaque nouveau versement bénéficie à son tour du même mécanisme.</li>
+      </ul>
+
+      <h2>Simuler ta propre projection</h2>
+
+      <p>Plutôt que de se fier à un exemple générique, le plus utile est de tester différents scénarios avec tes propres chiffres : montant de départ, versement mensuel, durée, rendement estimé. Le <a href="/simulateur">simulateur</a> le fait, et le <a href="/comparateur">comparateur</a> met trois supports côte à côte, nets de fiscalité.</p>
+
+      <h2>En résumé</h2>
+
+      <p>Les intérêts composés expliquent pourquoi le temps est souvent considéré comme l'un des leviers les plus importants en matière d'épargne et d'investissement. Ce n'est pas une garantie de gain, tout placement autre qu'un livret réglementé comportant un risque de perte, mais c'est un mécanisme mathématique qui joue en faveur de qui commence tôt, à rendement égal.</p>
+''',
+        'disclaimer': "Cet article est informatif et pédagogique. Il ne constitue ni un conseil ni une recommandation d'investissement personnalisée. Investir comporte un risque de perte en capital.",
+        'resume': 'Un exemple chiffré sur 30 ans, les trois facteurs qui jouent, et pourquoi la durée compte souvent plus que le montant.',
+    },
+    {
         'slug': 'bce-hausse-taux-2026',
+        'sources': [
+            ('Banque de France, taux directeurs', 'https://www.banque-france.fr/fr/les-taux-monetaires-directeurs'),
+            ('Touteleurope.eu, décision de la BCE du 10 septembre 2026', 'https://www.touteleurope.eu/economie-et-social/face-a-la-hausse-des-prix-la-bce-releve-les-taux-d-interet/'),
+        ],
         'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '5 min',
         'categorie': 'Actualité', 'icone': '🏛️',
         'titre': "La BCE relève ses taux : ce que ça change pour ton épargne et tes crédits",
@@ -104,6 +246,10 @@ ARTICLES = [
     },
     {
         'slug': 'pea-explique-simplement',
+        'sources': [
+            ("Service-Public.fr, imposition des revenus d'un PEA", 'https://www.service-public.fr/particuliers/vosdroits/F22449'),
+            ('Code général des impôts, art. 157 5° bis (exonération après cinq ans) et art. 200 A (prélèvement forfaitaire unique)', None),
+        ],
         'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '6 min',
         'categorie': 'Guide', 'icone': '📘',
         # Contenu pérenne : il se démode par mise à jour, pas par péremption.
@@ -199,6 +345,10 @@ ARTICLES = [
     },
     {
         'slug': 'nvidia-premiere-capitalisation-mondiale',
+        'sources': [
+            ('Nvidia, communiqué de résultats du deuxième trimestre 2026', None),
+            ('Presse financière, capitalisation boursière et mouvements de marché', None),
+        ],
         'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '4 min',
         'categorie': 'Actualité', 'icone': '📈',
         'titre': "Nvidia, l'entreprise la plus valorisée au monde",
@@ -234,6 +384,10 @@ ARTICLES = [
     },
     {
         'slug': 'apple-nouvelle-ere',
+        'sources': [
+            ('Apple, keynote du 9 septembre 2026', None),
+            ("Couverture presse tech de l'événement : direction, iPhone Duo, iPhone 18 Pro", None),
+        ],
         'date_iso': '2026-09-09', 'date': '9 septembre 2026', 'duree': '4 min',
         'categorie': 'Actualité', 'icone': '📱',
         'titre': "Apple change d'ère : nouveau patron, premier pliable, prix en hausse",
@@ -273,6 +427,10 @@ ARTICLES = [
     },
     {
         'slug': 'education-financiere-college',
+        'sources': [
+            ("Banque de France, portail Mes questions d'argent (dispositif EDUCFI)", 'https://www.mesquestionsdargent.fr/'),
+            ('OCDE, données sur la littératie financière des jeunes', None),
+        ],
         'date_iso': '2026-09-03', 'date': '3 septembre 2026', 'duree': '3 min',
         'categorie': 'Éducation financière', 'icone': '🎓',
         'titre': "L'éducation financière devient obligatoire au collège",
@@ -425,6 +583,25 @@ def ld_article(a, url):
 '''
 
 
+# Une entrée est (libellé, url) ; url vaut None quand aucune adresse n'a pu
+# être vérifiée. On préfère alors la référence en clair au lien inventé :
+# elle reste vérifiable par le lecteur, un lien mort ne l'est pas.
+def bloc_sources(sources):
+    if not sources:
+        return ''
+    lis = []
+    for libelle, url in sources:
+        lis.append('        <li>%s</li>' % (
+            '<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>' % (url, libelle)
+            if url else libelle))
+    return ('\n      <div class="sources-block">\n'
+            '        <p class="sources-titre">Sources</p>\n'
+            '        <ul class="sources-liste">\n'
+            + '\n'.join(lis) + '\n'
+            '        </ul>\n'
+            '      </div>\n')
+
+
 def page_article(a):
     url = f"https://financia.cloud/blog/{a['slug']}"
     corps = f'''
@@ -443,7 +620,7 @@ def page_article(a):
 <section class="section section-dark">
   <div class="wrap art-wrap">
     <article class="art-corps">
-{a['corps']}
+{a['corps']}{bloc_sources(a.get('sources'))}
       <!-- Encadré de fin, volontairement dans le même traitement visuel que
            les avertissements des outils du site : fond distinct, bordure,
            pictogramme. Il doit se lire comme une rupture avec le corps de
@@ -488,11 +665,74 @@ def carte(a):
         </article>'''
 
 
+# DEUX SECTIONS PLUTÔT QU'UNE LISTE UNIQUE
+# Le regroupement suit le drapeau `perenne`, PAS le libellé `categorie`.
+# Les libellés sont hétérogènes par nature : « Actualité » (x3), « Guide »,
+# « Éducation financière », « Épargne sans risque ». Grouper dessus mettrait
+# trois articles seulement sous Actualités et laisserait les deux autres
+# orphelins. `perenne` dit exactement ce qui nous intéresse ici : un contenu
+# se démode-t-il par mise à jour ou par péremption.
+#
+# Chaque carte conserve intégralement ses métadonnées : sa propre pastille de
+# catégorie et sa date. Seul le regroupement change.
+def section(titre, sous_titre, articles, classe=''):
+    if not articles:
+        return ''
+    return f'''    <div class="blog-section{classe}">
+      <div class="blog-section-tete">
+        <h2 class="blog-section-titre">{titre}</h2>
+        <p class="blog-section-sous">{sous_titre}</p>
+      </div>
+      <div class="blog-grille">{''.join(carte(a) for a in articles)}
+      </div>
+    </div>
+'''
+
+
+def ld_listing(guides, actus):
+    # CollectionPage plutot qu'une simple WebPage : la page n'est pas un
+    # contenu, c'est un index. Le ItemList reprend l'ordre d'affichage reel,
+    # guides d'abord, ce qui evite d'annoncer a Google une hierarchie que la
+    # page ne montre pas.
+    items = []
+    for i, a in enumerate(guides + actus, 1):
+        items.append(
+            '      { "@type": "ListItem", "position": %d, '
+            '"url": "https://financia.cloud/blog/%s", "name": "%s" }'
+            % (i, a['slug'], a['titre'].replace('"', "'")))
+    corps = ',\n'.join(items)
+    return (
+        '\n  <script type="application/ld+json">\n'
+        '  {\n'
+        '    "@context": "https://schema.org", "@type": "CollectionPage",\n'
+        '    "name": "Blog Financia", "inLanguage": "fr-FR",\n'
+        '    "url": "https://financia.cloud/blog",\n'
+        '    "isPartOf": { "@type": "WebSite", "name": "Financia", "url": "https://financia.cloud" },\n'
+        '    "mainEntity": {\n'
+        '      "@type": "ItemList", "numberOfItems": %d,\n'
+        '      "itemListElement": [\n%s\n      ]\n'
+        '    }\n'
+        '  }\n'
+        '  </script>\n' % (len(items), corps))
+
+
 def page_listing(tous):
     url = 'https://financia.cloud/blog'
     titre = "Blog Financia | Guides et actualités sur l'argent des jeunes"
-    desc = ("Guides et actualités pour comprendre l'épargne, les placements et l'argent quand on a "
-            "entre 18 et 30 ans. Gratuit, sans jargon, sans conseil personnalisé.")
+    desc = ("Les guides de fond sur le PEA, les ETF et les intérêts composés, et l'actualité "
+            "économique expliquée aux 18-30 ans. Gratuit, sans jargon, sans conseil personnalisé.")
+    guides = [a for a in tous if a.get('perenne')]
+    actus  = [a for a in tous if not a.get('perenne')]
+    sections = (
+        section('Nos guides', "Les fondamentaux, mis à jour quand les règles changent.",
+                guides, ' blog-section-guides')
+        + section('Actualités', "Ce qui bouge, expliqué au moment où ça bouge.", actus))
+    guides = [a for a in tous if a.get('perenne')]
+    actus  = [a for a in tous if not a.get('perenne')]
+    sections = (
+        section('Nos guides', "Les fondamentaux, mis à jour quand les règles changent.",
+                guides, ' blog-section-guides')
+        + section('Actualités', "Ce qui bouge, expliqué au moment où ça bouge.", actus))
     corps = f'''
 <section class="page-hero">
   <div class="page-hero-bg-grid"></div>
@@ -507,8 +747,7 @@ def page_listing(tous):
 
 <section class="section section-dark">
   <div class="wrap">
-    <div class="blog-grille">{''.join(carte(a) for a in tous)}
-    </div>
+{sections}
 
     <div class="risque" role="note" style="margin-top:40px;">
       <span class="risque-icone" aria-hidden="true">⚠️</span>
@@ -517,7 +756,7 @@ def page_listing(tous):
   </div>
 </section>
 '''
-    html = (tete(titre, desc, url, 'website') + GTAG + '\n</head>\n'
+    html = (tete(titre, desc, url, 'website', ld_listing(guides, actus)) + GTAG + '\n</head>\n'
             + nav('blog-page', courant=True) + '\n' + corps + '\n' + PIED)
     io.open(os.path.join(RACINE, 'blog.html'), 'w', encoding='utf-8').write(absolus(html))
 
