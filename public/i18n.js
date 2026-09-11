@@ -15,7 +15,7 @@ fr: {
 
   sigles: {
     pea: "Plan d'épargne en actions. Un compte pour investir en Bourse européenne, dont la fiscalité s'allège après cinq ans de détention.",
-    cto: "Compte-titres ordinaire. Un compte pour investir sans limite géographique, dont les gains sont imposés à 30 %.",
+    cto: "Compte-titres ordinaire. Un compte pour investir sans limite géographique, dont les gains sont imposés à 31,4 %.",
     amf: "Autorité des marchés financiers. Le régulateur français de la Bourse et de l'épargne.",
     orias: "Le registre français des intermédiaires en assurance, banque et finance.",
   },
@@ -123,7 +123,7 @@ fr: {
       { q: "Financia gère mon argent ?", a: "Non. Financia est un site éducatif. Nous t'expliquons comment investir, mais nous ne gérons aucun fonds." },
       { q: "C'est quoi un PEA ?", a: "Le Plan d'Épargne en Actions est un compte qui te permet d'investir en bourse avec une fiscalité avantageuse après 5 ans." },
       { q: "Le chatbot IA est fiable ?", a: "Notre IA est conçue pour l'éducation financière. Elle te donne des informations pédagogiques, pas des conseils d'investissement personnalisés." },
-      { q: "Quelle différence entre PEA et CTO ?", a: "Le PEA est plafonné à 150 000€ mais moins taxé après 5 ans. Le CTO est illimité mais taxé à 30% (flat tax)." },
+      { q: "Quelle différence entre PEA et CTO ?", a: "Le PEA est plafonné à 150 000€ mais moins taxé après 5 ans. Le CTO est illimité mais taxé à 31,4% (flat tax)." },
     ],
     askTitle: "Tu as une autre question ?",
     inputPlaceholder: "Dis-moi ce que tu te demandes…",
@@ -330,7 +330,7 @@ fr: {
       questions: {
         beginner: [
           { q: "Qu'est-ce qu'un ETF ?", options: ["Un fonds qui réplique un indice boursier", "Une action d'une seule entreprise", "Un compte bancaire rémunéré", "Un crédit immobilier"], correct: 0 },
-          { q: "Le Livret A est un placement...", options: ["Risqué mais très rentable", "Sans risque, avec un taux fixé par l'État", "Réservé aux plus de 25 ans", "Imposé à 30%"], correct: 1 },
+          { q: "Le Livret A est un placement...", options: ["Risqué mais très rentable", "Sans risque, avec un taux fixé par l'État", "Réservé aux plus de 25 ans", "Imposé à 31,4%"], correct: 1 },
           { q: "Que signifie \"PEA\" ?", options: ["Plan d'Épargne en Actions", "Plan d'Épargne Automatique", "Prêt Étudiant Aidé", "Placement Épargne Assurance"], correct: 0 },
           { q: "Diversifier son portefeuille, ça veut dire...", options: ["Investir tout sur une seule action prometteuse", "Répartir son argent sur plusieurs actifs différents", "Changer de banque régulièrement", "Retirer son argent souvent"], correct: 1 },
           { q: "Les intérêts composés, c'est...", options: ["Des intérêts calculés uniquement sur le capital de départ", "Des intérêts qui se recalculent aussi sur les intérêts déjà gagnés", "Une taxe sur les gains boursiers", "Un type de compte bancaire"], correct: 1 },
@@ -359,7 +359,7 @@ fr: {
           { q: "Une obligation, contrairement à une action, représente...", options: ["Une part de propriété dans une entreprise", "Une créance : tu prêtes de l'argent contre des intérêts", "Un bien immobilier", "Une cryptomonnaie"], correct: 1 },
           { q: "Quel événement a marqué le krach de 1929 ?", options: ["Le \"Jeudi noir\" suivi du \"Mardi noir\" à Wall Street", "La création de la Bourse de New York", "Le lancement du premier ETF", "La fin de l'étalon-or"], correct: 0 },
           { q: "Qu'est-ce que la \"capitalisation boursière\" d'une entreprise ?", options: ["Son chiffre d'affaires annuel", "Le prix de l'action multiplié par le nombre d'actions en circulation", "Le montant de ses dettes", "Son bénéfice net"], correct: 1 },
-          { q: "En France, quel est le régime fiscal par défaut appliqué aux gains d'un compte-titres ordinaire ?", options: ["Le PFU (\"flat tax\") à 30%", "Une exonération totale", "Le même barème que le Livret A", "Une TVA de 20%"], correct: 0 },
+          { q: "En France, quel est le régime fiscal par défaut appliqué aux gains d'un compte-titres ordinaire ?", options: ["Le PFU (\"flat tax\") à 31,4%", "Une exonération totale", "Le même barème que le Livret A", "Une TVA de 20%"], correct: 0 },
           { q: "Qu'est-ce qu'un \"rendement nominal\", par opposition à un \"rendement réel\" ?", options: ["Un rendement qui prend en compte l'inflation", "Un rendement brut, avant prise en compte de l'inflation", "Un rendement garanti par contrat", "Un rendement réservé aux obligations"], correct: 1 },
           { q: "Le détroit d'Ormuz, souvent cité dans l'actualité des marchés, est stratégique car...", options: ["Il concentre une part majeure du transport mondial de pétrole", "Il abrite la plus grande Bourse du monde", "C'est le siège de la Réserve fédérale américaine", "Il produit la majorité des semi-conducteurs mondiaux"], correct: 0 },
           { q: "Que désigne le \"biais de récence\" en finance comportementale ?", options: ["La tendance à surestimer l'importance des événements récents dans ses décisions", "Une stratégie de diversification", "Un type de frais bancaires", "Une méthode de calcul des intérêts composés"], correct: 0 },
@@ -961,7 +961,7 @@ en: {
 
   sigles: {
     pea: "Plan d'épargne en actions, a French share savings account for investing in European markets, with lighter taxation after five years.",
-    cto: "Compte-titres ordinaire, a standard French securities account with no geographic limit, whose gains are taxed at 30 %.",
+    cto: "Compte-titres ordinaire, a standard French securities account with no geographic limit, whose gains are taxed at 31.4 %.",
     amf: "Autorité des marchés financiers, the French regulator for markets and savings.",
     orias: "The French register of insurance, banking and finance intermediaries.",
   },
@@ -1069,7 +1069,7 @@ en: {
       { q: "Does Financia manage my money?", a: "No. Financia is an educational site. We explain how to invest, but we don't manage any funds." },
       { q: "What's a PEA?", a: "The PEA (Plan d'Épargne en Actions) is a French tax-advantaged account that lets you invest in stocks with favorable taxation after 5 years." },
       { q: "Is the AI chatbot reliable?", a: "Our AI is designed for financial education. It gives you educational information, not personalized investment advice." },
-      { q: "What's the difference between a PEA and a standard brokerage account?", a: "The PEA is capped at €150,000 but taxed less after 5 years. A standard account is unlimited but taxed at 30% (flat tax)." },
+      { q: "What's the difference between a PEA and a standard brokerage account?", a: "The PEA is capped at €150,000 but taxed less after 5 years. A standard account is unlimited but taxed at 31.4% (flat tax)." },
     ],
     askTitle: "Got another question?",
     inputPlaceholder: "Tell me what's on your mind…",
@@ -1276,7 +1276,7 @@ en: {
       questions: {
         beginner: [
           { q: "What is an ETF?", options: ["A fund that tracks a stock market index", "A share in a single company", "An interest-bearing bank account", "A home loan"], correct: 0 },
-          { q: "A French \"Livret A\" savings account is...", options: ["Risky but highly profitable", "Risk-free, with a rate set by the State", "Only available to people over 25", "Taxed at 30%"], correct: 1 },
+          { q: "A French \"Livret A\" savings account is...", options: ["Risky but highly profitable", "Risk-free, with a rate set by the State", "Only available to people over 25", "Taxed at 31.4%"], correct: 1 },
           { q: "What does \"PEA\" stand for?", options: ["A French tax-advantaged stock savings plan", "An automatic savings plan", "A student loan", "A savings-insurance product"], correct: 0 },
           { q: "Diversifying your portfolio means...", options: ["Putting everything into one promising stock", "Spreading your money across several different assets", "Switching banks often", "Withdrawing your money frequently"], correct: 1 },
           { q: "Compound interest is...", options: ["Interest calculated only on your initial capital", "Interest that's recalculated on the interest you've already earned, too", "A tax on stock market gains", "A type of bank account"], correct: 1 },
@@ -1305,7 +1305,7 @@ en: {
           { q: "Unlike a share, a bond represents...", options: ["Ownership in a company", "A debt: you lend money in exchange for interest", "A piece of real estate", "A cryptocurrency"], correct: 1 },
           { q: "What event marked the 1929 crash?", options: ["\"Black Thursday\" followed by \"Black Tuesday\" on Wall Street", "The founding of the New York Stock Exchange", "The launch of the first ETF", "The end of the gold standard"], correct: 0 },
           { q: "What is a company's \"market capitalization\"?", options: ["Its annual revenue", "Its share price multiplied by the number of shares outstanding", "The amount of its debt", "Its net profit"], correct: 1 },
-          { q: "In France, what's the default tax rate applied to gains on a standard brokerage account?", options: ["The flat tax (\"PFU\") at 30%", "Full exemption", "The same scale as the Livret A", "A 20% VAT"], correct: 0 },
+          { q: "In France, what's the default tax rate applied to gains on a standard brokerage account?", options: ["The flat tax (\"PFU\") at 31.4%", "Full exemption", "The same scale as the Livret A", "A 20% VAT"], correct: 0 },
           { q: "What is \"nominal return\", as opposed to \"real return\"?", options: ["A return that accounts for inflation", "A gross return, before accounting for inflation", "A contractually guaranteed return", "A return only used for bonds"], correct: 1 },
           { q: "The Strait of Hormuz, often mentioned in market news, is strategic because...", options: ["It carries a major share of the world's oil shipments", "It's home to the world's largest stock exchange", "It's the headquarters of the US Federal Reserve", "It produces most of the world's semiconductors"], correct: 0 },
           { q: "What does \"recency bias\" mean in behavioral finance?", options: ["The tendency to overweight recent events when making decisions", "A diversification strategy", "A type of bank fee", "A method for calculating compound interest"], correct: 0 },
@@ -1907,7 +1907,7 @@ es: {
 
   sigles: {
     pea: "Plan d'épargne en actions, una cuenta francesa para invertir en la Bolsa europea, con fiscalidad reducida tras cinco años.",
-    cto: "Compte-titres ordinaire, una cuenta de valores sin límite geográfico, cuyas ganancias tributan al 30 %.",
+    cto: "Compte-titres ordinaire, una cuenta de valores sin límite geográfico, cuyas ganancias tributan al 31,4 %.",
     amf: "Autorité des marchés financiers, el regulador francés de la Bolsa y el ahorro.",
     orias: "El registro francés de intermediarios de seguros, banca y finanzas.",
   },
@@ -2015,7 +2015,7 @@ es: {
       { q: "¿Financia gestiona mi dinero?", a: "No. Financia es un sitio educativo. Te explicamos cómo invertir, pero no gestionamos ningún fondo." },
       { q: "¿Qué es un PEA?", a: "El PEA (Plan d'Épargne en Actions) es una cuenta francesa con ventajas fiscales que te permite invertir en bolsa con una fiscalidad ventajosa después de 5 años." },
       { q: "¿Es fiable el chatbot de IA?", a: "Nuestra IA está diseñada para la educación financiera. Te da información educativa, no consejos de inversión personalizados." },
-      { q: "¿Cuál es la diferencia entre un PEA y una cuenta de valores estándar?", a: "El PEA tiene un límite de 150.000€ pero tributa menos después de 5 años. La cuenta estándar es ilimitada pero tributa al 30% (impuesto fijo)." },
+      { q: "¿Cuál es la diferencia entre un PEA y una cuenta de valores estándar?", a: "El PEA tiene un límite de 150.000€ pero tributa menos después de 5 años. La cuenta estándar es ilimitada pero tributa al 31,4% (impuesto fijo)." },
     ],
     askTitle: "¿Tienes otra pregunta?",
     inputPlaceholder: "Dime qué te preguntas…",
@@ -2222,7 +2222,7 @@ es: {
       questions: {
         beginner: [
           { q: "¿Qué es un ETF?", options: ["Un fondo que replica un índice bursátil", "Una acción de una sola empresa", "Una cuenta bancaria remunerada", "Un préstamo hipotecario"], correct: 0 },
-          { q: "El \"Livret A\" francés es un producto de ahorro...", options: ["Arriesgado pero muy rentable", "Sin riesgo, con una tasa fijada por el Estado", "Reservado a mayores de 25 años", "Gravado al 30%"], correct: 1 },
+          { q: "El \"Livret A\" francés es un producto de ahorro...", options: ["Arriesgado pero muy rentable", "Sin riesgo, con una tasa fijada por el Estado", "Reservado a mayores de 25 años", "Gravado al 31,4%"], correct: 1 },
           { q: "¿Qué significa \"PEA\"?", options: ["Un plan de ahorro en acciones con ventajas fiscales en Francia", "Un plan de ahorro automático", "Un préstamo estudiantil", "Un producto de ahorro-seguro"], correct: 0 },
           { q: "Diversificar tu cartera significa...", options: ["Invertir todo en una sola acción prometedora", "Repartir tu dinero en varios activos diferentes", "Cambiar de banco con frecuencia", "Retirar tu dinero a menudo"], correct: 1 },
           { q: "El interés compuesto es...", options: ["Interés calculado solo sobre el capital inicial", "Interés que también se recalcula sobre los intereses ya ganados", "Un impuesto sobre las ganancias bursátiles", "Un tipo de cuenta bancaria"], correct: 1 },
@@ -2251,7 +2251,7 @@ es: {
           { q: "A diferencia de una acción, un bono representa...", options: ["Una parte de la propiedad de una empresa", "Una deuda: prestas dinero a cambio de intereses", "Un bien inmueble", "Una criptomoneda"], correct: 1 },
           { q: "¿Qué acontecimiento marcó el crac de 1929?", options: ["El \"Jueves Negro\" seguido del \"Martes Negro\" en Wall Street", "La creación de la Bolsa de Nueva York", "El lanzamiento del primer ETF", "El fin del patrón oro"], correct: 0 },
           { q: "¿Qué es la \"capitalización bursátil\" de una empresa?", options: ["Su facturación anual", "El precio de la acción multiplicado por el número de acciones en circulación", "El importe de sus deudas", "Su beneficio neto"], correct: 1 },
-          { q: "En Francia, ¿cuál es el régimen fiscal por defecto aplicado a las ganancias de una cuenta de valores ordinaria?", options: ["El PFU (\"flat tax\") del 30%", "Una exención total", "La misma escala que el Livret A", "Un IVA del 20%"], correct: 0 },
+          { q: "En Francia, ¿cuál es el régimen fiscal por defecto aplicado a las ganancias de una cuenta de valores ordinaria?", options: ["El PFU (\"flat tax\") del 31,4%", "Una exención total", "La misma escala que el Livret A", "Un IVA del 20%"], correct: 0 },
           { q: "¿Qué es el \"rendimiento nominal\", a diferencia del \"rendimiento real\"?", options: ["Un rendimiento que tiene en cuenta la inflación", "Un rendimiento bruto, antes de tener en cuenta la inflación", "Un rendimiento garantizado por contrato", "Un rendimiento reservado a los bonos"], correct: 1 },
           { q: "El estrecho de Ormuz, mencionado a menudo en la actualidad de los mercados, es estratégico porque...", options: ["Concentra una parte importante del transporte mundial de petróleo", "Alberga la mayor Bolsa del mundo", "Es la sede de la Reserva Federal estadounidense", "Produce la mayoría de los semiconductores del mundo"], correct: 0 },
           { q: "¿Qué designa el \"sesgo de recencia\" en las finanzas conductuales?", options: ["La tendencia a sobrevalorar la importancia de los eventos recientes en las decisiones", "Una estrategia de diversificación", "Un tipo de comisión bancaria", "Un método de cálculo del interés compuesto"], correct: 0 },
@@ -2853,7 +2853,7 @@ ru: {
 
   sigles: {
     pea: "Plan d'épargne en actions — французский счёт для инвестиций на европейском рынке, с пониженным налогом после пяти лет.",
-    cto: "Compte-titres ordinaire — обычный брокерский счёт без географических ограничений, прибыль облагается по ставке 30 %.",
+    cto: "Compte-titres ordinaire — обычный брокерский счёт без географических ограничений, прибыль облагается по ставке 31,4 %.",
     amf: "Autorité des marchés financiers — французский регулятор рынка и сбережений.",
     orias: "Французский реестр посредников в страховании, банковском деле и финансах.",
   },
@@ -2961,7 +2961,7 @@ ru: {
       { q: "Financia управляет моими деньгами?", a: "Нет. Financia — образовательный сайт. Мы объясняем, как инвестировать, но не управляем никакими средствами." },
       { q: "Что такое PEA?", a: "PEA (Plan d'Épargne en Actions) — это французский счёт, который позволяет инвестировать на фондовом рынке с льготным налогообложением после 5 лет." },
       { q: "Можно ли доверять чат-боту на основе ИИ?", a: "Наш ИИ создан для финансового образования. Он даёт обучающую информацию, а не персональные инвестиционные советы." },
-      { q: "В чём разница между PEA и обычным брокерским счётом?", a: "PEA ограничен суммой 150 000€, но меньше облагается налогом после 5 лет. Обычный счёт не ограничен по сумме, но облагается налогом по ставке 30% (единый налог)." },
+      { q: "В чём разница между PEA и обычным брокерским счётом?", a: "PEA ограничен суммой 150 000€, но меньше облагается налогом после 5 лет. Обычный счёт не ограничен по сумме, но облагается налогом по ставке 31,4% (единый налог)." },
     ],
     askTitle: "Есть другой вопрос?",
     inputPlaceholder: "Расскажи, что тебя интересует…",
@@ -3168,7 +3168,7 @@ ru: {
       questions: {
         beginner: [
           { q: "Что такое ETF?", options: ["Фонд, который повторяет биржевой индекс", "Акция одной компании", "Процентный банковский счёт", "Ипотечный кредит"], correct: 0 },
-          { q: "Livret A (французский сберегательный счёт) — это вложение...", options: ["Рискованное, но очень доходное", "Безрисковое, со ставкой, устанавливаемой государством", "Доступное только людям старше 25 лет", "Облагаемое налогом по ставке 30%"], correct: 1 },
+          { q: "Livret A (французский сберегательный счёт) — это вложение...", options: ["Рискованное, но очень доходное", "Безрисковое, со ставкой, устанавливаемой государством", "Доступное только людям старше 25 лет", "Облагаемое налогом по ставке 31,4%"], correct: 1 },
           { q: "Что означает «PEA»?", options: ["Индивидуальный инвестиционный счёт для акций (Plan d'Épargne en Actions)", "Автоматический сберегательный план", "Студенческий кредит", "Страховой сберегательный продукт"], correct: 0 },
           { q: "Диверсифицировать портфель значит...", options: ["Вложить всё в одну перспективную акцию", "Распределить деньги между разными активами", "Регулярно менять банк", "Часто снимать деньги"], correct: 1 },
           { q: "Сложные проценты — это...", options: ["Проценты, начисляемые только на стартовый капитал", "Проценты, которые также начисляются на уже полученные проценты", "Налог на биржевую прибыль", "Тип банковского счёта"], correct: 1 },
@@ -3197,7 +3197,7 @@ ru: {
           { q: "В отличие от акции, облигация представляет собой...", options: ["Долю собственности в компании", "Долговое обязательство: вы даёте деньги в долг под проценты", "Объект недвижимости", "Криптовалюту"], correct: 1 },
           { q: "Какое событие ознаменовало крах 1929 года?", options: ["«Чёрный четверг», за которым последовал «чёрный вторник» на Уолл-стрит", "Основание Нью-Йоркской фондовой биржи", "Запуск первого ETF", "Отмена золотого стандарта"], correct: 0 },
           { q: "Что такое «рыночная капитализация» компании?", options: ["Её годовая выручка", "Цена акции, умноженная на число акций в обращении", "Сумма её долгов", "Её чистая прибыль"], correct: 1 },
-          { q: "Во Франции какой налоговый режим по умолчанию применяется к прибыли на обычном брокерском счёте?", options: ["Единый налог («flat tax») 30%", "Полное освобождение от налога", "Та же шкала, что и для Livret A", "НДС 20%"], correct: 0 },
+          { q: "Во Франции какой налоговый режим по умолчанию применяется к прибыли на обычном брокерском счёте?", options: ["Единый налог («flat tax») 31,4%", "Полное освобождение от налога", "Та же шкала, что и для Livret A", "НДС 20%"], correct: 0 },
           { q: "Что такое «номинальная доходность» в противоположность «реальной доходности»?", options: ["Доходность с учётом инфляции", "Валовая доходность до учёта инфляции", "Доходность, гарантированная договором", "Доходность, применяемая только к облигациям"], correct: 1 },
           { q: "Ормузский пролив, часто упоминаемый в новостях рынков, стратегически важен, потому что...", options: ["Через него проходит значительная часть мировых поставок нефти", "Там находится крупнейшая биржа мира", "Там расположена штаб-квартира ФРС США", "Там производится большинство мировых полупроводников"], correct: 0 },
           { q: "Что означает «эффект недавности» в поведенческих финансах?", options: ["Склонность придавать чрезмерное значение недавним событиям при принятии решений", "Стратегию диверсификации", "Вид банковской комиссии", "Метод расчёта сложных процентов"], correct: 0 },
@@ -3799,7 +3799,7 @@ de: {
 
   sigles: {
     pea: "Plan d'épargne en actions, ein französisches Depot für europäische Aktien, nach fünf Jahren steuerlich begünstigt.",
-    cto: "Compte-titres ordinaire, ein gewöhnliches Wertpapierdepot ohne geografische Grenze, dessen Gewinne mit 30 % besteuert werden.",
+    cto: "Compte-titres ordinaire, ein gewöhnliches Wertpapierdepot ohne geografische Grenze, dessen Gewinne mit 31,4 % besteuert werden.",
     amf: "Autorité des marchés financiers, die französische Aufsicht für Börse und Sparen.",
     orias: "Das französische Register für Vermittler in Versicherung, Bank und Finanzen.",
   },
@@ -3907,7 +3907,7 @@ de: {
       { q: "Verwaltet Financia mein Geld?", a: "Nein. Financia ist eine Bildungsplattform. Wir erklären dir, wie man investiert, verwalten aber selbst keine Gelder." },
       { q: "Was ist ein PEA?", a: "Das PEA (Plan d'Épargne en Actions) ist ein französisches Konto, mit dem du nach 5 Jahren steuerbegünstigt an der Börse investieren kannst." },
       { q: "Ist der KI-Chatbot zuverlässig?", a: "Unsere KI ist für die Finanzbildung konzipiert. Sie liefert dir pädagogische Informationen, keine persönliche Anlageberatung." },
-      { q: "Was ist der Unterschied zwischen PEA und normalem Wertpapierdepot?", a: "Das PEA ist auf 150.000€ begrenzt, wird aber nach 5 Jahren geringer besteuert. Das normale Depot ist unbegrenzt, wird aber mit 30% (Pauschalsteuer) besteuert." },
+      { q: "Was ist der Unterschied zwischen PEA und normalem Wertpapierdepot?", a: "Das PEA ist auf 150.000€ begrenzt, wird aber nach 5 Jahren geringer besteuert. Das normale Depot ist unbegrenzt, wird aber mit 31,4% (Pauschalsteuer) besteuert." },
     ],
     askTitle: "Hast du noch eine Frage?",
     inputPlaceholder: "Sag mir, was dich beschäftigt…",
@@ -4114,7 +4114,7 @@ de: {
       questions: {
         beginner: [
           { q: "Was ist ein ETF?", options: ["Ein Fonds, der einen Börsenindex nachbildet", "Eine Aktie eines einzelnen Unternehmens", "Ein verzinstes Bankkonto", "Ein Immobilienkredit"], correct: 0 },
-          { q: "Das Livret A (französisches Sparkonto) ist eine Anlage...", options: ["Riskant, aber sehr rentabel", "Risikofrei, mit einem vom Staat festgelegten Zinssatz", "Nur für über 25-Jährige verfügbar", "Mit 30% besteuert"], correct: 1 },
+          { q: "Das Livret A (französisches Sparkonto) ist eine Anlage...", options: ["Riskant, aber sehr rentabel", "Risikofrei, mit einem vom Staat festgelegten Zinssatz", "Nur für über 25-Jährige verfügbar", "Mit 31,4% besteuert"], correct: 1 },
           { q: "Wofür steht „PEA“?", options: ["Ein französisches steuerbegünstigtes Aktiensparkonto (Plan d'Épargne en Actions)", "Ein automatischer Sparplan", "Ein Studienkredit", "Ein Spar-Versicherungsprodukt"], correct: 0 },
           { q: "Sein Portfolio zu diversifizieren bedeutet...", options: ["Alles auf eine vielversprechende Aktie zu setzen", "Sein Geld auf mehrere unterschiedliche Anlagen zu verteilen", "Regelmäßig die Bank zu wechseln", "Häufig Geld abzuheben"], correct: 1 },
           { q: "Zinseszins ist...", options: ["Zinsen, die nur auf das Startkapital berechnet werden", "Zinsen, die auch auf bereits erhaltene Zinsen neu berechnet werden", "Eine Steuer auf Börsengewinne", "Eine Art Bankkonto"], correct: 1 },
@@ -4143,7 +4143,7 @@ de: {
           { q: "Im Gegensatz zu einer Aktie stellt eine Anleihe dar...", options: ["Einen Eigentumsanteil an einem Unternehmen", "Eine Forderung: Du leihst Geld gegen Zinsen", "Eine Immobilie", "Eine Kryptowährung"], correct: 1 },
           { q: "Welches Ereignis prägte den Crash von 1929?", options: ["Der „Schwarze Donnerstag“, gefolgt vom „Schwarzen Dienstag“ an der Wall Street", "Die Gründung der New Yorker Börse", "Die Einführung des ersten ETF", "Das Ende des Goldstandards"], correct: 0 },
           { q: "Was ist die „Marktkapitalisierung“ eines Unternehmens?", options: ["Sein Jahresumsatz", "Der Aktienkurs multipliziert mit der Anzahl der im Umlauf befindlichen Aktien", "Die Höhe seiner Schulden", "Sein Nettogewinn"], correct: 1 },
-          { q: "Welches Steuersystem gilt in Frankreich standardmäßig für Gewinne auf einem normalen Wertpapierdepot?", options: ["Die Pauschalsteuer („flat tax“) von 30%", "Vollständige Befreiung", "Der gleiche Tarif wie beim Livret A", "20% Mehrwertsteuer"], correct: 0 },
+          { q: "Welches Steuersystem gilt in Frankreich standardmäßig für Gewinne auf einem normalen Wertpapierdepot?", options: ["Die Pauschalsteuer („flat tax“) von 31,4%", "Vollständige Befreiung", "Der gleiche Tarif wie beim Livret A", "20% Mehrwertsteuer"], correct: 0 },
           { q: "Was ist die „nominale Rendite“ im Gegensatz zur „realen Rendite“?", options: ["Eine Rendite, die die Inflation berücksichtigt", "Eine Bruttorendite vor Berücksichtigung der Inflation", "Eine vertraglich garantierte Rendite", "Eine Rendite, die nur für Anleihen gilt"], correct: 1 },
           { q: "Die Straße von Hormus, oft in den Marktnachrichten erwähnt, ist strategisch wichtig, weil...", options: ["Über sie ein Großteil der weltweiten Öllieferungen läuft", "Sich dort die größte Börse der Welt befindet", "Sich dort der Sitz der US-Notenbank befindet", "Dort die meisten weltweiten Halbleiter hergestellt werden"], correct: 0 },
           { q: "Was bezeichnet der „Rezenzeffekt“ in der Verhaltensökonomie?", options: ["Die Tendenz, jüngeren Ereignissen bei Entscheidungen zu viel Gewicht zu geben", "Eine Diversifikationsstrategie", "Eine Art Bankgebühr", "Eine Methode zur Berechnung des Zinseszinses"], correct: 0 },

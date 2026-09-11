@@ -56,9 +56,11 @@
       taux: 2.0,
       tauxModifiable: true,
       plafond: null,
-      // Prélèvement forfaitaire unique : 12,8 % d'impôt + 17,2 % de
-      // prélèvements sociaux.
-      fiscalite: 30,
+      // Prélèvement forfaitaire unique : 12,8 % d'impôt + 18,6 % de
+      // prélèvements sociaux. Les prélèvements sociaux sont passés de
+      // 17,2 % à 18,6 % avec la hausse de CSG du PLFSS 2026, ce qui porte
+      // la flat tax de 30 % à 31,4 %.
+      fiscalite: 31.4,
       garanti: true,
       note: 'Taux variable, révisable par l\'établissement à tout moment.',
       ctaUrl: '',
@@ -74,9 +76,10 @@
       taux: 6.0,
       tauxModifiable: true,
       plafond: null,
-      // Dans un PEA détenu plus de cinq ans, seuls les 17,2 % de
-      // prélèvements sociaux s'appliquent. Sur un compte-titres, 30 %.
-      fiscalite: 17.2,
+      // Dans un PEA détenu plus de cinq ans, seuls les prélèvements
+      // sociaux s'appliquent, soit 18,6 % depuis le PLFSS 2026. Sur un
+      // compte-titres, la flat tax pleine, 31,4 %.
+      fiscalite: 18.6,
       garanti: false,
       note: 'Capital non garanti. La valeur peut baisser, y compris durablement.',
       ctaUrl: '',

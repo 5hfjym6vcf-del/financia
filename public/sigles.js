@@ -37,7 +37,7 @@
     const cle = 'sigles.' + sigle.toLowerCase();
     const secours = {
       PEA: "Plan d'épargne en actions. Un compte pour investir en Bourse européenne, dont la fiscalité s'allège après cinq ans de détention.",
-      CTO: "Compte-titres ordinaire. Un compte pour investir sans limite géographique, dont les gains sont imposés à 30 %.",
+      CTO: "Compte-titres ordinaire. Un compte pour investir sans limite géographique, dont les gains sont imposés à 31,4 %.",
       AMF: "Autorité des marchés financiers. Le régulateur français de la Bourse et de l'épargne.",
       ORIAS: "Le registre français des intermédiaires en assurance, banque et finance.",
     }[sigle];
