@@ -4316,17 +4316,56 @@ textarea:focus-visible,
 .ebook-libre-tete { margin-bottom: 26px; }
 .ebook-libre { margin-bottom: 52px; }
 
-/* Emplacement non rempli : volontairement visible et sobre. Un bloc vide
-   passerait pour un bug, un lorem ipsum passerait pour du contenu. */
-.ebook-attente {
-  margin: 18px 0 26px;
-  padding: 18px 20px;
-  border-radius: var(--radius-sm);
-  border: 1px dashed var(--border-2);
-  background: rgba(124,58,237,0.05);
-  font-size: 14.5px; line-height: 1.6; color: var(--text-3);
+/* ── Avertissement légal ──────────────────────────────────────────────────
+   Premier bloc de la page, avant le moindre contenu pédagogique. Traité
+   comme un encadré à part entière et non comme une note de bas de page :
+   c'est lui qui cadre la lecture de tout ce qui suit. */
+.ebook-avert {
+  margin-bottom: 44px;
+  padding: 26px 26px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-2);
+  background: rgba(255,255,255,0.025);
 }
-.ebook-attente strong { color: var(--text-2); }
+.ebook-avert-tete { display: flex; align-items: center; gap: 11px; }
+.ebook-avert-icone { font-size: 19px; line-height: 1; }
+.ebook-avert-titre { margin: 0; font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+.ebook-avert-chapeau { margin: 14px 0 0; font-size: 14.5px; line-height: 1.65; color: var(--text-2); }
+.ebook-avert-liste { margin: 14px 0 0; padding-left: 20px; }
+.ebook-avert-liste li { margin-top: 8px; font-size: 13.5px; line-height: 1.65; color: var(--text-3); }
+.ebook-avert-liste a { color: var(--green-light); }
+
+/* Fin de module : ce que le lecteur doit avoir en main en refermant. */
+.ebook-resultat {
+  margin: 22px 0 0;
+  padding: 15px 18px;
+  border-left: 3px solid var(--violet);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--violet-soft);
+  font-size: 14.5px; line-height: 1.65; color: var(--text-2);
+}
+.ebook-resultat strong { color: #fff; }
+
+/* ── Modules verrouillés ──────────────────────────────────────────────────
+   Seuls le titre et l'accroche existent dans le HTML. Le corps de ces
+   modules n'est pas masqué en CSS, il n'est pas envoyé du tout : masquer
+   suffirait à le lire dans le code source de la page. */
+.ebook-verrou { margin-bottom: 52px; }
+.ebook-verrou-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.ebook-module-bloque {
+  position: relative;
+  padding: 24px 22px 22px;
+  border-radius: var(--radius);
+  border: 1px dashed var(--violet-ring);
+  background: linear-gradient(180deg, var(--violet-soft), rgba(124,58,237,0.02));
+}
+.ebook-cadenas { font-size: 17px; line-height: 1; }
+.ebook-module-titre { margin: 12px 0 0; font-size: 17px; font-weight: 800; color: #fff; line-height: 1.35; }
+.ebook-module-accroche { margin: 10px 0 0; font-size: 14.5px; line-height: 1.65; color: var(--text-3); }
 
 .ebook-offre {
   padding: 34px 30px;
@@ -4334,11 +4373,39 @@ textarea:focus-visible,
   background: var(--bg-card);
   border: 1px solid var(--violet-ring);
 }
+.ebook-offre-tete { margin-bottom: 4px; }
+.ebook-accroche { margin-top: 14px; font-size: 17px; line-height: 1.6; color: var(--text-2); }
 .ebook-offre-sous { margin-top: 14px; font-size: 16px; line-height: 1.65; color: var(--text-2); }
-.ebook-prix-zone { display: flex; align-items: baseline; gap: 12px; margin: 26px 0 6px; }
+
+.ebook-benefices-titre { margin: 28px 0 0; font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.01em; }
+.ebook-benefices { margin: 14px 0 0; padding: 0; list-style: none; }
+.ebook-benefices li {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 26px;
+  font-size: 15px; line-height: 1.6; color: var(--text-2);
+}
+.ebook-benefices li::before {
+  content: "→";
+  position: absolute; left: 0; top: 0;
+  color: var(--green-light); font-weight: 700;
+}
+/* Contrepoint honnête du bloc de bénéfices : même poids visuel, ton neutre. */
+.ebook-nonest {
+  margin-top: 26px;
+  padding: 18px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+.ebook-nonest .ebook-benefices-titre { margin-top: 0; }
+.ebook-nonest p { margin: 10px 0 0; font-size: 14.5px; line-height: 1.65; color: var(--text-3); }
+
+.ebook-prix-zone { display: flex; align-items: baseline; gap: 12px; margin: 26px 0 6px; flex-wrap: wrap; }
 .ebook-prix { font-size: 40px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
 .ebook-prix-attente { font-size: 24px; color: var(--text-3); font-weight: 600; }
 .ebook-tva { font-size: 13px; color: var(--text-3); }
+.ebook-prix-note { margin: 0 0 2px; font-size: 13px; color: var(--text-3); }
 
 /* La case est le verrou légal : elle doit se voir, pas se deviner. */
 .ebook-legal { margin: 24px 0 20px; }

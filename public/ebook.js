@@ -26,6 +26,15 @@
     if (!p) prixEl.classList.add('ebook-prix-attente');
   }
 
+  // La mention de TVA n'est affichée que si elle est renseignée. Un
+  // emplacement vide vaut mieux qu'une mention approximative : le régime
+  // dépend du statut réel du vendeur, pas d'une valeur par défaut.
+  const tvaEl = document.getElementById('ebookTva');
+  if (tvaEl) {
+    tvaEl.textContent = cfg.MENTION_TVA || '';
+    tvaEl.hidden = !cfg.MENTION_TVA;
+  }
+
   function message(texte, type = 'info') {
     if (!etat) return;
     etat.textContent = texte;
