@@ -3,24 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title >Financia | Politique de confidentialité et données</title>
+  <title>Financia | Conditions générales de vente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="/style.css" />
 
   <!-- i18n : chargé de façon bloquante pour éviter tout flash de contenu FR -->
   <style>html:not(.i18n-ready) body { visibility: hidden; }</style>
-  <script src="./i18n.js"></script>
-  <script src="./i18n-core.js"></script>
+  <script src="/i18n.js"></script>
+  <script src="/i18n-core.js"></script>
 
-  <meta name="description" content="Ce que Financia collecte, ce qui reste sur votre appareil, qui reçoit quoi et comment exercer vos droits. Aucun compte, aucune revente de données." />
-  <link rel="canonical" href="https://financia.cloud/confidentialite" />
+  <meta name="description" content="Conditions générales de vente des contenus numériques proposés par Financia : prix, paiement, livraison, absence de droit de rétractation et médiation." />
+  <link rel="canonical" href="https://financia.cloud/cgv" />
+
+  <!-- Page liée depuis le pied de page des 22 pages du site : sans noindex,
+       les moteurs l'indexeraient malgré son absence du sitemap. Des CGV
+       incomplètes n'ont rien à faire dans les résultats de recherche.
+       À RETIRER en même temps que l'ajout au sitemap, le jour où les champs
+       [à compléter] sont renseignés. « follow » est conservé pour que les
+       liens sortants de la page gardent leur valeur. -->
+  <meta name="robots" content="noindex, follow" />
+
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="/images/icons/icon.svg" type="image/svg+xml" />
   <link rel="icon" href="/images/icons/icon-32.png" sizes="32x32" type="image/png" />
 
-  <!-- PWA : installable sur mobile (voir manifest.json + sw.js) -->
   <link rel="manifest" href="/manifest.json" />
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon-180.png" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -28,21 +36,18 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Financia" />
 
-  <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://financia.cloud/confidentialite" />
-  <meta property="og:title" content="Financia | Politique de confidentialité et données" />
-  <meta property="og:description" content="Ce que Financia collecte, ce qui reste sur votre appareil, qui reçoit quoi et comment exercer vos droits. Aucun compte, aucune revente de données." />
+  <meta property="og:url" content="https://financia.cloud/cgv" />
+  <meta property="og:title" content="Financia | Conditions générales de vente" />
+  <meta property="og:description" content="Conditions générales de vente des contenus numériques proposés par Financia : prix, paiement, livraison, absence de droit de rétractation et médiation." />
   <meta property="og:image" content="https://financia.cloud/images/og-financia.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Financia, apprendre à investir sans jargon et sans conseil personnalisé" />
   <meta property="og:locale" content="fr_FR" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="Financia | Politique de confidentialité et données" />
-  <meta property="twitter:description" content="Ce que Financia collecte, ce qui reste sur votre appareil, qui reçoit quoi et comment exercer vos droits. Aucun compte, aucune revente de données." />
+  <meta property="twitter:title" content="Financia | Conditions générales de vente" />
+  <meta property="twitter:description" content="Conditions générales de vente des contenus numériques proposés par Financia : prix, paiement, livraison, absence de droit de rétractation et médiation." />
   <meta name="twitter:image" content="https://financia.cloud/images/og-financia.png" />
 
   <!-- Google Analytics, sous Consent Mode v2.
@@ -128,7 +133,7 @@
   <a href="/#hub"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-i18n="mobileMenu.accueil">Accueil</span></a>
   <a href="/#apprendre"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span data-i18n="mobileMenu.apprendre">Apprendre</span></a>
   <a href="/#quiz"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span data-i18n="mobileMenu.quiz">Quiz</span></a>
-  <a href="/ressources" aria-current="page"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="mobileMenu.ressources">Ressources</span></a>
+  <a href="/ressources"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-i18n="mobileMenu.ressources">Ressources</span></a>
   <a href="/simulateur"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><span data-i18n="mobileMenu.simulateur">Simulateur</span></a>
   <a href="/comparateur"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg><span data-i18n="nav.comparateur">Comparateur</span></a>
   <a href="/#chat"><svg class="mm-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="mobileMenu.chat">Chat IA</span></a>
@@ -159,111 +164,130 @@
   </div>
 </div>
 
+
 <!-- ═══ HERO ═══ -->
 <section class="page-hero">
   <div class="page-hero-bg-grid"></div>
   <div class="page-hero-glow page-hero-glow-1"></div>
   <div class="page-hero-glow page-hero-glow-2"></div>
   <div class="wrap page-hero-inner">
-    <div class="hero-badge page-hero-badge">🔒 Confidentialité</div>
-    <h1 class="page-hero-h1">Ce que Financia <em>sait de toi</em></h1>
-    <p class="page-hero-lead">La réponse courte : presque rien. Voici le détail, service par service.</p>
+    <div class="hero-badge page-hero-badge">⚖️ Légal</div>
+    <h1 class="page-hero-h1">Conditions générales <em>de vente</em></h1>
+    <p class="page-hero-lead">Ce qui s'applique aux contenus numériques vendus sur Financia : prix, paiement, livraison, rétractation et médiation.</p>
   </div>
 </section>
 
 <section class="legal-section">
   <div class="wrap">
 
-    <!-- Version faisant foi. Traduire un texte juridique automatiquement
-         créerait un risque supérieur à l'absence de traduction : une nuance
-         mal rendue engage l'éditeur. -->
-    <p class="legal-vf">Cette page est rédigée en français, seule version faisant foi. Dernière mise à jour : 12 septembre 2026.</p>
+    <p class="legal-vf">Cette page est rédigée en français, seule version faisant foi. Dernière mise à jour : <span class="legal-vide" role="note" aria-label="Information à compléter : date de publication">à compléter</span></p>
 
-    <div class="legal-bloc">
-      <h2>En résumé</h2>
-      <p>Financia ne demande aucun compte, aucun mot de passe, aucune information personnelle pour être utilisé. Tu peux lire l'intégralité du site, faire les quiz, utiliser le simulateur et enregistrer des favoris sans jamais rien fournir.</p>
-      <!-- Un quatrième cas s'ajoute avec la vente de contenus numériques.
-           Annoncé ici dès maintenant plutôt qu'au moment de l'ouverture :
-           une politique de confidentialité qui décrit un périmètre plus
-           étroit que la réalité du site vaut moins que rien. -->
-      <p>Quatre cas font sortir une donnée de ton appareil, et chacun résulte d'une action que tu déclenches toi-même : t'inscrire à la lettre d'information, laisser un avis, poser une question à l'assistant, ou acheter un contenu numérique. <strong>Ce dernier cas n'est pas encore actif</strong> : aucune vente n'est ouverte à ce jour.</p>
+    <!-- Avertissement en tête, et non en note de bas de page : un visiteur doit
+         savoir avant de lire que ce texte n'est pas encore opposable.
+         Structure strictement identique aux autres .risque du site, icône puis
+         un seul paragraphe : y imbriquer une liste casserait l'alignement et
+         ferait hériter la couleur ambre au reste. -->
+    <div class="risque risque-large" role="note">
+      <span class="risque-icone" aria-hidden="true">⚠️</span>
+      <p><strong>Document en cours de finalisation.</strong> Aucune vente n'est ouverte à ce jour sur Financia : ces conditions ne s'appliquent à aucune commande et ne sont opposables à personne. Elles sont publiées par transparence, avant l'ouverture de la vente.</p>
     </div>
 
-    <div class="legal-bloc">
-      <h2>Ce qui reste sur ton appareil</h2>
-      <p>Ces informations sont stockées dans la mémoire locale de ton navigateur. Elles ne sont transmises à personne, pas même à Financia, et disparaissent si tu vides les données du site.</p>
+    <div class="legal-vide-bloc" role="note">
+      <p><strong>Informations encore manquantes</strong>, signalées dans le texte par la mention « à compléter » :</p>
       <ul class="legal-liste">
-        <li><strong>Tes favoris</strong> : les actifs que tu suis sur la page Marchés.</li>
-        <li><strong>Ta langue</strong> : pour ne pas la redemander à chaque visite.</li>
-        <li><strong>Ton pseudo et ton groupe</strong> dans l'aperçu Communauté, qui est une démonstration sans serveur.</li>
-        <li><strong>Ton choix sur la mesure d'audience</strong>, pour ne pas réafficher le bandeau.</li>
+        <li>l'identité de l'éditeur (nom, SIRET, adresse du siège), article 1</li>
+        <li>la mention de TVA applicable, article 3</li>
+        <li>le nom et les coordonnées du médiateur de la consommation, article 11</li>
+        <li>la date de dernière mise à jour</li>
       </ul>
-      <p class="legal-note">Ces éléments relèvent du fonctionnement que tu demandes et ne nécessitent pas de consentement. Ils ne permettent pas de t'identifier.</p>
     </div>
 
     <div class="legal-bloc">
-      <h2>Mesure d'audience</h2>
-      <!-- « Aucune publicité » était devenu imprécis avec l'arrivée de liens
-           d'affiliation. La promesse est reformulée sur ce qui compte au
-           regard du RGPD, et qui reste exact : aucune régie chargée, aucun
-           profil publicitaire, aucune revente. -->
-      <p>Financia utilise <strong>Google Analytics 4</strong> pour compter les visites et savoir quelles pages sont réellement lues, et <strong>Google Ads</strong> pour mesurer si une campagne publicitaire a mené à une inscription. Aucune donnée n'est revendue.</p>
-      <p class="legal-note">La mesure publicitaire est limitée au comptage : tant que tu n'as pas accepté, le stockage publicitaire reste désactivé côté Google, et aucun profil publicitaire n'est constitué à ton sujet.</p>
-      <p>Cette mesure ne démarre <strong>qu'après ton accord explicite</strong>. Tant que tu n'as pas accepté, le stockage analytique est désactivé côté Google. Tu peux changer d'avis à tout moment : le lien « Gérer les cookies » en bas de chaque page rouvre le choix.</p>
-      <p class="legal-note">Responsable du traitement : Google Ireland Limited. Base légale : ton consentement, article 6.1.a du RGPD.</p>
-    </div>
-
-    <div class="legal-bloc">
-      <h2>Les services qui reçoivent une donnée</h2>
-      <table class="legal-table">
-        <thead><tr><th>Quand</th><th>Ce qui part</th><th>Vers qui</th></tr></thead>
-        <tbody>
-          <tr><td>Tu t'inscris à la lettre d'information</td><td>Ton adresse email</td><td>Mailjet (Sinch), France</td></tr>
-          <tr><td>Tu laisses un avis</td><td>Le prénom et le texte que tu saisis</td><td>Google Forms</td></tr>
-          <tr><td>Tu poses une question à l'assistant</td><td>Le contenu de ta question</td><td>Groq, États-Unis</td></tr>
-          <tr><td>Tu consultes le site</td><td>Adresse IP, journaux techniques</td><td>Vercel, hébergeur</td></tr>
-          <tr><td>Tu arrives depuis une publicité et t'inscris</td><td>Le fait que l'inscription vienne de cette campagne</td><td>Google Ads (Google Ireland)</td></tr>
-          <tr><td>Tu cliques sur un lien partenaire</td><td>Le fait que la visite vienne de Financia</td><td>Le partenaire concerné</td></tr>
-          <tr><td>Tu achètes un contenu numérique <em>(pas encore actif)</em></td><td>Ton adresse email et tes coordonnées de paiement</td><td>Stripe Payments Europe, Ltd., Irlande</td></tr>
-        </tbody>
-      </table>
-      <p class="legal-note">Les données de marché et les articles d'actualité proviennent de sources publiques et ne transportent aucune information te concernant.</p>
-      <p class="legal-note">Un lien partenaire transmet uniquement l'origine de la visite, ce qui permet au partenaire de savoir qu'elle vient d'ici. Financia ne lui transmet ni ton identité, ni ton parcours sur le site, ni aucune donnée que tu aurais saisie. Une fois sur son site, c'est sa propre politique de confidentialité qui s'applique.</p>
-    </div>
-
-    <!-- ═══ ACHAT ═══
-         Bloc rédigé avant l'ouverture de la vente, et qui le dit. Les deux
-         bases légales sont distinctes et ne se confondent pas : livrer le
-         guide relève du contrat, conserver la facture d'une obligation
-         comptable qui survit à toute demande d'effacement. -->
-    <div class="legal-bloc">
-      <h2>Achat d'un contenu numérique</h2>
-      <p class="legal-note">Aucune vente n'est ouverte à ce jour. Cette section décrit ce qui s'appliquera à l'ouverture, et non un traitement en cours.</p>
-      <p>Le paiement est traité de bout en bout par <strong>Stripe</strong>. Tes coordonnées bancaires sont saisies sur la page sécurisée de Stripe : <strong>Financia ne les voit jamais, ne les reçoit jamais et n'en conserve aucune</strong>.</p>
-      <p>Une seule donnée personnelle revient à Financia : <strong>l'adresse email</strong> que tu renseignes au moment du paiement. Elle sert à t'envoyer ton accès au contenu, à établir la facture et à répondre si tu nous écris à propos de ta commande. Elle n'est pas ajoutée à la lettre d'information : t'y inscrire reste une action distincte que tu déclenches toi-même.</p>
+      <h2>Article 1 &middot; Objet et champ d'application</h2>
+      <p>Les présentes Conditions Générales de Vente (CGV) régissent les ventes de produits numériques (e-books, guides) proposés sur le site Financia.cloud. Le vendeur est&nbsp;:</p>
+      <!-- Identité présentée en liste plutôt qu'en phrase : les marqueurs
+           terminent chacun leur ligne, aucune virgule ne vient se détacher
+           du contour en pointillés. -->
       <ul class="legal-liste">
-        <li><strong>Livraison du contenu et suivi de ta commande</strong> : base légale, exécution du contrat, article 6.1.b du RGPD.</li>
-        <li><strong>Facturation et comptabilité</strong> : base légale, obligation légale, article 6.1.c du RGPD.</li>
+        <li>Nom ou raison sociale &middot; <span class="legal-vide" role="note" aria-label="Information à compléter : nom ou raison sociale">à compléter</span></li>
+        <li>Numéro SIRET &middot; <span class="legal-vide" role="note" aria-label="Information à compléter : numéro SIRET">à compléter</span></li>
+        <li>Siège social &middot; <span class="legal-vide" role="note" aria-label="Information à compléter : adresse du siège">à compléter</span></li>
       </ul>
-      <p class="legal-note">Responsable du traitement de paiement : Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Dublin 2, Irlande. Le détail de ses propres traitements figure dans sa politique de confidentialité.</p>
+      <p>Toute commande passée sur le site implique l'acceptation sans réserve des présentes CGV.</p>
+      <p class="legal-note">L'identité de l'éditeur du site, distincte de celle du vendeur tant que le statut n'est pas créé, figure dans les <a href="/mentions-legales" class="legal-lien">mentions légales</a>.</p>
     </div>
 
     <div class="legal-bloc">
-      <h2>Conservation</h2>
-      <p>Ton adresse email est conservée dans la liste de diffusion jusqu'à ta désinscription, possible en un clic depuis chaque message. Les avis publiés le restent tant que tu n'en demandes pas le retrait. Les questions posées à l'assistant ne sont pas conservées par Financia.</p>
-      <p>Les pièces justificatives d'une commande, facture et preuve de paiement, sont conservées <strong>dix ans</strong>, durée imposée par l'article L123-22 du code de commerce. Cette obligation prime sur une demande d'effacement : une facture ne peut pas être supprimée avant ce terme, même à ta demande.</p>
+      <h2>Article 2 &middot; Produits proposés</h2>
+      <p>Financia.cloud propose des contenus numériques à visée pédagogique et informative (guides, e-books) relatifs à l'éducation financière et à la gestion budgétaire personnelle.</p>
+      <p><strong>Ces contenus ne constituent en aucun cas un conseil en investissement personnalisé, un conseil fiscal ou juridique individualisé.</strong> Ils sont fournis à titre pédagogique et général. Pour toute décision engageant votre situation personnelle, il vous est recommandé de consulter un professionnel agréé (conseiller en gestion de patrimoine, expert-comptable, conseiller en investissements financiers).</p>
     </div>
 
     <div class="legal-bloc">
-      <h2>Tes droits</h2>
-      <p>Tu disposes d'un droit d'accès, de rectification, d'effacement, d'opposition et de portabilité sur les données te concernant. Pour l'exercer, une seule adresse :</p>
-      <p class="legal-contact"><strong>financiacloud@gmail.com</strong></p>
-      <p>Tu peux également introduire une réclamation auprès de la <strong>CNIL</strong>, autorité de contrôle française.</p>
+      <h2>Article 3 &middot; Prix</h2>
+      <p>Les prix sont indiqués en euros, toutes taxes comprises. Mention de TVA applicable &middot; <span class="legal-vide" role="note" aria-label="Information à compléter : régime de TVA">à compléter</span></p>
+      <p>Financia.cloud se réserve le droit de modifier ses prix à tout moment. Le prix applicable est celui en vigueur au moment de la validation de la commande.</p>
     </div>
 
-    <div class="legal-liens">
-      <a href="/mentions-legales" class="btn-ghost">Mentions légales</a>
-      <a href="#" class="btn-ghost" data-consent-rouvrir>Gérer les cookies</a>
+    <div class="legal-bloc">
+      <h2>Article 4 &middot; Commande et paiement</h2>
+      <p>La commande est validée après paiement intégral du prix, via la solution de paiement sécurisée Stripe. Financia.cloud ne collecte ni ne conserve aucune donnée bancaire du client ; ces données sont traitées exclusivement par Stripe, conformément à sa propre politique de confidentialité.</p>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 5 &middot; Livraison et accès au contenu</h2>
+      <p>Le produit numérique est mis à disposition du client <strong>immédiatement après confirmation du paiement</strong>, via un lien de téléchargement.</p>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 6 &middot; Absence de droit de rétractation</h2>
+      <p>Conformément à l'article L221-28 13° du code de la consommation, <strong>le droit de rétractation ne peut être exercé pour les contenus numériques non fournis sur un support matériel dont l'exécution a commencé après accord préalable et exprès du consommateur, et renoncement exprès à son droit de rétractation.</strong></p>
+      <p>Au moment de la commande, le client doit cocher explicitement une case, non pré-cochée, confirmant sa demande d'accès immédiat et sa renonciation à ce droit. Sans cette action explicite, la commande ne peut être finalisée.</p>
+      <p class="legal-note">Texte exact de la case à cocher, tel qu'il figure sur la page de commande :</p>
+      <blockquote class="legal-citation">
+        <p>☐ Je demande que le guide me soit fourni immédiatement après le paiement, et je reconnais qu'en conséquence je perds mon droit de rétractation de quatorze jours, conformément à l'article L221-28 13° du code de la consommation.</p>
+      </blockquote>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 7 &middot; Politique de non-remboursement</h2>
+      <p><strong>Compte tenu de la nature numérique du produit et de la renonciation expresse au droit de rétractation prévue à l'article 6, aucun remboursement ni échange ne pourra être accordé une fois l'accès au contenu délivré.</strong></p>
+      <p>Cette clause s'applique sans préjudice des dispositions légales impératives, notamment en cas de non-conformité du produit livré ou de défaut technique empêchant l'accès au contenu, cas dans lesquels le client conserve ses droits légaux.</p>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 8 &middot; Propriété intellectuelle</h2>
+      <p>Le contenu vendu (textes, mise en page, structure) est protégé par le droit d'auteur. Le client bénéficie d'un droit d'usage strictement personnel. Toute reproduction, diffusion ou revente, même partielle, est interdite sans autorisation écrite préalable.</p>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 9 &middot; Responsabilité</h2>
+      <p>Le contenu est fourni à titre informatif. Financia.cloud ne saurait être tenu responsable des décisions financières prises par le client sur la base des informations contenues dans le guide. Le client reste seul responsable de ses choix, et est encouragé à consulter un professionnel agréé avant toute décision d'investissement.</p>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 10 &middot; Données personnelles</h2>
+      <p>Les données collectées lors de la commande, l'adresse email notamment, sont utilisées exclusivement pour la gestion de la commande et l'envoi du contenu.</p>
+      <p>Le détail des traitements, des bases légales, des durées de conservation et de vos droits au titre du RGPD figure dans la <a href="/confidentialite" class="legal-lien">politique de confidentialité &rarr;</a></p>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 11 &middot; Médiation de la consommation</h2>
+      <p>Conformément aux articles L. 616-1 et R. 616-1 du code de la consommation, en cas de litige non résolu directement avec Financia.cloud, le client peut recourir gratuitement à un médiateur de la consommation.</p>
+      <div class="legal-vide-bloc" role="note">
+        <p><strong>Nom et coordonnées du médiateur : à compléter.</strong> L'adhésion à un médiateur de la consommation est une obligation légale pour tout professionnel vendant à des consommateurs en France. Elle doit être souscrite avant l'ouverture de la vente.</p>
+      </div>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Article 12 &middot; Droit applicable et juridiction</h2>
+      <p>Les présentes CGV sont soumises au droit français. En cas de litige, et à défaut de résolution amiable ou via le médiateur mentionné à l'article 11, les tribunaux français compétents seront seuls saisis.</p>
+    </div>
+
+    <div class="legal-bloc">
+      <h2>Contact</h2>
+      <p>Pour toute question relative à ces conditions : <a href="mailto:financiacloud@gmail.com" class="legal-lien">financiacloud@gmail.com</a></p>
+      <p><a href="/mentions-legales" class="legal-lien">Mentions légales &rarr;</a></p>
     </div>
 
   </div>
@@ -314,13 +338,15 @@
   </div>
 </footer>
 
-<script src="./legal.js"></script>
-<script src="./reveal.js" defer></script>
-<script src="./analytics.js" defer></script>
-<script src="./consentement.js" defer></script>
-<script src="./pwa.js" defer></script>
-<script src="./nav-plus.js" defer></script>
-<script src="./conversion.js" defer></script>
-<script src="./sigles.js" defer></script>
+<script src="/page-socle.js"></script>
+<script src="/reveal.js" defer></script>
+<script src="/analytics.js" defer></script>
+<script src="/consentement.js" defer></script>
+<script src="/pwa.js" defer></script>
+<script src="/nav-plus.js" defer></script>
+<script src="/partenaires-config.js" defer></script>
+<script src="/partenaires-ui.js" defer></script>
+<script src="/conversion.js" defer></script>
+<script src="/sigles.js" defer></script>
 </body>
 </html>

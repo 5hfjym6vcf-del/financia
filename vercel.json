@@ -83,6 +83,10 @@
     {
       "source": "/guide",
       "destination": "/guide.html"
+    },
+    {
+      "source": "/cgv",
+      "destination": "/cgv.html"
     }
   ],
   "headers": [
