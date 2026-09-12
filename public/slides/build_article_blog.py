@@ -237,9 +237,9 @@ CORPS = '''
         <p class="sources-titre">Sources</p>
         <ul class="sources-liste">
           <li>Banque de France, taux des livrets réglementés</li>
-          <li><a href="https://www.service-public.fr/particuliers/vosdroits/F2365" target="_blank" rel="noopener noreferrer">Service-Public.fr, Livret A</a></li>
-          <li><a href="https://www.service-public.fr/particuliers/vosdroits/F2368" target="_blank" rel="noopener noreferrer">Service-Public.fr, Livret de développement durable et solidaire</a></li>
-          <li><a href="https://www.service-public.fr/particuliers/vosdroits/F2367" target="_blank" rel="noopener noreferrer">Service-Public.fr, Livret d'épargne populaire</a></li>
+          <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2365" target="_blank" rel="noopener noreferrer">Service-Public.fr, Livret A</a></li>
+          <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2368" target="_blank" rel="noopener noreferrer">Service-Public.fr, Livret de développement durable et solidaire</a></li>
+          <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2367" target="_blank" rel="noopener noreferrer">Service-Public.fr, Livret d'épargne populaire</a></li>
         </ul>
       </div>
 

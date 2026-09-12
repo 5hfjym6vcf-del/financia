@@ -247,7 +247,7 @@ ARTICLES = [
     {
         'slug': 'pea-explique-simplement',
         'sources': [
-            ("Service-Public.fr, imposition des revenus d'un PEA", 'https://www.service-public.fr/particuliers/vosdroits/F22449'),
+            ("Service-Public.fr, imposition des revenus d'un PEA", 'https://www.service-public.gouv.fr/particuliers/vosdroits/F22449'),
             ('Code général des impôts, art. 157 5° bis (exonération après cinq ans) et art. 200 A (prélèvement forfaitaire unique)', None),
         ],
         'date_iso': '2026-09-10', 'date': '10 septembre 2026', 'duree': '6 min',
