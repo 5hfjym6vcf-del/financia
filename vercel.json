@@ -79,6 +79,10 @@
     {
       "source": "/blog/interets-composes",
       "destination": "/blog-interets-composes.html"
+    },
+    {
+      "source": "/guide",
+      "destination": "/guide.html"
     }
   ],
   "headers": [

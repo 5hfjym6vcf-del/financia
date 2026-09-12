@@ -4292,3 +4292,91 @@ textarea:focus-visible,
   padding-left: 16px;
   border-left: 3px solid var(--violet);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PAGE GUIDE (ebook)
+   ══════════════════════════════════════════════════════════════════════════ */
+.ebook-pastille {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-2);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+}
+.ebook-pastille-premium {
+  color: var(--green-light);
+  background: var(--violet-soft);
+  border-color: var(--violet-ring);
+}
+.ebook-h2 { margin: 14px 0 0; font-size: clamp(24px, 2.6vw, 32px); font-weight: 800; color: #fff; letter-spacing: -0.015em; }
+.ebook-sous { margin-top: 8px; font-size: 15.5px; line-height: 1.6; color: var(--text-3); }
+.ebook-libre-tete { margin-bottom: 26px; }
+.ebook-libre { margin-bottom: 52px; }
+
+/* Emplacement non rempli : volontairement visible et sobre. Un bloc vide
+   passerait pour un bug, un lorem ipsum passerait pour du contenu. */
+.ebook-attente {
+  margin: 18px 0 26px;
+  padding: 18px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border-2);
+  background: rgba(124,58,237,0.05);
+  font-size: 14.5px; line-height: 1.6; color: var(--text-3);
+}
+.ebook-attente strong { color: var(--text-2); }
+
+.ebook-offre {
+  padding: 34px 30px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--violet-ring);
+}
+.ebook-offre-sous { margin-top: 14px; font-size: 16px; line-height: 1.65; color: var(--text-2); }
+.ebook-prix-zone { display: flex; align-items: baseline; gap: 12px; margin: 26px 0 6px; }
+.ebook-prix { font-size: 40px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+.ebook-prix-attente { font-size: 24px; color: var(--text-3); font-weight: 600; }
+.ebook-tva { font-size: 13px; color: var(--text-3); }
+
+/* La case est le verrou légal : elle doit se voir, pas se deviner. */
+.ebook-legal { margin: 24px 0 20px; }
+.ebook-check { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+.ebook-check input {
+  flex: 0 0 auto;
+  width: 20px; height: 20px;
+  margin-top: 2px;
+  accent-color: var(--violet);
+  cursor: pointer;
+}
+.ebook-check span { font-size: 14px; line-height: 1.6; color: var(--text-2); }
+.ebook-check input:disabled, .ebook-check input:disabled + span { cursor: not-allowed; opacity: 0.55; }
+
+.ebook-cta { width: 100%; justify-content: center; }
+.ebook-cta:disabled { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.4); }
+
+.ebook-etat { margin-top: 14px; font-size: 14px; line-height: 1.55; }
+.ebook-etat-attente { color: var(--text-3); }
+.ebook-etat-info { color: var(--green-light); }
+.ebook-etat-erreur { color: #f87171; }
+
+.ebook-mentions { margin-top: 18px; font-size: 13px; line-height: 1.6; color: var(--text-3); }
+.ebook-mentions a { color: var(--green-light); }
+
+.ebook-retour {
+  margin-bottom: 34px;
+  padding: 26px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--violet-ring);
+  background: var(--violet-soft);
+}
+.ebook-retour-titre { font-size: 19px; font-weight: 800; color: #fff; margin: 0 0 8px; }
+.ebook-retour-texte { font-size: 15px; line-height: 1.6; color: var(--text-2); margin-bottom: 18px; }
+
+.guide-page .risque { margin-top: 34px; max-width: none; }
+
+@media (max-width: 640px) {
+  .ebook-offre { padding: 26px 20px; }
+  .ebook-prix { font-size: 32px; }
+}
