@@ -69,6 +69,16 @@ TETE = f'''<!DOCTYPE html>
 
   <meta name="description" content="{DESC}" />
   <link rel="canonical" href="{URL}" />
+
+  <!-- Le contenu du guide est en cours de refonte : le module administratif
+       et fiscal, hors sujet pour une plateforme d'éducation financière
+       personnelle, est remplacé par un socle budget puis épargne. La page
+       reste accessible et liée depuis /ressources, mais n'a rien à faire dans
+       les résultats de recherche tant que la version en ligne n'est pas celle
+       qui restera. À RETIRER une fois la réécriture terminée, en même temps
+       que l'ajout au sitemap et l'ouverture de la vente. -->
+  <meta name="robots" content="noindex, follow" />
+
   <meta name="theme-color" content="#000000" />
   <link rel="icon" href="/images/icons/icon.svg" type="image/svg+xml" />
   <link rel="icon" href="/images/icons/icon-32.png" sizes="32x32" type="image/png" />
