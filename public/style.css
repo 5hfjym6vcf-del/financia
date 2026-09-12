@@ -4142,6 +4142,10 @@ textarea:focus-visible,
 
 .art-corps .risque { margin: 32px 0; max-width: none; }
 
+/* Note de bas de tableau : date de validité d'un chiffre, mention de source.
+   Plus petite que le corps, sans être illisible. */
+.art-note { margin-top: -6px; font-size: 13px; line-height: 1.6; color: var(--text-3); font-style: italic; }
+
 .art-suite {
   margin-top: 52px;
   padding: 32px 30px;
@@ -4404,6 +4408,11 @@ textarea:focus-visible,
   background: linear-gradient(180deg, var(--violet-soft), rgba(124,58,237,0.02));
 }
 .ebook-cadenas { font-size: 17px; line-height: 1; }
+/* Renvoi vers les articles libres qui recoupent les modules payants : dit au
+   lecteur qu'il peut se faire une idée avant d'acheter, plutôt que de le
+   laisser devant deux cadenas. */
+.ebook-verrou-note { margin: 20px 0 0; font-size: 14px; line-height: 1.7; color: var(--text-3); }
+.ebook-verrou-note a { color: var(--green-light); }
 .ebook-module-titre { margin: 12px 0 0; font-size: 17px; font-weight: 800; color: #fff; line-height: 1.35; }
 .ebook-module-accroche { margin: 10px 0 0; font-size: 14.5px; line-height: 1.65; color: var(--text-3); }
 
